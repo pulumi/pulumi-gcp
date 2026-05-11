@@ -856,8 +856,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networkservices.Mesh;
  * import com.pulumi.gcp.networkservices.MeshArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
@@ -883,7 +883,7 @@ import javax.annotation.Nullable;
  *         var waitForMesh = new Sleep("waitForMesh", SleepArgs.builder()
  *             .createDuration("1m")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(mesh)
+ *                 .dependsOn(Arrays.asList(mesh))
  *                 .build());
  * 
  *         var default_ = new Service("default", ServiceArgs.builder()

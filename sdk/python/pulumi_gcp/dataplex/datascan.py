@@ -1290,7 +1290,7 @@ class Datascan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
@@ -1301,7 +1301,7 @@ class Datascan(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountTokenCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-dataplex.iam.gserviceaccount.com")
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[dataplex_sa_impersonate]))
         sa_bq_data_viewer = gcp.projects.IAMMember("sa_bq_data_viewer",
             project="my-project-name",
@@ -1372,7 +1372,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import json
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
@@ -1444,7 +1444,7 @@ class Datascan(pulumi.CustomResource):
                     }),
                 },
             }])
-        wait_for_bq_sync = time.Sleep("wait_for_bq_sync", create_duration="300s",
+        wait_for_bq_sync = time.Sleep("wait_for_bq_sync", create_duration=300s,
         opts = pulumi.ResourceOptions(depends_on=[tf_test_table]))
         bq_table_entry = gcp.dataplex.Entry("bq_table_entry",
             entry_group_id="@bigquery",
@@ -1521,7 +1521,7 @@ class Datascan(pulumi.CustomResource):
                     wait_for_bq_sync,
                     test_entry,
                 ]))
-        wait_for_aspect_propagation = time.Sleep("wait_for_aspect_propagation", create_duration="300s",
+        wait_for_aspect_propagation = time.Sleep("wait_for_aspect_propagation", create_duration=300s,
         opts = pulumi.ResourceOptions(depends_on=[bq_table_entry]))
         reusable_rules_catalog_based = gcp.dataplex.Datascan("reusable_rules_catalog_based",
             location="us-central1",
@@ -1558,7 +1558,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import json
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
@@ -1569,7 +1569,7 @@ class Datascan(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountTokenCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-dataplex.iam.gserviceaccount.com")
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[dataplex_sa_impersonate]))
         sa_bq_data_viewer = gcp.projects.IAMMember("sa_bq_data_viewer",
             project=project.project_id,
@@ -2349,7 +2349,7 @@ class Datascan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
@@ -2360,7 +2360,7 @@ class Datascan(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountTokenCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-dataplex.iam.gserviceaccount.com")
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[dataplex_sa_impersonate]))
         sa_bq_data_viewer = gcp.projects.IAMMember("sa_bq_data_viewer",
             project="my-project-name",
@@ -2431,7 +2431,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import json
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
@@ -2503,7 +2503,7 @@ class Datascan(pulumi.CustomResource):
                     }),
                 },
             }])
-        wait_for_bq_sync = time.Sleep("wait_for_bq_sync", create_duration="300s",
+        wait_for_bq_sync = time.Sleep("wait_for_bq_sync", create_duration=300s,
         opts = pulumi.ResourceOptions(depends_on=[tf_test_table]))
         bq_table_entry = gcp.dataplex.Entry("bq_table_entry",
             entry_group_id="@bigquery",
@@ -2580,7 +2580,7 @@ class Datascan(pulumi.CustomResource):
                     wait_for_bq_sync,
                     test_entry,
                 ]))
-        wait_for_aspect_propagation = time.Sleep("wait_for_aspect_propagation", create_duration="300s",
+        wait_for_aspect_propagation = time.Sleep("wait_for_aspect_propagation", create_duration=300s,
         opts = pulumi.ResourceOptions(depends_on=[bq_table_entry]))
         reusable_rules_catalog_based = gcp.dataplex.Datascan("reusable_rules_catalog_based",
             location="us-central1",
@@ -2617,7 +2617,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import json
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
@@ -2628,7 +2628,7 @@ class Datascan(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountTokenCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-dataplex.iam.gserviceaccount.com")
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[dataplex_sa_impersonate]))
         sa_bq_data_viewer = gcp.projects.IAMMember("sa_bq_data_viewer",
             project=project.project_id,

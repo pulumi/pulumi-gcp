@@ -36,8 +36,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -75,7 +75,7 @@ import (
 //			}
 //			// Add a sleep to wait for IAM propagation after API enablement
 //			waitForDataformApi, err := time.NewSleep(ctx, "wait_for_dataform_api", &time.SleepArgs{
-//				CreateDuration: pulumi.String("30s"),
+//				CreateDuration: "30s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				dataformApi,
 //			}))
@@ -144,8 +144,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -172,7 +172,7 @@ import (
 //			}
 //			// Add a sleep to wait for IAM propagation after API enablement
 //			waitForDataformApi, err := time.NewSleep(ctx, "wait_for_dataform_api", &time.SleepArgs{
-//				CreateDuration: pulumi.String("30s"),
+//				CreateDuration: "30s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				dataformApi,
 //			}))

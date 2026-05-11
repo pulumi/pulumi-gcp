@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     location: "us",
  * });
  * // Add a delay to allow the service account to propagate
- * const waitForSaPropagation = new time.Sleep("wait_for_sa_propagation", {createDuration: "90s"}, {
+ * const waitForSaPropagation = new time.index.Sleep("wait_for_sa_propagation", {createDuration: "90s"}, {
  *     dependsOn: [settingsData],
  * });
  * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {

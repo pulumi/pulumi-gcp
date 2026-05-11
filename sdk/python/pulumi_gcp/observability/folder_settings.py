@@ -216,19 +216,19 @@ class FolderSettings(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
             display_name="tf-test-_44154",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
-        wait_for_settings_propagation = time.Sleep("wait_for_settings_propagation", create_duration="90s",
+        wait_for_settings_propagation = time.Sleep("wait_for_settings_propagation", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[test_folder]))
         settings_data = gcp.observability.get_folder_settings_output(folder=test_folder.folder_id,
             location="us")
         # Add a delay to allow the service account to propagate
-        wait_for_sa_propagation = time.Sleep("wait_for_sa_propagation", create_duration="90s",
+        wait_for_sa_propagation = time.Sleep("wait_for_sa_propagation", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[settings_data]))
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="example-key",
@@ -246,14 +246,14 @@ class FolderSettings(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
             display_name="tf-test-_90221",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
-        wait_for_folder = time.Sleep("wait_for_folder", create_duration="90s",
+        wait_for_folder = time.Sleep("wait_for_folder", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[test_folder]))
         settings_data = gcp.observability.get_folder_settings_output(folder=test_folder.folder_id,
             location="global")
@@ -305,19 +305,19 @@ class FolderSettings(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
             display_name="tf-test-_44154",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
-        wait_for_settings_propagation = time.Sleep("wait_for_settings_propagation", create_duration="90s",
+        wait_for_settings_propagation = time.Sleep("wait_for_settings_propagation", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[test_folder]))
         settings_data = gcp.observability.get_folder_settings_output(folder=test_folder.folder_id,
             location="us")
         # Add a delay to allow the service account to propagate
-        wait_for_sa_propagation = time.Sleep("wait_for_sa_propagation", create_duration="90s",
+        wait_for_sa_propagation = time.Sleep("wait_for_sa_propagation", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[settings_data]))
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="example-key",
@@ -335,14 +335,14 @@ class FolderSettings(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
             display_name="tf-test-_90221",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
-        wait_for_folder = time.Sleep("wait_for_folder", create_duration="90s",
+        wait_for_folder = time.Sleep("wait_for_folder", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[test_folder]))
         settings_data = gcp.observability.get_folder_settings_output(folder=test_folder.folder_id,
             location="global")

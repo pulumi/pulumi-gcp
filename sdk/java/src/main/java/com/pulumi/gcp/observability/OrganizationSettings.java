@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.observability.ObservabilityFunctions;
  * import com.pulumi.gcp.observability.inputs.GetOrganizationSettingsArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.observability.OrganizationSettings;
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *         var waitForSaPropagation = new Sleep("waitForSaPropagation", SleepArgs.builder()
  *             .createDuration("90s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(settingsData)
+ *                 .dependsOn(Arrays.asList(settingsData))
  *                 .build());
  * 
  *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()

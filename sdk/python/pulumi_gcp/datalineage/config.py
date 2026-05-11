@@ -226,7 +226,7 @@ class Config(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         integration = gcp.organizations.Folder("integration",
             display_name="config-f",
@@ -236,7 +236,7 @@ class Config(pulumi.CustomResource):
             folder=integration.folder_id,
             role="roles/datalineage.admin",
             member="serviceAccount:my@service-account.com")
-        wait_for_folder_iam = time.Sleep("wait_for_folder_iam", create_duration="60s",
+        wait_for_folder_iam = time.Sleep("wait_for_folder_iam", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[datalineage_admin]))
         default = gcp.datalineage.Config("default",
             parent=integration.name,
@@ -340,7 +340,7 @@ class Config(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         integration = gcp.organizations.Folder("integration",
             display_name="config-f",
@@ -350,7 +350,7 @@ class Config(pulumi.CustomResource):
             folder=integration.folder_id,
             role="roles/datalineage.admin",
             member="serviceAccount:my@service-account.com")
-        wait_for_folder_iam = time.Sleep("wait_for_folder_iam", create_duration="60s",
+        wait_for_folder_iam = time.Sleep("wait_for_folder_iam", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[datalineage_admin]))
         default = gcp.datalineage.Config("default",
             parent=integration.name,

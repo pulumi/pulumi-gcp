@@ -284,7 +284,7 @@ class AiLogicConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="basic",
@@ -301,7 +301,7 @@ class AiLogicConfig(pulumi.CustomResource):
             service="firebasevertexai.googleapis.com")
         # It takes a while for permissions to propagate
         # If your Terraform setup has a retry mechanism, this wait is unnecessary
-        wait30s = time.Sleep("wait_30s", create_duration="30s",
+        wait30s = time.Sleep("wait_30s", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[
                 ailogic,
                 firebase,
@@ -316,7 +316,7 @@ class AiLogicConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="full",
@@ -342,7 +342,7 @@ class AiLogicConfig(pulumi.CustomResource):
             })
         # It takes a while for permissions to propagate
         # If your Terraform setup has a retry mechanism, this wait is unnecessary
-        wait30s = time.Sleep("wait_30s", create_duration="30s",
+        wait30s = time.Sleep("wait_30s", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[
                 ailogic,
                 firebase,
@@ -425,7 +425,7 @@ class AiLogicConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="basic",
@@ -442,7 +442,7 @@ class AiLogicConfig(pulumi.CustomResource):
             service="firebasevertexai.googleapis.com")
         # It takes a while for permissions to propagate
         # If your Terraform setup has a retry mechanism, this wait is unnecessary
-        wait30s = time.Sleep("wait_30s", create_duration="30s",
+        wait30s = time.Sleep("wait_30s", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[
                 ailogic,
                 firebase,
@@ -457,7 +457,7 @@ class AiLogicConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="full",
@@ -483,7 +483,7 @@ class AiLogicConfig(pulumi.CustomResource):
             })
         # It takes a while for permissions to propagate
         # If your Terraform setup has a retry mechanism, this wait is unnecessary
-        wait30s = time.Sleep("wait_30s", create_duration="30s",
+        wait30s = time.Sleep("wait_30s", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[
                 ailogic,
                 firebase,

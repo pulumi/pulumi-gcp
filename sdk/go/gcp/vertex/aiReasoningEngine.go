@@ -176,86 +176,84 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// vertexArReader, err := projects.NewIAMMember(ctx, "vertex_ar_reader", &projects.IAMMemberArgs{
-// Project: pulumi.String(pulumi.String(project.ProjectId)),
-// Role: pulumi.String("roles/artifactregistry.reader"),
-// Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-aiplatform-re.iam.gserviceaccount.com", project.Number),
-// })
-// if err != nil {
-// return err
-// }
-// invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
-// Input: "./test-fixtures/mds_agent_src.tar.gz",
-// }, nil)
-// if err != nil {
-// return err
-// }
-// // Provision and retrieve the tenant service agent through another agent
-// tenantMdsAiReasoningEngine, err := vertex.NewAiReasoningEngine(ctx, "tenant_mds", &vertex.AiReasoningEngineArgs{
-// DisplayName: pulumi.String("reasoning-engine-mds"),
-// Region: pulumi.String("us-central1"),
-// Spec: &vertex.AiReasoningEngineSpecArgs{
-// SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
-// InlineSource: &vertex.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{
-// SourceArchive: pulumi.String(invokeFilebase64.Result),
-// },
-// PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
-// EntrypointModule: pulumi.String("metadata_agent"),
-// EntrypointObject: pulumi.String("root_agent"),
-// },
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// tenantMds := vertex.GetAiReasoningEngineQueryOutput(ctx, vertex.GetAiReasoningEngineQueryOutputArgs{
-// Region: pulumi.String("us-central1"),
-// ReasoningEngineId: tenantMdsAiReasoningEngine.Name,
-// }, nil);
-// invokeJsondecode1, err := std.Jsondecode(ctx, &std.JsondecodeArgs{
-// Input: tenantMds.Output,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// tenantArReader, err := projects.NewIAMMember(ctx, "tenant_ar_reader", &projects.IAMMemberArgs{
-// Project: pulumi.String(pulumi.String(project.ProjectId)),
-// Role: pulumi.String("roles/artifactregistry.reader"),
-// Member: tenantMds.ApplyT(func(tenantMds vertex.GetAiReasoningEngineQueryResult) (std.JsondecodeResult, error) {
-// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.JsondecodeResultOutput).ApplyT(func(invoke std.JsondecodeResult) (string, error) {
-// return fmt.Sprintf("serviceAccount:%v", invoke.Result.Output), nil
-// }).(pulumi.StringOutput),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
-// DisplayName: pulumi.String("reasoning-engine"),
-// Description: pulumi.String("Deployed with BYOC through Terraform"),
-// Region: pulumi.String("us-central1"),
-// Spec: &vertex.AiReasoningEngineSpecArgs{
-// ContainerSpec: &vertex.AiReasoningEngineSpecContainerSpecArgs{
-// ImageUri: pulumi.Sprintf("us-central1-docker.pkg.dev/%v/vertex-byoc/byoc-agent:latest", project.ProjectId),
-// },
-// },
-// }, pulumi.DependsOn([]pulumi.Resource{
-// vertexArReader,
-// tenantArReader,
-// }))
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vertexArReader, err := projects.NewIAMMember(ctx, "vertex_ar_reader", &projects.IAMMemberArgs{
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Role:    pulumi.String("roles/artifactregistry.reader"),
+//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-aiplatform-re.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "./test-fixtures/mds_agent_src.tar.gz",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Provision and retrieve the tenant service agent through another agent
+//			tenantMdsAiReasoningEngine, err := vertex.NewAiReasoningEngine(ctx, "tenant_mds", &vertex.AiReasoningEngineArgs{
+//				DisplayName: pulumi.String("reasoning-engine-mds"),
+//				Region:      pulumi.String("us-central1"),
+//				Spec: &vertex.AiReasoningEngineSpecArgs{
+//					SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
+//						InlineSource: &vertex.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{
+//							SourceArchive: pulumi.String(invokeFilebase64.Result),
+//						},
+//						PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
+//							EntrypointModule: pulumi.String("metadata_agent"),
+//							EntrypointObject: pulumi.String("root_agent"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tenantMds := vertex.GetAiReasoningEngineQueryOutput(ctx, vertex.GetAiReasoningEngineQueryOutputArgs{
+//				Region:            pulumi.String("us-central1"),
+//				ReasoningEngineId: tenantMdsAiReasoningEngine.Name,
+//			}, nil)
+//			tenantArReader, err := projects.NewIAMMember(ctx, "tenant_ar_reader", &projects.IAMMemberArgs{
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Role:    pulumi.String("roles/artifactregistry.reader"),
+//				Member: std.JsondecodeOutput(ctx, std.JsondecodeOutputArgs{
+//					Input: tenantMds.ApplyT(func(tenantMds vertex.GetAiReasoningEngineQueryResult) (*string, error) {
+//						return &tenantMds.Output, nil
+//					}).(pulumi.StringPtrOutput),
+//				}, nil).ApplyT(func(invoke std.JsondecodeResult) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", invoke.Result.Output), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+//				DisplayName: pulumi.String("reasoning-engine"),
+//				Description: pulumi.String("Deployed with BYOC through Terraform"),
+//				Region:      pulumi.String("us-central1"),
+//				Spec: &vertex.AiReasoningEngineSpecArgs{
+//					ContainerSpec: &vertex.AiReasoningEngineSpecContainerSpecArgs{
+//						ImageUri: pulumi.Sprintf("us-central1-docker.pkg.dev/%v/vertex-byoc/byoc-agent:latest", project.ProjectId),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vertexArReader,
+//				tenantArReader,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Vertex Ai Reasoning Engine Psc Interface
 //
@@ -270,8 +268,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -340,7 +338,7 @@ import (
 //			// Destroy network attachment 35 minutes after reasoning engine is deleted.
 //			// It guarantees that the network attachment has no more active PSC interfaces.
 //			wait35Minutes, err := time.NewSleep(ctx, "wait_35_minutes", &time.SleepArgs{
-//				DestroyDuration: pulumi.String("35m"),
+//				DestroyDuration: "35m",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				networkAttachment,
 //			}))
@@ -418,8 +416,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -497,7 +495,7 @@ import (
 //			}
 //			// Ensure we wait enough time for IAM permissions to be propagated
 //			wait5Minutes, err := time.NewSleep(ctx, "wait_5_minutes", &time.SleepArgs{
-//				CreateDuration: pulumi.String("5m"),
+//				CreateDuration: "5m",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				saIamAiPlatformUser,
 //				saIamObjectViewer,

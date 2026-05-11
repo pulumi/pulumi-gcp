@@ -103,7 +103,7 @@ import * as utilities from "../utilities";
  *     description: "term created by Terraform",
  * });
  * // Introduce a 45-second wait after the glossary resource creation
- * const wait_for_sync = new time.Sleep("wait-for-sync", {createDuration: "45s"}, {
+ * const wait_for_sync = new time.index.Sleep("wait-for-sync", {createDuration: "45s"}, {
  *     dependsOn: [termTestIdFullGlossaryTerm],
  * });
  * const fullEntryLink = new gcp.dataplex.EntryLink("full_entry_link", {

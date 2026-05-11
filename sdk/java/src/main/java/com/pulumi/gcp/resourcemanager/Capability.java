@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Folder;
  * import com.pulumi.gcp.organizations.FolderArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.resourcemanager.Capability;
  * import com.pulumi.gcp.resourcemanager.CapabilityArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *         var wait60s = new Sleep("wait60s", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(folder)
+ *                 .dependsOn(Arrays.asList(folder))
  *                 .build());
  * 
  *         var capability = new Capability("capability", CapabilityArgs.builder()

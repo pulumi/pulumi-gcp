@@ -38,8 +38,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -93,7 +93,7 @@ import (
 //			}
 //			// Wait delay after enabling APIs
 //			waitEnableServiceApi, err := time.NewSleep(ctx, "wait_enable_service_api", &time.SleepArgs{
-//				CreateDuration: pulumi.String("30s"),
+//				CreateDuration: "30s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				kmsApiService,
 //			}))
@@ -112,7 +112,7 @@ import (
 //			}
 //			// Wait delay after creating service agent.
 //			waitServiceAgent, err := time.NewSleep(ctx, "wait_service_agent", &time.SleepArgs{
-//				CreateDuration: pulumi.String("10s"),
+//				CreateDuration: "10s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				kmsServiceAgent,
 //			}))
@@ -134,7 +134,7 @@ import (
 //			}
 //			// Wait delay after granting IAM permissions
 //			waitSrvAccPermissions, err := time.NewSleep(ctx, "wait_srv_acc_permissions", &time.SleepArgs{
-//				CreateDuration: pulumi.String("10s"),
+//				CreateDuration: "10s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				autokeyProjectAdmin,
 //			}))
@@ -154,7 +154,7 @@ import (
 //			}
 //			// Wait delay for autokey config to take effect
 //			waitAutokeyConfig, err := time.NewSleep(ctx, "wait_autokey_config", &time.SleepArgs{
-//				CreateDuration: pulumi.String("10s"),
+//				CreateDuration: "10s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				autokeyConfig,
 //			}))

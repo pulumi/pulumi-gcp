@@ -109,8 +109,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.DatabaseInstance;
  * import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(firebaseDatabase)
+ *                 .dependsOn(Arrays.asList(firebaseDatabase))
  *                 .build());
  * 
  *         var defaultDatabaseInstance = new DatabaseInstance("defaultDatabaseInstance", DatabaseInstanceArgs.builder()

@@ -299,14 +299,14 @@ class Document(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="project-id",
             name="project-id",
             org_id="123456789",
             deletion_policy="DELETE")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[project]))
         firestore = gcp.projects.Service("firestore",
             project=project.project_id,
@@ -330,14 +330,14 @@ class Document(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="project-id",
             name="project-id",
             org_id="123456789",
             deletion_policy="DELETE")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[project]))
         firestore = gcp.projects.Service("firestore",
             project=project.project_id,
@@ -423,14 +423,14 @@ class Document(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="project-id",
             name="project-id",
             org_id="123456789",
             deletion_policy="DELETE")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[project]))
         firestore = gcp.projects.Service("firestore",
             project=project.project_id,
@@ -454,14 +454,14 @@ class Document(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="project-id",
             name="project-id",
             org_id="123456789",
             deletion_policy="DELETE")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[project]))
         firestore = gcp.projects.Service("firestore",
             project=project.project_id,

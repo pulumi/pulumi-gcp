@@ -67,6 +67,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
@@ -103,14 +105,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dbNameSuffix, err := random.NewId(ctx, "db_name_suffix", &random.IdArgs{
-//				ByteLength: 4,
+//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(4),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
-//				Name:            pulumi.Sprintf("private-instance-%v", dbNameSuffix.Hex),
+//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
+//					return fmt.Sprintf("private-instance-%v", hex), nil
+//				}).(pulumi.StringOutput),
 //				Region:          pulumi.String("us-central1"),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{

@@ -392,7 +392,7 @@ class EntryLink(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
             location="us-central1",
@@ -426,7 +426,7 @@ class EntryLink(pulumi.CustomResource):
             display_name="terraform term",
             description="term created by Terraform")
         # Introduce a 45-second wait after the glossary resource creation
-        wait_for_sync = time.Sleep("wait-for-sync", create_duration="45s",
+        wait_for_sync = time.Sleep("wait-for-sync", create_duration=45s,
         opts = pulumi.ResourceOptions(depends_on=[term_test_id_full_glossary_term]))
         full_entry_link = gcp.dataplex.EntryLink("full_entry_link",
             project="1111111111111",
@@ -547,7 +547,7 @@ class EntryLink(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
             location="us-central1",
@@ -581,7 +581,7 @@ class EntryLink(pulumi.CustomResource):
             display_name="terraform term",
             description="term created by Terraform")
         # Introduce a 45-second wait after the glossary resource creation
-        wait_for_sync = time.Sleep("wait-for-sync", create_duration="45s",
+        wait_for_sync = time.Sleep("wait-for-sync", create_duration=45s,
         opts = pulumi.ResourceOptions(depends_on=[term_test_id_full_glossary_term]))
         full_entry_link = gcp.dataplex.EntryLink("full_entry_link",
             project="1111111111111",

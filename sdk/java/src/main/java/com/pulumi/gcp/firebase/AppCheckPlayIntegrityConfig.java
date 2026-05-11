@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.AndroidApp;
  * import com.pulumi.gcp.firebase.AndroidAppArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfig;
  * import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(default_)
+ *                 .dependsOn(Arrays.asList(default_))
  *                 .build());
  * 
  *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()
@@ -102,8 +102,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.AndroidApp;
  * import com.pulumi.gcp.firebase.AndroidAppArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfig;
  * import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(default_)
+ *                 .dependsOn(Arrays.asList(default_))
  *                 .build());
  * 
  *         var defaultAppCheckPlayIntegrityConfig = new AppCheckPlayIntegrityConfig("defaultAppCheckPlayIntegrityConfig", AppCheckPlayIntegrityConfigArgs.builder()

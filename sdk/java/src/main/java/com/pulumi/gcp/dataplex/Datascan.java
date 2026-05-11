@@ -1072,8 +1072,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.serviceaccount.Account;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
@@ -1120,7 +1120,7 @@ import javax.annotation.Nullable;
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(dataplexSaImpersonate)
+ *                 .dependsOn(Arrays.asList(dataplexSaImpersonate))
  *                 .build());
  * 
  *         var saBqDataViewer = new com.pulumi.gcp.projects.IAMMember("saBqDataViewer", com.pulumi.gcp.projects.IAMMemberArgs.builder()
@@ -1225,8 +1225,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.EntryArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.dataplex.Datascan;
  * import com.pulumi.gcp.dataplex.DatascanArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
@@ -1345,7 +1345,7 @@ import javax.annotation.Nullable;
  *         var waitForBqSync = new Sleep("waitForBqSync", SleepArgs.builder()
  *             .createDuration("300s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(tfTestTable)
+ *                 .dependsOn(Arrays.asList(tfTestTable))
  *                 .build());
  * 
  *         var bqTableEntry = new Entry("bqTableEntry", EntryArgs.builder()
@@ -1429,7 +1429,7 @@ import javax.annotation.Nullable;
  *         var waitForAspectPropagation = new Sleep("waitForAspectPropagation", SleepArgs.builder()
  *             .createDuration("300s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(bqTableEntry)
+ *                 .dependsOn(Arrays.asList(bqTableEntry))
  *                 .build());
  * 
  *         var reusableRulesCatalogBased = new Datascan("reusableRulesCatalogBased", DatascanArgs.builder()
@@ -1481,8 +1481,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.serviceaccount.Account;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.dataplex.EntryGroup;
  * import com.pulumi.gcp.dataplex.EntryGroupArgs;
  * import com.pulumi.gcp.dataplex.Entry;
@@ -1536,7 +1536,7 @@ import javax.annotation.Nullable;
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(dataplexSaImpersonate)
+ *                 .dependsOn(Arrays.asList(dataplexSaImpersonate))
  *                 .build());
  * 
  *         var saBqDataViewer = new com.pulumi.gcp.projects.IAMMember("saBqDataViewer", com.pulumi.gcp.projects.IAMMemberArgs.builder()

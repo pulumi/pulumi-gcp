@@ -129,8 +129,8 @@ def get_user_workloads_secret(environment: Optional[_builtins.str] = None,
             "username": std.base64encode(input="username").result,
             "password": std.base64encode(input="password").result,
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_secret_output(environment=name,
-        name=google_composer_user_workloads_secret["example"]["name"]))
+    example = gcp.composer.get_user_workloads_secret_output(environment=example_environment.name,
+        name=google_composer_user_workloads_secret["example"]["name"])
     pulumi.export("debug", example)
     ```
 
@@ -191,8 +191,8 @@ def get_user_workloads_secret_output(environment: pulumi.Input[Optional[_builtin
             "username": std.base64encode(input="username").result,
             "password": std.base64encode(input="password").result,
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_secret_output(environment=name,
-        name=google_composer_user_workloads_secret["example"]["name"]))
+    example = gcp.composer.get_user_workloads_secret_output(environment=example_environment.name,
+        name=google_composer_user_workloads_secret["example"]["name"])
     pulumi.export("debug", example)
     ```
 

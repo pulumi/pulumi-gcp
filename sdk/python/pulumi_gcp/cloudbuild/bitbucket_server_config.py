@@ -521,9 +521,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
             },
             username="test",
             api_key="<api-key>",
-            peered_network=vpc_network.id.apply(lambda id: std.replace(text=id,
+            peered_network=std.replace_output(text=vpc_network.id,
                 search=project.name,
-                replace=project.number)).apply(lambda invoke: invoke.result),
+                replace=project.number).apply(lambda invoke: invoke.result),
             ssl_ca=\"\"\"-----BEGIN CERTIFICATE-----
         -----END CERTIFICATE-----
         -----BEGIN CERTIFICATE-----
@@ -666,9 +666,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
             },
             username="test",
             api_key="<api-key>",
-            peered_network=vpc_network.id.apply(lambda id: std.replace(text=id,
+            peered_network=std.replace_output(text=vpc_network.id,
                 search=project.name,
-                replace=project.number)).apply(lambda invoke: invoke.result),
+                replace=project.number).apply(lambda invoke: invoke.result),
             ssl_ca=\"\"\"-----BEGIN CERTIFICATE-----
         -----END CERTIFICATE-----
         -----BEGIN CERTIFICATE-----

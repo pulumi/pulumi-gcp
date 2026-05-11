@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cloudkmsApi],
  * });
  * // Add a sleep to wait for IAM propagation after API enablement
- * const waitForDataformApi = new time.Sleep("wait_for_dataform_api", {createDuration: "30s"}, {
+ * const waitForDataformApi = new time.index.Sleep("wait_for_dataform_api", {createDuration: "30s"}, {
  *     dependsOn: [dataformApi],
  * });
  * // Retrieve the Dataform service identity
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  *     disableOnDestroy: false,
  * });
  * // Add a sleep to wait for IAM propagation after API enablement
- * const waitForDataformApi = new time.Sleep("wait_for_dataform_api", {createDuration: "30s"}, {
+ * const waitForDataformApi = new time.index.Sleep("wait_for_dataform_api", {createDuration: "30s"}, {
  *     dependsOn: [dataformApi],
  * });
  * // Config without KMS key provided

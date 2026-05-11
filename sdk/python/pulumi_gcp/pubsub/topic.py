@@ -788,7 +788,7 @@ class Topic(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         gemini_query_service_account = gcp.serviceaccount.Account("gemini_query_service_account",
             account_id="example-sa",
@@ -797,7 +797,7 @@ class Topic(pulumi.CustomResource):
             project="my-project-name",
             role="roles/aiplatform.user",
             member=gemini_query_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[gemini_inference_get]))
         example = gcp.pubsub.Topic("example",
             name="example-topic",
@@ -1145,7 +1145,7 @@ class Topic(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         gemini_query_service_account = gcp.serviceaccount.Account("gemini_query_service_account",
             account_id="example-sa",
@@ -1154,7 +1154,7 @@ class Topic(pulumi.CustomResource):
             project="my-project-name",
             role="roles/aiplatform.user",
             member=gemini_query_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[gemini_inference_get]))
         example = gcp.pubsub.Topic("example",
             name="example-topic",

@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const main = new gcp.sql.DatabaseInstance("main", {
- *     name: `main-instance-${dbNameSuffix.hex}`,
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
  *         tier: "db-f1-micro",
@@ -47,9 +47,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const main = new gcp.sql.DatabaseInstance("main", {
- *     name: `main-instance-${dbNameSuffix.hex}`,
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "POSTGRES_15",
  *     settings: {
  *         tier: "db-f1-micro",
@@ -72,9 +72,9 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  * import * as std from "@pulumi/std";
  *
- * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const main = new gcp.sql.DatabaseInstance("main", {
- *     name: `main-instance-${dbNameSuffix.hex}`,
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "POSTGRES_15",
  *     settings: {
  *         tier: "db-f1-micro",
@@ -106,9 +106,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const main = new gcp.sql.DatabaseInstance("main", {
- *     name: `main-instance-${dbNameSuffix.hex}`,
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "MYSQL_8_0",
  *     settings: {
  *         tier: "db-f1-micro",

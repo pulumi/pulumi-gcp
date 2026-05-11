@@ -98,8 +98,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.compute.Disk;
  * import com.pulumi.gcp.compute.DiskArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.tpu.V2Vm;
  * import com.pulumi.gcp.tpu.V2VmArgs;
  * import com.pulumi.gcp.tpu.inputs.V2VmAcceleratorConfigArgs;
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(sa)
+ *                 .dependsOn(Arrays.asList(sa))
  *                 .build());
  * 
  *         var tpu = new V2Vm("tpu", V2VmArgs.builder()

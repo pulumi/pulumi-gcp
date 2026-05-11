@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.FolderArgs;
  * import com.pulumi.gcp.folder.IAMMember;
  * import com.pulumi.gcp.folder.IAMMemberArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.datalineage.Config;
  * import com.pulumi.gcp.datalineage.ConfigArgs;
  * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionArgs;
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *         var waitForFolderIam = new Sleep("waitForFolderIam", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(datalineageAdmin)
+ *                 .dependsOn(Arrays.asList(datalineageAdmin))
  *                 .build());
  * 
  *         var default_ = new Config("default", ConfigArgs.builder()

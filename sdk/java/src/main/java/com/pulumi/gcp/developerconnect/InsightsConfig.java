@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.apphub.Application;
  * import com.pulumi.gcp.apphub.ApplicationArgs;
  * import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *         var waitForPropagation = new Sleep("waitForPropagation", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
+ *                 .dependsOn(Arrays.asList(                
  *                     apphubPermissions,
  *                     insightsAgent,
  *                     apphubApiService,
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  *                     cloudbuildApi,
  *                     cloudassetApi,
  *                     computeApi,
- *                     devconnectApi)
+ *                     devconnectApi))
  *                 .build());
  * 
  *         var myApphubApplication = new Application("myApphubApplication", ApplicationArgs.builder()
@@ -238,8 +238,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.developerconnect.InsightsConfig;
  * import com.pulumi.gcp.developerconnect.InsightsConfigArgs;
  * import com.pulumi.gcp.developerconnect.inputs.InsightsConfigTargetProjectsArgs;
@@ -357,7 +357,7 @@ import javax.annotation.Nullable;
  *         var waitForPropagation = new Sleep("waitForPropagation", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
+ *                 .dependsOn(Arrays.asList(                
  *                     apphubPermissions,
  *                     insightsAgent,
  *                     apphubApiService,
@@ -369,7 +369,7 @@ import javax.annotation.Nullable;
  *                     cloudbuildApi,
  *                     cloudassetApi,
  *                     computeApi,
- *                     devconnectApi)
+ *                     devconnectApi))
  *                 .build());
  * 
  *         var insightsConfigProjects = new InsightsConfig("insightsConfigProjects", InsightsConfigArgs.builder()

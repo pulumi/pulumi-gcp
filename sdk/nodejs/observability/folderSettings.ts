@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  * });
  * // Wait for the folder to be created and recognized by the Observability API
- * const waitForSettingsPropagation = new time.Sleep("wait_for_settings_propagation", {createDuration: "90s"}, {
+ * const waitForSettingsPropagation = new time.index.Sleep("wait_for_settings_propagation", {createDuration: "90s"}, {
  *     dependsOn: [testFolder],
  * });
  * const settingsData = gcp.observability.getFolderSettingsOutput({
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     location: "us",
  * });
  * // Add a delay to allow the service account to propagate
- * const waitForSaPropagation = new time.Sleep("wait_for_sa_propagation", {createDuration: "90s"}, {
+ * const waitForSaPropagation = new time.index.Sleep("wait_for_sa_propagation", {createDuration: "90s"}, {
  *     dependsOn: [settingsData],
  * });
  * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  * });
  * // Wait for the folder to be created and recognized by the Observability API
- * const waitForFolder = new time.Sleep("wait_for_folder", {createDuration: "90s"}, {
+ * const waitForFolder = new time.index.Sleep("wait_for_folder", {createDuration: "90s"}, {
  *     dependsOn: [testFolder],
  * });
  * const settingsData = gcp.observability.getFolderSettingsOutput({

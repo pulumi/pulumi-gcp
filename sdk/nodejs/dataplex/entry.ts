@@ -321,7 +321,7 @@ import * as utilities from "../utilities";
  *     termId: "glossary-term",
  * });
  * // Introduce a 45-second wait after the glossary resource creation
- * const wait_for_sync = new time.Sleep("wait-for-sync", {createDuration: "45s"}, {
+ * const wait_for_sync = new time.index.Sleep("wait-for-sync", {createDuration: "45s"}, {
  *     dependsOn: [example_glossary_term],
  * });
  * const tfTestGlossaryTerm = new gcp.dataplex.Entry("tf_test_glossary_term", {

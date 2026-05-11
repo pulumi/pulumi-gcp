@@ -777,13 +777,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         nat_vm = gcp.compute.Instance("nat_vm",
             name="nat-vm",
             machine_type="e2-medium",
@@ -905,13 +905,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         default = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
@@ -1005,13 +1005,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         client_cert = gcp.sql.SslCert("client_cert",
             common_name="client-name",
             instance=instance.name)
@@ -1023,7 +1023,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "hostname": instance.public_ip_address,
                 "port": 5432,
                 "username": "user",
-                "password": pwd["result"],
+                "password": pwd.result,
                 "database": db.name,
                 "ssl_config": {
                     "server_and_client_verification": {
@@ -1236,13 +1236,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         nat_vm = gcp.compute.Instance("nat_vm",
             name="nat-vm",
             machine_type="e2-medium",
@@ -1364,13 +1364,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         default = gcp.datastream.ConnectionProfile("default",
             display_name="Connection profile",
             location="us-central1",
@@ -1464,13 +1464,13 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password=pwd["result"])
+            password=pwd.result)
         client_cert = gcp.sql.SslCert("client_cert",
             common_name="client-name",
             instance=instance.name)
@@ -1482,7 +1482,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "hostname": instance.public_ip_address,
                 "port": 5432,
                 "username": "user",
-                "password": pwd["result"],
+                "password": pwd.result,
                 "database": db.name,
                 "ssl_config": {
                     "server_and_client_verification": {

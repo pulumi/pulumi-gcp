@@ -1653,10 +1653,10 @@ class Service(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         mesh = gcp.networkservices.Mesh("mesh", name="network-services-mesh")
-        wait_for_mesh = time.Sleep("wait_for_mesh", create_duration="1m",
+        wait_for_mesh = time.Sleep("wait_for_mesh", create_duration=1m,
         opts = pulumi.ResourceOptions(depends_on=[mesh]))
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
@@ -2308,10 +2308,10 @@ class Service(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         mesh = gcp.networkservices.Mesh("mesh", name="network-services-mesh")
-        wait_for_mesh = time.Sleep("wait_for_mesh", create_duration="1m",
+        wait_for_mesh = time.Sleep("wait_for_mesh", create_duration=1m,
         opts = pulumi.ResourceOptions(depends_on=[mesh]))
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",

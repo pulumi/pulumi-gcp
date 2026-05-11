@@ -49,9 +49,9 @@ import * as utilities from "../utilities";
  *     cryptoKey: myCryptoKey.id,
  *     ciphertext: "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=",
  * });
- * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const main = new gcp.sql.DatabaseInstance("main", {
- *     name: `main-instance-${dbNameSuffix.hex}`,
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
  *         tier: "db-f1-micro",
@@ -157,9 +157,9 @@ export interface GetKMSSecretResult {
  *     cryptoKey: myCryptoKey.id,
  *     ciphertext: "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=",
  * });
- * const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
  * const main = new gcp.sql.DatabaseInstance("main", {
- *     name: `main-instance-${dbNameSuffix.hex}`,
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
  *         tier: "db-f1-micro",

@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [servicenetworking],
  * });
- * const wait300Seconds = new time.Sleep("wait_300_seconds", {createDuration: "300s"}, {
+ * const wait300Seconds = new time.index.Sleep("wait_300_seconds", {createDuration: "300s"}, {
  *     dependsOn: [compute],
  * });
  * const apigeeNetwork = new gcp.compute.Network("apigee_network", {

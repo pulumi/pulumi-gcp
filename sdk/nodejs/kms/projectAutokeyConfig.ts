@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [resourceProject],
  * });
  * // Wait delay after enabling APIs
- * const waitEnableServiceApi = new time.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
+ * const waitEnableServiceApi = new time.index.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
  *     dependsOn: [kmsApiService],
  * });
  * // Create KMS Service Agent
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [waitEnableServiceApi],
  * });
  * // Wait delay after creating service agent
- * const waitServiceAgent = new time.Sleep("wait_service_agent", {createDuration: "10s"}, {
+ * const waitServiceAgent = new time.index.Sleep("wait_service_agent", {createDuration: "10s"}, {
  *     dependsOn: [kmsServiceAgent],
  * });
  * // Grant the KMS Service Agent the Cloud KMS Admin role
@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [waitServiceAgent],
  * });
  * // Wait delay after granting IAM permissions
- * const waitSrvAccPermissions = new time.Sleep("wait_srv_acc_permissions", {createDuration: "10s"}, {
+ * const waitSrvAccPermissions = new time.index.Sleep("wait_srv_acc_permissions", {createDuration: "10s"}, {
  *     dependsOn: [autokeyProjectAdmin],
  * });
  * const example_autokeyconfig_project = new gcp.kms.ProjectAutokeyConfig("example-autokeyconfig-project", {

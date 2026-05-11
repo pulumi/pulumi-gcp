@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Folder;
  * import com.pulumi.gcp.organizations.FolderArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.observability.ObservabilityFunctions;
  * import com.pulumi.gcp.observability.inputs.GetFolderSettingsArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *         var waitForSettingsPropagation = new Sleep("waitForSettingsPropagation", SleepArgs.builder()
  *             .createDuration("90s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(testFolder)
+ *                 .dependsOn(Arrays.asList(testFolder))
  *                 .build());
  * 
  *         final var settingsData = ObservabilityFunctions.getFolderSettings(GetFolderSettingsArgs.builder()
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *         var waitForSaPropagation = new Sleep("waitForSaPropagation", SleepArgs.builder()
  *             .createDuration("90s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(settingsData)
+ *                 .dependsOn(Arrays.asList(settingsData))
  *                 .build());
  * 
  *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
@@ -111,8 +111,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Folder;
  * import com.pulumi.gcp.organizations.FolderArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.observability.ObservabilityFunctions;
  * import com.pulumi.gcp.observability.inputs.GetFolderSettingsArgs;
  * import com.pulumi.gcp.observability.FolderSettings;
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *         var waitForFolder = new Sleep("waitForFolder", SleepArgs.builder()
  *             .createDuration("90s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(testFolder)
+ *                 .dependsOn(Arrays.asList(testFolder))
  *                 .build());
  * 
  *         final var settingsData = ObservabilityFunctions.getFolderSettings(GetFolderSettingsArgs.builder()

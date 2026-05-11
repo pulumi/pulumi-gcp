@@ -930,8 +930,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -960,7 +960,7 @@ import (
 //				return err
 //			}
 //			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
+//				CreateDuration: "120s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				dataplexSaImpersonate,
 //			}))
@@ -1073,8 +1073,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -1202,7 +1202,7 @@ import (
 //				return err
 //			}
 //			waitForBqSync, err := time.NewSleep(ctx, "wait_for_bq_sync", &time.SleepArgs{
-//				CreateDuration: pulumi.String("300s"),
+//				CreateDuration: "300s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				tfTestTable,
 //			}))
@@ -1298,7 +1298,7 @@ import (
 //				return err
 //			}
 //			waitForAspectPropagation, err := time.NewSleep(ctx, "wait_for_aspect_propagation", &time.SleepArgs{
-//				CreateDuration: pulumi.String("300s"),
+//				CreateDuration: "300s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				bqTableEntry,
 //			}))
@@ -1358,8 +1358,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -1388,7 +1388,7 @@ import (
 //				return err
 //			}
 //			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
+//				CreateDuration: "120s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				dataplexSaImpersonate,
 //			}))

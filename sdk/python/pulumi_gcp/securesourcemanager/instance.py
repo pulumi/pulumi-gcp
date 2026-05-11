@@ -541,7 +541,7 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
             name="ca-pool",
@@ -589,7 +589,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
@@ -609,7 +609,7 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
@@ -657,7 +657,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
@@ -683,7 +683,7 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
@@ -731,7 +731,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
         default = gcp.securesourcemanager.Instance("default",
@@ -828,7 +828,7 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
@@ -876,7 +876,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
         default = gcp.securesourcemanager.Instance("default",
@@ -1055,7 +1055,7 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
             name="ca-pool",
@@ -1103,7 +1103,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
@@ -1123,7 +1123,7 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
@@ -1171,7 +1171,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
@@ -1197,7 +1197,7 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
@@ -1245,7 +1245,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
         default = gcp.securesourcemanager.Instance("default",
@@ -1342,7 +1342,7 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
@@ -1390,7 +1390,7 @@ class Instance(pulumi.CustomResource):
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
         default = gcp.securesourcemanager.Instance("default",

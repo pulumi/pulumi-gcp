@@ -651,7 +651,7 @@ import * as utilities from "../utilities";
  *     role: "roles/iam.serviceAccountTokenCreator",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-dataplex.iam.gserviceaccount.com`),
  * });
- * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [dataplexSaImpersonate],
  * });
  * const saBqDataViewer = new gcp.projects.IAMMember("sa_bq_data_viewer", {
@@ -808,7 +808,7 @@ import * as utilities from "../utilities";
  *         },
  *     }],
  * });
- * const waitForBqSync = new time.Sleep("wait_for_bq_sync", {createDuration: "300s"}, {
+ * const waitForBqSync = new time.index.Sleep("wait_for_bq_sync", {createDuration: "300s"}, {
  *     dependsOn: [tfTestTable],
  * });
  * const bqTableEntry = new gcp.dataplex.Entry("bq_table_entry", {
@@ -872,7 +872,7 @@ import * as utilities from "../utilities";
  *         testEntry,
  *     ],
  * });
- * const waitForAspectPropagation = new time.Sleep("wait_for_aspect_propagation", {createDuration: "300s"}, {
+ * const waitForAspectPropagation = new time.index.Sleep("wait_for_aspect_propagation", {createDuration: "300s"}, {
  *     dependsOn: [bqTableEntry],
  * });
  * const reusableRulesCatalogBased = new gcp.dataplex.Datascan("reusable_rules_catalog_based", {
@@ -922,7 +922,7 @@ import * as utilities from "../utilities";
  *     role: "roles/iam.serviceAccountTokenCreator",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-dataplex.iam.gserviceaccount.com`),
  * });
- * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [dataplexSaImpersonate],
  * });
  * const saBqDataViewer = new gcp.projects.IAMMember("sa_bq_data_viewer", {

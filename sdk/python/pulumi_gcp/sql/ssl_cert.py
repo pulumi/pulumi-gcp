@@ -280,9 +280,9 @@ class SslCert(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",
@@ -326,9 +326,9 @@ class SslCert(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=f"main-instance-{db_name_suffix['hex']}",
+            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",

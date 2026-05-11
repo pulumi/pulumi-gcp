@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -710,7 +710,7 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: false,
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -798,7 +798,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -870,7 +870,7 @@ import * as utilities from "../utilities";
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
  * });
- * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [cross_project_dataset],
  * });
  * const bigquery = new gcp.projects.Service("bigquery", {
@@ -923,7 +923,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -1015,7 +1015,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
@@ -1103,7 +1103,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     name: "db",
  * });
- * const pwd = new random.index.Password("pwd", {
+ * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
  * });
