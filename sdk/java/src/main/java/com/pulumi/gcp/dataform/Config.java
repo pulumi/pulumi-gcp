@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.kms.KeyRing;
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *         var waitForDataformApi = new Sleep("waitForDataformApi", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(dataformApi)
+ *                 .dependsOn(Arrays.asList(dataformApi))
  *                 .build());
  * 
  *         // Retrieve the Dataform service identity
@@ -152,8 +152,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.dataform.Config;
  * import com.pulumi.gcp.dataform.ConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *         var waitForDataformApi = new Sleep("waitForDataformApi", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(dataformApi)
+ *                 .dependsOn(Arrays.asList(dataformApi))
  *                 .build());
  * 
  *         // Config without KMS key provided

@@ -588,7 +588,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         tenant_ar_reader = gcp.projects.IAMMember("tenant_ar_reader",
             project=project.project_id,
             role="roles/artifactregistry.reader",
-            member=tenant_mds.apply(lambda tenant_mds: std.jsondecode_output(input=tenant_mds.output)).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
+            member=std.jsondecode_output(input=tenant_mds.output).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
         reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
             display_name="reasoning-engine",
             description="Deployed with BYOC through Terraform",
@@ -608,7 +608,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         bucket = gcp.storage.Bucket("bucket",
             name="reasoning-engine",
@@ -642,7 +642,7 @@ class AiReasoningEngine(pulumi.CustomResource):
             subnetworks=[subnetwork.id])
         # Destroy network attachment 35 minutes after reasoning engine is deleted.
         # It guarantees that the network attachment has no more active PSC interfaces.
-        wait35_minutes = time.Sleep("wait_35_minutes", destroy_duration="35m",
+        wait35_minutes = time.Sleep("wait_35_minutes", destroy_duration=35m,
         opts = pulumi.ResourceOptions(depends_on=[network_attachment]))
         project = gcp.organizations.get_project()
         # When PSC-I is configured, Agent deletion will fail,
@@ -691,7 +691,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         import pulumi
         import json
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         class_methods = [{
             "apiMode": "async",
@@ -730,7 +730,7 @@ class AiReasoningEngine(pulumi.CustomResource):
             project=project.id,
             member=service_account.member)
         # Ensure we wait enough time for IAM permissions to be propagated
-        wait5_minutes = time.Sleep("wait_5_minutes", create_duration="5m",
+        wait5_minutes = time.Sleep("wait_5_minutes", create_duration=5m,
         opts = pulumi.ResourceOptions(depends_on=[
                 sa_iam_ai_platform_user,
                 sa_iam_object_viewer,
@@ -1045,7 +1045,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         tenant_ar_reader = gcp.projects.IAMMember("tenant_ar_reader",
             project=project.project_id,
             role="roles/artifactregistry.reader",
-            member=tenant_mds.apply(lambda tenant_mds: std.jsondecode_output(input=tenant_mds.output)).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
+            member=std.jsondecode_output(input=tenant_mds.output).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
         reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
             display_name="reasoning-engine",
             description="Deployed with BYOC through Terraform",
@@ -1065,7 +1065,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         bucket = gcp.storage.Bucket("bucket",
             name="reasoning-engine",
@@ -1099,7 +1099,7 @@ class AiReasoningEngine(pulumi.CustomResource):
             subnetworks=[subnetwork.id])
         # Destroy network attachment 35 minutes after reasoning engine is deleted.
         # It guarantees that the network attachment has no more active PSC interfaces.
-        wait35_minutes = time.Sleep("wait_35_minutes", destroy_duration="35m",
+        wait35_minutes = time.Sleep("wait_35_minutes", destroy_duration=35m,
         opts = pulumi.ResourceOptions(depends_on=[network_attachment]))
         project = gcp.organizations.get_project()
         # When PSC-I is configured, Agent deletion will fail,
@@ -1148,7 +1148,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         import pulumi
         import json
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         class_methods = [{
             "apiMode": "async",
@@ -1187,7 +1187,7 @@ class AiReasoningEngine(pulumi.CustomResource):
             project=project.id,
             member=service_account.member)
         # Ensure we wait enough time for IAM permissions to be propagated
-        wait5_minutes = time.Sleep("wait_5_minutes", create_duration="5m",
+        wait5_minutes = time.Sleep("wait_5_minutes", create_duration=5m,
         opts = pulumi.ResourceOptions(depends_on=[
                 sa_iam_ai_platform_user,
                 sa_iam_object_viewer,

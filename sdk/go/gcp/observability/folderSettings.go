@@ -31,8 +31,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -48,7 +48,7 @@ import (
 //			}
 //			// Wait for the folder to be created and recognized by the Observability API
 //			_, err = time.NewSleep(ctx, "wait_for_settings_propagation", &time.SleepArgs{
-//				CreateDuration: pulumi.String("90s"),
+//				CreateDuration: "90s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				testFolder,
 //			}))
@@ -61,7 +61,7 @@ import (
 //			}, nil)
 //			// Add a delay to allow the service account to propagate
 //			waitForSaPropagation, err := time.NewSleep(ctx, "wait_for_sa_propagation", &time.SleepArgs{
-//				CreateDuration: pulumi.String("90s"),
+//				CreateDuration: "90s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				settingsData,
 //			}))
@@ -104,8 +104,8 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -121,7 +121,7 @@ import (
 //			}
 //			// Wait for the folder to be created and recognized by the Observability API
 //			_, err = time.NewSleep(ctx, "wait_for_folder", &time.SleepArgs{
-//				CreateDuration: pulumi.String("90s"),
+//				CreateDuration: "90s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				testFolder,
 //			}))

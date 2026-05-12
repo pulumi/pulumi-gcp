@@ -175,7 +175,7 @@ class Version(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="my-proj",
@@ -186,7 +186,7 @@ class Version(pulumi.CustomResource):
         dialogflow = gcp.projects.Service("dialogflow",
             project=project.project_id,
             service="dialogflow.googleapis.com")
-        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration="30s",
+        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[dialogflow]))
         basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
@@ -243,7 +243,7 @@ class Version(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="my-proj",
@@ -254,7 +254,7 @@ class Version(pulumi.CustomResource):
         dialogflow = gcp.projects.Service("dialogflow",
             project=project.project_id,
             service="dialogflow.googleapis.com")
-        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration="30s",
+        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[dialogflow]))
         basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",

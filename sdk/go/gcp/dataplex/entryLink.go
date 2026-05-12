@@ -105,8 +105,8 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -165,7 +165,7 @@ import (
 //			}
 //			// Introduce a 45-second wait after the glossary resource creation
 //			wait_for_sync, err := time.NewSleep(ctx, "wait-for-sync", &time.SleepArgs{
-//				CreateDuration: pulumi.String("45s"),
+//				CreateDuration: "45s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				termTestIdFullGlossaryTerm,
 //			}))

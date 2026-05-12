@@ -28,8 +28,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -154,7 +154,7 @@ import (
 //			}
 //			// Wait delay after enabling APIs and granting permissions
 //			waitForPropagation, err := time.NewSleep(ctx, "wait_for_propagation", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
+//				CreateDuration: "120s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apphubPermissions,
 //				insightsAgent,
@@ -238,8 +238,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -364,7 +364,7 @@ import (
 //			}
 //			// Wait delay after enabling APIs and granting permissions
 //			waitForPropagation, err := time.NewSleep(ctx, "wait_for_propagation", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
+//				CreateDuration: "120s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apphubPermissions,
 //				insightsAgent,

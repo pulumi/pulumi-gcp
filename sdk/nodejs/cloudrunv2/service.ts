@@ -496,7 +496,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const mesh = new gcp.networkservices.Mesh("mesh", {name: "network-services-mesh"});
- * const waitForMesh = new time.Sleep("wait_for_mesh", {createDuration: "1m"}, {
+ * const waitForMesh = new time.index.Sleep("wait_for_mesh", {createDuration: "1m"}, {
  *     dependsOn: [mesh],
  * });
  * const _default = new gcp.cloudrunv2.Service("default", {

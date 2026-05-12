@@ -37,8 +37,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			urlSignature, err := random.NewId(ctx, "url_signature", &random.IdArgs{
-//				ByteLength: 16,
+//			urlSignature, err := random.NewRandomId(ctx, "url_signature", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(16),
 //			})
 //			if err != nil {
 //				return err

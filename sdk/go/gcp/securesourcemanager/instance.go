@@ -106,8 +106,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -177,7 +177,7 @@ import (
 //			}
 //			// ca pool IAM permissions can take time to propagate
 //			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
+//				CreateDuration: "120s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				caPoolBinding,
 //			}))
@@ -214,8 +214,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -285,7 +285,7 @@ import (
 //			}
 //			// ca pool IAM permissions can take time to propagate
 //			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
+//				CreateDuration: "120s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				caPoolBinding,
 //			}))
@@ -332,8 +332,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -403,7 +403,7 @@ import (
 //			}
 //			// ca pool IAM permissions can take time to propagate
 //			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
+//				CreateDuration: "120s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				caPoolBinding,
 //			}))
@@ -584,8 +584,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -655,7 +655,7 @@ import (
 //			}
 //			// ca pool IAM permissions can take time to propagate
 //			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
+//				CreateDuration: "120s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				caPoolBinding,
 //			}))

@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AiLogicConfig;
  * import com.pulumi.gcp.firebase.AiLogicConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -90,9 +90,9 @@ import javax.annotation.Nullable;
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
+ *                 .dependsOn(Arrays.asList(                
  *                     ailogic,
- *                     firebase)
+ *                     firebase))
  *                 .build());
  * 
  *         var defaultAiLogicConfig = new AiLogicConfig("defaultAiLogicConfig", AiLogicConfigArgs.builder()
@@ -120,8 +120,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ApiKey;
  * import com.pulumi.gcp.projects.ApiKeyArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AiLogicConfig;
  * import com.pulumi.gcp.firebase.AiLogicConfigArgs;
  * import com.pulumi.gcp.firebase.inputs.AiLogicConfigGenerativeLanguageConfigArgs;
@@ -179,9 +179,9 @@ import javax.annotation.Nullable;
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
+ *                 .dependsOn(Arrays.asList(                
  *                     ailogic,
- *                     firebase)
+ *                     firebase))
  *                 .build());
  * 
  *         var defaultAiLogicConfig = new AiLogicConfig("defaultAiLogicConfig", AiLogicConfigArgs.builder()

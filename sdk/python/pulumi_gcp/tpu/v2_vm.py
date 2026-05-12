@@ -878,7 +878,7 @@ class V2Vm(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         available = gcp.tpu.get_v2_runtime_versions()
         available_get_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
@@ -900,7 +900,7 @@ class V2Vm(pulumi.CustomResource):
             type="pd-ssd",
             zone="us-central1-c")
         # Wait after service account creation to limit eventual consistency errors.
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[sa]))
         tpu = gcp.tpu.V2Vm("tpu",
             name="test-tpu",
@@ -1039,7 +1039,7 @@ class V2Vm(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         available = gcp.tpu.get_v2_runtime_versions()
         available_get_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
@@ -1061,7 +1061,7 @@ class V2Vm(pulumi.CustomResource):
             type="pd-ssd",
             zone="us-central1-c")
         # Wait after service account creation to limit eventual consistency errors.
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[sa]))
         tpu = gcp.tpu.V2Vm("tpu",
             name="test-tpu",

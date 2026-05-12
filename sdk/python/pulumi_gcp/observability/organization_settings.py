@@ -216,12 +216,12 @@ class OrganizationSettings(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         settings_data = gcp.observability.get_organization_settings(organization="123456789",
             location="us")
         # Add a delay to allow the service account to propagate
-        wait_for_sa_propagation = time.Sleep("wait_for_sa_propagation", create_duration="90s",
+        wait_for_sa_propagation = time.Sleep("wait_for_sa_propagation", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[settings_data]))
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="example-key",
@@ -289,12 +289,12 @@ class OrganizationSettings(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         settings_data = gcp.observability.get_organization_settings(organization="123456789",
             location="us")
         # Add a delay to allow the service account to propagate
-        wait_for_sa_propagation = time.Sleep("wait_for_sa_propagation", create_duration="90s",
+        wait_for_sa_propagation = time.Sleep("wait_for_sa_propagation", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[settings_data]))
         iam = gcp.kms.CryptoKeyIAMMember("iam",
             crypto_key_id="example-key",

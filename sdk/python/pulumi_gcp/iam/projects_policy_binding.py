@@ -584,7 +584,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
@@ -592,7 +592,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             location="global",
             display_name="binding for all principals in the project",
             principal_access_boundary_policy_id="my-pab-policy")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
         binding_for_all_project_principals = gcp.iam.ProjectsPolicyBinding("binding-for-all-project-principals",
             project=project.project_id,
@@ -688,7 +688,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
@@ -696,7 +696,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             location="global",
             display_name="binding for all principals in the project",
             principal_access_boundary_policy_id="my-pab-policy")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
         binding_for_all_project_principals = gcp.iam.ProjectsPolicyBinding("binding-for-all-project-principals",
             project=project.project_id,

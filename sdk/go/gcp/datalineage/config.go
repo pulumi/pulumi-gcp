@@ -73,8 +73,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datalineage"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -97,7 +97,7 @@ import (
 //				return err
 //			}
 //			waitForFolderIam, err := time.NewSleep(ctx, "wait_for_folder_iam", &time.SleepArgs{
-//				CreateDuration: pulumi.String("60s"),
+//				CreateDuration: "60s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				datalineageAdmin,
 //			}))

@@ -102,11 +102,11 @@ import * as utilities from "../utilities";
  *     },
  *     username: "test",
  *     apiKey: "<api-key>",
- *     peeredNetwork: pulumi.all([vpcNetwork.id, project, project]).apply(([id, project, project1]) => std.replaceOutput({
- *         text: id,
- *         search: project.name,
- *         replace: project1.number,
- *     })).apply(invoke => invoke.result),
+ *     peeredNetwork: std.replaceOutput({
+ *         text: vpcNetwork.id,
+ *         search: project.then(project => project.name),
+ *         replace: project.then(project => project.number),
+ *     }).apply(invoke => invoke.result),
  *     sslCa: `-----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----
  * -----BEGIN CERTIFICATE-----

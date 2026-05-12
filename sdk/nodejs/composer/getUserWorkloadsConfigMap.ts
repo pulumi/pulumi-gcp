@@ -35,10 +35,10 @@ import * as utilities from "../utilities";
  *         api_host: "apihost:443",
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsConfigMapOutput({
- *     environment: name,
+ * const example = gcp.composer.getUserWorkloadsConfigMapOutput({
+ *     environment: exampleEnvironment.name,
  *     name: googleComposerUserWorkloadsConfigMap.example.name,
- * }));
+ * });
  * export const debug = example;
  * ```
  */
@@ -124,10 +124,10 @@ export interface GetUserWorkloadsConfigMapResult {
  *         api_host: "apihost:443",
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsConfigMapOutput({
- *     environment: name,
+ * const example = gcp.composer.getUserWorkloadsConfigMapOutput({
+ *     environment: exampleEnvironment.name,
  *     name: googleComposerUserWorkloadsConfigMap.example.name,
- * }));
+ * });
  * export const debug = example;
  * ```
  */

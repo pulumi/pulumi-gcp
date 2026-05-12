@@ -392,14 +392,14 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
             location="global",
             display_name="Binding for all principals in the Organization",
             principal_access_boundary_policy_id="my-pab-policy")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
         my_pab_policy = gcp.iam.OrganizationsPolicyBinding("my-pab-policy",
             organization="123456789",
@@ -482,14 +482,14 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         pab_policy = gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy",
             organization="123456789",
             location="global",
             display_name="Binding for all principals in the Organization",
             principal_access_boundary_policy_id="my-pab-policy")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[pab_policy]))
         my_pab_policy = gcp.iam.OrganizationsPolicyBinding("my-pab-policy",
             organization="123456789",

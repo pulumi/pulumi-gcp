@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
- * import com.pulumi.random.Password;
- * import com.pulumi.random.PasswordArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
  * import com.pulumi.gcp.bigquery.Connection;
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new Password("pwd", PasswordArgs.builder()
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());
@@ -165,8 +165,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
- * import com.pulumi.random.Password;
- * import com.pulumi.random.PasswordArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
  * import com.pulumi.gcp.bigquery.Connection;
@@ -201,7 +201,7 @@ import javax.annotation.Nullable;
  *             .name("db")
  *             .build());
  * 
- *         var pwd = new Password("pwd", PasswordArgs.builder()
+ *         var pwd = new RandomPassword("pwd", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(false)
  *             .build());

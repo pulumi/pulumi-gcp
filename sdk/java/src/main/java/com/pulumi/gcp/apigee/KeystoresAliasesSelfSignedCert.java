@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *         var wait300Seconds = new Sleep("wait300Seconds", SleepArgs.builder()
  *             .createDuration("300s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(compute)
+ *                 .dependsOn(Arrays.asList(compute))
  *                 .build());
  * 
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()

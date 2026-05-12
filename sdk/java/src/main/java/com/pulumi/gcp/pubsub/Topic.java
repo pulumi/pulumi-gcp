@@ -618,8 +618,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformArgs;
@@ -653,7 +653,7 @@ import javax.annotation.Nullable;
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(geminiInferenceGet)
+ *                 .dependsOn(Arrays.asList(geminiInferenceGet))
  *                 .build());
  * 
  *         var example = new Topic("example", TopicArgs.builder()

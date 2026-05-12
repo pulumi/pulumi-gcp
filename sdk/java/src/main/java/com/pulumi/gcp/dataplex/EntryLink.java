@@ -125,8 +125,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.GlossaryArgs;
  * import com.pulumi.gcp.dataplex.GlossaryTerm;
  * import com.pulumi.gcp.dataplex.GlossaryTermArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.dataplex.EntryLink;
  * import com.pulumi.gcp.dataplex.EntryLinkArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryLinkEntryReferenceArgs;
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *         var wait_for_sync = new Sleep("wait-for-sync", SleepArgs.builder()
  *             .createDuration("45s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(termTestIdFullGlossaryTerm)
+ *                 .dependsOn(Arrays.asList(termTestIdFullGlossaryTerm))
  *                 .build());
  * 
  *         var fullEntryLink = new EntryLink("fullEntryLink", EntryLinkArgs.builder()

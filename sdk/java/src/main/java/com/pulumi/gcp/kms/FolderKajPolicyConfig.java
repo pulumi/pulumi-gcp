@@ -45,14 +45,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Folder;
  * import com.pulumi.gcp.organizations.FolderArgs;
- * import com.pulumi.random.Id;
- * import com.pulumi.random.IdArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.kms.FolderKajPolicyConfig;
  * import com.pulumi.gcp.kms.FolderKajPolicyConfigArgs;
  * import com.pulumi.gcp.kms.inputs.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs;
@@ -77,14 +77,14 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .build());
  * 
- *         var projectSuffix = new Id("projectSuffix", IdArgs.builder()
+ *         var projectSuffix = new RandomId("projectSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
  *         // Create a project for enabling KMS API.
  *         var kmsProject = new Project("kmsProject", ProjectArgs.builder()
- *             .projectId(String.format("kms-api-project%s", projectSuffix.hex()))
- *             .name(String.format("kms-api-project%s", projectSuffix.hex()))
+ *             .projectId(projectSuffix.hex().applyValue(_hex -> String.format("kms-api-project%s", _hex)))
+ *             .name(projectSuffix.hex().applyValue(_hex -> String.format("kms-api-project%s", _hex)))
  *             .folderId(kajFolder.folderId())
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *         var waitEnableServiceApi = new Sleep("waitEnableServiceApi", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(kmsApiService)
+ *                 .dependsOn(Arrays.asList(kmsApiService))
  *                 .build());
  * 
  *         // Update folder level KAJ default policy

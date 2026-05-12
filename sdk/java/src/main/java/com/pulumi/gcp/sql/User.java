@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Id;
- * import com.pulumi.random.IdArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+ *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
@@ -91,8 +91,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Id;
- * import com.pulumi.random.IdArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -111,12 +111,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+ *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
  *             .databaseVersion("POSTGRES_15")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
@@ -145,8 +145,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Id;
- * import com.pulumi.random.IdArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -167,12 +167,12 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+ *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
  *             .databaseVersion("POSTGRES_15")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
@@ -212,8 +212,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Id;
- * import com.pulumi.random.IdArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -232,12 +232,12 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+ *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
  *             .databaseVersion("MYSQL_8_0")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")

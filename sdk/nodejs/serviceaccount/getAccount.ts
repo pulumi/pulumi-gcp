@@ -30,14 +30,14 @@ import * as utilities from "../utilities";
  *     accountId: "myaccount-id",
  * });
  * const mykey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.then(myaccount => myaccount.name)});
- * const google_application_credentials = new kubernetes.index.Secret("google-application-credentials", {
- *     metadata: [{
+ * const google_application_credentials = new kubernetes.core.v1.Secret("google-application-credentials", {
+ *     metadata: {
  *         name: "google-application-credentials",
- *     }],
+ *     },
  *     data: {
  *         json: std.base64decodeOutput({
  *             input: mykey.privateKey,
- *         }).result,
+ *         }).apply(invoke => invoke.result),
  *     },
  * });
  * ```
@@ -136,14 +136,14 @@ export interface GetAccountResult {
  *     accountId: "myaccount-id",
  * });
  * const mykey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.then(myaccount => myaccount.name)});
- * const google_application_credentials = new kubernetes.index.Secret("google-application-credentials", {
- *     metadata: [{
+ * const google_application_credentials = new kubernetes.core.v1.Secret("google-application-credentials", {
+ *     metadata: {
  *         name: "google-application-credentials",
- *     }],
+ *     },
  *     data: {
  *         json: std.base64decodeOutput({
  *             input: mykey.privateKey,
- *         }).result,
+ *         }).apply(invoke => invoke.result),
  *     },
  * });
  * ```

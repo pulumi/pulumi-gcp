@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.observability.ProjectSettings;
  * import com.pulumi.gcp.observability.ProjectSettingsArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *         var waitForSettingsPropagation = new Sleep("waitForSettingsPropagation", SleepArgs.builder()
  *             .createDuration("90s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(observabilityApi)
+ *                 .dependsOn(Arrays.asList(observabilityApi))
  *                 .build());
  * 
  *         var primaryGlobal = new ProjectSettings("primaryGlobal", ProjectSettingsArgs.builder()

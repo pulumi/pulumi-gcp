@@ -221,7 +221,7 @@ class ProjectSettings(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="tf-test_76273",
@@ -233,7 +233,7 @@ class ProjectSettings(pulumi.CustomResource):
             service="observability.googleapis.com",
             disable_on_destroy=False)
         # Wait for the project to be created and recognized by the Observability API
-        wait_for_settings_propagation = time.Sleep("wait_for_settings_propagation", create_duration="90s",
+        wait_for_settings_propagation = time.Sleep("wait_for_settings_propagation", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[observability_api]))
         primary_global = gcp.observability.ProjectSettings("primary_global",
             location="global",
@@ -286,7 +286,7 @@ class ProjectSettings(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="tf-test_76273",
@@ -298,7 +298,7 @@ class ProjectSettings(pulumi.CustomResource):
             service="observability.googleapis.com",
             disable_on_destroy=False)
         # Wait for the project to be created and recognized by the Observability API
-        wait_for_settings_propagation = time.Sleep("wait_for_settings_propagation", create_duration="90s",
+        wait_for_settings_propagation = time.Sleep("wait_for_settings_propagation", create_duration=90s,
         opts = pulumi.ResourceOptions(depends_on=[observability_api]))
         primary_global = gcp.observability.ProjectSettings("primary_global",
             location="global",

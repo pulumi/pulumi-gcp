@@ -136,9 +136,9 @@ import * as utilities from "../utilities";
  * const tenantArReader = new gcp.projects.IAMMember("tenant_ar_reader", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/artifactregistry.reader",
- *     member: tenantMds.apply(tenantMds => std.jsondecodeOutput({
- *         input: tenantMds.output,
- *     })).apply(invoke => `serviceAccount:${invoke.result?.output}`),
+ *     member: std.jsondecodeOutput({
+ *         input: tenantMds.apply(tenantMds => tenantMds.output),
+ *     }).apply(invoke => `serviceAccount:${invoke.result?.output}`),
  * });
  * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
  *     displayName: "reasoning-engine",
@@ -202,7 +202,7 @@ import * as utilities from "../utilities";
  * });
  * // Destroy network attachment 35 minutes after reasoning engine is deleted.
  * // It guarantees that the network attachment has no more active PSC interfaces.
- * const wait35Minutes = new time.Sleep("wait_35_minutes", {destroyDuration: "35m"}, {
+ * const wait35Minutes = new time.index.Sleep("wait_35_minutes", {destroyDuration: "35m"}, {
  *     dependsOn: [networkAttachment],
  * });
  * const project = gcp.organizations.getProject({});
@@ -286,7 +286,7 @@ import * as utilities from "../utilities";
  *     member: serviceAccount.member,
  * });
  * // Ensure we wait enough time for IAM permissions to be propagated
- * const wait5Minutes = new time.Sleep("wait_5_minutes", {createDuration: "5m"}, {
+ * const wait5Minutes = new time.index.Sleep("wait_5_minutes", {createDuration: "5m"}, {
  *     dependsOn: [
  *         saIamAiPlatformUser,
  *         saIamObjectViewer,

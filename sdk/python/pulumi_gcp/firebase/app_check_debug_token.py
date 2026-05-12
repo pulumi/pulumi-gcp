@@ -245,14 +245,14 @@ class AppCheckDebugToken(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Web App for debug token")
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.Sleep("wait_30s", create_duration="30s",
+        wait30s = time.Sleep("wait_30s", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_debug_token = gcp.firebase.AppCheckDebugToken("default",
             project="my-project-name",
@@ -321,14 +321,14 @@ class AppCheckDebugToken(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Web App for debug token")
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.Sleep("wait_30s", create_duration="30s",
+        wait30s = time.Sleep("wait_30s", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_debug_token = gcp.firebase.AppCheckDebugToken("default",
             project="my-project-name",

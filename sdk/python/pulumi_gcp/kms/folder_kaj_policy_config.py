@@ -145,18 +145,18 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
         import pulumi_random as random
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         # Create Folder in GCP Organization.
         kaj_folder = gcp.organizations.Folder("kaj_folder",
             display_name="folder-kajc",
             parent="organizations/123456789",
             deletion_protection=False)
-        project_suffix = random.Id("project_suffix", byte_length=4)
+        project_suffix = random.RandomId("project_suffix", byte_length=4)
         # Create a project for enabling KMS API.
         kms_project = gcp.organizations.Project("kms_project",
-            project_id=f"kms-api-project{project_suffix['hex']}",
-            name=f"kms-api-project{project_suffix['hex']}",
+            project_id=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
+            name=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
             folder_id=kaj_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE",
@@ -167,7 +167,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
             project=kms_project.project_id,
             disable_dependent_services=True,
             opts = pulumi.ResourceOptions(depends_on=[kms_project]))
-        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration="30s",
+        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[kms_api_service]))
         # Update folder level KAJ default policy
         example = gcp.kms.FolderKajPolicyConfig("example",
@@ -235,18 +235,18 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
         import pulumi_random as random
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         # Create Folder in GCP Organization.
         kaj_folder = gcp.organizations.Folder("kaj_folder",
             display_name="folder-kajc",
             parent="organizations/123456789",
             deletion_protection=False)
-        project_suffix = random.Id("project_suffix", byte_length=4)
+        project_suffix = random.RandomId("project_suffix", byte_length=4)
         # Create a project for enabling KMS API.
         kms_project = gcp.organizations.Project("kms_project",
-            project_id=f"kms-api-project{project_suffix['hex']}",
-            name=f"kms-api-project{project_suffix['hex']}",
+            project_id=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
+            name=project_suffix.hex.apply(lambda hex: f"kms-api-project{hex}"),
             folder_id=kaj_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE",
@@ -257,7 +257,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
             project=kms_project.project_id,
             disable_dependent_services=True,
             opts = pulumi.ResourceOptions(depends_on=[kms_project]))
-        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration="30s",
+        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[kms_api_service]))
         # Update folder level KAJ default policy
         example = gcp.kms.FolderKajPolicyConfig("example",

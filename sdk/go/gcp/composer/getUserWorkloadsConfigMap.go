@@ -55,12 +55,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example := exampleEnvironment.Name.ApplyT(func(name string) (composer.GetUserWorkloadsConfigMapResult, error) {
-//				return composer.GetUserWorkloadsConfigMapResult(interface{}(composer.LookupUserWorkloadsConfigMap(ctx, &composer.LookupUserWorkloadsConfigMapArgs{
-//					Environment: name,
-//					Name:        googleComposerUserWorkloadsConfigMap.Example.Name,
-//				}, nil))), nil
-//			}).(composer.GetUserWorkloadsConfigMapResultOutput)
+//			example := composer.LookupUserWorkloadsConfigMapOutput(ctx, composer.GetUserWorkloadsConfigMapOutputArgs{
+//				Environment: exampleEnvironment.Name,
+//				Name:        pulumi.Any(googleComposerUserWorkloadsConfigMap.Example.Name),
+//			}, nil)
 //			ctx.Export("debug", example)
 //			return nil
 //		})

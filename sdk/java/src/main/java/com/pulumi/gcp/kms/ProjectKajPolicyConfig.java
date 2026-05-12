@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.kms.ProjectKajPolicyConfig;
  * import com.pulumi.gcp.kms.ProjectKajPolicyConfigArgs;
  * import com.pulumi.gcp.kms.inputs.ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs;
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *         var waitEnableServiceApi = new Sleep("waitEnableServiceApi", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(kmsApiService)
+ *                 .dependsOn(Arrays.asList(kmsApiService))
  *                 .build());
  * 
  *         var example = new ProjectKajPolicyConfig("example", ProjectKajPolicyConfigArgs.builder()

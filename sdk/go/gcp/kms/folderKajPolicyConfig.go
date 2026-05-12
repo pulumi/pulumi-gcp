@@ -37,12 +37,14 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -57,16 +59,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			projectSuffix, err := random.NewId(ctx, "project_suffix", &random.IdArgs{
-//				ByteLength: 4,
+//			projectSuffix, err := random.NewRandomId(ctx, "project_suffix", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(4),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a project for enabling KMS API.
 //			kmsProject, err := organizations.NewProject(ctx, "kms_project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.Sprintf("kms-api-project%v", projectSuffix.Hex),
-//				Name:           pulumi.Sprintf("kms-api-project%v", projectSuffix.Hex),
+//				ProjectId: projectSuffix.Hex.ApplyT(func(hex string) (string, error) {
+//					return fmt.Sprintf("kms-api-project%v", hex), nil
+//				}).(pulumi.StringOutput),
+//				Name: projectSuffix.Hex.ApplyT(func(hex string) (string, error) {
+//					return fmt.Sprintf("kms-api-project%v", hex), nil
+//				}).(pulumi.StringOutput),
 //				FolderId:       kajFolder.FolderId,
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -88,7 +94,7 @@ import (
 //				return err
 //			}
 //			waitEnableServiceApi, err := time.NewSleep(ctx, "wait_enable_service_api", &time.SleepArgs{
-//				CreateDuration: pulumi.String("30s"),
+//				CreateDuration: "30s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				kmsApiService,
 //			}))

@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.WebApp;
  * import com.pulumi.gcp.firebase.WebAppArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckRecaptchaEnterpriseConfig;
  * import com.pulumi.gcp.firebase.AppCheckRecaptchaEnterpriseConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(default_)
+ *                 .dependsOn(Arrays.asList(default_))
  *                 .build());
  * 
  *         var defaultAppCheckRecaptchaEnterpriseConfig = new AppCheckRecaptchaEnterpriseConfig("defaultAppCheckRecaptchaEnterpriseConfig", AppCheckRecaptchaEnterpriseConfigArgs.builder()

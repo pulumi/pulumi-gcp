@@ -759,10 +759,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -831,10 +831,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -903,10 +903,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -975,10 +975,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1047,10 +1047,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1125,10 +1125,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1203,10 +1203,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1281,10 +1281,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1359,10 +1359,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1437,10 +1437,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }

@@ -272,9 +272,9 @@ import javax.annotation.Nullable;
  *         var tenantArReader = new IAMMember("tenantArReader", IAMMemberArgs.builder()
  *             .project(project.projectId())
  *             .role("roles/artifactregistry.reader")
- *             .member(tenantMds.applyValue(_tenantMds -> StdFunctions.jsondecode(JsondecodeArgs.builder()
- *                 .input(_tenantMds.output())
- *                 .build())).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().output())))
+ *             .member(StdFunctions.jsondecode(JsondecodeArgs.builder()
+ *                 .input(tenantMds.applyValue(_tenantMds -> _tenantMds.output()))
+ *                 .build()).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().output())))
  *             .build());
  * 
  *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
@@ -315,8 +315,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.NetworkAttachment;
  * import com.pulumi.gcp.compute.NetworkAttachmentArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.vertex.AiReasoningEngine;
@@ -389,7 +389,7 @@ import javax.annotation.Nullable;
  *         var wait35Minutes = new Sleep("wait35Minutes", SleepArgs.builder()
  *             .destroyDuration("35m")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(networkAttachment)
+ *                 .dependsOn(Arrays.asList(networkAttachment))
  *                 .build());
  * 
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
@@ -464,8 +464,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketObject;
@@ -552,12 +552,12 @@ import javax.annotation.Nullable;
  *         var wait5Minutes = new Sleep("wait5Minutes", SleepArgs.builder()
  *             .createDuration("5m")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
+ *                 .dependsOn(Arrays.asList(                
  *                     saIamAiPlatformUser,
  *                     saIamObjectViewer,
  *                     saIamViewer,
  *                     secretAccess,
- *                     secretVersion)
+ *                     secretVersion))
  *                 .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()

@@ -550,7 +550,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
         import pulumi_std as std
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="dci-tf-_3686",
@@ -613,7 +613,7 @@ class InsightsConfig(pulumi.CustomResource):
             service="developerconnect.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[project]))
         # Wait delay after enabling APIs and granting permissions
-        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
+        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[
                 apphub_permissions,
                 insights_agent,
@@ -665,7 +665,7 @@ class InsightsConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="dci-tf-_40472",
@@ -728,7 +728,7 @@ class InsightsConfig(pulumi.CustomResource):
             service="developerconnect.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[project]))
         # Wait delay after enabling APIs and granting permissions
-        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
+        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[
                 apphub_permissions,
                 insights_agent,
@@ -820,7 +820,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
         import pulumi_std as std
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="dci-tf-_3686",
@@ -883,7 +883,7 @@ class InsightsConfig(pulumi.CustomResource):
             service="developerconnect.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[project]))
         # Wait delay after enabling APIs and granting permissions
-        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
+        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[
                 apphub_permissions,
                 insights_agent,
@@ -935,7 +935,7 @@ class InsightsConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="dci-tf-_40472",
@@ -998,7 +998,7 @@ class InsightsConfig(pulumi.CustomResource):
             service="developerconnect.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[project]))
         # Wait delay after enabling APIs and granting permissions
-        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration="120s",
+        wait_for_propagation = time.Sleep("wait_for_propagation", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[
                 apphub_permissions,
                 insights_agent,

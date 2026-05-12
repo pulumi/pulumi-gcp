@@ -29,8 +29,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -55,7 +55,7 @@ import (
 //			}
 //			// Wait for the project to be created and recognized by the Observability API
 //			waitForSettingsPropagation, err := time.NewSleep(ctx, "wait_for_settings_propagation", &time.SleepArgs{
-//				CreateDuration: pulumi.String("90s"),
+//				CreateDuration: "90s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				observabilityApi,
 //			}))

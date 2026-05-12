@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const urlSignature = new random.index.Id("url_signature", {byteLength: 16});
+ * const urlSignature = new random.RandomId("url_signature", {byteLength: 16});
  * const bucket = new gcp.storage.Bucket("bucket", {
  *     name: "test-storage-bucket",
  *     location: "EU",

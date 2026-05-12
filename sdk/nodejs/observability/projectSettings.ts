@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     disableOnDestroy: false,
  * });
  * // Wait for the project to be created and recognized by the Observability API
- * const waitForSettingsPropagation = new time.Sleep("wait_for_settings_propagation", {createDuration: "90s"}, {
+ * const waitForSettingsPropagation = new time.index.Sleep("wait_for_settings_propagation", {createDuration: "90s"}, {
  *     dependsOn: [observabilityApi],
  * });
  * const primaryGlobal = new gcp.observability.ProjectSettings("primary_global", {

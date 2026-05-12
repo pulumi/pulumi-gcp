@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * });
  * // It takes a while for permissions to propagate
  * // If your Terraform setup has a retry mechanism, this wait is unnecessary
- * const wait30s = new time.Sleep("wait_30s", {createDuration: "30s"}, {
+ * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"}, {
  *     dependsOn: [
  *         ailogic,
  *         firebase,
@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  * });
  * // It takes a while for permissions to propagate
  * // If your Terraform setup has a retry mechanism, this wait is unnecessary
- * const wait30s = new time.Sleep("wait_30s", {createDuration: "30s"}, {
+ * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"}, {
  *     dependsOn: [
  *         ailogic,
  *         firebase,

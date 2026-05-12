@@ -630,14 +630,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1238,14 +1238,14 @@ class Stream(pulumi.CustomResource):
                 },
             },
             deletion_protection=False)
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="my-user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1319,14 +1319,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1374,7 +1374,7 @@ class Stream(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
         import pulumi_random as random
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
@@ -1383,7 +1383,7 @@ class Stream(pulumi.CustomResource):
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[cross_project_dataset]))
         bigquery = gcp.projects.Service("bigquery",
             project=cross_project_dataset.project_id,
@@ -1429,14 +1429,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1514,14 +1514,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -1595,14 +1595,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         blmt_bucket = gcp.storage.Bucket("blmt_bucket",
             name="blmt-bucket",
             location="us-central1",
@@ -1901,14 +1901,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2509,14 +2509,14 @@ class Stream(pulumi.CustomResource):
                 },
             },
             deletion_protection=False)
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="my-user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2590,14 +2590,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2645,7 +2645,7 @@ class Stream(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
         import pulumi_random as random
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
@@ -2654,7 +2654,7 @@ class Stream(pulumi.CustomResource):
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
-        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[cross_project_dataset]))
         bigquery = gcp.projects.Service("bigquery",
             project=cross_project_dataset.project_id,
@@ -2700,14 +2700,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2785,14 +2785,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
             display_name="Source connection profile",
             location="us-central1",
@@ -2866,14 +2866,14 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.Password("pwd",
+        pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
             host="%",
-            password=pwd["result"])
+            password=pwd.result)
         blmt_bucket = gcp.storage.Bucket("blmt_bucket",
             name="blmt-bucket",
             location="us-central1",

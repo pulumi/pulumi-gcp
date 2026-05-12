@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [project],
  * });
  * // Wait delay after enabling APIs and granting permissions
- * const waitForPropagation = new time.Sleep("wait_for_propagation", {createDuration: "120s"}, {
+ * const waitForPropagation = new time.index.Sleep("wait_for_propagation", {createDuration: "120s"}, {
  *     dependsOn: [
  *         apphubPermissions,
  *         insightsAgent,
@@ -244,7 +244,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [project],
  * });
  * // Wait delay after enabling APIs and granting permissions
- * const waitForPropagation = new time.Sleep("wait_for_propagation", {createDuration: "120s"}, {
+ * const waitForPropagation = new time.index.Sleep("wait_for_propagation", {createDuration: "120s"}, {
  *     dependsOn: [
  *         apphubPermissions,
  *         insightsAgent,

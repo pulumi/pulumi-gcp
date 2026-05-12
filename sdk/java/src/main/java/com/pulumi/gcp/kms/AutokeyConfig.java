@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.time.Sleep;
+ * import com.pulumi.time.SleepArgs;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.projects.IAMMember;
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *         var waitEnableServiceApi = new Sleep("waitEnableServiceApi", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(kmsApiService)
+ *                 .dependsOn(Arrays.asList(kmsApiService))
  *                 .build());
  * 
  *         //Create KMS Service Agent
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *         var waitServiceAgent = new Sleep("waitServiceAgent", SleepArgs.builder()
  *             .createDuration("10s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(kmsServiceAgent)
+ *                 .dependsOn(Arrays.asList(kmsServiceAgent))
  *                 .build());
  * 
  *         //Grant the KMS Service Agent the Cloud KMS Admin role
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *         var waitSrvAccPermissions = new Sleep("waitSrvAccPermissions", SleepArgs.builder()
  *             .createDuration("10s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(autokeyProjectAdmin)
+ *                 .dependsOn(Arrays.asList(autokeyProjectAdmin))
  *                 .build());
  * 
  *         var example_autokeyconfig = new AutokeyConfig("example-autokeyconfig", AutokeyConfigArgs.builder()
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *         var waitAutokeyPropagation = new Sleep("waitAutokeyPropagation", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(example_autokeyconfig)
+ *                 .dependsOn(Arrays.asList(example_autokeyconfig))
  *                 .build());
  * 
  *     }}{@code

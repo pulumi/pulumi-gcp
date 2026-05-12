@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [kmsProject],
  * });
- * const waitEnableServiceApi = new time.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
+ * const waitEnableServiceApi = new time.index.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
  *     dependsOn: [kmsApiService],
  * });
  * const example = new gcp.kms.ProjectKajPolicyConfig("example", {

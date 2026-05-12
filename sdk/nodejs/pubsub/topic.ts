@@ -301,7 +301,7 @@ import * as utilities from "../utilities";
  *     role: "roles/aiplatform.user",
  *     member: pulumi.interpolate`serviceAccount:${geminiQueryServiceAccount.email}`,
  * });
- * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [geminiInferenceGet],
  * });
  * const example = new gcp.pubsub.Topic("example", {

@@ -33,8 +33,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			waitEnableServiceApi, err := time.NewSleep(ctx, "wait_enable_service_api", &time.SleepArgs{
-//				CreateDuration: pulumi.String("30s"),
+//				CreateDuration: "30s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				dialogflow,
 //			}))

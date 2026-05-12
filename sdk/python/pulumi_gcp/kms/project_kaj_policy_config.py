@@ -149,7 +149,7 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         # Create a project
         kms_project = gcp.organizations.Project("kms_project",
@@ -164,7 +164,7 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
             project=kms_project.project_id,
             disable_dependent_services=True,
             opts = pulumi.ResourceOptions(depends_on=[kms_project]))
-        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration="30s",
+        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[kms_api_service]))
         example = gcp.kms.ProjectKajPolicyConfig("example",
             project=kms_project.project_id,
@@ -231,7 +231,7 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumiverse_time as time
+        import pulumi_time as time
 
         # Create a project
         kms_project = gcp.organizations.Project("kms_project",
@@ -246,7 +246,7 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
             project=kms_project.project_id,
             disable_dependent_services=True,
             opts = pulumi.ResourceOptions(depends_on=[kms_project]))
-        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration="30s",
+        wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration=30s,
         opts = pulumi.ResourceOptions(depends_on=[kms_api_service]))
         example = gcp.kms.ProjectKajPolicyConfig("example",
             project=kms_project.project_id,

@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *     role: "roles/datalineage.admin",
  *     member: "serviceAccount:my@service-account.com",
  * });
- * const waitForFolderIam = new time.Sleep("wait_for_folder_iam", {createDuration: "60s"}, {
+ * const waitForFolderIam = new time.index.Sleep("wait_for_folder_iam", {createDuration: "60s"}, {
  *     dependsOn: [datalineageAdmin],
  * });
  * const _default = new gcp.datalineage.Config("default", {

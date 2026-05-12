@@ -98,8 +98,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
- * import com.pulumi.random.Id;
- * import com.pulumi.random.IdArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -136,12 +136,12 @@ import javax.annotation.Nullable;
  *             .reservedPeeringRanges(privateIpAddress.name())
  *             .build());
  * 
- *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
+ *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
  *             .build());
  * 
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
- *             .name(String.format("private-instance-%s", dbNameSuffix.hex()))
+ *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("private-instance-%s", _hex)))
  *             .region("us-central1")
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()

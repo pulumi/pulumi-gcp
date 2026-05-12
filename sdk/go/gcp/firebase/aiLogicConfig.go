@@ -37,8 +37,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -77,7 +77,7 @@ import (
 //			// It takes a while for permissions to propagate
 //			// If your Terraform setup has a retry mechanism, this wait is unnecessary
 //			wait30s, err := time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
-//				CreateDuration: pulumi.String("30s"),
+//				CreateDuration: "30s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				ailogic,
 //				firebase2,
@@ -109,8 +109,8 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -164,7 +164,7 @@ import (
 //			// It takes a while for permissions to propagate
 //			// If your Terraform setup has a retry mechanism, this wait is unnecessary
 //			wait30s, err := time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
-//				CreateDuration: pulumi.String("30s"),
+//				CreateDuration: "30s",
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				ailogic,
 //				firebase2,
