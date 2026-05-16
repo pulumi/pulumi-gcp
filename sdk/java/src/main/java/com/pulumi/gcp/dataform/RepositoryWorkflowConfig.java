@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataform.RepositoryWorkflowConfig;
  * import com.pulumi.gcp.dataform.RepositoryWorkflowConfigArgs;
  * import com.pulumi.gcp.dataform.inputs.RepositoryWorkflowConfigInvocationConfigArgs;
+ * import com.pulumi.gcp.dataform.inputs.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

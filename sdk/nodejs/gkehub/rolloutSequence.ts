@@ -63,6 +63,12 @@ export class RolloutSequence extends pulumi.CustomResource {
     }
 
     /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     */
+    declare public readonly autoUpgradeConfig: pulumi.Output<outputs.gkehub.RolloutSequenceAutoUpgradeConfig | undefined>;
+    /**
      * The timestamp at which the Rollout Sequence was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -139,6 +145,7 @@ export class RolloutSequence extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RolloutSequenceState | undefined;
+            resourceInputs["autoUpgradeConfig"] = state?.autoUpgradeConfig;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteTime"] = state?.deleteTime;
             resourceInputs["displayName"] = state?.displayName;
@@ -161,6 +168,7 @@ export class RolloutSequence extends pulumi.CustomResource {
             if (args?.stages === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stages'");
             }
+            resourceInputs["autoUpgradeConfig"] = args?.autoUpgradeConfig;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["ignoredClustersSelector"] = args?.ignoredClustersSelector;
             resourceInputs["labels"] = args?.labels;
@@ -187,6 +195,12 @@ export class RolloutSequence extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RolloutSequence resources.
  */
 export interface RolloutSequenceState {
+    /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     */
+    autoUpgradeConfig?: pulumi.Input<inputs.gkehub.RolloutSequenceAutoUpgradeConfig | undefined>;
     /**
      * The timestamp at which the Rollout Sequence was created.
      */
@@ -256,6 +270,12 @@ export interface RolloutSequenceState {
  * The set of arguments for constructing a RolloutSequence resource.
  */
 export interface RolloutSequenceArgs {
+    /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     */
+    autoUpgradeConfig?: pulumi.Input<inputs.gkehub.RolloutSequenceAutoUpgradeConfig | undefined>;
     /**
      * Human readable display name of the Rollout Sequence.
      */

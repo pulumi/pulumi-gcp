@@ -91,6 +91,7 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+     * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -155,6 +156,7 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+     * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -219,6 +221,7 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+     * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -283,6 +286,7 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+     * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -347,6 +351,7 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+     * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;

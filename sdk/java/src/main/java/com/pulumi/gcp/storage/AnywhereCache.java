@@ -154,6 +154,20 @@ public class AnywhereCache extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    @Export(name="ingestOnWrite", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ingestOnWrite;
+
+    /**
+     * @return Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    public Output<Optional<Boolean>> ingestOnWrite() {
+        return Codegen.optional(this.ingestOnWrite);
+    }
+    /**
      * True if the cache instance has an active Update long-running operation.
      * 
      */

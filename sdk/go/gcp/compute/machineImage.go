@@ -144,63 +144,64 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
-// Parent: pulumi.Sprintf("projects/%v", project.Number),
-// ShortName: pulumi.String("tagkey"),
-// })
-// if err != nil {
-// return err
-// }
-// tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-// Parent: tagKey1.ID(),
-// ShortName: pulumi.String("tagvalue"),
-// })
-// if err != nil {
-// return err
-// }
-// vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
-// Name: pulumi.String("my-vm"),
-// MachineType: pulumi.String("e2-medium"),
-// BootDisk: &compute.InstanceBootDiskArgs{
-// InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// Image: pulumi.String("debian-cloud/debian-11"),
-// },
-// },
-// NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// &compute.InstanceNetworkInterfaceArgs{
-// Network: pulumi.String("default"),
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// _, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
-// Name: pulumi.String("my-image"),
-// SourceInstance: vm.SelfLink,
-// Params: &compute.MachineImageParamsArgs{
-// ResourceManagerTags: pulumi.All(tagKey1.ID(),tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// tagKey1Id := _args[0].(string)
-// tagValue1Id := _args[1].(string)
-// return map[string]string{
-// tagKey1Id: tagValue1Id,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
+//				Parent:    pulumi.Sprintf("projects/%v", project.Number),
+//				ShortName: pulumi.String("tagkey"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
+//				Parent:    tagKey1.ID(),
+//				ShortName: pulumi.String("tagvalue"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
+//				Name:        pulumi.String("my-vm"),
+//				MachineType: pulumi.String("e2-medium"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
+//				Name:           pulumi.String("my-image"),
+//				SourceInstance: vm.SelfLink,
+//				Params: &compute.MachineImageParamsArgs{
+//					ResourceManagerTags: pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
+//						tagKey1Id := _args[0].(string)
+//						tagValue1Id := _args[1].(string)
+//						return map[string]string{
+//							tagKey1Id: tagValue1Id,
+//						}, nil
+//					}).(pulumi.StringMapOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import

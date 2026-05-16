@@ -131,7 +131,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -142,8 +141,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<RegionBackendServiceConnectionTrackingPolicyArgs> connectionTrackingPolicy;
 
     /**
-     * @return (Optional, Beta)
-     * Connection Tracking configuration for this BackendService.
+     * @return Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
      * Structure is documented below.
@@ -1005,8 +1003,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionTrackingPolicy (Optional, Beta)
-         * Connection Tracking configuration for this BackendService.
+         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService.
          * This is available only for Layer 4 Internal Load Balancing and
          * Network Load Balancing.
          * Structure is documented below.
@@ -1020,8 +1017,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionTrackingPolicy (Optional, Beta)
-         * Connection Tracking configuration for this BackendService.
+         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService.
          * This is available only for Layer 4 Internal Load Balancing and
          * Network Load Balancing.
          * Structure is documented below.

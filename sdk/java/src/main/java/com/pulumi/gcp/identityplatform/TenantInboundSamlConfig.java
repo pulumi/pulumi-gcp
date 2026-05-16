@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.identityplatform.TenantInboundSamlConfig;
  * import com.pulumi.gcp.identityplatform.TenantInboundSamlConfigArgs;
  * import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigIdpConfigArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigIdpConfigIdpCertificateArgs;
  * import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigSpConfigArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.FileArgs;

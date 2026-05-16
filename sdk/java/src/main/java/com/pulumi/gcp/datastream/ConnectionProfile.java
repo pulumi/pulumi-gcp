@@ -100,6 +100,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
  * import com.pulumi.random.Password;
@@ -111,6 +112,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
  * import com.pulumi.gcp.compute.Firewall;
  * import com.pulumi.gcp.compute.FirewallArgs;
  * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
@@ -318,6 +320,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
  * import com.pulumi.random.Password;
@@ -413,6 +416,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
  * import com.pulumi.gcp.sql.User;
@@ -632,6 +636,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.ConnectionProfile;
  * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileHostAddressArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -658,7 +663,7 @@ import javax.annotation.Nullable;
  *                 .username("mongoUser")
  *                 .password("mongoPassword")
  *                 .database("myDatabase")
- *                 .standardConnectionFormat(ConnectionProfileMongodbProfileStandardConnectionFormatArgs.builder()
+ *                 .standardConnectionFormat(com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileStandardConnectionFormatArgs.builder()
  *                     .build()[0])
  *                 .build())
  *             .build());

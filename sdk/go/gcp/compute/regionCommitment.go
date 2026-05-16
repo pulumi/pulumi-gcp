@@ -74,55 +74,57 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-// Parent: pulumi.String("organizations/ORG_ID"),
-// ShortName: pulumi.String("tagkey"),
-// })
-// if err != nil {
-// return err
-// }
-// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-// Parent: tagKey.ID(),
-// ShortName: pulumi.String("tagvalue"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
-// Name: pulumi.String("my-full-commitment"),
-// Description: pulumi.String("some description"),
-// Plan: pulumi.String("THIRTY_SIX_MONTH"),
-// Type: pulumi.String("MEMORY_OPTIMIZED"),
-// Category: pulumi.String("MACHINE"),
-// AutoRenew: pulumi.Bool(true),
-// Resources: compute.RegionCommitmentResourceArray{
-// &compute.RegionCommitmentResourceArgs{
-// Type: pulumi.String("VCPU"),
-// Amount: pulumi.String("4"),
-// },
-// &compute.RegionCommitmentResourceArgs{
-// Type: pulumi.String("MEMORY"),
-// Amount: pulumi.String("9"),
-// },
-// },
-// Params: &compute.RegionCommitmentParamsArgs{
-// ResourceManagerTags: pulumi.All(tagKey.ID(),tagValue.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// tagKeyId := _args[0].(string)
-// tagValueId := _args[1].(string)
-// return map[string]string{
-// tagKeyId: tagValueId,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+//				Parent:    pulumi.String("organizations/ORG_ID"),
+//				ShortName: pulumi.String("tagkey"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+//				Parent:    tagKey.ID(),
+//				ShortName: pulumi.String("tagvalue"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
+//				Name:        pulumi.String("my-full-commitment"),
+//				Description: pulumi.String("some description"),
+//				Plan:        pulumi.String("THIRTY_SIX_MONTH"),
+//				Type:        pulumi.String("MEMORY_OPTIMIZED"),
+//				Category:    pulumi.String("MACHINE"),
+//				AutoRenew:   pulumi.Bool(true),
+//				Resources: compute.RegionCommitmentResourceArray{
+//					&compute.RegionCommitmentResourceArgs{
+//						Type:   pulumi.String("VCPU"),
+//						Amount: pulumi.String("4"),
+//					},
+//					&compute.RegionCommitmentResourceArgs{
+//						Type:   pulumi.String("MEMORY"),
+//						Amount: pulumi.String("9"),
+//					},
+//				},
+//				Params: &compute.RegionCommitmentParamsArgs{
+//					ResourceManagerTags: pulumi.All(tagKey.ID(), tagValue.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
+//						tagKeyId := _args[0].(string)
+//						tagValueId := _args[1].(string)
+//						return map[string]string{
+//							tagKeyId: tagValueId,
+//						}, nil
+//					}).(pulumi.StringMapOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import

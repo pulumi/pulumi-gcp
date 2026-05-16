@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.EkmConnection;
  * import com.pulumi.gcp.kms.EkmConnectionArgs;
  * import com.pulumi.gcp.kms.inputs.EkmConnectionServiceResolverArgs;
+ * import com.pulumi.gcp.kms.inputs.EkmConnectionServiceResolverServerCertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

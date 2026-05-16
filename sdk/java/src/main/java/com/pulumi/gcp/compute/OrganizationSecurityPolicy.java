@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyState;
+import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyAdvancedOptionsConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -59,6 +60,51 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Organization Security Policy With Advanced Options
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyAdvancedOptionsConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
+ *             .shortName("security-policy")
+ *             .parent("organizations/123456789")
+ *             .type("CLOUD_ARMOR")
+ *             .advancedOptionsConfig(OrganizationSecurityPolicyAdvancedOptionsConfigArgs.builder()
+ *                 .jsonParsing("STANDARD_WITH_GRAPHQL")
+ *                 .logLevel("VERBOSE")
+ *                 .jsonCustomConfig(OrganizationSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs.builder()
+ *                     .contentTypes("application/vnd.api+json")
+ *                     .build())
+ *                 .userIpRequestHeaders("X-Forwarded-For")
+ *                 .requestBodyInspectionSize("64KB")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -77,6 +123,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy")
 public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Additional options for this security policy.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="advancedOptionsConfig", refs={OrganizationSecurityPolicyAdvancedOptionsConfig.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfig;
+
+    /**
+     * @return Additional options for this security policy.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<OrganizationSecurityPolicyAdvancedOptionsConfig>> advancedOptionsConfig() {
+        return Codegen.optional(this.advancedOptionsConfig);
+    }
     /**
      * A textual description for the organization security policy.
      * 

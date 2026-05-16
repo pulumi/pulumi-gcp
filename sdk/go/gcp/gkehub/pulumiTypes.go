@@ -11322,6 +11322,322 @@ func (o NamespaceStateTypeArrayOutput) Index(i pulumi.IntInput) NamespaceStateTy
 	}).(NamespaceStateTypeOutput)
 }
 
+type RolloutSequenceAutoUpgradeConfig struct {
+	// Specifies the scope of automation for the creation of rollouts.
+	// Represents the types of rollouts (version upgrades) the sequence should
+	// initiate automatically.
+	// If this field is not specified, it defaults to all types.
+	// If this field is specified, but the nested upgradeTypes field is empty,
+	// most automatic rollouts are disabled for this sequence.
+	// Exceptions are rollouts enforcing our security policies (e.g. such as
+	// end-of-support and outdated control plane patch enforcements).
+	// These policy enforcements cannot be disabled.
+	// Structure is documented below.
+	RolloutCreationScope *RolloutSequenceAutoUpgradeConfigRolloutCreationScope `pulumi:"rolloutCreationScope"`
+}
+
+// RolloutSequenceAutoUpgradeConfigInput is an input type that accepts RolloutSequenceAutoUpgradeConfigArgs and RolloutSequenceAutoUpgradeConfigOutput values.
+// You can construct a concrete instance of `RolloutSequenceAutoUpgradeConfigInput` via:
+//
+//	RolloutSequenceAutoUpgradeConfigArgs{...}
+type RolloutSequenceAutoUpgradeConfigInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceAutoUpgradeConfigOutput() RolloutSequenceAutoUpgradeConfigOutput
+	ToRolloutSequenceAutoUpgradeConfigOutputWithContext(context.Context) RolloutSequenceAutoUpgradeConfigOutput
+}
+
+type RolloutSequenceAutoUpgradeConfigArgs struct {
+	// Specifies the scope of automation for the creation of rollouts.
+	// Represents the types of rollouts (version upgrades) the sequence should
+	// initiate automatically.
+	// If this field is not specified, it defaults to all types.
+	// If this field is specified, but the nested upgradeTypes field is empty,
+	// most automatic rollouts are disabled for this sequence.
+	// Exceptions are rollouts enforcing our security policies (e.g. such as
+	// end-of-support and outdated control plane patch enforcements).
+	// These policy enforcements cannot be disabled.
+	// Structure is documented below.
+	RolloutCreationScope RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrInput `pulumi:"rolloutCreationScope"`
+}
+
+func (RolloutSequenceAutoUpgradeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i RolloutSequenceAutoUpgradeConfigArgs) ToRolloutSequenceAutoUpgradeConfigOutput() RolloutSequenceAutoUpgradeConfigOutput {
+	return i.ToRolloutSequenceAutoUpgradeConfigOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceAutoUpgradeConfigArgs) ToRolloutSequenceAutoUpgradeConfigOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceAutoUpgradeConfigOutput)
+}
+
+func (i RolloutSequenceAutoUpgradeConfigArgs) ToRolloutSequenceAutoUpgradeConfigPtrOutput() RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return i.ToRolloutSequenceAutoUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceAutoUpgradeConfigArgs) ToRolloutSequenceAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceAutoUpgradeConfigOutput).ToRolloutSequenceAutoUpgradeConfigPtrOutputWithContext(ctx)
+}
+
+// RolloutSequenceAutoUpgradeConfigPtrInput is an input type that accepts RolloutSequenceAutoUpgradeConfigArgs, RolloutSequenceAutoUpgradeConfigPtr and RolloutSequenceAutoUpgradeConfigPtrOutput values.
+// You can construct a concrete instance of `RolloutSequenceAutoUpgradeConfigPtrInput` via:
+//
+//	        RolloutSequenceAutoUpgradeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSequenceAutoUpgradeConfigPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceAutoUpgradeConfigPtrOutput() RolloutSequenceAutoUpgradeConfigPtrOutput
+	ToRolloutSequenceAutoUpgradeConfigPtrOutputWithContext(context.Context) RolloutSequenceAutoUpgradeConfigPtrOutput
+}
+
+type rolloutSequenceAutoUpgradeConfigPtrType RolloutSequenceAutoUpgradeConfigArgs
+
+func RolloutSequenceAutoUpgradeConfigPtr(v *RolloutSequenceAutoUpgradeConfigArgs) RolloutSequenceAutoUpgradeConfigPtrInput {
+	return (*rolloutSequenceAutoUpgradeConfigPtrType)(v)
+}
+
+func (*rolloutSequenceAutoUpgradeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSequenceAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (i *rolloutSequenceAutoUpgradeConfigPtrType) ToRolloutSequenceAutoUpgradeConfigPtrOutput() RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return i.ToRolloutSequenceAutoUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSequenceAutoUpgradeConfigPtrType) ToRolloutSequenceAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceAutoUpgradeConfigPtrOutput)
+}
+
+type RolloutSequenceAutoUpgradeConfigOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceAutoUpgradeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o RolloutSequenceAutoUpgradeConfigOutput) ToRolloutSequenceAutoUpgradeConfigOutput() RolloutSequenceAutoUpgradeConfigOutput {
+	return o
+}
+
+func (o RolloutSequenceAutoUpgradeConfigOutput) ToRolloutSequenceAutoUpgradeConfigOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigOutput {
+	return o
+}
+
+func (o RolloutSequenceAutoUpgradeConfigOutput) ToRolloutSequenceAutoUpgradeConfigPtrOutput() RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return o.ToRolloutSequenceAutoUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSequenceAutoUpgradeConfigOutput) ToRolloutSequenceAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSequenceAutoUpgradeConfig) *RolloutSequenceAutoUpgradeConfig {
+		return &v
+	}).(RolloutSequenceAutoUpgradeConfigPtrOutput)
+}
+
+// Specifies the scope of automation for the creation of rollouts.
+// Represents the types of rollouts (version upgrades) the sequence should
+// initiate automatically.
+// If this field is not specified, it defaults to all types.
+// If this field is specified, but the nested upgradeTypes field is empty,
+// most automatic rollouts are disabled for this sequence.
+// Exceptions are rollouts enforcing our security policies (e.g. such as
+// end-of-support and outdated control plane patch enforcements).
+// These policy enforcements cannot be disabled.
+// Structure is documented below.
+func (o RolloutSequenceAutoUpgradeConfigOutput) RolloutCreationScope() RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return o.ApplyT(func(v RolloutSequenceAutoUpgradeConfig) *RolloutSequenceAutoUpgradeConfigRolloutCreationScope {
+		return v.RolloutCreationScope
+	}).(RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput)
+}
+
+type RolloutSequenceAutoUpgradeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceAutoUpgradeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSequenceAutoUpgradeConfig)(nil)).Elem()
+}
+
+func (o RolloutSequenceAutoUpgradeConfigPtrOutput) ToRolloutSequenceAutoUpgradeConfigPtrOutput() RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o RolloutSequenceAutoUpgradeConfigPtrOutput) ToRolloutSequenceAutoUpgradeConfigPtrOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o RolloutSequenceAutoUpgradeConfigPtrOutput) Elem() RolloutSequenceAutoUpgradeConfigOutput {
+	return o.ApplyT(func(v *RolloutSequenceAutoUpgradeConfig) RolloutSequenceAutoUpgradeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSequenceAutoUpgradeConfig
+		return ret
+	}).(RolloutSequenceAutoUpgradeConfigOutput)
+}
+
+// Specifies the scope of automation for the creation of rollouts.
+// Represents the types of rollouts (version upgrades) the sequence should
+// initiate automatically.
+// If this field is not specified, it defaults to all types.
+// If this field is specified, but the nested upgradeTypes field is empty,
+// most automatic rollouts are disabled for this sequence.
+// Exceptions are rollouts enforcing our security policies (e.g. such as
+// end-of-support and outdated control plane patch enforcements).
+// These policy enforcements cannot be disabled.
+// Structure is documented below.
+func (o RolloutSequenceAutoUpgradeConfigPtrOutput) RolloutCreationScope() RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return o.ApplyT(func(v *RolloutSequenceAutoUpgradeConfig) *RolloutSequenceAutoUpgradeConfigRolloutCreationScope {
+		if v == nil {
+			return nil
+		}
+		return v.RolloutCreationScope
+	}).(RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput)
+}
+
+type RolloutSequenceAutoUpgradeConfigRolloutCreationScope struct {
+	// The list of enabled upgrade types.
+	// Current valid values are `CONTROL_PLANE_MINOR`, `CONTROL_PLANE_PATCH`, `NODE_MINOR`, and `NODE_PATCH`.
+	UpgradeTypes []string `pulumi:"upgradeTypes"`
+}
+
+// RolloutSequenceAutoUpgradeConfigRolloutCreationScopeInput is an input type that accepts RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs and RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput values.
+// You can construct a concrete instance of `RolloutSequenceAutoUpgradeConfigRolloutCreationScopeInput` via:
+//
+//	RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs{...}
+type RolloutSequenceAutoUpgradeConfigRolloutCreationScopeInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput() RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput
+	ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutputWithContext(context.Context) RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput
+}
+
+type RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs struct {
+	// The list of enabled upgrade types.
+	// Current valid values are `CONTROL_PLANE_MINOR`, `CONTROL_PLANE_PATCH`, `NODE_MINOR`, and `NODE_PATCH`.
+	UpgradeTypes pulumi.StringArrayInput `pulumi:"upgradeTypes"`
+}
+
+func (RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceAutoUpgradeConfigRolloutCreationScope)(nil)).Elem()
+}
+
+func (i RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput() RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput {
+	return i.ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput)
+}
+
+func (i RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput() RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return i.ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput).ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutputWithContext(ctx)
+}
+
+// RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrInput is an input type that accepts RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs, RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtr and RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput values.
+// You can construct a concrete instance of `RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrInput` via:
+//
+//	        RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput() RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput
+	ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutputWithContext(context.Context) RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput
+}
+
+type rolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrType RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs
+
+func RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtr(v *RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs) RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrInput {
+	return (*rolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrType)(v)
+}
+
+func (*rolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSequenceAutoUpgradeConfigRolloutCreationScope)(nil)).Elem()
+}
+
+func (i *rolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrType) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput() RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return i.ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrType) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput)
+}
+
+type RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceAutoUpgradeConfigRolloutCreationScope)(nil)).Elem()
+}
+
+func (o RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput() RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput {
+	return o
+}
+
+func (o RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput {
+	return o
+}
+
+func (o RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput() RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return o.ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSequenceAutoUpgradeConfigRolloutCreationScope) *RolloutSequenceAutoUpgradeConfigRolloutCreationScope {
+		return &v
+	}).(RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput)
+}
+
+// The list of enabled upgrade types.
+// Current valid values are `CONTROL_PLANE_MINOR`, `CONTROL_PLANE_PATCH`, `NODE_MINOR`, and `NODE_PATCH`.
+func (o RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput) UpgradeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RolloutSequenceAutoUpgradeConfigRolloutCreationScope) []string { return v.UpgradeTypes }).(pulumi.StringArrayOutput)
+}
+
+type RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSequenceAutoUpgradeConfigRolloutCreationScope)(nil)).Elem()
+}
+
+func (o RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput() RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return o
+}
+
+func (o RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput) ToRolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutputWithContext(ctx context.Context) RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput {
+	return o
+}
+
+func (o RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput) Elem() RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput {
+	return o.ApplyT(func(v *RolloutSequenceAutoUpgradeConfigRolloutCreationScope) RolloutSequenceAutoUpgradeConfigRolloutCreationScope {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSequenceAutoUpgradeConfigRolloutCreationScope
+		return ret
+	}).(RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput)
+}
+
+// The list of enabled upgrade types.
+// Current valid values are `CONTROL_PLANE_MINOR`, `CONTROL_PLANE_PATCH`, `NODE_MINOR`, and `NODE_PATCH`.
+func (o RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput) UpgradeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RolloutSequenceAutoUpgradeConfigRolloutCreationScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UpgradeTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 type RolloutSequenceIgnoredClustersSelector struct {
 	// The label selector must be a valid CEL (Common Expression Language) expression which
 	// evaluates resource.labels.
@@ -16740,6 +17056,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRbacRoleBindingStateTypeArrayInput)(nil)).Elem(), MembershipRbacRoleBindingStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStateTypeInput)(nil)).Elem(), NamespaceStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStateTypeArrayInput)(nil)).Elem(), NamespaceStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceAutoUpgradeConfigInput)(nil)).Elem(), RolloutSequenceAutoUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceAutoUpgradeConfigPtrInput)(nil)).Elem(), RolloutSequenceAutoUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceAutoUpgradeConfigRolloutCreationScopeInput)(nil)).Elem(), RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrInput)(nil)).Elem(), RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceIgnoredClustersSelectorInput)(nil)).Elem(), RolloutSequenceIgnoredClustersSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceIgnoredClustersSelectorPtrInput)(nil)).Elem(), RolloutSequenceIgnoredClustersSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageInput)(nil)).Elem(), RolloutSequenceStageArgs{})
@@ -16968,6 +17288,10 @@ func init() {
 	pulumi.RegisterOutputType(MembershipRbacRoleBindingStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(NamespaceStateTypeOutput{})
 	pulumi.RegisterOutputType(NamespaceStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceAutoUpgradeConfigOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceAutoUpgradeConfigPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceAutoUpgradeConfigRolloutCreationScopeOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceIgnoredClustersSelectorOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceIgnoredClustersSelectorPtrOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceStageOutput{})

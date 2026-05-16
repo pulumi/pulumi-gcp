@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,6 +27,27 @@ import * as utilities from "../utilities";
  *     shortName: "my-short-name",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
+ * });
+ * ```
+ * ### Organization Security Policy With Advanced Options
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
+ *     shortName: "security-policy",
+ *     parent: "organizations/123456789",
+ *     type: "CLOUD_ARMOR",
+ *     advancedOptionsConfig: {
+ *         jsonParsing: "STANDARD_WITH_GRAPHQL",
+ *         logLevel: "VERBOSE",
+ *         jsonCustomConfig: {
+ *             contentTypes: ["application/vnd.api+json"],
+ *         },
+ *         userIpRequestHeaders: ["X-Forwarded-For"],
+ *         requestBodyInspectionSize: "64KB",
+ *     },
  * });
  * ```
  *
@@ -71,6 +94,11 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Additional options for this security policy.
+     * Structure is documented below.
+     */
+    declare public readonly advancedOptionsConfig: pulumi.Output<outputs.compute.OrganizationSecurityPolicyAdvancedOptionsConfig | undefined>;
+    /**
      * A textual description for the organization security policy.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -116,6 +144,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyState | undefined;
+            resourceInputs["advancedOptionsConfig"] = state?.advancedOptionsConfig;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["fingerprint"] = state?.fingerprint;
@@ -128,6 +157,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            resourceInputs["advancedOptionsConfig"] = args?.advancedOptionsConfig;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["parent"] = args?.parent;
@@ -145,6 +175,11 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OrganizationSecurityPolicy resources.
  */
 export interface OrganizationSecurityPolicyState {
+    /**
+     * Additional options for this security policy.
+     * Structure is documented below.
+     */
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyAdvancedOptionsConfig | undefined>;
     /**
      * A textual description for the organization security policy.
      */
@@ -183,6 +218,11 @@ export interface OrganizationSecurityPolicyState {
  * The set of arguments for constructing a OrganizationSecurityPolicy resource.
  */
 export interface OrganizationSecurityPolicyArgs {
+    /**
+     * Additional options for this security policy.
+     * Structure is documented below.
+     */
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyAdvancedOptionsConfig | undefined>;
     /**
      * A textual description for the organization security policy.
      */

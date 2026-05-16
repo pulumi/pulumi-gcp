@@ -154,6 +154,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiEndpoint;
  * import com.pulumi.gcp.vertex.AiEndpointArgs;
  * import com.pulumi.gcp.vertex.inputs.AiEndpointPrivateServiceConnectConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

@@ -12,6 +12,20 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class SecurityPolicyRulePreconfiguredWafConfigExclusionGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("requestBodies")]
+        private InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyGetArgs>? _requestBodies;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyGetArgs> RequestBodies
+        {
+            get => _requestBodies ?? (_requestBodies = new InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyGetArgs>());
+            set => _requestBodies = value;
+        }
+
         [Input("requestCookies")]
         private InputList<Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyGetArgs>? _requestCookies;
 

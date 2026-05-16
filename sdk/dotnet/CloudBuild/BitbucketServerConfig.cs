@@ -154,17 +154,11 @@ namespace Pulumi.Gcp.CloudBuild
     ///         },
     ///         Username = "test",
     ///         ApiKey = "&lt;api-key&gt;",
-    ///         PeeredNetwork = Output.Tuple(vpcNetwork.Id, project, project).Apply(values =&gt;
+    ///         PeeredNetwork = Std.Replace.Invoke(new()
     ///         {
-    ///             var id = values.Item1;
-    ///             var project = values.Item2;
-    ///             var project1 = values.Item3;
-    ///             return Std.Replace.Invoke(new()
-    ///             {
-    ///                 Text = id,
-    ///                 Search = project.Apply(getProjectResult =&gt; getProjectResult.Name),
-    ///                 Replace = project1.Number,
-    ///             });
+    ///             Text = vpcNetwork.Id,
+    ///             Search = project.Apply(getProjectResult =&gt; getProjectResult.Name),
+    ///             Replace = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         SslCa = @"-----BEGIN CERTIFICATE-----
     /// -----END CERTIFICATE-----

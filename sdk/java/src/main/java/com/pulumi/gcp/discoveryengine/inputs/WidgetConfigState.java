@@ -52,6 +52,21 @@ public final class WidgetConfigState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Output only. Unique obfuscated identifier of a WidgetConfig.
+     * 
+     */
+    @Import(name="configId")
+    private @Nullable Output<String> configId;
+
+    /**
+     * @return Output only. Unique obfuscated identifier of a WidgetConfig.
+     * 
+     */
+    public Optional<Output<String>> configId() {
+        return Optional.ofNullable(this.configId);
+    }
+
+    /**
      * The engine ID.
      * 
      */
@@ -192,6 +207,7 @@ public final class WidgetConfigState extends com.pulumi.resources.ResourceArgs {
     private WidgetConfigState(WidgetConfigState $) {
         this.accessSettings = $.accessSettings;
         this.collectionId = $.collectionId;
+        this.configId = $.configId;
         this.engineId = $.engineId;
         this.homepageSetting = $.homepageSetting;
         this.location = $.location;
@@ -262,6 +278,27 @@ public final class WidgetConfigState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder collectionId(String collectionId) {
             return collectionId(Output.of(collectionId));
+        }
+
+        /**
+         * @param configId Output only. Unique obfuscated identifier of a WidgetConfig.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configId(@Nullable Output<String> configId) {
+            $.configId = configId;
+            return this;
+        }
+
+        /**
+         * @param configId Output only. Unique obfuscated identifier of a WidgetConfig.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configId(String configId) {
+            return configId(Output.of(configId));
         }
 
         /**

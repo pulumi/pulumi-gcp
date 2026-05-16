@@ -16,14 +16,16 @@ public final class EvaluationGoldenTurnStepExpectationAgentTransferArgs extends 
     public static final EvaluationGoldenTurnStepExpectationAgentTransferArgs Empty = new EvaluationGoldenTurnStepExpectationAgentTransferArgs();
 
     /**
-     * The display name of the target agent.
+     * (Output)
+     * Display name of the agent.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The display name of the target agent.
+     * @return (Output)
+     * Display name of the agent.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -31,14 +33,14 @@ public final class EvaluationGoldenTurnStepExpectationAgentTransferArgs extends 
     }
 
     /**
-     * The resource name of the target agent.
+     * The agent to which the conversation is being transferred.
      * 
      */
     @Import(name="targetAgent")
     private @Nullable Output<String> targetAgent;
 
     /**
-     * @return The resource name of the target agent.
+     * @return The agent to which the conversation is being transferred.
      * 
      */
     public Optional<Output<String>> targetAgent() {
@@ -71,7 +73,8 @@ public final class EvaluationGoldenTurnStepExpectationAgentTransferArgs extends 
         }
 
         /**
-         * @param displayName The display name of the target agent.
+         * @param displayName (Output)
+         * Display name of the agent.
          * 
          * @return builder
          * 
@@ -82,7 +85,8 @@ public final class EvaluationGoldenTurnStepExpectationAgentTransferArgs extends 
         }
 
         /**
-         * @param displayName The display name of the target agent.
+         * @param displayName (Output)
+         * Display name of the agent.
          * 
          * @return builder
          * 
@@ -92,7 +96,7 @@ public final class EvaluationGoldenTurnStepExpectationAgentTransferArgs extends 
         }
 
         /**
-         * @param targetAgent The resource name of the target agent.
+         * @param targetAgent The agent to which the conversation is being transferred.
          * 
          * @return builder
          * 
@@ -103,7 +107,7 @@ public final class EvaluationGoldenTurnStepExpectationAgentTransferArgs extends 
         }
 
         /**
-         * @param targetAgent The resource name of the target agent.
+         * @param targetAgent The agent to which the conversation is being transferred.
          * 
          * @return builder
          * 

@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.AppHostingTraffic;
  * import com.pulumi.gcp.firebase.AppHostingTrafficArgs;
  * import com.pulumi.gcp.firebase.inputs.AppHostingTrafficTargetArgs;
+ * import com.pulumi.gcp.firebase.inputs.AppHostingTrafficTargetSplitArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.resources.CustomResourceOptions;

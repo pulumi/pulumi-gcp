@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.essentialcontacts.DocumentAiWarehouseDocumentSchema;
  * import com.pulumi.gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs;
  * import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs;
+ * import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs;
  * import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

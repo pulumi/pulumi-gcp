@@ -177,6 +177,217 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Security Policy Rule Advanced Features
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Name = "policyruletest",
+    ///         Description = "Security policy with WAF exclusions, Headers, and Redirect",
+    ///     });
+    /// 
+    ///     var policySecurityPolicyRule = new Gcp.Compute.SecurityPolicyRule("policy", new()
+    ///     {
+    ///         SecurityPolicy = policy.Name,
+    ///         Description = "Complex rule using advanced features: WAF config, header actions, and redirect options",
+    ///         Priority = 100,
+    ///         Action = "allow",
+    ///         Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///         {
+    ///             Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
+    ///             {
+    ///                 Expression = "request.path.matches('/api/v1/.*')",
+    ///             },
+    ///         },
+    ///         PreconfiguredWafConfig = new Gcp.Compute.Inputs.SecurityPolicyRulePreconfiguredWafConfigArgs
+    ///         {
+    ///             Exclusions = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionArgs
+    ///                 {
+    ///                     TargetRuleSet = "sqli-v33-stable",
+    ///                     TargetRuleIds = new[]
+    ///                     {
+    ///                         "owasp-crs-v030301-id942100-sqli",
+    ///                     },
+    ///                     RequestHeaders = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs
+    ///                         {
+    ///                             Operator = "EQUALS",
+    ///                             Value = "internal-scan",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         HeaderAction = new Gcp.Compute.Inputs.SecurityPolicyRuleHeaderActionArgs
+    ///         {
+    ///             RequestHeadersToAdds = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs
+    ///                 {
+    ///                     HeaderName = "X-Added-By-Armor",
+    ///                     HeaderValue = "Verified-Traffic",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Security Policy Rule With Body Exclude
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "test-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "test-subnet",
+    ///         Region = "us-west2",
+    ///         Network = @default.Id,
+    ///         IpCidrRange = "10.10.0.0/24",
+    ///     });
+    /// 
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "test-health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultSecurityPolicy = new Gcp.Compute.SecurityPolicy("default", new()
+    ///     {
+    ///         Name = "policyruletest",
+    ///         Description = "global security policy with body inspection",
+    ///         Type = "CLOUD_ARMOR",
+    ///         AdvancedOptionsConfig = new Gcp.Compute.Inputs.SecurityPolicyAdvancedOptionsConfigArgs
+    ///         {
+    ///             JsonParsing = "STANDARD",
+    ///             LogLevel = "VERBOSE",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("default", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///             },
+    ///         },
+    ///         Name = "backendpolicy",
+    ///         MachineType = "e2-micro",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "projects/debian-cloud/global/images/family/debian-11",
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultInstanceGroupManager = new Gcp.Compute.InstanceGroupManager("default", new()
+    ///     {
+    ///         Name = "backendpolicy",
+    ///         BaseInstanceName = "backend",
+    ///         Zone = "us-west2-a",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = defaultInstanceTemplate.Id,
+    ///             },
+    ///         },
+    ///         TargetSize = 1,
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backendpolicy",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         TimeoutSec = 30,
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///             {
+    ///                 Group = defaultInstanceGroupManager.InstanceGroup,
+    ///             },
+    ///         },
+    ///         SecurityPolicy = defaultSecurityPolicy.Id,
+    ///     });
+    /// 
+    ///     var policyRuleOne = new Gcp.Compute.SecurityPolicyRule("policy_rule_one", new()
+    ///     {
+    ///         SecurityPolicy = defaultSecurityPolicy.Name,
+    ///         Description = "waf body rule",
+    ///         Action = "deny(403)",
+    ///         Priority = 100,
+    ///         Preview = true,
+    ///         Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///         {
+    ///             Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
+    ///             {
+    ///                 Expression = "evaluatePreconfiguredWaf('sqli-v33-stable')",
+    ///             },
+    ///         },
+    ///         PreconfiguredWafConfig = new Gcp.Compute.Inputs.SecurityPolicyRulePreconfiguredWafConfigArgs
+    ///         {
+    ///             Exclusions = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionArgs
+    ///                 {
+    ///                     TargetRuleSet = "sqli-v33-stable",
+    ///                     RequestBodies = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs
+    ///                         {
+    ///                             Operator = "EQUALS",
+    ///                             Value = "safe-field",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultBackendService,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

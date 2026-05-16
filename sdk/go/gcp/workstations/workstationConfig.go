@@ -35,92 +35,94 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
-// Parent: pulumi.String("organizations/123456789"),
-// ShortName: pulumi.String("keyname"),
-// })
-// if err != nil {
-// return err
-// }
-// tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-// Parent: tagKey1.ID(),
-// ShortName: pulumi.String("valuename"),
-// })
-// if err != nil {
-// return err
-// }
-// _default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-// Name: pulumi.String("workstation-cluster"),
-// AutoCreateSubnetworks: pulumi.Bool(false),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-// Name: pulumi.String("workstation-cluster"),
-// IpCidrRange: pulumi.String("10.0.0.0/24"),
-// Region: pulumi.String("us-central1"),
-// Network: _default.Name,
-// })
-// if err != nil {
-// return err
-// }
-// defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-// WorkstationClusterId: pulumi.String("workstation-cluster"),
-// Network: _default.ID(),
-// Subnetwork: defaultSubnetwork.ID(),
-// Location: pulumi.String("us-central1"),
-// Labels: pulumi.StringMap{
-// "label": pulumi.String("key"),
-// },
-// Annotations: pulumi.StringMap{
-// "label-one": pulumi.String("value-one"),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// _, err = workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
-// WorkstationConfigId: pulumi.String("workstation-config"),
-// WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
-// Location: pulumi.String("us-central1"),
-// IdleTimeout: pulumi.String("600s"),
-// RunningTimeout: pulumi.String("21600s"),
-// ReplicaZones: pulumi.StringArray{
-// pulumi.String("us-central1-a"),
-// pulumi.String("us-central1-b"),
-// },
-// Annotations: pulumi.StringMap{
-// "label-one": pulumi.String("value-one"),
-// },
-// Labels: pulumi.StringMap{
-// "label": pulumi.String("key"),
-// },
-// MaxUsableWorkstations: pulumi.Int(1),
-// Host: &workstations.WorkstationConfigHostArgs{
-// GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
-// MachineType: pulumi.String("e2-standard-4"),
-// BootDiskSizeGb: pulumi.Int(35),
-// DisablePublicIpAddresses: pulumi.Bool(true),
-// DisableSsh: pulumi.Bool(false),
-// VmTags: pulumi.All(tagKey1.ID(),tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// tagKey1Id := _args[0].(string)
-// tagValue1Id := _args[1].(string)
-// return map[string]string{
-// tagKey1Id: tagValue1Id,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
+//				Parent:    pulumi.String("organizations/123456789"),
+//				ShortName: pulumi.String("keyname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
+//				Parent:    tagKey1.ID(),
+//				ShortName: pulumi.String("valuename"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId: pulumi.String("workstation-cluster"),
+//				Network:              _default.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
+//				Location:             pulumi.String("us-central1"),
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("key"),
+//				},
+//				Annotations: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
+//				WorkstationConfigId:  pulumi.String("workstation-config"),
+//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
+//				Location:             pulumi.String("us-central1"),
+//				IdleTimeout:          pulumi.String("600s"),
+//				RunningTimeout:       pulumi.String("21600s"),
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-b"),
+//				},
+//				Annotations: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("key"),
+//				},
+//				MaxUsableWorkstations: pulumi.Int(1),
+//				Host: &workstations.WorkstationConfigHostArgs{
+//					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
+//						MachineType:              pulumi.String("e2-standard-4"),
+//						BootDiskSizeGb:           pulumi.Int(35),
+//						DisablePublicIpAddresses: pulumi.Bool(true),
+//						DisableSsh:               pulumi.Bool(false),
+//						VmTags: pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
+//							tagKey1Id := _args[0].(string)
+//							tagValue1Id := _args[1].(string)
+//							return map[string]string{
+//								tagKey1Id: tagValue1Id,
+//							}, nil
+//						}).(pulumi.StringMapOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Workstation Config Container
 //
@@ -185,6 +187,183 @@ import (
 //					Env: pulumi.StringMap{
 //						"NAME": pulumi.String("FOO"),
 //						"BABE": pulumi.String("bar"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Workstation Config Hyperdisk
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId: pulumi.String("workstation-cluster"),
+//				Network:              _default.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
+//				Location:             pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
+//				WorkstationConfigId:  pulumi.String("workstation-config"),
+//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
+//				Location:             pulumi.String("us-central1"),
+//				Host: &workstations.WorkstationConfigHostArgs{
+//					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
+//						MachineType: pulumi.String("c3-standard-22"),
+//					},
+//				},
+//				PersistentDirectories: workstations.WorkstationConfigPersistentDirectoryArray{
+//					&workstations.WorkstationConfigPersistentDirectoryArgs{
+//						MountPath: pulumi.String("/home"),
+//						GceHd: &workstations.WorkstationConfigPersistentDirectoryGceHdArgs{
+//							SizeGb:         pulumi.Int(200),
+//							ReclaimPolicy:  pulumi.String("DELETE"),
+//							ArchiveTimeout: pulumi.String("3600s"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Workstation Config Hyperdisk Source Snapshot
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
+//				Parent:    pulumi.String("organizations/0123456789"),
+//				ShortName: pulumi.String("keyname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
+//				Parent:    tagKey1.ID(),
+//				ShortName: pulumi.String("valuename"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mySourceDisk, err := compute.NewDisk(ctx, "my_source_disk", &compute.DiskArgs{
+//				Name: pulumi.String("workstation-config-source-disk"),
+//				Size: pulumi.Int(10),
+//				Type: pulumi.String("pd-ssd"),
+//				Zone: pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mySourceSnapshot, err := compute.NewSnapshot(ctx, "my_source_snapshot", &compute.SnapshotArgs{
+//				Name:       pulumi.String("workstation-config-source-snapshot"),
+//				SourceDisk: mySourceDisk.Name,
+//				Zone:       pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId: pulumi.String("workstation-cluster"),
+//				Network:              _default.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
+//				Location:             pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
+//				WorkstationConfigId:  pulumi.String("workstation-config"),
+//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
+//				Location:             pulumi.String("us-central1"),
+//				Host: &workstations.WorkstationConfigHostArgs{
+//					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
+//						MachineType:              pulumi.String("c3-standard-22"),
+//						BootDiskSizeGb:           pulumi.Int(35),
+//						DisablePublicIpAddresses: pulumi.Bool(true),
+//						VmTags: pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
+//							tagKey1Id := _args[0].(string)
+//							tagValue1Id := _args[1].(string)
+//							return map[string]string{
+//								tagKey1Id: tagValue1Id,
+//							}, nil
+//						}).(pulumi.StringMapOutput),
+//					},
+//				},
+//				PersistentDirectories: workstations.WorkstationConfigPersistentDirectoryArray{
+//					&workstations.WorkstationConfigPersistentDirectoryArgs{
+//						MountPath: pulumi.String("/home"),
+//						GceHd: &workstations.WorkstationConfigPersistentDirectoryGceHdArgs{
+//							SourceSnapshot: mySourceSnapshot.ID(),
+//							ReclaimPolicy:  pulumi.String("DELETE"),
+//							ArchiveTimeout: pulumi.String("3600s"),
+//						},
 //					},
 //				},
 //			})

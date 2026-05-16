@@ -184,6 +184,166 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// ### Workstation Config Hyperdisk
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Name,
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
+    ///     {
+    ///         WorkstationConfigId = "workstation-config",
+    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
+    ///         Location = "us-central1",
+    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
+    ///         {
+    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
+    ///             {
+    ///                 MachineType = "c3-standard-22",
+    ///             },
+    ///         },
+    ///         PersistentDirectories = new[]
+    ///         {
+    ///             new Gcp.Workstations.Inputs.WorkstationConfigPersistentDirectoryArgs
+    ///             {
+    ///                 MountPath = "/home",
+    ///                 GceHd = new Gcp.Workstations.Inputs.WorkstationConfigPersistentDirectoryGceHdArgs
+    ///                 {
+    ///                     SizeGb = 200,
+    ///                     ReclaimPolicy = "DELETE",
+    ///                     ArchiveTimeout = "3600s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Workstation Config Hyperdisk Source Snapshot
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tagKey1 = new Gcp.Tags.TagKey("tag_key1", new()
+    ///     {
+    ///         Parent = "organizations/0123456789",
+    ///         ShortName = "keyname",
+    ///     });
+    /// 
+    ///     var tagValue1 = new Gcp.Tags.TagValue("tag_value1", new()
+    ///     {
+    ///         Parent = tagKey1.Id,
+    ///         ShortName = "valuename",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Name,
+    ///     });
+    /// 
+    ///     var mySourceDisk = new Gcp.Compute.Disk("my_source_disk", new()
+    ///     {
+    ///         Name = "workstation-config-source-disk",
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var mySourceSnapshot = new Gcp.Compute.Snapshot("my_source_snapshot", new()
+    ///     {
+    ///         Name = "workstation-config-source-snapshot",
+    ///         SourceDisk = mySourceDisk.Name,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
+    ///     {
+    ///         WorkstationConfigId = "workstation-config",
+    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
+    ///         Location = "us-central1",
+    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
+    ///         {
+    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
+    ///             {
+    ///                 MachineType = "c3-standard-22",
+    ///                 BootDiskSizeGb = 35,
+    ///                 DisablePublicIpAddresses = true,
+    ///                 VmTags = Output.Tuple(tagKey1.Id, tagValue1.Id).Apply(values =&gt;
+    ///                 {
+    ///                     var tagKey1Id = values.Item1;
+    ///                     var tagValue1Id = values.Item2;
+    ///                     return 
+    ///                     {
+    ///                         { tagKey1Id, tagValue1Id },
+    ///                     };
+    ///                 }),
+    ///             },
+    ///         },
+    ///         PersistentDirectories = new[]
+    ///         {
+    ///             new Gcp.Workstations.Inputs.WorkstationConfigPersistentDirectoryArgs
+    ///             {
+    ///                 MountPath = "/home",
+    ///                 GceHd = new Gcp.Workstations.Inputs.WorkstationConfigPersistentDirectoryGceHdArgs
+    ///                 {
+    ///                     SourceSnapshot = mySourceSnapshot.Id,
+    ///                     ReclaimPolicy = "DELETE",
+    ///                     ArchiveTimeout = "3600s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Workstation Config Persistent Directories
     /// 
     /// ```csharp

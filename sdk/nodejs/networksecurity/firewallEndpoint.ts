@@ -42,6 +42,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Security Firewall Endpoint Project
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.FirewallEndpoint("default", {
+ *     name: "my-firewall-endpoint",
+ *     parent: "projects/my-project-name",
+ *     location: "us-central1-a",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -91,7 +106,10 @@ export class FirewallEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly associatedNetworks: pulumi.Output<string[]>;
     /**
-     * Project to bill on endpoint uptime usage.
+     * Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint's project if specified.
      */
     declare public readonly billingProjectId: pulumi.Output<string>;
     /**
@@ -124,7 +142,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
@@ -178,9 +196,6 @@ export class FirewallEndpoint extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as FirewallEndpointArgs | undefined;
-            if (args?.billingProjectId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'billingProjectId'");
-            }
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -221,7 +236,10 @@ export interface FirewallEndpointState {
      */
     associatedNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Project to bill on endpoint uptime usage.
+     * Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint's project if specified.
      */
     billingProjectId?: pulumi.Input<string | undefined>;
     /**
@@ -254,7 +272,7 @@ export interface FirewallEndpointState {
     name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     parent?: pulumi.Input<string | undefined>;
     /**
@@ -285,9 +303,12 @@ export interface FirewallEndpointState {
  */
 export interface FirewallEndpointArgs {
     /**
-     * Project to bill on endpoint uptime usage.
+     * Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint's project if specified.
      */
-    billingProjectId: pulumi.Input<string>;
+    billingProjectId?: pulumi.Input<string | undefined>;
     /**
      * Settings for the endpoint.
      * Structure is documented below.
@@ -310,7 +331,7 @@ export interface FirewallEndpointArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     parent: pulumi.Input<string>;
 }

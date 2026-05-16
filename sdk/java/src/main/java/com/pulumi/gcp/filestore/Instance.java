@@ -92,6 +92,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.filestore.Instance;
  * import com.pulumi.gcp.filestore.InstanceArgs;
  * import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceFileSharesNfsExportOptionArgs;
  * import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

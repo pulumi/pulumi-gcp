@@ -87,11 +87,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.backupdisasterrecovery.RestoreWorkloadArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceTargetEnvironmentArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -228,7 +233,7 @@ import javax.annotation.Nullable;
  *                 .sizeGb(100)
  *                 .type("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard")
  *                 .description("Restored persistent disk from backup")
- *                 .labels(RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
+ *                 .labels(com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
  *                     .environment("production")
  *                     .restored("true")
  *                     .build())
@@ -282,7 +287,7 @@ import javax.annotation.Nullable;
  *                 .sizeGb(200)
  *                 .type("pd-balanced")
  *                 .description("Restored regional persistent disk")
- *                 .labels(RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
+ *                 .labels(com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
  *                     .type("regional")
  *                     .environment("production")
  *                     .build())

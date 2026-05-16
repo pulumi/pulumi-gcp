@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.RegionDiskState;
 import com.pulumi.gcp.compute.outputs.RegionDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.RegionDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.RegionDiskGuestOsFeature;
+import com.pulumi.gcp.compute.outputs.RegionDiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.RegionDiskSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -463,6 +464,36 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return this.guestOsFeatures;
     }
     /**
+     * The image from which to initialize this disk. This can be
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+     * images names must include the family name. If they don&#39;t, use the
+     * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+     * These images can be referred by family name here.
+     * 
+     */
+    @Export(name="image", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> image;
+
+    /**
+     * @return The image from which to initialize this disk. This can be
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+     * images names must include the family name. If they don&#39;t, use the
+     * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+     * These images can be referred by family name here.
+     * 
+     */
+    public Output<Optional<String>> image() {
+        return Codegen.optional(this.image);
+    }
+    /**
      * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
@@ -815,6 +846,46 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
      */
     public Output<String> sourceDiskId() {
         return this.sourceDiskId;
+    }
+    /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sourceImageEncryptionKey", refs={RegionDiskSourceImageEncryptionKey.class}, tree="[0]")
+    private Output</* @Nullable */ RegionDiskSourceImageEncryptionKey> sourceImageEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionDiskSourceImageEncryptionKey>> sourceImageEncryptionKey() {
+        return Codegen.optional(this.sourceImageEncryptionKey);
+    }
+    /**
+     * The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
+     * 
+     */
+    @Export(name="sourceImageId", refs={String.class}, tree="[0]")
+    private Output<String> sourceImageId;
+
+    /**
+     * @return The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
+     * 
+     */
+    public Output<String> sourceImageId() {
+        return this.sourceImageId;
     }
     /**
      * The customer-supplied encryption key of the source snapshot. Required

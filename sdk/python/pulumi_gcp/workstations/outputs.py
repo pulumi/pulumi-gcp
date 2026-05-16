@@ -35,6 +35,7 @@ __all__ = [
     'WorkstationConfigIamBindingCondition',
     'WorkstationConfigIamMemberCondition',
     'WorkstationConfigPersistentDirectory',
+    'WorkstationConfigPersistentDirectoryGceHd',
     'WorkstationConfigPersistentDirectoryGcePd',
     'WorkstationConfigReadinessCheck',
     'WorkstationIamBindingCondition',
@@ -1159,7 +1160,9 @@ class WorkstationConfigPersistentDirectory(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "gcePd":
+        if key == "gceHd":
+            suggest = "gce_hd"
+        elif key == "gcePd":
             suggest = "gce_pd"
         elif key == "mountPath":
             suggest = "mount_path"
@@ -1176,17 +1179,31 @@ class WorkstationConfigPersistentDirectory(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 gce_hd: Optional['outputs.WorkstationConfigPersistentDirectoryGceHd'] = None,
                  gce_pd: Optional['outputs.WorkstationConfigPersistentDirectoryGcePd'] = None,
                  mount_path: Optional[_builtins.str] = None):
         """
+        :param 'WorkstationConfigPersistentDirectoryGceHdArgs' gce_hd: A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+               Structure is documented below.
         :param 'WorkstationConfigPersistentDirectoryGcePdArgs' gce_pd: A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
                Structure is documented below.
         :param _builtins.str mount_path: Location of this directory in the running workstation.
         """
+        if gce_hd is not None:
+            pulumi.set(__self__, "gce_hd", gce_hd)
         if gce_pd is not None:
             pulumi.set(__self__, "gce_pd", gce_pd)
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
+
+    @_builtins.property
+    @pulumi.getter(name="gceHd")
+    def gce_hd(self) -> Optional['outputs.WorkstationConfigPersistentDirectoryGceHd']:
+        """
+        A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gce_hd")
 
     @_builtins.property
     @pulumi.getter(name="gcePd")
@@ -1204,6 +1221,86 @@ class WorkstationConfigPersistentDirectory(dict):
         Location of this directory in the running workstation.
         """
         return pulumi.get(self, "mount_path")
+
+
+@pulumi.output_type
+class WorkstationConfigPersistentDirectoryGceHd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveTimeout":
+            suggest = "archive_timeout"
+        elif key == "reclaimPolicy":
+            suggest = "reclaim_policy"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigPersistentDirectoryGceHd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigPersistentDirectoryGceHd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigPersistentDirectoryGceHd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_timeout: Optional[_builtins.str] = None,
+                 reclaim_policy: Optional[_builtins.str] = None,
+                 size_gb: Optional[_builtins.int] = None,
+                 source_snapshot: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str archive_timeout: How long to wait before converting the disk into a snapshot.
+        :param _builtins.str reclaim_policy: Whether the persistent disk should be deleted when the workstation is deleted.
+               Possible values are: `DELETE`, `RETAIN`.
+        :param _builtins.int size_gb: The GB capacity of a persistent home directory. Defaults to '200'.
+        :param _builtins.str source_snapshot: Name of the snapshot to use as the source for the disk.
+        """
+        if archive_timeout is not None:
+            pulumi.set(__self__, "archive_timeout", archive_timeout)
+        if reclaim_policy is not None:
+            pulumi.set(__self__, "reclaim_policy", reclaim_policy)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveTimeout")
+    def archive_timeout(self) -> Optional[_builtins.str]:
+        """
+        How long to wait before converting the disk into a snapshot.
+        """
+        return pulumi.get(self, "archive_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="reclaimPolicy")
+    def reclaim_policy(self) -> Optional[_builtins.str]:
+        """
+        Whether the persistent disk should be deleted when the workstation is deleted.
+        Possible values are: `DELETE`, `RETAIN`.
+        """
+        return pulumi.get(self, "reclaim_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[_builtins.int]:
+        """
+        The GB capacity of a persistent home directory. Defaults to '200'.
+        """
+        return pulumi.get(self, "size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[_builtins.str]:
+        """
+        Name of the snapshot to use as the source for the disk.
+        """
+        return pulumi.get(self, "source_snapshot")
 
 
 @pulumi.output_type

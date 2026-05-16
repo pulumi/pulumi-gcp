@@ -81,6 +81,21 @@ public final class AnywhereCacheState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    @Import(name="ingestOnWrite")
+    private @Nullable Output<Boolean> ingestOnWrite;
+
+    /**
+     * @return Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    public Optional<Output<Boolean>> ingestOnWrite() {
+        return Optional.ofNullable(this.ingestOnWrite);
+    }
+
+    /**
      * True if the cache instance has an active Update long-running operation.
      * 
      */
@@ -162,6 +177,7 @@ public final class AnywhereCacheState extends com.pulumi.resources.ResourceArgs 
         this.anywhereCacheId = $.anywhereCacheId;
         this.bucket = $.bucket;
         this.createTime = $.createTime;
+        this.ingestOnWrite = $.ingestOnWrite;
         this.pendingUpdate = $.pendingUpdate;
         this.state = $.state;
         this.ttl = $.ttl;
@@ -273,6 +289,27 @@ public final class AnywhereCacheState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param ingestOnWrite Whether or not the cache ingests data as the data is written to the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestOnWrite(@Nullable Output<Boolean> ingestOnWrite) {
+            $.ingestOnWrite = ingestOnWrite;
+            return this;
+        }
+
+        /**
+         * @param ingestOnWrite Whether or not the cache ingests data as the data is written to the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestOnWrite(Boolean ingestOnWrite) {
+            return ingestOnWrite(Output.of(ingestOnWrite));
         }
 
         /**

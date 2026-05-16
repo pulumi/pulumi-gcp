@@ -238,8 +238,8 @@ class UserWorkloadsSecret(pulumi.CustomResource):
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        User workloads Secret used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
-        Intended for Composer 3 Environments.
+        User workloads Secret used by Airflow tasks that run with Kubernetes Executor
+        or KubernetesPodOperator. Intended for Managed Airflow (Gen 3) Environments.
 
         ## Example Usage
 
@@ -308,8 +308,8 @@ class UserWorkloadsSecret(pulumi.CustomResource):
                  args: UserWorkloadsSecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        User workloads Secret used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
-        Intended for Composer 3 Environments.
+        User workloads Secret used by Airflow tasks that run with Kubernetes Executor
+        or KubernetesPodOperator. Intended for Managed Airflow (Gen 3) Environments.
 
         ## Example Usage
 

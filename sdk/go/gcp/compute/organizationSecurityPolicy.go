@@ -49,6 +49,46 @@ import (
 //	}
 //
 // ```
+// ### Organization Security Policy With Advanced Options
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
+//				ShortName: pulumi.String("security-policy"),
+//				Parent:    pulumi.String("organizations/123456789"),
+//				Type:      pulumi.String("CLOUD_ARMOR"),
+//				AdvancedOptionsConfig: &compute.OrganizationSecurityPolicyAdvancedOptionsConfigArgs{
+//					JsonParsing: pulumi.String("STANDARD_WITH_GRAPHQL"),
+//					LogLevel:    pulumi.String("VERBOSE"),
+//					JsonCustomConfig: &compute.OrganizationSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{
+//						ContentTypes: pulumi.StringArray{
+//							pulumi.String("application/vnd.api+json"),
+//						},
+//					},
+//					UserIpRequestHeaders: pulumi.StringArray{
+//						pulumi.String("X-Forwarded-For"),
+//					},
+//					RequestBodyInspectionSize: pulumi.String("64KB"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -66,6 +106,9 @@ import (
 type OrganizationSecurityPolicy struct {
 	pulumi.CustomResourceState
 
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig OrganizationSecurityPolicyAdvancedOptionsConfigPtrOutput `pulumi:"advancedOptionsConfig"`
 	// A textual description for the organization security policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -119,6 +162,9 @@ func GetOrganizationSecurityPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationSecurityPolicy resources.
 type organizationSecurityPolicyState struct {
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig *OrganizationSecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// A textual description for the organization security policy.
 	Description *string `pulumi:"description"`
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -140,6 +186,9 @@ type organizationSecurityPolicyState struct {
 }
 
 type OrganizationSecurityPolicyState struct {
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig OrganizationSecurityPolicyAdvancedOptionsConfigPtrInput
 	// A textual description for the organization security policy.
 	Description pulumi.StringPtrInput
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -165,6 +214,9 @@ func (OrganizationSecurityPolicyState) ElementType() reflect.Type {
 }
 
 type organizationSecurityPolicyArgs struct {
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig *OrganizationSecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// A textual description for the organization security policy.
 	Description *string `pulumi:"description"`
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -182,6 +234,9 @@ type organizationSecurityPolicyArgs struct {
 
 // The set of arguments for constructing a OrganizationSecurityPolicy resource.
 type OrganizationSecurityPolicyArgs struct {
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig OrganizationSecurityPolicyAdvancedOptionsConfigPtrInput
 	// A textual description for the organization security policy.
 	Description pulumi.StringPtrInput
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -282,6 +337,14 @@ func (o OrganizationSecurityPolicyOutput) ToOrganizationSecurityPolicyOutput() O
 
 func (o OrganizationSecurityPolicyOutput) ToOrganizationSecurityPolicyOutputWithContext(ctx context.Context) OrganizationSecurityPolicyOutput {
 	return o
+}
+
+// Additional options for this security policy.
+// Structure is documented below.
+func (o OrganizationSecurityPolicyOutput) AdvancedOptionsConfig() OrganizationSecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicy) OrganizationSecurityPolicyAdvancedOptionsConfigPtrOutput {
+		return v.AdvancedOptionsConfig
+	}).(OrganizationSecurityPolicyAdvancedOptionsConfigPtrOutput)
 }
 
 // A textual description for the organization security policy.

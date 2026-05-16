@@ -62,6 +62,36 @@ import (
 //	}
 //
 // ```
+// ### Network Security Firewall Endpoint Project
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewFirewallEndpoint(ctx, "default", &networksecurity.FirewallEndpointArgs{
+//				Name:     pulumi.String("my-firewall-endpoint"),
+//				Parent:   pulumi.String("projects/my-project-name"),
+//				Location: pulumi.String("us-central1-a"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -82,7 +112,10 @@ type FirewallEndpoint struct {
 	// endpoint. A network will only appear in this list after traffic routing is
 	// fully configured. Format: projects/{project}/global/networks/{name}.
 	AssociatedNetworks pulumi.StringArrayOutput `pulumi:"associatedNetworks"`
-	// Project to bill on endpoint uptime usage.
+	// Project to charge for the deployed firewall endpoint.
+	// This field is required for organization-scoped endpoints.
+	// For project-scoped endpoints, it is optional but must match the
+	// endpoint's project if specified.
 	BillingProjectId pulumi.StringOutput `pulumi:"billingProjectId"`
 	// Time the firewall endpoint was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -101,7 +134,7 @@ type FirewallEndpoint struct {
 	// The name of the firewall endpoint resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the parent this firewall endpoint belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -123,9 +156,6 @@ func NewFirewallEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BillingProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'BillingProjectId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -165,7 +195,10 @@ type firewallEndpointState struct {
 	// endpoint. A network will only appear in this list after traffic routing is
 	// fully configured. Format: projects/{project}/global/networks/{name}.
 	AssociatedNetworks []string `pulumi:"associatedNetworks"`
-	// Project to bill on endpoint uptime usage.
+	// Project to charge for the deployed firewall endpoint.
+	// This field is required for organization-scoped endpoints.
+	// For project-scoped endpoints, it is optional but must match the
+	// endpoint's project if specified.
 	BillingProjectId *string `pulumi:"billingProjectId"`
 	// Time the firewall endpoint was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
@@ -184,7 +217,7 @@ type firewallEndpointState struct {
 	// The name of the firewall endpoint resource.
 	Name *string `pulumi:"name"`
 	// The name of the parent this firewall endpoint belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -205,7 +238,10 @@ type FirewallEndpointState struct {
 	// endpoint. A network will only appear in this list after traffic routing is
 	// fully configured. Format: projects/{project}/global/networks/{name}.
 	AssociatedNetworks pulumi.StringArrayInput
-	// Project to bill on endpoint uptime usage.
+	// Project to charge for the deployed firewall endpoint.
+	// This field is required for organization-scoped endpoints.
+	// For project-scoped endpoints, it is optional but must match the
+	// endpoint's project if specified.
 	BillingProjectId pulumi.StringPtrInput
 	// Time the firewall endpoint was created in UTC.
 	CreateTime pulumi.StringPtrInput
@@ -224,7 +260,7 @@ type FirewallEndpointState struct {
 	// The name of the firewall endpoint resource.
 	Name pulumi.StringPtrInput
 	// The name of the parent this firewall endpoint belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -244,8 +280,11 @@ func (FirewallEndpointState) ElementType() reflect.Type {
 }
 
 type firewallEndpointArgs struct {
-	// Project to bill on endpoint uptime usage.
-	BillingProjectId string `pulumi:"billingProjectId"`
+	// Project to charge for the deployed firewall endpoint.
+	// This field is required for organization-scoped endpoints.
+	// For project-scoped endpoints, it is optional but must match the
+	// endpoint's project if specified.
+	BillingProjectId *string `pulumi:"billingProjectId"`
 	// Settings for the endpoint.
 	// Structure is documented below.
 	EndpointSettings *FirewallEndpointEndpointSettings `pulumi:"endpointSettings"`
@@ -259,14 +298,17 @@ type firewallEndpointArgs struct {
 	// The name of the firewall endpoint resource.
 	Name *string `pulumi:"name"`
 	// The name of the parent this firewall endpoint belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent string `pulumi:"parent"`
 }
 
 // The set of arguments for constructing a FirewallEndpoint resource.
 type FirewallEndpointArgs struct {
-	// Project to bill on endpoint uptime usage.
-	BillingProjectId pulumi.StringInput
+	// Project to charge for the deployed firewall endpoint.
+	// This field is required for organization-scoped endpoints.
+	// For project-scoped endpoints, it is optional but must match the
+	// endpoint's project if specified.
+	BillingProjectId pulumi.StringPtrInput
 	// Settings for the endpoint.
 	// Structure is documented below.
 	EndpointSettings FirewallEndpointEndpointSettingsPtrInput
@@ -280,7 +322,7 @@ type FirewallEndpointArgs struct {
 	// The name of the firewall endpoint resource.
 	Name pulumi.StringPtrInput
 	// The name of the parent this firewall endpoint belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringInput
 }
 
@@ -379,7 +421,10 @@ func (o FirewallEndpointOutput) AssociatedNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringArrayOutput { return v.AssociatedNetworks }).(pulumi.StringArrayOutput)
 }
 
-// Project to bill on endpoint uptime usage.
+// Project to charge for the deployed firewall endpoint.
+// This field is required for organization-scoped endpoints.
+// For project-scoped endpoints, it is optional but must match the
+// endpoint's project if specified.
 func (o FirewallEndpointOutput) BillingProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.BillingProjectId }).(pulumi.StringOutput)
 }
@@ -419,7 +464,7 @@ func (o FirewallEndpointOutput) Name() pulumi.StringOutput {
 }
 
 // The name of the parent this firewall endpoint belongs to.
-// Format: organizations/{organization_id}.
+// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 func (o FirewallEndpointOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

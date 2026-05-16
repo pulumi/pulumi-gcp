@@ -207,6 +207,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.artifactregistry.Repository;
  * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
  * import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

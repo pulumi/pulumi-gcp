@@ -50,6 +50,7 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.networkmanagement.ConnectivityTest;
@@ -167,6 +168,7 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.networkmanagement.ConnectivityTest;
@@ -284,6 +286,7 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.networkmanagement.ConnectivityTest;
@@ -401,6 +404,7 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.networkmanagement.ConnectivityTest;
@@ -518,6 +522,7 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.networkmanagement.ConnectivityTest;

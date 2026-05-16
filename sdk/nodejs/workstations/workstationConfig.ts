@@ -132,6 +132,112 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Workstation Config Hyperdisk
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: _default.name,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-central1",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "c3-standard-22",
+ *         },
+ *     },
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gceHd: {
+ *             sizeGb: 200,
+ *             reclaimPolicy: "DELETE",
+ *             archiveTimeout: "3600s",
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Workstation Config Hyperdisk Source Snapshot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tagKey1 = new gcp.tags.TagKey("tag_key1", {
+ *     parent: "organizations/0123456789",
+ *     shortName: "keyname",
+ * });
+ * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
+ *     parent: tagKey1.id,
+ *     shortName: "valuename",
+ * });
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: _default.name,
+ * });
+ * const mySourceDisk = new gcp.compute.Disk("my_source_disk", {
+ *     name: "workstation-config-source-disk",
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const mySourceSnapshot = new gcp.compute.Snapshot("my_source_snapshot", {
+ *     name: "workstation-config-source-snapshot",
+ *     sourceDisk: mySourceDisk.name,
+ *     zone: "us-central1-a",
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-central1",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "c3-standard-22",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             vmTags: pulumi.all([tagKey1.id, tagValue1.id]).apply(([tagKey1Id, tagValue1Id]) => {
+ *                 [tagKey1Id]: tagValue1Id,
+ *             }),
+ *         },
+ *     },
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gceHd: {
+ *             sourceSnapshot: mySourceSnapshot.id,
+ *             reclaimPolicy: "DELETE",
+ *             archiveTimeout: "3600s",
+ *         },
+ *     }],
+ * });
+ * ```
  * ### Workstation Config Persistent Directories
  *
  * ```typescript

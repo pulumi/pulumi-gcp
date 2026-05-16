@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateArgs;
  * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAuthConfigTemplateArgs;
  * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAuthConfigTemplateServiceAccountArgs;
+ * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAdditionalConfigTemplateArgs;
+ * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

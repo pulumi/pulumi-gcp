@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionHeaderActionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginRedirectArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

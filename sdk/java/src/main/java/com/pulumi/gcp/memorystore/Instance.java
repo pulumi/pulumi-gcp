@@ -68,6 +68,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.memorystore.InstanceArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -159,6 +161,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigRdbConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -1122,9 +1126,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      * 
      */
     @Export(name="nodeType", refs={String.class}, tree="[0]")
@@ -1134,9 +1144,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      * 
      */
     public Output<String> nodeType() {

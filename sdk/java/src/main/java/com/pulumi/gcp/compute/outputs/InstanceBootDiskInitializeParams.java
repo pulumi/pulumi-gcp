@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.InstanceBootDiskInitializeParamsSourceSnap
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -68,6 +69,11 @@ public final class InstanceBootDiskInitializeParams {
      * 
      */
     private @Nullable Integer provisionedThroughput;
+    /**
+     * @return A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+     * 
+     */
+    private @Nullable List<String> replicaZones;
     /**
      * @return A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
      * 
@@ -181,6 +187,13 @@ public final class InstanceBootDiskInitializeParams {
         return Optional.ofNullable(this.provisionedThroughput);
     }
     /**
+     * @return A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+     * 
+     */
+    public List<String> replicaZones() {
+        return this.replicaZones == null ? List.of() : this.replicaZones;
+    }
+    /**
      * @return A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
      * 
      */
@@ -258,6 +271,7 @@ public final class InstanceBootDiskInitializeParams {
         private @Nullable Map<String,String> labels;
         private @Nullable Integer provisionedIops;
         private @Nullable Integer provisionedThroughput;
+        private @Nullable List<String> replicaZones;
         private @Nullable Map<String,String> resourceManagerTags;
         private @Nullable String resourcePolicies;
         private @Nullable Integer size;
@@ -275,6 +289,7 @@ public final class InstanceBootDiskInitializeParams {
     	      this.labels = defaults.labels;
     	      this.provisionedIops = defaults.provisionedIops;
     	      this.provisionedThroughput = defaults.provisionedThroughput;
+    	      this.replicaZones = defaults.replicaZones;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.size = defaults.size;
@@ -320,6 +335,15 @@ public final class InstanceBootDiskInitializeParams {
 
             this.provisionedThroughput = provisionedThroughput;
             return this;
+        }
+        @CustomType.Setter
+        public Builder replicaZones(@Nullable List<String> replicaZones) {
+
+            this.replicaZones = replicaZones;
+            return this;
+        }
+        public Builder replicaZones(String... replicaZones) {
+            return replicaZones(List.of(replicaZones));
         }
         @CustomType.Setter
         public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
@@ -377,6 +401,7 @@ public final class InstanceBootDiskInitializeParams {
             _resultValue.labels = labels;
             _resultValue.provisionedIops = provisionedIops;
             _resultValue.provisionedThroughput = provisionedThroughput;
+            _resultValue.replicaZones = replicaZones;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.size = size;

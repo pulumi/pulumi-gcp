@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkconnectivity.Spoke;
  * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
  * import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayIpRangeReservationArgs;
  * import com.pulumi.gcp.networkconnectivity.GatewayAdvertisedRoute;
  * import com.pulumi.gcp.networkconnectivity.GatewayAdvertisedRouteArgs;
  * import java.util.ArrayList;

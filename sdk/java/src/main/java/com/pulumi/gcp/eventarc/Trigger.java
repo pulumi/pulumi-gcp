@@ -46,6 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerPortArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
  * import com.pulumi.gcp.eventarc.Trigger;
  * import com.pulumi.gcp.eventarc.TriggerArgs;

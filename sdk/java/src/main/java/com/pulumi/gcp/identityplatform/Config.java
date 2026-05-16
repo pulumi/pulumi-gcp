@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigSmsRegionConfigArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigSmsRegionConfigAllowlistOnlyArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsTriggerArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsForwardInboundCredentialsArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaSignUpQuotaConfigArgs;

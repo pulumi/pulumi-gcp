@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
  * import com.pulumi.gcp.vmwareengine.Subnet;
  * import com.pulumi.gcp.vmwareengine.SubnetArgs;
  * import java.util.ArrayList;

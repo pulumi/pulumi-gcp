@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ApiKeyArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs;
  * import com.pulumi.gcp.firebase.AndroidApp;
  * import com.pulumi.gcp.firebase.AndroidAppArgs;
  * import java.util.ArrayList;

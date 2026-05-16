@@ -73,8 +73,7 @@ class RegionBackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: (Optional, Beta)
-               Connection Tracking configuration for this BackendService.
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -369,7 +368,6 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> pulumi.Input[Optional['RegionBackendServiceConnectionTrackingPolicyArgs']]:
         """
-        (Optional, Beta)
         Connection Tracking configuration for this BackendService.
         This is available only for Layer 4 Internal Load Balancing and
         Network Load Balancing.
@@ -896,8 +894,7 @@ class _RegionBackendServiceState:
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: (Optional, Beta)
-               Connection Tracking configuration for this BackendService.
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -1205,7 +1202,6 @@ class _RegionBackendServiceState:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> pulumi.Input[Optional['RegionBackendServiceConnectionTrackingPolicyArgs']]:
         """
-        (Optional, Beta)
         Connection Tracking configuration for this BackendService.
         This is available only for Layer 4 Internal Load Balancing and
         Network Load Balancing.
@@ -2048,7 +2044,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "tracking_mode": "PER_SESSION",
                 "connection_persistence_on_unhealthy_backends": "NEVER_PERSIST",
                 "idle_timeout_sec": 60,
-                "enable_strong_affinity": True,
+                "enable_strong_affinity": False,
             })
         ```
         ### Region Backend Service Ip Address Selection Policy
@@ -2317,8 +2313,7 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: (Optional, Beta)
-               Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -2761,7 +2756,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "tracking_mode": "PER_SESSION",
                 "connection_persistence_on_unhealthy_backends": "NEVER_PERSIST",
                 "idle_timeout_sec": 60,
-                "enable_strong_affinity": True,
+                "enable_strong_affinity": False,
             })
         ```
         ### Region Backend Service Ip Address Selection Policy
@@ -3179,8 +3174,7 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: (Optional, Beta)
-               Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -3435,7 +3429,6 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceConnectionTrackingPolicy']]:
         """
-        (Optional, Beta)
         Connection Tracking configuration for this BackendService.
         This is available only for Layer 4 Internal Load Balancing and
         Network Load Balancing.

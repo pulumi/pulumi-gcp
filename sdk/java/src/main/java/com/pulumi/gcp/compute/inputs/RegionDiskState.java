@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionDiskAsyncPrimaryDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskDiskEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskGuestOsFeatureArgs;
+import com.pulumi.gcp.compute.inputs.RegionDiskSourceImageEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskSourceSnapshotEncryptionKeyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -228,6 +229,37 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<RegionDiskGuestOsFeatureArgs>>> guestOsFeatures() {
         return Optional.ofNullable(this.guestOsFeatures);
+    }
+
+    /**
+     * The image from which to initialize this disk. This can be
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+     * images names must include the family name. If they don&#39;t, use the
+     * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+     * These images can be referred by family name here.
+     * 
+     */
+    @Import(name="image")
+    private @Nullable Output<String> image;
+
+    /**
+     * @return The image from which to initialize this disk. This can be
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+     * images names must include the family name. If they don&#39;t, use the
+     * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+     * These images can be referred by family name here.
+     * 
+     */
+    public Optional<Output<String>> image() {
+        return Optional.ofNullable(this.image);
     }
 
     /**
@@ -608,6 +640,48 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sourceImageEncryptionKey")
+    private @Nullable Output<RegionDiskSourceImageEncryptionKeyArgs> sourceImageEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionDiskSourceImageEncryptionKeyArgs>> sourceImageEncryptionKey() {
+        return Optional.ofNullable(this.sourceImageEncryptionKey);
+    }
+
+    /**
+     * The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
+     * 
+     */
+    @Import(name="sourceImageId")
+    private @Nullable Output<String> sourceImageId;
+
+    /**
+     * @return The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
+     * 
+     */
+    public Optional<Output<String>> sourceImageId() {
+        return Optional.ofNullable(this.sourceImageId);
+    }
+
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -701,6 +775,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         this.effectiveLabels = $.effectiveLabels;
         this.eraseWindowsVssSignature = $.eraseWindowsVssSignature;
         this.guestOsFeatures = $.guestOsFeatures;
+        this.image = $.image;
         this.interface_ = $.interface_;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
@@ -720,6 +795,8 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         this.snapshot = $.snapshot;
         this.sourceDisk = $.sourceDisk;
         this.sourceDiskId = $.sourceDiskId;
+        this.sourceImageEncryptionKey = $.sourceImageEncryptionKey;
+        this.sourceImageId = $.sourceImageId;
         this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
         this.sourceSnapshotId = $.sourceSnapshotId;
         this.type = $.type;
@@ -1027,6 +1104,43 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder guestOsFeatures(RegionDiskGuestOsFeatureArgs... guestOsFeatures) {
             return guestOsFeatures(List.of(guestOsFeatures));
+        }
+
+        /**
+         * @param image The image from which to initialize this disk. This can be
+         * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+         * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+         * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+         * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+         * images names must include the family name. If they don&#39;t, use the
+         * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+         * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+         * These images can be referred by family name here.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder image(@Nullable Output<String> image) {
+            $.image = image;
+            return this;
+        }
+
+        /**
+         * @param image The image from which to initialize this disk. This can be
+         * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+         * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+         * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+         * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+         * images names must include the family name. If they don&#39;t, use the
+         * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+         * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+         * These images can be referred by family name here.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder image(String image) {
+            return image(Output.of(image));
         }
 
         /**
@@ -1538,6 +1652,60 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceDiskId(String sourceDiskId) {
             return sourceDiskId(Output.of(sourceDiskId));
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The customer-supplied encryption key of the source image. Required if
+         * the source image is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(@Nullable Output<RegionDiskSourceImageEncryptionKeyArgs> sourceImageEncryptionKey) {
+            $.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The customer-supplied encryption key of the source image. Required if
+         * the source image is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(RegionDiskSourceImageEncryptionKeyArgs sourceImageEncryptionKey) {
+            return sourceImageEncryptionKey(Output.of(sourceImageEncryptionKey));
+        }
+
+        /**
+         * @param sourceImageId The ID value of the image used to create this disk. This value
+         * identifies the exact image that was used to create this persistent
+         * disk. For example, if you created the persistent disk from an image
+         * that was later deleted and recreated under the same name, the source
+         * image ID would identify the exact version of the image that was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageId(@Nullable Output<String> sourceImageId) {
+            $.sourceImageId = sourceImageId;
+            return this;
+        }
+
+        /**
+         * @param sourceImageId The ID value of the image used to create this disk. This value
+         * identifies the exact image that was used to create this persistent
+         * disk. For example, if you created the persistent disk from an image
+         * that was later deleted and recreated under the same name, the source
+         * image ID would identify the exact version of the image that was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageId(String sourceImageId) {
+            return sourceImageId(Output.of(sourceImageId));
         }
 
         /**

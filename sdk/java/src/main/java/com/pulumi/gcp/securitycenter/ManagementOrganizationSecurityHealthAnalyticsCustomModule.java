@@ -93,6 +93,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.securitycenter.inputs.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs;
  * import com.pulumi.gcp.securitycenter.inputs.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs;
  * import com.pulumi.gcp.securitycenter.inputs.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgs;
+ * import com.pulumi.gcp.securitycenter.inputs.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs;
+ * import com.pulumi.gcp.securitycenter.inputs.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs;
  * import com.pulumi.gcp.securitycenter.inputs.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

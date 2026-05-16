@@ -588,7 +588,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         tenant_ar_reader = gcp.projects.IAMMember("tenant_ar_reader",
             project=project.project_id,
             role="roles/artifactregistry.reader",
-            member=tenant_mds.apply(lambda tenant_mds: std.jsondecode_output(input=tenant_mds.output)).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
+            member=std.jsondecode_output(input=tenant_mds.output).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
         reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
             display_name="reasoning-engine",
             description="Deployed with BYOC through Terraform",
@@ -1045,7 +1045,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         tenant_ar_reader = gcp.projects.IAMMember("tenant_ar_reader",
             project=project.project_id,
             role="roles/artifactregistry.reader",
-            member=tenant_mds.apply(lambda tenant_mds: std.jsondecode_output(input=tenant_mds.output)).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
+            member=std.jsondecode_output(input=tenant_mds.output).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
         reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
             display_name="reasoning-engine",
             description="Deployed with BYOC through Terraform",

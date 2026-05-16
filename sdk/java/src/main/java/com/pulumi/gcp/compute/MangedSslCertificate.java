@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.URLMapArgs;
  * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleArgs;
  * import com.pulumi.gcp.compute.TargetHttpsProxy;
  * import com.pulumi.gcp.compute.TargetHttpsProxyArgs;
  * import com.pulumi.gcp.compute.GlobalForwardingRule;

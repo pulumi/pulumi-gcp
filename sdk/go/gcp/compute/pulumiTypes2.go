@@ -13,6 +13,925 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetInstanceGroupManagerStatus struct {
+	// Status of all-instances configuration on the group.
+	AllInstancesConfigs []GetInstanceGroupManagerStatusAllInstancesConfig `pulumi:"allInstancesConfigs"`
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable bool `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls []GetInstanceGroupManagerStatusStateful `pulumi:"statefuls"`
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	VersionTargets []GetInstanceGroupManagerStatusVersionTarget `pulumi:"versionTargets"`
+}
+
+// GetInstanceGroupManagerStatusInput is an input type that accepts GetInstanceGroupManagerStatusArgs and GetInstanceGroupManagerStatusOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusInput` via:
+//
+//	GetInstanceGroupManagerStatusArgs{...}
+type GetInstanceGroupManagerStatusInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusOutput() GetInstanceGroupManagerStatusOutput
+	ToGetInstanceGroupManagerStatusOutputWithContext(context.Context) GetInstanceGroupManagerStatusOutput
+}
+
+type GetInstanceGroupManagerStatusArgs struct {
+	// Status of all-instances configuration on the group.
+	AllInstancesConfigs GetInstanceGroupManagerStatusAllInstancesConfigArrayInput `pulumi:"allInstancesConfigs"`
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable pulumi.BoolInput `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls GetInstanceGroupManagerStatusStatefulArrayInput `pulumi:"statefuls"`
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	VersionTargets GetInstanceGroupManagerStatusVersionTargetArrayInput `pulumi:"versionTargets"`
+}
+
+func (GetInstanceGroupManagerStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusArgs) ToGetInstanceGroupManagerStatusOutput() GetInstanceGroupManagerStatusOutput {
+	return i.ToGetInstanceGroupManagerStatusOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusArgs) ToGetInstanceGroupManagerStatusOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusOutput)
+}
+
+// GetInstanceGroupManagerStatusArrayInput is an input type that accepts GetInstanceGroupManagerStatusArray and GetInstanceGroupManagerStatusArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusArray{ GetInstanceGroupManagerStatusArgs{...} }
+type GetInstanceGroupManagerStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusArrayOutput() GetInstanceGroupManagerStatusArrayOutput
+	ToGetInstanceGroupManagerStatusArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusArrayOutput
+}
+
+type GetInstanceGroupManagerStatusArray []GetInstanceGroupManagerStatusInput
+
+func (GetInstanceGroupManagerStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusArray) ToGetInstanceGroupManagerStatusArrayOutput() GetInstanceGroupManagerStatusArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusArray) ToGetInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusOutput) ToGetInstanceGroupManagerStatusOutput() GetInstanceGroupManagerStatusOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusOutput) ToGetInstanceGroupManagerStatusOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusOutput {
+	return o
+}
+
+// Status of all-instances configuration on the group.
+func (o GetInstanceGroupManagerStatusOutput) AllInstancesConfigs() GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatus) []GetInstanceGroupManagerStatusAllInstancesConfig {
+		return v.AllInstancesConfigs
+	}).(GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput)
+}
+
+// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+func (o GetInstanceGroupManagerStatusOutput) IsStable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatus) bool { return v.IsStable }).(pulumi.BoolOutput)
+}
+
+// Stateful status of the given Instance Group Manager.
+func (o GetInstanceGroupManagerStatusOutput) Statefuls() GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatus) []GetInstanceGroupManagerStatusStateful { return v.Statefuls }).(GetInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+func (o GetInstanceGroupManagerStatusOutput) VersionTargets() GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatus) []GetInstanceGroupManagerStatusVersionTarget {
+		return v.VersionTargets
+	}).(GetInstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusArrayOutput) ToGetInstanceGroupManagerStatusArrayOutput() GetInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusArrayOutput) ToGetInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatus {
+		return vs[0].([]GetInstanceGroupManagerStatus)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusOutput)
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfig struct {
+	// Current all-instances configuration revision. This value is in RFC3339 text format.
+	CurrentRevision string `pulumi:"currentRevision"`
+	// A bit indicating whether this configuration has been applied to all managed instances in the group.
+	Effective bool `pulumi:"effective"`
+}
+
+// GetInstanceGroupManagerStatusAllInstancesConfigInput is an input type that accepts GetInstanceGroupManagerStatusAllInstancesConfigArgs and GetInstanceGroupManagerStatusAllInstancesConfigOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusAllInstancesConfigInput` via:
+//
+//	GetInstanceGroupManagerStatusAllInstancesConfigArgs{...}
+type GetInstanceGroupManagerStatusAllInstancesConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusAllInstancesConfigOutput() GetInstanceGroupManagerStatusAllInstancesConfigOutput
+	ToGetInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(context.Context) GetInstanceGroupManagerStatusAllInstancesConfigOutput
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfigArgs struct {
+	// Current all-instances configuration revision. This value is in RFC3339 text format.
+	CurrentRevision pulumi.StringInput `pulumi:"currentRevision"`
+	// A bit indicating whether this configuration has been applied to all managed instances in the group.
+	Effective pulumi.BoolInput `pulumi:"effective"`
+}
+
+func (GetInstanceGroupManagerStatusAllInstancesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusAllInstancesConfigArgs) ToGetInstanceGroupManagerStatusAllInstancesConfigOutput() GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return i.ToGetInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusAllInstancesConfigArgs) ToGetInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusAllInstancesConfigOutput)
+}
+
+// GetInstanceGroupManagerStatusAllInstancesConfigArrayInput is an input type that accepts GetInstanceGroupManagerStatusAllInstancesConfigArray and GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusAllInstancesConfigArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusAllInstancesConfigArray{ GetInstanceGroupManagerStatusAllInstancesConfigArgs{...} }
+type GetInstanceGroupManagerStatusAllInstancesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput
+	ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfigArray []GetInstanceGroupManagerStatusAllInstancesConfigInput
+
+func (GetInstanceGroupManagerStatusAllInstancesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusAllInstancesConfigArray) ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusAllInstancesConfigArray) ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusAllInstancesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetInstanceGroupManagerStatusAllInstancesConfigOutput() GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return o
+}
+
+// Current all-instances configuration revision. This value is in RFC3339 text format.
+func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) CurrentRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusAllInstancesConfig) string { return v.CurrentRevision }).(pulumi.StringOutput)
+}
+
+// A bit indicating whether this configuration has been applied to all managed instances in the group.
+func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) Effective() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusAllInstancesConfig) bool { return v.Effective }).(pulumi.BoolOutput)
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatusAllInstancesConfig {
+		return vs[0].([]GetInstanceGroupManagerStatusAllInstancesConfig)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusAllInstancesConfigOutput)
+}
+
+type GetInstanceGroupManagerStatusStateful struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instances.
+	PerInstanceConfigs []GetInstanceGroupManagerStatusStatefulPerInstanceConfig `pulumi:"perInstanceConfigs"`
+}
+
+// GetInstanceGroupManagerStatusStatefulInput is an input type that accepts GetInstanceGroupManagerStatusStatefulArgs and GetInstanceGroupManagerStatusStatefulOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusStatefulInput` via:
+//
+//	GetInstanceGroupManagerStatusStatefulArgs{...}
+type GetInstanceGroupManagerStatusStatefulInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusStatefulOutput() GetInstanceGroupManagerStatusStatefulOutput
+	ToGetInstanceGroupManagerStatusStatefulOutputWithContext(context.Context) GetInstanceGroupManagerStatusStatefulOutput
+}
+
+type GetInstanceGroupManagerStatusStatefulArgs struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig pulumi.BoolInput `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instances.
+	PerInstanceConfigs GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput `pulumi:"perInstanceConfigs"`
+}
+
+func (GetInstanceGroupManagerStatusStatefulArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusStatefulArgs) ToGetInstanceGroupManagerStatusStatefulOutput() GetInstanceGroupManagerStatusStatefulOutput {
+	return i.ToGetInstanceGroupManagerStatusStatefulOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusStatefulArgs) ToGetInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusStatefulOutput)
+}
+
+// GetInstanceGroupManagerStatusStatefulArrayInput is an input type that accepts GetInstanceGroupManagerStatusStatefulArray and GetInstanceGroupManagerStatusStatefulArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusStatefulArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusStatefulArray{ GetInstanceGroupManagerStatusStatefulArgs{...} }
+type GetInstanceGroupManagerStatusStatefulArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusStatefulArrayOutput() GetInstanceGroupManagerStatusStatefulArrayOutput
+	ToGetInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusStatefulArrayOutput
+}
+
+type GetInstanceGroupManagerStatusStatefulArray []GetInstanceGroupManagerStatusStatefulInput
+
+func (GetInstanceGroupManagerStatusStatefulArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusStatefulArray) ToGetInstanceGroupManagerStatusStatefulArrayOutput() GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusStatefulArray) ToGetInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusStatefulOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusStatefulOutput) ToGetInstanceGroupManagerStatusStatefulOutput() GetInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulOutput) ToGetInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+func (o GetInstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusStateful) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
+}
+
+// Status of per-instance configs on the instances.
+func (o GetInstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusStateful) []GetInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return v.PerInstanceConfigs
+	}).(GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusStatefulArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusStatefulArrayOutput) ToGetInstanceGroupManagerStatusStatefulArrayOutput() GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulArrayOutput) ToGetInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatusStateful {
+		return vs[0].([]GetInstanceGroupManagerStatusStateful)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusStatefulOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfig struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+	AllEffective bool `pulumi:"allEffective"`
+}
+
+// GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput is an input type that accepts GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs and GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput` via:
+//
+//	GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...}
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+	ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+	AllEffective pulumi.BoolInput `pulumi:"allEffective"`
+}
+
+func (GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return i.ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+// GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput is an input type that accepts GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray and GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray{ GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...} }
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+	ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray []GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput
+
+func (GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) AllEffective() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusStatefulPerInstanceConfig) bool { return v.AllEffective }).(pulumi.BoolOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return vs[0].([]GetInstanceGroupManagerStatusStatefulPerInstanceConfig)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+type GetInstanceGroupManagerStatusVersionTarget struct {
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	IsReached bool `pulumi:"isReached"`
+}
+
+// GetInstanceGroupManagerStatusVersionTargetInput is an input type that accepts GetInstanceGroupManagerStatusVersionTargetArgs and GetInstanceGroupManagerStatusVersionTargetOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusVersionTargetInput` via:
+//
+//	GetInstanceGroupManagerStatusVersionTargetArgs{...}
+type GetInstanceGroupManagerStatusVersionTargetInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusVersionTargetOutput() GetInstanceGroupManagerStatusVersionTargetOutput
+	ToGetInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Context) GetInstanceGroupManagerStatusVersionTargetOutput
+}
+
+type GetInstanceGroupManagerStatusVersionTargetArgs struct {
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	IsReached pulumi.BoolInput `pulumi:"isReached"`
+}
+
+func (GetInstanceGroupManagerStatusVersionTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusVersionTargetArgs) ToGetInstanceGroupManagerStatusVersionTargetOutput() GetInstanceGroupManagerStatusVersionTargetOutput {
+	return i.ToGetInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusVersionTargetArgs) ToGetInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusVersionTargetOutput)
+}
+
+// GetInstanceGroupManagerStatusVersionTargetArrayInput is an input type that accepts GetInstanceGroupManagerStatusVersionTargetArray and GetInstanceGroupManagerStatusVersionTargetArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusVersionTargetArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusVersionTargetArray{ GetInstanceGroupManagerStatusVersionTargetArgs{...} }
+type GetInstanceGroupManagerStatusVersionTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusVersionTargetArrayOutput() GetInstanceGroupManagerStatusVersionTargetArrayOutput
+	ToGetInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusVersionTargetArrayOutput
+}
+
+type GetInstanceGroupManagerStatusVersionTargetArray []GetInstanceGroupManagerStatusVersionTargetInput
+
+func (GetInstanceGroupManagerStatusVersionTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusVersionTargetArray) ToGetInstanceGroupManagerStatusVersionTargetArrayOutput() GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusVersionTargetArray) ToGetInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusVersionTargetOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusVersionTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetOutput) ToGetInstanceGroupManagerStatusVersionTargetOutput() GetInstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetOutput) ToGetInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+func (o GetInstanceGroupManagerStatusVersionTargetOutput) IsReached() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusVersionTarget) bool { return v.IsReached }).(pulumi.BoolOutput)
+}
+
+type GetInstanceGroupManagerStatusVersionTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusVersionTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetArrayOutput) ToGetInstanceGroupManagerStatusVersionTargetArrayOutput() GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetArrayOutput) ToGetInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatusVersionTarget {
+		return vs[0].([]GetInstanceGroupManagerStatusVersionTarget)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusVersionTargetOutput)
+}
+
+type GetInstanceGroupManagerTargetSizePolicy struct {
+	// The mode of target size policy based on which the MIG creates its VMs individually or all at once.
+	Mode string `pulumi:"mode"`
+}
+
+// GetInstanceGroupManagerTargetSizePolicyInput is an input type that accepts GetInstanceGroupManagerTargetSizePolicyArgs and GetInstanceGroupManagerTargetSizePolicyOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerTargetSizePolicyInput` via:
+//
+//	GetInstanceGroupManagerTargetSizePolicyArgs{...}
+type GetInstanceGroupManagerTargetSizePolicyInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerTargetSizePolicyOutput() GetInstanceGroupManagerTargetSizePolicyOutput
+	ToGetInstanceGroupManagerTargetSizePolicyOutputWithContext(context.Context) GetInstanceGroupManagerTargetSizePolicyOutput
+}
+
+type GetInstanceGroupManagerTargetSizePolicyArgs struct {
+	// The mode of target size policy based on which the MIG creates its VMs individually or all at once.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetInstanceGroupManagerTargetSizePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerTargetSizePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerTargetSizePolicyArgs) ToGetInstanceGroupManagerTargetSizePolicyOutput() GetInstanceGroupManagerTargetSizePolicyOutput {
+	return i.ToGetInstanceGroupManagerTargetSizePolicyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerTargetSizePolicyArgs) ToGetInstanceGroupManagerTargetSizePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerTargetSizePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerTargetSizePolicyOutput)
+}
+
+// GetInstanceGroupManagerTargetSizePolicyArrayInput is an input type that accepts GetInstanceGroupManagerTargetSizePolicyArray and GetInstanceGroupManagerTargetSizePolicyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerTargetSizePolicyArrayInput` via:
+//
+//	GetInstanceGroupManagerTargetSizePolicyArray{ GetInstanceGroupManagerTargetSizePolicyArgs{...} }
+type GetInstanceGroupManagerTargetSizePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerTargetSizePolicyArrayOutput() GetInstanceGroupManagerTargetSizePolicyArrayOutput
+	ToGetInstanceGroupManagerTargetSizePolicyArrayOutputWithContext(context.Context) GetInstanceGroupManagerTargetSizePolicyArrayOutput
+}
+
+type GetInstanceGroupManagerTargetSizePolicyArray []GetInstanceGroupManagerTargetSizePolicyInput
+
+func (GetInstanceGroupManagerTargetSizePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerTargetSizePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerTargetSizePolicyArray) ToGetInstanceGroupManagerTargetSizePolicyArrayOutput() GetInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return i.ToGetInstanceGroupManagerTargetSizePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerTargetSizePolicyArray) ToGetInstanceGroupManagerTargetSizePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerTargetSizePolicyArrayOutput)
+}
+
+type GetInstanceGroupManagerTargetSizePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerTargetSizePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerTargetSizePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerTargetSizePolicyOutput) ToGetInstanceGroupManagerTargetSizePolicyOutput() GetInstanceGroupManagerTargetSizePolicyOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerTargetSizePolicyOutput) ToGetInstanceGroupManagerTargetSizePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerTargetSizePolicyOutput {
+	return o
+}
+
+// The mode of target size policy based on which the MIG creates its VMs individually or all at once.
+func (o GetInstanceGroupManagerTargetSizePolicyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerTargetSizePolicy) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerTargetSizePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerTargetSizePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerTargetSizePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerTargetSizePolicyArrayOutput) ToGetInstanceGroupManagerTargetSizePolicyArrayOutput() GetInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerTargetSizePolicyArrayOutput) ToGetInstanceGroupManagerTargetSizePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerTargetSizePolicyArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerTargetSizePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerTargetSizePolicy {
+		return vs[0].([]GetInstanceGroupManagerTargetSizePolicy)[vs[1].(int)]
+	}).(GetInstanceGroupManagerTargetSizePolicyOutput)
+}
+
+type GetInstanceGroupManagerUpdatePolicy struct {
+	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+	MaxSurgeFixed int `pulumi:"maxSurgeFixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+	MaxSurgePercent int `pulumi:"maxSurgePercent"`
+	// Specifies a fixed number of VM instances. This must be a positive integer.
+	MaxUnavailableFixed int `pulumi:"maxUnavailableFixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+	MaxUnavailablePercent int `pulumi:"maxUnavailablePercent"`
+	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+	MinReadySec int `pulumi:"minReadySec"`
+	// Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+	MinimalAction string `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	MostDisruptiveAllowedAction string `pulumi:"mostDisruptiveAllowedAction"`
+	// The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	ReplacementMethod string `pulumi:"replacementMethod"`
+	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceGroupManagerUpdatePolicyInput is an input type that accepts GetInstanceGroupManagerUpdatePolicyArgs and GetInstanceGroupManagerUpdatePolicyOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerUpdatePolicyInput` via:
+//
+//	GetInstanceGroupManagerUpdatePolicyArgs{...}
+type GetInstanceGroupManagerUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerUpdatePolicyOutput() GetInstanceGroupManagerUpdatePolicyOutput
+	ToGetInstanceGroupManagerUpdatePolicyOutputWithContext(context.Context) GetInstanceGroupManagerUpdatePolicyOutput
+}
+
+type GetInstanceGroupManagerUpdatePolicyArgs struct {
+	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+	MaxSurgeFixed pulumi.IntInput `pulumi:"maxSurgeFixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+	MaxSurgePercent pulumi.IntInput `pulumi:"maxSurgePercent"`
+	// Specifies a fixed number of VM instances. This must be a positive integer.
+	MaxUnavailableFixed pulumi.IntInput `pulumi:"maxUnavailableFixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+	MaxUnavailablePercent pulumi.IntInput `pulumi:"maxUnavailablePercent"`
+	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+	MinReadySec pulumi.IntInput `pulumi:"minReadySec"`
+	// Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+	MinimalAction pulumi.StringInput `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	MostDisruptiveAllowedAction pulumi.StringInput `pulumi:"mostDisruptiveAllowedAction"`
+	// The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	ReplacementMethod pulumi.StringInput `pulumi:"replacementMethod"`
+	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceGroupManagerUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerUpdatePolicyArgs) ToGetInstanceGroupManagerUpdatePolicyOutput() GetInstanceGroupManagerUpdatePolicyOutput {
+	return i.ToGetInstanceGroupManagerUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerUpdatePolicyArgs) ToGetInstanceGroupManagerUpdatePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerUpdatePolicyOutput)
+}
+
+// GetInstanceGroupManagerUpdatePolicyArrayInput is an input type that accepts GetInstanceGroupManagerUpdatePolicyArray and GetInstanceGroupManagerUpdatePolicyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerUpdatePolicyArrayInput` via:
+//
+//	GetInstanceGroupManagerUpdatePolicyArray{ GetInstanceGroupManagerUpdatePolicyArgs{...} }
+type GetInstanceGroupManagerUpdatePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerUpdatePolicyArrayOutput() GetInstanceGroupManagerUpdatePolicyArrayOutput
+	ToGetInstanceGroupManagerUpdatePolicyArrayOutputWithContext(context.Context) GetInstanceGroupManagerUpdatePolicyArrayOutput
+}
+
+type GetInstanceGroupManagerUpdatePolicyArray []GetInstanceGroupManagerUpdatePolicyInput
+
+func (GetInstanceGroupManagerUpdatePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerUpdatePolicyArray) ToGetInstanceGroupManagerUpdatePolicyArrayOutput() GetInstanceGroupManagerUpdatePolicyArrayOutput {
+	return i.ToGetInstanceGroupManagerUpdatePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerUpdatePolicyArray) ToGetInstanceGroupManagerUpdatePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerUpdatePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerUpdatePolicyArrayOutput)
+}
+
+type GetInstanceGroupManagerUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) ToGetInstanceGroupManagerUpdatePolicyOutput() GetInstanceGroupManagerUpdatePolicyOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) ToGetInstanceGroupManagerUpdatePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerUpdatePolicyOutput {
+	return o
+}
+
+// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxSurgeFixed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgeFixed }).(pulumi.IntOutput)
+}
+
+// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxSurgePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgePercent }).(pulumi.IntOutput)
+}
+
+// Specifies a fixed number of VM instances. This must be a positive integer.
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxUnavailableFixed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailableFixed }).(pulumi.IntOutput)
+}
+
+// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxUnavailablePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailablePercent }).(pulumi.IntOutput)
+}
+
+// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MinReadySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MinReadySec }).(pulumi.IntOutput)
+}
+
+// Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MinimalAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.MinimalAction }).(pulumi.StringOutput)
+}
+
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MostDisruptiveAllowedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.MostDisruptiveAllowedAction }).(pulumi.StringOutput)
+}
+
+// The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+func (o GetInstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.ReplacementMethod }).(pulumi.StringOutput)
+}
+
+// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+func (o GetInstanceGroupManagerUpdatePolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerUpdatePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerUpdatePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyArrayOutput) ToGetInstanceGroupManagerUpdatePolicyArrayOutput() GetInstanceGroupManagerUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyArrayOutput) ToGetInstanceGroupManagerUpdatePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerUpdatePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerUpdatePolicy {
+		return vs[0].([]GetInstanceGroupManagerUpdatePolicy)[vs[1].(int)]
+	}).(GetInstanceGroupManagerUpdatePolicyOutput)
+}
+
+type GetInstanceGroupManagerVersion struct {
+	// The full URL to an instance template from which all new instances of this version will be created.
+	InstanceTemplate string `pulumi:"instanceTemplate"`
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	// The number of instances calculated as a fixed number or a percentage depending on the settings.
+	TargetSizes []GetInstanceGroupManagerVersionTargetSize `pulumi:"targetSizes"`
+}
+
+// GetInstanceGroupManagerVersionInput is an input type that accepts GetInstanceGroupManagerVersionArgs and GetInstanceGroupManagerVersionOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerVersionInput` via:
+//
+//	GetInstanceGroupManagerVersionArgs{...}
+type GetInstanceGroupManagerVersionInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerVersionOutput() GetInstanceGroupManagerVersionOutput
+	ToGetInstanceGroupManagerVersionOutputWithContext(context.Context) GetInstanceGroupManagerVersionOutput
+}
+
+type GetInstanceGroupManagerVersionArgs struct {
+	// The full URL to an instance template from which all new instances of this version will be created.
+	InstanceTemplate pulumi.StringInput `pulumi:"instanceTemplate"`
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number of instances calculated as a fixed number or a percentage depending on the settings.
+	TargetSizes GetInstanceGroupManagerVersionTargetSizeArrayInput `pulumi:"targetSizes"`
+}
+
+func (GetInstanceGroupManagerVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerVersionArgs) ToGetInstanceGroupManagerVersionOutput() GetInstanceGroupManagerVersionOutput {
+	return i.ToGetInstanceGroupManagerVersionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerVersionArgs) ToGetInstanceGroupManagerVersionOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerVersionOutput)
+}
+
+// GetInstanceGroupManagerVersionArrayInput is an input type that accepts GetInstanceGroupManagerVersionArray and GetInstanceGroupManagerVersionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerVersionArrayInput` via:
+//
+//	GetInstanceGroupManagerVersionArray{ GetInstanceGroupManagerVersionArgs{...} }
+type GetInstanceGroupManagerVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerVersionArrayOutput() GetInstanceGroupManagerVersionArrayOutput
+	ToGetInstanceGroupManagerVersionArrayOutputWithContext(context.Context) GetInstanceGroupManagerVersionArrayOutput
+}
+
+type GetInstanceGroupManagerVersionArray []GetInstanceGroupManagerVersionInput
+
+func (GetInstanceGroupManagerVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerVersionArray) ToGetInstanceGroupManagerVersionArrayOutput() GetInstanceGroupManagerVersionArrayOutput {
+	return i.ToGetInstanceGroupManagerVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerVersionArray) ToGetInstanceGroupManagerVersionArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerVersionArrayOutput)
+}
+
+type GetInstanceGroupManagerVersionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerVersionOutput) ToGetInstanceGroupManagerVersionOutput() GetInstanceGroupManagerVersionOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionOutput) ToGetInstanceGroupManagerVersionOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionOutput {
+	return o
+}
+
+// The full URL to an instance template from which all new instances of this version will be created.
+func (o GetInstanceGroupManagerVersionOutput) InstanceTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersion) string { return v.InstanceTemplate }).(pulumi.StringOutput)
+}
+
+// The name of the instance group. Either `name` or `selfLink` must be provided.
+func (o GetInstanceGroupManagerVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of instances calculated as a fixed number or a percentage depending on the settings.
+func (o GetInstanceGroupManagerVersionOutput) TargetSizes() GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersion) []GetInstanceGroupManagerVersionTargetSize {
+		return v.TargetSizes
+	}).(GetInstanceGroupManagerVersionTargetSizeArrayOutput)
+}
+
+type GetInstanceGroupManagerVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerVersionArrayOutput) ToGetInstanceGroupManagerVersionArrayOutput() GetInstanceGroupManagerVersionArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionArrayOutput) ToGetInstanceGroupManagerVersionArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerVersion {
+		return vs[0].([]GetInstanceGroupManagerVersion)[vs[1].(int)]
+	}).(GetInstanceGroupManagerVersionOutput)
+}
+
 type GetInstanceGroupManagerVersionTargetSize struct {
 	// The number of instances which are managed for this version. Conflicts with percent.
 	Fixed int `pulumi:"fixed"`
@@ -584,7 +1503,7 @@ type GetInstanceNetworkInterface struct {
 	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp string `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA and IDPF
 	NicType string `pulumi:"nicType"`
 	// Name of the parent network interface of a dynamic network interface.
 	ParentNicName string `pulumi:"parentNicName"`
@@ -639,7 +1558,7 @@ type GetInstanceNetworkInterfaceArgs struct {
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA and IDPF
 	NicType pulumi.StringInput `pulumi:"nicType"`
 	// Name of the parent network interface of a dynamic network interface.
 	ParentNicName pulumi.StringInput `pulumi:"parentNicName"`
@@ -771,7 +1690,7 @@ func (o GetInstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
-// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA and IDPF
 func (o GetInstanceNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
@@ -4171,7 +5090,7 @@ type GetInstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp string `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, IRDMA and IDPF
 	NicType string `pulumi:"nicType"`
 	// Name of the parent network interface of a dynamic network interface.
 	ParentNicName string `pulumi:"parentNicName"`
@@ -4234,7 +5153,7 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, IRDMA and IDPF
 	NicType pulumi.StringInput `pulumi:"nicType"`
 	// Name of the parent network interface of a dynamic network interface.
 	ParentNicName pulumi.StringInput `pulumi:"parentNicName"`
@@ -4375,7 +5294,7 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringOutp
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
-// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, IRDMA and IDPF
 func (o GetInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
@@ -12467,6 +13386,154 @@ func (o GetRegionDiskGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GetRegi
 	}).(GetRegionDiskGuestOsFeatureOutput)
 }
 
+type GetRegionDiskSourceImageEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 string `pulumi:"sha256"`
+}
+
+// GetRegionDiskSourceImageEncryptionKeyInput is an input type that accepts GetRegionDiskSourceImageEncryptionKeyArgs and GetRegionDiskSourceImageEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetRegionDiskSourceImageEncryptionKeyInput` via:
+//
+//	GetRegionDiskSourceImageEncryptionKeyArgs{...}
+type GetRegionDiskSourceImageEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskSourceImageEncryptionKeyOutput() GetRegionDiskSourceImageEncryptionKeyOutput
+	ToGetRegionDiskSourceImageEncryptionKeyOutputWithContext(context.Context) GetRegionDiskSourceImageEncryptionKeyOutput
+}
+
+type GetRegionDiskSourceImageEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetRegionDiskSourceImageEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskSourceImageEncryptionKeyArgs) ToGetRegionDiskSourceImageEncryptionKeyOutput() GetRegionDiskSourceImageEncryptionKeyOutput {
+	return i.ToGetRegionDiskSourceImageEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskSourceImageEncryptionKeyArgs) ToGetRegionDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskSourceImageEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskSourceImageEncryptionKeyOutput)
+}
+
+// GetRegionDiskSourceImageEncryptionKeyArrayInput is an input type that accepts GetRegionDiskSourceImageEncryptionKeyArray and GetRegionDiskSourceImageEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetRegionDiskSourceImageEncryptionKeyArrayInput` via:
+//
+//	GetRegionDiskSourceImageEncryptionKeyArray{ GetRegionDiskSourceImageEncryptionKeyArgs{...} }
+type GetRegionDiskSourceImageEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskSourceImageEncryptionKeyArrayOutput() GetRegionDiskSourceImageEncryptionKeyArrayOutput
+	ToGetRegionDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Context) GetRegionDiskSourceImageEncryptionKeyArrayOutput
+}
+
+type GetRegionDiskSourceImageEncryptionKeyArray []GetRegionDiskSourceImageEncryptionKeyInput
+
+func (GetRegionDiskSourceImageEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskSourceImageEncryptionKeyArray) ToGetRegionDiskSourceImageEncryptionKeyArrayOutput() GetRegionDiskSourceImageEncryptionKeyArrayOutput {
+	return i.ToGetRegionDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskSourceImageEncryptionKeyArray) ToGetRegionDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskSourceImageEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskSourceImageEncryptionKeyArrayOutput)
+}
+
+type GetRegionDiskSourceImageEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskSourceImageEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskSourceImageEncryptionKeyOutput) ToGetRegionDiskSourceImageEncryptionKeyOutput() GetRegionDiskSourceImageEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceImageEncryptionKeyOutput) ToGetRegionDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskSourceImageEncryptionKeyOutput {
+	return o
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o GetRegionDiskSourceImageEncryptionKeyOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceImageEncryptionKey) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o GetRegionDiskSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceImageEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+func (o GetRegionDiskSourceImageEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceImageEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+// customer-supplied encryption key to either encrypt or decrypt
+// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+func (o GetRegionDiskSourceImageEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceImageEncryptionKey) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
+}
+
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
+func (o GetRegionDiskSourceImageEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceImageEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetRegionDiskSourceImageEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskSourceImageEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskSourceImageEncryptionKeyArrayOutput) ToGetRegionDiskSourceImageEncryptionKeyArrayOutput() GetRegionDiskSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceImageEncryptionKeyArrayOutput) ToGetRegionDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceImageEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetRegionDiskSourceImageEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionDiskSourceImageEncryptionKey {
+		return vs[0].([]GetRegionDiskSourceImageEncryptionKey)[vs[1].(int)]
+	}).(GetRegionDiskSourceImageEncryptionKeyOutput)
+}
+
 type GetRegionDiskSourceSnapshotEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -17356,7 +18423,7 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp string `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, IRDMA and IDPF
 	NicType string `pulumi:"nicType"`
 	// Name of the parent network interface of a dynamic network interface.
 	ParentNicName string `pulumi:"parentNicName"`
@@ -17419,7 +18486,7 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, IRDMA and IDPF
 	NicType pulumi.StringInput `pulumi:"nicType"`
 	// Name of the parent network interface of a dynamic network interface.
 	ParentNicName pulumi.StringInput `pulumi:"parentNicName"`
@@ -17560,7 +18627,7 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.Stri
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
-// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, IRDMA and IDPF
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
@@ -35406,6 +36473,22 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusInput)(nil)).Elem(), GetInstanceGroupManagerStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusAllInstancesConfigInput)(nil)).Elem(), GetInstanceGroupManagerStatusAllInstancesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusAllInstancesConfigArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusAllInstancesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulInput)(nil)).Elem(), GetInstanceGroupManagerStatusStatefulArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusStatefulArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput)(nil)).Elem(), GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusVersionTargetInput)(nil)).Elem(), GetInstanceGroupManagerStatusVersionTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusVersionTargetArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusVersionTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerTargetSizePolicyInput)(nil)).Elem(), GetInstanceGroupManagerTargetSizePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerTargetSizePolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerTargetSizePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerUpdatePolicyInput)(nil)).Elem(), GetInstanceGroupManagerUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerUpdatePolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerUpdatePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionInput)(nil)).Elem(), GetInstanceGroupManagerVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionArrayInput)(nil)).Elem(), GetInstanceGroupManagerVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSizeInput)(nil)).Elem(), GetInstanceGroupManagerVersionTargetSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSizeArrayInput)(nil)).Elem(), GetInstanceGroupManagerVersionTargetSizeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupNamedPortTypeInput)(nil)).Elem(), GetInstanceGroupNamedPortTypeArgs{})
@@ -35586,6 +36669,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetRegionDiskDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskGuestOsFeatureInput)(nil)).Elem(), GetRegionDiskGuestOsFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskGuestOsFeatureArrayInput)(nil)).Elem(), GetRegionDiskGuestOsFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskSourceImageEncryptionKeyInput)(nil)).Elem(), GetRegionDiskSourceImageEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskSourceImageEncryptionKeyArrayInput)(nil)).Elem(), GetRegionDiskSourceImageEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetRegionDiskSourceSnapshotEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetRegionDiskSourceSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceInput)(nil)).Elem(), GetRegionInstanceGroupInstanceArgs{})
@@ -35936,6 +37021,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusAllInstancesConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusStatefulOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusStatefulArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusVersionTargetOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusVersionTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerTargetSizePolicyOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerTargetSizePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerUpdatePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionTargetSizeOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionTargetSizeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeOutput{})
@@ -36116,6 +37217,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionDiskDiskEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionDiskGuestOsFeatureOutput{})
 	pulumi.RegisterOutputType(GetRegionDiskGuestOsFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskSourceImageEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskSourceImageEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionDiskSourceSnapshotEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceOutput{})

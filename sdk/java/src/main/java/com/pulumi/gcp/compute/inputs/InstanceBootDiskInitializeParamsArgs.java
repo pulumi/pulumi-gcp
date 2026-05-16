@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsSourceSnaps
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -155,6 +156,21 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     }
 
     /**
+     * A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+     * 
+     */
+    @Import(name="replicaZones")
+    private @Nullable Output<List<String>> replicaZones;
+
+    /**
+     * @return A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+     * 
+     */
+    public Optional<Output<List<String>>> replicaZones() {
+        return Optional.ofNullable(this.replicaZones);
+    }
+
+    /**
      * A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
      * 
      */
@@ -295,6 +311,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         this.labels = $.labels;
         this.provisionedIops = $.provisionedIops;
         this.provisionedThroughput = $.provisionedThroughput;
+        this.replicaZones = $.replicaZones;
         this.resourceManagerTags = $.resourceManagerTags;
         this.resourcePolicies = $.resourcePolicies;
         this.size = $.size;
@@ -491,6 +508,37 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          */
         public Builder provisionedThroughput(Integer provisionedThroughput) {
             return provisionedThroughput(Output.of(provisionedThroughput));
+        }
+
+        /**
+         * @param replicaZones A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(@Nullable Output<List<String>> replicaZones) {
+            $.replicaZones = replicaZones;
+            return this;
+        }
+
+        /**
+         * @param replicaZones A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(List<String> replicaZones) {
+            return replicaZones(Output.of(replicaZones));
+        }
+
+        /**
+         * @param replicaZones A list of short names or selfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(String... replicaZones) {
+            return replicaZones(List.of(replicaZones));
         }
 
         /**

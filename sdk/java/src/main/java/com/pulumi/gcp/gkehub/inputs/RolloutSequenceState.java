@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceIgnoredClustersSelectorArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageArgs;
 import java.lang.String;
@@ -18,6 +19,25 @@ import javax.annotation.Nullable;
 public final class RolloutSequenceState extends com.pulumi.resources.ResourceArgs {
 
     public static final RolloutSequenceState Empty = new RolloutSequenceState();
+
+    /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="autoUpgradeConfig")
+    private @Nullable Output<RolloutSequenceAutoUpgradeConfigArgs> autoUpgradeConfig;
+
+    /**
+     * @return Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RolloutSequenceAutoUpgradeConfigArgs>> autoUpgradeConfig() {
+        return Optional.ofNullable(this.autoUpgradeConfig);
+    }
 
     /**
      * The timestamp at which the Rollout Sequence was created.
@@ -246,6 +266,7 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
     private RolloutSequenceState() {}
 
     private RolloutSequenceState(RolloutSequenceState $) {
+        this.autoUpgradeConfig = $.autoUpgradeConfig;
         this.createTime = $.createTime;
         this.deleteTime = $.deleteTime;
         this.displayName = $.displayName;
@@ -278,6 +299,31 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
 
         public Builder(RolloutSequenceState defaults) {
             $ = new RolloutSequenceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoUpgradeConfig Configuration for automatic upgrades.
+         * If not specified, the system applies default behavior.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeConfig(@Nullable Output<RolloutSequenceAutoUpgradeConfigArgs> autoUpgradeConfig) {
+            $.autoUpgradeConfig = autoUpgradeConfig;
+            return this;
+        }
+
+        /**
+         * @param autoUpgradeConfig Configuration for automatic upgrades.
+         * If not specified, the system applies default behavior.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeConfig(RolloutSequenceAutoUpgradeConfigArgs autoUpgradeConfig) {
+            return autoUpgradeConfig(Output.of(autoUpgradeConfig));
         }
 
         /**

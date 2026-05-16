@@ -119,6 +119,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
  * import com.pulumi.gcp.storage.inputs.BucketObjectContextsArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketObjectContextsCustomArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

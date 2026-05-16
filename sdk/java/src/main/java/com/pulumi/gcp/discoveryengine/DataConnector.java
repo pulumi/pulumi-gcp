@@ -129,6 +129,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.discoveryengine.DataConnectorArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorEntityArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorDestinationConfigArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorDestinationConfigDestinationArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorActionConfigArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorBapConfigArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;

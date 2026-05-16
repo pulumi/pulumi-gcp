@@ -204,6 +204,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NodeGroup;
  * import com.pulumi.gcp.compute.NodeGroupArgs;
  * import com.pulumi.gcp.compute.inputs.NodeGroupShareSettingsArgs;
+ * import com.pulumi.gcp.compute.inputs.NodeGroupShareSettingsProjectMapArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

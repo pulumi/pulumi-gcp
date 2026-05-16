@@ -136,9 +136,9 @@ import * as utilities from "../utilities";
  * const tenantArReader = new gcp.projects.IAMMember("tenant_ar_reader", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/artifactregistry.reader",
- *     member: tenantMds.apply(tenantMds => std.jsondecodeOutput({
- *         input: tenantMds.output,
- *     })).apply(invoke => `serviceAccount:${invoke.result?.output}`),
+ *     member: std.jsondecodeOutput({
+ *         input: tenantMds.apply(tenantMds => tenantMds.output),
+ *     }).apply(invoke => `serviceAccount:${invoke.result?.output}`),
  * });
  * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
  *     displayName: "reasoning-engine",
