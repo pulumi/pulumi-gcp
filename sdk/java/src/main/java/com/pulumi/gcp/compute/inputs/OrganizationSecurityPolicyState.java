@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyAdvancedOptionsConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class OrganizationSecurityPolicyState extends com.pulumi.resources.ResourceArgs {
 
     public static final OrganizationSecurityPolicyState Empty = new OrganizationSecurityPolicyState();
+
+    /**
+     * Additional options for this security policy.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="advancedOptionsConfig")
+    private @Nullable Output<OrganizationSecurityPolicyAdvancedOptionsConfigArgs> advancedOptionsConfig;
+
+    /**
+     * @return Additional options for this security policy.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<OrganizationSecurityPolicyAdvancedOptionsConfigArgs>> advancedOptionsConfig() {
+        return Optional.ofNullable(this.advancedOptionsConfig);
+    }
 
     /**
      * A textual description for the organization security policy.
@@ -131,6 +149,7 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
     private OrganizationSecurityPolicyState() {}
 
     private OrganizationSecurityPolicyState(OrganizationSecurityPolicyState $) {
+        this.advancedOptionsConfig = $.advancedOptionsConfig;
         this.description = $.description;
         this.displayName = $.displayName;
         this.fingerprint = $.fingerprint;
@@ -156,6 +175,29 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
 
         public Builder(OrganizationSecurityPolicyState defaults) {
             $ = new OrganizationSecurityPolicyState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedOptionsConfig Additional options for this security policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedOptionsConfig(@Nullable Output<OrganizationSecurityPolicyAdvancedOptionsConfigArgs> advancedOptionsConfig) {
+            $.advancedOptionsConfig = advancedOptionsConfig;
+            return this;
+        }
+
+        /**
+         * @param advancedOptionsConfig Additional options for this security policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedOptionsConfig(OrganizationSecurityPolicyAdvancedOptionsConfigArgs advancedOptionsConfig) {
+            return advancedOptionsConfig(Output.of(advancedOptionsConfig));
         }
 
         /**

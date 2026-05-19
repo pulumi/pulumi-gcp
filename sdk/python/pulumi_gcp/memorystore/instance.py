@@ -92,9 +92,15 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
+               CUSTOM_PICO
+               CUSTOM_MICRO
+               CUSTOM_MINI
                HIGHMEM_MEDIUM
+               HIGHCPU_MEDIUM
                HIGHMEM_XLARGE
                STANDARD_SMALL
+               STANDARD_LARGE
+               HIGHMEM_2XLARGE
         :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Represents persistence configuration for a instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -411,9 +417,15 @@ class InstanceArgs:
         Optional. Machine type for individual nodes of the instance.
         Possible values:
         SHARED_CORE_NANO
+        CUSTOM_PICO
+        CUSTOM_MICRO
+        CUSTOM_MINI
         HIGHMEM_MEDIUM
+        HIGHCPU_MEDIUM
         HIGHMEM_XLARGE
         STANDARD_SMALL
+        STANDARD_LARGE
+        HIGHMEM_2XLARGE
         """
         return pulumi.get(self, "node_type")
 
@@ -626,9 +638,15 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
+               CUSTOM_PICO
+               CUSTOM_MICRO
+               CUSTOM_MINI
                HIGHMEM_MEDIUM
+               HIGHCPU_MEDIUM
                HIGHMEM_XLARGE
                STANDARD_SMALL
+               STANDARD_LARGE
+               HIGHMEM_2XLARGE
         :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Represents persistence configuration for a instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1137,9 +1155,15 @@ class _InstanceState:
         Optional. Machine type for individual nodes of the instance.
         Possible values:
         SHARED_CORE_NANO
+        CUSTOM_PICO
+        CUSTOM_MICRO
+        CUSTOM_MINI
         HIGHMEM_MEDIUM
+        HIGHCPU_MEDIUM
         HIGHMEM_XLARGE
         STANDARD_SMALL
+        STANDARD_LARGE
+        HIGHMEM_2XLARGE
         """
         return pulumi.get(self, "node_type")
 
@@ -1804,9 +1828,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
+               CUSTOM_PICO
+               CUSTOM_MICRO
+               CUSTOM_MINI
                HIGHMEM_MEDIUM
+               HIGHCPU_MEDIUM
                HIGHMEM_XLARGE
                STANDARD_SMALL
+               STANDARD_LARGE
+               HIGHMEM_2XLARGE
         :param pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']] persistence_config: Represents persistence configuration for a instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -2434,9 +2464,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
+               CUSTOM_PICO
+               CUSTOM_MICRO
+               CUSTOM_MINI
                HIGHMEM_MEDIUM
+               HIGHCPU_MEDIUM
                HIGHMEM_XLARGE
                STANDARD_SMALL
+               STANDARD_LARGE
+               HIGHMEM_2XLARGE
         :param pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']] persistence_config: Represents persistence configuration for a instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -2785,9 +2821,15 @@ class Instance(pulumi.CustomResource):
         Optional. Machine type for individual nodes of the instance.
         Possible values:
         SHARED_CORE_NANO
+        CUSTOM_PICO
+        CUSTOM_MICRO
+        CUSTOM_MINI
         HIGHMEM_MEDIUM
+        HIGHCPU_MEDIUM
         HIGHMEM_XLARGE
         STANDARD_SMALL
+        STANDARD_LARGE
+        HIGHMEM_2XLARGE
         """
         return pulumi.get(self, "node_type")
 

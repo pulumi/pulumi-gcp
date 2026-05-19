@@ -13,13 +13,14 @@ namespace Pulumi.Gcp.Ces.Inputs
     public sealed class EvaluationGoldenTurnStepAgentTransferArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name of the target agent.
+        /// (Output)
+        /// Display name of the agent.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The resource name of the target agent.
+        /// The agent to which the conversation is being transferred.
         /// </summary>
         [Input("targetAgent", required: true)]
         public Input<string> TargetAgent { get; set; } = null!;

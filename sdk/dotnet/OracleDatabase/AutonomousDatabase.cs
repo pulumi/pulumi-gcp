@@ -82,8 +82,6 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         DisplayName = "autonomousDatabase displayname",
     ///         Database = "mydatabase",
     ///         AdminPassword = "123Abpassword",
-    ///         OdbNetwork = "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
-    ///         OdbSubnet = "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
     ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         Cidr = "10.5.0.0/24",
     ///         Labels = 

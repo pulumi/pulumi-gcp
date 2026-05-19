@@ -106,6 +106,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
  * import com.pulumi.gcp.vmwareengine.NetworkPolicy;
  * import com.pulumi.gcp.vmwareengine.NetworkPolicyArgs;
  * import com.pulumi.gcp.vmwareengine.ExternalAddress;

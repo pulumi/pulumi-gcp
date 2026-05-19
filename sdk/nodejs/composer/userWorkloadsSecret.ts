@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * User workloads Secret used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
- * Intended for Composer 3 Environments.
+ * User workloads Secret used by Airflow tasks that run with Kubernetes Executor
+ * or KubernetesPodOperator. Intended for Managed Airflow (Gen 3) Environments.
  *
  * ## Example Usage
  *

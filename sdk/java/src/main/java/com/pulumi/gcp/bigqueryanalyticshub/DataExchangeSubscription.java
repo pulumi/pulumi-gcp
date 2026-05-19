@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
  * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
  * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetSelectedResourceArgs;
  * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeSubscription;
  * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeSubscriptionArgs;
  * import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSubscriptionDestinationDatasetArgs;

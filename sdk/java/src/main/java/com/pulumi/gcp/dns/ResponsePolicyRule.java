@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ResponsePolicyRule;
  * import com.pulumi.gcp.dns.ResponsePolicyRuleArgs;
  * import com.pulumi.gcp.dns.inputs.ResponsePolicyRuleLocalDataArgs;
+ * import com.pulumi.gcp.dns.inputs.ResponsePolicyRuleLocalDataLocalDataArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

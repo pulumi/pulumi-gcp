@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? NetworkIp { get; set; }
 
         /// <summary>
-        /// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
+        /// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }

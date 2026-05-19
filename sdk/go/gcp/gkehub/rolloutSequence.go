@@ -41,6 +41,10 @@ import (
 type RolloutSequence struct {
 	pulumi.CustomResourceState
 
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig RolloutSequenceAutoUpgradeConfigPtrOutput `pulumi:"autoUpgradeConfig"`
 	// The timestamp at which the Rollout Sequence was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The timestamp at the Rollout Sequence was deleted.
@@ -119,6 +123,10 @@ func GetRolloutSequence(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RolloutSequence resources.
 type rolloutSequenceState struct {
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig *RolloutSequenceAutoUpgradeConfig `pulumi:"autoUpgradeConfig"`
 	// The timestamp at which the Rollout Sequence was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The timestamp at the Rollout Sequence was deleted.
@@ -157,6 +165,10 @@ type rolloutSequenceState struct {
 }
 
 type RolloutSequenceState struct {
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig RolloutSequenceAutoUpgradeConfigPtrInput
 	// The timestamp at which the Rollout Sequence was created.
 	CreateTime pulumi.StringPtrInput
 	// The timestamp at the Rollout Sequence was deleted.
@@ -199,6 +211,10 @@ func (RolloutSequenceState) ElementType() reflect.Type {
 }
 
 type rolloutSequenceArgs struct {
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig *RolloutSequenceAutoUpgradeConfig `pulumi:"autoUpgradeConfig"`
 	// Human readable display name of the Rollout Sequence.
 	DisplayName *string `pulumi:"displayName"`
 	// Selector for clusters to exclude from the Rollout Sequence.
@@ -221,6 +237,10 @@ type rolloutSequenceArgs struct {
 
 // The set of arguments for constructing a RolloutSequence resource.
 type RolloutSequenceArgs struct {
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig RolloutSequenceAutoUpgradeConfigPtrInput
 	// Human readable display name of the Rollout Sequence.
 	DisplayName pulumi.StringPtrInput
 	// Selector for clusters to exclude from the Rollout Sequence.
@@ -326,6 +346,13 @@ func (o RolloutSequenceOutput) ToRolloutSequenceOutput() RolloutSequenceOutput {
 
 func (o RolloutSequenceOutput) ToRolloutSequenceOutputWithContext(ctx context.Context) RolloutSequenceOutput {
 	return o
+}
+
+// Configuration for automatic upgrades.
+// If not specified, the system applies default behavior.
+// Structure is documented below.
+func (o RolloutSequenceOutput) AutoUpgradeConfig() RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return o.ApplyT(func(v *RolloutSequence) RolloutSequenceAutoUpgradeConfigPtrOutput { return v.AutoUpgradeConfig }).(RolloutSequenceAutoUpgradeConfigPtrOutput)
 }
 
 // The timestamp at which the Rollout Sequence was created.

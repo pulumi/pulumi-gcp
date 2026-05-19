@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificatemanager.TrustConfig;
  * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreTrustAnchorArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreIntermediateCaArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.FileArgs;
  * import java.util.ArrayList;

@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs;
@@ -20,6 +21,25 @@ import javax.annotation.Nullable;
 public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SecurityPolicyRulePreconfiguredWafConfigExclusionArgs Empty = new SecurityPolicyRulePreconfiguredWafConfigExclusionArgs();
+
+    /**
+     * (Optional, Beta)
+     * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="requestBodies")
+    private @Nullable Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs>> requestBodies;
+
+    /**
+     * @return (Optional, Beta)
+     * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs>>> requestBodies() {
+        return Optional.ofNullable(this.requestBodies);
+    }
 
     /**
      * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -128,6 +148,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
     private SecurityPolicyRulePreconfiguredWafConfigExclusionArgs() {}
 
     private SecurityPolicyRulePreconfiguredWafConfigExclusionArgs(SecurityPolicyRulePreconfiguredWafConfigExclusionArgs $) {
+        this.requestBodies = $.requestBodies;
         this.requestCookies = $.requestCookies;
         this.requestHeaders = $.requestHeaders;
         this.requestQueryParams = $.requestQueryParams;
@@ -152,6 +173,43 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
 
         public Builder(SecurityPolicyRulePreconfiguredWafConfigExclusionArgs defaults) {
             $ = new SecurityPolicyRulePreconfiguredWafConfigExclusionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param requestBodies (Optional, Beta)
+         * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodies(@Nullable Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs>> requestBodies) {
+            $.requestBodies = requestBodies;
+            return this;
+        }
+
+        /**
+         * @param requestBodies (Optional, Beta)
+         * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodies(List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs> requestBodies) {
+            return requestBodies(Output.of(requestBodies));
+        }
+
+        /**
+         * @param requestBodies (Optional, Beta)
+         * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodies(SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs... requestBodies) {
+            return requestBodies(List.of(requestBodies));
         }
 
         /**

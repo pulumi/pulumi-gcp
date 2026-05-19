@@ -6,6 +6,7 @@ package com.pulumi.gcp.storage;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -51,6 +52,21 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    @Import(name="ingestOnWrite")
+    private @Nullable Output<Boolean> ingestOnWrite;
+
+    /**
+     * @return Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    public Optional<Output<Boolean>> ingestOnWrite() {
+        return Optional.ofNullable(this.ingestOnWrite);
+    }
+
+    /**
      * The TTL of all cache entries in whole seconds. e.g., &#34;7200s&#34;. It defaults to `86400s`
      * 
      */
@@ -85,6 +101,7 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
     private AnywhereCacheArgs(AnywhereCacheArgs $) {
         this.admissionPolicy = $.admissionPolicy;
         this.bucket = $.bucket;
+        this.ingestOnWrite = $.ingestOnWrite;
         this.ttl = $.ttl;
         this.zone = $.zone;
     }
@@ -151,6 +168,27 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param ingestOnWrite Whether or not the cache ingests data as the data is written to the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestOnWrite(@Nullable Output<Boolean> ingestOnWrite) {
+            $.ingestOnWrite = ingestOnWrite;
+            return this;
+        }
+
+        /**
+         * @param ingestOnWrite Whether or not the cache ingests data as the data is written to the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestOnWrite(Boolean ingestOnWrite) {
+            return ingestOnWrite(Output.of(ingestOnWrite));
         }
 
         /**

@@ -41,6 +41,14 @@ namespace Pulumi.Gcp.GkeHub
     public partial class RolloutSequence : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Configuration for automatic upgrades.
+        /// If not specified, the system applies default behavior.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("autoUpgradeConfig")]
+        public Output<Outputs.RolloutSequenceAutoUpgradeConfig?> AutoUpgradeConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp at which the Rollout Sequence was created.
         /// </summary>
         [Output("createTime")]
@@ -183,6 +191,14 @@ namespace Pulumi.Gcp.GkeHub
     public sealed class RolloutSequenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration for automatic upgrades.
+        /// If not specified, the system applies default behavior.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoUpgradeConfig")]
+        public Input<Inputs.RolloutSequenceAutoUpgradeConfigArgs>? AutoUpgradeConfig { get; set; }
+
+        /// <summary>
         /// Human readable display name of the Rollout Sequence.
         /// </summary>
         [Input("displayName")]
@@ -244,6 +260,14 @@ namespace Pulumi.Gcp.GkeHub
 
     public sealed class RolloutSequenceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for automatic upgrades.
+        /// If not specified, the system applies default behavior.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoUpgradeConfig")]
+        public Input<Inputs.RolloutSequenceAutoUpgradeConfigGetArgs>? AutoUpgradeConfig { get; set; }
+
         /// <summary>
         /// The timestamp at which the Rollout Sequence was created.
         /// </summary>

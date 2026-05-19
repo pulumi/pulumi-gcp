@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.discoveryengine.inputs.AssistantGenerationConfigArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.AssistantGenerationConfigSystemInstructionArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.AssistantCustomerPolicyArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.AssistantCustomerPolicyBannedPhraseArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

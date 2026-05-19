@@ -105,6 +105,8 @@ import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplatePlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
@@ -206,6 +208,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionDiskResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateResult;
+import com.pulumi.gcp.compute.outputs.GetRegionInstantSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSSLPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSecurityPolicyResult;
@@ -6780,6 +6783,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
@@ -6900,6 +6904,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
@@ -7020,6 +7025,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
@@ -7140,6 +7146,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
@@ -7260,6 +7267,7 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
@@ -8991,7 +8999,7 @@ public final class ComputeFunctions {
      *             .zone(zone)
      *             .build());
      * 
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
      *             .build()).result())) {
      *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
@@ -9063,7 +9071,7 @@ public final class ComputeFunctions {
      *             .zone(zone)
      *             .build());
      * 
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
      *             .build()).result())) {
      *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
@@ -9135,7 +9143,7 @@ public final class ComputeFunctions {
      *             .zone(zone)
      *             .build());
      * 
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
      *             .build()).result())) {
      *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
@@ -9207,7 +9215,7 @@ public final class ComputeFunctions {
      *             .zone(zone)
      *             .build());
      * 
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
      *             .build()).result())) {
      *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
@@ -9279,7 +9287,7 @@ public final class ComputeFunctions {
      *             .zone(zone)
      *             .build());
      * 
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
      *             .build()).result())) {
      *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
@@ -9351,7 +9359,7 @@ public final class ComputeFunctions {
      *             .zone(zone)
      *             .build());
      * 
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
      *             .build()).result())) {
      *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
@@ -9423,7 +9431,7 @@ public final class ComputeFunctions {
      *             .zone(zone)
      *             .build());
      * 
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(example.machineTypes().stream().map(element -> element.name()).collect(toList()))
      *             .build()).result())) {
      *             new InstanceTemplate("exampleInstanceTemplate-" + range.key(), InstanceTemplateArgs.builder()
@@ -13996,6 +14004,216 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", TypeShape.of(GetRegionInstanceTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for regioninstantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs args) {
+        return getRegionInstantSnapshotIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for regioninstantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolicyPlain(GetRegionInstantSnapshotIamPolicyPlainArgs args) {
+        return getRegionInstantSnapshotIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for regioninstantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionInstantSnapshotIamPolicy:getRegionInstantSnapshotIamPolicy", TypeShape.of(GetRegionInstantSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regioninstantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionInstantSnapshotIamPolicy:getRegionInstantSnapshotIamPolicy", TypeShape.of(GetRegionInstantSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regioninstantsnapshot
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstantSnapshotIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolicyPlain(GetRegionInstantSnapshotIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionInstantSnapshotIamPolicy:getRegionInstantSnapshotIamPolicy", TypeShape.of(GetRegionInstantSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
      * 
      * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
@@ -14791,7 +15009,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
@@ -14842,7 +15060,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
@@ -14893,7 +15111,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
@@ -14944,7 +15162,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
@@ -14995,7 +15213,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
@@ -15046,7 +15264,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
@@ -15097,7 +15315,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
@@ -19562,7 +19780,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
@@ -19614,7 +19832,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
@@ -19666,7 +19884,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
@@ -19718,7 +19936,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
@@ -19770,7 +19988,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
@@ -19822,7 +20040,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())
@@ -19874,7 +20092,7 @@ public final class ComputeFunctions {
      *         final var available = ComputeFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
-     *         for (var i = 0; i < available.names().length(); i++) {
+     *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
      *                 .instanceTemplate(foobar.selfLink())

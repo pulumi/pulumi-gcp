@@ -146,6 +146,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateShieldedVmConfigArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateEncryptionSpecArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigEnvArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigColabImageArgs;
  * import java.util.ArrayList;

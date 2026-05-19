@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
+    /**
+     * @return (Optional, Beta)
+     * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies;
     /**
      * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
      * Structure is documented below.
@@ -55,6 +63,15 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
     private String targetRuleSet;
 
     private SecurityPolicyRulePreconfiguredWafConfigExclusion() {}
+    /**
+     * @return (Optional, Beta)
+     * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+     * Structure is documented below.
+     * 
+     */
+    public List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies() {
+        return this.requestBodies == null ? List.of() : this.requestBodies;
+    }
     /**
      * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
      * Structure is documented below.
@@ -114,6 +131,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies;
         private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky> requestCookies;
         private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader> requestHeaders;
         private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam> requestQueryParams;
@@ -123,6 +141,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
         public Builder() {}
         public Builder(SecurityPolicyRulePreconfiguredWafConfigExclusion defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.requestBodies = defaults.requestBodies;
     	      this.requestCookies = defaults.requestCookies;
     	      this.requestHeaders = defaults.requestHeaders;
     	      this.requestQueryParams = defaults.requestQueryParams;
@@ -131,6 +150,15 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
     	      this.targetRuleSet = defaults.targetRuleSet;
         }
 
+        @CustomType.Setter
+        public Builder requestBodies(@Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies) {
+
+            this.requestBodies = requestBodies;
+            return this;
+        }
+        public Builder requestBodies(SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody... requestBodies) {
+            return requestBodies(List.of(requestBodies));
+        }
         @CustomType.Setter
         public Builder requestCookies(@Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky> requestCookies) {
 
@@ -186,6 +214,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
         }
         public SecurityPolicyRulePreconfiguredWafConfigExclusion build() {
             final var _resultValue = new SecurityPolicyRulePreconfiguredWafConfigExclusion();
+            _resultValue.requestBodies = requestBodies;
             _resultValue.requestCookies = requestCookies;
             _resultValue.requestHeaders = requestHeaders;
             _resultValue.requestQueryParams = requestQueryParams;

@@ -5,6 +5,7 @@ package com.pulumi.gcp.recaptcha.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyWebSettingsChallengeSettings;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -35,7 +36,13 @@ public final class EnterpriseKeyWebSettings {
      */
     private @Nullable String challengeSecurityPreference;
     /**
-     * @return Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+     * @return Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable EnterpriseKeyWebSettingsChallengeSettings challengeSettings;
+    /**
+     * @return Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
      * 
      */
     private String integrationType;
@@ -70,7 +77,15 @@ public final class EnterpriseKeyWebSettings {
         return Optional.ofNullable(this.challengeSecurityPreference);
     }
     /**
-     * @return Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+     * @return Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<EnterpriseKeyWebSettingsChallengeSettings> challengeSettings() {
+        return Optional.ofNullable(this.challengeSettings);
+    }
+    /**
+     * @return Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
      * 
      */
     public String integrationType() {
@@ -90,6 +105,7 @@ public final class EnterpriseKeyWebSettings {
         private @Nullable Boolean allowAmpTraffic;
         private @Nullable List<String> allowedDomains;
         private @Nullable String challengeSecurityPreference;
+        private @Nullable EnterpriseKeyWebSettingsChallengeSettings challengeSettings;
         private String integrationType;
         public Builder() {}
         public Builder(EnterpriseKeyWebSettings defaults) {
@@ -98,6 +114,7 @@ public final class EnterpriseKeyWebSettings {
     	      this.allowAmpTraffic = defaults.allowAmpTraffic;
     	      this.allowedDomains = defaults.allowedDomains;
     	      this.challengeSecurityPreference = defaults.challengeSecurityPreference;
+    	      this.challengeSettings = defaults.challengeSettings;
     	      this.integrationType = defaults.integrationType;
         }
 
@@ -129,6 +146,12 @@ public final class EnterpriseKeyWebSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder challengeSettings(@Nullable EnterpriseKeyWebSettingsChallengeSettings challengeSettings) {
+
+            this.challengeSettings = challengeSettings;
+            return this;
+        }
+        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             if (integrationType == null) {
               throw new MissingRequiredPropertyException("EnterpriseKeyWebSettings", "integrationType");
@@ -142,6 +165,7 @@ public final class EnterpriseKeyWebSettings {
             _resultValue.allowAmpTraffic = allowAmpTraffic;
             _resultValue.allowedDomains = allowedDomains;
             _resultValue.challengeSecurityPreference = challengeSecurityPreference;
+            _resultValue.challengeSettings = challengeSettings;
             _resultValue.integrationType = integrationType;
             return _resultValue;
         }

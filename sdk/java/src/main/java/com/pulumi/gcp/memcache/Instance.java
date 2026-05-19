@@ -53,6 +53,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.memcache.InstanceArgs;
  * import com.pulumi.gcp.memcache.inputs.InstanceNodeConfigArgs;
  * import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyArgs;
+ * import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

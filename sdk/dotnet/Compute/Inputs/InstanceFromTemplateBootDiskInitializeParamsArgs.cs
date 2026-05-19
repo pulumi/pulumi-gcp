@@ -54,6 +54,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("provisionedThroughput")]
         public Input<int>? ProvisionedThroughput { get; set; }
 
+        [Input("replicaZones")]
+        private InputList<string>? _replicaZones;
+
+        /// <summary>
+        /// A list of short names or SelfLinks of zones in which to create a regional disk.
+        /// </summary>
+        public InputList<string> ReplicaZones
+        {
+            get => _replicaZones ?? (_replicaZones = new InputList<string>());
+            set => _replicaZones = value;
+        }
+
         [Input("resourceManagerTags")]
         private InputMap<string>? _resourceManagerTags;
 

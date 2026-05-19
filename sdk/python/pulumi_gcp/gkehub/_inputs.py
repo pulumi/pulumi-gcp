@@ -155,6 +155,10 @@ __all__ = [
     'MembershipRbacRoleBindingStateArgsDict',
     'NamespaceStateArgs',
     'NamespaceStateArgsDict',
+    'RolloutSequenceAutoUpgradeConfigArgs',
+    'RolloutSequenceAutoUpgradeConfigArgsDict',
+    'RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs',
+    'RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgsDict',
     'RolloutSequenceIgnoredClustersSelectorArgs',
     'RolloutSequenceIgnoredClustersSelectorArgsDict',
     'RolloutSequenceStageArgs',
@@ -4841,6 +4845,94 @@ class NamespaceStateArgs:
     @code.setter
     def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
+
+
+class RolloutSequenceAutoUpgradeConfigArgsDict(TypedDict):
+    rollout_creation_scope: NotRequired[pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs']]]
+    """
+    Specifies the scope of automation for the creation of rollouts.
+    Represents the types of rollouts (version upgrades) the sequence should
+    initiate automatically.
+    If this field is not specified, it defaults to all types.
+    If this field is specified, but the nested upgradeTypes field is empty,
+    most automatic rollouts are disabled for this sequence.
+    Exceptions are rollouts enforcing our security policies (e.g. such as
+    end-of-support and outdated control plane patch enforcements).
+    These policy enforcements cannot be disabled.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class RolloutSequenceAutoUpgradeConfigArgs:
+    def __init__(__self__, *,
+                 rollout_creation_scope: pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs']] = None):
+        """
+        :param pulumi.Input['RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs'] rollout_creation_scope: Specifies the scope of automation for the creation of rollouts.
+               Represents the types of rollouts (version upgrades) the sequence should
+               initiate automatically.
+               If this field is not specified, it defaults to all types.
+               If this field is specified, but the nested upgradeTypes field is empty,
+               most automatic rollouts are disabled for this sequence.
+               Exceptions are rollouts enforcing our security policies (e.g. such as
+               end-of-support and outdated control plane patch enforcements).
+               These policy enforcements cannot be disabled.
+               Structure is documented below.
+        """
+        if rollout_creation_scope is not None:
+            pulumi.set(__self__, "rollout_creation_scope", rollout_creation_scope)
+
+    @_builtins.property
+    @pulumi.getter(name="rolloutCreationScope")
+    def rollout_creation_scope(self) -> pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs']]:
+        """
+        Specifies the scope of automation for the creation of rollouts.
+        Represents the types of rollouts (version upgrades) the sequence should
+        initiate automatically.
+        If this field is not specified, it defaults to all types.
+        If this field is specified, but the nested upgradeTypes field is empty,
+        most automatic rollouts are disabled for this sequence.
+        Exceptions are rollouts enforcing our security policies (e.g. such as
+        end-of-support and outdated control plane patch enforcements).
+        These policy enforcements cannot be disabled.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rollout_creation_scope")
+
+    @rollout_creation_scope.setter
+    def rollout_creation_scope(self, value: pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs']]):
+        pulumi.set(self, "rollout_creation_scope", value)
+
+
+class RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgsDict(TypedDict):
+    upgrade_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of enabled upgrade types.
+    Current valid values are `CONTROL_PLANE_MINOR`, `CONTROL_PLANE_PATCH`, `NODE_MINOR`, and `NODE_PATCH`.
+    """
+
+@pulumi.input_type
+class RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs:
+    def __init__(__self__, *,
+                 upgrade_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] upgrade_types: The list of enabled upgrade types.
+               Current valid values are `CONTROL_PLANE_MINOR`, `CONTROL_PLANE_PATCH`, `NODE_MINOR`, and `NODE_PATCH`.
+        """
+        if upgrade_types is not None:
+            pulumi.set(__self__, "upgrade_types", upgrade_types)
+
+    @_builtins.property
+    @pulumi.getter(name="upgradeTypes")
+    def upgrade_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of enabled upgrade types.
+        Current valid values are `CONTROL_PLANE_MINOR`, `CONTROL_PLANE_PATCH`, `NODE_MINOR`, and `NODE_PATCH`.
+        """
+        return pulumi.get(self, "upgrade_types")
+
+    @upgrade_types.setter
+    def upgrade_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "upgrade_types", value)
 
 
 class RolloutSequenceIgnoredClustersSelectorArgsDict(TypedDict):

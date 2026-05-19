@@ -100,13 +100,14 @@ def get_user_workloads_secret(environment: Optional[_builtins.str] = None,
                               region: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserWorkloadsSecretResult:
     """
-    Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+    Provides access to Kubernetes Secret configuration for a given project, region
+    and Managed Airflow Environment.
 
-    To get more information about Composer User Workloads Secrets, see:
+    To get more information about Managed Airflow User Workloads Secrets, see:
 
     * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+        * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
 
     ## Example Usage
 
@@ -129,8 +130,8 @@ def get_user_workloads_secret(environment: Optional[_builtins.str] = None,
             "username": std.base64encode(input="username").result,
             "password": std.base64encode(input="password").result,
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_secret_output(environment=name,
-        name=google_composer_user_workloads_secret["example"]["name"]))
+    example = gcp.composer.get_user_workloads_secret_output(environment=example_environment.name,
+        name=google_composer_user_workloads_secret["example"]["name"])
     pulumi.export("debug", example)
     ```
 
@@ -162,13 +163,14 @@ def get_user_workloads_secret_output(environment: pulumi.Input[Optional[_builtin
                                      region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserWorkloadsSecretResult]:
     """
-    Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+    Provides access to Kubernetes Secret configuration for a given project, region
+    and Managed Airflow Environment.
 
-    To get more information about Composer User Workloads Secrets, see:
+    To get more information about Managed Airflow User Workloads Secrets, see:
 
     * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+        * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
 
     ## Example Usage
 
@@ -191,8 +193,8 @@ def get_user_workloads_secret_output(environment: pulumi.Input[Optional[_builtin
             "username": std.base64encode(input="username").result,
             "password": std.base64encode(input="password").result,
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_secret_output(environment=name,
-        name=google_composer_user_workloads_secret["example"]["name"]))
+    example = gcp.composer.get_user_workloads_secret_output(environment=example_environment.name,
+        name=google_composer_user_workloads_secret["example"]["name"])
     pulumi.export("debug", example)
     ```
 

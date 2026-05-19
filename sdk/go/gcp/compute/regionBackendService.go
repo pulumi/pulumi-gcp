@@ -512,7 +512,7 @@ import (
 //					TrackingMode:                             pulumi.String("PER_SESSION"),
 //					ConnectionPersistenceOnUnhealthyBackends: pulumi.String("NEVER_PERSIST"),
 //					IdleTimeoutSec:                           pulumi.Int(60),
-//					EnableStrongAffinity:                     pulumi.Bool(true),
+//					EnableStrongAffinity:                     pulumi.Bool(false),
 //				},
 //			})
 //			if err != nil {
@@ -993,7 +993,6 @@ type RegionBackendService struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrOutput `pulumi:"connectionDrainingTimeoutSec"`
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1235,7 +1234,6 @@ type regionBackendServiceState struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1448,7 +1446,6 @@ type RegionBackendServiceState struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1665,7 +1662,6 @@ type regionBackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1870,7 +1866,6 @@ type RegionBackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -2175,7 +2170,6 @@ func (o RegionBackendServiceOutput) ConnectionDrainingTimeoutSec() pulumi.IntPtr
 	return o.ApplyT(func(v *RegionBackendService) pulumi.IntPtrOutput { return v.ConnectionDrainingTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
-// (Optional, Beta)
 // Connection Tracking configuration for this BackendService.
 // This is available only for Layer 4 Internal Load Balancing and
 // Network Load Balancing.

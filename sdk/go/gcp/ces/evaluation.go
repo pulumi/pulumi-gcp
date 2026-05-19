@@ -572,6 +572,380 @@ import (
 //	}
 //
 // ```
+// ### Ces Evaluation Scenario Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			app, err := ces.NewApp(ctx, "app", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id-scenario"),
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-app-scenario"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tool, err := ces.NewTool(ctx, "tool", &ces.ToolArgs{
+//				Location:      pulumi.String("us"),
+//				App:           app.AppId,
+//				ToolId:        pulumi.String("tool-id-scenario"),
+//				ExecutionType: pulumi.String("SYNCHRONOUS"),
+//				PythonFunction: &ces.ToolPythonFunctionArgs{
+//					Name:       pulumi.String("example_function"),
+//					PythonCode: pulumi.String("def example_function() -> int: return 0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewEvaluation(ctx, "ces_evaluation_scenario_full", &ces.EvaluationArgs{
+//				EvaluationId: pulumi.String("eval-scenario-full"),
+//				DisplayName:  pulumi.String("my-evaluation-scenario-full"),
+//				Location:     pulumi.String("us"),
+//				App:          app.AppId,
+//				Description:  pulumi.String("Full evaluation for testing scenario"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("test"),
+//					pulumi.String("full"),
+//					pulumi.String("scenario"),
+//				},
+//				Scenario: &ces.EvaluationScenarioArgs{
+//					Task:     pulumi.String("Test task"),
+//					MaxTurns: pulumi.Int(5),
+//					Rubrics: pulumi.StringArray{
+//						pulumi.All(app.Project, app.AppId).ApplyT(func(_args []interface{}) (string, error) {
+//							project := _args[0].(string)
+//							appId := _args[1].(string)
+//							return fmt.Sprintf("projects/%v/locations/us/apps/%v/rubrics/dummy-rubric", project, appId), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					UserGoalBehavior:       pulumi.String("USER_GOAL_SATISFIED"),
+//					TaskCompletionBehavior: pulumi.String("TASK_SATISFIED"),
+//					VariableOverrides: pulumi.StringMap{
+//						"key": pulumi.String("value"),
+//					},
+//					EvaluationExpectations: pulumi.StringArray{
+//						pulumi.All(app.Project, app.AppId).ApplyT(func(_args []interface{}) (string, error) {
+//							project := _args[0].(string)
+//							appId := _args[1].(string)
+//							return fmt.Sprintf("projects/%v/locations/us/apps/%v/evaluationExpectations/dummy-exp", project, appId), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					UserFacts: ces.EvaluationScenarioUserFactArray{
+//						&ces.EvaluationScenarioUserFactArgs{
+//							Name:  pulumi.String("user_name"),
+//							Value: pulumi.String("John Doe"),
+//						},
+//					},
+//					ScenarioExpectations: ces.EvaluationScenarioScenarioExpectationArray{
+//						&ces.EvaluationScenarioScenarioExpectationArgs{
+//							ToolExpectation: &ces.EvaluationScenarioScenarioExpectationToolExpectationArgs{
+//								ExpectedToolCall: &ces.EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs{
+//									Id: pulumi.String("tool-call-id"),
+//									Tool: pulumi.All(app.Project, app.AppId, tool.ToolId).ApplyT(func(_args []interface{}) (string, error) {
+//										project := _args[0].(string)
+//										appId := _args[1].(string)
+//										toolId := _args[2].(string)
+//										return fmt.Sprintf("projects/%v/locations/us/apps/%v/tools/%v", project, appId, toolId), nil
+//									}).(pulumi.StringOutput),
+//									Args: pulumi.StringMap{
+//										"param": pulumi.String("value"),
+//									},
+//								},
+//								MockToolResponse: &ces.EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs{
+//									Id: pulumi.String("tool-call-id"),
+//									Response: pulumi.StringMap{
+//										"result": pulumi.String("mocked"),
+//									},
+//									Tool: pulumi.All(app.Project, app.AppId, tool.ToolId).ApplyT(func(_args []interface{}) (string, error) {
+//										project := _args[0].(string)
+//										appId := _args[1].(string)
+//										toolId := _args[2].(string)
+//										return fmt.Sprintf("projects/%v/locations/us/apps/%v/tools/%v", project, appId, toolId), nil
+//									}).(pulumi.StringOutput),
+//								},
+//							},
+//						},
+//						&ces.EvaluationScenarioScenarioExpectationArgs{
+//							AgentResponse: &ces.EvaluationScenarioScenarioExpectationAgentResponseArgs{
+//								Role: pulumi.String("agent"),
+//								Chunks: ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArray{
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										Text: pulumi.String("Hello"),
+//									},
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										UpdatedVariables: pulumi.StringMap{
+//											"key": pulumi.String("value"),
+//										},
+//									},
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										Blob: &ces.EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs{
+//											MimeType: pulumi.String("text/plain"),
+//											Data:     pulumi.String("c29tZSBibG9iIGRhdGE="),
+//										},
+//									},
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										Image: &ces.EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs{
+//											MimeType: pulumi.String("image/png"),
+//											Data:     pulumi.String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="),
+//										},
+//									},
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										ToolCall: &ces.EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs{
+//											Id: pulumi.String("tool-call-id-3"),
+//											Tool: pulumi.All(app.Project, app.AppId, tool.ToolId).ApplyT(func(_args []interface{}) (string, error) {
+//												project := _args[0].(string)
+//												appId := _args[1].(string)
+//												toolId := _args[2].(string)
+//												return fmt.Sprintf("projects/%v/locations/us/apps/%v/tools/%v", project, appId, toolId), nil
+//											}).(pulumi.StringOutput),
+//											Args: pulumi.StringMap{
+//												"param": pulumi.String("value"),
+//											},
+//										},
+//									},
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										ToolResponse: &ces.EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs{
+//											Id: pulumi.String("tool-call-id-3"),
+//											Response: pulumi.StringMap{
+//												"result": pulumi.String("success"),
+//											},
+//											Tool: pulumi.All(app.Project, app.AppId, tool.ToolId).ApplyT(func(_args []interface{}) (string, error) {
+//												project := _args[0].(string)
+//												appId := _args[1].(string)
+//												toolId := _args[2].(string)
+//												return fmt.Sprintf("projects/%v/locations/us/apps/%v/tools/%v", project, appId, toolId), nil
+//											}).(pulumi.StringOutput),
+//										},
+//									},
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										AgentTransfer: &ces.EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs{
+//											TargetAgent: pulumi.All(app.Project, app.AppId).ApplyT(func(_args []interface{}) (string, error) {
+//												project := _args[0].(string)
+//												appId := _args[1].(string)
+//												return fmt.Sprintf("projects/%v/locations/us/apps/%v/agents/dummy-agent", project, appId), nil
+//											}).(pulumi.StringOutput),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ces Evaluation Scenario Toolset
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			app, err := ces.NewApp(ctx, "app", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id-scenario-ts"),
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-app-scenario-ts"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			toolset, err := ces.NewToolset(ctx, "toolset", &ces.ToolsetArgs{
+//				ToolsetId:     pulumi.String("ts-scen"),
+//				Location:      pulumi.String("us"),
+//				App:           app.AppId,
+//				DisplayName:   pulumi.String("Basic toolset display name"),
+//				Description:   pulumi.String("Test description"),
+//				ExecutionType: pulumi.String("SYNCHRONOUS"),
+//				OpenApiToolset: &ces.ToolsetOpenApiToolsetArgs{
+//					OpenApiSchema: pulumi.String(`openapi: 3.0.0
+//
+// info:
+//
+//	title: My Sample API
+//	version: 1.0.0
+//	description: A simple API example
+//
+// servers:
+//   - url: https://api.example.com/v1
+//
+// paths: {}
+// `),
+//
+//					IgnoreUnknownFields: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewEvaluation(ctx, "ces_evaluation_scenario_toolset", &ces.EvaluationArgs{
+//				EvaluationId: pulumi.String("eval-scen-ts"),
+//				DisplayName:  pulumi.String("my-evaluation-scenario-toolset"),
+//				Location:     pulumi.String("us"),
+//				App:          app.AppId,
+//				Description:  pulumi.String("Full evaluation for testing scenario with toolset"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("test"),
+//					pulumi.String("full"),
+//					pulumi.String("scenario"),
+//					pulumi.String("toolset"),
+//				},
+//				Scenario: &ces.EvaluationScenarioArgs{
+//					Task:     pulumi.String("Test task"),
+//					MaxTurns: pulumi.Int(5),
+//					Rubrics: pulumi.StringArray{
+//						pulumi.All(app.Project, app.AppId).ApplyT(func(_args []interface{}) (string, error) {
+//							project := _args[0].(string)
+//							appId := _args[1].(string)
+//							return fmt.Sprintf("projects/%v/locations/us/apps/%v/rubrics/dummy-rubric", project, appId), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					UserGoalBehavior:       pulumi.String("USER_GOAL_SATISFIED"),
+//					TaskCompletionBehavior: pulumi.String("TASK_SATISFIED"),
+//					VariableOverrides: pulumi.StringMap{
+//						"key": pulumi.String("value"),
+//					},
+//					EvaluationExpectations: pulumi.StringArray{
+//						pulumi.All(app.Project, app.AppId).ApplyT(func(_args []interface{}) (string, error) {
+//							project := _args[0].(string)
+//							appId := _args[1].(string)
+//							return fmt.Sprintf("projects/%v/locations/us/apps/%v/evaluationExpectations/dummy-exp", project, appId), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					UserFacts: ces.EvaluationScenarioUserFactArray{
+//						&ces.EvaluationScenarioUserFactArgs{
+//							Name:  pulumi.String("user_name"),
+//							Value: pulumi.String("John Doe"),
+//						},
+//					},
+//					ScenarioExpectations: ces.EvaluationScenarioScenarioExpectationArray{
+//						&ces.EvaluationScenarioScenarioExpectationArgs{
+//							ToolExpectation: &ces.EvaluationScenarioScenarioExpectationToolExpectationArgs{
+//								ExpectedToolCall: &ces.EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs{
+//									Id: pulumi.String("tool-call-id"),
+//									ToolsetTool: &ces.EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs{
+//										Toolset: pulumi.All(app.Project, app.AppId, toolset.ToolsetId).ApplyT(func(_args []interface{}) (string, error) {
+//											project := _args[0].(string)
+//											appId := _args[1].(string)
+//											toolsetId := _args[2].(string)
+//											return fmt.Sprintf("projects/%v/locations/us/apps/%v/toolsets/%v", project, appId, toolsetId), nil
+//										}).(pulumi.StringOutput),
+//										ToolId: pulumi.String("dummy-tool"),
+//									},
+//									Args: pulumi.StringMap{
+//										"param": pulumi.String("value"),
+//									},
+//								},
+//								MockToolResponse: &ces.EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs{
+//									Id: pulumi.String("tool-call-id"),
+//									Response: pulumi.StringMap{
+//										"result": pulumi.String("mocked"),
+//									},
+//									ToolsetTool: &ces.EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs{
+//										Toolset: pulumi.All(app.Project, app.AppId, toolset.ToolsetId).ApplyT(func(_args []interface{}) (string, error) {
+//											project := _args[0].(string)
+//											appId := _args[1].(string)
+//											toolsetId := _args[2].(string)
+//											return fmt.Sprintf("projects/%v/locations/us/apps/%v/toolsets/%v", project, appId, toolsetId), nil
+//										}).(pulumi.StringOutput),
+//										ToolId: pulumi.String("dummy-tool"),
+//									},
+//								},
+//							},
+//						},
+//						&ces.EvaluationScenarioScenarioExpectationArgs{
+//							AgentResponse: &ces.EvaluationScenarioScenarioExpectationAgentResponseArgs{
+//								Role: pulumi.String("agent"),
+//								Chunks: ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArray{
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										Text: pulumi.String("Hello"),
+//									},
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										ToolCall: &ces.EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs{
+//											Id: pulumi.String("tool-call-id-3"),
+//											ToolsetTool: &ces.EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs{
+//												Toolset: pulumi.All(app.Project, app.AppId, toolset.ToolsetId).ApplyT(func(_args []interface{}) (string, error) {
+//													project := _args[0].(string)
+//													appId := _args[1].(string)
+//													toolsetId := _args[2].(string)
+//													return fmt.Sprintf("projects/%v/locations/us/apps/%v/toolsets/%v", project, appId, toolsetId), nil
+//												}).(pulumi.StringOutput),
+//												ToolId: pulumi.String("dummy-tool"),
+//											},
+//											Args: pulumi.StringMap{
+//												"param": pulumi.String("value"),
+//											},
+//										},
+//									},
+//									&ces.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{
+//										ToolResponse: &ces.EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs{
+//											Id: pulumi.String("tool-call-id-3"),
+//											Response: pulumi.StringMap{
+//												"result": pulumi.String("success"),
+//											},
+//											ToolsetTool: &ces.EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs{
+//												Toolset: pulumi.All(app.Project, app.AppId, toolset.ToolsetId).ApplyT(func(_args []interface{}) (string, error) {
+//													project := _args[0].(string)
+//													appId := _args[1].(string)
+//													toolsetId := _args[2].(string)
+//													return fmt.Sprintf("projects/%v/locations/us/apps/%v/toolsets/%v", project, appId, toolsetId), nil
+//												}).(pulumi.StringOutput),
+//												ToolId: pulumi.String("dummy-tool"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -626,6 +1000,9 @@ type Evaluation struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Scenario input.
+	// Structure is documented below.
+	Scenario EvaluationScenarioPtrOutput `pulumi:"scenario"`
 	// User defined tags to categorize the evaluation.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Timestamp when the evaluation was last updated.
@@ -709,6 +1086,9 @@ type evaluationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Scenario input.
+	// Structure is documented below.
+	Scenario *EvaluationScenario `pulumi:"scenario"`
 	// User defined tags to categorize the evaluation.
 	Tags []string `pulumi:"tags"`
 	// Timestamp when the evaluation was last updated.
@@ -751,6 +1131,9 @@ type EvaluationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Scenario input.
+	// Structure is documented below.
+	Scenario EvaluationScenarioPtrInput
 	// User defined tags to categorize the evaluation.
 	Tags pulumi.StringArrayInput
 	// Timestamp when the evaluation was last updated.
@@ -780,6 +1163,9 @@ type evaluationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Scenario input.
+	// Structure is documented below.
+	Scenario *EvaluationScenario `pulumi:"scenario"`
 	// User defined tags to categorize the evaluation.
 	Tags []string `pulumi:"tags"`
 }
@@ -804,6 +1190,9 @@ type EvaluationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Scenario input.
+	// Structure is documented below.
+	Scenario EvaluationScenarioPtrInput
 	// User defined tags to categorize the evaluation.
 	Tags pulumi.StringArrayInput
 }
@@ -973,6 +1362,12 @@ func (o EvaluationOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o EvaluationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Scenario input.
+// Structure is documented below.
+func (o EvaluationOutput) Scenario() EvaluationScenarioPtrOutput {
+	return o.ApplyT(func(v *Evaluation) EvaluationScenarioPtrOutput { return v.Scenario }).(EvaluationScenarioPtrOutput)
 }
 
 // User defined tags to categorize the evaluation.

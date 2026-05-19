@@ -222,7 +222,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
      * 
      */
     @Import(name="nodeType")
@@ -231,7 +231,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
      * 
      */
     public Optional<Output<String>> nodeType() {
@@ -739,7 +739,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param nodeType The nodeType for the Redis cluster.
          * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
          * 
          * @return builder
          * 
@@ -752,7 +752,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param nodeType The nodeType for the Redis cluster.
          * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
          * 
          * @return builder
          * 

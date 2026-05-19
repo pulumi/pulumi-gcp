@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.CxIntent;
  * import com.pulumi.gcp.diagflow.CxIntentArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhraseArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhrasePartArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxIntentParameterArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

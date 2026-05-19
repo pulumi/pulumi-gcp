@@ -11,13 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+// Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
 //
-// To get more information about Composer User Workloads Config Map, see:
+// To get more information about Managed Airflow User Workloads Config Map, see:
 //
 // * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+//   - [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
 //
 // ## Example Usage
 //
@@ -55,12 +55,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example := exampleEnvironment.Name.ApplyT(func(name string) (composer.GetUserWorkloadsConfigMapResult, error) {
-//				return composer.GetUserWorkloadsConfigMapResult(interface{}(composer.LookupUserWorkloadsConfigMap(ctx, &composer.LookupUserWorkloadsConfigMapArgs{
-//					Environment: name,
-//					Name:        googleComposerUserWorkloadsConfigMap.Example.Name,
-//				}, nil))), nil
-//			}).(composer.GetUserWorkloadsConfigMapResultOutput)
+//			example := composer.LookupUserWorkloadsConfigMapOutput(ctx, composer.GetUserWorkloadsConfigMapOutputArgs{
+//				Environment: exampleEnvironment.Name,
+//				Name:        pulumi.Any(googleComposerUserWorkloadsConfigMap.Example.Name),
+//			}, nil)
 //			ctx.Export("debug", example)
 //			return nil
 //		})

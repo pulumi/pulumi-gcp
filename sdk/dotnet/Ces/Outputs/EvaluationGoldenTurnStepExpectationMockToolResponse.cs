@@ -15,11 +15,11 @@ namespace Pulumi.Gcp.Ces.Outputs
     {
         /// <summary>
         /// (Output)
-        /// Display name of the tool.
+        /// Output only. Display name of the tool.
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// The matching ID of the tool call the response is for.
+        /// Optional. Matching ID of the tool call.
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -27,11 +27,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Response;
         /// <summary>
-        /// The resource name of the tool.
+        /// Name of the tool to execute.
         /// </summary>
         public readonly string? Tool;
         /// <summary>
-        /// A tool that is created from a toolset.
+        /// The toolset tool that got executed.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool? ToolsetTool;

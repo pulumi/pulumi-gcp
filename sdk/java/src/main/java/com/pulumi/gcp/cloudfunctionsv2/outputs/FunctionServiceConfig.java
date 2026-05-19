@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FunctionServiceConfig {
     /**
-     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
+     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
      * 
      */
     private @Nullable Boolean allTrafficOnLatestRevision;
@@ -137,7 +137,7 @@ public final class FunctionServiceConfig {
 
     private FunctionServiceConfig() {}
     /**
-     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
+     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
      * 
      */
     public Optional<Boolean> allTrafficOnLatestRevision() {

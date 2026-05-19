@@ -5,13 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+ * Provides access to Kubernetes Secret configuration for a given project, region
+ * and Managed Airflow Environment.
  *
- * To get more information about Composer User Workloads Secrets, see:
+ * To get more information about Managed Airflow User Workloads Secrets, see:
  *
  * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+ *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
  *
  * ## Example Usage
  *
@@ -40,10 +41,10 @@ import * as utilities from "../utilities";
  *         }).then(invoke => invoke.result),
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsSecretOutput({
- *     environment: name,
+ * const example = gcp.composer.getUserWorkloadsSecretOutput({
+ *     environment: exampleEnvironment.name,
  *     name: googleComposerUserWorkloadsSecret.example.name,
- * }));
+ * });
  * export const debug = example;
  * ```
  */
@@ -95,13 +96,14 @@ export interface GetUserWorkloadsSecretResult {
     readonly region?: string;
 }
 /**
- * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+ * Provides access to Kubernetes Secret configuration for a given project, region
+ * and Managed Airflow Environment.
  *
- * To get more information about Composer User Workloads Secrets, see:
+ * To get more information about Managed Airflow User Workloads Secrets, see:
  *
  * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+ *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
  *
  * ## Example Usage
  *
@@ -130,10 +132,10 @@ export interface GetUserWorkloadsSecretResult {
  *         }).then(invoke => invoke.result),
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsSecretOutput({
- *     environment: name,
+ * const example = gcp.composer.getUserWorkloadsSecretOutput({
+ *     environment: exampleEnvironment.name,
  *     name: googleComposerUserWorkloadsSecret.example.name,
- * }));
+ * });
  * export const debug = example;
  * ```
  */

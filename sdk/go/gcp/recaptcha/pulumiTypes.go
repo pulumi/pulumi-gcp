@@ -646,7 +646,10 @@ type EnterpriseKeyWebSettings struct {
 	AllowedDomains []string `pulumi:"allowedDomains"`
 	// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
 	ChallengeSecurityPreference *string `pulumi:"challengeSecurityPreference"`
-	// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+	// Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+	// Structure is documented below.
+	ChallengeSettings *EnterpriseKeyWebSettingsChallengeSettings `pulumi:"challengeSettings"`
+	// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
 	IntegrationType string `pulumi:"integrationType"`
 }
 
@@ -670,7 +673,10 @@ type EnterpriseKeyWebSettingsArgs struct {
 	AllowedDomains pulumi.StringArrayInput `pulumi:"allowedDomains"`
 	// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
 	ChallengeSecurityPreference pulumi.StringPtrInput `pulumi:"challengeSecurityPreference"`
-	// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+	// Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+	// Structure is documented below.
+	ChallengeSettings EnterpriseKeyWebSettingsChallengeSettingsPtrInput `pulumi:"challengeSettings"`
+	// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
 	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
 }
 
@@ -771,7 +777,15 @@ func (o EnterpriseKeyWebSettingsOutput) ChallengeSecurityPreference() pulumi.Str
 	return o.ApplyT(func(v EnterpriseKeyWebSettings) *string { return v.ChallengeSecurityPreference }).(pulumi.StringPtrOutput)
 }
 
-// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+// Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+// Structure is documented below.
+func (o EnterpriseKeyWebSettingsOutput) ChallengeSettings() EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return o.ApplyT(func(v EnterpriseKeyWebSettings) *EnterpriseKeyWebSettingsChallengeSettings {
+		return v.ChallengeSettings
+	}).(EnterpriseKeyWebSettingsChallengeSettingsPtrOutput)
+}
+
+// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
 func (o EnterpriseKeyWebSettingsOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseKeyWebSettings) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
@@ -840,7 +854,18 @@ func (o EnterpriseKeyWebSettingsPtrOutput) ChallengeSecurityPreference() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+// Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+// Structure is documented below.
+func (o EnterpriseKeyWebSettingsPtrOutput) ChallengeSettings() EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return o.ApplyT(func(v *EnterpriseKeyWebSettings) *EnterpriseKeyWebSettingsChallengeSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ChallengeSettings
+	}).(EnterpriseKeyWebSettingsChallengeSettingsPtrOutput)
+}
+
+// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
 func (o EnterpriseKeyWebSettingsPtrOutput) IntegrationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnterpriseKeyWebSettings) *string {
 		if v == nil {
@@ -848,6 +873,417 @@ func (o EnterpriseKeyWebSettingsPtrOutput) IntegrationType() pulumi.StringPtrOut
 		}
 		return &v.IntegrationType
 	}).(pulumi.StringPtrOutput)
+}
+
+type EnterpriseKeyWebSettingsChallengeSettings struct {
+	// The action to score threshold map. The action name should be the same as the action name passed in the `data-action` attribute. Action names are case-insensitive.
+	// Structure is documented below.
+	ActionSettings []EnterpriseKeyWebSettingsChallengeSettingsActionSetting `pulumi:"actionSettings"`
+	// Defines when a challenge is triggered by default.
+	// Structure is documented below.
+	DefaultSettings EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings `pulumi:"defaultSettings"`
+}
+
+// EnterpriseKeyWebSettingsChallengeSettingsInput is an input type that accepts EnterpriseKeyWebSettingsChallengeSettingsArgs and EnterpriseKeyWebSettingsChallengeSettingsOutput values.
+// You can construct a concrete instance of `EnterpriseKeyWebSettingsChallengeSettingsInput` via:
+//
+//	EnterpriseKeyWebSettingsChallengeSettingsArgs{...}
+type EnterpriseKeyWebSettingsChallengeSettingsInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyWebSettingsChallengeSettingsOutput() EnterpriseKeyWebSettingsChallengeSettingsOutput
+	ToEnterpriseKeyWebSettingsChallengeSettingsOutputWithContext(context.Context) EnterpriseKeyWebSettingsChallengeSettingsOutput
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsArgs struct {
+	// The action to score threshold map. The action name should be the same as the action name passed in the `data-action` attribute. Action names are case-insensitive.
+	// Structure is documented below.
+	ActionSettings EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayInput `pulumi:"actionSettings"`
+	// Defines when a challenge is triggered by default.
+	// Structure is documented below.
+	DefaultSettings EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsInput `pulumi:"defaultSettings"`
+}
+
+func (EnterpriseKeyWebSettingsChallengeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettings)(nil)).Elem()
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsArgs) ToEnterpriseKeyWebSettingsChallengeSettingsOutput() EnterpriseKeyWebSettingsChallengeSettingsOutput {
+	return i.ToEnterpriseKeyWebSettingsChallengeSettingsOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsArgs) ToEnterpriseKeyWebSettingsChallengeSettingsOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsChallengeSettingsOutput)
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsArgs) ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return i.ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsArgs) ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsChallengeSettingsOutput).ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutputWithContext(ctx)
+}
+
+// EnterpriseKeyWebSettingsChallengeSettingsPtrInput is an input type that accepts EnterpriseKeyWebSettingsChallengeSettingsArgs, EnterpriseKeyWebSettingsChallengeSettingsPtr and EnterpriseKeyWebSettingsChallengeSettingsPtrOutput values.
+// You can construct a concrete instance of `EnterpriseKeyWebSettingsChallengeSettingsPtrInput` via:
+//
+//	        EnterpriseKeyWebSettingsChallengeSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseKeyWebSettingsChallengeSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsPtrOutput
+	ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutputWithContext(context.Context) EnterpriseKeyWebSettingsChallengeSettingsPtrOutput
+}
+
+type enterpriseKeyWebSettingsChallengeSettingsPtrType EnterpriseKeyWebSettingsChallengeSettingsArgs
+
+func EnterpriseKeyWebSettingsChallengeSettingsPtr(v *EnterpriseKeyWebSettingsChallengeSettingsArgs) EnterpriseKeyWebSettingsChallengeSettingsPtrInput {
+	return (*enterpriseKeyWebSettingsChallengeSettingsPtrType)(v)
+}
+
+func (*enterpriseKeyWebSettingsChallengeSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyWebSettingsChallengeSettings)(nil)).Elem()
+}
+
+func (i *enterpriseKeyWebSettingsChallengeSettingsPtrType) ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return i.ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseKeyWebSettingsChallengeSettingsPtrType) ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsChallengeSettingsPtrOutput)
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyWebSettingsChallengeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsOutput) ToEnterpriseKeyWebSettingsChallengeSettingsOutput() EnterpriseKeyWebSettingsChallengeSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsOutput) ToEnterpriseKeyWebSettingsChallengeSettingsOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsOutput) ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return o.ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsOutput) ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseKeyWebSettingsChallengeSettings) *EnterpriseKeyWebSettingsChallengeSettings {
+		return &v
+	}).(EnterpriseKeyWebSettingsChallengeSettingsPtrOutput)
+}
+
+// The action to score threshold map. The action name should be the same as the action name passed in the `data-action` attribute. Action names are case-insensitive.
+// Structure is documented below.
+func (o EnterpriseKeyWebSettingsChallengeSettingsOutput) ActionSettings() EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput {
+	return o.ApplyT(func(v EnterpriseKeyWebSettingsChallengeSettings) []EnterpriseKeyWebSettingsChallengeSettingsActionSetting {
+		return v.ActionSettings
+	}).(EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput)
+}
+
+// Defines when a challenge is triggered by default.
+// Structure is documented below.
+func (o EnterpriseKeyWebSettingsChallengeSettingsOutput) DefaultSettings() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput {
+	return o.ApplyT(func(v EnterpriseKeyWebSettingsChallengeSettings) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings {
+		return v.DefaultSettings
+	}).(EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput)
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyWebSettingsChallengeSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyWebSettingsChallengeSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsPtrOutput) ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsPtrOutput) ToEnterpriseKeyWebSettingsChallengeSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsPtrOutput) Elem() EnterpriseKeyWebSettingsChallengeSettingsOutput {
+	return o.ApplyT(func(v *EnterpriseKeyWebSettingsChallengeSettings) EnterpriseKeyWebSettingsChallengeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseKeyWebSettingsChallengeSettings
+		return ret
+	}).(EnterpriseKeyWebSettingsChallengeSettingsOutput)
+}
+
+// The action to score threshold map. The action name should be the same as the action name passed in the `data-action` attribute. Action names are case-insensitive.
+// Structure is documented below.
+func (o EnterpriseKeyWebSettingsChallengeSettingsPtrOutput) ActionSettings() EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput {
+	return o.ApplyT(func(v *EnterpriseKeyWebSettingsChallengeSettings) []EnterpriseKeyWebSettingsChallengeSettingsActionSetting {
+		if v == nil {
+			return nil
+		}
+		return v.ActionSettings
+	}).(EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput)
+}
+
+// Defines when a challenge is triggered by default.
+// Structure is documented below.
+func (o EnterpriseKeyWebSettingsChallengeSettingsPtrOutput) DefaultSettings() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput {
+	return o.ApplyT(func(v *EnterpriseKeyWebSettingsChallengeSettings) *EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultSettings
+	}).(EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput)
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsActionSetting struct {
+	// The action name.
+	Action string `pulumi:"action"`
+	// A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+	ScoreThreshold float64 `pulumi:"scoreThreshold"`
+}
+
+// EnterpriseKeyWebSettingsChallengeSettingsActionSettingInput is an input type that accepts EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs and EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput values.
+// You can construct a concrete instance of `EnterpriseKeyWebSettingsChallengeSettingsActionSettingInput` via:
+//
+//	EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs{...}
+type EnterpriseKeyWebSettingsChallengeSettingsActionSettingInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput() EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput
+	ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingOutputWithContext(context.Context) EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs struct {
+	// The action name.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+	ScoreThreshold pulumi.Float64Input `pulumi:"scoreThreshold"`
+}
+
+func (EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsActionSetting)(nil)).Elem()
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs) ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput() EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput {
+	return i.ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs) ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput)
+}
+
+// EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayInput is an input type that accepts EnterpriseKeyWebSettingsChallengeSettingsActionSettingArray and EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput values.
+// You can construct a concrete instance of `EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayInput` via:
+//
+//	EnterpriseKeyWebSettingsChallengeSettingsActionSettingArray{ EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs{...} }
+type EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput() EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput
+	ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutputWithContext(context.Context) EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsActionSettingArray []EnterpriseKeyWebSettingsChallengeSettingsActionSettingInput
+
+func (EnterpriseKeyWebSettingsChallengeSettingsActionSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnterpriseKeyWebSettingsChallengeSettingsActionSetting)(nil)).Elem()
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsActionSettingArray) ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput() EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput {
+	return i.ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsActionSettingArray) ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput)
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsActionSetting)(nil)).Elem()
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput) ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput() EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput) ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput {
+	return o
+}
+
+// The action name.
+func (o EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v EnterpriseKeyWebSettingsChallengeSettingsActionSetting) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+func (o EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput) ScoreThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v EnterpriseKeyWebSettingsChallengeSettingsActionSetting) float64 { return v.ScoreThreshold }).(pulumi.Float64Output)
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnterpriseKeyWebSettingsChallengeSettingsActionSetting)(nil)).Elem()
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput) ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput() EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput) ToEnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput) Index(i pulumi.IntInput) EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseKeyWebSettingsChallengeSettingsActionSetting {
+		return vs[0].([]EnterpriseKeyWebSettingsChallengeSettingsActionSetting)[vs[1].(int)]
+	}).(EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput)
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings struct {
+	// A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+	ScoreThreshold float64 `pulumi:"scoreThreshold"`
+}
+
+// EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsInput is an input type that accepts EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs and EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput values.
+// You can construct a concrete instance of `EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsInput` via:
+//
+//	EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs{...}
+type EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput
+	ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutputWithContext(context.Context) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs struct {
+	// A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+	ScoreThreshold pulumi.Float64Input `pulumi:"scoreThreshold"`
+}
+
+func (EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings)(nil)).Elem()
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput {
+	return i.ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput)
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput {
+	return i.ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput).ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutputWithContext(ctx)
+}
+
+// EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrInput is an input type that accepts EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs, EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtr and EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput values.
+// You can construct a concrete instance of `EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrInput` via:
+//
+//	        EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput
+	ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutputWithContext(context.Context) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput
+}
+
+type enterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrType EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs
+
+func EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtr(v *EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrInput {
+	return (*enterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrType)(v)
+}
+
+func (*enterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings)(nil)).Elem()
+}
+
+func (i *enterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrType) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput {
+	return i.ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrType) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput)
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput {
+	return o.ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings) *EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings {
+		return &v
+	}).(EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput)
+}
+
+// A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput) ScoreThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings) float64 { return v.ScoreThreshold }).(pulumi.Float64Output)
+}
+
+type EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput) ToEnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput) Elem() EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput {
+	return o.ApplyT(func(v *EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings) EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings
+		return ret
+	}).(EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput)
+}
+
+// A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+func (o EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput) ScoreThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScoreThreshold
+	}).(pulumi.Float64PtrOutput)
 }
 
 func init() {
@@ -861,6 +1297,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWafSettingsPtrInput)(nil)).Elem(), EnterpriseKeyWafSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsInput)(nil)).Elem(), EnterpriseKeyWebSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsPtrInput)(nil)).Elem(), EnterpriseKeyWebSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsInput)(nil)).Elem(), EnterpriseKeyWebSettingsChallengeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsPtrInput)(nil)).Elem(), EnterpriseKeyWebSettingsChallengeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsActionSettingInput)(nil)).Elem(), EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayInput)(nil)).Elem(), EnterpriseKeyWebSettingsChallengeSettingsActionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsInput)(nil)).Elem(), EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrInput)(nil)).Elem(), EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs{})
 	pulumi.RegisterOutputType(EnterpriseKeyAndroidSettingsOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyAndroidSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyIosSettingsOutput{})
@@ -871,4 +1313,10 @@ func init() {
 	pulumi.RegisterOutputType(EnterpriseKeyWafSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsChallengeSettingsOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsChallengeSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsChallengeSettingsActionSettingOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsChallengeSettingsActionSettingArrayOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsPtrOutput{})
 }

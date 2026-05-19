@@ -199,6 +199,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

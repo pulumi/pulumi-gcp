@@ -272,9 +272,9 @@ import javax.annotation.Nullable;
  *         var tenantArReader = new IAMMember("tenantArReader", IAMMemberArgs.builder()
  *             .project(project.projectId())
  *             .role("roles/artifactregistry.reader")
- *             .member(tenantMds.applyValue(_tenantMds -> StdFunctions.jsondecode(JsondecodeArgs.builder()
- *                 .input(_tenantMds.output())
- *                 .build())).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().output())))
+ *             .member(StdFunctions.jsondecode(JsondecodeArgs.builder()
+ *                 .input(tenantMds.applyValue(_tenantMds -> _tenantMds.output()))
+ *                 .build()).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().output())))
  *             .build());
  * 
  *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
@@ -325,6 +325,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs;
  * import com.pulumi.asset.FileAsset;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
@@ -475,6 +476,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
  * import com.pulumi.asset.FileAsset;
  * import static com.pulumi.codegen.internal.Serialization.*;

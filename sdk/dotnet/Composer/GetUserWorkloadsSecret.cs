@@ -12,13 +12,14 @@ namespace Pulumi.Gcp.Composer
     public static class GetUserWorkloadsSecret
     {
         /// <summary>
-        /// Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+        /// Provides access to Kubernetes Secret configuration for a given project, region
+        /// and Managed Airflow Environment.
         /// 
-        /// To get more information about Composer User Workloads Secrets, see:
+        /// To get more information about Managed Airflow User Workloads Secrets, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+        ///     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
         ///     
         /// ## Example Usage
         /// 
@@ -77,13 +78,14 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserWorkloadsSecretResult>("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args ?? new GetUserWorkloadsSecretArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+        /// Provides access to Kubernetes Secret configuration for a given project, region
+        /// and Managed Airflow Environment.
         /// 
-        /// To get more information about Composer User Workloads Secrets, see:
+        /// To get more information about Managed Airflow User Workloads Secrets, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+        ///     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
         ///     
         /// ## Example Usage
         /// 
@@ -142,13 +144,14 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.Invoke<GetUserWorkloadsSecretResult>("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args ?? new GetUserWorkloadsSecretInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+        /// Provides access to Kubernetes Secret configuration for a given project, region
+        /// and Managed Airflow Environment.
         /// 
-        /// To get more information about Composer User Workloads Secrets, see:
+        /// To get more information about Managed Airflow User Workloads Secrets, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+        ///     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
         ///     
         /// ## Example Usage
         /// 

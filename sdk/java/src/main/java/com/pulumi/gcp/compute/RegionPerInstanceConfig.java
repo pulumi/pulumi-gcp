@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionPerInstanceConfig;
  * import com.pulumi.gcp.compute.RegionPerInstanceConfigArgs;
  * import com.pulumi.gcp.compute.inputs.RegionPerInstanceConfigPreservedStateArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionPerInstanceConfigPreservedStateDiskArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

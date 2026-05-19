@@ -22,6 +22,7 @@ class AnywhereCacheArgs:
                  bucket: pulumi.Input[_builtins.str],
                  zone: pulumi.Input[_builtins.str],
                  admission_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingest_on_write: pulumi.Input[Optional[_builtins.bool]] = None,
                  ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AnywhereCache resource.
@@ -31,12 +32,15 @@ class AnywhereCacheArgs:
         :param pulumi.Input[_builtins.str] admission_policy: The cache admission policy dictates whether a block should be inserted upon a cache miss.
                Default value is `admit-on-first-miss`.
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+        :param pulumi.Input[_builtins.bool] ingest_on_write: Whether or not the cache ingests data as the data is written to the bucket.
         :param pulumi.Input[_builtins.str] ttl: The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "zone", zone)
         if admission_policy is not None:
             pulumi.set(__self__, "admission_policy", admission_policy)
+        if ingest_on_write is not None:
+            pulumi.set(__self__, "ingest_on_write", ingest_on_write)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -79,6 +83,18 @@ class AnywhereCacheArgs:
         pulumi.set(self, "admission_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="ingestOnWrite")
+    def ingest_on_write(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether or not the cache ingests data as the data is written to the bucket.
+        """
+        return pulumi.get(self, "ingest_on_write")
+
+    @ingest_on_write.setter
+    def ingest_on_write(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ingest_on_write", value)
+
+    @_builtins.property
     @pulumi.getter
     def ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -98,6 +114,7 @@ class _AnywhereCacheState:
                  anywhere_cache_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingest_on_write: pulumi.Input[Optional[_builtins.bool]] = None,
                  pending_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  ttl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -112,6 +129,7 @@ class _AnywhereCacheState:
         :param pulumi.Input[_builtins.str] anywhere_cache_id: The ID of the Anywhere cache instance.
         :param pulumi.Input[_builtins.str] bucket: A reference to Bucket resource
         :param pulumi.Input[_builtins.str] create_time: The creation time of the cache instance in RFC 3339 format.
+        :param pulumi.Input[_builtins.bool] ingest_on_write: Whether or not the cache ingests data as the data is written to the bucket.
         :param pulumi.Input[_builtins.bool] pending_update: True if the cache instance has an active Update long-running operation.
         :param pulumi.Input[_builtins.str] state: The current state of the cache instance.
         :param pulumi.Input[_builtins.str] ttl: The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
@@ -126,6 +144,8 @@ class _AnywhereCacheState:
             pulumi.set(__self__, "bucket", bucket)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if ingest_on_write is not None:
+            pulumi.set(__self__, "ingest_on_write", ingest_on_write)
         if pending_update is not None:
             pulumi.set(__self__, "pending_update", pending_update)
         if state is not None:
@@ -186,6 +206,18 @@ class _AnywhereCacheState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ingestOnWrite")
+    def ingest_on_write(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether or not the cache ingests data as the data is written to the bucket.
+        """
+        return pulumi.get(self, "ingest_on_write")
+
+    @ingest_on_write.setter
+    def ingest_on_write(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ingest_on_write", value)
 
     @_builtins.property
     @pulumi.getter(name="pendingUpdate")
@@ -256,6 +288,7 @@ class AnywhereCache(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admission_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingest_on_write: pulumi.Input[Optional[_builtins.bool]] = None,
                  ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -307,6 +340,7 @@ class AnywhereCache(pulumi.CustomResource):
                Default value is `admit-on-first-miss`.
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
         :param pulumi.Input[_builtins.str] bucket: A reference to Bucket resource
+        :param pulumi.Input[_builtins.bool] ingest_on_write: Whether or not the cache ingests data as the data is written to the bucket.
         :param pulumi.Input[_builtins.str] ttl: The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
         :param pulumi.Input[_builtins.str] zone: The zone in which the cache instance needs to be created. For example, `us-central1-a.`
         """
@@ -375,6 +409,7 @@ class AnywhereCache(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admission_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingest_on_write: pulumi.Input[Optional[_builtins.bool]] = None,
                  ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -390,6 +425,7 @@ class AnywhereCache(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["ingest_on_write"] = ingest_on_write
             __props__.__dict__["ttl"] = ttl
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
@@ -413,6 +449,7 @@ class AnywhereCache(pulumi.CustomResource):
             anywhere_cache_id: pulumi.Input[Optional[_builtins.str]] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ingest_on_write: pulumi.Input[Optional[_builtins.bool]] = None,
             pending_update: pulumi.Input[Optional[_builtins.bool]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             ttl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -431,6 +468,7 @@ class AnywhereCache(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] anywhere_cache_id: The ID of the Anywhere cache instance.
         :param pulumi.Input[_builtins.str] bucket: A reference to Bucket resource
         :param pulumi.Input[_builtins.str] create_time: The creation time of the cache instance in RFC 3339 format.
+        :param pulumi.Input[_builtins.bool] ingest_on_write: Whether or not the cache ingests data as the data is written to the bucket.
         :param pulumi.Input[_builtins.bool] pending_update: True if the cache instance has an active Update long-running operation.
         :param pulumi.Input[_builtins.str] state: The current state of the cache instance.
         :param pulumi.Input[_builtins.str] ttl: The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
@@ -445,6 +483,7 @@ class AnywhereCache(pulumi.CustomResource):
         __props__.__dict__["anywhere_cache_id"] = anywhere_cache_id
         __props__.__dict__["bucket"] = bucket
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["ingest_on_write"] = ingest_on_write
         __props__.__dict__["pending_update"] = pending_update
         __props__.__dict__["state"] = state
         __props__.__dict__["ttl"] = ttl
@@ -485,6 +524,14 @@ class AnywhereCache(pulumi.CustomResource):
         The creation time of the cache instance in RFC 3339 format.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="ingestOnWrite")
+    def ingest_on_write(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether or not the cache ingests data as the data is written to the bucket.
+        """
+        return pulumi.get(self, "ingest_on_write")
 
     @_builtins.property
     @pulumi.getter(name="pendingUpdate")

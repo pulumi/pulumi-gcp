@@ -74,6 +74,41 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Security Firewall Endpoint Project
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networksecurity.FirewallEndpoint;
+ * import com.pulumi.gcp.networksecurity.FirewallEndpointArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new FirewallEndpoint("default", FirewallEndpointArgs.builder()
+ *             .name("my-firewall-endpoint")
+ *             .parent("projects/my-project-name")
+ *             .location("us-central1-a")
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -111,14 +146,20 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
         return this.associatedNetworks;
     }
     /**
-     * Project to bill on endpoint uptime usage.
+     * Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint&#39;s project if specified.
      * 
      */
     @Export(name="billingProjectId", refs={String.class}, tree="[0]")
     private Output<String> billingProjectId;
 
     /**
-     * @return Project to bill on endpoint uptime usage.
+     * @return Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint&#39;s project if specified.
      * 
      */
     public Output<String> billingProjectId() {
@@ -218,7 +259,7 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
@@ -226,7 +267,7 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     public Output<String> parent() {

@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.chronicle.NativeDashboard;
  * import com.pulumi.gcp.chronicle.NativeDashboardArgs;
  * import com.pulumi.gcp.chronicle.inputs.NativeDashboardFilterArgs;
+ * import com.pulumi.gcp.chronicle.inputs.NativeDashboardFilterFilterOperatorAndFieldValueArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

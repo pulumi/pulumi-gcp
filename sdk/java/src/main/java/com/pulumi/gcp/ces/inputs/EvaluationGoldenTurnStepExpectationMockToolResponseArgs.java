@@ -19,7 +19,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
 
     /**
      * (Output)
-     * Display name of the tool.
+     * Output only. Display name of the tool.
      * 
      */
     @Import(name="displayName")
@@ -27,7 +27,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
 
     /**
      * @return (Output)
-     * Display name of the tool.
+     * Output only. Display name of the tool.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -35,14 +35,14 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
     }
 
     /**
-     * The matching ID of the tool call the response is for.
+     * Optional. Matching ID of the tool call.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The matching ID of the tool call the response is for.
+     * @return Optional. Matching ID of the tool call.
      * 
      */
     public Optional<Output<String>> id() {
@@ -65,14 +65,14 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
     }
 
     /**
-     * The resource name of the tool.
+     * Name of the tool to execute.
      * 
      */
     @Import(name="tool")
     private @Nullable Output<String> tool;
 
     /**
-     * @return The resource name of the tool.
+     * @return Name of the tool to execute.
      * 
      */
     public Optional<Output<String>> tool() {
@@ -80,7 +80,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
     }
 
     /**
-     * A tool that is created from a toolset.
+     * The toolset tool that got executed.
      * Structure is documented below.
      * 
      */
@@ -88,7 +88,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
     private @Nullable Output<EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs> toolsetTool;
 
     /**
-     * @return A tool that is created from a toolset.
+     * @return The toolset tool that got executed.
      * Structure is documented below.
      * 
      */
@@ -126,7 +126,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
 
         /**
          * @param displayName (Output)
-         * Display name of the tool.
+         * Output only. Display name of the tool.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
 
         /**
          * @param displayName (Output)
-         * Display name of the tool.
+         * Output only. Display name of the tool.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
         }
 
         /**
-         * @param id The matching ID of the tool call the response is for.
+         * @param id Optional. Matching ID of the tool call.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
         }
 
         /**
-         * @param id The matching ID of the tool call the response is for.
+         * @param id Optional. Matching ID of the tool call.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
         }
 
         /**
-         * @param tool The resource name of the tool.
+         * @param tool Name of the tool to execute.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
         }
 
         /**
-         * @param tool The resource name of the tool.
+         * @param tool Name of the tool to execute.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
         }
 
         /**
-         * @param toolsetTool A tool that is created from a toolset.
+         * @param toolsetTool The toolset tool that got executed.
          * Structure is documented below.
          * 
          * @return builder
@@ -223,7 +223,7 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponseArgs exten
         }
 
         /**
-         * @param toolsetTool A tool that is created from a toolset.
+         * @param toolsetTool The toolset tool that got executed.
          * Structure is documented below.
          * 
          * @return builder

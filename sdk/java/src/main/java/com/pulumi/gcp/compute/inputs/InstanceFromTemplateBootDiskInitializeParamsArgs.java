@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromTemplateBootDiskInitializeParam
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,6 +109,21 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
      */
     public Optional<Output<Integer>> provisionedThroughput() {
         return Optional.ofNullable(this.provisionedThroughput);
+    }
+
+    /**
+     * A list of short names or selfLinks of zones in which to create a regional disk.
+     * 
+     */
+    @Import(name="replicaZones")
+    private @Nullable Output<List<String>> replicaZones;
+
+    /**
+     * @return A list of short names or selfLinks of zones in which to create a regional disk.
+     * 
+     */
+    public Optional<Output<List<String>>> replicaZones() {
+        return Optional.ofNullable(this.replicaZones);
     }
 
     /**
@@ -239,6 +255,7 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
         this.labels = $.labels;
         this.provisionedIops = $.provisionedIops;
         this.provisionedThroughput = $.provisionedThroughput;
+        this.replicaZones = $.replicaZones;
         this.resourceManagerTags = $.resourceManagerTags;
         this.resourcePolicies = $.resourcePolicies;
         this.size = $.size;
@@ -391,6 +408,37 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
          */
         public Builder provisionedThroughput(Integer provisionedThroughput) {
             return provisionedThroughput(Output.of(provisionedThroughput));
+        }
+
+        /**
+         * @param replicaZones A list of short names or selfLinks of zones in which to create a regional disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(@Nullable Output<List<String>> replicaZones) {
+            $.replicaZones = replicaZones;
+            return this;
+        }
+
+        /**
+         * @param replicaZones A list of short names or selfLinks of zones in which to create a regional disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(List<String> replicaZones) {
+            return replicaZones(Output.of(replicaZones));
+        }
+
+        /**
+         * @param replicaZones A list of short names or selfLinks of zones in which to create a regional disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZones(String... replicaZones) {
+            return replicaZones(List.of(replicaZones));
         }
 
         /**

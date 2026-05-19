@@ -41,14 +41,20 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Project to bill on endpoint uptime usage.
+     * Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint&#39;s project if specified.
      * 
      */
     @Import(name="billingProjectId")
     private @Nullable Output<String> billingProjectId;
 
     /**
-     * @return Project to bill on endpoint uptime usage.
+     * @return Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint&#39;s project if specified.
      * 
      */
     public Optional<Output<String>> billingProjectId() {
@@ -155,7 +161,7 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
 
     /**
      * The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     @Import(name="parent")
@@ -163,7 +169,7 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     public Optional<Output<String>> parent() {
@@ -325,7 +331,10 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param billingProjectId Project to bill on endpoint uptime usage.
+         * @param billingProjectId Project to charge for the deployed firewall endpoint.
+         * This field is required for organization-scoped endpoints.
+         * For project-scoped endpoints, it is optional but must match the
+         * endpoint&#39;s project if specified.
          * 
          * @return builder
          * 
@@ -336,7 +345,10 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param billingProjectId Project to bill on endpoint uptime usage.
+         * @param billingProjectId Project to charge for the deployed firewall endpoint.
+         * This field is required for organization-scoped endpoints.
+         * For project-scoped endpoints, it is optional but must match the
+         * endpoint&#39;s project if specified.
          * 
          * @return builder
          * 
@@ -481,7 +493,7 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param parent The name of the parent this firewall endpoint belongs to.
-         * Format: organizations/{organization_id}.
+         * Format: `organizations/{organization_id}` or `projects/{project_id}`.
          * 
          * @return builder
          * 
@@ -493,7 +505,7 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param parent The name of the parent this firewall endpoint belongs to.
-         * Format: organizations/{organization_id}.
+         * Format: `organizations/{organization_id}` or `projects/{project_id}`.
          * 
          * @return builder
          * 

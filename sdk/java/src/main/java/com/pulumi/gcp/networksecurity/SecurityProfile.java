@@ -79,6 +79,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.SecurityProfile;
  * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
  * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileSeverityOverrideArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileThreatOverrideArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileAntivirusOverrideArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -258,6 +261,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.SecurityProfile;
  * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
  * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileUrlFilterArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -527,7 +531,7 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the parent this security profile belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
@@ -535,7 +539,7 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the parent this security profile belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     public Output<Optional<String>> parent() {

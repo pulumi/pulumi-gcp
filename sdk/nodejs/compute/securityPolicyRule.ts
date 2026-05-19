@@ -120,6 +120,132 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ * ### Security Policy Rule Advanced Features
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "policyruletest",
+ *     description: "Security policy with WAF exclusions, Headers, and Redirect",
+ * });
+ * const policySecurityPolicyRule = new gcp.compute.SecurityPolicyRule("policy", {
+ *     securityPolicy: policy.name,
+ *     description: "Complex rule using advanced features: WAF config, header actions, and redirect options",
+ *     priority: 100,
+ *     action: "allow",
+ *     match: {
+ *         expr: {
+ *             expression: "request.path.matches('/api/v1/.*')",
+ *         },
+ *     },
+ *     preconfiguredWafConfig: {
+ *         exclusions: [{
+ *             targetRuleSet: "sqli-v33-stable",
+ *             targetRuleIds: ["owasp-crs-v030301-id942100-sqli"],
+ *             requestHeaders: [{
+ *                 operator: "EQUALS",
+ *                 value: "internal-scan",
+ *             }],
+ *         }],
+ *     },
+ *     headerAction: {
+ *         requestHeadersToAdds: [{
+ *             headerName: "X-Added-By-Armor",
+ *             headerValue: "Verified-Traffic",
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Security Policy Rule With Body Exclude
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "test-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "test-subnet",
+ *     region: "us-west2",
+ *     network: _default.id,
+ *     ipCidrRange: "10.10.0.0/24",
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "test-health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultSecurityPolicy = new gcp.compute.SecurityPolicy("default", {
+ *     name: "policyruletest",
+ *     description: "global security policy with body inspection",
+ *     type: "CLOUD_ARMOR",
+ *     advancedOptionsConfig: {
+ *         jsonParsing: "STANDARD",
+ *         logLevel: "VERBOSE",
+ *     },
+ * });
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "backendpolicy",
+ *     machineType: "e2-micro",
+ *     disks: [{
+ *         sourceImage: "projects/debian-cloud/global/images/family/debian-11",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ * });
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("default", {
+ *     name: "backendpolicy",
+ *     baseInstanceName: "backend",
+ *     zone: "us-west2-a",
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *     }],
+ *     targetSize: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backendpolicy",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     timeoutSec: 30,
+ *     healthChecks: defaultHealthCheck.id,
+ *     backends: [{
+ *         group: defaultInstanceGroupManager.instanceGroup,
+ *     }],
+ *     securityPolicy: defaultSecurityPolicy.id,
+ * });
+ * const policyRuleOne = new gcp.compute.SecurityPolicyRule("policy_rule_one", {
+ *     securityPolicy: defaultSecurityPolicy.name,
+ *     description: "waf body rule",
+ *     action: "deny(403)",
+ *     priority: 100,
+ *     preview: true,
+ *     match: {
+ *         expr: {
+ *             expression: "evaluatePreconfiguredWaf('sqli-v33-stable')",
+ *         },
+ *     },
+ *     preconfiguredWafConfig: {
+ *         exclusions: [{
+ *             targetRuleSet: "sqli-v33-stable",
+ *             requestBodies: [{
+ *                 operator: "EQUALS",
+ *                 value: "safe-field",
+ *             }],
+ *         }],
+ *     },
+ * }, {
+ *     dependsOn: [defaultBackendService],
+ * });
+ * ```
  *
  * ## Import
  *

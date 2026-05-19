@@ -91,6 +91,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.securitycenter.inputs.OrganizationCustomModuleCustomConfigArgs;
  * import com.pulumi.gcp.securitycenter.inputs.OrganizationCustomModuleCustomConfigPredicateArgs;
  * import com.pulumi.gcp.securitycenter.inputs.OrganizationCustomModuleCustomConfigCustomOutputArgs;
+ * import com.pulumi.gcp.securitycenter.inputs.OrganizationCustomModuleCustomConfigCustomOutputPropertyArgs;
+ * import com.pulumi.gcp.securitycenter.inputs.OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs;
  * import com.pulumi.gcp.securitycenter.inputs.OrganizationCustomModuleCustomConfigResourceSelectorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

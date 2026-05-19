@@ -12,13 +12,14 @@ namespace Pulumi.Gcp.Composer
     public static class GetEnvironment
     {
         /// <summary>
-        /// Provides access to Cloud Composer environment configuration in a region for a given project.
+        /// Provides access to Managed Airflow environment configuration in a region for a
+        /// given project.
         /// 
-        /// To get more information about Composer Environment, see:
+        /// To get more information about Managed Airflow Environment, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        ///     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
         /// 
         /// ## Example Usage
         /// 
@@ -51,13 +52,14 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentResult>("gcp:composer/getEnvironment:getEnvironment", args ?? new GetEnvironmentArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides access to Cloud Composer environment configuration in a region for a given project.
+        /// Provides access to Managed Airflow environment configuration in a region for a
+        /// given project.
         /// 
-        /// To get more information about Composer Environment, see:
+        /// To get more information about Managed Airflow Environment, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        ///     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
         /// 
         /// ## Example Usage
         /// 
@@ -90,13 +92,14 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentResult>("gcp:composer/getEnvironment:getEnvironment", args ?? new GetEnvironmentInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides access to Cloud Composer environment configuration in a region for a given project.
+        /// Provides access to Managed Airflow environment configuration in a region for a
+        /// given project.
         /// 
-        /// To get more information about Composer Environment, see:
+        /// To get more information about Managed Airflow Environment, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        ///     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
         /// 
         /// ## Example Usage
         /// 

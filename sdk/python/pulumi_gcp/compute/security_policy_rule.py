@@ -569,6 +569,121 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+        ### Security Policy Rule Advanced Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="policyruletest",
+            description="Security policy with WAF exclusions, Headers, and Redirect")
+        policy_security_policy_rule = gcp.compute.SecurityPolicyRule("policy",
+            security_policy=policy.name,
+            description="Complex rule using advanced features: WAF config, header actions, and redirect options",
+            priority=100,
+            action="allow",
+            match={
+                "expr": {
+                    "expression": "request.path.matches('/api/v1/.*')",
+                },
+            },
+            preconfigured_waf_config={
+                "exclusions": [{
+                    "target_rule_set": "sqli-v33-stable",
+                    "target_rule_ids": ["owasp-crs-v030301-id942100-sqli"],
+                    "request_headers": [{
+                        "operator": "EQUALS",
+                        "value": "internal-scan",
+                    }],
+                }],
+            },
+            header_action={
+                "request_headers_to_adds": [{
+                    "header_name": "X-Added-By-Armor",
+                    "header_value": "Verified-Traffic",
+                }],
+            })
+        ```
+        ### Security Policy Rule With Body Exclude
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="test-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="test-subnet",
+            region="us-west2",
+            network=default.id,
+            ip_cidr_range="10.10.0.0/24")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="test-health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default_security_policy = gcp.compute.SecurityPolicy("default",
+            name="policyruletest",
+            description="global security policy with body inspection",
+            type="CLOUD_ARMOR",
+            advanced_options_config={
+                "json_parsing": "STANDARD",
+                "log_level": "VERBOSE",
+            })
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "subnetwork": default_subnetwork.id,
+            }],
+            name="backendpolicy",
+            machine_type="e2-micro",
+            disks=[{
+                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "auto_delete": True,
+                "boot": True,
+            }])
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="backendpolicy",
+            base_instance_name="backend",
+            zone="us-west2-a",
+            versions=[{
+                "instance_template": default_instance_template.id,
+            }],
+            target_size=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backendpolicy",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            timeout_sec=30,
+            health_checks=default_health_check.id,
+            backends=[{
+                "group": default_instance_group_manager.instance_group,
+            }],
+            security_policy=default_security_policy.id)
+        policy_rule_one = gcp.compute.SecurityPolicyRule("policy_rule_one",
+            security_policy=default_security_policy.name,
+            description="waf body rule",
+            action="deny(403)",
+            priority=100,
+            preview=True,
+            match={
+                "expr": {
+                    "expression": "evaluatePreconfiguredWaf('sqli-v33-stable')",
+                },
+            },
+            preconfigured_waf_config={
+                "exclusions": [{
+                    "target_rule_set": "sqli-v33-stable",
+                    "request_bodies": [{
+                        "operator": "EQUALS",
+                        "value": "safe-field",
+                    }],
+                }],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default_backend_service]))
+        ```
 
         ## Import
 
@@ -727,6 +842,121 @@ class SecurityPolicyRule(pulumi.CustomResource):
             },
             action="allow",
             preview=True)
+        ```
+        ### Security Policy Rule Advanced Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="policyruletest",
+            description="Security policy with WAF exclusions, Headers, and Redirect")
+        policy_security_policy_rule = gcp.compute.SecurityPolicyRule("policy",
+            security_policy=policy.name,
+            description="Complex rule using advanced features: WAF config, header actions, and redirect options",
+            priority=100,
+            action="allow",
+            match={
+                "expr": {
+                    "expression": "request.path.matches('/api/v1/.*')",
+                },
+            },
+            preconfigured_waf_config={
+                "exclusions": [{
+                    "target_rule_set": "sqli-v33-stable",
+                    "target_rule_ids": ["owasp-crs-v030301-id942100-sqli"],
+                    "request_headers": [{
+                        "operator": "EQUALS",
+                        "value": "internal-scan",
+                    }],
+                }],
+            },
+            header_action={
+                "request_headers_to_adds": [{
+                    "header_name": "X-Added-By-Armor",
+                    "header_value": "Verified-Traffic",
+                }],
+            })
+        ```
+        ### Security Policy Rule With Body Exclude
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="test-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="test-subnet",
+            region="us-west2",
+            network=default.id,
+            ip_cidr_range="10.10.0.0/24")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="test-health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default_security_policy = gcp.compute.SecurityPolicy("default",
+            name="policyruletest",
+            description="global security policy with body inspection",
+            type="CLOUD_ARMOR",
+            advanced_options_config={
+                "json_parsing": "STANDARD",
+                "log_level": "VERBOSE",
+            })
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "subnetwork": default_subnetwork.id,
+            }],
+            name="backendpolicy",
+            machine_type="e2-micro",
+            disks=[{
+                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "auto_delete": True,
+                "boot": True,
+            }])
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("default",
+            name="backendpolicy",
+            base_instance_name="backend",
+            zone="us-west2-a",
+            versions=[{
+                "instance_template": default_instance_template.id,
+            }],
+            target_size=1)
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backendpolicy",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            timeout_sec=30,
+            health_checks=default_health_check.id,
+            backends=[{
+                "group": default_instance_group_manager.instance_group,
+            }],
+            security_policy=default_security_policy.id)
+        policy_rule_one = gcp.compute.SecurityPolicyRule("policy_rule_one",
+            security_policy=default_security_policy.name,
+            description="waf body rule",
+            action="deny(403)",
+            priority=100,
+            preview=True,
+            match={
+                "expr": {
+                    "expression": "evaluatePreconfiguredWaf('sqli-v33-stable')",
+                },
+            },
+            preconfigured_waf_config={
+                "exclusions": [{
+                    "target_rule_set": "sqli-v33-stable",
+                    "request_bodies": [{
+                        "operator": "EQUALS",
+                        "value": "safe-field",
+                    }],
+                }],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default_backend_service]))
         ```
 
         ## Import

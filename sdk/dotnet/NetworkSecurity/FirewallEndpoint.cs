@@ -53,6 +53,29 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Firewall Endpoint Project
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkSecurity.FirewallEndpoint("default", new()
+    ///     {
+    ///         Name = "my-firewall-endpoint",
+    ///         Parent = "projects/my-project-name",
+    ///         Location = "us-central1-a",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -79,7 +102,10 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableArray<string>> AssociatedNetworks { get; private set; } = null!;
 
         /// <summary>
-        /// Project to bill on endpoint uptime usage.
+        /// Project to charge for the deployed firewall endpoint.
+        /// This field is required for organization-scoped endpoints.
+        /// For project-scoped endpoints, it is optional but must match the
+        /// endpoint's project if specified.
         /// </summary>
         [Output("billingProjectId")]
         public Output<string> BillingProjectId { get; private set; } = null!;
@@ -126,7 +152,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the parent this firewall endpoint belongs to.
-        /// Format: organizations/{organization_id}.
+        /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -214,10 +240,13 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class FirewallEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Project to bill on endpoint uptime usage.
+        /// Project to charge for the deployed firewall endpoint.
+        /// This field is required for organization-scoped endpoints.
+        /// For project-scoped endpoints, it is optional but must match the
+        /// endpoint's project if specified.
         /// </summary>
-        [Input("billingProjectId", required: true)]
-        public Input<string> BillingProjectId { get; set; } = null!;
+        [Input("billingProjectId")]
+        public Input<string>? BillingProjectId { get; set; }
 
         /// <summary>
         /// Settings for the endpoint.
@@ -255,7 +284,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the parent this firewall endpoint belongs to.
-        /// Format: organizations/{organization_id}.
+        /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -284,7 +313,10 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Project to bill on endpoint uptime usage.
+        /// Project to charge for the deployed firewall endpoint.
+        /// This field is required for organization-scoped endpoints.
+        /// For project-scoped endpoints, it is optional but must match the
+        /// endpoint's project if specified.
         /// </summary>
         [Input("billingProjectId")]
         public Input<string>? BillingProjectId { get; set; }
@@ -347,7 +379,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the parent this firewall endpoint belongs to.
-        /// Format: organizations/{organization_id}.
+        /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

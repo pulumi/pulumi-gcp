@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.orgpolicy.Policy;
  * import com.pulumi.gcp.orgpolicy.PolicyArgs;
  * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

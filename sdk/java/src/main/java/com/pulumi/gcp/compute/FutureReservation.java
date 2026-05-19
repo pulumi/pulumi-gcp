@@ -107,6 +107,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.FutureReservationArgs;
  * import com.pulumi.gcp.compute.inputs.FutureReservationTimeWindowArgs;
  * import com.pulumi.gcp.compute.inputs.FutureReservationAggregateReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.FutureReservationAggregateReservationReservedResourceArgs;
+ * import com.pulumi.gcp.compute.inputs.FutureReservationAggregateReservationReservedResourceAcceleratorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

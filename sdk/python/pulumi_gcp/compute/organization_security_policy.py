@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OrganizationSecurityPolicyArgs', 'OrganizationSecurityPolicy']
 
@@ -20,6 +22,7 @@ __all__ = ['OrganizationSecurityPolicyArgs', 'OrganizationSecurityPolicy']
 class OrganizationSecurityPolicyArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
+                 advanced_options_config: pulumi.Input[Optional['OrganizationSecurityPolicyAdvancedOptionsConfigArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  short_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -29,6 +32,8 @@ class OrganizationSecurityPolicyArgs:
 
         :param pulumi.Input[_builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
+        :param pulumi.Input['OrganizationSecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: Additional options for this security policy.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
         :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         :param pulumi.Input[_builtins.str] short_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
@@ -37,6 +42,8 @@ class OrganizationSecurityPolicyArgs:
                Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         pulumi.set(__self__, "parent", parent)
+        if advanced_options_config is not None:
+            pulumi.set(__self__, "advanced_options_config", advanced_options_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -58,6 +65,19 @@ class OrganizationSecurityPolicyArgs:
     @parent.setter
     def parent(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedOptionsConfig")
+    def advanced_options_config(self) -> pulumi.Input[Optional['OrganizationSecurityPolicyAdvancedOptionsConfigArgs']]:
+        """
+        Additional options for this security policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_options_config")
+
+    @advanced_options_config.setter
+    def advanced_options_config(self, value: pulumi.Input[Optional['OrganizationSecurityPolicyAdvancedOptionsConfigArgs']]):
+        pulumi.set(self, "advanced_options_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -113,6 +133,7 @@ class OrganizationSecurityPolicyArgs:
 @pulumi.input_type
 class _OrganizationSecurityPolicyState:
     def __init__(__self__, *,
+                 advanced_options_config: pulumi.Input[Optional['OrganizationSecurityPolicyAdvancedOptionsConfigArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -123,6 +144,8 @@ class _OrganizationSecurityPolicyState:
         """
         Input properties used for looking up and filtering OrganizationSecurityPolicy resources.
 
+        :param pulumi.Input['OrganizationSecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: Additional options for this security policy.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
         :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
@@ -135,6 +158,8 @@ class _OrganizationSecurityPolicyState:
                **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
                Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
+        if advanced_options_config is not None:
+            pulumi.set(__self__, "advanced_options_config", advanced_options_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -149,6 +174,19 @@ class _OrganizationSecurityPolicyState:
             pulumi.set(__self__, "short_name", short_name)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedOptionsConfig")
+    def advanced_options_config(self) -> pulumi.Input[Optional['OrganizationSecurityPolicyAdvancedOptionsConfigArgs']]:
+        """
+        Additional options for this security policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_options_config")
+
+    @advanced_options_config.setter
+    def advanced_options_config(self, value: pulumi.Input[Optional['OrganizationSecurityPolicyAdvancedOptionsConfigArgs']]):
+        pulumi.set(self, "advanced_options_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -245,6 +283,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyAdvancedOptionsConfigArgs', 'OrganizationSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -273,6 +312,26 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         ```
+        ### Organization Security Policy With Advanced Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="security-policy",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR",
+            advanced_options_config={
+                "json_parsing": "STANDARD_WITH_GRAPHQL",
+                "log_level": "VERBOSE",
+                "json_custom_config": {
+                    "content_types": ["application/vnd.api+json"],
+                },
+                "user_ip_request_headers": ["X-Forwarded-For"],
+                "request_body_inspection_size": "64KB",
+            })
+        ```
 
         ## Import
 
@@ -291,6 +350,8 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyAdvancedOptionsConfigArgs', 'OrganizationSecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: Additional options for this security policy.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
         :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         :param pulumi.Input[_builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
@@ -328,6 +389,26 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         ```
+        ### Organization Security Policy With Advanced Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="security-policy",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR",
+            advanced_options_config={
+                "json_parsing": "STANDARD_WITH_GRAPHQL",
+                "log_level": "VERBOSE",
+                "json_custom_config": {
+                    "content_types": ["application/vnd.api+json"],
+                },
+                "user_ip_request_headers": ["X-Forwarded-For"],
+                "request_body_inspection_size": "64KB",
+            })
+        ```
 
         ## Import
 
@@ -359,6 +440,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyAdvancedOptionsConfigArgs', 'OrganizationSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -373,6 +455,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationSecurityPolicyArgs.__new__(OrganizationSecurityPolicyArgs)
 
+            __props__.__dict__["advanced_options_config"] = advanced_options_config
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if parent is None and not opts.urn:
@@ -392,6 +475,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_options_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyAdvancedOptionsConfigArgs', 'OrganizationSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -406,6 +490,8 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyAdvancedOptionsConfigArgs', 'OrganizationSecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: Additional options for this security policy.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
         :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
@@ -422,6 +508,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         __props__ = _OrganizationSecurityPolicyState.__new__(_OrganizationSecurityPolicyState)
 
+        __props__.__dict__["advanced_options_config"] = advanced_options_config
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["fingerprint"] = fingerprint
@@ -430,6 +517,15 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["short_name"] = short_name
         __props__.__dict__["type"] = type
         return OrganizationSecurityPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedOptionsConfig")
+    def advanced_options_config(self) -> pulumi.Output[Optional['outputs.OrganizationSecurityPolicyAdvancedOptionsConfig']]:
+        """
+        Additional options for this security policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_options_config")
 
     @_builtins.property
     @pulumi.getter

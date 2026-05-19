@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldArgs;
  * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeArgs;
  * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

@@ -277,6 +277,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.osconfig.PatchDeployment;
  * import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterGroupLabelArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigAptArgs;
  * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigYumArgs;

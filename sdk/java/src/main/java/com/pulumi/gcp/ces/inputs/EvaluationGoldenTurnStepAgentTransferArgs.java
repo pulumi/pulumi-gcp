@@ -17,14 +17,16 @@ public final class EvaluationGoldenTurnStepAgentTransferArgs extends com.pulumi.
     public static final EvaluationGoldenTurnStepAgentTransferArgs Empty = new EvaluationGoldenTurnStepAgentTransferArgs();
 
     /**
-     * The display name of the target agent.
+     * (Output)
+     * Display name of the agent.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The display name of the target agent.
+     * @return (Output)
+     * Display name of the agent.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -32,14 +34,14 @@ public final class EvaluationGoldenTurnStepAgentTransferArgs extends com.pulumi.
     }
 
     /**
-     * The resource name of the target agent.
+     * The agent to which the conversation is being transferred.
      * 
      */
     @Import(name="targetAgent", required=true)
     private Output<String> targetAgent;
 
     /**
-     * @return The resource name of the target agent.
+     * @return The agent to which the conversation is being transferred.
      * 
      */
     public Output<String> targetAgent() {
@@ -72,7 +74,8 @@ public final class EvaluationGoldenTurnStepAgentTransferArgs extends com.pulumi.
         }
 
         /**
-         * @param displayName The display name of the target agent.
+         * @param displayName (Output)
+         * Display name of the agent.
          * 
          * @return builder
          * 
@@ -83,7 +86,8 @@ public final class EvaluationGoldenTurnStepAgentTransferArgs extends com.pulumi.
         }
 
         /**
-         * @param displayName The display name of the target agent.
+         * @param displayName (Output)
+         * Display name of the agent.
          * 
          * @return builder
          * 
@@ -93,7 +97,7 @@ public final class EvaluationGoldenTurnStepAgentTransferArgs extends com.pulumi.
         }
 
         /**
-         * @param targetAgent The resource name of the target agent.
+         * @param targetAgent The agent to which the conversation is being transferred.
          * 
          * @return builder
          * 
@@ -104,7 +108,7 @@ public final class EvaluationGoldenTurnStepAgentTransferArgs extends com.pulumi.
         }
 
         /**
-         * @param targetAgent The resource name of the target agent.
+         * @param targetAgent The agent to which the conversation is being transferred.
          * 
          * @return builder
          * 

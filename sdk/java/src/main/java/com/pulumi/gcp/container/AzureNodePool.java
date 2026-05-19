@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.AzureCluster;
  * import com.pulumi.gcp.container.AzureClusterArgs;
  * import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationAdminUserArgs;
  * import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneArgs;
  * import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneSshConfigArgs;
  * import com.pulumi.gcp.container.inputs.AzureClusterFleetArgs;

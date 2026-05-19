@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 public final class EvaluationGoldenTurnStepExpectationMockToolResponse {
     /**
      * @return (Output)
-     * Display name of the tool.
+     * Output only. Display name of the tool.
      * 
      */
     private @Nullable String displayName;
     /**
-     * @return The matching ID of the tool call the response is for.
+     * @return Optional. Matching ID of the tool call.
      * 
      */
     private @Nullable String id;
@@ -30,12 +30,12 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponse {
      */
     private @Nullable Map<String,String> response;
     /**
-     * @return The resource name of the tool.
+     * @return Name of the tool to execute.
      * 
      */
     private @Nullable String tool;
     /**
-     * @return A tool that is created from a toolset.
+     * @return The toolset tool that got executed.
      * Structure is documented below.
      * 
      */
@@ -44,14 +44,14 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponse {
     private EvaluationGoldenTurnStepExpectationMockToolResponse() {}
     /**
      * @return (Output)
-     * Display name of the tool.
+     * Output only. Display name of the tool.
      * 
      */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
     /**
-     * @return The matching ID of the tool call the response is for.
+     * @return Optional. Matching ID of the tool call.
      * 
      */
     public Optional<String> id() {
@@ -65,14 +65,14 @@ public final class EvaluationGoldenTurnStepExpectationMockToolResponse {
         return this.response == null ? Map.of() : this.response;
     }
     /**
-     * @return The resource name of the tool.
+     * @return Name of the tool to execute.
      * 
      */
     public Optional<String> tool() {
         return Optional.ofNullable(this.tool);
     }
     /**
-     * @return A tool that is created from a toolset.
+     * @return The toolset tool that got executed.
      * Structure is documented below.
      * 
      */

@@ -361,6 +361,7 @@ class AddressArgs:
 class _AddressState:
     def __init__(__self__, *,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_id: pulumi.Input[Optional[_builtins.str]] = None,
                  address_type: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -387,6 +388,7 @@ class _AddressState:
         :param pulumi.Input[_builtins.str] address: The static external IP address represented by this resource.
                The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
+        :param pulumi.Input[_builtins.str] address_id: The unique numeric identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
@@ -456,6 +458,8 @@ class _AddressState:
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
+        if address_id is not None:
+            pulumi.set(__self__, "address_id", address_id)
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
         if creation_timestamp is not None:
@@ -510,6 +514,18 @@ class _AddressState:
     @address.setter
     def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="addressId")
+    def address_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unique numeric identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "address_id")
+
+    @address_id.setter
+    def address_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "address_id", value)
 
     @_builtins.property
     @pulumi.getter(name="addressType")
@@ -1190,6 +1206,7 @@ class Address(pulumi.CustomResource):
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["region"] = region
             __props__.__dict__["subnetwork"] = subnetwork
+            __props__.__dict__["address_id"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
@@ -1209,6 +1226,7 @@ class Address(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
+            address_id: pulumi.Input[Optional[_builtins.str]] = None,
             address_type: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1239,6 +1257,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] address: The static external IP address represented by this resource.
                The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
+        :param pulumi.Input[_builtins.str] address_id: The unique numeric identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
@@ -1311,6 +1330,7 @@ class Address(pulumi.CustomResource):
         __props__ = _AddressState.__new__(_AddressState)
 
         __props__.__dict__["address"] = address
+        __props__.__dict__["address_id"] = address_id
         __props__.__dict__["address_type"] = address_type
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
@@ -1342,6 +1362,14 @@ class Address(pulumi.CustomResource):
         if any. Set by the API if undefined.
         """
         return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="addressId")
+    def address_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique numeric identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "address_id")
 
     @_builtins.property
     @pulumi.getter(name="addressType")

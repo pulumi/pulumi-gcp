@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
     public sealed class FunctionServiceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        /// Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
         /// </summary>
         [Input("allTrafficOnLatestRevision")]
         public Input<bool>? AllTrafficOnLatestRevision { get; set; }

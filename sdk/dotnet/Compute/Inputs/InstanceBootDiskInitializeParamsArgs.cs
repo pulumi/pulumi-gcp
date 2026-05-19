@@ -76,6 +76,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("provisionedThroughput")]
         public Input<int>? ProvisionedThroughput { get; set; }
 
+        [Input("replicaZones")]
+        private InputList<string>? _replicaZones;
+
+        /// <summary>
+        /// A list of short names or SelfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+        /// </summary>
+        public InputList<string> ReplicaZones
+        {
+            get => _replicaZones ?? (_replicaZones = new InputList<string>());
+            set => _replicaZones = value;
+        }
+
         [Input("resourceManagerTags")]
         private InputMap<string>? _resourceManagerTags;
 

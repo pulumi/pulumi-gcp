@@ -91,6 +91,8 @@ type AnywhereCache struct {
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The creation time of the cache instance in RFC 3339 format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite pulumi.BoolPtrOutput `pulumi:"ingestOnWrite"`
 	// True if the cache instance has an active Update long-running operation.
 	PendingUpdate pulumi.BoolOutput `pulumi:"pendingUpdate"`
 	// The current state of the cache instance.
@@ -149,6 +151,8 @@ type anywhereCacheState struct {
 	Bucket *string `pulumi:"bucket"`
 	// The creation time of the cache instance in RFC 3339 format.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite *bool `pulumi:"ingestOnWrite"`
 	// True if the cache instance has an active Update long-running operation.
 	PendingUpdate *bool `pulumi:"pendingUpdate"`
 	// The current state of the cache instance.
@@ -172,6 +176,8 @@ type AnywhereCacheState struct {
 	Bucket pulumi.StringPtrInput
 	// The creation time of the cache instance in RFC 3339 format.
 	CreateTime pulumi.StringPtrInput
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite pulumi.BoolPtrInput
 	// True if the cache instance has an active Update long-running operation.
 	PendingUpdate pulumi.BoolPtrInput
 	// The current state of the cache instance.
@@ -195,6 +201,8 @@ type anywhereCacheArgs struct {
 	AdmissionPolicy *string `pulumi:"admissionPolicy"`
 	// A reference to Bucket resource
 	Bucket string `pulumi:"bucket"`
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite *bool `pulumi:"ingestOnWrite"`
 	// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
 	Ttl *string `pulumi:"ttl"`
 	// The zone in which the cache instance needs to be created. For example, `us-central1-a.`
@@ -209,6 +217,8 @@ type AnywhereCacheArgs struct {
 	AdmissionPolicy pulumi.StringPtrInput
 	// A reference to Bucket resource
 	Bucket pulumi.StringInput
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite pulumi.BoolPtrInput
 	// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
 	Ttl pulumi.StringPtrInput
 	// The zone in which the cache instance needs to be created. For example, `us-central1-a.`
@@ -322,6 +332,11 @@ func (o AnywhereCacheOutput) Bucket() pulumi.StringOutput {
 // The creation time of the cache instance in RFC 3339 format.
 func (o AnywhereCacheOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnywhereCache) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether or not the cache ingests data as the data is written to the bucket.
+func (o AnywhereCacheOutput) IngestOnWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AnywhereCache) pulumi.BoolPtrOutput { return v.IngestOnWrite }).(pulumi.BoolPtrOutput)
 }
 
 // True if the cache instance has an active Update long-running operation.

@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .rule(StdFunctions.split(SplitArgs.builder()
  *                 .separator("/")
  *                 .text(googleChronicleRule.my-rule().name())
- *                 .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+ *                 .build()).result().size().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
  *                 .separator("/")
  *                 .text(googleChronicleRule.my-rule().name())
  *                 .build()).result()[_length - 1]))

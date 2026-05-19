@@ -108,6 +108,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.Entry;
  * import com.pulumi.gcp.dataplex.EntryArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryEntrySourceArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryEntrySourceAncestorArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
  * import com.pulumi.resources.CustomResourceOptions;

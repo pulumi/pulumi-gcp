@@ -113,6 +113,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigConsumerArgs;
  * import com.pulumi.gcp.dataproc.Cluster;
  * import com.pulumi.gcp.dataproc.ClusterArgs;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;

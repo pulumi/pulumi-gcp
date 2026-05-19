@@ -450,7 +450,7 @@ namespace Pulumi.Gcp.Compute
     ///             TrackingMode = "PER_SESSION",
     ///             ConnectionPersistenceOnUnhealthyBackends = "NEVER_PERSIST",
     ///             IdleTimeoutSec = 60,
-    ///             EnableStrongAffinity = true,
+    ///             EnableStrongAffinity = false,
     ///         },
     ///     });
     /// 
@@ -895,7 +895,6 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> ConnectionDrainingTimeoutSec { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Connection Tracking configuration for this BackendService.
         /// This is available only for Layer 4 Internal Load Balancing and
         /// Network Load Balancing.
@@ -1309,7 +1308,6 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Connection Tracking configuration for this BackendService.
         /// This is available only for Layer 4 Internal Load Balancing and
         /// Network Load Balancing.
@@ -1666,7 +1664,6 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Connection Tracking configuration for this BackendService.
         /// This is available only for Layer 4 Internal Load Balancing and
         /// Network Load Balancing.

@@ -714,9 +714,15 @@ type Instance struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -908,9 +914,15 @@ type instanceState struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType *string `pulumi:"nodeType"`
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -1059,9 +1071,15 @@ type InstanceState struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType pulumi.StringPtrInput
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -1182,9 +1200,15 @@ type instanceArgs struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType *string `pulumi:"nodeType"`
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -1276,9 +1300,15 @@ type InstanceArgs struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType pulumi.StringPtrInput
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -1573,9 +1603,15 @@ func (o InstanceOutput) NodeConfigs() InstanceNodeConfigArrayOutput {
 // Optional. Machine type for individual nodes of the instance.
 // Possible values:
 // SHARED_CORE_NANO
+// CUSTOM_PICO
+// CUSTOM_MICRO
+// CUSTOM_MINI
 // HIGHMEM_MEDIUM
+// HIGHCPU_MEDIUM
 // HIGHMEM_XLARGE
 // STANDARD_SMALL
+// STANDARD_LARGE
+// HIGHMEM_2XLARGE
 func (o InstanceOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }

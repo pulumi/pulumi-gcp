@@ -23700,9 +23700,10 @@ func (o EvaluationGoldenTurnStepArrayOutput) Index(i pulumi.IntInput) Evaluation
 }
 
 type EvaluationGoldenTurnStepAgentTransfer struct {
-	// The display name of the target agent.
+	// (Output)
+	// Display name of the agent.
 	DisplayName *string `pulumi:"displayName"`
-	// The resource name of the target agent.
+	// The agent to which the conversation is being transferred.
 	TargetAgent string `pulumi:"targetAgent"`
 }
 
@@ -23718,9 +23719,10 @@ type EvaluationGoldenTurnStepAgentTransferInput interface {
 }
 
 type EvaluationGoldenTurnStepAgentTransferArgs struct {
-	// The display name of the target agent.
+	// (Output)
+	// Display name of the agent.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The resource name of the target agent.
+	// The agent to which the conversation is being transferred.
 	TargetAgent pulumi.StringInput `pulumi:"targetAgent"`
 }
 
@@ -23801,12 +23803,13 @@ func (o EvaluationGoldenTurnStepAgentTransferOutput) ToEvaluationGoldenTurnStepA
 	}).(EvaluationGoldenTurnStepAgentTransferPtrOutput)
 }
 
-// The display name of the target agent.
+// (Output)
+// Display name of the agent.
 func (o EvaluationGoldenTurnStepAgentTransferOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepAgentTransfer) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The resource name of the target agent.
+// The agent to which the conversation is being transferred.
 func (o EvaluationGoldenTurnStepAgentTransferOutput) TargetAgent() pulumi.StringOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepAgentTransfer) string { return v.TargetAgent }).(pulumi.StringOutput)
 }
@@ -23835,7 +23838,8 @@ func (o EvaluationGoldenTurnStepAgentTransferPtrOutput) Elem() EvaluationGoldenT
 	}).(EvaluationGoldenTurnStepAgentTransferOutput)
 }
 
-// The display name of the target agent.
+// (Output)
+// Display name of the agent.
 func (o EvaluationGoldenTurnStepAgentTransferPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepAgentTransfer) *string {
 		if v == nil {
@@ -23845,7 +23849,7 @@ func (o EvaluationGoldenTurnStepAgentTransferPtrOutput) DisplayName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource name of the target agent.
+// The agent to which the conversation is being transferred.
 func (o EvaluationGoldenTurnStepAgentTransferPtrOutput) TargetAgent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepAgentTransfer) *string {
 		if v == nil {
@@ -24483,9 +24487,10 @@ func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput) Index(
 }
 
 type EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer struct {
-	// The display name of the target agent.
+	// (Output)
+	// Display name of the agent.
 	DisplayName *string `pulumi:"displayName"`
-	// The resource name of the target agent.
+	// The agent to which the conversation is being transferred.
 	TargetAgent string `pulumi:"targetAgent"`
 }
 
@@ -24501,9 +24506,10 @@ type EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferInput int
 }
 
 type EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs struct {
-	// The display name of the target agent.
+	// (Output)
+	// Display name of the agent.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The resource name of the target agent.
+	// The agent to which the conversation is being transferred.
 	TargetAgent pulumi.StringInput `pulumi:"targetAgent"`
 }
 
@@ -24584,14 +24590,15 @@ func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput
 	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput)
 }
 
-// The display name of the target agent.
+// (Output)
+// Display name of the agent.
 func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) *string {
 		return v.DisplayName
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource name of the target agent.
+// The agent to which the conversation is being transferred.
 func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput) TargetAgent() pulumi.StringOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) string {
 		return v.TargetAgent
@@ -24622,7 +24629,8 @@ func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOut
 	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput)
 }
 
-// The display name of the target agent.
+// (Output)
+// Display name of the agent.
 func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) *string {
 		if v == nil {
@@ -24632,7 +24640,7 @@ func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource name of the target agent.
+// The agent to which the conversation is being transferred.
 func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput) TargetAgent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) *string {
 		if v == nil {
@@ -25725,9 +25733,10 @@ func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolset
 }
 
 type EvaluationGoldenTurnStepExpectationAgentTransfer struct {
-	// The display name of the target agent.
+	// (Output)
+	// Display name of the agent.
 	DisplayName *string `pulumi:"displayName"`
-	// The resource name of the target agent.
+	// The agent to which the conversation is being transferred.
 	TargetAgent *string `pulumi:"targetAgent"`
 }
 
@@ -25743,9 +25752,10 @@ type EvaluationGoldenTurnStepExpectationAgentTransferInput interface {
 }
 
 type EvaluationGoldenTurnStepExpectationAgentTransferArgs struct {
-	// The display name of the target agent.
+	// (Output)
+	// Display name of the agent.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The resource name of the target agent.
+	// The agent to which the conversation is being transferred.
 	TargetAgent pulumi.StringPtrInput `pulumi:"targetAgent"`
 }
 
@@ -25826,12 +25836,13 @@ func (o EvaluationGoldenTurnStepExpectationAgentTransferOutput) ToEvaluationGold
 	}).(EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput)
 }
 
-// The display name of the target agent.
+// (Output)
+// Display name of the agent.
 func (o EvaluationGoldenTurnStepExpectationAgentTransferOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentTransfer) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The resource name of the target agent.
+// The agent to which the conversation is being transferred.
 func (o EvaluationGoldenTurnStepExpectationAgentTransferOutput) TargetAgent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentTransfer) *string { return v.TargetAgent }).(pulumi.StringPtrOutput)
 }
@@ -25860,7 +25871,8 @@ func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) Elem() Evalua
 	}).(EvaluationGoldenTurnStepExpectationAgentTransferOutput)
 }
 
-// The display name of the target agent.
+// (Output)
+// Display name of the agent.
 func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentTransfer) *string {
 		if v == nil {
@@ -25870,7 +25882,7 @@ func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) DisplayName()
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource name of the target agent.
+// The agent to which the conversation is being transferred.
 func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) TargetAgent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentTransfer) *string {
 		if v == nil {
@@ -25882,15 +25894,15 @@ func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) TargetAgent()
 
 type EvaluationGoldenTurnStepExpectationMockToolResponse struct {
 	// (Output)
-	// Display name of the tool.
+	// Output only. Display name of the tool.
 	DisplayName *string `pulumi:"displayName"`
-	// The matching ID of the tool call the response is for.
+	// Optional. Matching ID of the tool call.
 	Id *string `pulumi:"id"`
 	// The tool execution result in JSON object format.
 	Response map[string]string `pulumi:"response"`
-	// The resource name of the tool.
+	// Name of the tool to execute.
 	Tool *string `pulumi:"tool"`
-	// A tool that is created from a toolset.
+	// The toolset tool that got executed.
 	// Structure is documented below.
 	ToolsetTool *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool `pulumi:"toolsetTool"`
 }
@@ -25908,15 +25920,15 @@ type EvaluationGoldenTurnStepExpectationMockToolResponseInput interface {
 
 type EvaluationGoldenTurnStepExpectationMockToolResponseArgs struct {
 	// (Output)
-	// Display name of the tool.
+	// Output only. Display name of the tool.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The matching ID of the tool call the response is for.
+	// Optional. Matching ID of the tool call.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The tool execution result in JSON object format.
 	Response pulumi.StringMapInput `pulumi:"response"`
-	// The resource name of the tool.
+	// Name of the tool to execute.
 	Tool pulumi.StringPtrInput `pulumi:"tool"`
-	// A tool that is created from a toolset.
+	// The toolset tool that got executed.
 	// Structure is documented below.
 	ToolsetTool EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrInput `pulumi:"toolsetTool"`
 }
@@ -25999,12 +26011,12 @@ func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) ToEvaluationG
 }
 
 // (Output)
-// Display name of the tool.
+// Output only. Display name of the tool.
 func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The matching ID of the tool call the response is for.
+// Optional. Matching ID of the tool call.
 func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -26014,12 +26026,12 @@ func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) Response() pu
 	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) map[string]string { return v.Response }).(pulumi.StringMapOutput)
 }
 
-// The resource name of the tool.
+// Name of the tool to execute.
 func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) Tool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
 }
 
-// A tool that is created from a toolset.
+// The toolset tool that got executed.
 // Structure is documented below.
 func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
 	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool {
@@ -26052,7 +26064,7 @@ func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) Elem() Eva
 }
 
 // (Output)
-// Display name of the tool.
+// Output only. Display name of the tool.
 func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) *string {
 		if v == nil {
@@ -26062,7 +26074,7 @@ func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) DisplayNam
 	}).(pulumi.StringPtrOutput)
 }
 
-// The matching ID of the tool call the response is for.
+// Optional. Matching ID of the tool call.
 func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) *string {
 		if v == nil {
@@ -26082,7 +26094,7 @@ func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) Response()
 	}).(pulumi.StringMapOutput)
 }
 
-// The resource name of the tool.
+// Name of the tool to execute.
 func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) Tool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) *string {
 		if v == nil {
@@ -26092,7 +26104,7 @@ func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) Tool() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// A tool that is created from a toolset.
+// The toolset tool that got executed.
 // Structure is documented below.
 func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
 	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool {
@@ -28350,6 +28362,3055 @@ func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtr
 		}
 		return &v.Toolset
 	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenario struct {
+	// Evaluation expectations.
+	EvaluationExpectations []string `pulumi:"evaluationExpectations"`
+	// Max turns.
+	MaxTurns *int `pulumi:"maxTurns"`
+	// Rubrics.
+	Rubrics []string `pulumi:"rubrics"`
+	// Scenario expectations.
+	// Structure is documented below.
+	ScenarioExpectations []EvaluationScenarioScenarioExpectation `pulumi:"scenarioExpectations"`
+	// The task to evaluate.
+	Task string `pulumi:"task"`
+	// Task completion behavior.
+	TaskCompletionBehavior *string `pulumi:"taskCompletionBehavior"`
+	// Facts about the user as a key value pair.
+	// Structure is documented below.
+	UserFacts []EvaluationScenarioUserFact `pulumi:"userFacts"`
+	// User goal behavior.
+	UserGoalBehavior *string `pulumi:"userGoalBehavior"`
+	// Variables / Session Parameters as context for the session, keyed by variable names. Members of this struct will override any default values set by the system.
+	VariableOverrides map[string]string `pulumi:"variableOverrides"`
+}
+
+// EvaluationScenarioInput is an input type that accepts EvaluationScenarioArgs and EvaluationScenarioOutput values.
+// You can construct a concrete instance of `EvaluationScenarioInput` via:
+//
+//	EvaluationScenarioArgs{...}
+type EvaluationScenarioInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioOutput() EvaluationScenarioOutput
+	ToEvaluationScenarioOutputWithContext(context.Context) EvaluationScenarioOutput
+}
+
+type EvaluationScenarioArgs struct {
+	// Evaluation expectations.
+	EvaluationExpectations pulumi.StringArrayInput `pulumi:"evaluationExpectations"`
+	// Max turns.
+	MaxTurns pulumi.IntPtrInput `pulumi:"maxTurns"`
+	// Rubrics.
+	Rubrics pulumi.StringArrayInput `pulumi:"rubrics"`
+	// Scenario expectations.
+	// Structure is documented below.
+	ScenarioExpectations EvaluationScenarioScenarioExpectationArrayInput `pulumi:"scenarioExpectations"`
+	// The task to evaluate.
+	Task pulumi.StringInput `pulumi:"task"`
+	// Task completion behavior.
+	TaskCompletionBehavior pulumi.StringPtrInput `pulumi:"taskCompletionBehavior"`
+	// Facts about the user as a key value pair.
+	// Structure is documented below.
+	UserFacts EvaluationScenarioUserFactArrayInput `pulumi:"userFacts"`
+	// User goal behavior.
+	UserGoalBehavior pulumi.StringPtrInput `pulumi:"userGoalBehavior"`
+	// Variables / Session Parameters as context for the session, keyed by variable names. Members of this struct will override any default values set by the system.
+	VariableOverrides pulumi.StringMapInput `pulumi:"variableOverrides"`
+}
+
+func (EvaluationScenarioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenario)(nil)).Elem()
+}
+
+func (i EvaluationScenarioArgs) ToEvaluationScenarioOutput() EvaluationScenarioOutput {
+	return i.ToEvaluationScenarioOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioArgs) ToEvaluationScenarioOutputWithContext(ctx context.Context) EvaluationScenarioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioOutput)
+}
+
+func (i EvaluationScenarioArgs) ToEvaluationScenarioPtrOutput() EvaluationScenarioPtrOutput {
+	return i.ToEvaluationScenarioPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioArgs) ToEvaluationScenarioPtrOutputWithContext(ctx context.Context) EvaluationScenarioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioOutput).ToEvaluationScenarioPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioPtrInput is an input type that accepts EvaluationScenarioArgs, EvaluationScenarioPtr and EvaluationScenarioPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioPtrInput` via:
+//
+//	        EvaluationScenarioArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioPtrOutput() EvaluationScenarioPtrOutput
+	ToEvaluationScenarioPtrOutputWithContext(context.Context) EvaluationScenarioPtrOutput
+}
+
+type evaluationScenarioPtrType EvaluationScenarioArgs
+
+func EvaluationScenarioPtr(v *EvaluationScenarioArgs) EvaluationScenarioPtrInput {
+	return (*evaluationScenarioPtrType)(v)
+}
+
+func (*evaluationScenarioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenario)(nil)).Elem()
+}
+
+func (i *evaluationScenarioPtrType) ToEvaluationScenarioPtrOutput() EvaluationScenarioPtrOutput {
+	return i.ToEvaluationScenarioPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioPtrType) ToEvaluationScenarioPtrOutputWithContext(ctx context.Context) EvaluationScenarioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioPtrOutput)
+}
+
+type EvaluationScenarioOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenario)(nil)).Elem()
+}
+
+func (o EvaluationScenarioOutput) ToEvaluationScenarioOutput() EvaluationScenarioOutput {
+	return o
+}
+
+func (o EvaluationScenarioOutput) ToEvaluationScenarioOutputWithContext(ctx context.Context) EvaluationScenarioOutput {
+	return o
+}
+
+func (o EvaluationScenarioOutput) ToEvaluationScenarioPtrOutput() EvaluationScenarioPtrOutput {
+	return o.ToEvaluationScenarioPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioOutput) ToEvaluationScenarioPtrOutputWithContext(ctx context.Context) EvaluationScenarioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenario) *EvaluationScenario {
+		return &v
+	}).(EvaluationScenarioPtrOutput)
+}
+
+// Evaluation expectations.
+func (o EvaluationScenarioOutput) EvaluationExpectations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvaluationScenario) []string { return v.EvaluationExpectations }).(pulumi.StringArrayOutput)
+}
+
+// Max turns.
+func (o EvaluationScenarioOutput) MaxTurns() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EvaluationScenario) *int { return v.MaxTurns }).(pulumi.IntPtrOutput)
+}
+
+// Rubrics.
+func (o EvaluationScenarioOutput) Rubrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvaluationScenario) []string { return v.Rubrics }).(pulumi.StringArrayOutput)
+}
+
+// Scenario expectations.
+// Structure is documented below.
+func (o EvaluationScenarioOutput) ScenarioExpectations() EvaluationScenarioScenarioExpectationArrayOutput {
+	return o.ApplyT(func(v EvaluationScenario) []EvaluationScenarioScenarioExpectation { return v.ScenarioExpectations }).(EvaluationScenarioScenarioExpectationArrayOutput)
+}
+
+// The task to evaluate.
+func (o EvaluationScenarioOutput) Task() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenario) string { return v.Task }).(pulumi.StringOutput)
+}
+
+// Task completion behavior.
+func (o EvaluationScenarioOutput) TaskCompletionBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenario) *string { return v.TaskCompletionBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Facts about the user as a key value pair.
+// Structure is documented below.
+func (o EvaluationScenarioOutput) UserFacts() EvaluationScenarioUserFactArrayOutput {
+	return o.ApplyT(func(v EvaluationScenario) []EvaluationScenarioUserFact { return v.UserFacts }).(EvaluationScenarioUserFactArrayOutput)
+}
+
+// User goal behavior.
+func (o EvaluationScenarioOutput) UserGoalBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenario) *string { return v.UserGoalBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Variables / Session Parameters as context for the session, keyed by variable names. Members of this struct will override any default values set by the system.
+func (o EvaluationScenarioOutput) VariableOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationScenario) map[string]string { return v.VariableOverrides }).(pulumi.StringMapOutput)
+}
+
+type EvaluationScenarioPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenario)(nil)).Elem()
+}
+
+func (o EvaluationScenarioPtrOutput) ToEvaluationScenarioPtrOutput() EvaluationScenarioPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioPtrOutput) ToEvaluationScenarioPtrOutputWithContext(ctx context.Context) EvaluationScenarioPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioPtrOutput) Elem() EvaluationScenarioOutput {
+	return o.ApplyT(func(v *EvaluationScenario) EvaluationScenario {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenario
+		return ret
+	}).(EvaluationScenarioOutput)
+}
+
+// Evaluation expectations.
+func (o EvaluationScenarioPtrOutput) EvaluationExpectations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EvaluationScenario) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationExpectations
+	}).(pulumi.StringArrayOutput)
+}
+
+// Max turns.
+func (o EvaluationScenarioPtrOutput) MaxTurns() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenario) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTurns
+	}).(pulumi.IntPtrOutput)
+}
+
+// Rubrics.
+func (o EvaluationScenarioPtrOutput) Rubrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EvaluationScenario) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Rubrics
+	}).(pulumi.StringArrayOutput)
+}
+
+// Scenario expectations.
+// Structure is documented below.
+func (o EvaluationScenarioPtrOutput) ScenarioExpectations() EvaluationScenarioScenarioExpectationArrayOutput {
+	return o.ApplyT(func(v *EvaluationScenario) []EvaluationScenarioScenarioExpectation {
+		if v == nil {
+			return nil
+		}
+		return v.ScenarioExpectations
+	}).(EvaluationScenarioScenarioExpectationArrayOutput)
+}
+
+// The task to evaluate.
+func (o EvaluationScenarioPtrOutput) Task() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenario) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Task
+	}).(pulumi.StringPtrOutput)
+}
+
+// Task completion behavior.
+func (o EvaluationScenarioPtrOutput) TaskCompletionBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenario) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskCompletionBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Facts about the user as a key value pair.
+// Structure is documented below.
+func (o EvaluationScenarioPtrOutput) UserFacts() EvaluationScenarioUserFactArrayOutput {
+	return o.ApplyT(func(v *EvaluationScenario) []EvaluationScenarioUserFact {
+		if v == nil {
+			return nil
+		}
+		return v.UserFacts
+	}).(EvaluationScenarioUserFactArrayOutput)
+}
+
+// User goal behavior.
+func (o EvaluationScenarioPtrOutput) UserGoalBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenario) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserGoalBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Variables / Session Parameters as context for the session, keyed by variable names. Members of this struct will override any default values set by the system.
+func (o EvaluationScenarioPtrOutput) VariableOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationScenario) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.VariableOverrides
+	}).(pulumi.StringMapOutput)
+}
+
+type EvaluationScenarioScenarioExpectation struct {
+	// Agent response.
+	// Structure is documented below.
+	AgentResponse *EvaluationScenarioScenarioExpectationAgentResponse `pulumi:"agentResponse"`
+	// Tool expectation.
+	// Structure is documented below.
+	ToolExpectation *EvaluationScenarioScenarioExpectationToolExpectation `pulumi:"toolExpectation"`
+}
+
+// EvaluationScenarioScenarioExpectationInput is an input type that accepts EvaluationScenarioScenarioExpectationArgs and EvaluationScenarioScenarioExpectationOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationInput` via:
+//
+//	EvaluationScenarioScenarioExpectationArgs{...}
+type EvaluationScenarioScenarioExpectationInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationOutput() EvaluationScenarioScenarioExpectationOutput
+	ToEvaluationScenarioScenarioExpectationOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationOutput
+}
+
+type EvaluationScenarioScenarioExpectationArgs struct {
+	// Agent response.
+	// Structure is documented below.
+	AgentResponse EvaluationScenarioScenarioExpectationAgentResponsePtrInput `pulumi:"agentResponse"`
+	// Tool expectation.
+	// Structure is documented below.
+	ToolExpectation EvaluationScenarioScenarioExpectationToolExpectationPtrInput `pulumi:"toolExpectation"`
+}
+
+func (EvaluationScenarioScenarioExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectation)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationArgs) ToEvaluationScenarioScenarioExpectationOutput() EvaluationScenarioScenarioExpectationOutput {
+	return i.ToEvaluationScenarioScenarioExpectationOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationArgs) ToEvaluationScenarioScenarioExpectationOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationOutput)
+}
+
+// EvaluationScenarioScenarioExpectationArrayInput is an input type that accepts EvaluationScenarioScenarioExpectationArray and EvaluationScenarioScenarioExpectationArrayOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationArrayInput` via:
+//
+//	EvaluationScenarioScenarioExpectationArray{ EvaluationScenarioScenarioExpectationArgs{...} }
+type EvaluationScenarioScenarioExpectationArrayInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationArrayOutput() EvaluationScenarioScenarioExpectationArrayOutput
+	ToEvaluationScenarioScenarioExpectationArrayOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationArrayOutput
+}
+
+type EvaluationScenarioScenarioExpectationArray []EvaluationScenarioScenarioExpectationInput
+
+func (EvaluationScenarioScenarioExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationScenarioScenarioExpectation)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationArray) ToEvaluationScenarioScenarioExpectationArrayOutput() EvaluationScenarioScenarioExpectationArrayOutput {
+	return i.ToEvaluationScenarioScenarioExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationArray) ToEvaluationScenarioScenarioExpectationArrayOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationArrayOutput)
+}
+
+type EvaluationScenarioScenarioExpectationOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectation)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationOutput) ToEvaluationScenarioScenarioExpectationOutput() EvaluationScenarioScenarioExpectationOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationOutput) ToEvaluationScenarioScenarioExpectationOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationOutput {
+	return o
+}
+
+// Agent response.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationOutput) AgentResponse() EvaluationScenarioScenarioExpectationAgentResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectation) *EvaluationScenarioScenarioExpectationAgentResponse {
+		return v.AgentResponse
+	}).(EvaluationScenarioScenarioExpectationAgentResponsePtrOutput)
+}
+
+// Tool expectation.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationOutput) ToolExpectation() EvaluationScenarioScenarioExpectationToolExpectationPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectation) *EvaluationScenarioScenarioExpectationToolExpectation {
+		return v.ToolExpectation
+	}).(EvaluationScenarioScenarioExpectationToolExpectationPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationScenarioScenarioExpectation)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationArrayOutput) ToEvaluationScenarioScenarioExpectationArrayOutput() EvaluationScenarioScenarioExpectationArrayOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationArrayOutput) ToEvaluationScenarioScenarioExpectationArrayOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationArrayOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationArrayOutput) Index(i pulumi.IntInput) EvaluationScenarioScenarioExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EvaluationScenarioScenarioExpectation {
+		return vs[0].([]EvaluationScenarioScenarioExpectation)[vs[1].(int)]
+	}).(EvaluationScenarioScenarioExpectationOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponse struct {
+	// Content of the message as a series of chunks.
+	// Structure is documented below.
+	Chunks []EvaluationScenarioScenarioExpectationAgentResponseChunk `pulumi:"chunks"`
+	// The role within the conversation, e.g., user, agent.
+	Role *string `pulumi:"role"`
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseArgs and EvaluationScenarioScenarioExpectationAgentResponseOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseArgs{...}
+type EvaluationScenarioScenarioExpectationAgentResponseInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseOutput() EvaluationScenarioScenarioExpectationAgentResponseOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseArgs struct {
+	// Content of the message as a series of chunks.
+	// Structure is documented below.
+	Chunks EvaluationScenarioScenarioExpectationAgentResponseChunkArrayInput `pulumi:"chunks"`
+	// The role within the conversation, e.g., user, agent.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (EvaluationScenarioScenarioExpectationAgentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponse)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseArgs) ToEvaluationScenarioScenarioExpectationAgentResponseOutput() EvaluationScenarioScenarioExpectationAgentResponseOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseArgs) ToEvaluationScenarioScenarioExpectationAgentResponseOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseArgs) ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponsePtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseArgs) ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseOutput).ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponsePtrInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseArgs, EvaluationScenarioScenarioExpectationAgentResponsePtr and EvaluationScenarioScenarioExpectationAgentResponsePtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponsePtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationAgentResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationAgentResponsePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponsePtrOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponsePtrOutput
+}
+
+type evaluationScenarioScenarioExpectationAgentResponsePtrType EvaluationScenarioScenarioExpectationAgentResponseArgs
+
+func EvaluationScenarioScenarioExpectationAgentResponsePtr(v *EvaluationScenarioScenarioExpectationAgentResponseArgs) EvaluationScenarioScenarioExpectationAgentResponsePtrInput {
+	return (*evaluationScenarioScenarioExpectationAgentResponsePtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationAgentResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponse)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponsePtrType) ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponsePtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponsePtrType) ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponsePtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponse)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseOutput) ToEvaluationScenarioScenarioExpectationAgentResponseOutput() EvaluationScenarioScenarioExpectationAgentResponseOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseOutput) ToEvaluationScenarioScenarioExpectationAgentResponseOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseOutput) ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponsePtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseOutput) ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationAgentResponse) *EvaluationScenarioScenarioExpectationAgentResponse {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationAgentResponsePtrOutput)
+}
+
+// Content of the message as a series of chunks.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseOutput) Chunks() EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponse) []EvaluationScenarioScenarioExpectationAgentResponseChunk {
+		return v.Chunks
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput)
+}
+
+// The role within the conversation, e.g., user, agent.
+func (o EvaluationScenarioScenarioExpectationAgentResponseOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponse) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponse)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponsePtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponsePtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponsePtrOutput) Elem() EvaluationScenarioScenarioExpectationAgentResponseOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponse) EvaluationScenarioScenarioExpectationAgentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationAgentResponse
+		return ret
+	}).(EvaluationScenarioScenarioExpectationAgentResponseOutput)
+}
+
+// Content of the message as a series of chunks.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponsePtrOutput) Chunks() EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponse) []EvaluationScenarioScenarioExpectationAgentResponseChunk {
+		if v == nil {
+			return nil
+		}
+		return v.Chunks
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput)
+}
+
+// The role within the conversation, e.g., user, agent.
+func (o EvaluationScenarioScenarioExpectationAgentResponsePtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunk struct {
+	// Represents an event indicating the transfer of a conversation to a different agent.
+	// Structure is documented below.
+	AgentTransfer *EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer `pulumi:"agentTransfer"`
+	// Represents a blob input or output in the conversation.
+	// Structure is documented below.
+	Blob *EvaluationScenarioScenarioExpectationAgentResponseChunkBlob `pulumi:"blob"`
+	// Represents an image input or output in the conversation.
+	// Structure is documented below.
+	Image *EvaluationScenarioScenarioExpectationAgentResponseChunkImage `pulumi:"image"`
+	// Text data.
+	Text *string `pulumi:"text"`
+	// Request for the client or the agent to execute the specified tool.
+	// Structure is documented below.
+	ToolCall *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall `pulumi:"toolCall"`
+	// The execution result of a specific tool from the client or the agent.
+	// Structure is documented below.
+	ToolResponse *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse `pulumi:"toolResponse"`
+	// Updated variables in JSON object format.
+	UpdatedVariables map[string]string `pulumi:"updatedVariables"`
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkArgs and EvaluationScenarioScenarioExpectationAgentResponseChunkOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{...}
+type EvaluationScenarioScenarioExpectationAgentResponseChunkInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkArgs struct {
+	// Represents an event indicating the transfer of a conversation to a different agent.
+	// Structure is documented below.
+	AgentTransfer EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrInput `pulumi:"agentTransfer"`
+	// Represents a blob input or output in the conversation.
+	// Structure is documented below.
+	Blob EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrInput `pulumi:"blob"`
+	// Represents an image input or output in the conversation.
+	// Structure is documented below.
+	Image EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrInput `pulumi:"image"`
+	// Text data.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// Request for the client or the agent to execute the specified tool.
+	// Structure is documented below.
+	ToolCall EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrInput `pulumi:"toolCall"`
+	// The execution result of a specific tool from the client or the agent.
+	// Structure is documented below.
+	ToolResponse EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrInput `pulumi:"toolResponse"`
+	// Updated variables in JSON object format.
+	UpdatedVariables pulumi.StringMapInput `pulumi:"updatedVariables"`
+}
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunk)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkOutput)
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkArrayInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkArray and EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkArrayInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseChunkArray{ EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{...} }
+type EvaluationScenarioScenarioExpectationAgentResponseChunkArrayInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkArray []EvaluationScenarioScenarioExpectationAgentResponseChunkInput
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationScenarioScenarioExpectationAgentResponseChunk)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkArray) ToEvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkArray) ToEvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunk)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkOutput {
+	return o
+}
+
+// Represents an event indicating the transfer of a conversation to a different agent.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) AgentTransfer() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunk) *EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer {
+		return v.AgentTransfer
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput)
+}
+
+// Represents a blob input or output in the conversation.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) Blob() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunk) *EvaluationScenarioScenarioExpectationAgentResponseChunkBlob {
+		return v.Blob
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput)
+}
+
+// Represents an image input or output in the conversation.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) Image() EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunk) *EvaluationScenarioScenarioExpectationAgentResponseChunkImage {
+		return v.Image
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput)
+}
+
+// Text data.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunk) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// Request for the client or the agent to execute the specified tool.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) ToolCall() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunk) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall {
+		return v.ToolCall
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput)
+}
+
+// The execution result of a specific tool from the client or the agent.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) ToolResponse() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunk) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse {
+		return v.ToolResponse
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput)
+}
+
+// Updated variables in JSON object format.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkOutput) UpdatedVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunk) map[string]string {
+		return v.UpdatedVariables
+	}).(pulumi.StringMapOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationScenarioScenarioExpectationAgentResponseChunk)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput) Index(i pulumi.IntInput) EvaluationScenarioScenarioExpectationAgentResponseChunkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EvaluationScenarioScenarioExpectationAgentResponseChunk {
+		return vs[0].([]EvaluationScenarioScenarioExpectationAgentResponseChunk)[vs[1].(int)]
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer struct {
+	// (Output)
+	// Display name of the agent.
+	DisplayName *string `pulumi:"displayName"`
+	// The agent to which the conversation is being transferred.
+	TargetAgent string `pulumi:"targetAgent"`
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs and EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs{...}
+type EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs struct {
+	// (Output)
+	// Display name of the agent.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The agent to which the conversation is being transferred.
+	TargetAgent pulumi.StringInput `pulumi:"targetAgent"`
+}
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput).ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs, EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtr and EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput
+}
+
+type evaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrType EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs
+
+func EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtr(v *EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrInput {
+	return (*evaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer) *EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput)
+}
+
+// (Output)
+// Display name of the agent.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The agent to which the conversation is being transferred.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput) TargetAgent() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer) string {
+		return v.TargetAgent
+	}).(pulumi.StringOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput) Elem() EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer) EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer
+		return ret
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput)
+}
+
+// (Output)
+// Display name of the agent.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The agent to which the conversation is being transferred.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput) TargetAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransfer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetAgent
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkBlob struct {
+	// Raw bytes of the blob.
+	Data string `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType string `pulumi:"mimeType"`
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkBlobInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs and EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkBlobInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs{...}
+type EvaluationScenarioScenarioExpectationAgentResponseChunkBlobInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs struct {
+	// Raw bytes of the blob.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
+}
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkBlob)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput).ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs, EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtr and EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput
+}
+
+type evaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrType EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs
+
+func EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtr(v *EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs) EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrInput {
+	return (*evaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkBlob)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkBlob)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationAgentResponseChunkBlob) *EvaluationScenarioScenarioExpectationAgentResponseChunkBlob {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput)
+}
+
+// Raw bytes of the blob.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkBlob) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkBlob) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkBlob)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput) Elem() EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkBlob) EvaluationScenarioScenarioExpectationAgentResponseChunkBlob {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationAgentResponseChunkBlob
+		return ret
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput)
+}
+
+// Raw bytes of the blob.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkImage struct {
+	// Raw bytes of the image.
+	Data string `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType string `pulumi:"mimeType"`
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkImageInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs and EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkImageInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs{...}
+type EvaluationScenarioScenarioExpectationAgentResponseChunkImageInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkImageOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs struct {
+	// Raw bytes of the image.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
+}
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkImage)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkImageOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImageOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput).ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs, EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtr and EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput
+}
+
+type evaluationScenarioScenarioExpectationAgentResponseChunkImagePtrType EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs
+
+func EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtr(v *EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs) EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrInput {
+	return (*evaluationScenarioScenarioExpectationAgentResponseChunkImagePtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationAgentResponseChunkImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkImage)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkImagePtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkImagePtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkImage)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImageOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationAgentResponseChunkImage) *EvaluationScenarioScenarioExpectationAgentResponseChunkImage {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput)
+}
+
+// Raw bytes of the image.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkImage) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkImage) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkImage)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput) Elem() EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkImage) EvaluationScenarioScenarioExpectationAgentResponseChunkImage {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationAgentResponseChunkImage
+		return ret
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput)
+}
+
+// Raw bytes of the image.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall struct {
+	// The input parameters and values for the tool in JSON object format.
+	Args map[string]string `pulumi:"args"`
+	// (Output)
+	// Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique identifier of the tool call.
+	Id *string `pulumi:"id"`
+	// The resource name of the tool.
+	Tool *string `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs and EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs{...}
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs struct {
+	// The input parameters and values for the tool in JSON object format.
+	Args pulumi.StringMapInput `pulumi:"args"`
+	// (Output)
+	// Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique identifier of the tool call.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The resource name of the tool.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput).ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs, EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtr and EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput
+}
+
+type evaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrType EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs
+
+func EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtr(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrInput {
+	return (*evaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput)
+}
+
+// The input parameters and values for the tool in JSON object format.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) map[string]string {
+		return v.Args
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the tool call.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput) ToolsetTool() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput) Elem() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall
+		return ret
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput)
+}
+
+// The input parameters and values for the tool in JSON object format.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the tool call.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tool
+	}).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput) ToolsetTool() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCall) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool {
+		if v == nil {
+			return nil
+		}
+		return v.ToolsetTool
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset string `pulumi:"toolset"`
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs and EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs{...}
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput).ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs, EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtr and EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput
+}
+
+type evaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrType EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs
+
+func EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtr(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrInput {
+	return (*evaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool) *string {
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool) string {
+		return v.Toolset
+	}).(pulumi.StringOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) Elem() EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool) EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool
+		return ret
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse struct {
+	// (Output)
+	// Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// The matching ID of the tool call the response is for.
+	Id *string `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response map[string]string `pulumi:"response"`
+	// The resource name of the tool.
+	Tool *string `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs and EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs{...}
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs struct {
+	// (Output)
+	// Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The matching ID of the tool call the response is for.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response pulumi.StringMapInput `pulumi:"response"`
+	// The resource name of the tool.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput).ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs, EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtr and EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput
+}
+
+type evaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrType EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs
+
+func EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtr(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrInput {
+	return (*evaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The matching ID of the tool call the response is for.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) map[string]string {
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput) ToolsetTool() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput) Elem() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse
+		return ret
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The matching ID of the tool call the response is for.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tool
+	}).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput) ToolsetTool() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool {
+		if v == nil {
+			return nil
+		}
+		return v.ToolsetTool
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset string `pulumi:"toolset"`
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs and EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolInput` via:
+//
+//	EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs{...}
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput).ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrInput is an input type that accepts EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs, EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtr and EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput
+	ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput
+}
+
+type evaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrType EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs
+
+func EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtr(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrInput {
+	return (*evaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrType) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool) *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool) *string {
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool) string {
+		return v.Toolset
+	}).(pulumi.StringOutput)
+}
+
+type EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) ToEvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) Elem() EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool) EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool
+		return ret
+	}).(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectation struct {
+	// Expected tool call.
+	// Structure is documented below.
+	ExpectedToolCall *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall `pulumi:"expectedToolCall"`
+	// Mock tool response.
+	// Structure is documented below.
+	MockToolResponse *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse `pulumi:"mockToolResponse"`
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationArgs and EvaluationScenarioScenarioExpectationToolExpectationOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationInput` via:
+//
+//	EvaluationScenarioScenarioExpectationToolExpectationArgs{...}
+type EvaluationScenarioScenarioExpectationToolExpectationInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationOutput() EvaluationScenarioScenarioExpectationToolExpectationOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationOutput
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationArgs struct {
+	// Expected tool call.
+	// Structure is documented below.
+	ExpectedToolCall EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrInput `pulumi:"expectedToolCall"`
+	// Mock tool response.
+	// Structure is documented below.
+	MockToolResponse EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrInput `pulumi:"mockToolResponse"`
+}
+
+func (EvaluationScenarioScenarioExpectationToolExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectation)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationArgs) ToEvaluationScenarioScenarioExpectationToolExpectationOutput() EvaluationScenarioScenarioExpectationToolExpectationOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationArgs) ToEvaluationScenarioScenarioExpectationToolExpectationOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationArgs) ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationArgs) ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationOutput).ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationPtrInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationArgs, EvaluationScenarioScenarioExpectationToolExpectationPtr and EvaluationScenarioScenarioExpectationToolExpectationPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationPtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationToolExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationToolExpectationPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationPtrOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationPtrOutput
+}
+
+type evaluationScenarioScenarioExpectationToolExpectationPtrType EvaluationScenarioScenarioExpectationToolExpectationArgs
+
+func EvaluationScenarioScenarioExpectationToolExpectationPtr(v *EvaluationScenarioScenarioExpectationToolExpectationArgs) EvaluationScenarioScenarioExpectationToolExpectationPtrInput {
+	return (*evaluationScenarioScenarioExpectationToolExpectationPtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationToolExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectation)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationPtrType) ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationPtrType) ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectation)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationOutput) ToEvaluationScenarioScenarioExpectationToolExpectationOutput() EvaluationScenarioScenarioExpectationToolExpectationOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationOutput) ToEvaluationScenarioScenarioExpectationToolExpectationOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationOutput) ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationPtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationOutput) ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationToolExpectation) *EvaluationScenarioScenarioExpectationToolExpectation {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationToolExpectationPtrOutput)
+}
+
+// Expected tool call.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationToolExpectationOutput) ExpectedToolCall() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectation) *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall {
+		return v.ExpectedToolCall
+	}).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput)
+}
+
+// Mock tool response.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationToolExpectationOutput) MockToolResponse() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectation) *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse {
+		return v.MockToolResponse
+	}).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectation)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationPtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationPtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationPtrOutput) Elem() EvaluationScenarioScenarioExpectationToolExpectationOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectation) EvaluationScenarioScenarioExpectationToolExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationToolExpectation
+		return ret
+	}).(EvaluationScenarioScenarioExpectationToolExpectationOutput)
+}
+
+// Expected tool call.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationToolExpectationPtrOutput) ExpectedToolCall() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectation) *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedToolCall
+	}).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput)
+}
+
+// Mock tool response.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationToolExpectationPtrOutput) MockToolResponse() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectation) *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MockToolResponse
+	}).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall struct {
+	// The input parameters and values for the tool in JSON object format.
+	Args map[string]string `pulumi:"args"`
+	// (Output)
+	// Output only. Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. The unique identifier of the tool call.
+	Id *string `pulumi:"id"`
+	// Name of the tool.
+	Tool *string `pulumi:"tool"`
+	// The toolset tool.
+	// Structure is documented below.
+	ToolsetTool *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs and EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallInput` via:
+//
+//	EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs{...}
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs struct {
+	// The input parameters and values for the tool in JSON object format.
+	Args pulumi.StringMapInput `pulumi:"args"`
+	// (Output)
+	// Output only. Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Optional. The unique identifier of the tool call.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the tool.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// The toolset tool.
+	// Structure is documented below.
+	ToolsetTool EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput).ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs, EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtr and EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput
+}
+
+type evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrType EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs
+
+func EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtr(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrInput {
+	return (*evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrType) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrType) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput)
+}
+
+// The input parameters and values for the tool in JSON object format.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) map[string]string {
+		return v.Args
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Output only. Display name of the tool.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The unique identifier of the tool call.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the tool.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// The toolset tool.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput) ToolsetTool() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput) Elem() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall
+		return ret
+	}).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput)
+}
+
+// The input parameters and values for the tool in JSON object format.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Output only. Display name of the tool.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The unique identifier of the tool call.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the tool.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tool
+	}).(pulumi.StringPtrOutput)
+}
+
+// The toolset tool.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput) ToolsetTool() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall) *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool {
+		if v == nil {
+			return nil
+		}
+		return v.ToolsetTool
+	}).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset *string `pulumi:"toolset"`
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs and EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolInput` via:
+//
+//	EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs{...}
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringPtrInput `pulumi:"toolset"`
+}
+
+func (EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput).ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs, EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtr and EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput
+}
+
+type evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrType EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs
+
+func EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtr(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrInput {
+	return (*evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrType) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrType) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool) *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool) *string {
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool) *string {
+		return v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput) Elem() EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool) EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool
+		return ret
+	}).(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse struct {
+	// (Output)
+	// Output only. Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. Matching ID of the tool call.
+	Id *string `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response map[string]string `pulumi:"response"`
+	// Name of the tool to execute.
+	Tool *string `pulumi:"tool"`
+	// The toolset tool that got executed.
+	// Structure is documented below.
+	ToolsetTool *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs and EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseInput` via:
+//
+//	EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs{...}
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs struct {
+	// (Output)
+	// Output only. Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Optional. Matching ID of the tool call.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response pulumi.StringMapInput `pulumi:"response"`
+	// Name of the tool to execute.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// The toolset tool that got executed.
+	// Structure is documented below.
+	ToolsetTool EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput).ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs, EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtr and EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput
+}
+
+type evaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrType EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs
+
+func EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtr(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrInput {
+	return (*evaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrType) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrType) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput)
+}
+
+// (Output)
+// Output only. Display name of the tool.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Matching ID of the tool call.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) map[string]string {
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// Name of the tool to execute.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// The toolset tool that got executed.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput) ToolsetTool() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput) Elem() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse
+		return ret
+	}).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput)
+}
+
+// (Output)
+// Output only. Display name of the tool.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Matching ID of the tool call.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// Name of the tool to execute.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tool
+	}).(pulumi.StringPtrOutput)
+}
+
+// The toolset tool that got executed.
+// Structure is documented below.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput) ToolsetTool() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse) *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool {
+		if v == nil {
+			return nil
+		}
+		return v.ToolsetTool
+	}).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset *string `pulumi:"toolset"`
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs and EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolInput` via:
+//
+//	EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs{...}
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringPtrInput `pulumi:"toolset"`
+}
+
+func (EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput)
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput).ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrInput is an input type that accepts EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs, EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtr and EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrInput` via:
+//
+//	        EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput
+	ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutputWithContext(context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput
+}
+
+type evaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrType EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs
+
+func EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtr(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrInput {
+	return (*evaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrType)(v)
+}
+
+func (*evaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrType) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrType) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return o.ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool) *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool {
+		return &v
+	}).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool) *string {
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool) *string {
+		return v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput) ToEvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput) Elem() EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool) EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool
+		return ret
+	}).(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationScenarioUserFact struct {
+	// The name of the user fact.
+	Name string `pulumi:"name"`
+	// The value of the user fact.
+	Value string `pulumi:"value"`
+}
+
+// EvaluationScenarioUserFactInput is an input type that accepts EvaluationScenarioUserFactArgs and EvaluationScenarioUserFactOutput values.
+// You can construct a concrete instance of `EvaluationScenarioUserFactInput` via:
+//
+//	EvaluationScenarioUserFactArgs{...}
+type EvaluationScenarioUserFactInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioUserFactOutput() EvaluationScenarioUserFactOutput
+	ToEvaluationScenarioUserFactOutputWithContext(context.Context) EvaluationScenarioUserFactOutput
+}
+
+type EvaluationScenarioUserFactArgs struct {
+	// The name of the user fact.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the user fact.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (EvaluationScenarioUserFactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioUserFact)(nil)).Elem()
+}
+
+func (i EvaluationScenarioUserFactArgs) ToEvaluationScenarioUserFactOutput() EvaluationScenarioUserFactOutput {
+	return i.ToEvaluationScenarioUserFactOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioUserFactArgs) ToEvaluationScenarioUserFactOutputWithContext(ctx context.Context) EvaluationScenarioUserFactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioUserFactOutput)
+}
+
+// EvaluationScenarioUserFactArrayInput is an input type that accepts EvaluationScenarioUserFactArray and EvaluationScenarioUserFactArrayOutput values.
+// You can construct a concrete instance of `EvaluationScenarioUserFactArrayInput` via:
+//
+//	EvaluationScenarioUserFactArray{ EvaluationScenarioUserFactArgs{...} }
+type EvaluationScenarioUserFactArrayInput interface {
+	pulumi.Input
+
+	ToEvaluationScenarioUserFactArrayOutput() EvaluationScenarioUserFactArrayOutput
+	ToEvaluationScenarioUserFactArrayOutputWithContext(context.Context) EvaluationScenarioUserFactArrayOutput
+}
+
+type EvaluationScenarioUserFactArray []EvaluationScenarioUserFactInput
+
+func (EvaluationScenarioUserFactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationScenarioUserFact)(nil)).Elem()
+}
+
+func (i EvaluationScenarioUserFactArray) ToEvaluationScenarioUserFactArrayOutput() EvaluationScenarioUserFactArrayOutput {
+	return i.ToEvaluationScenarioUserFactArrayOutputWithContext(context.Background())
+}
+
+func (i EvaluationScenarioUserFactArray) ToEvaluationScenarioUserFactArrayOutputWithContext(ctx context.Context) EvaluationScenarioUserFactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationScenarioUserFactArrayOutput)
+}
+
+type EvaluationScenarioUserFactOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioUserFactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationScenarioUserFact)(nil)).Elem()
+}
+
+func (o EvaluationScenarioUserFactOutput) ToEvaluationScenarioUserFactOutput() EvaluationScenarioUserFactOutput {
+	return o
+}
+
+func (o EvaluationScenarioUserFactOutput) ToEvaluationScenarioUserFactOutputWithContext(ctx context.Context) EvaluationScenarioUserFactOutput {
+	return o
+}
+
+// The name of the user fact.
+func (o EvaluationScenarioUserFactOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenarioUserFact) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the user fact.
+func (o EvaluationScenarioUserFactOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationScenarioUserFact) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EvaluationScenarioUserFactArrayOutput struct{ *pulumi.OutputState }
+
+func (EvaluationScenarioUserFactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationScenarioUserFact)(nil)).Elem()
+}
+
+func (o EvaluationScenarioUserFactArrayOutput) ToEvaluationScenarioUserFactArrayOutput() EvaluationScenarioUserFactArrayOutput {
+	return o
+}
+
+func (o EvaluationScenarioUserFactArrayOutput) ToEvaluationScenarioUserFactArrayOutputWithContext(ctx context.Context) EvaluationScenarioUserFactArrayOutput {
+	return o
+}
+
+func (o EvaluationScenarioUserFactArrayOutput) Index(i pulumi.IntInput) EvaluationScenarioUserFactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EvaluationScenarioUserFact {
+		return vs[0].([]EvaluationScenarioUserFact)[vs[1].(int)]
+	}).(EvaluationScenarioUserFactOutput)
 }
 
 type ExampleMessage struct {
@@ -43419,6 +46480,40 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioInput)(nil)).Elem(), EvaluationScenarioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioPtrInput)(nil)).Elem(), EvaluationScenarioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationArrayInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponsePtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkArrayInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkBlobInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkImageInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationPtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrInput)(nil)).Elem(), EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioUserFactInput)(nil)).Elem(), EvaluationScenarioUserFactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationScenarioUserFactArrayInput)(nil)).Elem(), EvaluationScenarioUserFactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExampleMessageInput)(nil)).Elem(), ExampleMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExampleMessageArrayInput)(nil)).Elem(), ExampleMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExampleMessageChunkInput)(nil)).Elem(), ExampleMessageChunkArgs{})
@@ -43932,6 +47027,40 @@ func init() {
 	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput{})
 	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput{})
 	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationArrayOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponsePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkArrayOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkBlobOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkBlobPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkImageOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkImagePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponsePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponsePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioUserFactOutput{})
+	pulumi.RegisterOutputType(EvaluationScenarioUserFactArrayOutput{})
 	pulumi.RegisterOutputType(ExampleMessageOutput{})
 	pulumi.RegisterOutputType(ExampleMessageArrayOutput{})
 	pulumi.RegisterOutputType(ExampleMessageChunkOutput{})

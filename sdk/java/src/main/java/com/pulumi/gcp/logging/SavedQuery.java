@@ -123,6 +123,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.logging.SavedQuery;
  * import com.pulumi.gcp.logging.SavedQueryArgs;
  * import com.pulumi.gcp.logging.inputs.SavedQueryLoggingQueryArgs;
+ * import com.pulumi.gcp.logging.inputs.SavedQueryLoggingQuerySummaryFieldArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.EvaluationGoldenArgs;
+import com.pulumi.gcp.ces.inputs.EvaluationScenarioArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -254,6 +255,23 @@ public final class EvaluationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Scenario input.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scenario")
+    private @Nullable Output<EvaluationScenarioArgs> scenario;
+
+    /**
+     * @return Scenario input.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EvaluationScenarioArgs>> scenario() {
+        return Optional.ofNullable(this.scenario);
+    }
+
+    /**
      * User defined tags to categorize the evaluation.
      * 
      */
@@ -301,6 +319,7 @@ public final class EvaluationState extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.scenario = $.scenario;
         this.tags = $.tags;
         this.updateTime = $.updateTime;
     }
@@ -666,6 +685,29 @@ public final class EvaluationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param scenario Scenario input.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scenario(@Nullable Output<EvaluationScenarioArgs> scenario) {
+            $.scenario = scenario;
+            return this;
+        }
+
+        /**
+         * @param scenario Scenario input.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scenario(EvaluationScenarioArgs scenario) {
+            return scenario(Output.of(scenario));
         }
 
         /**

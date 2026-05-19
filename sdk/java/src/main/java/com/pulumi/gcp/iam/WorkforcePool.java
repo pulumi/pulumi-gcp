@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePool;
  * import com.pulumi.gcp.iam.WorkforcePoolArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolAccessRestrictionsArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolAccessRestrictionsAllowedServiceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
