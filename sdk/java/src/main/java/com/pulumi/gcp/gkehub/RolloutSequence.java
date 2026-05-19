@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gkehub.RolloutSequenceArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceState;
+import com.pulumi.gcp.gkehub.outputs.RolloutSequenceAutoUpgradeConfig;
 import com.pulumi.gcp.gkehub.outputs.RolloutSequenceIgnoredClustersSelector;
 import com.pulumi.gcp.gkehub.outputs.RolloutSequenceStage;
 import java.lang.String;
@@ -49,6 +50,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:gkehub/rolloutSequence:RolloutSequence")
 public class RolloutSequence extends com.pulumi.resources.CustomResource {
+    /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="autoUpgradeConfig", refs={RolloutSequenceAutoUpgradeConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RolloutSequenceAutoUpgradeConfig> autoUpgradeConfig;
+
+    /**
+     * @return Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RolloutSequenceAutoUpgradeConfig>> autoUpgradeConfig() {
+        return Codegen.optional(this.autoUpgradeConfig);
+    }
     /**
      * The timestamp at which the Rollout Sequence was created.
      * 

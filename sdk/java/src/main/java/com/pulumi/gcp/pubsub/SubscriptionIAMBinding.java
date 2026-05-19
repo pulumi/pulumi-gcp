@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
  * import com.pulumi.gcp.pubsub.SubscriptionIAMPolicy;
  * import com.pulumi.gcp.pubsub.SubscriptionIAMPolicyArgs;
  * import java.util.ArrayList;

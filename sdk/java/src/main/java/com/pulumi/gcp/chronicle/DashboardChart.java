@@ -20,12 +20,9 @@ import javax.annotation.Nullable;
 /**
  * A chart resource used within a NativeDashboard. Its lifecycle (Create, Update, Delete) is managed via custom methods on the NativeDashboard resource.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about DashboardChart, see:
  * 
- * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dashboardCharts)
+ * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dashboardCharts)
  * * How-to Guides
  *     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
  * 
@@ -43,13 +40,23 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.chronicle.NativeDashboard;
  * import com.pulumi.gcp.chronicle.NativeDashboardArgs;
  * import com.pulumi.gcp.chronicle.inputs.NativeDashboardFilterArgs;
+ * import com.pulumi.gcp.chronicle.inputs.NativeDashboardFilterFilterOperatorAndFieldValueArgs;
  * import com.pulumi.gcp.chronicle.DashboardChart;
  * import com.pulumi.gcp.chronicle.DashboardChartArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartChartLayoutArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartChartDatasourceArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationSeriesArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationSeriesEncodeArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationSeriesDataLabelArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationXAxisArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationYAxisArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationLegendArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartDrillDownConfigArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardQueryArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardQueryInputArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardQueryInputRelativeTimeArgs;

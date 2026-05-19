@@ -176,6 +176,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -301,6 +302,20 @@ public class Address extends com.pulumi.resources.CustomResource {
      */
     public Output<String> address() {
         return this.address;
+    }
+    /**
+     * The unique numeric identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="addressId", refs={String.class}, tree="[0]")
+    private Output<String> addressId;
+
+    /**
+     * @return The unique numeric identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<String> addressId() {
+        return this.addressId;
     }
     /**
      * The type of address to reserve.

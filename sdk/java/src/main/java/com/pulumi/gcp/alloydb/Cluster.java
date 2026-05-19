@@ -250,6 +250,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;

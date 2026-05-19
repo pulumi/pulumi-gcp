@@ -82,6 +82,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.Instance;
  * import com.pulumi.gcp.redis.InstanceArgs;
  * import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

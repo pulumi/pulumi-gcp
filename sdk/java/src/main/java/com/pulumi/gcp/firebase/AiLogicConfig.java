@@ -120,6 +120,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ApiKey;
  * import com.pulumi.gcp.projects.ApiKeyArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
  * import com.pulumiverse.time.Sleep;
  * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.firebase.AiLogicConfig;

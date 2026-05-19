@@ -43,6 +43,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RolloutPlan;
  * import com.pulumi.gcp.compute.RolloutPlanArgs;
  * import com.pulumi.gcp.compute.inputs.RolloutPlanWaveArgs;
+ * import com.pulumi.gcp.compute.inputs.RolloutPlanWaveSelectorArgs;
+ * import com.pulumi.gcp.compute.inputs.RolloutPlanWaveSelectorLocationSelectorArgs;
  * import com.pulumi.gcp.compute.inputs.RolloutPlanWaveValidationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

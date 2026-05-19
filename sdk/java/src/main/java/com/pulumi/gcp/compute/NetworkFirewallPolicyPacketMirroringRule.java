@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyPacketMirroringRule;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyPacketMirroringRuleArgs;
  * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyPacketMirroringRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyPacketMirroringRuleMatchLayer4ConfigArgs;
  * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

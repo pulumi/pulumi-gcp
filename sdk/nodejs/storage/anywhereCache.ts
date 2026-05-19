@@ -96,6 +96,10 @@ export class AnywhereCache extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     */
+    declare public readonly ingestOnWrite: pulumi.Output<boolean | undefined>;
+    /**
      * True if the cache instance has an active Update long-running operation.
      */
     declare public /*out*/ readonly pendingUpdate: pulumi.Output<boolean>;
@@ -133,6 +137,7 @@ export class AnywhereCache extends pulumi.CustomResource {
             resourceInputs["anywhereCacheId"] = state?.anywhereCacheId;
             resourceInputs["bucket"] = state?.bucket;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ingestOnWrite"] = state?.ingestOnWrite;
             resourceInputs["pendingUpdate"] = state?.pendingUpdate;
             resourceInputs["state"] = state?.state;
             resourceInputs["ttl"] = state?.ttl;
@@ -148,6 +153,7 @@ export class AnywhereCache extends pulumi.CustomResource {
             }
             resourceInputs["admissionPolicy"] = args?.admissionPolicy;
             resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["ingestOnWrite"] = args?.ingestOnWrite;
             resourceInputs["ttl"] = args?.ttl;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["anywhereCacheId"] = undefined /*out*/;
@@ -184,6 +190,10 @@ export interface AnywhereCacheState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     */
+    ingestOnWrite?: pulumi.Input<boolean | undefined>;
+    /**
      * True if the cache instance has an active Update long-running operation.
      */
     pendingUpdate?: pulumi.Input<boolean | undefined>;
@@ -219,6 +229,10 @@ export interface AnywhereCacheArgs {
      * A reference to Bucket resource
      */
     bucket: pulumi.Input<string>;
+    /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     */
+    ingestOnWrite?: pulumi.Input<boolean | undefined>;
     /**
      * The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
      */

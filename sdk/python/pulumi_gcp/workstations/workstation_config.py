@@ -1042,6 +1042,104 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             })
         ```
+        ### Workstation Config Hyperdisk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "c3-standard-22",
+                },
+            },
+            persistent_directories=[{
+                "mount_path": "/home",
+                "gce_hd": {
+                    "size_gb": 200,
+                    "reclaim_policy": "DELETE",
+                    "archive_timeout": "3600s",
+                },
+            }])
+        ```
+        ### Workstation Config Hyperdisk Source Snapshot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/0123456789",
+            short_name="keyname")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.id,
+            short_name="valuename")
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        my_source_disk = gcp.compute.Disk("my_source_disk",
+            name="workstation-config-source-disk",
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        my_source_snapshot = gcp.compute.Snapshot("my_source_snapshot",
+            name="workstation-config-source-snapshot",
+            source_disk=my_source_disk.name,
+            zone="us-central1-a")
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "c3-standard-22",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "vm_tags": pulumi.Output.all(
+                        tagKey1Id=tag_key1.id,
+                        tagValue1Id=tag_value1.id
+        ).apply(lambda resolved_outputs: {
+                        resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                    })
+        ,
+                },
+            },
+            persistent_directories=[{
+                "mount_path": "/home",
+                "gce_hd": {
+                    "source_snapshot": my_source_snapshot.id,
+                    "reclaim_policy": "DELETE",
+                    "archive_timeout": "3600s",
+                },
+            }])
+        ```
         ### Workstation Config Persistent Directories
 
         ```python
@@ -1557,6 +1655,104 @@ class WorkstationConfig(pulumi.CustomResource):
                     "BABE": "bar",
                 },
             })
+        ```
+        ### Workstation Config Hyperdisk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "c3-standard-22",
+                },
+            },
+            persistent_directories=[{
+                "mount_path": "/home",
+                "gce_hd": {
+                    "size_gb": 200,
+                    "reclaim_policy": "DELETE",
+                    "archive_timeout": "3600s",
+                },
+            }])
+        ```
+        ### Workstation Config Hyperdisk Source Snapshot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/0123456789",
+            short_name="keyname")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.id,
+            short_name="valuename")
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        my_source_disk = gcp.compute.Disk("my_source_disk",
+            name="workstation-config-source-disk",
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        my_source_snapshot = gcp.compute.Snapshot("my_source_snapshot",
+            name="workstation-config-source-snapshot",
+            source_disk=my_source_disk.name,
+            zone="us-central1-a")
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "c3-standard-22",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "vm_tags": pulumi.Output.all(
+                        tagKey1Id=tag_key1.id,
+                        tagValue1Id=tag_value1.id
+        ).apply(lambda resolved_outputs: {
+                        resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                    })
+        ,
+                },
+            },
+            persistent_directories=[{
+                "mount_path": "/home",
+                "gce_hd": {
+                    "source_snapshot": my_source_snapshot.id,
+                    "reclaim_policy": "DELETE",
+                    "archive_timeout": "3600s",
+                },
+            }])
         ```
         ### Workstation Config Persistent Directories
 

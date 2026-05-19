@@ -519,6 +519,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
  * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigArgs;
  * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigTextSpecArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigTextSpecIndexSpecArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

@@ -21,19 +21,22 @@ __all__ = ['FirewallEndpointArgs', 'FirewallEndpoint']
 @pulumi.input_type
 class FirewallEndpointArgs:
     def __init__(__self__, *,
-                 billing_project_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
+                 billing_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_settings: pulumi.Input[Optional['FirewallEndpointEndpointSettingsArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallEndpoint resource.
 
-        :param pulumi.Input[_builtins.str] billing_project_id: Project to bill on endpoint uptime usage.
         :param pulumi.Input[_builtins.str] location: The location (zone) of the firewall endpoint.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
+        :param pulumi.Input[_builtins.str] billing_project_id: Project to charge for the deployed firewall endpoint.
+               This field is required for organization-scoped endpoints.
+               For project-scoped endpoints, it is optional but must match the
+               endpoint's project if specified.
         :param pulumi.Input['FirewallEndpointEndpointSettingsArgs'] endpoint_settings: Settings for the endpoint.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the resource.
@@ -42,27 +45,16 @@ class FirewallEndpointArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the firewall endpoint resource.
         """
-        pulumi.set(__self__, "billing_project_id", billing_project_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "parent", parent)
+        if billing_project_id is not None:
+            pulumi.set(__self__, "billing_project_id", billing_project_id)
         if endpoint_settings is not None:
             pulumi.set(__self__, "endpoint_settings", endpoint_settings)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter(name="billingProjectId")
-    def billing_project_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Project to bill on endpoint uptime usage.
-        """
-        return pulumi.get(self, "billing_project_id")
-
-    @billing_project_id.setter
-    def billing_project_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "billing_project_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -81,13 +73,28 @@ class FirewallEndpointArgs:
     def parent(self) -> pulumi.Input[_builtins.str]:
         """
         The name of the parent this firewall endpoint belongs to.
-        Format: organizations/{organization_id}.
+        Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
     def parent(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="billingProjectId")
+    def billing_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Project to charge for the deployed firewall endpoint.
+        This field is required for organization-scoped endpoints.
+        For project-scoped endpoints, it is optional but must match the
+        endpoint's project if specified.
+        """
+        return pulumi.get(self, "billing_project_id")
+
+    @billing_project_id.setter
+    def billing_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "billing_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointSettings")
@@ -154,7 +161,10 @@ class _FirewallEndpointState:
                This is a projection of the FirewallEndpointAssociations pointing at this
                endpoint. A network will only appear in this list after traffic routing is
                fully configured. Format: projects/{project}/global/networks/{name}.
-        :param pulumi.Input[_builtins.str] billing_project_id: Project to bill on endpoint uptime usage.
+        :param pulumi.Input[_builtins.str] billing_project_id: Project to charge for the deployed firewall endpoint.
+               This field is required for organization-scoped endpoints.
+               For project-scoped endpoints, it is optional but must match the
+               endpoint's project if specified.
         :param pulumi.Input[_builtins.str] create_time: Time the firewall endpoint was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['FirewallEndpointEndpointSettingsArgs'] endpoint_settings: Settings for the endpoint.
@@ -166,7 +176,7 @@ class _FirewallEndpointState:
         :param pulumi.Input[_builtins.str] location: The location (zone) of the firewall endpoint.
         :param pulumi.Input[_builtins.str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
@@ -222,7 +232,10 @@ class _FirewallEndpointState:
     @pulumi.getter(name="billingProjectId")
     def billing_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Project to bill on endpoint uptime usage.
+        Project to charge for the deployed firewall endpoint.
+        This field is required for organization-scoped endpoints.
+        For project-scoped endpoints, it is optional but must match the
+        endpoint's project if specified.
         """
         return pulumi.get(self, "billing_project_id")
 
@@ -311,7 +324,7 @@ class _FirewallEndpointState:
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parent this firewall endpoint belongs to.
-        Format: organizations/{organization_id}.
+        Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         return pulumi.get(self, "parent")
 
@@ -429,6 +442,20 @@ class FirewallEndpoint(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        ### Network Security Firewall Endpoint Project
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.FirewallEndpoint("default",
+            name="my-firewall-endpoint",
+            parent="projects/my-project-name",
+            location="us-central1-a",
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -445,7 +472,10 @@ class FirewallEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] billing_project_id: Project to bill on endpoint uptime usage.
+        :param pulumi.Input[_builtins.str] billing_project_id: Project to charge for the deployed firewall endpoint.
+               This field is required for organization-scoped endpoints.
+               For project-scoped endpoints, it is optional but must match the
+               endpoint's project if specified.
         :param pulumi.Input[Union['FirewallEndpointEndpointSettingsArgs', 'FirewallEndpointEndpointSettingsArgsDict']] endpoint_settings: Settings for the endpoint.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the resource.
@@ -455,7 +485,7 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location (zone) of the firewall endpoint.
         :param pulumi.Input[_builtins.str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         ...
     @overload
@@ -494,6 +524,20 @@ class FirewallEndpoint(pulumi.CustomResource):
             parent="organizations/123456789",
             location="us-central1-a",
             billing_project_id="my-project-name",
+            labels={
+                "foo": "bar",
+            })
+        ```
+        ### Network Security Firewall Endpoint Project
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.FirewallEndpoint("default",
+            name="my-firewall-endpoint",
+            parent="projects/my-project-name",
+            location="us-central1-a",
             labels={
                 "foo": "bar",
             })
@@ -542,8 +586,6 @@ class FirewallEndpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FirewallEndpointArgs.__new__(FirewallEndpointArgs)
 
-            if billing_project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'billing_project_id'")
             __props__.__dict__["billing_project_id"] = billing_project_id
             __props__.__dict__["endpoint_settings"] = endpoint_settings
             __props__.__dict__["labels"] = labels
@@ -599,7 +641,10 @@ class FirewallEndpoint(pulumi.CustomResource):
                This is a projection of the FirewallEndpointAssociations pointing at this
                endpoint. A network will only appear in this list after traffic routing is
                fully configured. Format: projects/{project}/global/networks/{name}.
-        :param pulumi.Input[_builtins.str] billing_project_id: Project to bill on endpoint uptime usage.
+        :param pulumi.Input[_builtins.str] billing_project_id: Project to charge for the deployed firewall endpoint.
+               This field is required for organization-scoped endpoints.
+               For project-scoped endpoints, it is optional but must match the
+               endpoint's project if specified.
         :param pulumi.Input[_builtins.str] create_time: Time the firewall endpoint was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['FirewallEndpointEndpointSettingsArgs', 'FirewallEndpointEndpointSettingsArgsDict']] endpoint_settings: Settings for the endpoint.
@@ -611,7 +656,7 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location (zone) of the firewall endpoint.
         :param pulumi.Input[_builtins.str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
@@ -654,7 +699,10 @@ class FirewallEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="billingProjectId")
     def billing_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Project to bill on endpoint uptime usage.
+        Project to charge for the deployed firewall endpoint.
+        This field is required for organization-scoped endpoints.
+        For project-scoped endpoints, it is optional but must match the
+        endpoint's project if specified.
         """
         return pulumi.get(self, "billing_project_id")
 
@@ -715,7 +763,7 @@ class FirewallEndpoint(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the parent this firewall endpoint belongs to.
-        Format: organizations/{organization_id}.
+        Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         return pulumi.get(self, "parent")
 

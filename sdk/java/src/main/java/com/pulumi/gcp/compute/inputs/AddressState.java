@@ -38,6 +38,21 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique numeric identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="addressId")
+    private @Nullable Output<String> addressId;
+
+    /**
+     * @return The unique numeric identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<String>> addressId() {
+        return Optional.ofNullable(this.addressId);
+    }
+
+    /**
      * The type of address to reserve.
      * Note: if you set this argument&#39;s value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
@@ -433,6 +448,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
 
     private AddressState(AddressState $) {
         this.address = $.address;
+        this.addressId = $.addressId;
         this.addressType = $.addressType;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
@@ -496,6 +512,27 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder address(String address) {
             return address(Output.of(address));
+        }
+
+        /**
+         * @param addressId The unique numeric identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressId(@Nullable Output<String> addressId) {
+            $.addressId = addressId;
+            return this;
+        }
+
+        /**
+         * @param addressId The unique numeric identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressId(String addressId) {
+            return addressId(Output.of(addressId));
         }
 
         /**

@@ -114,6 +114,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
  * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
  * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;

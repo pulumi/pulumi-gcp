@@ -76,6 +76,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.modelarmor.FloorsettingArgs;
  * import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigArgs;
  * import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigRaiSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigRaiSettingsRaiFilterArgs;
  * import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigSdpSettingsArgs;
  * import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigSdpSettingsBasicConfigArgs;
  * import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs;

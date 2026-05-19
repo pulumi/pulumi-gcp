@@ -62,8 +62,6 @@ import * as utilities from "../utilities";
  *     displayName: "autonomousDatabase displayname",
  *     database: "mydatabase",
  *     adminPassword: "123Abpassword",
- *     odbNetwork: "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
- *     odbSubnet: "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
  *     network: _default.then(_default => _default.id),
  *     cidr: "10.5.0.0/24",
  *     labels: {

@@ -30,6 +30,7 @@ class RegionDiskArgs:
                  disk_encryption_key: pulumi.Input[Optional['RegionDiskDiskEncryptionKeyArgs']] = None,
                  erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
                  guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
                  interface: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -42,6 +43,7 @@ class RegionDiskArgs:
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional['RegionDiskSourceImageEncryptionKeyArgs']] = None,
                  source_snapshot_encryption_key: pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -77,6 +79,15 @@ class RegionDiskArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] image: The image from which to initialize this disk. This can be
+               one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+               `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+               `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+               `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+               images names must include the family name. If they don't, use the
+               [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+               For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+               These images can be referred by family name here.
         :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
                Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
@@ -127,6 +138,9 @@ class RegionDiskArgs:
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
                * regions/{region}/disks/{disk}
+        :param pulumi.Input['RegionDiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -151,6 +165,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if interface is not None:
             warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
             pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
@@ -178,6 +194,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "snapshot", snapshot)
         if source_disk is not None:
             pulumi.set(__self__, "source_disk", source_disk)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         if source_snapshot_encryption_key is not None:
             pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if type is not None:
@@ -311,6 +329,26 @@ class RegionDiskArgs:
     @guest_os_features.setter
     def guest_os_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The image from which to initialize this disk. This can be
+        one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+        images names must include the family name. If they don't, use the
+        [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+        For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+        These images can be referred by family name here.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter
@@ -496,6 +534,20 @@ class RegionDiskArgs:
         pulumi.set(self, "source_disk", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> pulumi.Input[Optional['RegionDiskSourceImageEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source image. Required if
+        the source image is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @source_image_encryption_key.setter
+    def source_image_encryption_key(self, value: pulumi.Input[Optional['RegionDiskSourceImageEncryptionKeyArgs']]):
+        pulumi.set(self, "source_image_encryption_key", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
     def source_snapshot_encryption_key(self) -> pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']]:
         """
@@ -538,6 +590,7 @@ class _RegionDiskState:
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
                  guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
                  interface: pulumi.Input[Optional[_builtins.str]] = None,
                  label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -557,6 +610,8 @@ class _RegionDiskState:
                  snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional['RegionDiskSourceImageEncryptionKeyArgs']] = None,
+                 source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_snapshot_encryption_key: pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
                  source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -596,6 +651,15 @@ class _RegionDiskState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] image: The image from which to initialize this disk. This can be
+               one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+               `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+               `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+               `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+               images names must include the family name. If they don't, use the
+               [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+               For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+               These images can be referred by family name here.
         :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
                Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
@@ -657,6 +721,14 @@ class _RegionDiskState:
         :param pulumi.Input[_builtins.str] source_disk_id: The ID value of the disk used to create this image. This value may
                be used to determine whether the image was taken from the current
                or a previous instance of a given disk name.
+        :param pulumi.Input['RegionDiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] source_image_id: The ID value of the image used to create this disk. This value
+               identifies the exact image that was used to create this persistent
+               disk. For example, if you created the persistent disk from an image
+               that was later deleted and recreated under the same name, the source
+               image ID would identify the exact version of the image that was used.
         :param pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -694,6 +766,8 @@ class _RegionDiskState:
             pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if interface is not None:
             warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
             pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
@@ -735,6 +809,10 @@ class _RegionDiskState:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_disk_id is not None:
             pulumi.set(__self__, "source_disk_id", source_disk_id)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_image_id is not None:
+            pulumi.set(__self__, "source_image_id", source_image_id)
         if source_snapshot_encryption_key is not None:
             pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if source_snapshot_id is not None:
@@ -896,6 +974,26 @@ class _RegionDiskState:
     @guest_os_features.setter
     def guest_os_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The image from which to initialize this disk. This can be
+        one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+        images names must include the family name. If they don't, use the
+        [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+        For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+        These images can be referred by family name here.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1169,6 +1267,36 @@ class _RegionDiskState:
         pulumi.set(self, "source_disk_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> pulumi.Input[Optional['RegionDiskSourceImageEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source image. Required if
+        the source image is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @source_image_encryption_key.setter
+    def source_image_encryption_key(self, value: pulumi.Input[Optional['RegionDiskSourceImageEncryptionKeyArgs']]):
+        pulumi.set(self, "source_image_encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID value of the image used to create this disk. This value
+        identifies the exact image that was used to create this persistent
+        disk. For example, if you created the persistent disk from an image
+        that was later deleted and recreated under the same name, the source
+        image ID would identify the exact version of the image that was used.
+        """
+        return pulumi.get(self, "source_image_id")
+
+    @source_image_id.setter
+    def source_image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_image_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
     def source_snapshot_encryption_key(self) -> pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']]:
         """
@@ -1241,6 +1369,7 @@ class RegionDisk(pulumi.CustomResource):
                  disk_encryption_key: pulumi.Input[Optional[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
                  erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
                  guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
                  interface: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1254,6 +1383,7 @@ class RegionDisk(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceImageEncryptionKeyArgs', 'RegionDiskSourceImageEncryptionKeyArgsDict']]] = None,
                  source_snapshot_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1432,6 +1562,15 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] image: The image from which to initialize this disk. This can be
+               one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+               `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+               `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+               `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+               images names must include the family name. If they don't, use the
+               [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+               For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+               These images can be referred by family name here.
         :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
                Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
@@ -1483,6 +1622,9 @@ class RegionDisk(pulumi.CustomResource):
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
                * regions/{region}/disks/{disk}
+        :param pulumi.Input[Union['RegionDiskSourceImageEncryptionKeyArgs', 'RegionDiskSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -1663,6 +1805,7 @@ class RegionDisk(pulumi.CustomResource):
                  disk_encryption_key: pulumi.Input[Optional[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
                  erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
                  guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
                  interface: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1676,6 +1819,7 @@ class RegionDisk(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot: pulumi.Input[Optional[_builtins.str]] = None,
                  source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceImageEncryptionKeyArgs', 'RegionDiskSourceImageEncryptionKeyArgsDict']]] = None,
                  source_snapshot_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1695,6 +1839,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
             __props__.__dict__["guest_os_features"] = guest_os_features
+            __props__.__dict__["image"] = image
             __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
             __props__.__dict__["licenses"] = licenses
@@ -1710,6 +1855,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot"] = snapshot
             __props__.__dict__["source_disk"] = source_disk
+            __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["type"] = type
             __props__.__dict__["creation_timestamp"] = None
@@ -1721,6 +1867,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["source_disk_id"] = None
+            __props__.__dict__["source_image_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
             __props__.__dict__["users"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -1746,6 +1893,7 @@ class RegionDisk(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
             guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
             interface: pulumi.Input[Optional[_builtins.str]] = None,
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1765,6 +1913,8 @@ class RegionDisk(pulumi.CustomResource):
             snapshot: pulumi.Input[Optional[_builtins.str]] = None,
             source_disk: pulumi.Input[Optional[_builtins.str]] = None,
             source_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_image_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceImageEncryptionKeyArgs', 'RegionDiskSourceImageEncryptionKeyArgsDict']]] = None,
+            source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
             source_snapshot_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
             source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1808,6 +1958,15 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] image: The image from which to initialize this disk. This can be
+               one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+               `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+               `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+               `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+               images names must include the family name. If they don't, use the
+               [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+               For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+               These images can be referred by family name here.
         :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
                Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
@@ -1869,6 +2028,14 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_disk_id: The ID value of the disk used to create this image. This value may
                be used to determine whether the image was taken from the current
                or a previous instance of a given disk name.
+        :param pulumi.Input[Union['RegionDiskSourceImageEncryptionKeyArgs', 'RegionDiskSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] source_image_id: The ID value of the image used to create this disk. This value
+               identifies the exact image that was used to create this persistent
+               disk. For example, if you created the persistent disk from an image
+               that was later deleted and recreated under the same name, the source
+               image ID would identify the exact version of the image that was used.
         :param pulumi.Input[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -1899,6 +2066,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
         __props__.__dict__["guest_os_features"] = guest_os_features
+        __props__.__dict__["image"] = image
         __props__.__dict__["interface"] = interface
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
@@ -1918,6 +2086,8 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["snapshot"] = snapshot
         __props__.__dict__["source_disk"] = source_disk
         __props__.__dict__["source_disk_id"] = source_disk_id
+        __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
+        __props__.__dict__["source_image_id"] = source_image_id
         __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
         __props__.__dict__["source_snapshot_id"] = source_snapshot_id
         __props__.__dict__["type"] = type
@@ -2032,6 +2202,22 @@ class RegionDisk(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "guest_os_features")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The image from which to initialize this disk. This can be
+        one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+        images names must include the family name. If they don't, use the
+        [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+        For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+        These images can be referred by family name here.
+        """
+        return pulumi.get(self, "image")
 
     @_builtins.property
     @pulumi.getter
@@ -2227,6 +2413,28 @@ class RegionDisk(pulumi.CustomResource):
         or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> pulumi.Output[Optional['outputs.RegionDiskSourceImageEncryptionKey']]:
+        """
+        The customer-supplied encryption key of the source image. Required if
+        the source image is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID value of the image used to create this disk. This value
+        identifies the exact image that was used to create this persistent
+        disk. For example, if you created the persistent disk from an image
+        that was later deleted and recreated under the same name, the source
+        image ID would identify the exact version of the image that was used.
+        """
+        return pulumi.get(self, "source_image_id")
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")

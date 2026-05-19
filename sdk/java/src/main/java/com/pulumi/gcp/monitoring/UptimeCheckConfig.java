@@ -188,6 +188,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;

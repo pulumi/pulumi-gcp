@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gemini.CodeToolsSetting;
  * import com.pulumi.gcp.gemini.CodeToolsSettingArgs;
  * import com.pulumi.gcp.gemini.inputs.CodeToolsSettingEnabledToolArgs;
+ * import com.pulumi.gcp.gemini.inputs.CodeToolsSettingEnabledToolConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

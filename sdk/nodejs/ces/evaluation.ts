@@ -410,6 +410,257 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Ces Evaluation Scenario Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const app = new gcp.ces.App("app", {
+ *     appId: "app-id-scenario",
+ *     location: "us",
+ *     displayName: "my-app-scenario",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const tool = new gcp.ces.Tool("tool", {
+ *     location: "us",
+ *     app: app.appId,
+ *     toolId: "tool-id-scenario",
+ *     executionType: "SYNCHRONOUS",
+ *     pythonFunction: {
+ *         name: "example_function",
+ *         pythonCode: "def example_function() -> int: return 0",
+ *     },
+ * });
+ * const cesEvaluationScenarioFull = new gcp.ces.Evaluation("ces_evaluation_scenario_full", {
+ *     evaluationId: "eval-scenario-full",
+ *     displayName: "my-evaluation-scenario-full",
+ *     location: "us",
+ *     app: app.appId,
+ *     description: "Full evaluation for testing scenario",
+ *     tags: [
+ *         "test",
+ *         "full",
+ *         "scenario",
+ *     ],
+ *     scenario: {
+ *         task: "Test task",
+ *         maxTurns: 5,
+ *         rubrics: [pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/rubrics/dummy-rubric`],
+ *         userGoalBehavior: "USER_GOAL_SATISFIED",
+ *         taskCompletionBehavior: "TASK_SATISFIED",
+ *         variableOverrides: {
+ *             key: "value",
+ *         },
+ *         evaluationExpectations: [pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/evaluationExpectations/dummy-exp`],
+ *         userFacts: [{
+ *             name: "user_name",
+ *             value: "John Doe",
+ *         }],
+ *         scenarioExpectations: [
+ *             {
+ *                 toolExpectation: {
+ *                     expectedToolCall: {
+ *                         id: "tool-call-id",
+ *                         tool: pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/tools/${tool.toolId}`,
+ *                         args: {
+ *                             param: "value",
+ *                         },
+ *                     },
+ *                     mockToolResponse: {
+ *                         id: "tool-call-id",
+ *                         response: {
+ *                             result: "mocked",
+ *                         },
+ *                         tool: pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/tools/${tool.toolId}`,
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 agentResponse: {
+ *                     role: "agent",
+ *                     chunks: [
+ *                         {
+ *                             text: "Hello",
+ *                         },
+ *                         {
+ *                             updatedVariables: {
+ *                                 key: "value",
+ *                             },
+ *                         },
+ *                         {
+ *                             blob: {
+ *                                 mimeType: "text/plain",
+ *                                 data: "c29tZSBibG9iIGRhdGE=",
+ *                             },
+ *                         },
+ *                         {
+ *                             image: {
+ *                                 mimeType: "image/png",
+ *                                 data: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+ *                             },
+ *                         },
+ *                         {
+ *                             toolCall: {
+ *                                 id: "tool-call-id-3",
+ *                                 tool: pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/tools/${tool.toolId}`,
+ *                                 args: {
+ *                                     param: "value",
+ *                                 },
+ *                             },
+ *                         },
+ *                         {
+ *                             toolResponse: {
+ *                                 id: "tool-call-id-3",
+ *                                 response: {
+ *                                     result: "success",
+ *                                 },
+ *                                 tool: pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/tools/${tool.toolId}`,
+ *                             },
+ *                         },
+ *                         {
+ *                             agentTransfer: {
+ *                                 targetAgent: pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/agents/dummy-agent`,
+ *                             },
+ *                         },
+ *                     ],
+ *                 },
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ * ### Ces Evaluation Scenario Toolset
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const app = new gcp.ces.App("app", {
+ *     appId: "app-id-scenario-ts",
+ *     location: "us",
+ *     displayName: "my-app-scenario-ts",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const toolset = new gcp.ces.Toolset("toolset", {
+ *     toolsetId: "ts-scen",
+ *     location: "us",
+ *     app: app.appId,
+ *     displayName: "Basic toolset display name",
+ *     description: "Test description",
+ *     executionType: "SYNCHRONOUS",
+ *     openApiToolset: {
+ *         openApiSchema: `openapi: 3.0.0
+ * info:
+ *   title: My Sample API
+ *   version: 1.0.0
+ *   description: A simple API example
+ * servers:
+ *   - url: https://api.example.com/v1
+ * paths: {}
+ * `,
+ *         ignoreUnknownFields: false,
+ *     },
+ * });
+ * const cesEvaluationScenarioToolset = new gcp.ces.Evaluation("ces_evaluation_scenario_toolset", {
+ *     evaluationId: "eval-scen-ts",
+ *     displayName: "my-evaluation-scenario-toolset",
+ *     location: "us",
+ *     app: app.appId,
+ *     description: "Full evaluation for testing scenario with toolset",
+ *     tags: [
+ *         "test",
+ *         "full",
+ *         "scenario",
+ *         "toolset",
+ *     ],
+ *     scenario: {
+ *         task: "Test task",
+ *         maxTurns: 5,
+ *         rubrics: [pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/rubrics/dummy-rubric`],
+ *         userGoalBehavior: "USER_GOAL_SATISFIED",
+ *         taskCompletionBehavior: "TASK_SATISFIED",
+ *         variableOverrides: {
+ *             key: "value",
+ *         },
+ *         evaluationExpectations: [pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/evaluationExpectations/dummy-exp`],
+ *         userFacts: [{
+ *             name: "user_name",
+ *             value: "John Doe",
+ *         }],
+ *         scenarioExpectations: [
+ *             {
+ *                 toolExpectation: {
+ *                     expectedToolCall: {
+ *                         id: "tool-call-id",
+ *                         toolsetTool: {
+ *                             toolset: pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/toolsets/${toolset.toolsetId}`,
+ *                             toolId: "dummy-tool",
+ *                         },
+ *                         args: {
+ *                             param: "value",
+ *                         },
+ *                     },
+ *                     mockToolResponse: {
+ *                         id: "tool-call-id",
+ *                         response: {
+ *                             result: "mocked",
+ *                         },
+ *                         toolsetTool: {
+ *                             toolset: pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/toolsets/${toolset.toolsetId}`,
+ *                             toolId: "dummy-tool",
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 agentResponse: {
+ *                     role: "agent",
+ *                     chunks: [
+ *                         {
+ *                             text: "Hello",
+ *                         },
+ *                         {
+ *                             toolCall: {
+ *                                 id: "tool-call-id-3",
+ *                                 toolsetTool: {
+ *                                     toolset: pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/toolsets/${toolset.toolsetId}`,
+ *                                     toolId: "dummy-tool",
+ *                                 },
+ *                                 args: {
+ *                                     param: "value",
+ *                                 },
+ *                             },
+ *                         },
+ *                         {
+ *                             toolResponse: {
+ *                                 id: "tool-call-id-3",
+ *                                 response: {
+ *                                     result: "success",
+ *                                 },
+ *                                 toolsetTool: {
+ *                                     toolset: pulumi.interpolate`projects/${app.project}/locations/us/apps/${app.appId}/toolsets/${toolset.toolsetId}`,
+ *                                     toolId: "dummy-tool",
+ *                                 },
+ *                             },
+ *                         },
+ *                     ],
+ *                 },
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -521,6 +772,11 @@ export class Evaluation extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Scenario input.
+     * Structure is documented below.
+     */
+    declare public readonly scenario: pulumi.Output<outputs.ces.EvaluationScenario | undefined>;
+    /**
      * User defined tags to categorize the evaluation.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
@@ -557,6 +813,7 @@ export class Evaluation extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["scenario"] = state?.scenario;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -580,6 +837,7 @@ export class Evaluation extends pulumi.CustomResource {
             resourceInputs["golden"] = args?.golden;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["scenario"] = args?.scenario;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -666,6 +924,11 @@ export interface EvaluationState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * Scenario input.
+     * Structure is documented below.
+     */
+    scenario?: pulumi.Input<inputs.ces.EvaluationScenario | undefined>;
+    /**
      * User defined tags to categorize the evaluation.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -711,6 +974,11 @@ export interface EvaluationArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Scenario input.
+     * Structure is documented below.
+     */
+    scenario?: pulumi.Input<inputs.ces.EvaluationScenario | undefined>;
     /**
      * User defined tags to categorize the evaluation.
      */

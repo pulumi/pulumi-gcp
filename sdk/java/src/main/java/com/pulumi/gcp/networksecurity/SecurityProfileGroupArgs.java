@@ -116,7 +116,7 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
 
     /**
      * The name of the parent this security profile group belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     @Import(name="parent")
@@ -124,7 +124,7 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The name of the parent this security profile group belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     public Optional<Output<String>> parent() {
@@ -329,7 +329,7 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param parent The name of the parent this security profile group belongs to.
-         * Format: organizations/{organization_id}.
+         * Format: `organizations/{organization_id}` or `projects/{project_id}`.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param parent The name of the parent this security profile group belongs to.
-         * Format: organizations/{organization_id}.
+         * Format: `organizations/{organization_id}` or `projects/{project_id}`.
          * 
          * @return builder
          * 

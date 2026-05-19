@@ -120,6 +120,7 @@ namespace Pulumi.Gcp.Compute
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Image;
         public readonly string Interface;
         public readonly string LabelFingerprint;
         public readonly ImmutableDictionary<string, string> Labels;
@@ -139,6 +140,8 @@ namespace Pulumi.Gcp.Compute
         public readonly string Snapshot;
         public readonly string SourceDisk;
         public readonly string SourceDiskId;
+        public readonly ImmutableArray<Outputs.GetRegionDiskSourceImageEncryptionKeyResult> SourceImageEncryptionKeys;
+        public readonly string SourceImageId;
         public readonly ImmutableArray<Outputs.GetRegionDiskSourceSnapshotEncryptionKeyResult> SourceSnapshotEncryptionKeys;
         public readonly string SourceSnapshotId;
         public readonly string Type;
@@ -169,6 +172,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetRegionDiskGuestOsFeatureResult> guestOsFeatures,
 
             string id,
+
+            string image,
 
             string @interface,
 
@@ -208,6 +213,10 @@ namespace Pulumi.Gcp.Compute
 
             string sourceDiskId,
 
+            ImmutableArray<Outputs.GetRegionDiskSourceImageEncryptionKeyResult> sourceImageEncryptionKeys,
+
+            string sourceImageId,
+
             ImmutableArray<Outputs.GetRegionDiskSourceSnapshotEncryptionKeyResult> sourceSnapshotEncryptionKeys,
 
             string sourceSnapshotId,
@@ -228,6 +237,7 @@ namespace Pulumi.Gcp.Compute
             EraseWindowsVssSignature = eraseWindowsVssSignature;
             GuestOsFeatures = guestOsFeatures;
             Id = id;
+            Image = image;
             Interface = @interface;
             LabelFingerprint = labelFingerprint;
             Labels = labels;
@@ -247,6 +257,8 @@ namespace Pulumi.Gcp.Compute
             Snapshot = snapshot;
             SourceDisk = sourceDisk;
             SourceDiskId = sourceDiskId;
+            SourceImageEncryptionKeys = sourceImageEncryptionKeys;
+            SourceImageId = sourceImageId;
             SourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             SourceSnapshotId = sourceSnapshotId;
             Type = type;

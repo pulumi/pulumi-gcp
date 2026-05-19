@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
  * import com.pulumi.gcp.cloudrun.DomainMapping;
  * import com.pulumi.gcp.cloudrun.DomainMappingArgs;
  * import com.pulumi.gcp.cloudrun.inputs.DomainMappingMetadataArgs;

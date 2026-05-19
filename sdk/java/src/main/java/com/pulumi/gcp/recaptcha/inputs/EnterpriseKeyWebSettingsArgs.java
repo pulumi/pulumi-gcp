@@ -6,6 +6,7 @@ package com.pulumi.gcp.recaptcha.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsChallengeSettingsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -79,14 +80,31 @@ public final class EnterpriseKeyWebSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+     * Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="challengeSettings")
+    private @Nullable Output<EnterpriseKeyWebSettingsChallengeSettingsArgs> challengeSettings;
+
+    /**
+     * @return Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EnterpriseKeyWebSettingsChallengeSettingsArgs>> challengeSettings() {
+        return Optional.ofNullable(this.challengeSettings);
+    }
+
+    /**
+     * Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+     * @return Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
      * 
      */
     public Output<String> integrationType() {
@@ -100,6 +118,7 @@ public final class EnterpriseKeyWebSettingsArgs extends com.pulumi.resources.Res
         this.allowAmpTraffic = $.allowAmpTraffic;
         this.allowedDomains = $.allowedDomains;
         this.challengeSecurityPreference = $.challengeSecurityPreference;
+        this.challengeSettings = $.challengeSettings;
         this.integrationType = $.integrationType;
     }
 
@@ -216,7 +235,30 @@ public final class EnterpriseKeyWebSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param integrationType Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+         * @param challengeSettings Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder challengeSettings(@Nullable Output<EnterpriseKeyWebSettingsChallengeSettingsArgs> challengeSettings) {
+            $.challengeSettings = challengeSettings;
+            return this;
+        }
+
+        /**
+         * @param challengeSettings Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder challengeSettings(EnterpriseKeyWebSettingsChallengeSettingsArgs challengeSettings) {
+            return challengeSettings(Output.of(challengeSettings));
+        }
+
+        /**
+         * @param integrationType Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
          * 
          * @return builder
          * 
@@ -227,7 +269,7 @@ public final class EnterpriseKeyWebSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param integrationType Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+         * @param integrationType Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
          * 
          * @return builder
          * 

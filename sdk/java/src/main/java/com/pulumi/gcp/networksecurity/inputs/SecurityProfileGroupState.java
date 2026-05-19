@@ -165,7 +165,7 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
 
     /**
      * The name of the parent this security profile group belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     @Import(name="parent")
@@ -173,7 +173,7 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
 
     /**
      * @return The name of the parent this security profile group belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     public Optional<Output<String>> parent() {
@@ -482,7 +482,7 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
 
         /**
          * @param parent The name of the parent this security profile group belongs to.
-         * Format: organizations/{organization_id}.
+         * Format: `organizations/{organization_id}` or `projects/{project_id}`.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
 
         /**
          * @param parent The name of the parent this security profile group belongs to.
-         * Format: organizations/{organization_id}.
+         * Format: `organizations/{organization_id}` or `projects/{project_id}`.
          * 
          * @return builder
          * 

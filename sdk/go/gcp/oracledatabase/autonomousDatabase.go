@@ -98,8 +98,6 @@ import (
 //				DisplayName:          pulumi.String("autonomousDatabase displayname"),
 //				Database:             pulumi.String("mydatabase"),
 //				AdminPassword:        pulumi.String("123Abpassword"),
-//				OdbNetwork:           pulumi.String("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork"),
-//				OdbSubnet:            pulumi.String("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"),
 //				Network:              pulumi.String(pulumi.String(_default.Id)),
 //				Cidr:                 pulumi.String("10.5.0.0/24"),
 //				Labels: pulumi.StringMap{

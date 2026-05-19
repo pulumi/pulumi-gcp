@@ -212,14 +212,14 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
     }
 
     /**
-     * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
+     * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
      * 
      */
     @Import(name="nicType")
     private @Nullable Output<String> nicType;
 
     /**
-     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
+     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
      * 
      */
     public Optional<Output<String>> nicType() {
@@ -660,7 +660,7 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         }
 
         /**
-         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
+         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
          * 
          * @return builder
          * 
@@ -671,7 +671,7 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         }
 
         /**
-         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
+         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
          * 
          * @return builder
          * 

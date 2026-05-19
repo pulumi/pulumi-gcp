@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'EnterpriseKeyAndroidSettings',
@@ -20,6 +21,9 @@ __all__ = [
     'EnterpriseKeyTestingOptions',
     'EnterpriseKeyWafSettings',
     'EnterpriseKeyWebSettings',
+    'EnterpriseKeyWebSettingsChallengeSettings',
+    'EnterpriseKeyWebSettingsChallengeSettingsActionSetting',
+    'EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings',
 ]
 
 @pulumi.output_type
@@ -235,6 +239,8 @@ class EnterpriseKeyWebSettings(dict):
             suggest = "allowed_domains"
         elif key == "challengeSecurityPreference":
             suggest = "challenge_security_preference"
+        elif key == "challengeSettings":
+            suggest = "challenge_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EnterpriseKeyWebSettings. Access the value via the '{suggest}' property getter instead.")
@@ -252,13 +258,16 @@ class EnterpriseKeyWebSettings(dict):
                  allow_all_domains: Optional[_builtins.bool] = None,
                  allow_amp_traffic: Optional[_builtins.bool] = None,
                  allowed_domains: Optional[Sequence[_builtins.str]] = None,
-                 challenge_security_preference: Optional[_builtins.str] = None):
+                 challenge_security_preference: Optional[_builtins.str] = None,
+                 challenge_settings: Optional['outputs.EnterpriseKeyWebSettingsChallengeSettings'] = None):
         """
-        :param _builtins.str integration_type: Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+        :param _builtins.str integration_type: Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
         :param _builtins.bool allow_all_domains: If set to true, it means allowed_domains will not be enforced.
         :param _builtins.bool allow_amp_traffic: If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
         :param Sequence[_builtins.str] allowed_domains: Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
         :param _builtins.str challenge_security_preference: Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
+        :param 'EnterpriseKeyWebSettingsChallengeSettingsArgs' challenge_settings: Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+               Structure is documented below.
         """
         pulumi.set(__self__, "integration_type", integration_type)
         if allow_all_domains is not None:
@@ -269,12 +278,14 @@ class EnterpriseKeyWebSettings(dict):
             pulumi.set(__self__, "allowed_domains", allowed_domains)
         if challenge_security_preference is not None:
             pulumi.set(__self__, "challenge_security_preference", challenge_security_preference)
+        if challenge_settings is not None:
+            pulumi.set(__self__, "challenge_settings", challenge_settings)
 
     @_builtins.property
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> _builtins.str:
         """
-        Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+        Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
         """
         return pulumi.get(self, "integration_type")
 
@@ -309,5 +320,148 @@ class EnterpriseKeyWebSettings(dict):
         Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
         """
         return pulumi.get(self, "challenge_security_preference")
+
+    @_builtins.property
+    @pulumi.getter(name="challengeSettings")
+    def challenge_settings(self) -> Optional['outputs.EnterpriseKeyWebSettingsChallengeSettings']:
+        """
+        Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "challenge_settings")
+
+
+@pulumi.output_type
+class EnterpriseKeyWebSettingsChallengeSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultSettings":
+            suggest = "default_settings"
+        elif key == "actionSettings":
+            suggest = "action_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseKeyWebSettingsChallengeSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseKeyWebSettingsChallengeSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseKeyWebSettingsChallengeSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_settings: 'outputs.EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings',
+                 action_settings: Optional[Sequence['outputs.EnterpriseKeyWebSettingsChallengeSettingsActionSetting']] = None):
+        """
+        :param 'EnterpriseKeyWebSettingsChallengeSettingsDefaultSettingsArgs' default_settings: Defines when a challenge is triggered by default.
+               Structure is documented below.
+        :param Sequence['EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs'] action_settings: The action to score threshold map. The action name should be the same as the action name passed in the `data-action` attribute. Action names are case-insensitive.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "default_settings", default_settings)
+        if action_settings is not None:
+            pulumi.set(__self__, "action_settings", action_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultSettings")
+    def default_settings(self) -> 'outputs.EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings':
+        """
+        Defines when a challenge is triggered by default.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="actionSettings")
+    def action_settings(self) -> Optional[Sequence['outputs.EnterpriseKeyWebSettingsChallengeSettingsActionSetting']]:
+        """
+        The action to score threshold map. The action name should be the same as the action name passed in the `data-action` attribute. Action names are case-insensitive.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action_settings")
+
+
+@pulumi.output_type
+class EnterpriseKeyWebSettingsChallengeSettingsActionSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scoreThreshold":
+            suggest = "score_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseKeyWebSettingsChallengeSettingsActionSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseKeyWebSettingsChallengeSettingsActionSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseKeyWebSettingsChallengeSettingsActionSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 score_threshold: _builtins.float):
+        """
+        :param _builtins.str action: The action name.
+        :param _builtins.float score_threshold: A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "score_threshold", score_threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        The action name.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter(name="scoreThreshold")
+    def score_threshold(self) -> _builtins.float:
+        """
+        A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+        """
+        return pulumi.get(self, "score_threshold")
+
+
+@pulumi.output_type
+class EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scoreThreshold":
+            suggest = "score_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 score_threshold: _builtins.float):
+        """
+        :param _builtins.float score_threshold: A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+        """
+        pulumi.set(__self__, "score_threshold", score_threshold)
+
+    @_builtins.property
+    @pulumi.getter(name="scoreThreshold")
+    def score_threshold(self) -> _builtins.float:
+        """
+        A challenge is triggered if the end-user score is below that threshold. Value must be between 0 and 1 (inclusive).
+        """
+        return pulumi.get(self, "score_threshold")
 
 

@@ -227,6 +227,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.SecurityProfile;
  * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
  * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileUrlFilterArgs;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
  * import java.util.ArrayList;
@@ -427,7 +428,7 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the parent this security profile group belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
@@ -435,7 +436,7 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the parent this security profile group belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     public Output<Optional<String>> parent() {

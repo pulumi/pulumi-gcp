@@ -200,11 +200,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .username("test")
  *             .apiKey("<api-key>")
- *             .peeredNetwork(vpcNetwork.id().applyValue(_id -> StdFunctions.replace(ReplaceArgs.builder()
- *                 .text(_id)
+ *             .peeredNetwork(StdFunctions.replace(ReplaceArgs.builder()
+ *                 .text(vpcNetwork.id())
  *                 .search(project.name())
  *                 .replace(project.number())
- *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .sslCa("""
  * -----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----

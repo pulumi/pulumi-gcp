@@ -169,6 +169,10 @@ export class Address extends pulumi.CustomResource {
      */
     declare public readonly address: pulumi.Output<string>;
     /**
+     * The unique numeric identifier for the resource. This identifier is defined by the server.
+     */
+    declare public /*out*/ readonly addressId: pulumi.Output<string>;
+    /**
      * The type of address to reserve.
      * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
@@ -309,6 +313,7 @@ export class Address extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AddressState | undefined;
             resourceInputs["address"] = state?.address;
+            resourceInputs["addressId"] = state?.addressId;
             resourceInputs["addressType"] = state?.addressType;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["description"] = state?.description;
@@ -346,6 +351,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["purpose"] = args?.purpose;
             resourceInputs["region"] = args?.region;
             resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["addressId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -370,6 +376,10 @@ export interface AddressState {
      * if any. Set by the API if undefined.
      */
     address?: pulumi.Input<string | undefined>;
+    /**
+     * The unique numeric identifier for the resource. This identifier is defined by the server.
+     */
+    addressId?: pulumi.Input<string | undefined>;
     /**
      * The type of address to reserve.
      * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.

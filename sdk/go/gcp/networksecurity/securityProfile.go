@@ -371,7 +371,7 @@ type SecurityProfile struct {
 	// The name of the security profile resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the parent this security profile belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -458,7 +458,7 @@ type securityProfileState struct {
 	// The name of the security profile resource.
 	Name *string `pulumi:"name"`
 	// The name of the parent this security profile belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -508,7 +508,7 @@ type SecurityProfileState struct {
 	// The name of the security profile resource.
 	Name pulumi.StringPtrInput
 	// The name of the parent this security profile belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -554,7 +554,7 @@ type securityProfileArgs struct {
 	// The name of the security profile resource.
 	Name *string `pulumi:"name"`
 	// The name of the parent this security profile belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent *string `pulumi:"parent"`
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
@@ -590,7 +590,7 @@ type SecurityProfileArgs struct {
 	// The name of the security profile resource.
 	Name pulumi.StringPtrInput
 	// The name of the parent this security profile belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringPtrInput
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
@@ -750,7 +750,7 @@ func (o SecurityProfileOutput) Name() pulumi.StringOutput {
 }
 
 // The name of the parent this security profile belongs to.
-// Format: organizations/{organization_id}.
+// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 func (o SecurityProfileOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }

@@ -23,6 +23,7 @@ class RolloutSequenceArgs:
     def __init__(__self__, *,
                  rollout_sequence_id: pulumi.Input[_builtins.str],
                  stages: pulumi.Input[Sequence[pulumi.Input['RolloutSequenceStageArgs']]],
+                 auto_upgrade_config: pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ignored_clusters_selector: pulumi.Input[Optional['RolloutSequenceIgnoredClustersSelectorArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -32,6 +33,9 @@ class RolloutSequenceArgs:
 
         :param pulumi.Input[_builtins.str] rollout_sequence_id: The user-provided identifier of the RolloutSequence.
         :param pulumi.Input[Sequence[pulumi.Input['RolloutSequenceStageArgs']]] stages: Ordered list of stages that constitute this Rollout Sequence.
+               Structure is documented below.
+        :param pulumi.Input['RolloutSequenceAutoUpgradeConfigArgs'] auto_upgrade_config: Configuration for automatic upgrades.
+               If not specified, the system applies default behavior.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
         :param pulumi.Input['RolloutSequenceIgnoredClustersSelectorArgs'] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
@@ -45,6 +49,8 @@ class RolloutSequenceArgs:
         """
         pulumi.set(__self__, "rollout_sequence_id", rollout_sequence_id)
         pulumi.set(__self__, "stages", stages)
+        if auto_upgrade_config is not None:
+            pulumi.set(__self__, "auto_upgrade_config", auto_upgrade_config)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if ignored_clusters_selector is not None:
@@ -78,6 +84,20 @@ class RolloutSequenceArgs:
     @stages.setter
     def stages(self, value: pulumi.Input[Sequence[pulumi.Input['RolloutSequenceStageArgs']]]):
         pulumi.set(self, "stages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeConfig")
+    def auto_upgrade_config(self) -> pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigArgs']]:
+        """
+        Configuration for automatic upgrades.
+        If not specified, the system applies default behavior.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auto_upgrade_config")
+
+    @auto_upgrade_config.setter
+    def auto_upgrade_config(self, value: pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigArgs']]):
+        pulumi.set(self, "auto_upgrade_config", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -136,6 +156,7 @@ class RolloutSequenceArgs:
 @pulumi.input_type
 class _RolloutSequenceState:
     def __init__(__self__, *,
+                 auto_upgrade_config: pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -153,6 +174,9 @@ class _RolloutSequenceState:
         """
         Input properties used for looking up and filtering RolloutSequence resources.
 
+        :param pulumi.Input['RolloutSequenceAutoUpgradeConfigArgs'] auto_upgrade_config: Configuration for automatic upgrades.
+               If not specified, the system applies default behavior.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which the Rollout Sequence was created.
         :param pulumi.Input[_builtins.str] delete_time: The timestamp at the Rollout Sequence was deleted.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
@@ -175,6 +199,8 @@ class _RolloutSequenceState:
         :param pulumi.Input[_builtins.str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[_builtins.str] update_time: The timestamp at which the Rollout Sequence was last updated.
         """
+        if auto_upgrade_config is not None:
+            pulumi.set(__self__, "auto_upgrade_config", auto_upgrade_config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
@@ -203,6 +229,20 @@ class _RolloutSequenceState:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeConfig")
+    def auto_upgrade_config(self) -> pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigArgs']]:
+        """
+        Configuration for automatic upgrades.
+        If not specified, the system applies default behavior.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auto_upgrade_config")
+
+    @auto_upgrade_config.setter
+    def auto_upgrade_config(self, value: pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigArgs']]):
+        pulumi.set(self, "auto_upgrade_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -386,6 +426,7 @@ class RolloutSequence(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade_config: pulumi.Input[Optional[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -424,6 +465,9 @@ class RolloutSequence(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']] auto_upgrade_config: Configuration for automatic upgrades.
+               If not specified, the system applies default behavior.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
         :param pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
                Structure is documented below.
@@ -487,6 +531,7 @@ class RolloutSequence(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade_config: pulumi.Input[Optional[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -502,6 +547,7 @@ class RolloutSequence(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RolloutSequenceArgs.__new__(RolloutSequenceArgs)
 
+            __props__.__dict__["auto_upgrade_config"] = auto_upgrade_config
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["ignored_clusters_selector"] = ignored_clusters_selector
             __props__.__dict__["labels"] = labels
@@ -532,6 +578,7 @@ class RolloutSequence(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade_config: pulumi.Input[Optional[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -553,6 +600,9 @@ class RolloutSequence(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RolloutSequenceAutoUpgradeConfigArgs', 'RolloutSequenceAutoUpgradeConfigArgsDict']] auto_upgrade_config: Configuration for automatic upgrades.
+               If not specified, the system applies default behavior.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which the Rollout Sequence was created.
         :param pulumi.Input[_builtins.str] delete_time: The timestamp at the Rollout Sequence was deleted.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
@@ -579,6 +629,7 @@ class RolloutSequence(pulumi.CustomResource):
 
         __props__ = _RolloutSequenceState.__new__(_RolloutSequenceState)
 
+        __props__.__dict__["auto_upgrade_config"] = auto_upgrade_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["display_name"] = display_name
@@ -594,6 +645,16 @@ class RolloutSequence(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return RolloutSequence(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeConfig")
+    def auto_upgrade_config(self) -> pulumi.Output[Optional['outputs.RolloutSequenceAutoUpgradeConfig']]:
+        """
+        Configuration for automatic upgrades.
+        If not specified, the system applies default behavior.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auto_upgrade_config")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

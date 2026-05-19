@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.Autoscaler;
  * import com.pulumi.gcp.compute.AutoscalerArgs;
  * import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyMetricArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

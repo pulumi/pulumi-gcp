@@ -7,13 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides access to available Cloud Composer versions in a region for a given project.
+ * Provides access to available Managed Airflow versions in a region for a given project.
  *
- * To get more information about Composer Image Versions, see:
+ * To get more information about Managed Airflow image versions, see:
  *
  * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+ *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
  *
  * ## Example Usage
  *
@@ -74,13 +74,13 @@ export interface GetImageVersionsResult {
     readonly region: string;
 }
 /**
- * Provides access to available Cloud Composer versions in a region for a given project.
+ * Provides access to available Managed Airflow versions in a region for a given project.
  *
- * To get more information about Composer Image Versions, see:
+ * To get more information about Managed Airflow image versions, see:
  *
  * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+ *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
  *
  * ## Example Usage
  *

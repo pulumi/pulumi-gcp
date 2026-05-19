@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.SnapshotSettings;
  * import com.pulumi.gcp.compute.SnapshotSettingsArgs;
  * import com.pulumi.gcp.compute.inputs.SnapshotSettingsStorageLocationArgs;
+ * import com.pulumi.gcp.compute.inputs.SnapshotSettingsStorageLocationLocationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

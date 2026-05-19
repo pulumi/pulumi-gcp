@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Workstations.Outputs
     public sealed class WorkstationConfigPersistentDirectory
     {
         /// <summary>
+        /// A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkstationConfigPersistentDirectoryGceHd? GceHd;
+        /// <summary>
         /// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
         /// Structure is documented below.
         /// </summary>
@@ -25,10 +30,13 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
         [OutputConstructor]
         private WorkstationConfigPersistentDirectory(
+            Outputs.WorkstationConfigPersistentDirectoryGceHd? gceHd,
+
             Outputs.WorkstationConfigPersistentDirectoryGcePd? gcePd,
 
             string? mountPath)
         {
+            GceHd = gceHd;
             GcePd = gcePd;
             MountPath = mountPath;
         }

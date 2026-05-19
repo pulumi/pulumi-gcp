@@ -338,9 +338,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      * 
      */
     @Import(name="nodeType")
@@ -350,9 +356,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      * 
      */
     public Optional<Output<String>> nodeType() {
@@ -983,9 +995,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param nodeType Optional. Machine type for individual nodes of the instance.
          * Possible values:
          * SHARED_CORE_NANO
+         * CUSTOM_PICO
+         * CUSTOM_MICRO
+         * CUSTOM_MINI
          * HIGHMEM_MEDIUM
+         * HIGHCPU_MEDIUM
          * HIGHMEM_XLARGE
          * STANDARD_SMALL
+         * STANDARD_LARGE
+         * HIGHMEM_2XLARGE
          * 
          * @return builder
          * 
@@ -999,9 +1017,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param nodeType Optional. Machine type for individual nodes of the instance.
          * Possible values:
          * SHARED_CORE_NANO
+         * CUSTOM_PICO
+         * CUSTOM_MICRO
+         * CUSTOM_MINI
          * HIGHMEM_MEDIUM
+         * HIGHCPU_MEDIUM
          * HIGHMEM_XLARGE
          * STANDARD_SMALL
+         * STANDARD_LARGE
+         * HIGHMEM_2XLARGE
          * 
          * @return builder
          * 

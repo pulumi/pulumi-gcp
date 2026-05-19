@@ -62,6 +62,7 @@ export interface GetRegionDiskResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly image: string;
     readonly interface: string;
     readonly labelFingerprint: string;
     readonly labels: {[key: string]: string};
@@ -81,6 +82,8 @@ export interface GetRegionDiskResult {
     readonly snapshot: string;
     readonly sourceDisk: string;
     readonly sourceDiskId: string;
+    readonly sourceImageEncryptionKeys: outputs.compute.GetRegionDiskSourceImageEncryptionKey[];
+    readonly sourceImageId: string;
     readonly sourceSnapshotEncryptionKeys: outputs.compute.GetRegionDiskSourceSnapshotEncryptionKey[];
     readonly sourceSnapshotId: string;
     readonly type: string;

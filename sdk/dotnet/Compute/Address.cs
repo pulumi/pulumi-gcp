@@ -212,6 +212,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IPAddress { get; private set; } = null!;
 
         /// <summary>
+        /// The unique numeric identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("addressId")]
+        public Output<string> AddressId { get; private set; } = null!;
+
+        /// <summary>
         /// The type of address to reserve.
         /// Note: if you set this argument's value as `INTERNAL` you need to leave the `NetworkTier` argument unset in that resource block.
         /// Default value is `EXTERNAL`.
@@ -585,6 +591,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("address")]
         public Input<string>? IPAddress { get; set; }
+
+        /// <summary>
+        /// The unique numeric identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("addressId")]
+        public Input<string>? AddressId { get; set; }
 
         /// <summary>
         /// The type of address to reserve.

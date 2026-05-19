@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
  * import com.pulumi.gcp.managedkafka.Acl;
  * import com.pulumi.gcp.managedkafka.AclArgs;
  * import com.pulumi.gcp.managedkafka.inputs.AclAclEntryArgs;

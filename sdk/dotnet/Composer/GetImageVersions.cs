@@ -12,13 +12,13 @@ namespace Pulumi.Gcp.Composer
     public static class GetImageVersions
     {
         /// <summary>
-        /// Provides access to available Cloud Composer versions in a region for a given project.
+        /// Provides access to available Managed Airflow versions in a region for a given project.
         /// 
-        /// To get more information about Composer Image Versions, see:
+        /// To get more information about Managed Airflow image versions, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        ///     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
         /// 
         /// ## Example Usage
         /// 
@@ -52,13 +52,13 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides access to available Cloud Composer versions in a region for a given project.
+        /// Provides access to available Managed Airflow versions in a region for a given project.
         /// 
-        /// To get more information about Composer Image Versions, see:
+        /// To get more information about Managed Airflow image versions, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        ///     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
         /// 
         /// ## Example Usage
         /// 
@@ -92,13 +92,13 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.Invoke<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides access to available Cloud Composer versions in a region for a given project.
+        /// Provides access to available Managed Airflow versions in a region for a given project.
         /// 
-        /// To get more information about Composer Image Versions, see:
+        /// To get more information about Managed Airflow image versions, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        ///     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
         /// 
         /// ## Example Usage
         /// 

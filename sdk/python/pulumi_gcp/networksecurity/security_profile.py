@@ -51,7 +51,7 @@ class SecurityProfileArgs:
                The default value is `global`.
         :param pulumi.Input[_builtins.str] name: The name of the security profile resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input['SecurityProfileThreatPreventionProfileArgs'] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input['SecurityProfileUrlFilteringProfileArgs'] url_filtering_profile: The url filtering configuration for the security profile.
@@ -175,7 +175,7 @@ class SecurityProfileArgs:
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parent this security profile belongs to.
-        Format: organizations/{organization_id}.
+        Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         return pulumi.get(self, "parent")
 
@@ -252,7 +252,7 @@ class _SecurityProfileState:
                The default value is `global`.
         :param pulumi.Input[_builtins.str] name: The name of the security profile resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
@@ -420,7 +420,7 @@ class _SecurityProfileState:
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parent this security profile belongs to.
-        Format: organizations/{organization_id}.
+        Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         return pulumi.get(self, "parent")
 
@@ -724,7 +724,7 @@ class SecurityProfile(pulumi.CustomResource):
                The default value is `global`.
         :param pulumi.Input[_builtins.str] name: The name of the security profile resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type of security profile.
@@ -1030,7 +1030,7 @@ class SecurityProfile(pulumi.CustomResource):
                The default value is `global`.
         :param pulumi.Input[_builtins.str] name: The name of the security profile resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
@@ -1151,7 +1151,7 @@ class SecurityProfile(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The name of the parent this security profile belongs to.
-        Format: organizations/{organization_id}.
+        Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         return pulumi.get(self, "parent")
 

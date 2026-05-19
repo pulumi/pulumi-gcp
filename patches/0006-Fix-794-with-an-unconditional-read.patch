@@ -5,7 +5,7 @@ Subject: [PATCH] Fix #794 with an unconditional read.
 
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index 58011e3acd..f750ba423f 100644
+index 04f4684fd..1f91f5819 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
 @@ -2678,10 +2678,11 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})

@@ -217,6 +217,221 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Security Policy Rule Advanced Features
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SecurityPolicy;
+ * import com.pulumi.gcp.compute.SecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.SecurityPolicyRule;
+ * import com.pulumi.gcp.compute.SecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
+ *             .name("policyruletest")
+ *             .description("Security policy with WAF exclusions, Headers, and Redirect")
+ *             .build());
+ * 
+ *         var policySecurityPolicyRule = new SecurityPolicyRule("policySecurityPolicyRule", SecurityPolicyRuleArgs.builder()
+ *             .securityPolicy(policy.name())
+ *             .description("Complex rule using advanced features: WAF config, header actions, and redirect options")
+ *             .priority(100)
+ *             .action("allow")
+ *             .match(SecurityPolicyRuleMatchArgs.builder()
+ *                 .expr(SecurityPolicyRuleMatchExprArgs.builder()
+ *                     .expression("request.path.matches('/api/v1/.*')")
+ *                     .build())
+ *                 .build())
+ *             .preconfiguredWafConfig(SecurityPolicyRulePreconfiguredWafConfigArgs.builder()
+ *                 .exclusions(SecurityPolicyRulePreconfiguredWafConfigExclusionArgs.builder()
+ *                     .targetRuleSet("sqli-v33-stable")
+ *                     .targetRuleIds("owasp-crs-v030301-id942100-sqli")
+ *                     .requestHeaders(SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs.builder()
+ *                         .operator("EQUALS")
+ *                         .value("internal-scan")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .headerAction(SecurityPolicyRuleHeaderActionArgs.builder()
+ *                 .requestHeadersToAdds(SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs.builder()
+ *                     .headerName("X-Added-By-Armor")
+ *                     .headerValue("Verified-Traffic")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Security Policy Rule With Body Exclude
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.SecurityPolicy;
+ * import com.pulumi.gcp.compute.SecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyAdvancedOptionsConfigArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.SecurityPolicyRule;
+ * import com.pulumi.gcp.compute.SecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("test-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("test-subnet")
+ *             .region("us-west2")
+ *             .network(default_.id())
+ *             .ipCidrRange("10.10.0.0/24")
+ *             .build());
+ * 
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("test-health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultSecurityPolicy = new SecurityPolicy("defaultSecurityPolicy", SecurityPolicyArgs.builder()
+ *             .name("policyruletest")
+ *             .description("global security policy with body inspection")
+ *             .type("CLOUD_ARMOR")
+ *             .advancedOptionsConfig(SecurityPolicyAdvancedOptionsConfigArgs.builder()
+ *                 .jsonParsing("STANDARD")
+ *                 .logLevel("VERBOSE")
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .accessConfigs(InstanceTemplateNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .build())
+ *             .name("backendpolicy")
+ *             .machineType("e2-micro")
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage("projects/debian-cloud/global/images/family/debian-11")
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultInstanceGroupManager = new InstanceGroupManager("defaultInstanceGroupManager", InstanceGroupManagerArgs.builder()
+ *             .name("backendpolicy")
+ *             .baseInstanceName("backend")
+ *             .zone("us-west2-a")
+ *             .versions(InstanceGroupManagerVersionArgs.builder()
+ *                 .instanceTemplate(defaultInstanceTemplate.id())
+ *                 .build())
+ *             .targetSize(1)
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
+ *             .name("backendpolicy")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .timeoutSec(30)
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .backends(BackendServiceBackendArgs.builder()
+ *                 .group(defaultInstanceGroupManager.instanceGroup())
+ *                 .build())
+ *             .securityPolicy(defaultSecurityPolicy.id())
+ *             .build());
+ * 
+ *         var policyRuleOne = new SecurityPolicyRule("policyRuleOne", SecurityPolicyRuleArgs.builder()
+ *             .securityPolicy(defaultSecurityPolicy.name())
+ *             .description("waf body rule")
+ *             .action("deny(403)")
+ *             .priority(100)
+ *             .preview(true)
+ *             .match(SecurityPolicyRuleMatchArgs.builder()
+ *                 .expr(SecurityPolicyRuleMatchExprArgs.builder()
+ *                     .expression("evaluatePreconfiguredWaf('sqli-v33-stable')")
+ *                     .build())
+ *                 .build())
+ *             .preconfiguredWafConfig(SecurityPolicyRulePreconfiguredWafConfigArgs.builder()
+ *                 .exclusions(SecurityPolicyRulePreconfiguredWafConfigExclusionArgs.builder()
+ *                     .targetRuleSet("sqli-v33-stable")
+ *                     .requestBodies(SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs.builder()
+ *                         .operator("EQUALS")
+ *                         .value("safe-field")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultBackendService)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

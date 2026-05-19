@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.Policy;
  * import com.pulumi.gcp.dns.PolicyArgs;
  * import com.pulumi.gcp.dns.inputs.PolicyAlternativeNameServerConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs;
  * import com.pulumi.gcp.dns.inputs.PolicyNetworkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

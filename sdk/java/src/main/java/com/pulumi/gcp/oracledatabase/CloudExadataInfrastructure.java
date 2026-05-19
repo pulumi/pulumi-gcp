@@ -83,6 +83,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructure;
  * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureArgs;
  * import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesCustomerContactArgs;
  * import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesMaintenanceWindowArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

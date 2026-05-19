@@ -47,6 +47,11 @@ public final class GetInstanceBootDiskInitializeParam {
      */
     private Integer provisionedThroughput;
     /**
+     * @return A list of short names or selfLinks of zones in which to create a regional disk.
+     * 
+     */
+    private List<String> replicaZones;
+    /**
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
@@ -131,6 +136,13 @@ public final class GetInstanceBootDiskInitializeParam {
         return this.provisionedThroughput;
     }
     /**
+     * @return A list of short names or selfLinks of zones in which to create a regional disk.
+     * 
+     */
+    public List<String> replicaZones() {
+        return this.replicaZones;
+    }
+    /**
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
@@ -202,6 +214,7 @@ public final class GetInstanceBootDiskInitializeParam {
         private Map<String,String> labels;
         private Integer provisionedIops;
         private Integer provisionedThroughput;
+        private List<String> replicaZones;
         private Map<String,String> resourceManagerTags;
         private List<String> resourcePolicies;
         private Integer size;
@@ -219,6 +232,7 @@ public final class GetInstanceBootDiskInitializeParam {
     	      this.labels = defaults.labels;
     	      this.provisionedIops = defaults.provisionedIops;
     	      this.provisionedThroughput = defaults.provisionedThroughput;
+    	      this.replicaZones = defaults.replicaZones;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.size = defaults.size;
@@ -276,6 +290,17 @@ public final class GetInstanceBootDiskInitializeParam {
             }
             this.provisionedThroughput = provisionedThroughput;
             return this;
+        }
+        @CustomType.Setter
+        public Builder replicaZones(List<String> replicaZones) {
+            if (replicaZones == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "replicaZones");
+            }
+            this.replicaZones = replicaZones;
+            return this;
+        }
+        public Builder replicaZones(String... replicaZones) {
+            return replicaZones(List.of(replicaZones));
         }
         @CustomType.Setter
         public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
@@ -358,6 +383,7 @@ public final class GetInstanceBootDiskInitializeParam {
             _resultValue.labels = labels;
             _resultValue.provisionedIops = provisionedIops;
             _resultValue.provisionedThroughput = provisionedThroughput;
+            _resultValue.replicaZones = replicaZones;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.size = size;

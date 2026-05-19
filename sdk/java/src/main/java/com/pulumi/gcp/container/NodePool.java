@@ -103,6 +103,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
  * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigGuestAcceleratorArgs;
  * import com.pulumi.gcp.container.NodePool;
  * import com.pulumi.gcp.container.NodePoolArgs;
  * import com.pulumi.gcp.container.inputs.NodePoolNodeConfigArgs;

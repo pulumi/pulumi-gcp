@@ -60,6 +60,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? ProvisionedThroughput;
         /// <summary>
+        /// A list of short names or SelfLinks of zones in which to create the disk. Setting this field converts the disk to a regional disk. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
+        /// </summary>
+        public readonly ImmutableArray<string> ReplicaZones;
+        /// <summary>
         /// A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
@@ -112,6 +116,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? provisionedThroughput,
 
+            ImmutableArray<string> replicaZones,
+
             ImmutableDictionary<string, string>? resourceManagerTags,
 
             string? resourcePolicies,
@@ -134,6 +140,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Labels = labels;
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
+            ReplicaZones = replicaZones;
             ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;
             Size = size;

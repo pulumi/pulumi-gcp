@@ -322,12 +322,9 @@ class DashboardChart(pulumi.CustomResource):
         """
         A chart resource used within a NativeDashboard. Its lifecycle (Create, Update, Delete) is managed via custom methods on the NativeDashboard resource.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about DashboardChart, see:
 
-        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dashboardCharts)
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dashboardCharts)
         * How-to Guides
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 
@@ -537,12 +534,9 @@ class DashboardChart(pulumi.CustomResource):
         """
         A chart resource used within a NativeDashboard. Its lifecycle (Create, Update, Delete) is managed via custom methods on the NativeDashboard resource.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about DashboardChart, see:
 
-        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dashboardCharts)
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dashboardCharts)
         * How-to Guides
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 

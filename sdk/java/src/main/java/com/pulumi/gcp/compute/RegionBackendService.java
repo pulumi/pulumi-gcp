@@ -623,7 +623,7 @@ import javax.annotation.Nullable;
  *                 .trackingMode("PER_SESSION")
  *                 .connectionPersistenceOnUnhealthyBackends("NEVER_PERSIST")
  *                 .idleTimeoutSec(60)
- *                 .enableStrongAffinity(true)
+ *                 .enableStrongAffinity(false)
  *                 .build())
  *             .build());
  * 
@@ -699,6 +699,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
  * import com.pulumi.gcp.compute.inputs.RegionBackendServiceCustomMetricArgs;
  * import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendCustomMetricArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -954,6 +955,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.Instance;
  * import com.pulumi.gcp.compute.InstanceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
  * import com.pulumi.gcp.compute.NetworkEndpointGroup;
@@ -1068,6 +1070,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionBackendService;
  * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
  * import com.pulumi.gcp.compute.inputs.RegionBackendServiceTlsSettingsArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceTlsSettingsSubjectAltNameArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -1231,7 +1234,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionDrainingTimeoutSec);
     }
     /**
-     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -1242,8 +1244,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionBackendServiceConnectionTrackingPolicy> connectionTrackingPolicy;
 
     /**
-     * @return (Optional, Beta)
-     * Connection Tracking configuration for this BackendService.
+     * @return Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
      * Structure is documented below.

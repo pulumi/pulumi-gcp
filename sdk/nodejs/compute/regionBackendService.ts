@@ -315,7 +315,7 @@ import * as utilities from "../utilities";
  *         trackingMode: "PER_SESSION",
  *         connectionPersistenceOnUnhealthyBackends: "NEVER_PERSIST",
  *         idleTimeoutSec: 60,
- *         enableStrongAffinity: true,
+ *         enableStrongAffinity: false,
  *     },
  * });
  * ```
@@ -646,7 +646,6 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     declare public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
-     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -1034,7 +1033,6 @@ export interface RegionBackendServiceState {
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number | undefined>;
     /**
-     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -1326,7 +1324,6 @@ export interface RegionBackendServiceArgs {
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number | undefined>;
     /**
-     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.

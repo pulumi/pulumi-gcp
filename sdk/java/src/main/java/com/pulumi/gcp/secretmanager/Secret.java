@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

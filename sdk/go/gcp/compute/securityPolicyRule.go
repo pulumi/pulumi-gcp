@@ -193,6 +193,208 @@ import (
 //	}
 //
 // ```
+// ### Security Policy Rule Advanced Features
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			policy, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Name:        pulumi.String("policyruletest"),
+//				Description: pulumi.String("Security policy with WAF exclusions, Headers, and Redirect"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSecurityPolicyRule(ctx, "policy", &compute.SecurityPolicyRuleArgs{
+//				SecurityPolicy: policy.Name,
+//				Description:    pulumi.String("Complex rule using advanced features: WAF config, header actions, and redirect options"),
+//				Priority:       pulumi.Int(100),
+//				Action:         pulumi.String("allow"),
+//				Match: &compute.SecurityPolicyRuleMatchArgs{
+//					Expr: &compute.SecurityPolicyRuleMatchExprArgs{
+//						Expression: pulumi.String("request.path.matches('/api/v1/.*')"),
+//					},
+//				},
+//				PreconfiguredWafConfig: &compute.SecurityPolicyRulePreconfiguredWafConfigArgs{
+//					Exclusions: compute.SecurityPolicyRulePreconfiguredWafConfigExclusionArray{
+//						&compute.SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{
+//							TargetRuleSet: pulumi.String("sqli-v33-stable"),
+//							TargetRuleIds: pulumi.StringArray{
+//								pulumi.String("owasp-crs-v030301-id942100-sqli"),
+//							},
+//							RequestHeaders: compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray{
+//								&compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{
+//									Operator: pulumi.String("EQUALS"),
+//									Value:    pulumi.String("internal-scan"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				HeaderAction: &compute.SecurityPolicyRuleHeaderActionArgs{
+//					RequestHeadersToAdds: compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArray{
+//						&compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs{
+//							HeaderName:  pulumi.String("X-Added-By-Armor"),
+//							HeaderValue: pulumi.String("Verified-Traffic"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Security Policy Rule With Body Exclude
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("test-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("test-subnet"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     _default.ID(),
+//				IpCidrRange: pulumi.String("10.10.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("test-health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityPolicy, err := compute.NewSecurityPolicy(ctx, "default", &compute.SecurityPolicyArgs{
+//				Name:        pulumi.String("policyruletest"),
+//				Description: pulumi.String("global security policy with body inspection"),
+//				Type:        pulumi.String("CLOUD_ARMOR"),
+//				AdvancedOptionsConfig: &compute.SecurityPolicyAdvancedOptionsConfigArgs{
+//					JsonParsing: pulumi.String("STANDARD"),
+//					LogLevel:    pulumi.String("VERBOSE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "default", &compute.InstanceTemplateArgs{
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
+//							&compute.InstanceTemplateNetworkInterfaceAccessConfigArgs{},
+//						},
+//						Subnetwork: defaultSubnetwork.ID(),
+//					},
+//				},
+//				Name:        pulumi.String("backendpolicy"),
+//				MachineType: pulumi.String("e2-micro"),
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-11"),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceGroupManager, err := compute.NewInstanceGroupManager(ctx, "default", &compute.InstanceGroupManagerArgs{
+//				Name:             pulumi.String("backendpolicy"),
+//				BaseInstanceName: pulumi.String("backend"),
+//				Zone:             pulumi.String("us-west2-a"),
+//				Versions: compute.InstanceGroupManagerVersionArray{
+//					&compute.InstanceGroupManagerVersionArgs{
+//						InstanceTemplate: defaultInstanceTemplate.ID(),
+//					},
+//				},
+//				TargetSize: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backendpolicy"),
+//				Protocol:            pulumi.String("HTTP"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				TimeoutSec:          pulumi.Int(30),
+//				HealthChecks:        defaultHealthCheck.ID(),
+//				Backends: compute.BackendServiceBackendArray{
+//					&compute.BackendServiceBackendArgs{
+//						Group: defaultInstanceGroupManager.InstanceGroup,
+//					},
+//				},
+//				SecurityPolicy: defaultSecurityPolicy.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSecurityPolicyRule(ctx, "policy_rule_one", &compute.SecurityPolicyRuleArgs{
+//				SecurityPolicy: defaultSecurityPolicy.Name,
+//				Description:    pulumi.String("waf body rule"),
+//				Action:         pulumi.String("deny(403)"),
+//				Priority:       pulumi.Int(100),
+//				Preview:        pulumi.Bool(true),
+//				Match: &compute.SecurityPolicyRuleMatchArgs{
+//					Expr: &compute.SecurityPolicyRuleMatchExprArgs{
+//						Expression: pulumi.String("evaluatePreconfiguredWaf('sqli-v33-stable')"),
+//					},
+//				},
+//				PreconfiguredWafConfig: &compute.SecurityPolicyRulePreconfiguredWafConfigArgs{
+//					Exclusions: compute.SecurityPolicyRulePreconfiguredWafConfigExclusionArray{
+//						&compute.SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{
+//							TargetRuleSet: pulumi.String("sqli-v33-stable"),
+//							RequestBodies: compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray{
+//								&compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{
+//									Operator: pulumi.String("EQUALS"),
+//									Value:    pulumi.String("safe-field"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultBackendService,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiDeploymentResourcePoolArgs;
  * import com.pulumi.gcp.vertex.inputs.AiDeploymentResourcePoolDedicatedResourcesArgs;
  * import com.pulumi.gcp.vertex.inputs.AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

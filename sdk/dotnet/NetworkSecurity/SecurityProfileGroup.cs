@@ -284,7 +284,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the parent this security profile group belongs to.
-        /// Format: organizations/{organization_id}.
+        /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
         /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
@@ -413,7 +413,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the parent this security profile group belongs to.
-        /// Format: organizations/{organization_id}.
+        /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -516,7 +516,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the parent this security profile group belongs to.
-        /// Format: organizations/{organization_id}.
+        /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

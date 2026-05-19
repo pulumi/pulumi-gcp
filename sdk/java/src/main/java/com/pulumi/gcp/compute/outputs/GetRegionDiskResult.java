@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskGuestOsFeature;
+import com.pulumi.gcp.compute.outputs.GetRegionDiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -36,6 +37,7 @@ public final class GetRegionDiskResult {
      * 
      */
     private String id;
+    private String image;
     private String interface_;
     private String labelFingerprint;
     private Map<String,String> labels;
@@ -55,6 +57,8 @@ public final class GetRegionDiskResult {
     private String snapshot;
     private String sourceDisk;
     private String sourceDiskId;
+    private List<GetRegionDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
+    private String sourceImageId;
     private List<GetRegionDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
     private String sourceSnapshotId;
     private String type;
@@ -100,6 +104,9 @@ public final class GetRegionDiskResult {
      */
     public String id() {
         return this.id;
+    }
+    public String image() {
+        return this.image;
     }
     public String interface_() {
         return this.interface_;
@@ -158,6 +165,12 @@ public final class GetRegionDiskResult {
     public String sourceDiskId() {
         return this.sourceDiskId;
     }
+    public List<GetRegionDiskSourceImageEncryptionKey> sourceImageEncryptionKeys() {
+        return this.sourceImageEncryptionKeys;
+    }
+    public String sourceImageId() {
+        return this.sourceImageId;
+    }
     public List<GetRegionDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys() {
         return this.sourceSnapshotEncryptionKeys;
     }
@@ -192,6 +205,7 @@ public final class GetRegionDiskResult {
         private Boolean eraseWindowsVssSignature;
         private List<GetRegionDiskGuestOsFeature> guestOsFeatures;
         private String id;
+        private String image;
         private String interface_;
         private String labelFingerprint;
         private Map<String,String> labels;
@@ -211,6 +225,8 @@ public final class GetRegionDiskResult {
         private String snapshot;
         private String sourceDisk;
         private String sourceDiskId;
+        private List<GetRegionDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
+        private String sourceImageId;
         private List<GetRegionDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
         private String sourceSnapshotId;
         private String type;
@@ -230,6 +246,7 @@ public final class GetRegionDiskResult {
     	      this.eraseWindowsVssSignature = defaults.eraseWindowsVssSignature;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.id = defaults.id;
+    	      this.image = defaults.image;
     	      this.interface_ = defaults.interface_;
     	      this.labelFingerprint = defaults.labelFingerprint;
     	      this.labels = defaults.labels;
@@ -249,6 +266,8 @@ public final class GetRegionDiskResult {
     	      this.snapshot = defaults.snapshot;
     	      this.sourceDisk = defaults.sourceDisk;
     	      this.sourceDiskId = defaults.sourceDiskId;
+    	      this.sourceImageEncryptionKeys = defaults.sourceImageEncryptionKeys;
+    	      this.sourceImageId = defaults.sourceImageId;
     	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
     	      this.sourceSnapshotId = defaults.sourceSnapshotId;
     	      this.type = defaults.type;
@@ -358,6 +377,14 @@ public final class GetRegionDiskResult {
               throw new MissingRequiredPropertyException("GetRegionDiskResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder image(String image) {
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter("interface")
@@ -515,6 +542,25 @@ public final class GetRegionDiskResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceImageEncryptionKeys(List<GetRegionDiskSourceImageEncryptionKey> sourceImageEncryptionKeys) {
+            if (sourceImageEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "sourceImageEncryptionKeys");
+            }
+            this.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
+            return this;
+        }
+        public Builder sourceImageEncryptionKeys(GetRegionDiskSourceImageEncryptionKey... sourceImageEncryptionKeys) {
+            return sourceImageEncryptionKeys(List.of(sourceImageEncryptionKeys));
+        }
+        @CustomType.Setter
+        public Builder sourceImageId(String sourceImageId) {
+            if (sourceImageId == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "sourceImageId");
+            }
+            this.sourceImageId = sourceImageId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceSnapshotEncryptionKeys(List<GetRegionDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys) {
             if (sourceSnapshotEncryptionKeys == null) {
               throw new MissingRequiredPropertyException("GetRegionDiskResult", "sourceSnapshotEncryptionKeys");
@@ -566,6 +612,7 @@ public final class GetRegionDiskResult {
             _resultValue.eraseWindowsVssSignature = eraseWindowsVssSignature;
             _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.id = id;
+            _resultValue.image = image;
             _resultValue.interface_ = interface_;
             _resultValue.labelFingerprint = labelFingerprint;
             _resultValue.labels = labels;
@@ -585,6 +632,8 @@ public final class GetRegionDiskResult {
             _resultValue.snapshot = snapshot;
             _resultValue.sourceDisk = sourceDisk;
             _resultValue.sourceDiskId = sourceDiskId;
+            _resultValue.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
+            _resultValue.sourceImageId = sourceImageId;
             _resultValue.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             _resultValue.sourceSnapshotId = sourceSnapshotId;
             _resultValue.type = type;

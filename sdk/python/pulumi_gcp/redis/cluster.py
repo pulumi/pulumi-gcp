@@ -74,7 +74,7 @@ class ClusterArgs:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[_builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Persistence config (RDB, AOF) for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -310,7 +310,7 @@ class ClusterArgs:
         """
         The nodeType for the Redis cluster.
         If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         """
         return pulumi.get(self, "node_type")
 
@@ -541,7 +541,7 @@ class _ClusterState:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[_builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Persistence config (RDB, AOF) for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
@@ -915,7 +915,7 @@ class _ClusterState:
         """
         The nodeType for the Redis cluster.
         If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         """
         return pulumi.get(self, "node_type")
 
@@ -1846,7 +1846,7 @@ class Cluster(pulumi.CustomResource):
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[_builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']] persistence_config: Persistence config (RDB, AOF) for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -2685,7 +2685,7 @@ class Cluster(pulumi.CustomResource):
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[_builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']] persistence_config: Persistence config (RDB, AOF) for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
@@ -2949,7 +2949,7 @@ class Cluster(pulumi.CustomResource):
         """
         The nodeType for the Redis cluster.
         If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         """
         return pulumi.get(self, "node_type")
 

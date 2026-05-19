@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyTrafficPortSelectorArgs;
  * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherArgs;
  * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

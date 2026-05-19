@@ -246,6 +246,8 @@ type Address struct {
 	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address pulumi.StringOutput `pulumi:"address"`
+	// The unique numeric identifier for the resource. This identifier is defined by the server.
+	AddressId pulumi.StringOutput `pulumi:"addressId"`
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
@@ -373,6 +375,8 @@ type addressState struct {
 	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address *string `pulumi:"address"`
+	// The unique numeric identifier for the resource. This identifier is defined by the server.
+	AddressId *string `pulumi:"addressId"`
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
@@ -466,6 +470,8 @@ type AddressState struct {
 	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address pulumi.StringPtrInput
+	// The unique numeric identifier for the resource. This identifier is defined by the server.
+	AddressId pulumi.StringPtrInput
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
@@ -809,6 +815,11 @@ func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOu
 // if any. Set by the API if undefined.
 func (o AddressOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The unique numeric identifier for the resource. This identifier is defined by the server.
+func (o AddressOutput) AddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.AddressId }).(pulumi.StringOutput)
 }
 
 // The type of address to reserve.

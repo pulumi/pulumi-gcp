@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionDiskAsyncPrimaryDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskDiskEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskGuestOsFeatureArgs;
+import com.pulumi.gcp.compute.inputs.RegionDiskSourceImageEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskSourceSnapshotEncryptionKeyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -184,6 +185,37 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<RegionDiskGuestOsFeatureArgs>>> guestOsFeatures() {
         return Optional.ofNullable(this.guestOsFeatures);
+    }
+
+    /**
+     * The image from which to initialize this disk. This can be
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+     * images names must include the family name. If they don&#39;t, use the
+     * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+     * These images can be referred by family name here.
+     * 
+     */
+    @Import(name="image")
+    private @Nullable Output<String> image;
+
+    /**
+     * @return The image from which to initialize this disk. This can be
+     * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+     * images names must include the family name. If they don&#39;t, use the
+     * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+     * These images can be referred by family name here.
+     * 
+     */
+    public Optional<Output<String>> image() {
+        return Optional.ofNullable(this.image);
     }
 
     /**
@@ -466,6 +498,25 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sourceImageEncryptionKey")
+    private @Nullable Output<RegionDiskSourceImageEncryptionKeyArgs> sourceImageEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionDiskSourceImageEncryptionKeyArgs>> sourceImageEncryptionKey() {
+        return Optional.ofNullable(this.sourceImageEncryptionKey);
+    }
+
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -514,6 +565,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         this.diskEncryptionKey = $.diskEncryptionKey;
         this.eraseWindowsVssSignature = $.eraseWindowsVssSignature;
         this.guestOsFeatures = $.guestOsFeatures;
+        this.image = $.image;
         this.interface_ = $.interface_;
         this.labels = $.labels;
         this.licenses = $.licenses;
@@ -527,6 +579,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         this.size = $.size;
         this.snapshot = $.snapshot;
         this.sourceDisk = $.sourceDisk;
+        this.sourceImageEncryptionKey = $.sourceImageEncryptionKey;
         this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
         this.type = $.type;
     }
@@ -769,6 +822,43 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder guestOsFeatures(RegionDiskGuestOsFeatureArgs... guestOsFeatures) {
             return guestOsFeatures(List.of(guestOsFeatures));
+        }
+
+        /**
+         * @param image The image from which to initialize this disk. This can be
+         * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+         * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+         * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+         * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+         * images names must include the family name. If they don&#39;t, use the
+         * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+         * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+         * These images can be referred by family name here.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder image(@Nullable Output<String> image) {
+            $.image = image;
+            return this;
+        }
+
+        /**
+         * @param image The image from which to initialize this disk. This can be
+         * one of: the image&#39;s `selfLink`, `projects/{project}/global/images/{image}`,
+         * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+         * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+         * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+         * images names must include the family name. If they don&#39;t, use the
+         * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+         * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+         * These images can be referred by family name here.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder image(String image) {
+            return image(Output.of(image));
         }
 
         /**
@@ -1146,6 +1236,31 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceDisk(String sourceDisk) {
             return sourceDisk(Output.of(sourceDisk));
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The customer-supplied encryption key of the source image. Required if
+         * the source image is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(@Nullable Output<RegionDiskSourceImageEncryptionKeyArgs> sourceImageEncryptionKey) {
+            $.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The customer-supplied encryption key of the source image. Required if
+         * the source image is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(RegionDiskSourceImageEncryptionKeyArgs sourceImageEncryptionKey) {
+            return sourceImageEncryptionKey(Output.of(sourceImageEncryptionKey));
         }
 
         /**

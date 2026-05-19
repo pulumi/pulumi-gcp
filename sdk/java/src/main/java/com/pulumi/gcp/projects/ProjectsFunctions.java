@@ -1307,11 +1307,11 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *         final var my-org-projects = ProjectsFunctions.getProject(com.pulumi.gcp.projects.inputs.GetProjectArgs.builder()
      *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
      *             .build());
      * 
-     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(com.pulumi.gcp.organizations.inputs.GetProjectArgs.builder()
      *             .projectId(my_org_projects.projects()[0].projectId())
      *             .build());
      * 
@@ -1355,11 +1355,11 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *         final var my-org-projects = ProjectsFunctions.getProject(com.pulumi.gcp.projects.inputs.GetProjectArgs.builder()
      *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
      *             .build());
      * 
-     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(com.pulumi.gcp.organizations.inputs.GetProjectArgs.builder()
      *             .projectId(my_org_projects.projects()[0].projectId())
      *             .build());
      * 
@@ -1403,11 +1403,11 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *         final var my-org-projects = ProjectsFunctions.getProject(com.pulumi.gcp.projects.inputs.GetProjectArgs.builder()
      *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
      *             .build());
      * 
-     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(com.pulumi.gcp.organizations.inputs.GetProjectArgs.builder()
      *             .projectId(my_org_projects.projects()[0].projectId())
      *             .build());
      * 
@@ -1451,11 +1451,11 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *         final var my-org-projects = ProjectsFunctions.getProject(com.pulumi.gcp.projects.inputs.GetProjectArgs.builder()
      *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
      *             .build());
      * 
-     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(com.pulumi.gcp.organizations.inputs.GetProjectArgs.builder()
      *             .projectId(my_org_projects.projects()[0].projectId())
      *             .build());
      * 
@@ -1499,11 +1499,11 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *         final var my-org-projects = ProjectsFunctions.getProject(com.pulumi.gcp.projects.inputs.GetProjectArgs.builder()
      *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
      *             .build());
      * 
-     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(com.pulumi.gcp.organizations.inputs.GetProjectArgs.builder()
      *             .projectId(my_org_projects.projects()[0].projectId())
      *             .build());
      * 

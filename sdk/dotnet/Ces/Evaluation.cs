@@ -684,6 +684,430 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// ### Ces Evaluation Scenario Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var app = new Gcp.Ces.App("app", new()
+    ///     {
+    ///         AppId = "app-id-scenario",
+    ///         Location = "us",
+    ///         DisplayName = "my-app-scenario",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var tool = new Gcp.Ces.Tool("tool", new()
+    ///     {
+    ///         Location = "us",
+    ///         App = app.AppId,
+    ///         ToolId = "tool-id-scenario",
+    ///         ExecutionType = "SYNCHRONOUS",
+    ///         PythonFunction = new Gcp.Ces.Inputs.ToolPythonFunctionArgs
+    ///         {
+    ///             Name = "example_function",
+    ///             PythonCode = "def example_function() -&gt; int: return 0",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesEvaluationScenarioFull = new Gcp.Ces.Evaluation("ces_evaluation_scenario_full", new()
+    ///     {
+    ///         EvaluationId = "eval-scenario-full",
+    ///         DisplayName = "my-evaluation-scenario-full",
+    ///         Location = "us",
+    ///         App = app.AppId,
+    ///         Description = "Full evaluation for testing scenario",
+    ///         Tags = new[]
+    ///         {
+    ///             "test",
+    ///             "full",
+    ///             "scenario",
+    ///         },
+    ///         Scenario = new Gcp.Ces.Inputs.EvaluationScenarioArgs
+    ///         {
+    ///             Task = "Test task",
+    ///             MaxTurns = 5,
+    ///             Rubrics = new[]
+    ///             {
+    ///                 Output.Tuple(app.Project, app.AppId).Apply(values =&gt;
+    ///                 {
+    ///                     var project = values.Item1;
+    ///                     var appId = values.Item2;
+    ///                     return $"projects/{project}/locations/us/apps/{appId}/rubrics/dummy-rubric";
+    ///                 }),
+    ///             },
+    ///             UserGoalBehavior = "USER_GOAL_SATISFIED",
+    ///             TaskCompletionBehavior = "TASK_SATISFIED",
+    ///             VariableOverrides = 
+    ///             {
+    ///                 { "key", "value" },
+    ///             },
+    ///             EvaluationExpectations = new[]
+    ///             {
+    ///                 Output.Tuple(app.Project, app.AppId).Apply(values =&gt;
+    ///                 {
+    ///                     var project = values.Item1;
+    ///                     var appId = values.Item2;
+    ///                     return $"projects/{project}/locations/us/apps/{appId}/evaluationExpectations/dummy-exp";
+    ///                 }),
+    ///             },
+    ///             UserFacts = new[]
+    ///             {
+    ///                 new Gcp.Ces.Inputs.EvaluationScenarioUserFactArgs
+    ///                 {
+    ///                     Name = "user_name",
+    ///                     Value = "John Doe",
+    ///                 },
+    ///             },
+    ///             ScenarioExpectations = new[]
+    ///             {
+    ///                 new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationArgs
+    ///                 {
+    ///                     ToolExpectation = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationToolExpectationArgs
+    ///                     {
+    ///                         ExpectedToolCall = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs
+    ///                         {
+    ///                             Id = "tool-call-id",
+    ///                             Tool = Output.Tuple(app.Project, app.AppId, tool.ToolId).Apply(values =&gt;
+    ///                             {
+    ///                                 var project = values.Item1;
+    ///                                 var appId = values.Item2;
+    ///                                 var toolId = values.Item3;
+    ///                                 return $"projects/{project}/locations/us/apps/{appId}/tools/{toolId}";
+    ///                             }),
+    ///                             Args = 
+    ///                             {
+    ///                                 { "param", "value" },
+    ///                             },
+    ///                         },
+    ///                         MockToolResponse = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs
+    ///                         {
+    ///                             Id = "tool-call-id",
+    ///                             Response = 
+    ///                             {
+    ///                                 { "result", "mocked" },
+    ///                             },
+    ///                             Tool = Output.Tuple(app.Project, app.AppId, tool.ToolId).Apply(values =&gt;
+    ///                             {
+    ///                                 var project = values.Item1;
+    ///                                 var appId = values.Item2;
+    ///                                 var toolId = values.Item3;
+    ///                                 return $"projects/{project}/locations/us/apps/{appId}/tools/{toolId}";
+    ///                             }),
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationArgs
+    ///                 {
+    ///                     AgentResponse = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseArgs
+    ///                     {
+    ///                         Role = "agent",
+    ///                         Chunks = new[]
+    ///                         {
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 Text = "Hello",
+    ///                             },
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 UpdatedVariables = 
+    ///                                 {
+    ///                                     { "key", "value" },
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 Blob = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs
+    ///                                 {
+    ///                                     MimeType = "text/plain",
+    ///                                     Data = "c29tZSBibG9iIGRhdGE=",
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 Image = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs
+    ///                                 {
+    ///                                     MimeType = "image/png",
+    ///                                     Data = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 ToolCall = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs
+    ///                                 {
+    ///                                     Id = "tool-call-id-3",
+    ///                                     Tool = Output.Tuple(app.Project, app.AppId, tool.ToolId).Apply(values =&gt;
+    ///                                     {
+    ///                                         var project = values.Item1;
+    ///                                         var appId = values.Item2;
+    ///                                         var toolId = values.Item3;
+    ///                                         return $"projects/{project}/locations/us/apps/{appId}/tools/{toolId}";
+    ///                                     }),
+    ///                                     Args = 
+    ///                                     {
+    ///                                         { "param", "value" },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 ToolResponse = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs
+    ///                                 {
+    ///                                     Id = "tool-call-id-3",
+    ///                                     Response = 
+    ///                                     {
+    ///                                         { "result", "success" },
+    ///                                     },
+    ///                                     Tool = Output.Tuple(app.Project, app.AppId, tool.ToolId).Apply(values =&gt;
+    ///                                     {
+    ///                                         var project = values.Item1;
+    ///                                         var appId = values.Item2;
+    ///                                         var toolId = values.Item3;
+    ///                                         return $"projects/{project}/locations/us/apps/{appId}/tools/{toolId}";
+    ///                                     }),
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 AgentTransfer = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs
+    ///                                 {
+    ///                                     TargetAgent = Output.Tuple(app.Project, app.AppId).Apply(values =&gt;
+    ///                                     {
+    ///                                         var project = values.Item1;
+    ///                                         var appId = values.Item2;
+    ///                                         return $"projects/{project}/locations/us/apps/{appId}/agents/dummy-agent";
+    ///                                     }),
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ces Evaluation Scenario Toolset
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var app = new Gcp.Ces.App("app", new()
+    ///     {
+    ///         AppId = "app-id-scenario-ts",
+    ///         Location = "us",
+    ///         DisplayName = "my-app-scenario-ts",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var toolset = new Gcp.Ces.Toolset("toolset", new()
+    ///     {
+    ///         ToolsetId = "ts-scen",
+    ///         Location = "us",
+    ///         App = app.AppId,
+    ///         DisplayName = "Basic toolset display name",
+    ///         Description = "Test description",
+    ///         ExecutionType = "SYNCHRONOUS",
+    ///         OpenApiToolset = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetArgs
+    ///         {
+    ///             OpenApiSchema = @"openapi: 3.0.0
+    /// info:
+    ///   title: My Sample API
+    ///   version: 1.0.0
+    ///   description: A simple API example
+    /// servers:
+    ///   - url: https://api.example.com/v1
+    /// paths: {}
+    /// ",
+    ///             IgnoreUnknownFields = false,
+    ///         },
+    ///     });
+    /// 
+    ///     var cesEvaluationScenarioToolset = new Gcp.Ces.Evaluation("ces_evaluation_scenario_toolset", new()
+    ///     {
+    ///         EvaluationId = "eval-scen-ts",
+    ///         DisplayName = "my-evaluation-scenario-toolset",
+    ///         Location = "us",
+    ///         App = app.AppId,
+    ///         Description = "Full evaluation for testing scenario with toolset",
+    ///         Tags = new[]
+    ///         {
+    ///             "test",
+    ///             "full",
+    ///             "scenario",
+    ///             "toolset",
+    ///         },
+    ///         Scenario = new Gcp.Ces.Inputs.EvaluationScenarioArgs
+    ///         {
+    ///             Task = "Test task",
+    ///             MaxTurns = 5,
+    ///             Rubrics = new[]
+    ///             {
+    ///                 Output.Tuple(app.Project, app.AppId).Apply(values =&gt;
+    ///                 {
+    ///                     var project = values.Item1;
+    ///                     var appId = values.Item2;
+    ///                     return $"projects/{project}/locations/us/apps/{appId}/rubrics/dummy-rubric";
+    ///                 }),
+    ///             },
+    ///             UserGoalBehavior = "USER_GOAL_SATISFIED",
+    ///             TaskCompletionBehavior = "TASK_SATISFIED",
+    ///             VariableOverrides = 
+    ///             {
+    ///                 { "key", "value" },
+    ///             },
+    ///             EvaluationExpectations = new[]
+    ///             {
+    ///                 Output.Tuple(app.Project, app.AppId).Apply(values =&gt;
+    ///                 {
+    ///                     var project = values.Item1;
+    ///                     var appId = values.Item2;
+    ///                     return $"projects/{project}/locations/us/apps/{appId}/evaluationExpectations/dummy-exp";
+    ///                 }),
+    ///             },
+    ///             UserFacts = new[]
+    ///             {
+    ///                 new Gcp.Ces.Inputs.EvaluationScenarioUserFactArgs
+    ///                 {
+    ///                     Name = "user_name",
+    ///                     Value = "John Doe",
+    ///                 },
+    ///             },
+    ///             ScenarioExpectations = new[]
+    ///             {
+    ///                 new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationArgs
+    ///                 {
+    ///                     ToolExpectation = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationToolExpectationArgs
+    ///                     {
+    ///                         ExpectedToolCall = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs
+    ///                         {
+    ///                             Id = "tool-call-id",
+    ///                             ToolsetTool = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs
+    ///                             {
+    ///                                 Toolset = Output.Tuple(app.Project, app.AppId, toolset.ToolsetId).Apply(values =&gt;
+    ///                                 {
+    ///                                     var project = values.Item1;
+    ///                                     var appId = values.Item2;
+    ///                                     var toolsetId = values.Item3;
+    ///                                     return $"projects/{project}/locations/us/apps/{appId}/toolsets/{toolsetId}";
+    ///                                 }),
+    ///                                 ToolId = "dummy-tool",
+    ///                             },
+    ///                             Args = 
+    ///                             {
+    ///                                 { "param", "value" },
+    ///                             },
+    ///                         },
+    ///                         MockToolResponse = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs
+    ///                         {
+    ///                             Id = "tool-call-id",
+    ///                             Response = 
+    ///                             {
+    ///                                 { "result", "mocked" },
+    ///                             },
+    ///                             ToolsetTool = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs
+    ///                             {
+    ///                                 Toolset = Output.Tuple(app.Project, app.AppId, toolset.ToolsetId).Apply(values =&gt;
+    ///                                 {
+    ///                                     var project = values.Item1;
+    ///                                     var appId = values.Item2;
+    ///                                     var toolsetId = values.Item3;
+    ///                                     return $"projects/{project}/locations/us/apps/{appId}/toolsets/{toolsetId}";
+    ///                                 }),
+    ///                                 ToolId = "dummy-tool",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationArgs
+    ///                 {
+    ///                     AgentResponse = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseArgs
+    ///                     {
+    ///                         Role = "agent",
+    ///                         Chunks = new[]
+    ///                         {
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 Text = "Hello",
+    ///                             },
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 ToolCall = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs
+    ///                                 {
+    ///                                     Id = "tool-call-id-3",
+    ///                                     ToolsetTool = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs
+    ///                                     {
+    ///                                         Toolset = Output.Tuple(app.Project, app.AppId, toolset.ToolsetId).Apply(values =&gt;
+    ///                                         {
+    ///                                             var project = values.Item1;
+    ///                                             var appId = values.Item2;
+    ///                                             var toolsetId = values.Item3;
+    ///                                             return $"projects/{project}/locations/us/apps/{appId}/toolsets/{toolsetId}";
+    ///                                         }),
+    ///                                         ToolId = "dummy-tool",
+    ///                                     },
+    ///                                     Args = 
+    ///                                     {
+    ///                                         { "param", "value" },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs
+    ///                             {
+    ///                                 ToolResponse = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs
+    ///                                 {
+    ///                                     Id = "tool-call-id-3",
+    ///                                     Response = 
+    ///                                     {
+    ///                                         { "result", "success" },
+    ///                                     },
+    ///                                     ToolsetTool = new Gcp.Ces.Inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs
+    ///                                     {
+    ///                                         Toolset = Output.Tuple(app.Project, app.AppId, toolset.ToolsetId).Apply(values =&gt;
+    ///                                         {
+    ///                                             var project = values.Item1;
+    ///                                             var appId = values.Item2;
+    ///                                             var toolsetId = values.Item3;
+    ///                                             return $"projects/{project}/locations/us/apps/{appId}/toolsets/{toolsetId}";
+    ///                                         }),
+    ///                                         ToolId = "dummy-tool",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -800,6 +1224,13 @@ namespace Pulumi.Gcp.Ces
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Scenario input.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("scenario")]
+        public Output<Outputs.EvaluationScenario?> Scenario { get; private set; } = null!;
+
+        /// <summary>
         /// User defined tags to categorize the evaluation.
         /// </summary>
         [Output("tags")]
@@ -902,6 +1333,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Scenario input.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scenario")]
+        public Input<Inputs.EvaluationScenarioArgs>? Scenario { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -1029,6 +1467,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Scenario input.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scenario")]
+        public Input<Inputs.EvaluationScenarioGetArgs>? Scenario { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

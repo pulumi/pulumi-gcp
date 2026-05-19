@@ -842,52 +842,53 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
-// Name: pulumi.String("example-topic"),
-// })
-// if err != nil {
-// return err
-// }
-// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-// Parent: pulumi.String(pulumi.String(project.Id)),
-// ShortName: pulumi.String("tag_key"),
-// }, pulumi.DependsOn([]pulumi.Resource{
-// example,
-// }))
-// if err != nil {
-// return err
-// }
-// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-// Parent: tagKey.ID(),
-// ShortName: pulumi.String("tag_value"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
-// Name: pulumi.String("example-subscription"),
-// Topic: example.ID(),
-// Tags: pulumi.All(tagKey.NamespacedName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// namespacedName := _args[0].(string)
-// shortName := _args[1].(string)
-// return map[string]string{
-// namespacedName: shortName,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+//				Parent:    pulumi.String(pulumi.String(project.Id)),
+//				ShortName: pulumi.String("tag_key"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+//				Parent:    tagKey.ID(),
+//				ShortName: pulumi.String("tag_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: example.ID(),
+//				Tags: pulumi.All(tagKey.NamespacedName, tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
+//					namespacedName := _args[0].(string)
+//					shortName := _args[1].(string)
+//					return map[string]string{
+//						namespacedName: shortName,
+//					}, nil
+//				}).(pulumi.StringMapOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Pubsub Subscription Ai Inference
 //

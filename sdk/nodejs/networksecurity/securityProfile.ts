@@ -281,7 +281,7 @@ export class SecurityProfile extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the parent this security profile belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     declare public readonly parent: pulumi.Output<string | undefined>;
     /**
@@ -423,7 +423,7 @@ export interface SecurityProfileState {
     name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this security profile belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     parent?: pulumi.Input<string | undefined>;
     /**
@@ -494,7 +494,7 @@ export interface SecurityProfileArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this security profile belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     parent?: pulumi.Input<string | undefined>;
     /**

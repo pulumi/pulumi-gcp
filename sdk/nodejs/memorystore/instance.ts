@@ -594,9 +594,15 @@ export class Instance extends pulumi.CustomResource {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      */
     declare public readonly nodeType: pulumi.Output<string>;
     /**
@@ -955,9 +961,15 @@ export interface InstanceState {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**
@@ -1143,9 +1155,15 @@ export interface InstanceArgs {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**

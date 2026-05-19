@@ -98,6 +98,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         ctx.export("widgetConfigId", basicWidgetConfig.configId());
  *     }
  * }
  * }
@@ -151,6 +152,20 @@ public class WidgetConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> collectionId() {
         return Codegen.optional(this.collectionId);
+    }
+    /**
+     * Output only. Unique obfuscated identifier of a WidgetConfig.
+     * 
+     */
+    @Export(name="configId", refs={String.class}, tree="[0]")
+    private Output<String> configId;
+
+    /**
+     * @return Output only. Unique obfuscated identifier of a WidgetConfig.
+     * 
+     */
+    public Output<String> configId() {
+        return this.configId;
     }
     /**
      * The engine ID.

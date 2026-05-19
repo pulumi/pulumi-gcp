@@ -38,6 +38,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? ProvisionedThroughput;
         /// <summary>
+        /// A list of short names or SelfLinks of zones in which to create a regional disk.
+        /// </summary>
+        public readonly ImmutableArray<string> ReplicaZones;
+        /// <summary>
         /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
@@ -84,6 +88,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? provisionedThroughput,
 
+            ImmutableArray<string> replicaZones,
+
             ImmutableDictionary<string, string>? resourceManagerTags,
 
             string? resourcePolicies,
@@ -106,6 +112,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Labels = labels;
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
+            ReplicaZones = replicaZones;
             ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;
             Size = size;
