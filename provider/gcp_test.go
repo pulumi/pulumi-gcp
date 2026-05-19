@@ -134,6 +134,79 @@ func TestPreConfigureCallbackNoErrWhenRegionListCallErrors(t *testing.T) {
 	require.NoError(t, err)
 }
 
+// TestPreConfigureCallbackNoCredentialsWarningWhenAccessTokenSet is a
+// regression test for https://github.com/pulumi/pulumi-gcp/issues/3405.
+//
+// Before the fix, region validation built a brand-new compute client without
+// forwarding the credentials that LoadAndValidate had just resolved. Under
+// WIF / OIDC / explicit-access-token flows there are no ADC, so the fallback
+// failed and pulumi-gcp emitted a noisy "failed to get regions list: ...
+// could not find default credentials" warning on every preview/up — even
+// though every other API call succeeded.
+//
+// With the fix, the validated TokenSource is forwarded to the regions-list
+// client, so the call may still fail (e.g. with a network error if the test
+// host can't reach compute.googleapis.com) but it never fails with a
+// credentials-discovery error. Any warning that does fire must therefore
+// not mention "could not find default credentials".
+//
+// We use a sentinel logger that fails the test if a credentials-not-found
+// warning is observed, while tolerating other warnings (e.g. transport
+// failures from the test environment having no real outbound connectivity).
+func TestPreConfigureCallbackNoCredentialsWarningWhenAccessTokenSet(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	t.Setenv("GOOGLE_PROJECT", "myproject")
+	t.Setenv("GOOGLE_REGION", "us-central1")
+	// Provide an access token so LoadAndValidate can build a TokenSource
+	// without needing ADC. The token does not need to be valid for the
+	// regression check below — we only assert on the *shape* of any warning.
+	t.Setenv("GOOGLE_OAUTH_ACCESS_TOKEN", "ya29.fake-token-for-regression-test")
+	// Force ADC discovery to fail by pointing every well-known location at
+	// an empty temp dir. Without this, a developer running the test on a
+	// machine that already ran `gcloud auth application-default login` would
+	// silently succeed via ADC and miss the regression. The bug only
+	// reproduces when ADC is absent — which is exactly the case Workload
+	// Identity Federation / OIDC users hit on CI.
+	emptyDir := t.TempDir()
+	t.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+	t.Setenv("HOME", emptyDir)
+	t.Setenv("CLOUDSDK_CONFIG", emptyDir)
+	t.Setenv("APPDATA", emptyDir)     // ADC search path on Windows
+	t.Setenv("USERPROFILE", emptyDir) // ADC search path on Windows
+
+	logger := &noCredentialsWarningGuard{t: t}
+	ctx := testutil.InitLogging(t, context.Background(), logger)
+
+	// Production-style nil clientOpts so the new credentials-forwarding
+	// branch is exercised.
+	callback := preConfigureCallbackWithLogger(new(atomic.Bool), nil)
+	err := callback(ctx, nil, nil, nil)
+	require.NoError(t, err)
+}
+
+// noCredentialsWarningGuard is a test sink that asserts no warning matching
+// the bug's signature ever appears.
+type noCredentialsWarningGuard struct {
+	t *testing.T
+}
+
+func (g *noCredentialsWarningGuard) Log(_ context.Context, sev diag.Severity, urn resource.URN, msg string) error {
+	if sev == diag.Warning {
+		// This is the exact substring that appeared in #3405's reproducer.
+		assert.NotContainsf(g.t, msg, "could not find default credentials",
+			"regression: warning still references missing ADC even though credentials were supplied (URN=%s)", urn)
+	}
+	return nil
+}
+
+func (g *noCredentialsWarningGuard) LogStatus(_ context.Context, sev diag.Severity, urn resource.URN, msg string) error {
+	assert.Failf(g.t, "Unexpected status", "log: %s@%s: %q", sev, urn, msg)
+	return nil
+}
+
 func TestPreConfigureCallbackNoWarningWhenNoProjectEnvSet(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")

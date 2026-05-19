@@ -459,7 +459,20 @@ func preConfigureCallbackWithLogger(
 		}
 
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {
-			regionList, err := getRegionsList(ctx, config.Project, gcpClientOpts)
+			// Forward the credentials that LoadAndValidate just resolved on `config`
+			// so that the regions-list compute client doesn't fall back to ADC
+			// discovery. Under workload-identity / OIDC / explicit access-token
+			// flows, ADC is not populated and the fallback fails with a noisy
+			// "could not find default credentials" warning even though every
+			// other API call in this provider succeeds (#3405). When tests
+			// pre-supply gcpClientOpts (e.g. option.WithoutAuthentication for
+			// httptest), keep using those exclusively to preserve the existing
+			// test contract.
+			regionListOpts := gcpClientOpts
+			if len(regionListOpts) == 0 && config.TokenSource != nil {
+				regionListOpts = []option.ClientOption{option.WithTokenSource(config.TokenSource)}
+			}
+			regionList, err := getRegionsList(ctx, config.Project, regionListOpts)
 			if err != nil {
 				tfbridge.GetLogger(ctx).Warn(fmt.Sprintf("failed to get regions list: %v", err))
 				return nil
