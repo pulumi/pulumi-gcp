@@ -9,8 +9,8 @@ require (
 	github.com/hexops/autogold/v2 v2.3.1
 	github.com/pulumi/providertest v0.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.2
-	github.com/pulumi/pulumi/pkg/v3 v3.239.0
-	github.com/pulumi/pulumi/sdk/v3 v3.239.0
+	github.com/pulumi/pulumi/pkg/v3 v3.241.0
+	github.com/pulumi/pulumi/sdk/v3 v3.241.0
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/api v0.275.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -304,7 +304,7 @@ require (
 	google.golang.org/genproto v0.0.0-20260319201613-d00831a3d3e7 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260511170946-3700d4141b60 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260511170946-3700d4141b60 // indirect
-	google.golang.org/grpc v1.81.0 // indirect
+	google.golang.org/grpc v1.81.1 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
