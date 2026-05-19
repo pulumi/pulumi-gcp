@@ -3940,10 +3940,10 @@ github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.2 h1:fbJ4I3IlIa0Yb8izkkfVh2T
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.2/go.mod h1:puxFpxehppmLOUQarh9C8L5/2nIlDo8QKo8MosUbdMA=
 github.com/pulumi/pulumi-yaml v1.34.0 h1:VtjPxD47KO0BQA4Lk2CnJW6cjmw+oNfn34HfR2z7/S0=
 github.com/pulumi/pulumi-yaml v1.34.0/go.mod h1:XwITKfacd0b5S99hV2a/e6TQN7BKFIggfE1AuLzMoNY=
-github.com/pulumi/pulumi/pkg/v3 v3.239.0 h1:hezmIheoWegL9wq12vxot87n5fjMmwrGO0wf9jzFcKY=
-github.com/pulumi/pulumi/pkg/v3 v3.239.0/go.mod h1:9nP/KV8YWo9nG4WD2+Ydqfl1KEamx1TOsJNoXQYGTOI=
-github.com/pulumi/pulumi/sdk/v3 v3.239.0 h1:hFx6Oe+19OVemat33+gHQ4ZR6MSQaRUDPl85xIWBaN4=
-github.com/pulumi/pulumi/sdk/v3 v3.239.0/go.mod h1:J8QFD7dwiCGSvBlcYwECmX/b3JKNXR85bv6BbjhPV3U=
+github.com/pulumi/pulumi/pkg/v3 v3.241.0 h1:vBXKzkCZX0GfQlpZUEw/a/W7+mAwpbHgMyl0DKS/eLk=
+github.com/pulumi/pulumi/pkg/v3 v3.241.0/go.mod h1:bynhR8INkKkclATdUuLMEwFzCiLWj8f8WPs2VyYMXos=
+github.com/pulumi/pulumi/sdk/v3 v3.241.0 h1:jfCD4gmHM1EqSHKb2vkf5gF+/MakLN2uPJ+CjXXl6+M=
+github.com/pulumi/pulumi/sdk/v3 v3.241.0/go.mod h1:P9VS6pQws3YBu67uszFRHn24n5AwzeMlyC2hIiHGWHg=
 github.com/pulumi/terraform-diff-reader v0.0.2 h1:kTE4nEXU3/SYXESvAIem+wyHMI3abqkI3OhJ0G04LLI=
 github.com/pulumi/terraform-diff-reader v0.0.2/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20260318212141-5525259d096b h1:efoz3DmFhw7EPJ3JxVfWYwpg5Dl6QTLvzMV0a7Y7mlo=
@@ -5727,8 +5727,8 @@ google.golang.org/grpc v1.74.2/go.mod h1:CtQ+BGjaAIXHs/5YS3i473GqwBBa1zGQNevxdeB
 google.golang.org/grpc v1.75.0/go.mod h1:JtPAzKiq4v1xcAB2hydNlWI2RnF85XXcV0mhKXr2ecQ=
 google.golang.org/grpc v1.75.1/go.mod h1:JtPAzKiq4v1xcAB2hydNlWI2RnF85XXcV0mhKXr2ecQ=
 google.golang.org/grpc v1.79.2/go.mod h1:KmT0Kjez+0dde/v2j9vzwoAScgEPx/Bw1CYChhHLrHQ=
-google.golang.org/grpc v1.81.0 h1:W3G9N3KQf3BU+YuCtGKJk0CmxQNbAISICD/9AORxLIw=
-google.golang.org/grpc v1.81.0/go.mod h1:xGH9GfzOyMTGIOXBJmXt+BX/V0kcdQbdcuwQ/zNw42I=
+google.golang.org/grpc v1.81.1 h1:VnnIIZ88UzOOKLukQi+ImGz8O1Wdp8nAGGnvOfEIWQQ=
+google.golang.org/grpc v1.81.1/go.mod h1:xGH9GfzOyMTGIOXBJmXt+BX/V0kcdQbdcuwQ/zNw42I=
 google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0/go.mod h1:6Kw0yEErY5E/yWrBtf03jp27GLLJujG4z/JK95pnjjw=
 google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.3.0/go.mod h1:Dk1tviKTvMCz5tvh7t+fh94dhmQVHuCt2OzJB3CTW9Y=
 google.golang.org/grpc/examples v0.0.0-20201112215255-90f1b3ee835b/go.mod h1:IBqQ7wSUJ2Ep09a8rMWFsg4fmI2r38zwsq8a0GgxXpM=
