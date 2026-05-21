@@ -24,6 +24,7 @@ class PipelineJobArgs:
                  dataset: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  backfill_pipeline_job: pulumi.Input[Optional['PipelineJobBackfillPipelineJobArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_lineage: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mapping_pipeline_job: pulumi.Input[Optional['PipelineJobMappingPipelineJobArgs']] = None,
@@ -36,6 +37,12 @@ class PipelineJobArgs:
         :param pulumi.Input[_builtins.str] location: Location where the Pipeline Job is to run
         :param pulumi.Input['PipelineJobBackfillPipelineJobArgs'] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_lineage: If true, disables writing lineage for the pipeline.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-supplied key-value pairs used to organize Pipeline Jobs.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
@@ -60,6 +67,8 @@ class PipelineJobArgs:
         pulumi.set(__self__, "location", location)
         if backfill_pipeline_job is not None:
             pulumi.set(__self__, "backfill_pipeline_job", backfill_pipeline_job)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_lineage is not None:
             pulumi.set(__self__, "disable_lineage", disable_lineage)
         if labels is not None:
@@ -107,6 +116,23 @@ class PipelineJobArgs:
     @backfill_pipeline_job.setter
     def backfill_pipeline_job(self, value: pulumi.Input[Optional['PipelineJobBackfillPipelineJobArgs']]):
         pulumi.set(self, "backfill_pipeline_job", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableLineage")
@@ -188,6 +214,7 @@ class _PipelineJobState:
     def __init__(__self__, *,
                  backfill_pipeline_job: pulumi.Input[Optional['PipelineJobBackfillPipelineJobArgs']] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_lineage: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -203,6 +230,12 @@ class _PipelineJobState:
         :param pulumi.Input['PipelineJobBackfillPipelineJobArgs'] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_lineage: If true, disables writing lineage for the pipeline.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-supplied key-value pairs used to organize Pipeline Jobs.
@@ -232,6 +265,8 @@ class _PipelineJobState:
             pulumi.set(__self__, "backfill_pipeline_job", backfill_pipeline_job)
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_lineage is not None:
             pulumi.set(__self__, "disable_lineage", disable_lineage)
         if effective_labels is not None:
@@ -275,6 +310,23 @@ class _PipelineJobState:
     @dataset.setter
     def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableLineage")
@@ -408,6 +460,7 @@ class PipelineJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_lineage: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -683,6 +736,12 @@ class PipelineJob(pulumi.CustomResource):
         :param pulumi.Input[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_lineage: If true, disables writing lineage for the pipeline.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-supplied key-value pairs used to organize Pipeline Jobs.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
@@ -990,6 +1049,7 @@ class PipelineJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_lineage: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1009,6 +1069,7 @@ class PipelineJob(pulumi.CustomResource):
             if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
             __props__.__dict__["dataset"] = dataset
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disable_lineage"] = disable_lineage
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -1034,6 +1095,7 @@ class PipelineJob(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']]] = None,
             dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disable_lineage: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1053,6 +1115,12 @@ class PipelineJob(pulumi.CustomResource):
         :param pulumi.Input[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_lineage: If true, disables writing lineage for the pipeline.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-supplied key-value pairs used to organize Pipeline Jobs.
@@ -1084,6 +1152,7 @@ class PipelineJob(pulumi.CustomResource):
 
         __props__.__dict__["backfill_pipeline_job"] = backfill_pipeline_job
         __props__.__dict__["dataset"] = dataset
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disable_lineage"] = disable_lineage
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
@@ -1111,6 +1180,19 @@ class PipelineJob(pulumi.CustomResource):
         Healthcare Dataset under which the Pipeline Job is to run
         """
         return pulumi.get(self, "dataset")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="disableLineage")

@@ -136,6 +136,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CurrentStatus { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Whether deletion protection is enabled on this instance.
         /// </summary>
         [Output("deletionProtection")]
@@ -458,6 +469,17 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromTemplateConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Whether deletion protection is enabled on this instance.
         /// </summary>
         [Input("deletionProtection")]
@@ -755,6 +777,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("currentStatus")]
         public Input<string>? CurrentStatus { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Whether deletion protection is enabled on this instance.

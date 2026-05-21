@@ -24,6 +24,7 @@ class SecurityProfileV2Args:
                  org_id: pulumi.Input[_builtins.str],
                  profile_assessment_configs: pulumi.Input[Sequence[pulumi.Input['SecurityProfileV2ProfileAssessmentConfigArgs']]],
                  profile_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityProfileV2 resource.
@@ -33,11 +34,19 @@ class SecurityProfileV2Args:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityProfileV2ProfileAssessmentConfigArgs']]] profile_assessment_configs: A map of the assessment name and the assessment config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] profile_id: Resource ID of the security profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the security profile.
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "profile_assessment_configs", profile_assessment_configs)
         pulumi.set(__self__, "profile_id", profile_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
 
@@ -80,6 +89,23 @@ class SecurityProfileV2Args:
         pulumi.set(self, "profile_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -96,6 +122,7 @@ class SecurityProfileV2Args:
 class _SecurityProfileV2State:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -106,6 +133,12 @@ class _SecurityProfileV2State:
         Input properties used for looking up and filtering SecurityProfileV2 resources.
 
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which this profile was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the security profile.
         :param pulumi.Input[_builtins.str] name: Name of the security profile v2 resource,
                in the format `organizations/{{org_name}}/securityProfilesV2/{{profile_id}}`.
@@ -118,6 +151,8 @@ class _SecurityProfileV2State:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -142,6 +177,23 @@ class _SecurityProfileV2State:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -225,6 +277,7 @@ class SecurityProfileV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile_assessment_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict']]]]] = None,
@@ -309,6 +362,12 @@ class SecurityProfileV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the security profile.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee Security Profile V2,
                in the format `organizations/{{org_name}}`.
@@ -414,6 +473,7 @@ class SecurityProfileV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile_assessment_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityProfileV2ProfileAssessmentConfigArgs', 'SecurityProfileV2ProfileAssessmentConfigArgsDict']]]]] = None,
@@ -427,6 +487,7 @@ class SecurityProfileV2(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityProfileV2Args.__new__(SecurityProfileV2Args)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -451,6 +512,7 @@ class SecurityProfileV2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -465,6 +527,12 @@ class SecurityProfileV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which this profile was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the security profile.
         :param pulumi.Input[_builtins.str] name: Name of the security profile v2 resource,
                in the format `organizations/{{org_name}}/securityProfilesV2/{{profile_id}}`.
@@ -480,6 +548,7 @@ class SecurityProfileV2(pulumi.CustomResource):
         __props__ = _SecurityProfileV2State.__new__(_SecurityProfileV2State)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
@@ -495,6 +564,19 @@ class SecurityProfileV2(pulumi.CustomResource):
         The timestamp at which this profile was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

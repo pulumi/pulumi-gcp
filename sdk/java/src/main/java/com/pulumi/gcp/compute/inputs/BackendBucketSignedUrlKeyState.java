@@ -31,6 +31,31 @@ public final class BackendBucketSignedUrlKeyState extends com.pulumi.resources.R
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * 128-bit key value used for signing the URL. The key value must be a
      * valid RFC 4648 Section 5 base64url encoded string.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -85,6 +110,7 @@ public final class BackendBucketSignedUrlKeyState extends com.pulumi.resources.R
 
     private BackendBucketSignedUrlKeyState(BackendBucketSignedUrlKeyState $) {
         this.backendBucket = $.backendBucket;
+        this.deletionPolicy = $.deletionPolicy;
         this.keyValue = $.keyValue;
         this.name = $.name;
         this.project = $.project;
@@ -127,6 +153,37 @@ public final class BackendBucketSignedUrlKeyState extends com.pulumi.resources.R
          */
         public Builder backendBucket(String backendBucket) {
             return backendBucket(Output.of(backendBucket));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

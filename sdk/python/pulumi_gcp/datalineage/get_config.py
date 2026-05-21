@@ -27,7 +27,10 @@ class GetConfigResult:
     """
     A collection of values returned by getConfig.
     """
-    def __init__(__self__, etag=None, id=None, ingestions=None, location=None, name=None, parent=None):
+    def __init__(__self__, deletion_policy=None, etag=None, id=None, ingestions=None, location=None, name=None, parent=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -46,6 +49,11 @@ class GetConfigResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -87,6 +95,7 @@ class AwaitableGetConfigResult(GetConfigResult):
         if False:
             yield self
         return GetConfigResult(
+            deletion_policy=self.deletion_policy,
             etag=self.etag,
             id=self.id,
             ingestions=self.ingestions,
@@ -125,6 +134,7 @@ def get_config(location: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:datalineage/getConfig:getConfig', __args__, opts=opts, typ=GetConfigResult).value
 
     return AwaitableGetConfigResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         ingestions=pulumi.get(__ret__, 'ingestions'),
@@ -160,6 +170,7 @@ def get_config_output(location: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:datalineage/getConfig:getConfig', __args__, opts=opts, typ=GetConfigResult)
     return __ret__.apply(lambda __response__: GetConfigResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         etag=pulumi.get(__response__, 'etag'),
         id=pulumi.get(__response__, 'id'),
         ingestions=pulumi.get(__response__, 'ingestions'),

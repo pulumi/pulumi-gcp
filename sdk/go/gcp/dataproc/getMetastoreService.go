@@ -67,6 +67,7 @@ type LookupMetastoreServiceResult struct {
 	ArtifactGcsUri       string                                   `pulumi:"artifactGcsUri"`
 	CreateTime           string                                   `pulumi:"createTime"`
 	DatabaseType         string                                   `pulumi:"databaseType"`
+	DeletionPolicy       string                                   `pulumi:"deletionPolicy"`
 	DeletionProtection   bool                                     `pulumi:"deletionProtection"`
 	EffectiveLabels      map[string]string                        `pulumi:"effectiveLabels"`
 	EncryptionConfigs    []GetMetastoreServiceEncryptionConfig    `pulumi:"encryptionConfigs"`
@@ -148,6 +149,10 @@ func (o LookupMetastoreServiceResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupMetastoreServiceResultOutput) DatabaseType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreServiceResult) string { return v.DatabaseType }).(pulumi.StringOutput)
+}
+
+func (o LookupMetastoreServiceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMetastoreServiceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupMetastoreServiceResultOutput) DeletionProtection() pulumi.BoolOutput {

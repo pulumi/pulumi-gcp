@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDnsAuthorizationResult {
+    private String deletionPolicy;
     private String description;
     private List<GetDnsAuthorizationDnsResourceRecord> dnsResourceRecords;
     private String domain;
@@ -32,6 +33,9 @@ public final class GetDnsAuthorizationResult {
     private String type;
 
     private GetDnsAuthorizationResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     public String description() {
         return this.description;
     }
@@ -79,6 +83,7 @@ public final class GetDnsAuthorizationResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String description;
         private List<GetDnsAuthorizationDnsResourceRecord> dnsResourceRecords;
         private String domain;
@@ -93,6 +98,7 @@ public final class GetDnsAuthorizationResult {
         public Builder() {}
         public Builder(GetDnsAuthorizationResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.dnsResourceRecords = defaults.dnsResourceRecords;
     	      this.domain = defaults.domain;
@@ -106,6 +112,14 @@ public final class GetDnsAuthorizationResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDnsAuthorizationResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -195,6 +209,7 @@ public final class GetDnsAuthorizationResult {
         }
         public GetDnsAuthorizationResult build() {
             final var _resultValue = new GetDnsAuthorizationResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.dnsResourceRecords = dnsResourceRecords;
             _resultValue.domain = domain;

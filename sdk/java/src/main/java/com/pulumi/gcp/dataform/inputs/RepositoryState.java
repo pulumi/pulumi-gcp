@@ -19,14 +19,30 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     public static final RepositoryState Empty = new RepositoryState();
 
     /**
-     * Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+     * Policy to control how the repository and its child resources are deleted.
+     * When set to `FORCE`, any child resources of this repository will also be deleted.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * 
+     * Possible values: `DELETE`, `FORCE`, &#39;PREVENT&#39;, &#39;ABANDON&#39;. Defaults to `DELETE`.
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+     * @return Policy to control how the repository and its child resources are deleted.
+     * When set to `FORCE`, any child resources of this repository will also be deleted.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * 
+     * Possible values: `DELETE`, `FORCE`, &#39;PREVENT&#39;, &#39;ABANDON&#39;. Defaults to `DELETE`.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -268,7 +284,15 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+         * @param deletionPolicy Policy to control how the repository and its child resources are deleted.
+         * When set to `FORCE`, any child resources of this repository will also be deleted.
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * 
+         * Possible values: `DELETE`, `FORCE`, &#39;PREVENT&#39;, &#39;ABANDON&#39;. Defaults to `DELETE`.
          * 
          * @return builder
          * 
@@ -279,7 +303,15 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+         * @param deletionPolicy Policy to control how the repository and its child resources are deleted.
+         * When set to `FORCE`, any child resources of this repository will also be deleted.
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * 
+         * Possible values: `DELETE`, `FORCE`, &#39;PREVENT&#39;, &#39;ABANDON&#39;. Defaults to `DELETE`.
          * 
          * @return builder
          * 

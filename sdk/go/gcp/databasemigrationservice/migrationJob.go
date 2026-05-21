@@ -637,6 +637,13 @@ type MigrationJob struct {
 
 	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// The migration job display name.
@@ -677,6 +684,9 @@ type MigrationJob struct {
 	PerformanceConfig MigrationJobPerformanceConfigPtrOutput `pulumi:"performanceConfig"`
 	// The current migration job phase.
 	Phase pulumi.StringOutput `pulumi:"phase"`
+	// PostgreSQL to PostgreSQL configuration.
+	// Structure is documented below.
+	PostgresHomogeneousConfig MigrationJobPostgresHomogeneousConfigPtrOutput `pulumi:"postgresHomogeneousConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -752,6 +762,13 @@ func GetMigrationJob(ctx *pulumi.Context,
 type migrationJobState struct {
 	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination *string `pulumi:"destination"`
 	// The migration job display name.
@@ -792,6 +809,9 @@ type migrationJobState struct {
 	PerformanceConfig *MigrationJobPerformanceConfig `pulumi:"performanceConfig"`
 	// The current migration job phase.
 	Phase *string `pulumi:"phase"`
+	// PostgreSQL to PostgreSQL configuration.
+	// Structure is documented below.
+	PostgresHomogeneousConfig *MigrationJobPostgresHomogeneousConfig `pulumi:"postgresHomogeneousConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -821,6 +841,13 @@ type migrationJobState struct {
 type MigrationJobState struct {
 	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination pulumi.StringPtrInput
 	// The migration job display name.
@@ -861,6 +888,9 @@ type MigrationJobState struct {
 	PerformanceConfig MigrationJobPerformanceConfigPtrInput
 	// The current migration job phase.
 	Phase pulumi.StringPtrInput
+	// PostgreSQL to PostgreSQL configuration.
+	// Structure is documented below.
+	PostgresHomogeneousConfig MigrationJobPostgresHomogeneousConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -892,6 +922,13 @@ func (MigrationJobState) ElementType() reflect.Type {
 }
 
 type migrationJobArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination string `pulumi:"destination"`
 	// The migration job display name.
@@ -923,6 +960,9 @@ type migrationJobArgs struct {
 	// Data dump parallelism settings used by the migration.
 	// Structure is documented below.
 	PerformanceConfig *MigrationJobPerformanceConfig `pulumi:"performanceConfig"`
+	// PostgreSQL to PostgreSQL configuration.
+	// Structure is documented below.
+	PostgresHomogeneousConfig *MigrationJobPostgresHomogeneousConfig `pulumi:"postgresHomogeneousConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -946,6 +986,13 @@ type migrationJobArgs struct {
 
 // The set of arguments for constructing a MigrationJob resource.
 type MigrationJobArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 	Destination pulumi.StringInput
 	// The migration job display name.
@@ -977,6 +1024,9 @@ type MigrationJobArgs struct {
 	// Data dump parallelism settings used by the migration.
 	// Structure is documented below.
 	PerformanceConfig MigrationJobPerformanceConfigPtrInput
+	// PostgreSQL to PostgreSQL configuration.
+	// Structure is documented below.
+	PostgresHomogeneousConfig MigrationJobPostgresHomogeneousConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -1090,6 +1140,16 @@ func (o MigrationJobOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MigrationJobOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
 func (o MigrationJobOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
@@ -1170,6 +1230,14 @@ func (o MigrationJobOutput) PerformanceConfig() MigrationJobPerformanceConfigPtr
 // The current migration job phase.
 func (o MigrationJobOutput) Phase() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Phase }).(pulumi.StringOutput)
+}
+
+// PostgreSQL to PostgreSQL configuration.
+// Structure is documented below.
+func (o MigrationJobOutput) PostgresHomogeneousConfig() MigrationJobPostgresHomogeneousConfigPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) MigrationJobPostgresHomogeneousConfigPtrOutput {
+		return v.PostgresHomogeneousConfig
+	}).(MigrationJobPostgresHomogeneousConfigPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

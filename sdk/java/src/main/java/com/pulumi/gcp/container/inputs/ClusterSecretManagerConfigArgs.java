@@ -33,14 +33,14 @@ public final class ClusterSecretManagerConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * config for secret manager auto rotation. Structure is docuemented below
+     * config for secret manager auto rotation. Structure is documented below
      * 
      */
     @Import(name="rotationConfig")
     private @Nullable Output<ClusterSecretManagerConfigRotationConfigArgs> rotationConfig;
 
     /**
-     * @return config for secret manager auto rotation. Structure is docuemented below
+     * @return config for secret manager auto rotation. Structure is documented below
      * 
      */
     public Optional<Output<ClusterSecretManagerConfigRotationConfigArgs>> rotationConfig() {
@@ -94,7 +94,7 @@ public final class ClusterSecretManagerConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param rotationConfig config for secret manager auto rotation. Structure is docuemented below
+         * @param rotationConfig config for secret manager auto rotation. Structure is documented below
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterSecretManagerConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param rotationConfig config for secret manager auto rotation. Structure is docuemented below
+         * @param rotationConfig config for secret manager auto rotation. Structure is documented below
          * 
          * @return builder
          * 

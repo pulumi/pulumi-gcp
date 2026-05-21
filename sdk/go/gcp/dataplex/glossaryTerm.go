@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			termTestId, err := dataplex.NewGlossary(ctx, "term_test_id", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_4866"),
+//				GlossaryId: pulumi.String("tf-test-glossary_9329"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -47,7 +47,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: termTestId.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				TermId:     pulumi.String("tf-test-term-basic_12618"),
+//				TermId:     pulumi.String("tf-test-term-basic_37135"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			termTestIdFull, err := dataplex.NewGlossary(ctx, "term_test_id_full", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_32270"),
+//				GlossaryId: pulumi.String("tf-test-glossary_42503"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -88,7 +88,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: termTestIdFull.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				TermId:     pulumi.String("tf-test-term-full_44703"),
+//				TermId:     pulumi.String("tf-test-term-full_9991"),
 //				Labels: pulumi.StringMap{
 //					"tag": pulumi.String("test-tf"),
 //				},
@@ -124,6 +124,13 @@ type GlossaryTerm struct {
 
 	// The time at which the GlossaryTerm was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The user-mutable description of the GlossaryTerm.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
@@ -200,6 +207,13 @@ func GetGlossaryTerm(ctx *pulumi.Context,
 type glossaryTermState struct {
 	// The time at which the GlossaryTerm was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-mutable description of the GlossaryTerm.
 	Description *string `pulumi:"description"`
 	// User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
@@ -236,6 +250,13 @@ type glossaryTermState struct {
 type GlossaryTermState struct {
 	// The time at which the GlossaryTerm was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-mutable description of the GlossaryTerm.
 	Description pulumi.StringPtrInput
 	// User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
@@ -274,6 +295,13 @@ func (GlossaryTermState) ElementType() reflect.Type {
 }
 
 type glossaryTermArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-mutable description of the GlossaryTerm.
 	Description *string `pulumi:"description"`
 	// User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
@@ -298,6 +326,13 @@ type glossaryTermArgs struct {
 
 // The set of arguments for constructing a GlossaryTerm resource.
 type GlossaryTermArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-mutable description of the GlossaryTerm.
 	Description pulumi.StringPtrInput
 	// User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
@@ -410,6 +445,16 @@ func (o GlossaryTermOutput) ToGlossaryTermOutputWithContext(ctx context.Context)
 // The time at which the GlossaryTerm was created.
 func (o GlossaryTermOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlossaryTerm) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GlossaryTermOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlossaryTerm) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The user-mutable description of the GlossaryTerm.

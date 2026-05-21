@@ -1221,8 +1221,8 @@ import (
 //				return err
 //			}
 //			cross_project_dataset, err := organizations.NewProject(ctx, "cross-project-dataset", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_45397"),
-//				Name:           pulumi.String("tf-test_16451"),
+//				ProjectId:      pulumi.String("tf-test_11171"),
+//				Name:           pulumi.String("tf-test_40472"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -1881,6 +1881,13 @@ type Stream struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
 	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrOutput `pulumi:"customerManagedEncryptionKey"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
 	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
 	// the stream from a `RUNNING` state.
@@ -1979,6 +1986,13 @@ type streamState struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
 	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
 	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
 	// the stream from a `RUNNING` state.
@@ -2028,6 +2042,13 @@ type StreamState struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
 	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
 	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
 	// the stream from a `RUNNING` state.
@@ -2081,6 +2102,13 @@ type streamArgs struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
 	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
 	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
 	// the stream from a `RUNNING` state.
@@ -2122,6 +2150,13 @@ type StreamArgs struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
 	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
 	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
 	// the stream from a `RUNNING` state.
@@ -2258,6 +2293,16 @@ func (o StreamOutput) CreateWithoutValidation() pulumi.BoolPtrOutput {
 // will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 func (o StreamOutput) CustomerManagedEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.CustomerManagedEncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o StreamOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Desired state of the Stream. Set this field to `RUNNING` to start the stream,

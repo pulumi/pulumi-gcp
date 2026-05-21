@@ -113,6 +113,13 @@ type WorkforcePool struct {
 	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
 	// Structure is documented below.
 	AccessRestrictions WorkforcePoolAccessRestrictionsPtrOutput `pulumi:"accessRestrictions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -193,6 +200,13 @@ type workforcePoolState struct {
 	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
 	// Structure is documented below.
 	AccessRestrictions *WorkforcePoolAccessRestrictions `pulumi:"accessRestrictions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -235,6 +249,13 @@ type WorkforcePoolState struct {
 	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
 	// Structure is documented below.
 	AccessRestrictions WorkforcePoolAccessRestrictionsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -281,6 +302,13 @@ type workforcePoolArgs struct {
 	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
 	// Structure is documented below.
 	AccessRestrictions *WorkforcePoolAccessRestrictions `pulumi:"accessRestrictions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -310,6 +338,13 @@ type WorkforcePoolArgs struct {
 	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
 	// Structure is documented below.
 	AccessRestrictions WorkforcePoolAccessRestrictionsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -425,6 +460,16 @@ func (o WorkforcePoolOutput) ToWorkforcePoolOutputWithContext(ctx context.Contex
 // Structure is documented below.
 func (o WorkforcePoolOutput) AccessRestrictions() WorkforcePoolAccessRestrictionsPtrOutput {
 	return o.ApplyT(func(v *WorkforcePool) WorkforcePoolAccessRestrictionsPtrOutput { return v.AccessRestrictions }).(WorkforcePoolAccessRestrictionsPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkforcePoolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkforcePool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A user-specified description of the pool. Cannot exceed 256 characters.

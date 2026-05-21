@@ -149,6 +149,13 @@ type RegionalEndpoint struct {
 	Address pulumi.StringOutput `pulumi:"address"`
 	// Time when the RegionalEndpoint was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -232,6 +239,13 @@ type regionalEndpointState struct {
 	Address *string `pulumi:"address"`
 	// Time when the RegionalEndpoint was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of this resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -272,6 +286,13 @@ type RegionalEndpointState struct {
 	Address pulumi.StringPtrInput
 	// Time when the RegionalEndpoint was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of this resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -314,6 +335,13 @@ type regionalEndpointArgs struct {
 	// The IP Address of the Regional Endpoint. When no address is provided, an IP from the subnetwork is allocated. Use one of the following formats: * IPv4 address as in `10.0.0.1` * Address resource URI as in `projects/{project}/regions/{region}/addresses/{address_name}`
 	// > **Note:** This field accepts both a reference to a Compute Address resource, which is the resource name of which format is given in the description, and IP literal value. If the user chooses to input a reserved address value; they need to make sure that the reserved address is in IPv4 version, its purpose is GCE_ENDPOINT, its type is INTERNAL and its status is RESERVED. If the user chooses to input an IP literal, they need to make sure that it's a valid IPv4 address (x.x.x.x) within the subnetwork.
 	Address *string `pulumi:"address"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of this resource.
 	Description *string `pulumi:"description"`
 	// User-defined labels.
@@ -344,6 +372,13 @@ type RegionalEndpointArgs struct {
 	// The IP Address of the Regional Endpoint. When no address is provided, an IP from the subnetwork is allocated. Use one of the following formats: * IPv4 address as in `10.0.0.1` * Address resource URI as in `projects/{project}/regions/{region}/addresses/{address_name}`
 	// > **Note:** This field accepts both a reference to a Compute Address resource, which is the resource name of which format is given in the description, and IP literal value. If the user chooses to input a reserved address value; they need to make sure that the reserved address is in IPv4 version, its purpose is GCE_ENDPOINT, its type is INTERNAL and its status is RESERVED. If the user chooses to input an IP literal, they need to make sure that it's a valid IPv4 address (x.x.x.x) within the subnetwork.
 	Address pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of this resource.
 	Description pulumi.StringPtrInput
 	// User-defined labels.
@@ -468,6 +503,16 @@ func (o RegionalEndpointOutput) Address() pulumi.StringOutput {
 // Time when the RegionalEndpoint was created.
 func (o RegionalEndpointOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalEndpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionalEndpointOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionalEndpoint) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of this resource.

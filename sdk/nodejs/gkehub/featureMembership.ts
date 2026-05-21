@@ -371,6 +371,15 @@ export class FeatureMembership extends pulumi.CustomResource {
      */
     declare public readonly configmanagement: pulumi.Output<outputs.gkehub.FeatureMembershipConfigmanagement | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The name of the feature
      */
     declare public readonly feature: pulumi.Output<string>;
@@ -413,6 +422,7 @@ export class FeatureMembership extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FeatureMembershipState | undefined;
             resourceInputs["configmanagement"] = state?.configmanagement;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["feature"] = state?.feature;
             resourceInputs["location"] = state?.location;
             resourceInputs["membership"] = state?.membership;
@@ -432,6 +442,7 @@ export class FeatureMembership extends pulumi.CustomResource {
                 throw new Error("Missing required property 'membership'");
             }
             resourceInputs["configmanagement"] = args?.configmanagement;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["feature"] = args?.feature;
             resourceInputs["location"] = args?.location;
             resourceInputs["membership"] = args?.membership;
@@ -453,6 +464,15 @@ export interface FeatureMembershipState {
      * Config Management-specific spec. Structure is documented below.
      */
     configmanagement?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the feature
      */
@@ -491,6 +511,15 @@ export interface FeatureMembershipArgs {
      * Config Management-specific spec. Structure is documented below.
      */
     configmanagement?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the feature
      */

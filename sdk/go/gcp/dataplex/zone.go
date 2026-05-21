@@ -89,6 +89,13 @@ type Zone struct {
 	AssetStatuses ZoneAssetStatusArrayOutput `pulumi:"assetStatuses"`
 	// Output only. The time when the zone was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. Description of the zone.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Required. Specification of the discovery feature applied to data in this zone.
@@ -178,6 +185,13 @@ type zoneState struct {
 	AssetStatuses []ZoneAssetStatus `pulumi:"assetStatuses"`
 	// Output only. The time when the zone was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Description of the zone.
 	Description *string `pulumi:"description"`
 	// Required. Specification of the discovery feature applied to data in this zone.
@@ -218,6 +232,13 @@ type ZoneState struct {
 	AssetStatuses ZoneAssetStatusArrayInput
 	// Output only. The time when the zone was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Description of the zone.
 	Description pulumi.StringPtrInput
 	// Required. Specification of the discovery feature applied to data in this zone.
@@ -258,6 +279,13 @@ func (ZoneState) ElementType() reflect.Type {
 }
 
 type zoneArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Description of the zone.
 	Description *string `pulumi:"description"`
 	// Required. Specification of the discovery feature applied to data in this zone.
@@ -285,6 +313,13 @@ type zoneArgs struct {
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Description of the zone.
 	Description pulumi.StringPtrInput
 	// Required. Specification of the discovery feature applied to data in this zone.
@@ -405,6 +440,16 @@ func (o ZoneOutput) AssetStatuses() ZoneAssetStatusArrayOutput {
 // Output only. The time when the zone was created.
 func (o ZoneOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ZoneOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. Description of the zone.

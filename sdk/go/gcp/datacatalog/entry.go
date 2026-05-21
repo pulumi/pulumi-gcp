@@ -199,6 +199,13 @@ type Entry struct {
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
 	// Structure is documented below.
 	BigqueryTableSpecs EntryBigqueryTableSpecArrayOutput `pulumi:"bigqueryTableSpecs"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display information such as title and description. A short name to identify the entry,
@@ -288,6 +295,13 @@ type entryState struct {
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
 	// Structure is documented below.
 	BigqueryTableSpecs []EntryBigqueryTableSpec `pulumi:"bigqueryTableSpecs"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description *string `pulumi:"description"`
 	// Display information such as title and description. A short name to identify the entry,
@@ -342,6 +356,13 @@ type EntryState struct {
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
 	// Structure is documented below.
 	BigqueryTableSpecs EntryBigqueryTableSpecArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description pulumi.StringPtrInput
 	// Display information such as title and description. A short name to identify the entry,
@@ -393,6 +414,13 @@ func (EntryState) ElementType() reflect.Type {
 }
 
 type entryArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description *string `pulumi:"description"`
 	// Display information such as title and description. A short name to identify the entry,
@@ -435,6 +463,13 @@ type entryArgs struct {
 
 // The set of arguments for constructing a Entry resource.
 type EntryArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description pulumi.StringPtrInput
 	// Display information such as title and description. A short name to identify the entry,
@@ -573,6 +608,16 @@ func (o EntryOutput) BigqueryDateShardedSpecs() EntryBigqueryDateShardedSpecArra
 // Structure is documented below.
 func (o EntryOutput) BigqueryTableSpecs() EntryBigqueryTableSpecArrayOutput {
 	return o.ApplyT(func(v *Entry) EntryBigqueryTableSpecArrayOutput { return v.BigqueryTableSpecs }).(EntryBigqueryTableSpecArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EntryOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Entry description, which can consist of several sentences or paragraphs that describe entry contents.

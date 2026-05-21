@@ -82,6 +82,13 @@ type InterceptDeploymentGroup struct {
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -181,6 +188,13 @@ type interceptDeploymentGroupState struct {
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description *string `pulumi:"description"`
@@ -237,6 +251,13 @@ type InterceptDeploymentGroupState struct {
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description pulumi.StringPtrInput
@@ -291,6 +312,13 @@ func (InterceptDeploymentGroupState) ElementType() reflect.Type {
 }
 
 type interceptDeploymentGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description *string `pulumi:"description"`
@@ -314,6 +342,13 @@ type interceptDeploymentGroupArgs struct {
 
 // The set of arguments for constructing a InterceptDeploymentGroup resource.
 type InterceptDeploymentGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description pulumi.StringPtrInput
@@ -434,6 +469,16 @@ func (o InterceptDeploymentGroupOutput) ConnectedEndpointGroups() InterceptDeplo
 // See https://google.aip.dev/148#timestamps.
 func (o InterceptDeploymentGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InterceptDeploymentGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterceptDeploymentGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User-provided description of the deployment group.

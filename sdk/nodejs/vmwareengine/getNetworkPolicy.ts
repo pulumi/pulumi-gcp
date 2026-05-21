@@ -53,6 +53,7 @@ export interface GetNetworkPolicyArgs {
  */
 export interface GetNetworkPolicyResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly edgeServicesCidr: string;
     readonly externalIps: outputs.vmwareengine.GetNetworkPolicyExternalIp[];

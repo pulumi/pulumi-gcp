@@ -474,6 +474,13 @@ type Authority struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the CertificateAuthority.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -619,6 +626,13 @@ type authorityState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the CertificateAuthority.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -715,6 +729,13 @@ type AuthorityState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the CertificateAuthority.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -808,6 +829,13 @@ type authorityArgs struct {
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config AuthorityConfig `pulumi:"config"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the CertificateAuthority.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -879,6 +907,13 @@ type AuthorityArgs struct {
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config AuthorityConfigInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the CertificateAuthority.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -1052,6 +1087,16 @@ func (o AuthorityOutput) Config() AuthorityConfigOutput {
 // fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o AuthorityOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AuthorityOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the CertificateAuthority.

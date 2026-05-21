@@ -25,6 +25,7 @@ class InstanceArgs:
                  accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
                  crypto_key_config: pulumi.Input[Optional['InstanceCryptoKeyConfigArgs']] = None,
                  dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_rbac: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -63,6 +64,12 @@ class InstanceArgs:
         :param pulumi.Input['InstanceCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the instance.
         :param pulumi.Input[_builtins.str] display_name: Display name for an instance.
         :param pulumi.Input[_builtins.bool] enable_rbac: Option to enable granular role-based access control.
@@ -100,6 +107,8 @@ class InstanceArgs:
             pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if dataproc_service_account is not None:
             pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -196,6 +205,23 @@ class InstanceArgs:
     @dataproc_service_account.setter
     def dataproc_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataproc_service_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -422,6 +448,7 @@ class _InstanceState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  crypto_key_config: pulumi.Input[Optional['InstanceCryptoKeyConfigArgs']] = None,
                  dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -462,6 +489,12 @@ class _InstanceState:
         :param pulumi.Input['InstanceCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the instance.
         :param pulumi.Input[_builtins.str] display_name: Display name for an instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -531,6 +564,8 @@ class _InstanceState:
             pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if dataproc_service_account is not None:
             pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -654,6 +689,23 @@ class _InstanceState:
     @dataproc_service_account.setter
     def dataproc_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataproc_service_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1032,6 +1084,7 @@ class Instance(pulumi.CustomResource):
                  accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
                  crypto_key_config: pulumi.Input[Optional[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
                  dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_rbac: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1258,6 +1311,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the instance.
         :param pulumi.Input[_builtins.str] display_name: Display name for an instance.
         :param pulumi.Input[_builtins.bool] enable_rbac: Option to enable granular role-based access control.
@@ -1521,6 +1580,7 @@ class Instance(pulumi.CustomResource):
                  accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
                  crypto_key_config: pulumi.Input[Optional[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
                  dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_rbac: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1551,6 +1611,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["accelerators"] = accelerators
             __props__.__dict__["crypto_key_config"] = crypto_key_config
             __props__.__dict__["dataproc_service_account"] = dataproc_service_account
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_rbac"] = enable_rbac
@@ -1600,6 +1661,7 @@ class Instance(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             crypto_key_config: pulumi.Input[Optional[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
             dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1644,6 +1706,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the instance.
         :param pulumi.Input[_builtins.str] display_name: Display name for an instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1712,6 +1780,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["crypto_key_config"] = crypto_key_config
         __props__.__dict__["dataproc_service_account"] = dataproc_service_account
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1785,6 +1854,19 @@ class Instance(pulumi.CustomResource):
         User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         """
         return pulumi.get(self, "dataproc_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

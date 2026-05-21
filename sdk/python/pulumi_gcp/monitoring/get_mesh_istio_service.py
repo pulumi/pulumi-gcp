@@ -27,7 +27,10 @@ class GetMeshIstioServiceResult:
     """
     A collection of values returned by getMeshIstioService.
     """
-    def __init__(__self__, display_name=None, id=None, mesh_uid=None, name=None, project=None, service_id=None, service_name=None, service_namespace=None, telemetries=None, user_labels=None):
+    def __init__(__self__, deletion_policy=None, display_name=None, id=None, mesh_uid=None, name=None, project=None, service_id=None, service_name=None, service_namespace=None, telemetries=None, user_labels=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -58,6 +61,11 @@ class GetMeshIstioServiceResult:
         if user_labels and not isinstance(user_labels, dict):
             raise TypeError("Expected argument 'user_labels' to be a dict")
         pulumi.set(__self__, "user_labels", user_labels)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -129,6 +137,7 @@ class AwaitableGetMeshIstioServiceResult(GetMeshIstioServiceResult):
         if False:
             yield self
         return GetMeshIstioServiceResult(
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             id=self.id,
             mesh_uid=self.mesh_uid,
@@ -198,6 +207,7 @@ def get_mesh_istio_service(mesh_uid: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getMeshIstioService:getMeshIstioService', __args__, opts=opts, typ=GetMeshIstioServiceResult).value
 
     return AwaitableGetMeshIstioServiceResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         mesh_uid=pulumi.get(__ret__, 'mesh_uid'),
@@ -264,6 +274,7 @@ def get_mesh_istio_service_output(mesh_uid: pulumi.Input[Optional[_builtins.str]
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getMeshIstioService:getMeshIstioService', __args__, opts=opts, typ=GetMeshIstioServiceResult)
     return __ret__.apply(lambda __response__: GetMeshIstioServiceResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         id=pulumi.get(__response__, 'id'),
         mesh_uid=pulumi.get(__response__, 'mesh_uid'),

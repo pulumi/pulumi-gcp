@@ -156,14 +156,20 @@ export class RegionalSecretVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly customerManagedEncryptions: pulumi.Output<outputs.secretmanager.RegionalSecretVersionCustomerManagedEncryption[]>;
     /**
-     * The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * disabled rather than deleted.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     *
+     * Default is `DELETE`. Possible values are:
      * * DELETE
      * * DISABLE
      * * ABANDON
+     * * PREVENT
      */
-    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
      */
@@ -264,12 +270,18 @@ export interface RegionalSecretVersionState {
      */
     customerManagedEncryptions?: pulumi.Input<pulumi.Input<inputs.secretmanager.RegionalSecretVersionCustomerManagedEncryption>[] | undefined>;
     /**
-     * The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * disabled rather than deleted.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     *
+     * Default is `DELETE`. Possible values are:
      * * DELETE
      * * DISABLE
      * * ABANDON
+     * * PREVENT
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -313,12 +325,18 @@ export interface RegionalSecretVersionState {
  */
 export interface RegionalSecretVersionArgs {
     /**
-     * The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * disabled rather than deleted.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     *
+     * Default is `DELETE`. Possible values are:
      * * DELETE
      * * DISABLE
      * * ABANDON
+     * * PREVENT
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

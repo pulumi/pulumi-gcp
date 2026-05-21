@@ -395,6 +395,11 @@ export const getRegionInstanceTemplate: typeof import("./getRegionInstanceTempla
 export const getRegionInstanceTemplateOutput: typeof import("./getRegionInstanceTemplate").getRegionInstanceTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionInstanceTemplate","getRegionInstanceTemplateOutput"], () => require("./getRegionInstanceTemplate"));
 
+export { GetRegionInstantSnapshotIamPolicyArgs, GetRegionInstantSnapshotIamPolicyResult, GetRegionInstantSnapshotIamPolicyOutputArgs } from "./getRegionInstantSnapshotIamPolicy";
+export const getRegionInstantSnapshotIamPolicy: typeof import("./getRegionInstantSnapshotIamPolicy").getRegionInstantSnapshotIamPolicy = null as any;
+export const getRegionInstantSnapshotIamPolicyOutput: typeof import("./getRegionInstantSnapshotIamPolicy").getRegionInstantSnapshotIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionInstantSnapshotIamPolicy","getRegionInstantSnapshotIamPolicyOutput"], () => require("./getRegionInstantSnapshotIamPolicy"));
+
 export { GetRegionNetworkEndpointGroupArgs, GetRegionNetworkEndpointGroupResult, GetRegionNetworkEndpointGroupOutputArgs } from "./getRegionNetworkEndpointGroup";
 export const getRegionNetworkEndpointGroup: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroup = null as any;
 export const getRegionNetworkEndpointGroupOutput: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroupOutput = null as any;
@@ -965,6 +970,26 @@ export type RegionInstanceTemplate = import("./regionInstanceTemplate").RegionIn
 export const RegionInstanceTemplate: typeof import("./regionInstanceTemplate").RegionInstanceTemplate = null as any;
 utilities.lazyLoad(exports, ["RegionInstanceTemplate"], () => require("./regionInstanceTemplate"));
 
+export { RegionInstantSnapshotArgs, RegionInstantSnapshotState } from "./regionInstantSnapshot";
+export type RegionInstantSnapshot = import("./regionInstantSnapshot").RegionInstantSnapshot;
+export const RegionInstantSnapshot: typeof import("./regionInstantSnapshot").RegionInstantSnapshot = null as any;
+utilities.lazyLoad(exports, ["RegionInstantSnapshot"], () => require("./regionInstantSnapshot"));
+
+export { RegionInstantSnapshotIamBindingArgs, RegionInstantSnapshotIamBindingState } from "./regionInstantSnapshotIamBinding";
+export type RegionInstantSnapshotIamBinding = import("./regionInstantSnapshotIamBinding").RegionInstantSnapshotIamBinding;
+export const RegionInstantSnapshotIamBinding: typeof import("./regionInstantSnapshotIamBinding").RegionInstantSnapshotIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegionInstantSnapshotIamBinding"], () => require("./regionInstantSnapshotIamBinding"));
+
+export { RegionInstantSnapshotIamMemberArgs, RegionInstantSnapshotIamMemberState } from "./regionInstantSnapshotIamMember";
+export type RegionInstantSnapshotIamMember = import("./regionInstantSnapshotIamMember").RegionInstantSnapshotIamMember;
+export const RegionInstantSnapshotIamMember: typeof import("./regionInstantSnapshotIamMember").RegionInstantSnapshotIamMember = null as any;
+utilities.lazyLoad(exports, ["RegionInstantSnapshotIamMember"], () => require("./regionInstantSnapshotIamMember"));
+
+export { RegionInstantSnapshotIamPolicyArgs, RegionInstantSnapshotIamPolicyState } from "./regionInstantSnapshotIamPolicy";
+export type RegionInstantSnapshotIamPolicy = import("./regionInstantSnapshotIamPolicy").RegionInstantSnapshotIamPolicy;
+export const RegionInstantSnapshotIamPolicy: typeof import("./regionInstantSnapshotIamPolicy").RegionInstantSnapshotIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionInstantSnapshotIamPolicy"], () => require("./regionInstantSnapshotIamPolicy"));
+
 export { RegionNetworkEndpointArgs, RegionNetworkEndpointState } from "./regionNetworkEndpoint";
 export type RegionNetworkEndpoint = import("./regionNetworkEndpoint").RegionNetworkEndpoint;
 export const RegionNetworkEndpoint: typeof import("./regionNetworkEndpoint").RegionNetworkEndpoint = null as any;
@@ -1516,6 +1541,14 @@ const _module = {
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
             case "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate":
                 return new RegionInstanceTemplate(name, <any>undefined, { urn })
+            case "gcp:compute/regionInstantSnapshot:RegionInstantSnapshot":
+                return new RegionInstantSnapshot(name, <any>undefined, { urn })
+            case "gcp:compute/regionInstantSnapshotIamBinding:RegionInstantSnapshotIamBinding":
+                return new RegionInstantSnapshotIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/regionInstantSnapshotIamMember:RegionInstantSnapshotIamMember":
+                return new RegionInstantSnapshotIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/regionInstantSnapshotIamPolicy:RegionInstantSnapshotIamPolicy":
+                return new RegionInstantSnapshotIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint":
                 return new RegionNetworkEndpoint(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup":
@@ -1761,6 +1794,10 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthCheck", _modul
 pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthSource", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceGroupManager", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceTemplate", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionInstantSnapshot", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionInstantSnapshotIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionInstantSnapshotIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionInstantSnapshotIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpointGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicy", _module)

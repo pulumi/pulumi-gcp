@@ -224,13 +224,19 @@ type RegionalSecretVersion struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryptions RegionalSecretVersionCustomerManagedEncryptionArrayOutput `pulumi:"customerManagedEncryptions"`
-	// The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// * PREVENT
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
 	DestroyTime pulumi.StringOutput `pulumi:"destroyTime"`
 	// The current state of the regional secret version.
@@ -299,12 +305,18 @@ type regionalSecretVersionState struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryptions []RegionalSecretVersionCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
-	// The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
+	// * PREVENT
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
 	DestroyTime *string `pulumi:"destroyTime"`
@@ -332,12 +344,18 @@ type RegionalSecretVersionState struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryptions RegionalSecretVersionCustomerManagedEncryptionArrayInput
-	// The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
+	// * PREVENT
 	DeletionPolicy pulumi.StringPtrInput
 	// The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
 	DestroyTime pulumi.StringPtrInput
@@ -364,12 +382,18 @@ func (RegionalSecretVersionState) ElementType() reflect.Type {
 }
 
 type regionalSecretVersionArgs struct {
-	// The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
+	// * PREVENT
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The current state of the regional secret version.
 	Enabled *bool `pulumi:"enabled"`
@@ -384,12 +408,18 @@ type regionalSecretVersionArgs struct {
 
 // The set of arguments for constructing a RegionalSecretVersion resource.
 type RegionalSecretVersionArgs struct {
-	// The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
+	// * PREVENT
 	DeletionPolicy pulumi.StringPtrInput
 	// The current state of the regional secret version.
 	Enabled pulumi.BoolPtrInput
@@ -502,14 +532,20 @@ func (o RegionalSecretVersionOutput) CustomerManagedEncryptions() RegionalSecret
 	}).(RegionalSecretVersionCustomerManagedEncryptionArrayOutput)
 }
 
-// The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 // to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-// disabled rather than deleted. Default is `DELETE`. Possible values are:
+// disabled rather than deleted.
+//
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+//
+// Default is `DELETE`. Possible values are:
 // * DELETE
 // * DISABLE
 // * ABANDON
-func (o RegionalSecretVersionOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionalSecretVersion) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// * PREVENT
+func (o RegionalSecretVersionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionalSecretVersion) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The time at which the regional secret version was destroyed. Only present if state is DESTROYED.

@@ -27,10 +27,13 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, autogenerate_revision_name=None, id=None, location=None, metadatas=None, name=None, project=None, statuses=None, templates=None, traffics=None):
+    def __init__(__self__, autogenerate_revision_name=None, deletion_policy=None, id=None, location=None, metadatas=None, name=None, project=None, statuses=None, templates=None, traffics=None):
         if autogenerate_revision_name and not isinstance(autogenerate_revision_name, bool):
             raise TypeError("Expected argument 'autogenerate_revision_name' to be a bool")
         pulumi.set(__self__, "autogenerate_revision_name", autogenerate_revision_name)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -60,6 +63,11 @@ class GetServiceResult:
     @pulumi.getter(name="autogenerateRevisionName")
     def autogenerate_revision_name(self) -> _builtins.bool:
         return pulumi.get(self, "autogenerate_revision_name")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -112,6 +120,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             yield self
         return GetServiceResult(
             autogenerate_revision_name=self.autogenerate_revision_name,
+            deletion_policy=self.deletion_policy,
             id=self.id,
             location=self.location,
             metadatas=self.metadatas,
@@ -158,6 +167,7 @@ def get_service(location: Optional[_builtins.str] = None,
 
     return AwaitableGetServiceResult(
         autogenerate_revision_name=pulumi.get(__ret__, 'autogenerate_revision_name'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         metadatas=pulumi.get(__ret__, 'metadatas'),
@@ -201,6 +211,7 @@ def get_service_output(location: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudrun/getService:getService', __args__, opts=opts, typ=GetServiceResult)
     return __ret__.apply(lambda __response__: GetServiceResult(
         autogenerate_revision_name=pulumi.get(__response__, 'autogenerate_revision_name'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
         metadatas=pulumi.get(__response__, 'metadatas'),

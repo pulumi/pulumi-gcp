@@ -169,6 +169,13 @@ type CxSecuritySettings struct {
 	// Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate pulumi.StringPtrOutput `pulumi:"deidentifyTemplate"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The human-readable name of the security settings, unique within the location.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Controls conversation exporting settings to Insights after conversation is completed.
@@ -254,6 +261,13 @@ type cxSecuritySettingsState struct {
 	// Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate *string `pulumi:"deidentifyTemplate"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the security settings, unique within the location.
 	DisplayName *string `pulumi:"displayName"`
 	// Controls conversation exporting settings to Insights after conversation is completed.
@@ -304,6 +318,13 @@ type CxSecuritySettingsState struct {
 	// Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the security settings, unique within the location.
 	DisplayName pulumi.StringPtrInput
 	// Controls conversation exporting settings to Insights after conversation is completed.
@@ -358,6 +379,13 @@ type cxSecuritySettingsArgs struct {
 	// Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate *string `pulumi:"deidentifyTemplate"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the security settings, unique within the location.
 	DisplayName string `pulumi:"displayName"`
 	// Controls conversation exporting settings to Insights after conversation is completed.
@@ -406,6 +434,13 @@ type CxSecuritySettingsArgs struct {
 	// Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the security settings, unique within the location.
 	DisplayName pulumi.StringInput
 	// Controls conversation exporting settings to Insights after conversation is completed.
@@ -545,6 +580,16 @@ func (o CxSecuritySettingsOutput) AudioExportSettings() CxSecuritySettingsAudioE
 // Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 func (o CxSecuritySettingsOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxSecuritySettings) pulumi.StringPtrOutput { return v.DeidentifyTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CxSecuritySettingsOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CxSecuritySettings) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the security settings, unique within the location.

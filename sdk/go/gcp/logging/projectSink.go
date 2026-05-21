@@ -270,6 +270,13 @@ type ProjectSink struct {
 	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
 	// will automatically be generated.
 	CustomWriterIdentity pulumi.StringPtrOutput `pulumi:"customWriterIdentity"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -344,6 +351,13 @@ type projectSinkState struct {
 	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
 	// will automatically be generated.
 	CustomWriterIdentity *string `pulumi:"customWriterIdentity"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -386,6 +400,13 @@ type ProjectSinkState struct {
 	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
 	// will automatically be generated.
 	CustomWriterIdentity pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -432,6 +453,13 @@ type projectSinkArgs struct {
 	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
 	// will automatically be generated.
 	CustomWriterIdentity *string `pulumi:"customWriterIdentity"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -472,6 +500,13 @@ type ProjectSinkArgs struct {
 	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
 	// will automatically be generated.
 	CustomWriterIdentity pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -601,6 +636,16 @@ func (o ProjectSinkOutput) BigqueryOptions() ProjectSinkBigqueryOptionsOutput {
 // will automatically be generated.
 func (o ProjectSinkOutput) CustomWriterIdentity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectSink) pulumi.StringPtrOutput { return v.CustomWriterIdentity }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ProjectSinkOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectSink) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of this sink. The maximum length of the description is 8000 characters.

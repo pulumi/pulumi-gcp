@@ -19,6 +19,7 @@ public final class GetSinkResult {
      * 
      */
     private List<GetSinkBigqueryOption> bigqueryOptions;
+    private String deletionPolicy;
     /**
      * @return A description of this exclusion.
      * 
@@ -63,6 +64,9 @@ public final class GetSinkResult {
      */
     public List<GetSinkBigqueryOption> bigqueryOptions() {
         return this.bigqueryOptions;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return A description of this exclusion.
@@ -127,6 +131,7 @@ public final class GetSinkResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetSinkBigqueryOption> bigqueryOptions;
+        private String deletionPolicy;
         private String description;
         private String destination;
         private Boolean disabled;
@@ -139,6 +144,7 @@ public final class GetSinkResult {
         public Builder(GetSinkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bigqueryOptions = defaults.bigqueryOptions;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.destination = defaults.destination;
     	      this.disabled = defaults.disabled;
@@ -159,6 +165,14 @@ public final class GetSinkResult {
         }
         public Builder bigqueryOptions(GetSinkBigqueryOption... bigqueryOptions) {
             return bigqueryOptions(List.of(bigqueryOptions));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -230,6 +244,7 @@ public final class GetSinkResult {
         public GetSinkResult build() {
             final var _resultValue = new GetSinkResult();
             _resultValue.bigqueryOptions = bigqueryOptions;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.destination = destination;
             _resultValue.disabled = disabled;

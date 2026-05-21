@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Dataform
     ///     var dataformFolderBasic = new Gcp.Dataform.Folder("dataform_folder_basic", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Basic Folder-_8493",
+    ///         DisplayName = "Basic Folder-_41819",
     ///     });
     /// 
     /// });
@@ -51,13 +51,13 @@ namespace Pulumi.Gcp.Dataform
     ///     var dataformFolderRoot = new Gcp.Dataform.Folder("dataform_folder_root", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Root Folder-_9106",
+    ///         DisplayName = "Root Folder-_75092",
     ///     });
     /// 
     ///     var dataformFolderFull = new Gcp.Dataform.Folder("dataform_folder_full", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Nested Folder-_27169",
+    ///         DisplayName = "Nested Folder-_2605",
     ///         ContainingFolder = dataformFolderRoot.Id,
     ///     });
     /// 
@@ -93,6 +93,17 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Output("containingFolder")]
         public Output<string?> ContainingFolder { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Required. The Folder's user-friendly name.
@@ -179,6 +190,17 @@ namespace Pulumi.Gcp.Dataform
         public Input<string>? ContainingFolder { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Required. The Folder's user-friendly name.
         /// </summary>
         [Input("displayName", required: true)]
@@ -211,6 +233,17 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Input("containingFolder")]
         public Input<string>? ContainingFolder { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Required. The Folder's user-friendly name.

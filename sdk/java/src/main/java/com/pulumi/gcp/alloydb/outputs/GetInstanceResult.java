@@ -32,6 +32,7 @@ public final class GetInstanceResult {
     private List<GetInstanceConnectionPoolConfig> connectionPoolConfigs;
     private String createTime;
     private Map<String,String> databaseFlags;
+    private String deletionPolicy;
     private String displayName;
     private Map<String,String> effectiveAnnotations;
     private Map<String,String> effectiveLabels;
@@ -89,6 +90,9 @@ public final class GetInstanceResult {
     }
     public Map<String,String> databaseFlags() {
         return this.databaseFlags;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String displayName() {
         return this.displayName;
@@ -188,6 +192,7 @@ public final class GetInstanceResult {
         private List<GetInstanceConnectionPoolConfig> connectionPoolConfigs;
         private String createTime;
         private Map<String,String> databaseFlags;
+        private String deletionPolicy;
         private String displayName;
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
@@ -225,6 +230,7 @@ public final class GetInstanceResult {
     	      this.connectionPoolConfigs = defaults.connectionPoolConfigs;
     	      this.createTime = defaults.createTime;
     	      this.databaseFlags = defaults.databaseFlags;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -328,6 +334,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "databaseFlags");
             }
             this.databaseFlags = databaseFlags;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -558,6 +572,7 @@ public final class GetInstanceResult {
             _resultValue.connectionPoolConfigs = connectionPoolConfigs;
             _resultValue.createTime = createTime;
             _resultValue.databaseFlags = databaseFlags;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;

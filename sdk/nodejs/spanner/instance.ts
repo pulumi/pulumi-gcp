@@ -137,6 +137,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly defaultBackupScheduleType: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      */
@@ -218,6 +227,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoscalingConfig"] = state?.autoscalingConfig;
             resourceInputs["config"] = state?.config;
             resourceInputs["defaultBackupScheduleType"] = state?.defaultBackupScheduleType;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["edition"] = state?.edition;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -241,6 +251,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoscalingConfig"] = args?.autoscalingConfig;
             resourceInputs["config"] = args?.config;
             resourceInputs["defaultBackupScheduleType"] = args?.defaultBackupScheduleType;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["edition"] = args?.edition;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
@@ -291,6 +302,15 @@ export interface InstanceState {
      * Possible values are: `NONE`, `AUTOMATIC`.
      */
     defaultBackupScheduleType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
@@ -388,6 +408,15 @@ export interface InstanceArgs {
      * Possible values are: `NONE`, `AUTOMATIC`.
      */
     defaultBackupScheduleType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.

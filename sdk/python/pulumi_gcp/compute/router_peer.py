@@ -31,6 +31,7 @@ class RouterPeerArgs:
                  bfd: pulumi.Input[Optional['RouterPeerBfdArgs']] = None,
                  custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]] = None,
                  custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -92,6 +93,12 @@ class RouterPeerArgs:
                This value is applied to all custom learned route ranges for the session.
                You can choose a value from 0 to 65335. If you don't provide a value,
                Google Cloud assigns a priority of 100 to the ranges.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
@@ -156,6 +163,8 @@ class RouterPeerArgs:
             pulumi.set(__self__, "custom_learned_ip_ranges", custom_learned_ip_ranges)
         if custom_learned_route_priority is not None:
             pulumi.set(__self__, "custom_learned_route_priority", custom_learned_route_priority)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if enable_ipv4 is not None:
@@ -342,6 +351,23 @@ class RouterPeerArgs:
     @custom_learned_route_priority.setter
     def custom_learned_route_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_learned_route_priority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -598,6 +624,7 @@ class _RouterPeerState:
                  bfd: pulumi.Input[Optional['RouterPeerBfdArgs']] = None,
                  custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]] = None,
                  custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -658,6 +685,12 @@ class _RouterPeerState:
                This value is applied to all custom learned route ranges for the session.
                You can choose a value from 0 to 65335. If you don't provide a value,
                Google Cloud assigns a priority of 100 to the ranges.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
@@ -737,6 +770,8 @@ class _RouterPeerState:
             pulumi.set(__self__, "custom_learned_ip_ranges", custom_learned_ip_ranges)
         if custom_learned_route_priority is not None:
             pulumi.set(__self__, "custom_learned_route_priority", custom_learned_route_priority)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if enable_ipv4 is not None:
@@ -895,6 +930,23 @@ class _RouterPeerState:
     @custom_learned_route_priority.setter
     def custom_learned_route_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_learned_route_priority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1238,6 +1290,7 @@ class RouterPeer(pulumi.CustomResource):
                  bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
                  custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
                  custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1621,6 +1674,12 @@ class RouterPeer(pulumi.CustomResource):
                This value is applied to all custom learned route ranges for the session.
                You can choose a value from 0 to 65335. If you don't provide a value,
                Google Cloud assigns a priority of 100 to the ranges.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
@@ -2029,6 +2088,7 @@ class RouterPeer(pulumi.CustomResource):
                  bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
                  custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
                  custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2066,6 +2126,7 @@ class RouterPeer(pulumi.CustomResource):
             __props__.__dict__["bfd"] = bfd
             __props__.__dict__["custom_learned_ip_ranges"] = custom_learned_ip_ranges
             __props__.__dict__["custom_learned_route_priority"] = custom_learned_route_priority
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enable"] = enable
             __props__.__dict__["enable_ipv4"] = enable_ipv4
             __props__.__dict__["enable_ipv6"] = enable_ipv6
@@ -2113,6 +2174,7 @@ class RouterPeer(pulumi.CustomResource):
             bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
             custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
             custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             enable: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2177,6 +2239,12 @@ class RouterPeer(pulumi.CustomResource):
                This value is applied to all custom learned route ranges for the session.
                You can choose a value from 0 to 65335. If you don't provide a value,
                Google Cloud assigns a priority of 100 to the ranges.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
@@ -2253,6 +2321,7 @@ class RouterPeer(pulumi.CustomResource):
         __props__.__dict__["bfd"] = bfd
         __props__.__dict__["custom_learned_ip_ranges"] = custom_learned_ip_ranges
         __props__.__dict__["custom_learned_route_priority"] = custom_learned_route_priority
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["enable"] = enable
         __props__.__dict__["enable_ipv4"] = enable_ipv4
         __props__.__dict__["enable_ipv6"] = enable_ipv6
@@ -2360,6 +2429,19 @@ class RouterPeer(pulumi.CustomResource):
         Google Cloud assigns a priority of 100 to the ranges.
         """
         return pulumi.get(self, "custom_learned_route_priority")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

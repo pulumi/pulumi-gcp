@@ -27,13 +27,16 @@ class GetFeatureResult:
     """
     A collection of values returned by getFeature.
     """
-    def __init__(__self__, create_time=None, delete_time=None, effective_labels=None, fleet_default_member_configs=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, resource_states=None, specs=None, states=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, deletion_policy=None, effective_labels=None, fleet_default_member_configs=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, resource_states=None, specs=None, states=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -80,6 +83,11 @@ class GetFeatureResult:
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> _builtins.str:
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -153,6 +161,7 @@ class AwaitableGetFeatureResult(GetFeatureResult):
         return GetFeatureResult(
             create_time=self.create_time,
             delete_time=self.delete_time,
+            deletion_policy=self.deletion_policy,
             effective_labels=self.effective_labels,
             fleet_default_member_configs=self.fleet_default_member_configs,
             id=self.id,
@@ -200,6 +209,7 @@ def get_feature(location: Optional[_builtins.str] = None,
     return AwaitableGetFeatureResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         fleet_default_member_configs=pulumi.get(__ret__, 'fleet_default_member_configs'),
         id=pulumi.get(__ret__, 'id'),
@@ -244,6 +254,7 @@ def get_feature_output(location: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetFeatureResult(
         create_time=pulumi.get(__response__, 'create_time'),
         delete_time=pulumi.get(__response__, 'delete_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         fleet_default_member_configs=pulumi.get(__response__, 'fleet_default_member_configs'),
         id=pulumi.get(__response__, 'id'),

@@ -181,6 +181,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerAutoHealingPolicyResult> AutoHealingPolicies;
         public readonly string BaseInstanceName;
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string Fingerprint;
         /// <summary>
@@ -223,6 +224,8 @@ namespace Pulumi.Gcp.Compute
             string baseInstanceName,
 
             string creationTimestamp,
+
+            string deletionPolicy,
 
             string description,
 
@@ -286,6 +289,7 @@ namespace Pulumi.Gcp.Compute
             AutoHealingPolicies = autoHealingPolicies;
             BaseInstanceName = baseInstanceName;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Fingerprint = fingerprint;
             Id = id;

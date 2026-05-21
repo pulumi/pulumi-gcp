@@ -126,6 +126,13 @@ type OrganizationFeed struct {
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringOutput `pulumi:"feedId"`
 	// Output configuration for asset feed destination.
@@ -204,6 +211,13 @@ type organizationFeedState struct {
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId *string `pulumi:"feedId"`
 	// Output configuration for asset feed destination.
@@ -241,6 +255,13 @@ type OrganizationFeedState struct {
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringPtrInput
 	// Output configuration for asset feed destination.
@@ -282,6 +303,13 @@ type organizationFeedArgs struct {
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId string `pulumi:"feedId"`
 	// Output configuration for asset feed destination.
@@ -318,6 +346,13 @@ type OrganizationFeedArgs struct {
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringInput
 	// Output configuration for asset feed destination.
@@ -452,6 +487,16 @@ func (o OrganizationFeedOutput) Condition() OrganizationFeedConditionPtrOutput {
 // Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 func (o OrganizationFeedOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationFeed) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OrganizationFeedOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationFeed) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.

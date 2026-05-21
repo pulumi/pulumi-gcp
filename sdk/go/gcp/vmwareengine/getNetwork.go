@@ -66,9 +66,10 @@ type LookupNetworkArgs struct {
 
 // A collection of values returned by getNetwork.
 type LookupNetworkResult struct {
-	CreateTime  string `pulumi:"createTime"`
-	Description string `pulumi:"description"`
-	Etag        string `pulumi:"etag"`
+	CreateTime     string `pulumi:"createTime"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	Description    string `pulumi:"description"`
+	Etag           string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string                 `pulumi:"id"`
 	Location    string                 `pulumi:"location"`
@@ -123,6 +124,10 @@ func (o LookupNetworkResultOutput) ToLookupNetworkResultOutputWithContext(ctx co
 
 func (o LookupNetworkResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupNetworkResultOutput) Description() pulumi.StringOutput {

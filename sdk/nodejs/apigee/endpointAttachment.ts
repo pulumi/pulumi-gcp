@@ -60,6 +60,15 @@ export class EndpointAttachment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly connectionState: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * ID of the endpoint attachment.
      */
     declare public readonly endpointAttachmentId: pulumi.Output<string>;
@@ -100,6 +109,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EndpointAttachmentState | undefined;
             resourceInputs["connectionState"] = state?.connectionState;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["endpointAttachmentId"] = state?.endpointAttachmentId;
             resourceInputs["host"] = state?.host;
             resourceInputs["location"] = state?.location;
@@ -120,6 +130,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
             if (args?.serviceAttachment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAttachment'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["endpointAttachmentId"] = args?.endpointAttachmentId;
             resourceInputs["location"] = args?.location;
             resourceInputs["orgId"] = args?.orgId;
@@ -141,6 +152,15 @@ export interface EndpointAttachmentState {
      * State of the endpoint attachment connection to the service attachment.
      */
     connectionState?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * ID of the endpoint attachment.
      */
@@ -173,6 +193,15 @@ export interface EndpointAttachmentState {
  * The set of arguments for constructing a EndpointAttachment resource.
  */
 export interface EndpointAttachmentArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * ID of the endpoint attachment.
      */

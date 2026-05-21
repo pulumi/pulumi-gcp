@@ -39,6 +39,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataloss.PreventionDeidentifyTemplateArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -159,6 +172,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataloss.PreventionDeidentifyTemplateArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -255,6 +274,30 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      */
     public Output<PreventionDeidentifyTemplateDeidentifyConfig> deidentifyConfig() {
         return this.deidentifyConfig;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A description of the template.

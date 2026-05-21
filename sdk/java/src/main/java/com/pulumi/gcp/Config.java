@@ -247,6 +247,9 @@ public final class Config {
     public Optional<Map<String,String>> defaultLabels() {
         return Codegen.objectProp("defaultLabels", TypeShape.<Map<String,String>>builder(Map.class).addParameter(String.class).addParameter(String.class).build()).config(config).get();
     }
+    public Optional<String> deletionPolicy() {
+        return Codegen.stringProp("deletionPolicy").config(config).get();
+    }
     public Optional<String> deploymentManagerCustomEndpoint() {
         return Codegen.stringProp("deploymentManagerCustomEndpoint").config(config).get();
     }

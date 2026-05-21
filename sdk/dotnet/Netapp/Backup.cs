@@ -137,6 +137,17 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         /// </summary>
         [Output("description")]
@@ -168,6 +179,14 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Details of the ONTAP source volume and snapshot.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("ontapSource")]
+        public Output<Outputs.BackupOntapSource?> OntapSource { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -273,6 +292,17 @@ namespace Pulumi.Gcp.Netapp
     public sealed class BackupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         /// </summary>
         [Input("description")]
@@ -304,6 +334,14 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Details of the ONTAP source volume and snapshot.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("ontapSource")]
+        public Input<Inputs.BackupOntapSourceArgs>? OntapSource { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -366,6 +404,17 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         /// </summary>
         [Input("description")]
@@ -413,6 +462,14 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Details of the ONTAP source volume and snapshot.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("ontapSource")]
+        public Input<Inputs.BackupOntapSourceGetArgs>? OntapSource { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

@@ -22,6 +22,7 @@ __all__ = ['SecurityGatewayArgs', 'SecurityGateway']
 class SecurityGatewayArgs:
     def __init__(__self__, *,
                  security_gateway_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hubs: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +37,12 @@ class SecurityGatewayArgs:
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
@@ -54,6 +61,8 @@ class SecurityGatewayArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "security_gateway_id", security_gateway_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if hubs is not None:
@@ -86,6 +95,23 @@ class SecurityGatewayArgs:
     @security_gateway_id.setter
     def security_gateway_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "security_gateway_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -187,6 +213,7 @@ class _SecurityGatewayState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  delegating_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hubs: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
@@ -204,6 +231,12 @@ class _SecurityGatewayState:
 
         :param pulumi.Input[_builtins.str] create_time: Output only. Timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] delegating_service_account: Service account used for operations that involve resources in consumer projects.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_ips: Output only. IP addresses that will be used for establishing
@@ -242,6 +275,8 @@ class _SecurityGatewayState:
             pulumi.set(__self__, "create_time", create_time)
         if delegating_service_account is not None:
             pulumi.set(__self__, "delegating_service_account", delegating_service_account)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if external_ips is not None:
@@ -293,6 +328,23 @@ class _SecurityGatewayState:
     @delegating_service_account.setter
     def delegating_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delegating_service_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -467,6 +519,7 @@ class SecurityGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -569,6 +622,12 @@ class SecurityGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
@@ -702,6 +761,7 @@ class SecurityGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -719,6 +779,7 @@ class SecurityGateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityGatewayArgs.__new__(SecurityGatewayArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["hubs"] = hubs
             __props__.__dict__["location"] = location
@@ -747,6 +808,7 @@ class SecurityGateway(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delegating_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
@@ -768,6 +830,12 @@ class SecurityGateway(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. Timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] delegating_service_account: Service account used for operations that involve resources in consumer projects.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_ips: Output only. IP addresses that will be used for establishing
@@ -808,6 +876,7 @@ class SecurityGateway(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delegating_service_account"] = delegating_service_account
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["external_ips"] = external_ips
         __props__.__dict__["hubs"] = hubs
@@ -837,6 +906,19 @@ class SecurityGateway(pulumi.CustomResource):
         Service account used for operations that involve resources in consumer projects.
         """
         return pulumi.get(self, "delegating_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

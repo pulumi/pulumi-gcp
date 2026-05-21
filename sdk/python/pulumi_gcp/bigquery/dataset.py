@@ -28,6 +28,7 @@ class DatasetArgs:
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_catalog_dataset_options: pulumi.Input[Optional['DatasetExternalCatalogDatasetOptionsArgs']] = None,
                  external_dataset_reference: pulumi.Input[Optional['DatasetExternalDatasetReferenceArgs']] = None,
@@ -87,6 +88,12 @@ class DatasetArgs:
         :param pulumi.Input[_builtins.bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-friendly description of the dataset
         :param pulumi.Input['DatasetExternalCatalogDatasetOptionsArgs'] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
                metadata of open source database, schema or namespace represented by the current dataset.
@@ -136,6 +143,8 @@ class DatasetArgs:
             pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
         if delete_contents_on_destroy is not None:
             pulumi.set(__self__, "delete_contents_on_destroy", delete_contents_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if external_catalog_dataset_options is not None:
@@ -280,6 +289,23 @@ class DatasetArgs:
     @delete_contents_on_destroy.setter
     def delete_contents_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_contents_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -449,6 +475,7 @@ class _DatasetState:
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -515,6 +542,12 @@ class _DatasetState:
         :param pulumi.Input[_builtins.bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A hash of the resource.
@@ -574,6 +607,8 @@ class _DatasetState:
             pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
         if delete_contents_on_destroy is not None:
             pulumi.set(__self__, "delete_contents_on_destroy", delete_contents_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -741,6 +776,23 @@ class _DatasetState:
     @delete_contents_on_destroy.setter
     def delete_contents_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_contents_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -974,6 +1026,7 @@ class Dataset(pulumi.CustomResource):
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_catalog_dataset_options: pulumi.Input[Optional[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']]] = None,
                  external_dataset_reference: pulumi.Input[Optional[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
@@ -1252,6 +1305,12 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-friendly description of the dataset
         :param pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
                metadata of open source database, schema or namespace represented by the current dataset.
@@ -1535,6 +1594,7 @@ class Dataset(pulumi.CustomResource):
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_catalog_dataset_options: pulumi.Input[Optional[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']]] = None,
                  external_dataset_reference: pulumi.Input[Optional[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
@@ -1564,6 +1624,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
             __props__.__dict__["delete_contents_on_destroy"] = delete_contents_on_destroy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["external_catalog_dataset_options"] = external_catalog_dataset_options
             __props__.__dict__["external_dataset_reference"] = external_dataset_reference
@@ -1601,6 +1662,7 @@ class Dataset(pulumi.CustomResource):
             default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
             default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
             delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1671,6 +1733,12 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A hash of the resource.
@@ -1726,6 +1794,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
         __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
         __props__.__dict__["delete_contents_on_destroy"] = delete_contents_on_destroy
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
@@ -1846,6 +1915,19 @@ class Dataset(pulumi.CustomResource):
         destroying the resource will fail if tables are present.
         """
         return pulumi.get(self, "delete_contents_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

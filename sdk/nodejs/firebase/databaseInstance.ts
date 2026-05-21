@@ -136,6 +136,15 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly databaseUrl: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The intended database state. Possible values: ACTIVE, DISABLED.
      */
     declare public readonly desiredState: pulumi.Output<string | undefined>;
@@ -189,6 +198,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
             resourceInputs["databaseUrl"] = state?.databaseUrl;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["name"] = state?.name;
@@ -204,6 +214,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["project"] = args?.project;
@@ -227,6 +238,15 @@ export interface DatabaseInstanceState {
      * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
      */
     databaseUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The intended database state. Possible values: ACTIVE, DISABLED.
      */
@@ -272,6 +292,15 @@ export interface DatabaseInstanceState {
  * The set of arguments for constructing a DatabaseInstance resource.
  */
 export interface DatabaseInstanceArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The intended database state. Possible values: ACTIVE, DISABLED.
      */

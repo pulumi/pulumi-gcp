@@ -22,6 +22,7 @@ class CapacityCommitmentArgs:
                  plan: pulumi.Input[_builtins.str],
                  slot_count: pulumi.Input[_builtins.int],
                  capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +37,12 @@ class CapacityCommitmentArgs:
                empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
                cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
                or merged.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[_builtins.str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
@@ -48,6 +55,8 @@ class CapacityCommitmentArgs:
         pulumi.set(__self__, "slot_count", slot_count)
         if capacity_commitment_id is not None:
             pulumi.set(__self__, "capacity_commitment_id", capacity_commitment_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
         if enforce_single_admin_project_per_org is not None:
@@ -97,6 +106,23 @@ class CapacityCommitmentArgs:
     @capacity_commitment_id.setter
     def capacity_commitment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capacity_commitment_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -167,6 +193,7 @@ class _CapacityCommitmentState:
                  capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  commitment_end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  commitment_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -185,6 +212,12 @@ class _CapacityCommitmentState:
                or merged.
         :param pulumi.Input[_builtins.str] commitment_end_time: The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         :param pulumi.Input[_builtins.str] commitment_start_time: The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[_builtins.str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
@@ -203,6 +236,8 @@ class _CapacityCommitmentState:
             pulumi.set(__self__, "commitment_end_time", commitment_end_time)
         if commitment_start_time is not None:
             pulumi.set(__self__, "commitment_start_time", commitment_start_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
         if enforce_single_admin_project_per_org is not None:
@@ -260,6 +295,23 @@ class _CapacityCommitmentState:
     @commitment_start_time.setter
     def commitment_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commitment_start_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -379,6 +431,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -437,6 +490,12 @@ class CapacityCommitment(pulumi.CustomResource):
                empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
                cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
                or merged.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[_builtins.str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
@@ -513,6 +572,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -530,6 +590,7 @@ class CapacityCommitment(pulumi.CustomResource):
             __props__ = CapacityCommitmentArgs.__new__(CapacityCommitmentArgs)
 
             __props__.__dict__["capacity_commitment_id"] = capacity_commitment_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["edition"] = edition
             __props__.__dict__["enforce_single_admin_project_per_org"] = enforce_single_admin_project_per_org
             __props__.__dict__["location"] = location
@@ -558,6 +619,7 @@ class CapacityCommitment(pulumi.CustomResource):
             capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
             commitment_end_time: pulumi.Input[Optional[_builtins.str]] = None,
             commitment_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
             enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -580,6 +642,12 @@ class CapacityCommitment(pulumi.CustomResource):
                or merged.
         :param pulumi.Input[_builtins.str] commitment_end_time: The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         :param pulumi.Input[_builtins.str] commitment_start_time: The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[_builtins.str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
@@ -599,6 +667,7 @@ class CapacityCommitment(pulumi.CustomResource):
         __props__.__dict__["capacity_commitment_id"] = capacity_commitment_id
         __props__.__dict__["commitment_end_time"] = commitment_end_time
         __props__.__dict__["commitment_start_time"] = commitment_start_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["edition"] = edition
         __props__.__dict__["enforce_single_admin_project_per_org"] = enforce_single_admin_project_per_org
         __props__.__dict__["location"] = location
@@ -636,6 +705,19 @@ class CapacityCommitment(pulumi.CustomResource):
         The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         """
         return pulumi.get(self, "commitment_start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

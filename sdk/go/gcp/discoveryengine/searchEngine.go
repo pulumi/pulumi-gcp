@@ -158,6 +158,13 @@ type SearchEngine struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayOutput `pulumi:"dataStoreIds"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether to disable analytics for searches performed on this engine.
 	DisableAnalytics pulumi.BoolPtrOutput `pulumi:"disableAnalytics"`
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
@@ -256,6 +263,13 @@ type searchEngineState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether to disable analytics for searches performed on this engine.
 	DisableAnalytics *bool `pulumi:"disableAnalytics"`
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
@@ -307,6 +321,13 @@ type SearchEngineState struct {
 	CreateTime pulumi.StringPtrInput
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether to disable analytics for searches performed on this engine.
 	DisableAnalytics pulumi.BoolPtrInput
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
@@ -360,6 +381,13 @@ type searchEngineArgs struct {
 	CommonConfig *SearchEngineCommonConfig `pulumi:"commonConfig"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether to disable analytics for searches performed on this engine.
 	DisableAnalytics *bool `pulumi:"disableAnalytics"`
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
@@ -403,6 +431,13 @@ type SearchEngineArgs struct {
 	CommonConfig SearchEngineCommonConfigPtrInput
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether to disable analytics for searches performed on this engine.
 	DisableAnalytics pulumi.BoolPtrInput
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
@@ -546,6 +581,16 @@ func (o SearchEngineOutput) CreateTime() pulumi.StringOutput {
 // The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 func (o SearchEngineOutput) DataStoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringArrayOutput { return v.DataStoreIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SearchEngineOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SearchEngine) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether to disable analytics for searches performed on this engine.

@@ -159,6 +159,15 @@ export class BackupVault extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deletable: pulumi.Output<boolean>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. The description of the BackupVault instance (2048 characters or less).
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -284,6 +293,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["backupVaultId"] = state?.backupVaultId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletable"] = state?.deletable;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -321,6 +331,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["backupMinimumEnforcedRetentionDuration"] = args?.backupMinimumEnforcedRetentionDuration;
             resourceInputs["backupRetentionInheritance"] = args?.backupRetentionInheritance;
             resourceInputs["backupVaultId"] = args?.backupVaultId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["effectiveTime"] = args?.effectiveTime;
             resourceInputs["encryptionConfig"] = args?.encryptionConfig;
@@ -398,6 +409,15 @@ export interface BackupVaultState {
      * Output only. Set to true when there are no backups nested under this resource.
      */
     deletable?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The description of the BackupVault instance (2048 characters or less).
      */
@@ -537,6 +557,15 @@ export interface BackupVaultArgs {
      * Required. ID of the requesting object.
      */
     backupVaultId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The description of the BackupVault instance (2048 characters or less).
      */

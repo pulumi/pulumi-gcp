@@ -107,6 +107,13 @@ type Database struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone pulumi.StringPtrOutput `pulumi:"defaultTimeZone"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
@@ -188,6 +195,13 @@ type databaseState struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -237,6 +251,13 @@ type DatabaseState struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
@@ -290,6 +311,13 @@ type databaseArgs struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -338,6 +366,13 @@ type DatabaseArgs struct {
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
 	DefaultTimeZone pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
@@ -478,6 +513,16 @@ func (o DatabaseOutput) Ddls() pulumi.StringArrayOutput {
 // from the tz database. Default value is "America/Los_angeles".
 func (o DatabaseOutput) DefaultTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DatabaseOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether or not to allow the provider to destroy the instance. Unless this field is set to false

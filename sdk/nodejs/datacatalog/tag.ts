@@ -331,6 +331,15 @@ export class Tag extends pulumi.CustomResource {
      */
     declare public readonly column: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * This maps the ID of a tag field to the value of and additional information about that field.
      * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
      * Structure is documented below.
@@ -373,6 +382,7 @@ export class Tag extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TagState | undefined;
             resourceInputs["column"] = state?.column;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["fields"] = state?.fields;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
@@ -387,6 +397,7 @@ export class Tag extends pulumi.CustomResource {
                 throw new Error("Missing required property 'template'");
             }
             resourceInputs["column"] = args?.column;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["fields"] = args?.fields;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["template"] = args?.template;
@@ -409,6 +420,15 @@ export interface TagState {
      * `outer_column.inner_column`
      */
     column?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * This maps the ID of a tag field to the value of and additional information about that field.
      * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
@@ -450,6 +470,15 @@ export interface TagArgs {
      * `outer_column.inner_column`
      */
     column?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * This maps the ID of a tag field to the value of and additional information about that field.
      * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.

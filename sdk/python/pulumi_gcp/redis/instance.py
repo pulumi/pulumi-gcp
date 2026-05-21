@@ -27,6 +27,7 @@ class InstanceArgs:
                  authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
                  connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -64,6 +65,12 @@ class InstanceArgs:
                Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[_builtins.str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
                When a`terraform destroy` or `pulumi up` would delete the instance,
                the command will fail if this field is not set to false in Terraform state.
@@ -135,6 +142,8 @@ class InstanceArgs:
             pulumi.set(__self__, "connect_mode", connect_mode)
         if customer_managed_key is not None:
             pulumi.set(__self__, "customer_managed_key", customer_managed_key)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
@@ -253,6 +262,23 @@ class InstanceArgs:
     @customer_managed_key.setter
     def customer_managed_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -523,6 +549,7 @@ class _InstanceState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  current_location_id: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -579,6 +606,12 @@ class _InstanceState:
                and can change after a failover event.
         :param pulumi.Input[_builtins.str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
                When a`terraform destroy` or `pulumi up` would delete the instance,
                the command will fail if this field is not set to false in Terraform state.
@@ -682,6 +715,8 @@ class _InstanceState:
             pulumi.set(__self__, "current_location_id", current_location_id)
         if customer_managed_key is not None:
             pulumi.set(__self__, "customer_managed_key", customer_managed_key)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
@@ -853,6 +888,23 @@ class _InstanceState:
     @customer_managed_key.setter
     def customer_managed_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -1282,6 +1334,7 @@ class Instance(pulumi.CustomResource):
                  authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
                  connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1523,6 +1576,12 @@ class Instance(pulumi.CustomResource):
                Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[_builtins.str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
                When a`terraform destroy` or `pulumi up` would delete the instance,
                the command will fail if this field is not set to false in Terraform state.
@@ -1814,6 +1873,7 @@ class Instance(pulumi.CustomResource):
                  authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
                  connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1847,6 +1907,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["connect_mode"] = connect_mode
             __props__.__dict__["customer_managed_key"] = customer_managed_key
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
@@ -1902,6 +1963,7 @@ class Instance(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             current_location_id: pulumi.Input[Optional[_builtins.str]] = None,
             customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1962,6 +2024,12 @@ class Instance(pulumi.CustomResource):
                and can change after a failover event.
         :param pulumi.Input[_builtins.str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
                When a`terraform destroy` or `pulumi up` would delete the instance,
                the command will fail if this field is not set to false in Terraform state.
@@ -2061,6 +2129,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["current_location_id"] = current_location_id
         __props__.__dict__["customer_managed_key"] = customer_managed_key
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
@@ -2171,6 +2240,19 @@ class Instance(pulumi.CustomResource):
         instance. If this is provided, CMEK is enabled.
         """
         return pulumi.get(self, "customer_managed_key")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

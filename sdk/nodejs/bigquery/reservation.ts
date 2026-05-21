@@ -90,6 +90,15 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public readonly concurrency: pulumi.Output<number | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
     declare public readonly edition: pulumi.Output<string>;
@@ -239,6 +248,7 @@ export class Reservation extends pulumi.CustomResource {
             const state = argsOrState as ReservationState | undefined;
             resourceInputs["autoscale"] = state?.autoscale;
             resourceInputs["concurrency"] = state?.concurrency;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["edition"] = state?.edition;
             resourceInputs["ignoreIdleSlots"] = state?.ignoreIdleSlots;
             resourceInputs["location"] = state?.location;
@@ -259,6 +269,7 @@ export class Reservation extends pulumi.CustomResource {
             }
             resourceInputs["autoscale"] = args?.autoscale;
             resourceInputs["concurrency"] = args?.concurrency;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["edition"] = args?.edition;
             resourceInputs["ignoreIdleSlots"] = args?.ignoreIdleSlots;
             resourceInputs["location"] = args?.location;
@@ -291,6 +302,15 @@ export interface ReservationState {
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      */
     concurrency?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
@@ -440,6 +460,15 @@ export interface ReservationArgs {
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      */
     concurrency?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */

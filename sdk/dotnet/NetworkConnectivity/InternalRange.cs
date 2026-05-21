@@ -302,6 +302,17 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<Outputs.InternalRangeAllocationOptions?> AllocationOptions { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Output("description")]
@@ -480,6 +491,17 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<Inputs.InternalRangeAllocationOptionsArgs>? AllocationOptions { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
@@ -616,6 +638,17 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Input("allocationOptions")]
         public Input<Inputs.InternalRangeAllocationOptionsGetArgs>? AllocationOptions { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// An optional description of this resource.

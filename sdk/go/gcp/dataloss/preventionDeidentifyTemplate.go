@@ -220,6 +220,13 @@ type PreventionDeidentifyTemplate struct {
 	// Configuration of the deidentify template
 	// Structure is documented below.
 	DeidentifyConfig PreventionDeidentifyTemplateDeidentifyConfigOutput `pulumi:"deidentifyConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the template.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User set display name of the template.
@@ -281,6 +288,13 @@ type preventionDeidentifyTemplateState struct {
 	// Configuration of the deidentify template
 	// Structure is documented below.
 	DeidentifyConfig *PreventionDeidentifyTemplateDeidentifyConfig `pulumi:"deidentifyConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the template.
 	Description *string `pulumi:"description"`
 	// User set display name of the template.
@@ -307,6 +321,13 @@ type PreventionDeidentifyTemplateState struct {
 	// Configuration of the deidentify template
 	// Structure is documented below.
 	DeidentifyConfig PreventionDeidentifyTemplateDeidentifyConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the template.
 	Description pulumi.StringPtrInput
 	// User set display name of the template.
@@ -335,6 +356,13 @@ type preventionDeidentifyTemplateArgs struct {
 	// Configuration of the deidentify template
 	// Structure is documented below.
 	DeidentifyConfig PreventionDeidentifyTemplateDeidentifyConfig `pulumi:"deidentifyConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the template.
 	Description *string `pulumi:"description"`
 	// User set display name of the template.
@@ -356,6 +384,13 @@ type PreventionDeidentifyTemplateArgs struct {
 	// Configuration of the deidentify template
 	// Structure is documented below.
 	DeidentifyConfig PreventionDeidentifyTemplateDeidentifyConfigInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the template.
 	Description pulumi.StringPtrInput
 	// User set display name of the template.
@@ -470,6 +505,16 @@ func (o PreventionDeidentifyTemplateOutput) DeidentifyConfig() PreventionDeident
 	return o.ApplyT(func(v *PreventionDeidentifyTemplate) PreventionDeidentifyTemplateDeidentifyConfigOutput {
 		return v.DeidentifyConfig
 	}).(PreventionDeidentifyTemplateDeidentifyConfigOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PreventionDeidentifyTemplateOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the template.

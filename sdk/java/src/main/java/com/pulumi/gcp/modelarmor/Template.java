@@ -76,6 +76,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.modelarmor.TemplateArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsRaiFilterArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsBasicConfigArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigPiAndJailbreakFilterSettingsArgs;
@@ -142,6 +143,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.modelarmor.TemplateArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsRaiFilterArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs;
  * import java.util.ArrayList;
@@ -200,6 +202,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.modelarmor.TemplateArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsRaiFilterArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsAdvancedConfigArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
@@ -279,6 +282,30 @@ public class Template extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -412,15 +439,15 @@ public class Template extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="templateMetadata", refs={TemplateTemplateMetadata.class}, tree="[0]")
-    private Output</* @Nullable */ TemplateTemplateMetadata> templateMetadata;
+    private Output<TemplateTemplateMetadata> templateMetadata;
 
     /**
      * @return Message describing TemplateMetadata
      * Structure is documented below.
      * 
      */
-    public Output<Optional<TemplateTemplateMetadata>> templateMetadata() {
-        return Codegen.optional(this.templateMetadata);
+    public Output<TemplateTemplateMetadata> templateMetadata() {
+        return this.templateMetadata;
     }
     /**
      * Update time stamp

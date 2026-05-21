@@ -23,6 +23,7 @@ class SharedflowDeploymentArgs:
                  org_id: pulumi.Input[_builtins.str],
                  revision: pulumi.Input[_builtins.str],
                  sharedflow_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SharedflowDeployment resource.
@@ -30,16 +31,23 @@ class SharedflowDeploymentArgs:
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[_builtins.str] revision: Revision of the Sharedflow to be deployed.
-               
+        :param pulumi.Input[_builtins.str] sharedflow_id: Id of the Sharedflow to be deployed.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
-        :param pulumi.Input[_builtins.str] sharedflow_id: Id of the Sharedflow to be deployed.
         :param pulumi.Input[_builtins.str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         """
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "sharedflow_id", sharedflow_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
 
@@ -72,9 +80,6 @@ class SharedflowDeploymentArgs:
     def revision(self) -> pulumi.Input[_builtins.str]:
         """
         Revision of the Sharedflow to be deployed.
-
-
-        - - -
         """
         return pulumi.get(self, "revision")
 
@@ -95,6 +100,25 @@ class SharedflowDeploymentArgs:
         pulumi.set(self, "sharedflow_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -110,6 +134,7 @@ class SharedflowDeploymentArgs:
 @pulumi.input_type
 class _SharedflowDeploymentState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
@@ -118,15 +143,22 @@ class _SharedflowDeploymentState:
         """
         Input properties used for looking up and filtering SharedflowDeployment resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[_builtins.str] revision: Revision of the Sharedflow to be deployed.
-               
-               
-               - - -
         :param pulumi.Input[_builtins.str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         :param pulumi.Input[_builtins.str] sharedflow_id: Id of the Sharedflow to be deployed.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if org_id is not None:
@@ -137,6 +169,25 @@ class _SharedflowDeploymentState:
             pulumi.set(__self__, "service_account", service_account)
         if sharedflow_id is not None:
             pulumi.set(__self__, "sharedflow_id", sharedflow_id)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -167,9 +218,6 @@ class _SharedflowDeploymentState:
     def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Revision of the Sharedflow to be deployed.
-
-
-        - - -
         """
         return pulumi.get(self, "revision")
 
@@ -208,6 +256,7 @@ class SharedflowDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
@@ -240,12 +289,17 @@ class SharedflowDeployment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[_builtins.str] revision: Revision of the Sharedflow to be deployed.
-               
-               
-               - - -
         :param pulumi.Input[_builtins.str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         :param pulumi.Input[_builtins.str] sharedflow_id: Id of the Sharedflow to be deployed.
         """
@@ -294,6 +348,7 @@ class SharedflowDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
@@ -308,6 +363,7 @@ class SharedflowDeployment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SharedflowDeploymentArgs.__new__(SharedflowDeploymentArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
             __props__.__dict__["environment"] = environment
@@ -331,6 +387,7 @@ class SharedflowDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             revision: pulumi.Input[Optional[_builtins.str]] = None,
@@ -343,12 +400,17 @@ class SharedflowDeployment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[_builtins.str] revision: Revision of the Sharedflow to be deployed.
-               
-               
-               - - -
         :param pulumi.Input[_builtins.str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         :param pulumi.Input[_builtins.str] sharedflow_id: Id of the Sharedflow to be deployed.
         """
@@ -356,12 +418,28 @@ class SharedflowDeployment(pulumi.CustomResource):
 
         __props__ = _SharedflowDeploymentState.__new__(_SharedflowDeploymentState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["environment"] = environment
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["revision"] = revision
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["sharedflow_id"] = sharedflow_id
         return SharedflowDeployment(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -384,9 +462,6 @@ class SharedflowDeployment(pulumi.CustomResource):
     def revision(self) -> pulumi.Output[_builtins.str]:
         """
         Revision of the Sharedflow to be deployed.
-
-
-        - - -
         """
         return pulumi.get(self, "revision")
 

@@ -75,6 +75,13 @@ import (
 type RestoreChannel struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this RestoreChannel.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The project where Backups will be restored.
@@ -155,6 +162,13 @@ func GetRestoreChannel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RestoreChannel resources.
 type restoreChannelState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this RestoreChannel.
 	Description *string `pulumi:"description"`
 	// The project where Backups will be restored.
@@ -195,6 +209,13 @@ type restoreChannelState struct {
 }
 
 type RestoreChannelState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User specified descriptive string for this RestoreChannel.
 	Description pulumi.StringPtrInput
 	// The project where Backups will be restored.
@@ -239,6 +260,13 @@ func (RestoreChannelState) ElementType() reflect.Type {
 }
 
 type restoreChannelArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this RestoreChannel.
 	Description *string `pulumi:"description"`
 	// The project where Backups will be restored.
@@ -263,6 +291,13 @@ type restoreChannelArgs struct {
 
 // The set of arguments for constructing a RestoreChannel resource.
 type RestoreChannelArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User specified descriptive string for this RestoreChannel.
 	Description pulumi.StringPtrInput
 	// The project where Backups will be restored.
@@ -370,6 +405,16 @@ func (o RestoreChannelOutput) ToRestoreChannelOutput() RestoreChannelOutput {
 
 func (o RestoreChannelOutput) ToRestoreChannelOutputWithContext(ctx context.Context) RestoreChannelOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RestoreChannelOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreChannel) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User specified descriptive string for this RestoreChannel.

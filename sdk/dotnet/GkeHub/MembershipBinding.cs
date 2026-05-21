@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
     ///     {
-    ///         MembershipId = "tf-test-membership_12223",
+    ///         MembershipId = "tf-test-membership_37426",
     ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
     ///         {
     ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -60,12 +60,12 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
-    ///         ScopeId = "tf-test-scope_49547",
+    ///         ScopeId = "tf-test-scope_67903",
     ///     });
     /// 
     ///     var membershipBinding = new Gcp.GkeHub.MembershipBinding("membership_binding", new()
     ///     {
-    ///         MembershipBindingId = "tf-test-membership-binding_48675",
+    ///         MembershipBindingId = "tf-test-membership-binding_40816",
     ///         Scope = scope.Name,
     ///         MembershipId = membership.MembershipId,
     ///         Location = "global",
@@ -117,6 +117,17 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -248,6 +259,17 @@ namespace Pulumi.Gcp.GkeHub
 
     public sealed class MembershipBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -314,6 +336,17 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

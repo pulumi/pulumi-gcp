@@ -172,6 +172,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -240,6 +249,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["capacityConfig"] = state?.capacityConfig;
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["gcpConfig"] = state?.gcpConfig;
             resourceInputs["labels"] = state?.labels;
@@ -268,6 +278,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["brokerCapacityConfig"] = args?.brokerCapacityConfig;
             resourceInputs["capacityConfig"] = args?.capacityConfig;
             resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["gcpConfig"] = args?.gcpConfig;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -310,6 +321,15 @@ export interface ClusterState {
      * The time when the cluster was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -381,6 +401,15 @@ export interface ClusterArgs {
      * The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
      */
     clusterId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
      * Structure is documented below.

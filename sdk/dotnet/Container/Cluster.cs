@@ -302,6 +302,19 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterDefaultSnatStatus> DefaultSnatStatus { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// &lt;a name="NestedDefaultSnatStatus"&gt;&lt;/a&gt;The `DefaultSnatStatus` block supports
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Whether Terraform will be prevented from
         /// destroying the cluster.  Deleting this cluster via `terraform destroy` or
         /// `pulumi up` will only succeed if this field is `False` in the Terraform
@@ -756,8 +769,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-        /// 
-        /// &lt;a name="NestedDefaultSnatStatus"&gt;&lt;/a&gt;The `DefaultSnatStatus` block supports
         /// </summary>
         [Output("rbacBindingConfig")]
         public Output<Outputs.ClusterRbacBindingConfig> RbacBindingConfig { get; private set; } = null!;
@@ -811,7 +822,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterSecretManagerConfig?> SecretManagerConfig { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1078,6 +1089,19 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("defaultSnatStatus")]
         public Input<Inputs.ClusterDefaultSnatStatusArgs>? DefaultSnatStatus { get; set; }
+
+        /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// &lt;a name="NestedDefaultSnatStatus"&gt;&lt;/a&gt;The `DefaultSnatStatus` block supports
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from
@@ -1511,8 +1535,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-        /// 
-        /// &lt;a name="NestedDefaultSnatStatus"&gt;&lt;/a&gt;The `DefaultSnatStatus` block supports
         /// </summary>
         [Input("rbacBindingConfig")]
         public Input<Inputs.ClusterRbacBindingConfigArgs>? RbacBindingConfig { get; set; }
@@ -1572,7 +1594,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterSecretManagerConfigArgs>? SecretManagerConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1773,6 +1795,19 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("defaultSnatStatus")]
         public Input<Inputs.ClusterDefaultSnatStatusGetArgs>? DefaultSnatStatus { get; set; }
+
+        /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// &lt;a name="NestedDefaultSnatStatus"&gt;&lt;/a&gt;The `DefaultSnatStatus` block supports
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from
@@ -2261,8 +2296,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-        /// 
-        /// &lt;a name="NestedDefaultSnatStatus"&gt;&lt;/a&gt;The `DefaultSnatStatus` block supports
         /// </summary>
         [Input("rbacBindingConfig")]
         public Input<Inputs.ClusterRbacBindingConfigGetArgs>? RbacBindingConfig { get; set; }
@@ -2322,7 +2355,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterSecretManagerConfigGetArgs>? SecretManagerConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
         /// Structure is documented below.
         /// </summary>

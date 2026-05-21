@@ -134,16 +134,12 @@ export class Table extends pulumi.CustomResource {
      */
     declare public readonly datasetId: pulumi.Output<string>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
-     */
-    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
-    /**
-     * The field description.
-     */
-    declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
      *
      * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
      *
@@ -160,6 +156,19 @@ export class Table extends pulumi.CustomResource {
      * `external_data_configuration.connection_id`, schemas must be specified
      * with `external_data_configuration.schema`. Otherwise, schemas must be
      * specified with this top-level field.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `=destroy` or `=update` that would delete the instance will fail.
+     */
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    /**
+     * The field description.
+     */
+    declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -345,6 +354,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["clusterings"] = state?.clusterings;
             resourceInputs["creationTime"] = state?.creationTime;
             resourceInputs["datasetId"] = state?.datasetId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -391,6 +401,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["biglakeConfiguration"] = args?.biglakeConfiguration;
             resourceInputs["clusterings"] = args?.clusterings;
             resourceInputs["datasetId"] = args?.datasetId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
             resourceInputs["encryptionConfiguration"] = args?.encryptionConfiguration;
@@ -459,16 +470,12 @@ export interface TableState {
      */
     datasetId?: pulumi.Input<string | undefined>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
-     */
-    deletionProtection?: pulumi.Input<boolean | undefined>;
-    /**
-     * The field description.
-     */
-    description?: pulumi.Input<string | undefined>;
-    /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
      *
      * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
      *
@@ -485,6 +492,19 @@ export interface TableState {
      * `external_data_configuration.connection_id`, schemas must be specified
      * with `external_data_configuration.schema`. Otherwise, schemas must be
      * specified with this top-level field.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `=destroy` or `=update` that would delete the instance will fail.
+     */
+    deletionProtection?: pulumi.Input<boolean | undefined>;
+    /**
+     * The field description.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -673,6 +693,31 @@ export interface TableArgs {
      * Changing this forces a new resource to be created.
      */
     datasetId: pulumi.Input<string>;
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+     *
+     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn't changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
+     *
+     * ~>**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `=destroy` or `=update` that would delete the instance will fail.

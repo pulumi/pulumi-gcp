@@ -206,6 +206,15 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. An arbitrary user-provided name for the Application resource.
      * Cannot exceed 64 characters.
      */
@@ -268,6 +277,7 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
             const state = argsOrState as SecurityGatewayApplicationState | undefined;
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["endpointMatchers"] = state?.endpointMatchers;
             resourceInputs["name"] = state?.name;
@@ -285,6 +295,7 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
                 throw new Error("Missing required property 'securityGatewayId'");
             }
             resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["endpointMatchers"] = args?.endpointMatchers;
             resourceInputs["project"] = args?.project;
@@ -315,6 +326,15 @@ export interface SecurityGatewayApplicationState {
      * Output only. Timestamp when the resource was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. An arbitrary user-provided name for the Application resource.
      * Cannot exceed 64 characters.
@@ -375,6 +395,15 @@ export interface SecurityGatewayApplicationArgs {
      * * Must end with a number or letter.
      */
     applicationId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. An arbitrary user-provided name for the Application resource.
      * Cannot exceed 64 characters.

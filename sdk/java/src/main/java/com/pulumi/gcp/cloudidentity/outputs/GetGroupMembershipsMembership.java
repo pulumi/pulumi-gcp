@@ -26,6 +26,16 @@ public final class GetGroupMembershipsMembership {
      */
     private String createTime;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
      * 
      */
@@ -75,6 +85,18 @@ public final class GetGroupMembershipsMembership {
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -137,6 +159,7 @@ public final class GetGroupMembershipsMembership {
     public static final class Builder {
         private Boolean createIgnoreAlreadyExists;
         private String createTime;
+        private String deletionPolicy;
         private String group;
         private List<GetGroupMembershipsMembershipMemberKey> memberKeys;
         private String name;
@@ -149,6 +172,7 @@ public final class GetGroupMembershipsMembership {
     	      Objects.requireNonNull(defaults);
     	      this.createIgnoreAlreadyExists = defaults.createIgnoreAlreadyExists;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.group = defaults.group;
     	      this.memberKeys = defaults.memberKeys;
     	      this.name = defaults.name;
@@ -172,6 +196,14 @@ public final class GetGroupMembershipsMembership {
               throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -243,6 +275,7 @@ public final class GetGroupMembershipsMembership {
             final var _resultValue = new GetGroupMembershipsMembership();
             _resultValue.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.group = group;
             _resultValue.memberKeys = memberKeys;
             _resultValue.name = name;

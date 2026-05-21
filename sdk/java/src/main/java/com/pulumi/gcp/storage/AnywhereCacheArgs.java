@@ -6,6 +6,7 @@ package com.pulumi.gcp.storage;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -51,6 +52,46 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    @Import(name="ingestOnWrite")
+    private @Nullable Output<Boolean> ingestOnWrite;
+
+    /**
+     * @return Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    public Optional<Output<Boolean>> ingestOnWrite() {
+        return Optional.ofNullable(this.ingestOnWrite);
+    }
+
+    /**
      * The TTL of all cache entries in whole seconds. e.g., &#34;7200s&#34;. It defaults to `86400s`
      * 
      */
@@ -85,6 +126,8 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
     private AnywhereCacheArgs(AnywhereCacheArgs $) {
         this.admissionPolicy = $.admissionPolicy;
         this.bucket = $.bucket;
+        this.deletionPolicy = $.deletionPolicy;
+        this.ingestOnWrite = $.ingestOnWrite;
         this.ttl = $.ttl;
         this.zone = $.zone;
     }
@@ -151,6 +194,58 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
+         * @param ingestOnWrite Whether or not the cache ingests data as the data is written to the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestOnWrite(@Nullable Output<Boolean> ingestOnWrite) {
+            $.ingestOnWrite = ingestOnWrite;
+            return this;
+        }
+
+        /**
+         * @param ingestOnWrite Whether or not the cache ingests data as the data is written to the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestOnWrite(Boolean ingestOnWrite) {
+            return ingestOnWrite(Output.of(ingestOnWrite));
         }
 
         /**

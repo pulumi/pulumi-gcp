@@ -20,6 +20,7 @@ __all__ = ['RegionSslPolicyArgs', 'RegionSslPolicy']
 class RegionSslPolicyArgs:
     def __init__(__self__, *,
                  custom_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +37,12 @@ class RegionSslPolicyArgs:
                for which ciphers are available to use. **Note**: this argument
                *must* be present when using the `CUSTOM` profile. This argument
                *must not* be present when using any other profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
                to establish a connection with the load balancer. When set to
@@ -66,6 +73,8 @@ class RegionSslPolicyArgs:
         """
         if custom_features is not None:
             pulumi.set(__self__, "custom_features", custom_features)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if min_tls_version is not None:
@@ -96,6 +105,23 @@ class RegionSslPolicyArgs:
     @custom_features.setter
     def custom_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_features", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -196,6 +222,7 @@ class _RegionSslPolicyState:
     def __init__(__self__, *,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -216,6 +243,12 @@ class _RegionSslPolicyState:
                for which ciphers are available to use. **Note**: this argument
                *must* be present when using the `CUSTOM` profile. This argument
                *must not* be present when using any other profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: The list of features enabled in the SSL policy.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
@@ -252,6 +285,8 @@ class _RegionSslPolicyState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if custom_features is not None:
             pulumi.set(__self__, "custom_features", custom_features)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled_features is not None:
@@ -300,6 +335,23 @@ class _RegionSslPolicyState:
     @custom_features.setter
     def custom_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_features", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -439,6 +491,7 @@ class RegionSslPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -484,6 +537,12 @@ class RegionSslPolicy(pulumi.CustomResource):
                for which ciphers are available to use. **Note**: this argument
                *must* be present when using the `CUSTOM` profile. This argument
                *must not* be present when using any other profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
                to establish a connection with the load balancer. When set to
@@ -563,6 +622,7 @@ class RegionSslPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -579,6 +639,7 @@ class RegionSslPolicy(pulumi.CustomResource):
             __props__ = RegionSslPolicyArgs.__new__(RegionSslPolicyArgs)
 
             __props__.__dict__["custom_features"] = custom_features
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["min_tls_version"] = min_tls_version
             __props__.__dict__["name"] = name
@@ -601,6 +662,7 @@ class RegionSslPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             custom_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -625,6 +687,12 @@ class RegionSslPolicy(pulumi.CustomResource):
                for which ciphers are available to use. **Note**: this argument
                *must* be present when using the `CUSTOM` profile. This argument
                *must not* be present when using any other profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: The list of features enabled in the SSL policy.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
@@ -663,6 +731,7 @@ class RegionSslPolicy(pulumi.CustomResource):
 
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["custom_features"] = custom_features
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled_features"] = enabled_features
         __props__.__dict__["fingerprint"] = fingerprint
@@ -695,6 +764,19 @@ class RegionSslPolicy(pulumi.CustomResource):
         *must not* be present when using any other profile.
         """
         return pulumi.get(self, "custom_features")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -27,7 +27,7 @@ class GetDataStoreResult:
     """
     A collection of values returned by getDataStore.
     """
-    def __init__(__self__, advanced_site_search_configs=None, content_config=None, create_advanced_site_search=None, create_time=None, data_store_id=None, default_schema_id=None, display_name=None, document_processing_configs=None, id=None, industry_vertical=None, kms_key_name=None, location=None, name=None, project=None, skip_default_schema_creation=None, solution_types=None):
+    def __init__(__self__, advanced_site_search_configs=None, content_config=None, create_advanced_site_search=None, create_time=None, data_store_id=None, default_schema_id=None, deletion_policy=None, display_name=None, document_processing_configs=None, id=None, industry_vertical=None, kms_key_name=None, location=None, name=None, project=None, skip_default_schema_creation=None, solution_types=None):
         if advanced_site_search_configs and not isinstance(advanced_site_search_configs, list):
             raise TypeError("Expected argument 'advanced_site_search_configs' to be a list")
         pulumi.set(__self__, "advanced_site_search_configs", advanced_site_search_configs)
@@ -46,6 +46,9 @@ class GetDataStoreResult:
         if default_schema_id and not isinstance(default_schema_id, str):
             raise TypeError("Expected argument 'default_schema_id' to be a str")
         pulumi.set(__self__, "default_schema_id", default_schema_id)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -106,6 +109,11 @@ class GetDataStoreResult:
     @pulumi.getter(name="defaultSchemaId")
     def default_schema_id(self) -> _builtins.str:
         return pulumi.get(self, "default_schema_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -173,6 +181,7 @@ class AwaitableGetDataStoreResult(GetDataStoreResult):
             create_time=self.create_time,
             data_store_id=self.data_store_id,
             default_schema_id=self.default_schema_id,
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             document_processing_configs=self.document_processing_configs,
             id=self.id,
@@ -236,6 +245,7 @@ def get_data_store(data_store_id: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         data_store_id=pulumi.get(__ret__, 'data_store_id'),
         default_schema_id=pulumi.get(__ret__, 'default_schema_id'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         document_processing_configs=pulumi.get(__ret__, 'document_processing_configs'),
         id=pulumi.get(__ret__, 'id'),
@@ -296,6 +306,7 @@ def get_data_store_output(data_store_id: pulumi.Input[Optional[Optional[_builtin
         create_time=pulumi.get(__response__, 'create_time'),
         data_store_id=pulumi.get(__response__, 'data_store_id'),
         default_schema_id=pulumi.get(__response__, 'default_schema_id'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         document_processing_configs=pulumi.get(__response__, 'document_processing_configs'),
         id=pulumi.get(__response__, 'id'),

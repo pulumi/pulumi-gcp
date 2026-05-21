@@ -235,6 +235,13 @@ type ParameterVersion struct {
 
 	// The time at which the Parameter Version was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
@@ -302,6 +309,13 @@ func GetParameterVersion(ctx *pulumi.Context,
 type parameterVersionState struct {
 	// The time at which the Parameter Version was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
 	Disabled *bool `pulumi:"disabled"`
 	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
@@ -324,6 +338,13 @@ type parameterVersionState struct {
 type ParameterVersionState struct {
 	// The time at which the Parameter Version was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
 	Disabled pulumi.BoolPtrInput
 	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
@@ -348,6 +369,13 @@ func (ParameterVersionState) ElementType() reflect.Type {
 }
 
 type parameterVersionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
 	Disabled *bool `pulumi:"disabled"`
 	// Parameter Manager Parameter resource.
@@ -361,6 +389,13 @@ type parameterVersionArgs struct {
 
 // The set of arguments for constructing a ParameterVersion resource.
 type ParameterVersionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
 	Disabled pulumi.BoolPtrInput
 	// Parameter Manager Parameter resource.
@@ -462,6 +497,16 @@ func (o ParameterVersionOutput) ToParameterVersionOutputWithContext(ctx context.
 // The time at which the Parameter Version was created.
 func (o ParameterVersionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ParameterVersion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ParameterVersionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ParameterVersion) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The current state of Parameter Version. This field is only applicable for updating Parameter Version.

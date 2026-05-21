@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary_network = new Network("primary-network", NetworkArgs.builder()
- *             .name("tf-test-my-vpc-network_79580")
+ *             .name("tf-test-my-vpc-network_44154")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var primary = new Transport("primary", TransportArgs.builder()
- *             .name("tf-test-basic-transport_98863")
+ *             .name("tf-test-basic-transport_90221")
  *             .region("us-east4")
  *             .description("A sample transport")
  *             .remoteProfile(String.format("https://networkconnectivity.googleapis.com/v1beta/%s/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.id()))
@@ -160,6 +160,30 @@ public class Transport extends com.pulumi.resources.CustomResource {
      */
     public Output<String> bandwidth() {
         return this.bandwidth;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * An optional description of this resource.

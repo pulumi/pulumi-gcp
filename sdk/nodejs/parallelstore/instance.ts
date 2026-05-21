@@ -154,6 +154,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly daosVersion: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Parallelstore Instance deployment type.
      * Possible values:
      * DEPLOYMENT_TYPE_UNSPECIFIED
@@ -295,6 +304,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["capacityGib"] = state?.capacityGib;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["daosVersion"] = state?.daosVersion;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deploymentType"] = state?.deploymentType;
             resourceInputs["description"] = state?.description;
             resourceInputs["directoryStripeLevel"] = state?.directoryStripeLevel;
@@ -323,6 +333,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["capacityGib"] = args?.capacityGib;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deploymentType"] = args?.deploymentType;
             resourceInputs["description"] = args?.description;
             resourceInputs["directoryStripeLevel"] = args?.directoryStripeLevel;
@@ -371,6 +382,15 @@ export interface InstanceState {
      * The version of DAOS software running in the instance.
      */
     daosVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Parallelstore Instance deployment type.
      * Possible values:
@@ -505,6 +525,15 @@ export interface InstanceArgs {
      * Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      */
     capacityGib: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Parallelstore Instance deployment type.
      * Possible values:

@@ -64,6 +64,7 @@ type LookupExternalAccessRuleArgs struct {
 type LookupExternalAccessRuleResult struct {
 	Action              string                                    `pulumi:"action"`
 	CreateTime          string                                    `pulumi:"createTime"`
+	DeletionPolicy      string                                    `pulumi:"deletionPolicy"`
 	Description         string                                    `pulumi:"description"`
 	DestinationIpRanges []GetExternalAccessRuleDestinationIpRange `pulumi:"destinationIpRanges"`
 	DestinationPorts    []string                                  `pulumi:"destinationPorts"`
@@ -122,6 +123,10 @@ func (o LookupExternalAccessRuleResultOutput) Action() pulumi.StringOutput {
 
 func (o LookupExternalAccessRuleResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalAccessRuleResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupExternalAccessRuleResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExternalAccessRuleResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupExternalAccessRuleResultOutput) Description() pulumi.StringOutput {

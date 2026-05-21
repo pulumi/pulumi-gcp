@@ -64,7 +64,9 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly ImmutableArray<Outputs.GetBackupPlanBackupRuleResult> BackupRules;
         public readonly string BackupVault;
         public readonly string BackupVaultServiceAccount;
+        public readonly ImmutableArray<Outputs.GetBackupPlanComputeInstanceBackupPlanPropertyResult> ComputeInstanceBackupPlanProperties;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetBackupPlanDiskBackupPlanPropertyResult> DiskBackupPlanProperties;
         /// <summary>
@@ -90,7 +92,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string backupVaultServiceAccount,
 
+            ImmutableArray<Outputs.GetBackupPlanComputeInstanceBackupPlanPropertyResult> computeInstanceBackupPlanProperties,
+
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -118,7 +124,9 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             BackupRules = backupRules;
             BackupVault = backupVault;
             BackupVaultServiceAccount = backupVaultServiceAccount;
+            ComputeInstanceBackupPlanProperties = computeInstanceBackupPlanProperties;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DiskBackupPlanProperties = diskBackupPlanProperties;
             Id = id;

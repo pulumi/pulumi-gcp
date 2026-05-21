@@ -77,6 +77,13 @@ import (
 type SshPublicKey struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An expiration time in microseconds since epoch.
 	ExpirationTimeUsec pulumi.StringPtrOutput `pulumi:"expirationTimeUsec"`
 	// The SHA-256 fingerprint of the SSH public key.
@@ -125,6 +132,13 @@ func GetSshPublicKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SshPublicKey resources.
 type sshPublicKeyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An expiration time in microseconds since epoch.
 	ExpirationTimeUsec *string `pulumi:"expirationTimeUsec"`
 	// The SHA-256 fingerprint of the SSH public key.
@@ -138,6 +152,13 @@ type sshPublicKeyState struct {
 }
 
 type SshPublicKeyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An expiration time in microseconds since epoch.
 	ExpirationTimeUsec pulumi.StringPtrInput
 	// The SHA-256 fingerprint of the SSH public key.
@@ -155,6 +176,13 @@ func (SshPublicKeyState) ElementType() reflect.Type {
 }
 
 type sshPublicKeyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An expiration time in microseconds since epoch.
 	ExpirationTimeUsec *string `pulumi:"expirationTimeUsec"`
 	// Public key text in SSH format, defined by RFC4253 section 6.6.
@@ -167,6 +195,13 @@ type sshPublicKeyArgs struct {
 
 // The set of arguments for constructing a SshPublicKey resource.
 type SshPublicKeyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An expiration time in microseconds since epoch.
 	ExpirationTimeUsec pulumi.StringPtrInput
 	// Public key text in SSH format, defined by RFC4253 section 6.6.
@@ -262,6 +297,16 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutput() SshPublicKeyOutput {
 
 func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SshPublicKeyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshPublicKey) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An expiration time in microseconds since epoch.

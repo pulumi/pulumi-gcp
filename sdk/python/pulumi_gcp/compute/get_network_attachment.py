@@ -27,7 +27,7 @@ class GetNetworkAttachmentResult:
     """
     A collection of values returned by getNetworkAttachment.
     """
-    def __init__(__self__, connection_endpoints=None, connection_preference=None, creation_timestamp=None, description=None, fingerprint=None, id=None, kind=None, name=None, network=None, producer_accept_lists=None, producer_reject_lists=None, project=None, region=None, self_link=None, self_link_with_id=None, subnetworks=None):
+    def __init__(__self__, connection_endpoints=None, connection_preference=None, creation_timestamp=None, deletion_policy=None, description=None, fingerprint=None, id=None, kind=None, name=None, network=None, producer_accept_lists=None, producer_reject_lists=None, project=None, region=None, self_link=None, self_link_with_id=None, subnetworks=None):
         if connection_endpoints and not isinstance(connection_endpoints, list):
             raise TypeError("Expected argument 'connection_endpoints' to be a list")
         pulumi.set(__self__, "connection_endpoints", connection_endpoints)
@@ -37,6 +37,9 @@ class GetNetworkAttachmentResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -91,6 +94,11 @@ class GetNetworkAttachmentResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> _builtins.str:
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -167,6 +175,7 @@ class AwaitableGetNetworkAttachmentResult(GetNetworkAttachmentResult):
             connection_endpoints=self.connection_endpoints,
             connection_preference=self.connection_preference,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             fingerprint=self.fingerprint,
             id=self.id,
@@ -221,6 +230,7 @@ def get_network_attachment(name: Optional[_builtins.str] = None,
         connection_endpoints=pulumi.get(__ret__, 'connection_endpoints'),
         connection_preference=pulumi.get(__ret__, 'connection_preference'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         id=pulumi.get(__ret__, 'id'),
@@ -272,6 +282,7 @@ def get_network_attachment_output(name: pulumi.Input[Optional[_builtins.str]] = 
         connection_endpoints=pulumi.get(__response__, 'connection_endpoints'),
         connection_preference=pulumi.get(__response__, 'connection_preference'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         fingerprint=pulumi.get(__response__, 'fingerprint'),
         id=pulumi.get(__response__, 'id'),

@@ -70,6 +70,13 @@ type Taxonomy struct {
 	// defaults to an empty list.
 	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes pulumi.StringArrayOutput `pulumi:"activatedPolicyTypes"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -127,6 +134,13 @@ type taxonomyState struct {
 	// defaults to an empty list.
 	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes []string `pulumi:"activatedPolicyTypes"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -152,6 +166,13 @@ type TaxonomyState struct {
 	// defaults to an empty list.
 	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -181,6 +202,13 @@ type taxonomyArgs struct {
 	// defaults to an empty list.
 	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes []string `pulumi:"activatedPolicyTypes"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -204,6 +232,13 @@ type TaxonomyArgs struct {
 	// defaults to an empty list.
 	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -313,6 +348,16 @@ func (o TaxonomyOutput) ToTaxonomyOutputWithContext(ctx context.Context) Taxonom
 // Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 func (o TaxonomyOutput) ActivatedPolicyTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringArrayOutput { return v.ActivatedPolicyTypes }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TaxonomyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of this taxonomy. It must: contain only unicode characters,

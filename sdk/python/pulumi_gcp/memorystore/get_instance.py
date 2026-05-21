@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_policy=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -46,6 +46,9 @@ class GetInstanceResult:
         if cross_instance_replication_configs and not isinstance(cross_instance_replication_configs, list):
             raise TypeError("Expected argument 'cross_instance_replication_configs' to be a list")
         pulumi.set(__self__, "cross_instance_replication_configs", cross_instance_replication_configs)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection_enabled and not isinstance(deletion_protection_enabled, bool):
             raise TypeError("Expected argument 'deletion_protection_enabled' to be a bool")
         pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
@@ -193,6 +196,11 @@ class GetInstanceResult:
     @pulumi.getter(name="crossInstanceReplicationConfigs")
     def cross_instance_replication_configs(self) -> Sequence['outputs.GetInstanceCrossInstanceReplicationConfigResult']:
         return pulumi.get(self, "cross_instance_replication_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -405,6 +413,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             backup_collection=self.backup_collection,
             create_time=self.create_time,
             cross_instance_replication_configs=self.cross_instance_replication_configs,
+            deletion_policy=self.deletion_policy,
             deletion_protection_enabled=self.deletion_protection_enabled,
             desired_auto_created_endpoints=self.desired_auto_created_endpoints,
             desired_psc_auto_connections=self.desired_psc_auto_connections,
@@ -484,6 +493,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         backup_collection=pulumi.get(__ret__, 'backup_collection'),
         create_time=pulumi.get(__ret__, 'create_time'),
         cross_instance_replication_configs=pulumi.get(__ret__, 'cross_instance_replication_configs'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
         desired_auto_created_endpoints=pulumi.get(__ret__, 'desired_auto_created_endpoints'),
         desired_psc_auto_connections=pulumi.get(__ret__, 'desired_psc_auto_connections'),
@@ -560,6 +570,7 @@ def get_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = Non
         backup_collection=pulumi.get(__response__, 'backup_collection'),
         create_time=pulumi.get(__response__, 'create_time'),
         cross_instance_replication_configs=pulumi.get(__response__, 'cross_instance_replication_configs'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection_enabled=pulumi.get(__response__, 'deletion_protection_enabled'),
         desired_auto_created_endpoints=pulumi.get(__response__, 'desired_auto_created_endpoints'),
         desired_psc_auto_connections=pulumi.get(__response__, 'desired_psc_auto_connections'),

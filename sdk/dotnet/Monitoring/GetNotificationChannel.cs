@@ -339,6 +339,7 @@ namespace Pulumi.Gcp.Monitoring
     [OutputType]
     public sealed class GetNotificationChannelResult
     {
+        public readonly string DeletionPolicy;
         /// <summary>
         /// An optional human-readable description of this notification channel.
         /// </summary>
@@ -376,6 +377,8 @@ namespace Pulumi.Gcp.Monitoring
 
         [OutputConstructor]
         private GetNotificationChannelResult(
+            string deletionPolicy,
+
             string description,
 
             string? displayName,
@@ -400,6 +403,7 @@ namespace Pulumi.Gcp.Monitoring
 
             string verificationStatus)
         {
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DisplayName = displayName;
             Enabled = enabled;

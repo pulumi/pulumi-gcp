@@ -116,6 +116,17 @@ namespace Pulumi.Gcp.ManagedKafka
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// `Etag` is used for concurrency control. An `Etag` is returned in the
         /// response to `GetAcl` and `CreateAcl`. Callers are required to put that etag
         /// in the request to `UpdateAcl` to ensure that their change will be applied
@@ -239,6 +250,17 @@ namespace Pulumi.Gcp.ManagedKafka
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         /// </summary>
         [Input("location", required: true)]
@@ -287,6 +309,17 @@ namespace Pulumi.Gcp.ManagedKafka
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// `Etag` is used for concurrency control. An `Etag` is returned in the

@@ -25,6 +25,7 @@ class CxEntityTypeArgs:
                  entities: pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]],
                  kind: pulumi.Input[_builtins.str],
                  auto_expansion_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
                  excluded_phrases: pulumi.Input[Optional[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
@@ -45,6 +46,12 @@ class CxEntityTypeArgs:
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
                Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
                If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
@@ -63,6 +70,8 @@ class CxEntityTypeArgs:
         pulumi.set(__self__, "kind", kind)
         if auto_expansion_mode is not None:
             pulumi.set(__self__, "auto_expansion_mode", auto_expansion_mode)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enable_fuzzy_extraction is not None:
             pulumi.set(__self__, "enable_fuzzy_extraction", enable_fuzzy_extraction)
         if excluded_phrases is not None:
@@ -129,6 +138,23 @@ class CxEntityTypeArgs:
     @auto_expansion_mode.setter
     def auto_expansion_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_expansion_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFuzzyExtraction")
@@ -202,6 +228,7 @@ class CxEntityTypeArgs:
 class _CxEntityTypeState:
     def __init__(__self__, *,
                  auto_expansion_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
                  entities: pulumi.Input[Optional[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]]] = None,
@@ -218,6 +245,12 @@ class _CxEntityTypeState:
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
                Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]] entities: The collection of entity entries associated with the entity type.
@@ -243,6 +276,8 @@ class _CxEntityTypeState:
         """
         if auto_expansion_mode is not None:
             pulumi.set(__self__, "auto_expansion_mode", auto_expansion_mode)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if enable_fuzzy_extraction is not None:
@@ -276,6 +311,23 @@ class _CxEntityTypeState:
     @auto_expansion_mode.setter
     def auto_expansion_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_expansion_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -406,6 +458,7 @@ class CxEntityType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_expansion_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
                  entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]]] = None,
@@ -494,6 +547,12 @@ class CxEntityType(pulumi.CustomResource):
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
                Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]] entities: The collection of entity entries associated with the entity type.
@@ -610,6 +669,7 @@ class CxEntityType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_expansion_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
                  entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]]] = None,
@@ -628,6 +688,7 @@ class CxEntityType(pulumi.CustomResource):
             __props__ = CxEntityTypeArgs.__new__(CxEntityTypeArgs)
 
             __props__.__dict__["auto_expansion_mode"] = auto_expansion_mode
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -654,6 +715,7 @@ class CxEntityType(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_expansion_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
             entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]]] = None,
@@ -674,6 +736,12 @@ class CxEntityType(pulumi.CustomResource):
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
                Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]] entities: The collection of entity entries associated with the entity type.
@@ -702,6 +770,7 @@ class CxEntityType(pulumi.CustomResource):
         __props__ = _CxEntityTypeState.__new__(_CxEntityTypeState)
 
         __props__.__dict__["auto_expansion_mode"] = auto_expansion_mode
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enable_fuzzy_extraction"] = enable_fuzzy_extraction
         __props__.__dict__["entities"] = entities
@@ -723,6 +792,19 @@ class CxEntityType(pulumi.CustomResource):
         Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         """
         return pulumi.get(self, "auto_expansion_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

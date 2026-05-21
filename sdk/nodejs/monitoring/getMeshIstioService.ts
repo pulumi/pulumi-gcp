@@ -81,6 +81,7 @@ export interface GetMeshIstioServiceArgs {
  * A collection of values returned by getMeshIstioService.
  */
 export interface GetMeshIstioServiceResult {
+    readonly deletionPolicy: string;
     /**
      * Name used for UI elements listing this (Monitoring) Service.
      */

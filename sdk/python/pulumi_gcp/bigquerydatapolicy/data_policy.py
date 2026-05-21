@@ -26,6 +26,7 @@ class DataPolicyArgs:
                  location: pulumi.Input[_builtins.str],
                  policy_tag: pulumi.Input[_builtins.str],
                  data_masking_policy: pulumi.Input[Optional['DataPolicyDataMaskingPolicyArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataPolicy resource.
@@ -37,6 +38,12 @@ class DataPolicyArgs:
         :param pulumi.Input[_builtins.str] policy_tag: Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
         :param pulumi.Input['DataPolicyDataMaskingPolicyArgs'] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -46,6 +53,8 @@ class DataPolicyArgs:
         pulumi.set(__self__, "policy_tag", policy_tag)
         if data_masking_policy is not None:
             pulumi.set(__self__, "data_masking_policy", data_masking_policy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -112,6 +121,23 @@ class DataPolicyArgs:
         pulumi.set(self, "data_masking_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -131,6 +157,7 @@ class _DataPolicyState:
                  data_masking_policy: pulumi.Input[Optional['DataPolicyDataMaskingPolicyArgs']] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -143,6 +170,12 @@ class _DataPolicyState:
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[_builtins.str] data_policy_type: The enrollment level of the service.
                Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The name of the location of the data policy.
         :param pulumi.Input[_builtins.str] name: Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
         :param pulumi.Input[_builtins.str] policy_tag: Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
@@ -155,6 +188,8 @@ class _DataPolicyState:
             pulumi.set(__self__, "data_policy_id", data_policy_id)
         if data_policy_type is not None:
             pulumi.set(__self__, "data_policy_type", data_policy_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -201,6 +236,23 @@ class _DataPolicyState:
     @data_policy_type.setter
     def data_policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_policy_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -261,6 +313,7 @@ class DataPolicy(pulumi.CustomResource):
                  data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -361,6 +414,12 @@ class DataPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[_builtins.str] data_policy_type: The enrollment level of the service.
                Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The name of the location of the data policy.
         :param pulumi.Input[_builtins.str] policy_tag: Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -479,6 +538,7 @@ class DataPolicy(pulumi.CustomResource):
                  data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -498,6 +558,7 @@ class DataPolicy(pulumi.CustomResource):
             if data_policy_type is None and not opts.urn:
                 raise TypeError("Missing required property 'data_policy_type'")
             __props__.__dict__["data_policy_type"] = data_policy_type
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -519,6 +580,7 @@ class DataPolicy(pulumi.CustomResource):
             data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
             data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -535,6 +597,12 @@ class DataPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[_builtins.str] data_policy_type: The enrollment level of the service.
                Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The name of the location of the data policy.
         :param pulumi.Input[_builtins.str] name: Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
         :param pulumi.Input[_builtins.str] policy_tag: Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
@@ -548,6 +616,7 @@ class DataPolicy(pulumi.CustomResource):
         __props__.__dict__["data_masking_policy"] = data_masking_policy
         __props__.__dict__["data_policy_id"] = data_policy_id
         __props__.__dict__["data_policy_type"] = data_policy_type
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["policy_tag"] = policy_tag
@@ -579,6 +648,19 @@ class DataPolicy(pulumi.CustomResource):
         Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
         """
         return pulumi.get(self, "data_policy_type")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

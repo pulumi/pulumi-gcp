@@ -20,12 +20,9 @@ import javax.annotation.Nullable;
 /**
  * A chart resource used within a NativeDashboard. Its lifecycle (Create, Update, Delete) is managed via custom methods on the NativeDashboard resource.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about DashboardChart, see:
  * 
- * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dashboardCharts)
+ * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dashboardCharts)
  * * How-to Guides
  *     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
  * 
@@ -43,13 +40,23 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.chronicle.NativeDashboard;
  * import com.pulumi.gcp.chronicle.NativeDashboardArgs;
  * import com.pulumi.gcp.chronicle.inputs.NativeDashboardFilterArgs;
+ * import com.pulumi.gcp.chronicle.inputs.NativeDashboardFilterFilterOperatorAndFieldValueArgs;
  * import com.pulumi.gcp.chronicle.DashboardChart;
  * import com.pulumi.gcp.chronicle.DashboardChartArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartChartLayoutArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartChartDatasourceArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationSeriesArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationSeriesEncodeArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationSeriesDataLabelArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationXAxisArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationYAxisArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartVisualizationLegendArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartDrillDownConfigArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardQueryArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardQueryInputArgs;
  * import com.pulumi.gcp.chronicle.inputs.DashboardChartDashboardQueryInputRelativeTimeArgs;
@@ -320,6 +327,30 @@ public class DashboardChart extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DashboardChartDashboardQuery>> dashboardQuery() {
         return Codegen.optional(this.dashboardQuery);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The ID of the Chronicle instance.

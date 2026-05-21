@@ -459,13 +459,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         },
     ///         Alloydb = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbArgs
     ///         {
-    ///             ClusterId = "tf-test-dbmsalloycluster_39249",
+    ///             ClusterId = "tf-test-dbmsalloycluster_9106",
     ///             Settings = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsArgs
     ///             {
     ///                 InitialUser = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsInitialUserArgs
     ///                 {
-    ///                     User = "alloyuser_74391",
-    ///                     Password = "alloypass_16511",
+    ///                     User = "alloyuser_27169",
+    ///                     Password = "alloypass_75223",
     ///                 },
     ///                 VpcNetwork = @default.Id,
     ///                 Labels = 
@@ -734,6 +734,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Output<string> Dbprovider { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The connection profile display name.
         /// </summary>
         [Output("displayName")]
@@ -807,6 +818,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// The connection profile role.
+        /// Possible values are: `SOURCE`, `DESTINATION`.
+        /// </summary>
+        [Output("role")]
+        public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
         /// The current connection profile state.
@@ -886,6 +904,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Input<string> ConnectionProfileId { get; set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The connection profile display name.
         /// </summary>
         [Input("displayName")]
@@ -940,6 +969,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The connection profile role.
+        /// Possible values are: `SOURCE`, `DESTINATION`.
+        /// </summary>
+        [Input("role")]
+        public Input<string>? Role { get; set; }
+
         public ConnectionProfileArgs()
         {
         }
@@ -979,6 +1015,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("dbprovider")]
         public Input<string>? Dbprovider { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The connection profile display name.
@@ -1086,6 +1133,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The connection profile role.
+        /// Possible values are: `SOURCE`, `DESTINATION`.
+        /// </summary>
+        [Input("role")]
+        public Input<string>? Role { get; set; }
 
         /// <summary>
         /// The current connection profile state.

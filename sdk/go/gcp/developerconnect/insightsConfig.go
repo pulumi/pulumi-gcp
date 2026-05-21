@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("dci-tf-_3686"),
+//				ProjectId:      pulumi.String("dci-tf-_44339"),
 //				Name:           pulumi.String("Service Project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
@@ -174,7 +174,7 @@ import (
 //			}
 //			myApphubApplication, err := apphub.NewApplication(ctx, "my_apphub_application", &apphub.ApplicationArgs{
 //				Location:      pulumi.String("us-central1"),
-//				ApplicationId: pulumi.String("tf-test-example-application_54136"),
+//				ApplicationId: pulumi.String("tf-test-example-application_34599"),
 //				Scope: &apphub.ApplicationScopeArgs{
 //					Type: pulumi.String("REGIONAL"),
 //				},
@@ -198,7 +198,7 @@ import (
 //			}
 //			_, err = developerconnect.NewInsightsConfig(ctx, "insights_config", &developerconnect.InsightsConfigArgs{
 //				Location:          pulumi.String("us-central1"),
-//				InsightsConfigId:  pulumi.String("tf-test-ic-apphub-_11171"),
+//				InsightsConfigId:  pulumi.String("tf-test-ic-apphub-_79513"),
 //				Project:           project.ProjectId,
 //				Annotations:       pulumi.StringMap{},
 //				Labels:            pulumi.StringMap{},
@@ -246,7 +246,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("dci-tf-_40472"),
+//				ProjectId:      pulumi.String("dci-tf-_55500"),
 //				Name:           pulumi.String("Service Project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
@@ -384,7 +384,7 @@ import (
 //			}
 //			_, err = developerconnect.NewInsightsConfig(ctx, "insights_config_projects", &developerconnect.InsightsConfigArgs{
 //				Location:         pulumi.String("us-central1"),
-//				InsightsConfigId: pulumi.String("tf-test-ic-projects-_44339"),
+//				InsightsConfigId: pulumi.String("tf-test-ic-projects-_12223"),
 //				Project:          project.ProjectId,
 //				Annotations:      pulumi.StringMap{},
 //				Labels:           pulumi.StringMap{},
@@ -451,6 +451,13 @@ type InsightsConfig struct {
 	ArtifactConfigs InsightsConfigArtifactConfigArrayOutput `pulumi:"artifactConfigs"`
 	// [Output only] Create timestamp
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -557,6 +564,13 @@ type insightsConfigState struct {
 	ArtifactConfigs []InsightsConfigArtifactConfig `pulumi:"artifactConfigs"`
 	// [Output only] Create timestamp
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -623,6 +637,13 @@ type InsightsConfigState struct {
 	ArtifactConfigs InsightsConfigArtifactConfigArrayInput
 	// [Output only] Create timestamp
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -691,6 +712,13 @@ type insightsConfigArgs struct {
 	// The artifact configurations of the artifacts that are deployed.
 	// Structure is documented below.
 	ArtifactConfigs []InsightsConfigArtifactConfig `pulumi:"artifactConfigs"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// ID of the requesting InsightsConfig.
 	InsightsConfigId string `pulumi:"insightsConfigId"`
 	// Set of labels associated with an InsightsConfig.
@@ -721,6 +749,13 @@ type InsightsConfigArgs struct {
 	// The artifact configurations of the artifacts that are deployed.
 	// Structure is documented below.
 	ArtifactConfigs InsightsConfigArtifactConfigArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// ID of the requesting InsightsConfig.
 	InsightsConfigId pulumi.StringInput
 	// Set of labels associated with an InsightsConfig.
@@ -848,6 +883,16 @@ func (o InsightsConfigOutput) ArtifactConfigs() InsightsConfigArtifactConfigArra
 // [Output only] Create timestamp
 func (o InsightsConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InsightsConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InsightsConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.

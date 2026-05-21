@@ -2070,7 +2070,7 @@ func (o ConnectionProfileErrorArrayOutput) Index(i pulumi.IntInput) ConnectionPr
 }
 
 type ConnectionProfileMysql struct {
-	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+	// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
 	CloudSqlId *string `pulumi:"cloudSqlId"`
 	// The IP or hostname of the source MySQL database.
 	Host *string `pulumi:"host"`
@@ -2102,7 +2102,7 @@ type ConnectionProfileMysqlInput interface {
 }
 
 type ConnectionProfileMysqlArgs struct {
-	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+	// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
 	CloudSqlId pulumi.StringPtrInput `pulumi:"cloudSqlId"`
 	// The IP or hostname of the source MySQL database.
 	Host pulumi.StringPtrInput `pulumi:"host"`
@@ -2199,7 +2199,7 @@ func (o ConnectionProfileMysqlOutput) ToConnectionProfileMysqlPtrOutputWithConte
 	}).(ConnectionProfileMysqlPtrOutput)
 }
 
-// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
 func (o ConnectionProfileMysqlOutput) CloudSqlId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysql) *string { return v.CloudSqlId }).(pulumi.StringPtrOutput)
 }
@@ -2262,7 +2262,7 @@ func (o ConnectionProfileMysqlPtrOutput) Elem() ConnectionProfileMysqlOutput {
 	}).(ConnectionProfileMysqlOutput)
 }
 
-// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
 func (o ConnectionProfileMysqlPtrOutput) CloudSqlId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysql) *string {
 		if v == nil {
@@ -3599,10 +3599,12 @@ func (o ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput) Elem() Conn
 }
 
 type ConnectionProfilePostgresql struct {
-	// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+	// If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
 	AlloydbClusterId *string `pulumi:"alloydbClusterId"`
-	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+	// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
 	CloudSqlId *string `pulumi:"cloudSqlId"`
+	// The name of the specific database within the host.
+	Database *string `pulumi:"database"`
 	// The IP or hostname of the source MySQL database.
 	Host *string `pulumi:"host"`
 	// (Output)
@@ -3617,6 +3619,9 @@ type ConnectionProfilePostgresql struct {
 	PasswordSet *bool `pulumi:"passwordSet"`
 	// The network port of the source MySQL database.
 	Port *int `pulumi:"port"`
+	// Private connectivity.
+	// Structure is documented below.
+	PrivateConnectivity *ConnectionProfilePostgresqlPrivateConnectivity `pulumi:"privateConnectivity"`
 	// SSL configuration for the destination to connect to the source database.
 	// Structure is documented below.
 	Ssl *ConnectionProfilePostgresqlSsl `pulumi:"ssl"`
@@ -3636,10 +3641,12 @@ type ConnectionProfilePostgresqlInput interface {
 }
 
 type ConnectionProfilePostgresqlArgs struct {
-	// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+	// If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
 	AlloydbClusterId pulumi.StringPtrInput `pulumi:"alloydbClusterId"`
-	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+	// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
 	CloudSqlId pulumi.StringPtrInput `pulumi:"cloudSqlId"`
+	// The name of the specific database within the host.
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// The IP or hostname of the source MySQL database.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// (Output)
@@ -3654,6 +3661,9 @@ type ConnectionProfilePostgresqlArgs struct {
 	PasswordSet pulumi.BoolPtrInput `pulumi:"passwordSet"`
 	// The network port of the source MySQL database.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Private connectivity.
+	// Structure is documented below.
+	PrivateConnectivity ConnectionProfilePostgresqlPrivateConnectivityPtrInput `pulumi:"privateConnectivity"`
 	// SSL configuration for the destination to connect to the source database.
 	// Structure is documented below.
 	Ssl ConnectionProfilePostgresqlSslPtrInput `pulumi:"ssl"`
@@ -3738,14 +3748,19 @@ func (o ConnectionProfilePostgresqlOutput) ToConnectionProfilePostgresqlPtrOutpu
 	}).(ConnectionProfilePostgresqlPtrOutput)
 }
 
-// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+// If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
 func (o ConnectionProfilePostgresqlOutput) AlloydbClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresql) *string { return v.AlloydbClusterId }).(pulumi.StringPtrOutput)
 }
 
-// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
 func (o ConnectionProfilePostgresqlOutput) CloudSqlId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresql) *string { return v.CloudSqlId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the specific database within the host.
+func (o ConnectionProfilePostgresqlOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresql) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // The IP or hostname of the source MySQL database.
@@ -3775,6 +3790,14 @@ func (o ConnectionProfilePostgresqlOutput) PasswordSet() pulumi.BoolPtrOutput {
 // The network port of the source MySQL database.
 func (o ConnectionProfilePostgresqlOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresql) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Private connectivity.
+// Structure is documented below.
+func (o ConnectionProfilePostgresqlOutput) PrivateConnectivity() ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresql) *ConnectionProfilePostgresqlPrivateConnectivity {
+		return v.PrivateConnectivity
+	}).(ConnectionProfilePostgresqlPrivateConnectivityPtrOutput)
 }
 
 // SSL configuration for the destination to connect to the source database.
@@ -3812,7 +3835,7 @@ func (o ConnectionProfilePostgresqlPtrOutput) Elem() ConnectionProfilePostgresql
 	}).(ConnectionProfilePostgresqlOutput)
 }
 
-// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+// If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
 func (o ConnectionProfilePostgresqlPtrOutput) AlloydbClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresql) *string {
 		if v == nil {
@@ -3822,13 +3845,23 @@ func (o ConnectionProfilePostgresqlPtrOutput) AlloydbClusterId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
 func (o ConnectionProfilePostgresqlPtrOutput) CloudSqlId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.CloudSqlId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the specific database within the host.
+func (o ConnectionProfilePostgresqlPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3886,6 +3919,17 @@ func (o ConnectionProfilePostgresqlPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Private connectivity.
+// Structure is documented below.
+func (o ConnectionProfilePostgresqlPtrOutput) PrivateConnectivity() ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresql) *ConnectionProfilePostgresqlPrivateConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateConnectivity
+	}).(ConnectionProfilePostgresqlPrivateConnectivityPtrOutput)
+}
+
 // SSL configuration for the destination to connect to the source database.
 // Structure is documented below.
 func (o ConnectionProfilePostgresqlPtrOutput) Ssl() ConnectionProfilePostgresqlSslPtrOutput {
@@ -3904,6 +3948,143 @@ func (o ConnectionProfilePostgresqlPtrOutput) Username() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfilePostgresqlPrivateConnectivity struct {
+	// Required. The resource name (URI) of the private connection.
+	PrivateConnection string `pulumi:"privateConnection"`
+}
+
+// ConnectionProfilePostgresqlPrivateConnectivityInput is an input type that accepts ConnectionProfilePostgresqlPrivateConnectivityArgs and ConnectionProfilePostgresqlPrivateConnectivityOutput values.
+// You can construct a concrete instance of `ConnectionProfilePostgresqlPrivateConnectivityInput` via:
+//
+//	ConnectionProfilePostgresqlPrivateConnectivityArgs{...}
+type ConnectionProfilePostgresqlPrivateConnectivityInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePostgresqlPrivateConnectivityOutput() ConnectionProfilePostgresqlPrivateConnectivityOutput
+	ToConnectionProfilePostgresqlPrivateConnectivityOutputWithContext(context.Context) ConnectionProfilePostgresqlPrivateConnectivityOutput
+}
+
+type ConnectionProfilePostgresqlPrivateConnectivityArgs struct {
+	// Required. The resource name (URI) of the private connection.
+	PrivateConnection pulumi.StringInput `pulumi:"privateConnection"`
+}
+
+func (ConnectionProfilePostgresqlPrivateConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePostgresqlPrivateConnectivity)(nil)).Elem()
+}
+
+func (i ConnectionProfilePostgresqlPrivateConnectivityArgs) ToConnectionProfilePostgresqlPrivateConnectivityOutput() ConnectionProfilePostgresqlPrivateConnectivityOutput {
+	return i.ToConnectionProfilePostgresqlPrivateConnectivityOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePostgresqlPrivateConnectivityArgs) ToConnectionProfilePostgresqlPrivateConnectivityOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlPrivateConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlPrivateConnectivityOutput)
+}
+
+func (i ConnectionProfilePostgresqlPrivateConnectivityArgs) ToConnectionProfilePostgresqlPrivateConnectivityPtrOutput() ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return i.ToConnectionProfilePostgresqlPrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePostgresqlPrivateConnectivityArgs) ToConnectionProfilePostgresqlPrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlPrivateConnectivityOutput).ToConnectionProfilePostgresqlPrivateConnectivityPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfilePostgresqlPrivateConnectivityPtrInput is an input type that accepts ConnectionProfilePostgresqlPrivateConnectivityArgs, ConnectionProfilePostgresqlPrivateConnectivityPtr and ConnectionProfilePostgresqlPrivateConnectivityPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfilePostgresqlPrivateConnectivityPtrInput` via:
+//
+//	        ConnectionProfilePostgresqlPrivateConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfilePostgresqlPrivateConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePostgresqlPrivateConnectivityPtrOutput() ConnectionProfilePostgresqlPrivateConnectivityPtrOutput
+	ToConnectionProfilePostgresqlPrivateConnectivityPtrOutputWithContext(context.Context) ConnectionProfilePostgresqlPrivateConnectivityPtrOutput
+}
+
+type connectionProfilePostgresqlPrivateConnectivityPtrType ConnectionProfilePostgresqlPrivateConnectivityArgs
+
+func ConnectionProfilePostgresqlPrivateConnectivityPtr(v *ConnectionProfilePostgresqlPrivateConnectivityArgs) ConnectionProfilePostgresqlPrivateConnectivityPtrInput {
+	return (*connectionProfilePostgresqlPrivateConnectivityPtrType)(v)
+}
+
+func (*connectionProfilePostgresqlPrivateConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePostgresqlPrivateConnectivity)(nil)).Elem()
+}
+
+func (i *connectionProfilePostgresqlPrivateConnectivityPtrType) ToConnectionProfilePostgresqlPrivateConnectivityPtrOutput() ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return i.ToConnectionProfilePostgresqlPrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfilePostgresqlPrivateConnectivityPtrType) ToConnectionProfilePostgresqlPrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlPrivateConnectivityPtrOutput)
+}
+
+type ConnectionProfilePostgresqlPrivateConnectivityOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePostgresqlPrivateConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePostgresqlPrivateConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfilePostgresqlPrivateConnectivityOutput) ToConnectionProfilePostgresqlPrivateConnectivityOutput() ConnectionProfilePostgresqlPrivateConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlPrivateConnectivityOutput) ToConnectionProfilePostgresqlPrivateConnectivityOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlPrivateConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlPrivateConnectivityOutput) ToConnectionProfilePostgresqlPrivateConnectivityPtrOutput() ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return o.ToConnectionProfilePostgresqlPrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfilePostgresqlPrivateConnectivityOutput) ToConnectionProfilePostgresqlPrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePostgresqlPrivateConnectivity) *ConnectionProfilePostgresqlPrivateConnectivity {
+		return &v
+	}).(ConnectionProfilePostgresqlPrivateConnectivityPtrOutput)
+}
+
+// Required. The resource name (URI) of the private connection.
+func (o ConnectionProfilePostgresqlPrivateConnectivityOutput) PrivateConnection() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlPrivateConnectivity) string { return v.PrivateConnection }).(pulumi.StringOutput)
+}
+
+type ConnectionProfilePostgresqlPrivateConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePostgresqlPrivateConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePostgresqlPrivateConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfilePostgresqlPrivateConnectivityPtrOutput) ToConnectionProfilePostgresqlPrivateConnectivityPtrOutput() ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlPrivateConnectivityPtrOutput) ToConnectionProfilePostgresqlPrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlPrivateConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlPrivateConnectivityPtrOutput) Elem() ConnectionProfilePostgresqlPrivateConnectivityOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlPrivateConnectivity) ConnectionProfilePostgresqlPrivateConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfilePostgresqlPrivateConnectivity
+		return ret
+	}).(ConnectionProfilePostgresqlPrivateConnectivityOutput)
+}
+
+// Required. The resource name (URI) of the private connection.
+func (o ConnectionProfilePostgresqlPrivateConnectivityPtrOutput) PrivateConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlPrivateConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateConnection
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5288,6 +5469,162 @@ func (o MigrationJobPerformanceConfigPtrOutput) DumpParallelLevel() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type MigrationJobPostgresHomogeneousConfig struct {
+	// Whether the migration uses native logical replication.
+	IsNativeLogical bool `pulumi:"isNativeLogical"`
+	// Maximum number of additional subscriptions to use for the migration job.
+	MaxAdditionalSubscriptions *int `pulumi:"maxAdditionalSubscriptions"`
+}
+
+// MigrationJobPostgresHomogeneousConfigInput is an input type that accepts MigrationJobPostgresHomogeneousConfigArgs and MigrationJobPostgresHomogeneousConfigOutput values.
+// You can construct a concrete instance of `MigrationJobPostgresHomogeneousConfigInput` via:
+//
+//	MigrationJobPostgresHomogeneousConfigArgs{...}
+type MigrationJobPostgresHomogeneousConfigInput interface {
+	pulumi.Input
+
+	ToMigrationJobPostgresHomogeneousConfigOutput() MigrationJobPostgresHomogeneousConfigOutput
+	ToMigrationJobPostgresHomogeneousConfigOutputWithContext(context.Context) MigrationJobPostgresHomogeneousConfigOutput
+}
+
+type MigrationJobPostgresHomogeneousConfigArgs struct {
+	// Whether the migration uses native logical replication.
+	IsNativeLogical pulumi.BoolInput `pulumi:"isNativeLogical"`
+	// Maximum number of additional subscriptions to use for the migration job.
+	MaxAdditionalSubscriptions pulumi.IntPtrInput `pulumi:"maxAdditionalSubscriptions"`
+}
+
+func (MigrationJobPostgresHomogeneousConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobPostgresHomogeneousConfig)(nil)).Elem()
+}
+
+func (i MigrationJobPostgresHomogeneousConfigArgs) ToMigrationJobPostgresHomogeneousConfigOutput() MigrationJobPostgresHomogeneousConfigOutput {
+	return i.ToMigrationJobPostgresHomogeneousConfigOutputWithContext(context.Background())
+}
+
+func (i MigrationJobPostgresHomogeneousConfigArgs) ToMigrationJobPostgresHomogeneousConfigOutputWithContext(ctx context.Context) MigrationJobPostgresHomogeneousConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobPostgresHomogeneousConfigOutput)
+}
+
+func (i MigrationJobPostgresHomogeneousConfigArgs) ToMigrationJobPostgresHomogeneousConfigPtrOutput() MigrationJobPostgresHomogeneousConfigPtrOutput {
+	return i.ToMigrationJobPostgresHomogeneousConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationJobPostgresHomogeneousConfigArgs) ToMigrationJobPostgresHomogeneousConfigPtrOutputWithContext(ctx context.Context) MigrationJobPostgresHomogeneousConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobPostgresHomogeneousConfigOutput).ToMigrationJobPostgresHomogeneousConfigPtrOutputWithContext(ctx)
+}
+
+// MigrationJobPostgresHomogeneousConfigPtrInput is an input type that accepts MigrationJobPostgresHomogeneousConfigArgs, MigrationJobPostgresHomogeneousConfigPtr and MigrationJobPostgresHomogeneousConfigPtrOutput values.
+// You can construct a concrete instance of `MigrationJobPostgresHomogeneousConfigPtrInput` via:
+//
+//	        MigrationJobPostgresHomogeneousConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationJobPostgresHomogeneousConfigPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobPostgresHomogeneousConfigPtrOutput() MigrationJobPostgresHomogeneousConfigPtrOutput
+	ToMigrationJobPostgresHomogeneousConfigPtrOutputWithContext(context.Context) MigrationJobPostgresHomogeneousConfigPtrOutput
+}
+
+type migrationJobPostgresHomogeneousConfigPtrType MigrationJobPostgresHomogeneousConfigArgs
+
+func MigrationJobPostgresHomogeneousConfigPtr(v *MigrationJobPostgresHomogeneousConfigArgs) MigrationJobPostgresHomogeneousConfigPtrInput {
+	return (*migrationJobPostgresHomogeneousConfigPtrType)(v)
+}
+
+func (*migrationJobPostgresHomogeneousConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobPostgresHomogeneousConfig)(nil)).Elem()
+}
+
+func (i *migrationJobPostgresHomogeneousConfigPtrType) ToMigrationJobPostgresHomogeneousConfigPtrOutput() MigrationJobPostgresHomogeneousConfigPtrOutput {
+	return i.ToMigrationJobPostgresHomogeneousConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationJobPostgresHomogeneousConfigPtrType) ToMigrationJobPostgresHomogeneousConfigPtrOutputWithContext(ctx context.Context) MigrationJobPostgresHomogeneousConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobPostgresHomogeneousConfigPtrOutput)
+}
+
+type MigrationJobPostgresHomogeneousConfigOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobPostgresHomogeneousConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobPostgresHomogeneousConfig)(nil)).Elem()
+}
+
+func (o MigrationJobPostgresHomogeneousConfigOutput) ToMigrationJobPostgresHomogeneousConfigOutput() MigrationJobPostgresHomogeneousConfigOutput {
+	return o
+}
+
+func (o MigrationJobPostgresHomogeneousConfigOutput) ToMigrationJobPostgresHomogeneousConfigOutputWithContext(ctx context.Context) MigrationJobPostgresHomogeneousConfigOutput {
+	return o
+}
+
+func (o MigrationJobPostgresHomogeneousConfigOutput) ToMigrationJobPostgresHomogeneousConfigPtrOutput() MigrationJobPostgresHomogeneousConfigPtrOutput {
+	return o.ToMigrationJobPostgresHomogeneousConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobPostgresHomogeneousConfigOutput) ToMigrationJobPostgresHomogeneousConfigPtrOutputWithContext(ctx context.Context) MigrationJobPostgresHomogeneousConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobPostgresHomogeneousConfig) *MigrationJobPostgresHomogeneousConfig {
+		return &v
+	}).(MigrationJobPostgresHomogeneousConfigPtrOutput)
+}
+
+// Whether the migration uses native logical replication.
+func (o MigrationJobPostgresHomogeneousConfigOutput) IsNativeLogical() pulumi.BoolOutput {
+	return o.ApplyT(func(v MigrationJobPostgresHomogeneousConfig) bool { return v.IsNativeLogical }).(pulumi.BoolOutput)
+}
+
+// Maximum number of additional subscriptions to use for the migration job.
+func (o MigrationJobPostgresHomogeneousConfigOutput) MaxAdditionalSubscriptions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MigrationJobPostgresHomogeneousConfig) *int { return v.MaxAdditionalSubscriptions }).(pulumi.IntPtrOutput)
+}
+
+type MigrationJobPostgresHomogeneousConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobPostgresHomogeneousConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobPostgresHomogeneousConfig)(nil)).Elem()
+}
+
+func (o MigrationJobPostgresHomogeneousConfigPtrOutput) ToMigrationJobPostgresHomogeneousConfigPtrOutput() MigrationJobPostgresHomogeneousConfigPtrOutput {
+	return o
+}
+
+func (o MigrationJobPostgresHomogeneousConfigPtrOutput) ToMigrationJobPostgresHomogeneousConfigPtrOutputWithContext(ctx context.Context) MigrationJobPostgresHomogeneousConfigPtrOutput {
+	return o
+}
+
+func (o MigrationJobPostgresHomogeneousConfigPtrOutput) Elem() MigrationJobPostgresHomogeneousConfigOutput {
+	return o.ApplyT(func(v *MigrationJobPostgresHomogeneousConfig) MigrationJobPostgresHomogeneousConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobPostgresHomogeneousConfig
+		return ret
+	}).(MigrationJobPostgresHomogeneousConfigOutput)
+}
+
+// Whether the migration uses native logical replication.
+func (o MigrationJobPostgresHomogeneousConfigPtrOutput) IsNativeLogical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MigrationJobPostgresHomogeneousConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsNativeLogical
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of additional subscriptions to use for the migration job.
+func (o MigrationJobPostgresHomogeneousConfigPtrOutput) MaxAdditionalSubscriptions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MigrationJobPostgresHomogeneousConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAdditionalSubscriptions
+	}).(pulumi.IntPtrOutput)
+}
+
 type MigrationJobReverseSshConnectivity struct {
 	// The name of the virtual machine (Compute Engine) used as the bastion server
 	// for the SSH tunnel.
@@ -5855,6 +6192,147 @@ func (o PrivateConnectionErrorArrayOutput) Index(i pulumi.IntInput) PrivateConne
 	}).(PrivateConnectionErrorOutput)
 }
 
+type PrivateConnectionPscInterfaceConfig struct {
+	// Fully qualified name of the Network Attachment that DMS will connect to.
+	// Format: projects/{project}/regions/{region}/networkAttachments/{name}
+	NetworkAttachment string `pulumi:"networkAttachment"`
+}
+
+// PrivateConnectionPscInterfaceConfigInput is an input type that accepts PrivateConnectionPscInterfaceConfigArgs and PrivateConnectionPscInterfaceConfigOutput values.
+// You can construct a concrete instance of `PrivateConnectionPscInterfaceConfigInput` via:
+//
+//	PrivateConnectionPscInterfaceConfigArgs{...}
+type PrivateConnectionPscInterfaceConfigInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionPscInterfaceConfigOutput() PrivateConnectionPscInterfaceConfigOutput
+	ToPrivateConnectionPscInterfaceConfigOutputWithContext(context.Context) PrivateConnectionPscInterfaceConfigOutput
+}
+
+type PrivateConnectionPscInterfaceConfigArgs struct {
+	// Fully qualified name of the Network Attachment that DMS will connect to.
+	// Format: projects/{project}/regions/{region}/networkAttachments/{name}
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+}
+
+func (PrivateConnectionPscInterfaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i PrivateConnectionPscInterfaceConfigArgs) ToPrivateConnectionPscInterfaceConfigOutput() PrivateConnectionPscInterfaceConfigOutput {
+	return i.ToPrivateConnectionPscInterfaceConfigOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionPscInterfaceConfigArgs) ToPrivateConnectionPscInterfaceConfigOutputWithContext(ctx context.Context) PrivateConnectionPscInterfaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionPscInterfaceConfigOutput)
+}
+
+func (i PrivateConnectionPscInterfaceConfigArgs) ToPrivateConnectionPscInterfaceConfigPtrOutput() PrivateConnectionPscInterfaceConfigPtrOutput {
+	return i.ToPrivateConnectionPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionPscInterfaceConfigArgs) ToPrivateConnectionPscInterfaceConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionPscInterfaceConfigOutput).ToPrivateConnectionPscInterfaceConfigPtrOutputWithContext(ctx)
+}
+
+// PrivateConnectionPscInterfaceConfigPtrInput is an input type that accepts PrivateConnectionPscInterfaceConfigArgs, PrivateConnectionPscInterfaceConfigPtr and PrivateConnectionPscInterfaceConfigPtrOutput values.
+// You can construct a concrete instance of `PrivateConnectionPscInterfaceConfigPtrInput` via:
+//
+//	        PrivateConnectionPscInterfaceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateConnectionPscInterfaceConfigPtrInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionPscInterfaceConfigPtrOutput() PrivateConnectionPscInterfaceConfigPtrOutput
+	ToPrivateConnectionPscInterfaceConfigPtrOutputWithContext(context.Context) PrivateConnectionPscInterfaceConfigPtrOutput
+}
+
+type privateConnectionPscInterfaceConfigPtrType PrivateConnectionPscInterfaceConfigArgs
+
+func PrivateConnectionPscInterfaceConfigPtr(v *PrivateConnectionPscInterfaceConfigArgs) PrivateConnectionPscInterfaceConfigPtrInput {
+	return (*privateConnectionPscInterfaceConfigPtrType)(v)
+}
+
+func (*privateConnectionPscInterfaceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectionPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i *privateConnectionPscInterfaceConfigPtrType) ToPrivateConnectionPscInterfaceConfigPtrOutput() PrivateConnectionPscInterfaceConfigPtrOutput {
+	return i.ToPrivateConnectionPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *privateConnectionPscInterfaceConfigPtrType) ToPrivateConnectionPscInterfaceConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionPscInterfaceConfigPtrOutput)
+}
+
+type PrivateConnectionPscInterfaceConfigOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionPscInterfaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o PrivateConnectionPscInterfaceConfigOutput) ToPrivateConnectionPscInterfaceConfigOutput() PrivateConnectionPscInterfaceConfigOutput {
+	return o
+}
+
+func (o PrivateConnectionPscInterfaceConfigOutput) ToPrivateConnectionPscInterfaceConfigOutputWithContext(ctx context.Context) PrivateConnectionPscInterfaceConfigOutput {
+	return o
+}
+
+func (o PrivateConnectionPscInterfaceConfigOutput) ToPrivateConnectionPscInterfaceConfigPtrOutput() PrivateConnectionPscInterfaceConfigPtrOutput {
+	return o.ToPrivateConnectionPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateConnectionPscInterfaceConfigOutput) ToPrivateConnectionPscInterfaceConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionPscInterfaceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateConnectionPscInterfaceConfig) *PrivateConnectionPscInterfaceConfig {
+		return &v
+	}).(PrivateConnectionPscInterfaceConfigPtrOutput)
+}
+
+// Fully qualified name of the Network Attachment that DMS will connect to.
+// Format: projects/{project}/regions/{region}/networkAttachments/{name}
+func (o PrivateConnectionPscInterfaceConfigOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateConnectionPscInterfaceConfig) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+type PrivateConnectionPscInterfaceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionPscInterfaceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectionPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o PrivateConnectionPscInterfaceConfigPtrOutput) ToPrivateConnectionPscInterfaceConfigPtrOutput() PrivateConnectionPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o PrivateConnectionPscInterfaceConfigPtrOutput) ToPrivateConnectionPscInterfaceConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o PrivateConnectionPscInterfaceConfigPtrOutput) Elem() PrivateConnectionPscInterfaceConfigOutput {
+	return o.ApplyT(func(v *PrivateConnectionPscInterfaceConfig) PrivateConnectionPscInterfaceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateConnectionPscInterfaceConfig
+		return ret
+	}).(PrivateConnectionPscInterfaceConfigOutput)
+}
+
+// Fully qualified name of the Network Attachment that DMS will connect to.
+// Format: projects/{project}/regions/{region}/networkAttachments/{name}
+func (o PrivateConnectionPscInterfaceConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateConnectionPscInterfaceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
 type PrivateConnectionVpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
 	Subnet string `pulumi:"subnet"`
@@ -6052,6 +6530,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleStaticServiceIpConnectivityPtrInput)(nil)).Elem(), ConnectionProfileOracleStaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlInput)(nil)).Elem(), ConnectionProfilePostgresqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlPrivateConnectivityInput)(nil)).Elem(), ConnectionProfilePostgresqlPrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlPrivateConnectivityPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlPrivateConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlSslInput)(nil)).Elem(), ConnectionProfilePostgresqlSslArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlSslPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlSslArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobDumpFlagsInput)(nil)).Elem(), MigrationJobDumpFlagsArgs{})
@@ -6070,6 +6550,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrInput)(nil)).Elem(), MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobPerformanceConfigInput)(nil)).Elem(), MigrationJobPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobPerformanceConfigPtrInput)(nil)).Elem(), MigrationJobPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobPostgresHomogeneousConfigInput)(nil)).Elem(), MigrationJobPostgresHomogeneousConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobPostgresHomogeneousConfigPtrInput)(nil)).Elem(), MigrationJobPostgresHomogeneousConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobReverseSshConnectivityInput)(nil)).Elem(), MigrationJobReverseSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobReverseSshConnectivityPtrInput)(nil)).Elem(), MigrationJobReverseSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobStaticIpConnectivityInput)(nil)).Elem(), MigrationJobStaticIpConnectivityArgs{})
@@ -6078,6 +6560,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobVpcPeeringConnectivityPtrInput)(nil)).Elem(), MigrationJobVpcPeeringConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorInput)(nil)).Elem(), PrivateConnectionErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorArrayInput)(nil)).Elem(), PrivateConnectionErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionPscInterfaceConfigInput)(nil)).Elem(), PrivateConnectionPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionPscInterfaceConfigPtrInput)(nil)).Elem(), PrivateConnectionPscInterfaceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigPtrInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterOutputType(ConnectionProfileAlloydbOutput{})
@@ -6116,6 +6600,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePostgresqlPrivateConnectivityOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePostgresqlPrivateConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlSslOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlSslPtrOutput{})
 	pulumi.RegisterOutputType(MigrationJobDumpFlagsOutput{})
@@ -6134,6 +6620,8 @@ func init() {
 	pulumi.RegisterOutputType(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput{})
 	pulumi.RegisterOutputType(MigrationJobPerformanceConfigOutput{})
 	pulumi.RegisterOutputType(MigrationJobPerformanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobPostgresHomogeneousConfigOutput{})
+	pulumi.RegisterOutputType(MigrationJobPostgresHomogeneousConfigPtrOutput{})
 	pulumi.RegisterOutputType(MigrationJobReverseSshConnectivityOutput{})
 	pulumi.RegisterOutputType(MigrationJobReverseSshConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(MigrationJobStaticIpConnectivityOutput{})
@@ -6142,6 +6630,8 @@ func init() {
 	pulumi.RegisterOutputType(MigrationJobVpcPeeringConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionErrorOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionErrorArrayOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionPscInterfaceConfigOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionPscInterfaceConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigPtrOutput{})
 }

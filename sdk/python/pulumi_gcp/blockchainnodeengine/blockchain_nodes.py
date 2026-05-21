@@ -24,6 +24,7 @@ class BlockchainNodesArgs:
                  blockchain_node_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ethereum_details: pulumi.Input[Optional['BlockchainNodesEthereumDetailsArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -34,6 +35,12 @@ class BlockchainNodesArgs:
         :param pulumi.Input[_builtins.str] location: Location of Blockchain Node being created.
         :param pulumi.Input[_builtins.str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['BlockchainNodesEthereumDetailsArgs'] ethereum_details: User-provided key-value pairs
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-provided key-value pairs
@@ -47,6 +54,8 @@ class BlockchainNodesArgs:
         pulumi.set(__self__, "location", location)
         if blockchain_type is not None:
             pulumi.set(__self__, "blockchain_type", blockchain_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if ethereum_details is not None:
             pulumi.set(__self__, "ethereum_details", ethereum_details)
         if labels is not None:
@@ -90,6 +99,23 @@ class BlockchainNodesArgs:
     @blockchain_type.setter
     def blockchain_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blockchain_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="ethereumDetails")
@@ -140,6 +166,7 @@ class _BlockchainNodesState:
                  blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_infos: pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ethereum_details: pulumi.Input[Optional['BlockchainNodesEthereumDetailsArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -157,6 +184,12 @@ class _BlockchainNodesState:
         :param pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoArgs']]] connection_infos: The connection information through which to interact with a blockchain node.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which the blockchain node was first created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['BlockchainNodesEthereumDetailsArgs'] ethereum_details: User-provided key-value pairs
                Structure is documented below.
@@ -180,6 +213,8 @@ class _BlockchainNodesState:
             pulumi.set(__self__, "connection_infos", connection_infos)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if ethereum_details is not None:
@@ -246,6 +281,23 @@ class _BlockchainNodesState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -358,6 +410,7 @@ class BlockchainNodes(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -481,6 +534,12 @@ class BlockchainNodes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] blockchain_node_id: ID of the requesting object.
         :param pulumi.Input[_builtins.str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']] ethereum_details: User-provided key-value pairs
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-provided key-value pairs
@@ -627,6 +686,7 @@ class BlockchainNodes(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -644,6 +704,7 @@ class BlockchainNodes(pulumi.CustomResource):
                 raise TypeError("Missing required property 'blockchain_node_id'")
             __props__.__dict__["blockchain_node_id"] = blockchain_node_id
             __props__.__dict__["blockchain_type"] = blockchain_type
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["ethereum_details"] = ethereum_details
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -672,6 +733,7 @@ class BlockchainNodes(pulumi.CustomResource):
             blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
             connection_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -693,6 +755,12 @@ class BlockchainNodes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict']]]] connection_infos: The connection information through which to interact with a blockchain node.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which the blockchain node was first created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']] ethereum_details: User-provided key-value pairs
                Structure is documented below.
@@ -716,6 +784,7 @@ class BlockchainNodes(pulumi.CustomResource):
         __props__.__dict__["blockchain_type"] = blockchain_type
         __props__.__dict__["connection_infos"] = connection_infos
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ethereum_details"] = ethereum_details
         __props__.__dict__["labels"] = labels
@@ -759,6 +828,19 @@ class BlockchainNodes(pulumi.CustomResource):
         The timestamp at which the blockchain node was first created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

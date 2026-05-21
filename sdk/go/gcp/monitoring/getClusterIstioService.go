@@ -91,7 +91,8 @@ type GetClusterIstioServiceArgs struct {
 
 // A collection of values returned by getClusterIstioService.
 type GetClusterIstioServiceResult struct {
-	ClusterName string `pulumi:"clusterName"`
+	ClusterName    string `pulumi:"clusterName"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this (Monitoring) Service.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -162,6 +163,10 @@ func (o GetClusterIstioServiceResultOutput) ToGetClusterIstioServiceResultOutput
 
 func (o GetClusterIstioServiceResultOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name used for UI elements listing this (Monitoring) Service.

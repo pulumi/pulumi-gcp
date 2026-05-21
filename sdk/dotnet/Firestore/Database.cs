@@ -376,14 +376,15 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> DeleteProtectionState { get; private set; } = null!;
 
         /// <summary>
-        /// Deletion behavior for this database.
-        /// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
-        /// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-        /// The default value is `ABANDON`.
-        /// See also `DeleteProtection`.
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to ABANDON.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
@@ -600,11 +601,12 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? DeleteProtectionState { get; set; }
 
         /// <summary>
-        /// Deletion behavior for this database.
-        /// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
-        /// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-        /// The default value is `ABANDON`.
-        /// See also `DeleteProtection`.
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to ABANDON.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -752,11 +754,12 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? DeleteProtectionState { get; set; }
 
         /// <summary>
-        /// Deletion behavior for this database.
-        /// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
-        /// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-        /// The default value is `ABANDON`.
-        /// See also `DeleteProtection`.
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to ABANDON.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

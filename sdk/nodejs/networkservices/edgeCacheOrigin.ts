@@ -166,6 +166,15 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      */
     declare public readonly awsV4Authentication: pulumi.Output<outputs.networkservices.EdgeCacheOriginAwsV4Authentication | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human-readable description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -285,6 +294,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EdgeCacheOriginState | undefined;
             resourceInputs["awsV4Authentication"] = state?.awsV4Authentication;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["failoverOrigin"] = state?.failoverOrigin;
@@ -307,6 +317,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
                 throw new Error("Missing required property 'originAddress'");
             }
             resourceInputs["awsV4Authentication"] = args?.awsV4Authentication;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["failoverOrigin"] = args?.failoverOrigin;
             resourceInputs["flexShielding"] = args?.flexShielding;
@@ -340,6 +351,15 @@ export interface EdgeCacheOriginState {
      * Structure is documented below.
      */
     awsV4Authentication?: pulumi.Input<inputs.networkservices.EdgeCacheOriginAwsV4Authentication | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */
@@ -456,6 +476,15 @@ export interface EdgeCacheOriginArgs {
      * Structure is documented below.
      */
     awsV4Authentication?: pulumi.Input<inputs.networkservices.EdgeCacheOriginAwsV4Authentication | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */

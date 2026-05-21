@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, creation_timestamp=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, erase_windows_vss_signature=None, guest_accelerators=None, hostname=None, id=None, instance_encryption_keys=None, instance_id=None, key_revocation_action_type=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, creation_timestamp=None, current_status=None, deletion_policy=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, erase_windows_vss_signature=None, guest_accelerators=None, hostname=None, id=None, instance_encryption_keys=None, instance_id=None, key_revocation_action_type=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -55,6 +55,9 @@ class GetInstanceResult:
         if current_status and not isinstance(current_status, str):
             raise TypeError("Expected argument 'current_status' to be a str")
         pulumi.set(__self__, "current_status", current_status)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -226,6 +229,11 @@ class GetInstanceResult:
         The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         """
         return pulumi.get(self, "current_status")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -492,6 +500,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             cpu_platform=self.cpu_platform,
             creation_timestamp=self.creation_timestamp,
             current_status=self.current_status,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             description=self.description,
             desired_status=self.desired_status,
@@ -579,6 +588,7 @@ def get_instance(name: Optional[_builtins.str] = None,
         cpu_platform=pulumi.get(__ret__, 'cpu_platform'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         current_status=pulumi.get(__ret__, 'current_status'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         description=pulumi.get(__ret__, 'description'),
         desired_status=pulumi.get(__ret__, 'desired_status'),
@@ -663,6 +673,7 @@ def get_instance_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = 
         cpu_platform=pulumi.get(__response__, 'cpu_platform'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         current_status=pulumi.get(__response__, 'current_status'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         description=pulumi.get(__response__, 'description'),
         desired_status=pulumi.get(__response__, 'desired_status'),

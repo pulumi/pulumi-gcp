@@ -99,6 +99,13 @@ type AppCheckDebugToken struct {
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The last segment of the resource name of the debug token.
 	DebugTokenId pulumi.StringOutput `pulumi:"debugTokenId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A human readable display name used to identify this debug token.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
@@ -167,6 +174,13 @@ type appCheckDebugTokenState struct {
 	AppId *string `pulumi:"appId"`
 	// The last segment of the resource name of the debug token.
 	DebugTokenId *string `pulumi:"debugTokenId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable display name used to identify this debug token.
 	DisplayName *string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
@@ -190,6 +204,13 @@ type AppCheckDebugTokenState struct {
 	AppId pulumi.StringPtrInput
 	// The last segment of the resource name of the debug token.
 	DebugTokenId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human readable display name used to identify this debug token.
 	DisplayName pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -215,6 +236,13 @@ type appCheckDebugTokenArgs struct {
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
 	// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
 	AppId string `pulumi:"appId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable display name used to identify this debug token.
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
@@ -237,6 +265,13 @@ type AppCheckDebugTokenArgs struct {
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
 	// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
 	AppId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human readable display name used to identify this debug token.
 	DisplayName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -350,6 +385,16 @@ func (o AppCheckDebugTokenOutput) AppId() pulumi.StringOutput {
 // The last segment of the resource name of the debug token.
 func (o AppCheckDebugTokenOutput) DebugTokenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppCheckDebugToken) pulumi.StringOutput { return v.DebugTokenId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppCheckDebugTokenOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppCheckDebugToken) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human readable display name used to identify this debug token.

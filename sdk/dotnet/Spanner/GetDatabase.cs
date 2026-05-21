@@ -153,6 +153,7 @@ namespace Pulumi.Gcp.Spanner
         public readonly string DatabaseDialect;
         public readonly ImmutableArray<string> Ddls;
         public readonly string DefaultTimeZone;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly bool EnableDropProtection;
         public readonly ImmutableArray<Outputs.GetDatabaseEncryptionConfigResult> EncryptionConfigs;
@@ -173,6 +174,8 @@ namespace Pulumi.Gcp.Spanner
             ImmutableArray<string> ddls,
 
             string defaultTimeZone,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -195,6 +198,7 @@ namespace Pulumi.Gcp.Spanner
             DatabaseDialect = databaseDialect;
             Ddls = ddls;
             DefaultTimeZone = defaultTimeZone;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             EnableDropProtection = enableDropProtection;
             EncryptionConfigs = encryptionConfigs;

@@ -39,6 +39,7 @@ public final class GetInstanceResult {
     private String backupCollection;
     private String createTime;
     private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
+    private String deletionPolicy;
     private Boolean deletionProtectionEnabled;
     private List<GetInstanceDesiredAutoCreatedEndpoint> desiredAutoCreatedEndpoints;
     private List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections;
@@ -101,6 +102,9 @@ public final class GetInstanceResult {
     }
     public List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs() {
         return this.crossInstanceReplicationConfigs;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtectionEnabled() {
         return this.deletionProtectionEnabled;
@@ -239,6 +243,7 @@ public final class GetInstanceResult {
         private String backupCollection;
         private String createTime;
         private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
+        private String deletionPolicy;
         private Boolean deletionProtectionEnabled;
         private List<GetInstanceDesiredAutoCreatedEndpoint> desiredAutoCreatedEndpoints;
         private List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections;
@@ -287,6 +292,7 @@ public final class GetInstanceResult {
     	      this.backupCollection = defaults.backupCollection;
     	      this.createTime = defaults.createTime;
     	      this.crossInstanceReplicationConfigs = defaults.crossInstanceReplicationConfigs;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.desiredAutoCreatedEndpoints = defaults.desiredAutoCreatedEndpoints;
     	      this.desiredPscAutoConnections = defaults.desiredPscAutoConnections;
@@ -384,6 +390,14 @@ public final class GetInstanceResult {
         }
         public Builder crossInstanceReplicationConfigs(GetInstanceCrossInstanceReplicationConfig... crossInstanceReplicationConfigs) {
             return crossInstanceReplicationConfigs(List.of(crossInstanceReplicationConfigs));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
@@ -746,6 +760,7 @@ public final class GetInstanceResult {
             _resultValue.backupCollection = backupCollection;
             _resultValue.createTime = createTime;
             _resultValue.crossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.desiredAutoCreatedEndpoints = desiredAutoCreatedEndpoints;
             _resultValue.desiredPscAutoConnections = desiredPscAutoConnections;

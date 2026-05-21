@@ -264,6 +264,13 @@ type SecurityProfileGroup struct {
 	CustomInterceptProfile pulumi.StringPtrOutput `pulumi:"customInterceptProfile"`
 	// Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
 	CustomMirroringProfile pulumi.StringPtrOutput `pulumi:"customMirroringProfile"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of the profile. The Max length is 512 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -283,7 +290,7 @@ type SecurityProfileGroup struct {
 	// The name of the security profile group resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the parent this security profile group belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -337,6 +344,13 @@ type securityProfileGroupState struct {
 	CustomInterceptProfile *string `pulumi:"customInterceptProfile"`
 	// Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
 	CustomMirroringProfile *string `pulumi:"customMirroringProfile"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of the profile. The Max length is 512 characters.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -356,7 +370,7 @@ type securityProfileGroupState struct {
 	// The name of the security profile group resource.
 	Name *string `pulumi:"name"`
 	// The name of the parent this security profile group belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -376,6 +390,13 @@ type SecurityProfileGroupState struct {
 	CustomInterceptProfile pulumi.StringPtrInput
 	// Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
 	CustomMirroringProfile pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of the profile. The Max length is 512 characters.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -395,7 +416,7 @@ type SecurityProfileGroupState struct {
 	// The name of the security profile group resource.
 	Name pulumi.StringPtrInput
 	// The name of the parent this security profile group belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
@@ -417,6 +438,13 @@ type securityProfileGroupArgs struct {
 	CustomInterceptProfile *string `pulumi:"customInterceptProfile"`
 	// Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
 	CustomMirroringProfile *string `pulumi:"customMirroringProfile"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of the profile. The Max length is 512 characters.
 	Description *string `pulumi:"description"`
 	// A map of key/value label pairs to assign to the resource.
@@ -430,7 +458,7 @@ type securityProfileGroupArgs struct {
 	// The name of the security profile group resource.
 	Name *string `pulumi:"name"`
 	// The name of the parent this security profile group belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent *string `pulumi:"parent"`
 	// Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
 	ThreatPreventionProfile *string `pulumi:"threatPreventionProfile"`
@@ -444,6 +472,13 @@ type SecurityProfileGroupArgs struct {
 	CustomInterceptProfile pulumi.StringPtrInput
 	// Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
 	CustomMirroringProfile pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of the profile. The Max length is 512 characters.
 	Description pulumi.StringPtrInput
 	// A map of key/value label pairs to assign to the resource.
@@ -457,7 +492,7 @@ type SecurityProfileGroupArgs struct {
 	// The name of the security profile group resource.
 	Name pulumi.StringPtrInput
 	// The name of the parent this security profile group belongs to.
-	// Format: organizations/{organization_id}.
+	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringPtrInput
 	// Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
 	ThreatPreventionProfile pulumi.StringPtrInput
@@ -567,6 +602,16 @@ func (o SecurityProfileGroupOutput) CustomMirroringProfile() pulumi.StringPtrOut
 	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringPtrOutput { return v.CustomMirroringProfile }).(pulumi.StringPtrOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SecurityProfileGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // An optional description of the profile. The Max length is 512 characters.
 func (o SecurityProfileGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -604,7 +649,7 @@ func (o SecurityProfileGroupOutput) Name() pulumi.StringOutput {
 }
 
 // The name of the parent this security profile group belongs to.
-// Format: organizations/{organization_id}.
+// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 func (o SecurityProfileGroupOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }

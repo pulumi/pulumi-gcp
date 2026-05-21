@@ -77,6 +77,13 @@ import (
 type LiteReservation struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Name of the reservation.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -123,6 +130,13 @@ func GetLiteReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LiteReservation resources.
 type liteReservationState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the reservation.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -137,6 +151,13 @@ type liteReservationState struct {
 }
 
 type LiteReservationState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the reservation.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -155,6 +176,13 @@ func (LiteReservationState) ElementType() reflect.Type {
 }
 
 type liteReservationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the reservation.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -170,6 +198,13 @@ type liteReservationArgs struct {
 
 // The set of arguments for constructing a LiteReservation resource.
 type LiteReservationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the reservation.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -268,6 +303,16 @@ func (o LiteReservationOutput) ToLiteReservationOutput() LiteReservationOutput {
 
 func (o LiteReservationOutput) ToLiteReservationOutputWithContext(ctx context.Context) LiteReservationOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o LiteReservationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *LiteReservation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name of the reservation.

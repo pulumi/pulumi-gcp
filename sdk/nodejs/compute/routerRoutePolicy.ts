@@ -139,6 +139,15 @@ export class RouterRoutePolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
@@ -184,6 +193,7 @@ export class RouterRoutePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterRoutePolicyState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -199,6 +209,7 @@ export class RouterRoutePolicy extends pulumi.CustomResource {
             if (args?.terms === undefined && !opts.urn) {
                 throw new Error("Missing required property 'terms'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
@@ -216,6 +227,15 @@ export class RouterRoutePolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouterRoutePolicy resources.
  */
 export interface RouterRoutePolicyState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
@@ -254,6 +274,15 @@ export interface RouterRoutePolicyState {
  * The set of arguments for constructing a RouterRoutePolicy resource.
  */
 export interface RouterRoutePolicyArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
      */

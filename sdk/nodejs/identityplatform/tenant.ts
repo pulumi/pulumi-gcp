@@ -84,6 +84,15 @@ export class Tenant extends pulumi.CustomResource {
      */
     declare public readonly client: pulumi.Output<outputs.identityplatform.TenantClient | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether authentication is disabled for the tenant. If true, the users under
      * the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
      * are not able to manage its users.
@@ -122,6 +131,7 @@ export class Tenant extends pulumi.CustomResource {
             const state = argsOrState as TenantState | undefined;
             resourceInputs["allowPasswordSignup"] = state?.allowPasswordSignup;
             resourceInputs["client"] = state?.client;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disableAuth"] = state?.disableAuth;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["enableEmailLinkSignin"] = state?.enableEmailLinkSignin;
@@ -134,6 +144,7 @@ export class Tenant extends pulumi.CustomResource {
             }
             resourceInputs["allowPasswordSignup"] = args?.allowPasswordSignup;
             resourceInputs["client"] = args?.client;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disableAuth"] = args?.disableAuth;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["enableEmailLinkSignin"] = args?.enableEmailLinkSignin;
@@ -158,6 +169,15 @@ export interface TenantState {
      * Structure is documented below.
      */
     client?: pulumi.Input<inputs.identityplatform.TenantClient | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether authentication is disabled for the tenant. If true, the users under
      * the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
@@ -196,6 +216,15 @@ export interface TenantArgs {
      * Structure is documented below.
      */
     client?: pulumi.Input<inputs.identityplatform.TenantClient | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether authentication is disabled for the tenant. If true, the users under
      * the disabled tenant are not allowed to sign-in. Admins of the disabled tenant

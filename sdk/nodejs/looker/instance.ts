@@ -315,9 +315,17 @@ export class Instance extends pulumi.CustomResource {
      * Policy to determine if the cluster should be deleted forcefully.
      * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
      * of its nested resources. If set to "DEFAULT", Looker instances that still have
-     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     * nested resources will return an error.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", the command will behave as if set to "DEFAULT".
+     *
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      */
-    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability
@@ -567,7 +575,15 @@ export interface InstanceState {
      * Policy to determine if the cluster should be deleted forcefully.
      * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
      * of its nested resources. If set to "DEFAULT", Looker instances that still have
-     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     * nested resources will return an error.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", the command will behave as if set to "DEFAULT".
+     *
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -731,7 +747,15 @@ export interface InstanceArgs {
      * Policy to determine if the cluster should be deleted forcefully.
      * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
      * of its nested resources. If set to "DEFAULT", Looker instances that still have
-     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     * nested resources will return an error.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", the command will behave as if set to "DEFAULT".
+     *
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

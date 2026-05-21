@@ -84,7 +84,8 @@ type LookupInstanceResult struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
-	CurrentStatus string `pulumi:"currentStatus"`
+	CurrentStatus  string `pulumi:"currentStatus"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
@@ -232,6 +233,10 @@ func (o LookupInstanceResultOutput) CreationTimestamp() pulumi.StringOutput {
 // The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 func (o LookupInstanceResultOutput) CurrentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentStatus }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether deletion protection is enabled on this instance.

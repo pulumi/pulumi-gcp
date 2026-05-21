@@ -96,6 +96,15 @@ export class SchemaBundle extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous
      * updates of a schema bundle from overwriting each other. This may be sent on update and delete
      * requests to ensure the client has an update-to-date value before proceeding. The server returns
@@ -148,6 +157,7 @@ export class SchemaBundle extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaBundleState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["ignoreWarnings"] = state?.ignoreWarnings;
             resourceInputs["instance"] = state?.instance;
@@ -164,6 +174,7 @@ export class SchemaBundle extends pulumi.CustomResource {
             if (args?.schemaBundleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schemaBundleId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["ignoreWarnings"] = args?.ignoreWarnings;
             resourceInputs["instance"] = args?.instance;
             resourceInputs["project"] = args?.project;
@@ -182,6 +193,15 @@ export class SchemaBundle extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SchemaBundle resources.
  */
 export interface SchemaBundleState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous
      * updates of a schema bundle from overwriting each other. This may be sent on update and delete
@@ -227,6 +247,15 @@ export interface SchemaBundleState {
  * The set of arguments for constructing a SchemaBundle resource.
  */
 export interface SchemaBundleArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If true, allow backwards incompatible changes.
      */

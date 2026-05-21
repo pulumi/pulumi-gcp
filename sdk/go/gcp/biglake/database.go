@@ -113,6 +113,13 @@ type Database struct {
 	// nanosecond resolution and up to nine fractional digits. Examples:
 	// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Output only. The time when this database is considered expired. Only set
 	// after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits. Examples:
@@ -183,6 +190,13 @@ type databaseState struct {
 	// nanosecond resolution and up to nine fractional digits. Examples:
 	// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Output only. The time when this database is considered expired. Only set
 	// after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits. Examples:
@@ -215,6 +229,13 @@ type DatabaseState struct {
 	// nanosecond resolution and up to nine fractional digits. Examples:
 	// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Output only. The time when this database is considered expired. Only set
 	// after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits. Examples:
@@ -241,6 +262,13 @@ func (DatabaseState) ElementType() reflect.Type {
 type databaseArgs struct {
 	// The parent catalog.
 	Catalog string `pulumi:"catalog"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Options of a Hive database.
 	// Structure is documented below.
 	HiveOptions DatabaseHiveOptions `pulumi:"hiveOptions"`
@@ -254,6 +282,13 @@ type databaseArgs struct {
 type DatabaseArgs struct {
 	// The parent catalog.
 	Catalog pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Options of a Hive database.
 	// Structure is documented below.
 	HiveOptions DatabaseHiveOptionsInput
@@ -369,6 +404,16 @@ func (o DatabaseOutput) CreateTime() pulumi.StringOutput {
 // "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o DatabaseOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DatabaseOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Output only. The time when this database is considered expired. Only set

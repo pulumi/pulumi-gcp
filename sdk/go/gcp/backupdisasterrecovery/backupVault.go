@@ -153,6 +153,13 @@ type BackupVault struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. Set to true when there are no backups nested under this resource.
 	Deletable pulumi.BoolOutput `pulumi:"deletable"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. The description of the BackupVault instance (2048 characters or less).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -286,6 +293,13 @@ type backupVaultState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. Set to true when there are no backups nested under this resource.
 	Deletable *bool `pulumi:"deletable"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The description of the BackupVault instance (2048 characters or less).
 	Description *string `pulumi:"description"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -376,6 +390,13 @@ type BackupVaultState struct {
 	CreateTime pulumi.StringPtrInput
 	// Output only. Set to true when there are no backups nested under this resource.
 	Deletable pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The description of the BackupVault instance (2048 characters or less).
 	Description pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -464,6 +485,13 @@ type backupVaultArgs struct {
 	BackupRetentionInheritance *string `pulumi:"backupRetentionInheritance"`
 	// Required. ID of the requesting object.
 	BackupVaultId string `pulumi:"backupVaultId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The description of the BackupVault instance (2048 characters or less).
 	Description *string `pulumi:"description"`
 	// Optional. Time after which the BackupVault resource is locked.
@@ -522,6 +550,13 @@ type BackupVaultArgs struct {
 	BackupRetentionInheritance pulumi.StringPtrInput
 	// Required. ID of the requesting object.
 	BackupVaultId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The description of the BackupVault instance (2048 characters or less).
 	Description pulumi.StringPtrInput
 	// Optional. Time after which the BackupVault resource is locked.
@@ -696,6 +731,16 @@ func (o BackupVaultOutput) CreateTime() pulumi.StringOutput {
 // Output only. Set to true when there are no backups nested under this resource.
 func (o BackupVaultOutput) Deletable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.BoolOutput { return v.Deletable }).(pulumi.BoolOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackupVaultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. The description of the BackupVault instance (2048 characters or less).

@@ -156,6 +156,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Certificate;
         public readonly int CertificateId;
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string ExpireTime;
         /// <summary>
@@ -177,6 +178,8 @@ namespace Pulumi.Gcp.Compute
             int certificateId,
 
             string creationTimestamp,
+
+            string deletionPolicy,
 
             string description,
 
@@ -201,6 +204,7 @@ namespace Pulumi.Gcp.Compute
             Certificate = certificate;
             CertificateId = certificateId;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             ExpireTime = expireTime;
             Id = id;

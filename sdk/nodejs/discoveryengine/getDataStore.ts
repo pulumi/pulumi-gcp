@@ -78,6 +78,7 @@ export interface GetDataStoreResult {
     readonly createTime: string;
     readonly dataStoreId?: string;
     readonly defaultSchemaId: string;
+    readonly deletionPolicy: string;
     readonly displayName?: string;
     readonly documentProcessingConfigs: outputs.discoveryengine.GetDataStoreDocumentProcessingConfig[];
     /**

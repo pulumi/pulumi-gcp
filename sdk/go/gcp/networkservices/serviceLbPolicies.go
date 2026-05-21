@@ -181,6 +181,13 @@ type ServiceLbPolicies struct {
 	AutoCapacityDrain ServiceLbPoliciesAutoCapacityDrainPtrOutput `pulumi:"autoCapacityDrain"`
 	// Time the ServiceLbPolicy was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -255,6 +262,13 @@ type serviceLbPoliciesState struct {
 	AutoCapacityDrain *ServiceLbPoliciesAutoCapacityDrain `pulumi:"autoCapacityDrain"`
 	// Time the ServiceLbPolicy was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -292,6 +306,13 @@ type ServiceLbPoliciesState struct {
 	AutoCapacityDrain ServiceLbPoliciesAutoCapacityDrainPtrInput
 	// Time the ServiceLbPolicy was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -331,6 +352,13 @@ type serviceLbPoliciesArgs struct {
 	// Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
 	// Structure is documented below.
 	AutoCapacityDrain *ServiceLbPoliciesAutoCapacityDrain `pulumi:"autoCapacityDrain"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
@@ -360,6 +388,13 @@ type ServiceLbPoliciesArgs struct {
 	// Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
 	// Structure is documented below.
 	AutoCapacityDrain ServiceLbPoliciesAutoCapacityDrainPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
@@ -480,6 +515,16 @@ func (o ServiceLbPoliciesOutput) AutoCapacityDrain() ServiceLbPoliciesAutoCapaci
 // Time the ServiceLbPolicy was created in UTC.
 func (o ServiceLbPoliciesOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceLbPolicies) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ServiceLbPoliciesOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLbPolicies) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A free-text description of the resource. Max length 1024 characters.

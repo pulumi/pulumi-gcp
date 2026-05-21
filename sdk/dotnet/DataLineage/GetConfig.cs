@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.DataLineage
     [OutputType]
     public sealed class GetConfigResult
     {
+        public readonly string DeletionPolicy;
         public readonly string Etag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -152,6 +153,8 @@ namespace Pulumi.Gcp.DataLineage
 
         [OutputConstructor]
         private GetConfigResult(
+            string deletionPolicy,
+
             string etag,
 
             string id,
@@ -164,6 +167,7 @@ namespace Pulumi.Gcp.DataLineage
 
             string parent)
         {
+            DeletionPolicy = deletionPolicy;
             Etag = etag;
             Id = id;
             Ingestions = ingestions;

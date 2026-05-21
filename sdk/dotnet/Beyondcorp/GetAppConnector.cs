@@ -149,6 +149,7 @@ namespace Pulumi.Gcp.Beyondcorp
     [OutputType]
     public sealed class GetAppConnectorResult
     {
+        public readonly string DeletionPolicy;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
@@ -165,6 +166,8 @@ namespace Pulumi.Gcp.Beyondcorp
 
         [OutputConstructor]
         private GetAppConnectorResult(
+            string deletionPolicy,
+
             string displayName,
 
             ImmutableDictionary<string, string> effectiveLabels,
@@ -185,6 +188,7 @@ namespace Pulumi.Gcp.Beyondcorp
 
             string state)
         {
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             Id = id;

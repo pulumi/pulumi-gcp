@@ -70,11 +70,12 @@ type LookupDocumentArgs struct {
 
 // A collection of values returned by getDocument.
 type LookupDocumentResult struct {
-	Collection string `pulumi:"collection"`
-	CreateTime string `pulumi:"createTime"`
-	Database   string `pulumi:"database"`
-	DocumentId string `pulumi:"documentId"`
-	Fields     string `pulumi:"fields"`
+	Collection     string `pulumi:"collection"`
+	CreateTime     string `pulumi:"createTime"`
+	Database       string `pulumi:"database"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	DocumentId     string `pulumi:"documentId"`
+	Fields         string `pulumi:"fields"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	Name       string  `pulumi:"name"`
@@ -133,6 +134,10 @@ func (o LookupDocumentResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupDocumentResultOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentResult) string { return v.Database }).(pulumi.StringOutput)
+}
+
+func (o LookupDocumentResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupDocumentResultOutput) DocumentId() pulumi.StringOutput {

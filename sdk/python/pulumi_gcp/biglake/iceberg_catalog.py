@@ -23,6 +23,7 @@ class IcebergCatalogArgs:
     def __init__(__self__, *,
                  catalog_type: pulumi.Input[_builtins.str],
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -33,6 +34,12 @@ class IcebergCatalogArgs:
                Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
@@ -46,6 +53,8 @@ class IcebergCatalogArgs:
         pulumi.set(__self__, "catalog_type", catalog_type)
         if credential_mode is not None:
             pulumi.set(__self__, "credential_mode", credential_mode)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if primary_location is not None:
@@ -78,6 +87,23 @@ class IcebergCatalogArgs:
     @credential_mode.setter
     def credential_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -130,6 +156,7 @@ class _IcebergCatalogState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -146,6 +173,12 @@ class _IcebergCatalogState:
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
         :param pulumi.Input[_builtins.str] default_location: Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
@@ -170,6 +203,8 @@ class _IcebergCatalogState:
             pulumi.set(__self__, "credential_mode", credential_mode)
         if default_location is not None:
             pulumi.set(__self__, "default_location", default_location)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if primary_location is not None:
@@ -244,6 +279,23 @@ class _IcebergCatalogState:
     @default_location.setter
     def default_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -333,6 +385,7 @@ class IcebergCatalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -411,6 +464,12 @@ class IcebergCatalog(pulumi.CustomResource):
                Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
@@ -512,6 +571,7 @@ class IcebergCatalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -528,6 +588,7 @@ class IcebergCatalog(pulumi.CustomResource):
                 raise TypeError("Missing required property 'catalog_type'")
             __props__.__dict__["catalog_type"] = catalog_type
             __props__.__dict__["credential_mode"] = credential_mode
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["primary_location"] = primary_location
             __props__.__dict__["project"] = project
@@ -552,6 +613,7 @@ class IcebergCatalog(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
             default_location: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             primary_location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -572,6 +634,12 @@ class IcebergCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
         :param pulumi.Input[_builtins.str] default_location: Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
@@ -595,6 +663,7 @@ class IcebergCatalog(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["credential_mode"] = credential_mode
         __props__.__dict__["default_location"] = default_location
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["primary_location"] = primary_location
         __props__.__dict__["project"] = project
@@ -644,6 +713,19 @@ class IcebergCatalog(pulumi.CustomResource):
         Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
         """
         return pulumi.get(self, "default_location")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

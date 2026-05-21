@@ -59,6 +59,7 @@ export interface GetKMSCryptoKeyArgs {
  */
 export interface GetKMSCryptoKeyResult {
     readonly cryptoKeyBackend: string;
+    readonly deletionPolicy: string;
     readonly destroyScheduledDuration: string;
     readonly effectiveLabels: {[key: string]: string};
     /**

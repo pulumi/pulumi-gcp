@@ -23,6 +23,7 @@ class CxPlaybookArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  goal: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instruction: pulumi.Input[Optional['CxPlaybookInstructionArgs']] = None,
                  llm_model_settings: pulumi.Input[Optional['CxPlaybookLlmModelSettingsArgs']] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -33,6 +34,12 @@ class CxPlaybookArgs:
 
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the playbook, unique within an agent.
         :param pulumi.Input[_builtins.str] goal: High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['CxPlaybookInstructionArgs'] instruction: Instruction to accomplish target goal.
                Structure is documented below.
         :param pulumi.Input['CxPlaybookLlmModelSettingsArgs'] llm_model_settings: Llm model settings for the playbook.
@@ -45,6 +52,8 @@ class CxPlaybookArgs:
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "goal", goal)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if instruction is not None:
             pulumi.set(__self__, "instruction", instruction)
         if llm_model_settings is not None:
@@ -79,6 +88,23 @@ class CxPlaybookArgs:
     @goal.setter
     def goal(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "goal", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -149,6 +175,7 @@ class CxPlaybookArgs:
 class _CxPlaybookState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.str]] = None,
                  instruction: pulumi.Input[Optional['CxPlaybookInstructionArgs']] = None,
@@ -166,6 +193,12 @@ class _CxPlaybookState:
 
         :param pulumi.Input[_builtins.str] create_time: The timestamp of initial playbook creation.
                Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the playbook, unique within an agent.
         :param pulumi.Input[_builtins.str] goal: High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
         :param pulumi.Input['CxPlaybookInstructionArgs'] instruction: Instruction to accomplish target goal.
@@ -187,6 +220,8 @@ class _CxPlaybookState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if goal is not None:
@@ -224,6 +259,23 @@ class _CxPlaybookState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -382,6 +434,7 @@ class CxPlaybook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.str]] = None,
                  instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
@@ -553,6 +606,12 @@ class CxPlaybook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the playbook, unique within an agent.
         :param pulumi.Input[_builtins.str] goal: High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
         :param pulumi.Input[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']] instruction: Instruction to accomplish target goal.
@@ -747,6 +806,7 @@ class CxPlaybook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.str]] = None,
                  instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
@@ -763,6 +823,7 @@ class CxPlaybook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CxPlaybookArgs.__new__(CxPlaybookArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -791,6 +852,7 @@ class CxPlaybook(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             goal: pulumi.Input[Optional[_builtins.str]] = None,
             instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
@@ -812,6 +874,12 @@ class CxPlaybook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of initial playbook creation.
                Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the playbook, unique within an agent.
         :param pulumi.Input[_builtins.str] goal: High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
         :param pulumi.Input[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']] instruction: Instruction to accomplish target goal.
@@ -836,6 +904,7 @@ class CxPlaybook(pulumi.CustomResource):
         __props__ = _CxPlaybookState.__new__(_CxPlaybookState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["goal"] = goal
         __props__.__dict__["instruction"] = instruction
@@ -858,6 +927,19 @@ class CxPlaybook(pulumi.CustomResource):
         Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

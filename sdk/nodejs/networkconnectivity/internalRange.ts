@@ -233,6 +233,15 @@ export class InternalRange extends pulumi.CustomResource {
      */
     declare public readonly allocationOptions: pulumi.Output<outputs.networkconnectivity.InternalRangeAllocationOptions | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -333,6 +342,7 @@ export class InternalRange extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InternalRangeState | undefined;
             resourceInputs["allocationOptions"] = state?.allocationOptions;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["excludeCidrRanges"] = state?.excludeCidrRanges;
@@ -362,6 +372,7 @@ export class InternalRange extends pulumi.CustomResource {
                 throw new Error("Missing required property 'usage'");
             }
             resourceInputs["allocationOptions"] = args?.allocationOptions;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["excludeCidrRanges"] = args?.excludeCidrRanges;
             resourceInputs["immutable"] = args?.immutable;
@@ -396,6 +407,15 @@ export interface InternalRangeState {
      * Structure is documented below.
      */
     allocationOptions?: pulumi.Input<inputs.networkconnectivity.InternalRangeAllocationOptions | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -493,6 +513,15 @@ export interface InternalRangeArgs {
      * Structure is documented below.
      */
     allocationOptions?: pulumi.Input<inputs.networkconnectivity.InternalRangeAllocationOptions | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

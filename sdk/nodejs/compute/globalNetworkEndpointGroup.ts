@@ -95,6 +95,15 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     declare public readonly defaultPort: pulumi.Output<number | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
@@ -138,6 +147,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GlobalNetworkEndpointGroupState | undefined;
             resourceInputs["defaultPort"] = state?.defaultPort;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["networkEndpointType"] = state?.networkEndpointType;
@@ -149,6 +159,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'networkEndpointType'");
             }
             resourceInputs["defaultPort"] = args?.defaultPort;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["networkEndpointType"] = args?.networkEndpointType;
@@ -169,6 +180,15 @@ export interface GlobalNetworkEndpointGroupState {
      * network endpoint.
      */
     defaultPort?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
@@ -209,6 +229,15 @@ export interface GlobalNetworkEndpointGroupArgs {
      * network endpoint.
      */
     defaultPort?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.

@@ -22,6 +22,7 @@ class MuteConfigArgs:
                  filter: pulumi.Input[_builtins.str],
                  mute_config_id: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
@@ -37,6 +38,12 @@ class MuteConfigArgs:
         :param pulumi.Input[_builtins.str] parent: Resource name of the new mute configs's parent. Its format is
                "organizations/[organization_id]", "folders/[folder_id]", or
                "projects/[project_id]".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the mute config.
         :param pulumi.Input[_builtins.str] expiry_time: Optional. The expiry of the mute config. Only applicable for dynamic configs.
                If the expiry is set, when the config expires, it is removed from all findings.
@@ -49,6 +56,8 @@ class MuteConfigArgs:
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "mute_config_id", mute_config_id)
         pulumi.set(__self__, "parent", parent)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if expiry_time is not None:
@@ -99,6 +108,23 @@ class MuteConfigArgs:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -144,6 +170,7 @@ class MuteConfigArgs:
 class _MuteConfigState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -158,6 +185,12 @@ class _MuteConfigState:
 
         :param pulumi.Input[_builtins.str] create_time: The time at which the mute config was created. This field is set by
                the server and will be ignored if provided on config creation.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the mute config.
         :param pulumi.Input[_builtins.str] expiry_time: Optional. The expiry of the mute config. Only applicable for dynamic configs.
                If the expiry is set, when the config expires, it is removed from all findings.
@@ -188,6 +221,8 @@ class _MuteConfigState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if expiry_time is not None:
@@ -219,6 +254,23 @@ class _MuteConfigState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -353,6 +405,7 @@ class MuteConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -402,6 +455,12 @@ class MuteConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the mute config.
         :param pulumi.Input[_builtins.str] expiry_time: Optional. The expiry of the mute config. Only applicable for dynamic configs.
                If the expiry is set, when the config expires, it is removed from all findings.
@@ -481,6 +540,7 @@ class MuteConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -496,6 +556,7 @@ class MuteConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MuteConfigArgs.__new__(MuteConfigArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["expiry_time"] = expiry_time
             if filter is None and not opts.urn:
@@ -523,6 +584,7 @@ class MuteConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
             filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -541,6 +603,12 @@ class MuteConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time at which the mute config was created. This field is set by
                the server and will be ignored if provided on config creation.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the mute config.
         :param pulumi.Input[_builtins.str] expiry_time: Optional. The expiry of the mute config. Only applicable for dynamic configs.
                If the expiry is set, when the config expires, it is removed from all findings.
@@ -574,6 +642,7 @@ class MuteConfig(pulumi.CustomResource):
         __props__ = _MuteConfigState.__new__(_MuteConfigState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["expiry_time"] = expiry_time
         __props__.__dict__["filter"] = filter
@@ -593,6 +662,19 @@ class MuteConfig(pulumi.CustomResource):
         the server and will be ignored if provided on config creation.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

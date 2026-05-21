@@ -119,6 +119,7 @@ type GetAppEngineServiceArgs struct {
 
 // A collection of values returned by getAppEngineService.
 type GetAppEngineServiceResult struct {
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this (Monitoring) Service.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -174,6 +175,10 @@ func (o GetAppEngineServiceResultOutput) ToGetAppEngineServiceResultOutput() Get
 
 func (o GetAppEngineServiceResultOutput) ToGetAppEngineServiceResultOutputWithContext(ctx context.Context) GetAppEngineServiceResultOutput {
 	return o
+}
+
+func (o GetAppEngineServiceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name used for UI elements listing this (Monitoring) Service.

@@ -90,6 +90,15 @@ export class SecurityScanConfig extends pulumi.CustomResource {
      */
     declare public readonly blacklistPatterns: pulumi.Output<string[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The user provider display name of the ScanConfig.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -150,6 +159,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             const state = argsOrState as SecurityScanConfigState | undefined;
             resourceInputs["authentication"] = state?.authentication;
             resourceInputs["blacklistPatterns"] = state?.blacklistPatterns;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["exportToSecurityCommandCenter"] = state?.exportToSecurityCommandCenter;
             resourceInputs["maxQps"] = state?.maxQps;
@@ -169,6 +179,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             }
             resourceInputs["authentication"] = args?.authentication;
             resourceInputs["blacklistPatterns"] = args?.blacklistPatterns;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["exportToSecurityCommandCenter"] = args?.exportToSecurityCommandCenter;
             resourceInputs["maxQps"] = args?.maxQps;
@@ -199,6 +210,15 @@ export interface SecurityScanConfigState {
      * https://cloud.google.com/security-scanner/docs/excluded-urls
      */
     blacklistPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user provider display name of the ScanConfig.
      */
@@ -261,6 +281,15 @@ export interface SecurityScanConfigArgs {
      * https://cloud.google.com/security-scanner/docs/excluded-urls
      */
     blacklistPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user provider display name of the ScanConfig.
      */

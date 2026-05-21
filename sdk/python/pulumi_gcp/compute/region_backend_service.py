@@ -29,6 +29,7 @@ class RegionBackendServiceArgs:
                  connection_tracking_policy: pulumi.Input[Optional['RegionBackendServiceConnectionTrackingPolicyArgs']] = None,
                  consistent_hash: pulumi.Input[Optional['RegionBackendServiceConsistentHashArgs']] = None,
                  custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_forwarding: pulumi.Input[Optional['RegionBackendServiceDynamicForwardingArgs']] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -73,8 +74,7 @@ class RegionBackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: (Optional, Beta)
-               Connection Tracking configuration for this BackendService.
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -87,6 +87,12 @@ class RegionBackendServiceArgs:
                This field only applies when all of the following are true -
         :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input['RegionBackendServiceDynamicForwardingArgs'] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
@@ -242,6 +248,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "consistent_hash", consistent_hash)
         if custom_metrics is not None:
             pulumi.set(__self__, "custom_metrics", custom_metrics)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dynamic_forwarding is not None:
@@ -369,7 +377,6 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> pulumi.Input[Optional['RegionBackendServiceConnectionTrackingPolicyArgs']]:
         """
-        (Optional, Beta)
         Connection Tracking configuration for this BackendService.
         This is available only for Layer 4 Internal Load Balancing and
         Network Load Balancing.
@@ -411,6 +418,23 @@ class RegionBackendServiceArgs:
     @custom_metrics.setter
     def custom_metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]]):
         pulumi.set(self, "custom_metrics", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -849,6 +873,7 @@ class _RegionBackendServiceState:
                  consistent_hash: pulumi.Input[Optional['RegionBackendServiceConsistentHashArgs']] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_forwarding: pulumi.Input[Optional['RegionBackendServiceDynamicForwardingArgs']] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -896,8 +921,7 @@ class _RegionBackendServiceState:
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: (Optional, Beta)
-               Connection Tracking configuration for this BackendService.
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -911,6 +935,12 @@ class _RegionBackendServiceState:
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input['RegionBackendServiceDynamicForwardingArgs'] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
@@ -1072,6 +1102,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if custom_metrics is not None:
             pulumi.set(__self__, "custom_metrics", custom_metrics)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dynamic_forwarding is not None:
@@ -1205,7 +1237,6 @@ class _RegionBackendServiceState:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> pulumi.Input[Optional['RegionBackendServiceConnectionTrackingPolicyArgs']]:
         """
-        (Optional, Beta)
         Connection Tracking configuration for this BackendService.
         This is available only for Layer 4 Internal Load Balancing and
         Network Load Balancing.
@@ -1259,6 +1290,23 @@ class _RegionBackendServiceState:
     @custom_metrics.setter
     def custom_metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]]]):
         pulumi.set(self, "custom_metrics", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1736,6 +1784,7 @@ class RegionBackendService(pulumi.CustomResource):
                  connection_tracking_policy: pulumi.Input[Optional[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
                  consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
                  custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']]] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1814,34 +1863,6 @@ class RegionBackendService(pulumi.CustomResource):
                 "oauth2_client_id": "abc",
                 "oauth2_client_secret": "xyz",
             })
-        ```
-        ### Region Backend Service Cache
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_region_health_check = gcp.compute.RegionHealthCheck("default",
-            name="rbs-health-check",
-            region="us-central1",
-            http_health_check={
-                "port": 80,
-            })
-        default = gcp.compute.RegionBackendService("default",
-            name="region-service",
-            region="us-central1",
-            health_checks=default_region_health_check.id,
-            enable_cdn=True,
-            cdn_policy={
-                "cache_mode": "CACHE_ALL_STATIC",
-                "default_ttl": 3600,
-                "client_ttl": 7200,
-                "max_ttl": 10800,
-                "negative_caching": True,
-                "signed_url_cache_max_age_sec": 7200,
-            },
-            load_balancing_scheme="EXTERNAL",
-            protocol="HTTP")
         ```
         ### Region Backend Service Ilb Round Robin
 
@@ -2048,7 +2069,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "tracking_mode": "PER_SESSION",
                 "connection_persistence_on_unhealthy_backends": "NEVER_PERSIST",
                 "idle_timeout_sec": 60,
-                "enable_strong_affinity": True,
+                "enable_strong_affinity": False,
             })
         ```
         ### Region Backend Service Ip Address Selection Policy
@@ -2317,8 +2338,7 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: (Optional, Beta)
-               Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -2331,6 +2351,12 @@ class RegionBackendService(pulumi.CustomResource):
                This field only applies when all of the following are true -
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
@@ -2527,34 +2553,6 @@ class RegionBackendService(pulumi.CustomResource):
                 "oauth2_client_id": "abc",
                 "oauth2_client_secret": "xyz",
             })
-        ```
-        ### Region Backend Service Cache
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_region_health_check = gcp.compute.RegionHealthCheck("default",
-            name="rbs-health-check",
-            region="us-central1",
-            http_health_check={
-                "port": 80,
-            })
-        default = gcp.compute.RegionBackendService("default",
-            name="region-service",
-            region="us-central1",
-            health_checks=default_region_health_check.id,
-            enable_cdn=True,
-            cdn_policy={
-                "cache_mode": "CACHE_ALL_STATIC",
-                "default_ttl": 3600,
-                "client_ttl": 7200,
-                "max_ttl": 10800,
-                "negative_caching": True,
-                "signed_url_cache_max_age_sec": 7200,
-            },
-            load_balancing_scheme="EXTERNAL",
-            protocol="HTTP")
         ```
         ### Region Backend Service Ilb Round Robin
 
@@ -2761,7 +2759,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "tracking_mode": "PER_SESSION",
                 "connection_persistence_on_unhealthy_backends": "NEVER_PERSIST",
                 "idle_timeout_sec": 60,
-                "enable_strong_affinity": True,
+                "enable_strong_affinity": False,
             })
         ```
         ### Region Backend Service Ip Address Selection Policy
@@ -3036,6 +3034,7 @@ class RegionBackendService(pulumi.CustomResource):
                  connection_tracking_policy: pulumi.Input[Optional[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']]] = None,
                  consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
                  custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']]] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3079,6 +3078,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
             __props__.__dict__["consistent_hash"] = consistent_hash
             __props__.__dict__["custom_metrics"] = custom_metrics
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["dynamic_forwarding"] = dynamic_forwarding
             __props__.__dict__["enable_cdn"] = enable_cdn
@@ -3128,6 +3128,7 @@ class RegionBackendService(pulumi.CustomResource):
             consistent_hash: pulumi.Input[Optional[Union['RegionBackendServiceConsistentHashArgs', 'RegionBackendServiceConsistentHashArgsDict']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dynamic_forwarding: pulumi.Input[Optional[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']]] = None,
             enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3179,8 +3180,7 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: (Optional, Beta)
-               Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -3194,6 +3194,12 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
@@ -3350,6 +3356,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["consistent_hash"] = consistent_hash
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["custom_metrics"] = custom_metrics
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["dynamic_forwarding"] = dynamic_forwarding
         __props__.__dict__["enable_cdn"] = enable_cdn
@@ -3435,7 +3442,6 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceConnectionTrackingPolicy']]:
         """
-        (Optional, Beta)
         Connection Tracking configuration for this BackendService.
         This is available only for Layer 4 Internal Load Balancing and
         Network Load Balancing.
@@ -3473,6 +3479,19 @@ class RegionBackendService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "custom_metrics")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

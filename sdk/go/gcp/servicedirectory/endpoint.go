@@ -152,6 +152,13 @@ type Endpoint struct {
 
 	// IPv4 or IPv6 address of the endpoint.
 	Address pulumi.StringPtrOutput `pulumi:"address"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
@@ -210,6 +217,13 @@ func GetEndpoint(ctx *pulumi.Context,
 type endpointState struct {
 	// IPv4 or IPv6 address of the endpoint.
 	Address *string `pulumi:"address"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
 	EndpointId *string `pulumi:"endpointId"`
@@ -233,6 +247,13 @@ type endpointState struct {
 type EndpointState struct {
 	// IPv4 or IPv6 address of the endpoint.
 	Address pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
 	EndpointId pulumi.StringPtrInput
@@ -260,6 +281,13 @@ func (EndpointState) ElementType() reflect.Type {
 type endpointArgs struct {
 	// IPv4 or IPv6 address of the endpoint.
 	Address *string `pulumi:"address"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
 	EndpointId string `pulumi:"endpointId"`
@@ -281,6 +309,13 @@ type endpointArgs struct {
 type EndpointArgs struct {
 	// IPv4 or IPv6 address of the endpoint.
 	Address pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
 	EndpointId pulumi.StringInput
@@ -388,6 +423,16 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 // IPv4 or IPv6 address of the endpoint.
 func (o EndpointOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EndpointOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The Resource ID must be 1-63 characters long, including digits,

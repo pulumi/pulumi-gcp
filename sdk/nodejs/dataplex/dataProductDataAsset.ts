@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.dataplex.DataProduct("example", {
  *     project: "my-project-name",
  *     location: "us-central1",
- *     dataProductId: "tf-test-dp-_40785",
+ *     dataProductId: "tf-test-dp-_55138",
  *     displayName: "Parent Data Product",
  *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     accessGroups: [{
@@ -37,13 +37,13 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_79169@example.com",
+ *             googleGroup: "tf-test-analysts-_37559@example.com",
  *         },
  *     }],
  * });
  * const exampleDataset = new gcp.bigquery.Dataset("example", {
  *     project: "my-project-name",
- *     datasetId: "tf_test_dataset__56529",
+ *     datasetId: "tf_test_dataset__91980",
  *     location: "us-central1",
  * });
  * const exampleDataProductDataAsset = new gcp.dataplex.DataProductDataAsset("example", {
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.dataplex.DataProduct("example", {
  *     project: "my-project-name",
  *     location: "us-central1",
- *     dataProductId: "tf-test-dp-_75413",
+ *     dataProductId: "tf-test-dp-_37118",
  *     displayName: "Full Example Parent DP",
  *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     accessGroups: [
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleDataset = new gcp.bigquery.Dataset("example", {
  *     project: "my-project-name",
- *     datasetId: "tf_test_dataset__55138",
+ *     datasetId: "tf_test_dataset__80332",
  *     location: "us-central1",
  * });
  * const exampleDataProductDataAsset = new gcp.dataplex.DataProductDataAsset("example", {
@@ -171,6 +171,15 @@ export class DataProductDataAsset extends pulumi.CustomResource {
      */
     declare public readonly dataProductId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -219,6 +228,7 @@ export class DataProductDataAsset extends pulumi.CustomResource {
             resourceInputs["accessGroupConfigs"] = state?.accessGroupConfigs;
             resourceInputs["dataAssetId"] = state?.dataAssetId;
             resourceInputs["dataProductId"] = state?.dataProductId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
@@ -243,6 +253,7 @@ export class DataProductDataAsset extends pulumi.CustomResource {
             resourceInputs["accessGroupConfigs"] = args?.accessGroupConfigs;
             resourceInputs["dataAssetId"] = args?.dataAssetId;
             resourceInputs["dataProductId"] = args?.dataProductId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -275,6 +286,15 @@ export interface DataProductDataAssetState {
      * The ID of the parent data product.
      */
     dataProductId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -326,6 +346,15 @@ export interface DataProductDataAssetArgs {
      * The ID of the parent data product.
      */
     dataProductId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

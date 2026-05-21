@@ -141,6 +141,15 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The minimal action to perform on the instance during an update.
      * Default is `NONE`. Possible values are:
      * * REPLACE
@@ -205,6 +214,7 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionPerInstanceConfigState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["minimalAction"] = state?.minimalAction;
             resourceInputs["mostDisruptiveAllowedAction"] = state?.mostDisruptiveAllowedAction;
             resourceInputs["name"] = state?.name;
@@ -219,6 +229,7 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
             if (args?.regionInstanceGroupManager === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionInstanceGroupManager'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["minimalAction"] = args?.minimalAction;
             resourceInputs["mostDisruptiveAllowedAction"] = args?.mostDisruptiveAllowedAction;
             resourceInputs["name"] = args?.name;
@@ -238,6 +249,15 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionPerInstanceConfig resources.
  */
 export interface RegionPerInstanceConfigState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The minimal action to perform on the instance during an update.
      * Default is `NONE`. Possible values are:
@@ -295,6 +315,15 @@ export interface RegionPerInstanceConfigState {
  * The set of arguments for constructing a RegionPerInstanceConfig resource.
  */
 export interface RegionPerInstanceConfigArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The minimal action to perform on the instance during an update.
      * Default is `NONE`. Possible values are:

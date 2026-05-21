@@ -193,6 +193,13 @@ type KeystoresAliasesSelfSignedCert struct {
 	// Chain of certificates under this alias.
 	// Structure is documented below.
 	CertsInfos KeystoresAliasesSelfSignedCertCertsInfoArrayOutput `pulumi:"certsInfos"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The Apigee environment name
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Key size. Default and maximum value is 2048 bits.
@@ -270,6 +277,13 @@ type keystoresAliasesSelfSignedCertState struct {
 	// Chain of certificates under this alias.
 	// Structure is documented below.
 	CertsInfos []KeystoresAliasesSelfSignedCertCertsInfo `pulumi:"certsInfos"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Apigee environment name
 	Environment *string `pulumi:"environment"`
 	// Key size. Default and maximum value is 2048 bits.
@@ -300,6 +314,13 @@ type KeystoresAliasesSelfSignedCertState struct {
 	// Chain of certificates under this alias.
 	// Structure is documented below.
 	CertsInfos KeystoresAliasesSelfSignedCertCertsInfoArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Apigee environment name
 	Environment pulumi.StringPtrInput
 	// Key size. Default and maximum value is 2048 bits.
@@ -331,6 +352,13 @@ type keystoresAliasesSelfSignedCertArgs struct {
 	Alias string `pulumi:"alias"`
 	// Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
 	CertValidityInDays *int `pulumi:"certValidityInDays"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Apigee environment name
 	Environment string `pulumi:"environment"`
 	// Key size. Default and maximum value is 2048 bits.
@@ -357,6 +385,13 @@ type KeystoresAliasesSelfSignedCertArgs struct {
 	Alias pulumi.StringInput
 	// Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
 	CertValidityInDays pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Apigee environment name
 	Environment pulumi.StringInput
 	// Key size. Default and maximum value is 2048 bits.
@@ -480,6 +515,16 @@ func (o KeystoresAliasesSelfSignedCertOutput) CertsInfos() KeystoresAliasesSelfS
 	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCert) KeystoresAliasesSelfSignedCertCertsInfoArrayOutput {
 		return v.CertsInfos
 	}).(KeystoresAliasesSelfSignedCertCertsInfoArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o KeystoresAliasesSelfSignedCertOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCert) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The Apigee environment name

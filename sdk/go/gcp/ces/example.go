@@ -299,6 +299,13 @@ type Example struct {
 	App pulumi.StringOutput `pulumi:"app"`
 	// Timestamp when the example was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Human-readable description of the example.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the example.
@@ -379,6 +386,13 @@ type exampleState struct {
 	App *string `pulumi:"app"`
 	// Timestamp when the example was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-readable description of the example.
 	Description *string `pulumi:"description"`
 	// Display name of the example.
@@ -418,6 +432,13 @@ type ExampleState struct {
 	App pulumi.StringPtrInput
 	// Timestamp when the example was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human-readable description of the example.
 	Description pulumi.StringPtrInput
 	// Display name of the example.
@@ -459,6 +480,13 @@ func (ExampleState) ElementType() reflect.Type {
 type exampleArgs struct {
 	// Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App string `pulumi:"app"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-readable description of the example.
 	Description *string `pulumi:"description"`
 	// Display name of the example.
@@ -484,6 +512,13 @@ type exampleArgs struct {
 type ExampleArgs struct {
 	// Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human-readable description of the example.
 	Description pulumi.StringPtrInput
 	// Display name of the example.
@@ -600,6 +635,16 @@ func (o ExampleOutput) App() pulumi.StringOutput {
 // Timestamp when the example was created.
 func (o ExampleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Example) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ExampleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Example) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Human-readable description of the example.

@@ -23,6 +23,7 @@ class RepositoryWorkflowConfigArgs:
     def __init__(__self__, *,
                  release_config: pulumi.Input[_builtins.str],
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  invocation_config: pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,6 +35,12 @@ class RepositoryWorkflowConfigArgs:
 
         :param pulumi.Input[_builtins.str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
@@ -46,6 +53,8 @@ class RepositoryWorkflowConfigArgs:
         pulumi.set(__self__, "release_config", release_config)
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if invocation_config is not None:
             pulumi.set(__self__, "invocation_config", invocation_config)
         if name is not None:
@@ -82,6 +91,23 @@ class RepositoryWorkflowConfigArgs:
     @cron_schedule.setter
     def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationConfig")
@@ -162,6 +188,7 @@ class RepositoryWorkflowConfigArgs:
 class _RepositoryWorkflowConfigState:
     def __init__(__self__, *,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  invocation_config: pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -174,6 +201,12 @@ class _RepositoryWorkflowConfigState:
         Input properties used for looking up and filtering RepositoryWorkflowConfig resources.
 
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
@@ -188,6 +221,8 @@ class _RepositoryWorkflowConfigState:
         """
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if invocation_config is not None:
             pulumi.set(__self__, "invocation_config", invocation_config)
         if name is not None:
@@ -216,6 +251,23 @@ class _RepositoryWorkflowConfigState:
     @cron_schedule.setter
     def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationConfig")
@@ -324,6 +376,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -448,6 +501,12 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
@@ -593,6 +652,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -610,6 +670,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             __props__ = RepositoryWorkflowConfigArgs.__new__(RepositoryWorkflowConfigArgs)
 
             __props__.__dict__["cron_schedule"] = cron_schedule
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["invocation_config"] = invocation_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -631,6 +692,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -647,6 +709,12 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The workflow's name.
@@ -664,6 +732,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         __props__ = _RepositoryWorkflowConfigState.__new__(_RepositoryWorkflowConfigState)
 
         __props__.__dict__["cron_schedule"] = cron_schedule
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["invocation_config"] = invocation_config
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -681,6 +750,19 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         """
         return pulumi.get(self, "cron_schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="invocationConfig")

@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOdbNetworkResult {
     private String createTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private Map<String,String> effectiveLabels;
     private String entitlementId;
@@ -36,6 +37,9 @@ public final class GetOdbNetworkResult {
     private GetOdbNetworkResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -91,6 +95,7 @@ public final class GetOdbNetworkResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private Map<String,String> effectiveLabels;
         private String entitlementId;
@@ -108,6 +113,7 @@ public final class GetOdbNetworkResult {
         public Builder(GetOdbNetworkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.entitlementId = defaults.entitlementId;
@@ -129,6 +135,14 @@ public final class GetOdbNetworkResult {
               throw new MissingRequiredPropertyException("GetOdbNetworkResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetOdbNetworkResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -236,6 +250,7 @@ public final class GetOdbNetworkResult {
         public GetOdbNetworkResult build() {
             final var _resultValue = new GetOdbNetworkResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.entitlementId = entitlementId;

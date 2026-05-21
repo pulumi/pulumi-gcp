@@ -95,6 +95,15 @@ public final class RegionAutoscalerAutoscalingPolicy {
      * 
      */
     private @Nullable List<RegionAutoscalerAutoscalingPolicyScalingSchedule> scalingSchedules;
+    /**
+     * @return The number of seconds that the autoscaler waits for load stabilization
+     * before making scale-in decisions.
+     * This might appear as a delay in scaling in but it is an important mechanism
+     * for your application to not have fluctuating size due to short term load
+     * fluctuations.
+     * 
+     */
+    private @Nullable Integer stabilizationPeriod;
 
     private RegionAutoscalerAutoscalingPolicy() {}
     /**
@@ -192,6 +201,17 @@ public final class RegionAutoscalerAutoscalingPolicy {
     public List<RegionAutoscalerAutoscalingPolicyScalingSchedule> scalingSchedules() {
         return this.scalingSchedules == null ? List.of() : this.scalingSchedules;
     }
+    /**
+     * @return The number of seconds that the autoscaler waits for load stabilization
+     * before making scale-in decisions.
+     * This might appear as a delay in scaling in but it is an important mechanism
+     * for your application to not have fluctuating size due to short term load
+     * fluctuations.
+     * 
+     */
+    public Optional<Integer> stabilizationPeriod() {
+        return Optional.ofNullable(this.stabilizationPeriod);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -212,6 +232,7 @@ public final class RegionAutoscalerAutoscalingPolicy {
         private @Nullable RegionAutoscalerAutoscalingPolicyScaleDownControl scaleDownControl;
         private @Nullable RegionAutoscalerAutoscalingPolicyScaleInControl scaleInControl;
         private @Nullable List<RegionAutoscalerAutoscalingPolicyScalingSchedule> scalingSchedules;
+        private @Nullable Integer stabilizationPeriod;
         public Builder() {}
         public Builder(RegionAutoscalerAutoscalingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -225,6 +246,7 @@ public final class RegionAutoscalerAutoscalingPolicy {
     	      this.scaleDownControl = defaults.scaleDownControl;
     	      this.scaleInControl = defaults.scaleInControl;
     	      this.scalingSchedules = defaults.scalingSchedules;
+    	      this.stabilizationPeriod = defaults.stabilizationPeriod;
         }
 
         @CustomType.Setter
@@ -297,6 +319,12 @@ public final class RegionAutoscalerAutoscalingPolicy {
         public Builder scalingSchedules(RegionAutoscalerAutoscalingPolicyScalingSchedule... scalingSchedules) {
             return scalingSchedules(List.of(scalingSchedules));
         }
+        @CustomType.Setter
+        public Builder stabilizationPeriod(@Nullable Integer stabilizationPeriod) {
+
+            this.stabilizationPeriod = stabilizationPeriod;
+            return this;
+        }
         public RegionAutoscalerAutoscalingPolicy build() {
             final var _resultValue = new RegionAutoscalerAutoscalingPolicy();
             _resultValue.cooldownPeriod = cooldownPeriod;
@@ -309,6 +337,7 @@ public final class RegionAutoscalerAutoscalingPolicy {
             _resultValue.scaleDownControl = scaleDownControl;
             _resultValue.scaleInControl = scaleInControl;
             _resultValue.scalingSchedules = scalingSchedules;
+            _resultValue.stabilizationPeriod = stabilizationPeriod;
             return _resultValue;
         }
     }

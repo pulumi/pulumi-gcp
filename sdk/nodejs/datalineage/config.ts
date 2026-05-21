@@ -25,9 +25,25 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
  *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "tf-test_16511",
+ *     name: "tf-test_8493",
+ *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const waitForProject = new time.Sleep("wait_for_project", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
+ * const datalineageApi = new gcp.projects.Service("datalineage_api", {
+ *     project: project.projectId,
+ *     service: "datalineage.googleapis.com",
+ * }, {
+ *     dependsOn: [waitForProject],
+ * });
  * const _default = new gcp.datalineage.Config("default", {
- *     parent: "projects/my-project-name",
+ *     parent: pulumi.interpolate`projects/${project.projectId}`,
  *     location: "global",
  *     ingestion: {
  *         rules: [{
@@ -39,6 +55,8 @@ import * as utilities from "../utilities";
  *             },
  *         }],
  *     },
+ * }, {
+ *     dependsOn: [datalineageApi],
  * });
  * ```
  * ### Data Lineage Config Folder
@@ -141,6 +159,15 @@ export class Config extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Used for optimistic concurrency control when patching config.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
@@ -180,6 +207,7 @@ export class Config extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["ingestion"] = state?.ingestion;
             resourceInputs["location"] = state?.location;
@@ -196,6 +224,7 @@ export class Config extends pulumi.CustomResource {
             if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["ingestion"] = args?.ingestion;
             resourceInputs["location"] = args?.location;
             resourceInputs["parent"] = args?.parent;
@@ -211,6 +240,15 @@ export class Config extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Config resources.
  */
 export interface ConfigState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Used for optimistic concurrency control when patching config.
      */
@@ -243,6 +281,15 @@ export interface ConfigState {
  * The set of arguments for constructing a Config resource.
  */
 export interface ConfigArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Defines how Lineage should be ingested for this resource.
      * Structure is documented below.

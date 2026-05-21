@@ -407,6 +407,13 @@ type Guardrail struct {
 	ContentFilter GuardrailContentFilterPtrOutput `pulumi:"contentFilter"`
 	// Timestamp when the guardrail was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the guardrail.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the guardrail.
@@ -503,6 +510,13 @@ type guardrailState struct {
 	ContentFilter *GuardrailContentFilter `pulumi:"contentFilter"`
 	// Timestamp when the guardrail was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the guardrail.
 	Description *string `pulumi:"description"`
 	// Display name of the guardrail.
@@ -558,6 +572,13 @@ type GuardrailState struct {
 	ContentFilter GuardrailContentFilterPtrInput
 	// Timestamp when the guardrail was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the guardrail.
 	Description pulumi.StringPtrInput
 	// Display name of the guardrail.
@@ -615,6 +636,13 @@ type guardrailArgs struct {
 	// Guardrail that bans certain content from being used in the conversation.
 	// Structure is documented below.
 	ContentFilter *GuardrailContentFilter `pulumi:"contentFilter"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the guardrail.
 	Description *string `pulumi:"description"`
 	// Display name of the guardrail.
@@ -659,6 +687,13 @@ type GuardrailArgs struct {
 	// Guardrail that bans certain content from being used in the conversation.
 	// Structure is documented below.
 	ContentFilter GuardrailContentFilterPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the guardrail.
 	Description pulumi.StringPtrInput
 	// Display name of the guardrail.
@@ -803,6 +838,16 @@ func (o GuardrailOutput) ContentFilter() GuardrailContentFilterPtrOutput {
 // Timestamp when the guardrail was created.
 func (o GuardrailOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Guardrail) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GuardrailOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Guardrail) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the guardrail.

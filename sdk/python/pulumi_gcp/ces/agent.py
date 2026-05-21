@@ -32,6 +32,7 @@ class AgentArgs:
                  before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input['AgentBeforeModelCallbackArgs']]]] = None,
                  before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input['AgentBeforeToolCallbackArgs']]]] = None,
                  child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instruction: pulumi.Input[Optional[_builtins.str]] = None,
@@ -86,6 +87,12 @@ class AgentArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] child_agents: List of child agents in the agent tree.
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the agent.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] guardrails: List of guardrails for the agent.
                Format:
@@ -127,6 +134,8 @@ class AgentArgs:
             pulumi.set(__self__, "before_tool_callbacks", before_tool_callbacks)
         if child_agents is not None:
             pulumi.set(__self__, "child_agents", child_agents)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if guardrails is not None:
@@ -310,6 +319,23 @@ class AgentArgs:
         pulumi.set(self, "child_agents", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -443,6 +469,7 @@ class _AgentState:
                  before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input['AgentBeforeToolCallbackArgs']]]] = None,
                  child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -502,6 +529,12 @@ class _AgentState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] child_agents: List of child agents in the agent tree.
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the agent was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the agent.
         :param pulumi.Input[_builtins.str] display_name: Display name of the agent.
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
@@ -554,6 +587,8 @@ class _AgentState:
             pulumi.set(__self__, "child_agents", child_agents)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -735,6 +770,23 @@ class _AgentState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -948,6 +1000,7 @@ class Agent(pulumi.CustomResource):
                  before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict']]]]] = None,
                  before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict']]]]] = None,
                  child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1262,6 +1315,12 @@ class Agent(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] child_agents: List of child agents in the agent tree.
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the agent.
         :param pulumi.Input[_builtins.str] display_name: Display name of the agent.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] guardrails: List of guardrails for the agent.
@@ -1576,6 +1635,7 @@ class Agent(pulumi.CustomResource):
                  before_model_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeModelCallbackArgs', 'AgentBeforeModelCallbackArgsDict']]]]] = None,
                  before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict']]]]] = None,
                  child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1607,6 +1667,7 @@ class Agent(pulumi.CustomResource):
             __props__.__dict__["before_model_callbacks"] = before_model_callbacks
             __props__.__dict__["before_tool_callbacks"] = before_tool_callbacks
             __props__.__dict__["child_agents"] = child_agents
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1647,6 +1708,7 @@ class Agent(pulumi.CustomResource):
             before_tool_callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentBeforeToolCallbackArgs', 'AgentBeforeToolCallbackArgsDict']]]]] = None,
             child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1710,6 +1772,12 @@ class Agent(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] child_agents: List of child agents in the agent tree.
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the agent was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the agent.
         :param pulumi.Input[_builtins.str] display_name: Display name of the agent.
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
@@ -1756,6 +1824,7 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["before_tool_callbacks"] = before_tool_callbacks
         __props__.__dict__["child_agents"] = child_agents
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["etag"] = etag
@@ -1883,6 +1952,19 @@ class Agent(pulumi.CustomResource):
         Timestamp when the agent was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

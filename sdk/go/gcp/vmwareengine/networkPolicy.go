@@ -124,6 +124,13 @@ type NetworkPolicy struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User-provided description for this network policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// IP address range in CIDR notation used to create internet access and external IP access.
@@ -204,6 +211,13 @@ type networkPolicyState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description for this network policy.
 	Description *string `pulumi:"description"`
 	// IP address range in CIDR notation used to create internet access and external IP access.
@@ -246,6 +260,13 @@ type NetworkPolicyState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description for this network policy.
 	Description pulumi.StringPtrInput
 	// IP address range in CIDR notation used to create internet access and external IP access.
@@ -288,6 +309,13 @@ func (NetworkPolicyState) ElementType() reflect.Type {
 }
 
 type networkPolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description for this network policy.
 	Description *string `pulumi:"description"`
 	// IP address range in CIDR notation used to create internet access and external IP access.
@@ -318,6 +346,13 @@ type networkPolicyArgs struct {
 
 // The set of arguments for constructing a NetworkPolicy resource.
 type NetworkPolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description for this network policy.
 	Description pulumi.StringPtrInput
 	// IP address range in CIDR notation used to create internet access and external IP access.
@@ -438,6 +473,16 @@ func (o NetworkPolicyOutput) ToNetworkPolicyOutputWithContext(ctx context.Contex
 // up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o NetworkPolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o NetworkPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User-provided description for this network policy.

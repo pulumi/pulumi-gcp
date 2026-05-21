@@ -207,6 +207,13 @@ type RuntimeTemplate struct {
 	// The configuration for the data disk of the runtime.
 	// Structure is documented below.
 	DataPersistentDiskSpec RuntimeTemplateDataPersistentDiskSpecOutput `pulumi:"dataPersistentDiskSpec"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the Runtime Template.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Required. The display name of the Runtime Template.
@@ -296,6 +303,13 @@ type runtimeTemplateState struct {
 	// The configuration for the data disk of the runtime.
 	// Structure is documented below.
 	DataPersistentDiskSpec *RuntimeTemplateDataPersistentDiskSpec `pulumi:"dataPersistentDiskSpec"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the Runtime Template.
 	Description *string `pulumi:"description"`
 	// Required. The display name of the Runtime Template.
@@ -345,6 +359,13 @@ type RuntimeTemplateState struct {
 	// The configuration for the data disk of the runtime.
 	// Structure is documented below.
 	DataPersistentDiskSpec RuntimeTemplateDataPersistentDiskSpecPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the Runtime Template.
 	Description pulumi.StringPtrInput
 	// Required. The display name of the Runtime Template.
@@ -398,6 +419,13 @@ type runtimeTemplateArgs struct {
 	// The configuration for the data disk of the runtime.
 	// Structure is documented below.
 	DataPersistentDiskSpec *RuntimeTemplateDataPersistentDiskSpec `pulumi:"dataPersistentDiskSpec"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the Runtime Template.
 	Description *string `pulumi:"description"`
 	// Required. The display name of the Runtime Template.
@@ -443,6 +471,13 @@ type RuntimeTemplateArgs struct {
 	// The configuration for the data disk of the runtime.
 	// Structure is documented below.
 	DataPersistentDiskSpec RuntimeTemplateDataPersistentDiskSpecPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the Runtime Template.
 	Description pulumi.StringPtrInput
 	// Required. The display name of the Runtime Template.
@@ -574,6 +609,16 @@ func (o RuntimeTemplateOutput) ToRuntimeTemplateOutputWithContext(ctx context.Co
 // Structure is documented below.
 func (o RuntimeTemplateOutput) DataPersistentDiskSpec() RuntimeTemplateDataPersistentDiskSpecOutput {
 	return o.ApplyT(func(v *RuntimeTemplate) RuntimeTemplateDataPersistentDiskSpecOutput { return v.DataPersistentDiskSpec }).(RuntimeTemplateDataPersistentDiskSpecOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RuntimeTemplateOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuntimeTemplate) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the Runtime Template.

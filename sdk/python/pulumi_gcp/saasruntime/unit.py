@@ -24,6 +24,7 @@ class UnitArgs:
                  location: pulumi.Input[_builtins.str],
                  unit_id: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance: pulumi.Input[Optional['UnitMaintenanceArgs']] = None,
                  management_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,6 +42,12 @@ class UnitArgs:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
                similar to Kubernetes resource labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -67,6 +74,8 @@ class UnitArgs:
         pulumi.set(__self__, "unit_id", unit_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if maintenance is not None:
@@ -120,6 +129,23 @@ class UnitArgs:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -215,6 +241,7 @@ class _UnitState:
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input['UnitConditionArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['UnitDependencyArgs']]]] = None,
                  dependents: pulumi.Input[Optional[Sequence[pulumi.Input['UnitDependentArgs']]]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -253,6 +280,12 @@ class _UnitState:
                have.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['UnitDependencyArgs']]] dependencies: Set of dependencies for this unit. Maximum 10.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['UnitDependentArgs']]] dependents: List of Units that depend on this unit. Unit can only be deprovisioned if
@@ -329,6 +362,8 @@ class _UnitState:
             pulumi.set(__self__, "conditions", conditions)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
         if dependents is not None:
@@ -422,6 +457,23 @@ class _UnitState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -775,6 +827,7 @@ class Unit(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
@@ -837,6 +890,12 @@ class Unit(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
                similar to Kubernetes resource labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -928,6 +987,7 @@ class Unit(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
@@ -946,6 +1006,7 @@ class Unit(pulumi.CustomResource):
             __props__ = UnitArgs.__new__(UnitArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -992,6 +1053,7 @@ class Unit(pulumi.CustomResource):
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependencyArgs', 'UnitDependencyArgsDict']]]]] = None,
             dependents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict']]]]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1034,6 +1096,12 @@ class Unit(pulumi.CustomResource):
                have.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UnitDependencyArgs', 'UnitDependencyArgsDict']]]] dependencies: Set of dependencies for this unit. Maximum 10.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict']]]] dependents: List of Units that depend on this unit. Unit can only be deprovisioned if
@@ -1111,6 +1179,7 @@ class Unit(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["dependencies"] = dependencies
         __props__.__dict__["dependents"] = dependents
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -1168,6 +1237,19 @@ class Unit(pulumi.CustomResource):
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

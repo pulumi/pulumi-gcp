@@ -501,6 +501,13 @@ type Subnetwork struct {
 	AllowSubnetCidrRoutesOverlap pulumi.BoolOutput `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource. This field can be set only at resource
 	// creation time.
@@ -588,7 +595,7 @@ type Subnetwork struct {
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrOutput `pulumi:"reservedInternalRange"`
 	// 'Configures subnet mask resolution for this subnetwork.'
-	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask pulumi.StringPtrOutput `pulumi:"resolveSubnetMask"`
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -665,6 +672,13 @@ type subnetworkState struct {
 	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource. This field can be set only at resource
 	// creation time.
@@ -752,7 +766,7 @@ type subnetworkState struct {
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
 	// 'Configures subnet mask resolution for this subnetwork.'
-	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -797,6 +811,13 @@ type SubnetworkState struct {
 	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource. This field can be set only at resource
 	// creation time.
@@ -884,7 +905,7 @@ type SubnetworkState struct {
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrInput
 	// 'Configures subnet mask resolution for this subnetwork.'
-	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask pulumi.StringPtrInput
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -931,6 +952,13 @@ type subnetworkArgs struct {
 	// Setting this field to true will allow these packets to match dynamic routes injected
 	// via BGP even if their destinations match existing subnet ranges.
 	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource. This field can be set only at resource
 	// creation time.
@@ -1003,7 +1031,7 @@ type subnetworkArgs struct {
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
 	// 'Configures subnet mask resolution for this subnetwork.'
-	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -1038,6 +1066,13 @@ type SubnetworkArgs struct {
 	// Setting this field to true will allow these packets to match dynamic routes injected
 	// via BGP even if their destinations match existing subnet ranges.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource. This field can be set only at resource
 	// creation time.
@@ -1110,7 +1145,7 @@ type SubnetworkArgs struct {
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrInput
 	// 'Configures subnet mask resolution for this subnetwork.'
-	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 	ResolveSubnetMask pulumi.StringPtrInput
 	// The role of subnetwork.
 	// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -1236,6 +1271,16 @@ func (o SubnetworkOutput) AllowSubnetCidrRoutesOverlap() pulumi.BoolOutput {
 // Creation timestamp in RFC3339 text format.
 func (o SubnetworkOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SubnetworkOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource. Provide this property when
@@ -1385,7 +1430,7 @@ func (o SubnetworkOutput) ReservedInternalRange() pulumi.StringPtrOutput {
 }
 
 // 'Configures subnet mask resolution for this subnetwork.'
-// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
 func (o SubnetworkOutput) ResolveSubnetMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.ResolveSubnetMask }).(pulumi.StringPtrOutput)
 }

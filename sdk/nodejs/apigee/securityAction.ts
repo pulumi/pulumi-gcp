@@ -151,6 +151,15 @@ export class SecurityAction extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Deny a request through if it matches this SecurityAction.
      * Structure is documented below.
      */
@@ -218,6 +227,7 @@ export class SecurityAction extends pulumi.CustomResource {
             resourceInputs["apiProxies"] = state?.apiProxies;
             resourceInputs["conditionConfig"] = state?.conditionConfig;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deny"] = state?.deny;
             resourceInputs["description"] = state?.description;
             resourceInputs["envId"] = state?.envId;
@@ -248,6 +258,7 @@ export class SecurityAction extends pulumi.CustomResource {
             resourceInputs["allow"] = args?.allow;
             resourceInputs["apiProxies"] = args?.apiProxies;
             resourceInputs["conditionConfig"] = args?.conditionConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deny"] = args?.deny;
             resourceInputs["description"] = args?.description;
             resourceInputs["envId"] = args?.envId;
@@ -292,6 +303,15 @@ export interface SecurityActionState {
      * Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Deny a request through if it matches this SecurityAction.
      * Structure is documented below.
@@ -365,6 +385,15 @@ export interface SecurityActionArgs {
      * Structure is documented below.
      */
     conditionConfig: pulumi.Input<inputs.apigee.SecurityActionConditionConfig>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Deny a request through if it matches this SecurityAction.
      * Structure is documented below.

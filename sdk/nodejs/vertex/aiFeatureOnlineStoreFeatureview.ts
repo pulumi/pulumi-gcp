@@ -179,8 +179,8 @@ import * as utilities from "../utilities";
  *
  * const testProject = gcp.organizations.getProject({});
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test_50206",
- *     name: "tf-test_9873",
+ *     projectId: "tf-test_9305",
+ *     name: "tf-test_48542",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -450,6 +450,15 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -518,6 +527,7 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
             const state = argsOrState as AiFeatureOnlineStoreFeatureviewState | undefined;
             resourceInputs["bigQuerySource"] = state?.bigQuerySource;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["featureOnlineStore"] = state?.featureOnlineStore;
             resourceInputs["featureRegistrySource"] = state?.featureRegistrySource;
@@ -535,6 +545,7 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
                 throw new Error("Missing required property 'featureOnlineStore'");
             }
             resourceInputs["bigQuerySource"] = args?.bigQuerySource;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["featureOnlineStore"] = args?.featureOnlineStore;
             resourceInputs["featureRegistrySource"] = args?.featureRegistrySource;
             resourceInputs["labels"] = args?.labels;
@@ -568,6 +579,15 @@ export interface AiFeatureOnlineStoreFeatureviewState {
      * The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -632,6 +652,15 @@ export interface AiFeatureOnlineStoreFeatureviewArgs {
      * Structure is documented below.
      */
     bigQuerySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySource | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the FeatureOnlineStore to use for the featureview.
      */

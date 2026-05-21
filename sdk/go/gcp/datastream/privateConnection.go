@@ -191,8 +191,13 @@ type PrivateConnection struct {
 	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
 	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
 	// child routes exist. Defaults to `FORCE` for backwards compatibility.
-	// Possible values: `DEFAULT`, `FORCE`.
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -277,7 +282,12 @@ type privateConnectionState struct {
 	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
 	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
 	// child routes exist. Defaults to `FORCE` for backwards compatibility.
-	// Possible values: `DEFAULT`, `FORCE`.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -320,7 +330,12 @@ type PrivateConnectionState struct {
 	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
 	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
 	// child routes exist. Defaults to `FORCE` for backwards compatibility.
-	// Possible values: `DEFAULT`, `FORCE`.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
 	DeletionPolicy pulumi.StringPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
@@ -367,7 +382,12 @@ type privateConnectionArgs struct {
 	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
 	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
 	// child routes exist. Defaults to `FORCE` for backwards compatibility.
-	// Possible values: `DEFAULT`, `FORCE`.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
@@ -399,7 +419,12 @@ type PrivateConnectionArgs struct {
 	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
 	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
 	// child routes exist. Defaults to `FORCE` for backwards compatibility.
-	// Possible values: `DEFAULT`, `FORCE`.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
 	DeletionPolicy pulumi.StringPtrInput
 	// Display name.
 	DisplayName pulumi.StringInput
@@ -519,9 +544,14 @@ func (o PrivateConnectionOutput) CreateWithoutValidation() pulumi.BoolPtrOutput 
 // The deletion policy for the private connection. Setting `FORCE` will also delete any child
 // routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
 // child routes exist. Defaults to `FORCE` for backwards compatibility.
-// Possible values: `DEFAULT`, `FORCE`.
-func (o PrivateConnectionOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateConnection) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+//
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", the command will behave as if set to "DEFAULT".
+func (o PrivateConnectionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Display name.

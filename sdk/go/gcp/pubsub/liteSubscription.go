@@ -97,6 +97,13 @@ import (
 type LiteSubscription struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The settings for this subscription's message delivery.
 	// Structure is documented below.
 	DeliveryConfig LiteSubscriptionDeliveryConfigPtrOutput `pulumi:"deliveryConfig"`
@@ -146,6 +153,13 @@ func GetLiteSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LiteSubscription resources.
 type liteSubscriptionState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The settings for this subscription's message delivery.
 	// Structure is documented below.
 	DeliveryConfig *LiteSubscriptionDeliveryConfig `pulumi:"deliveryConfig"`
@@ -163,6 +177,13 @@ type liteSubscriptionState struct {
 }
 
 type LiteSubscriptionState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The settings for this subscription's message delivery.
 	// Structure is documented below.
 	DeliveryConfig LiteSubscriptionDeliveryConfigPtrInput
@@ -184,6 +205,13 @@ func (LiteSubscriptionState) ElementType() reflect.Type {
 }
 
 type liteSubscriptionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The settings for this subscription's message delivery.
 	// Structure is documented below.
 	DeliveryConfig *LiteSubscriptionDeliveryConfig `pulumi:"deliveryConfig"`
@@ -202,6 +230,13 @@ type liteSubscriptionArgs struct {
 
 // The set of arguments for constructing a LiteSubscription resource.
 type LiteSubscriptionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The settings for this subscription's message delivery.
 	// Structure is documented below.
 	DeliveryConfig LiteSubscriptionDeliveryConfigPtrInput
@@ -303,6 +338,16 @@ func (o LiteSubscriptionOutput) ToLiteSubscriptionOutput() LiteSubscriptionOutpu
 
 func (o LiteSubscriptionOutput) ToLiteSubscriptionOutputWithContext(ctx context.Context) LiteSubscriptionOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o LiteSubscriptionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *LiteSubscription) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The settings for this subscription's message delivery.

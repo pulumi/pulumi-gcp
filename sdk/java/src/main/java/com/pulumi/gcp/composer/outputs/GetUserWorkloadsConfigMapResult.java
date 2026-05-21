@@ -19,6 +19,7 @@ public final class GetUserWorkloadsConfigMapResult {
      * 
      */
     private Map<String,String> data;
+    private String deletionPolicy;
     private String environment;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -37,6 +38,9 @@ public final class GetUserWorkloadsConfigMapResult {
      */
     public Map<String,String> data() {
         return this.data;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String environment() {
         return this.environment;
@@ -68,6 +72,7 @@ public final class GetUserWorkloadsConfigMapResult {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,String> data;
+        private String deletionPolicy;
         private String environment;
         private String id;
         private String name;
@@ -77,6 +82,7 @@ public final class GetUserWorkloadsConfigMapResult {
         public Builder(GetUserWorkloadsConfigMapResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.data = defaults.data;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.environment = defaults.environment;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -90,6 +96,14 @@ public final class GetUserWorkloadsConfigMapResult {
               throw new MissingRequiredPropertyException("GetUserWorkloadsConfigMapResult", "data");
             }
             this.data = data;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetUserWorkloadsConfigMapResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -131,6 +145,7 @@ public final class GetUserWorkloadsConfigMapResult {
         public GetUserWorkloadsConfigMapResult build() {
             final var _resultValue = new GetUserWorkloadsConfigMapResult();
             _resultValue.data = data;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.environment = environment;
             _resultValue.id = id;
             _resultValue.name = name;

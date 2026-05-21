@@ -96,6 +96,13 @@ import (
 type MaterializedView struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Set to true to make the MaterializedView protected against deletion.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The name of the instance to create the materialized view within.
@@ -147,6 +154,13 @@ func GetMaterializedView(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MaterializedView resources.
 type materializedViewState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Set to true to make the MaterializedView protected against deletion.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The name of the instance to create the materialized view within.
@@ -163,6 +177,13 @@ type materializedViewState struct {
 }
 
 type MaterializedViewState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Set to true to make the MaterializedView protected against deletion.
 	DeletionProtection pulumi.BoolPtrInput
 	// The name of the instance to create the materialized view within.
@@ -183,6 +204,13 @@ func (MaterializedViewState) ElementType() reflect.Type {
 }
 
 type materializedViewArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Set to true to make the MaterializedView protected against deletion.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The name of the instance to create the materialized view within.
@@ -198,6 +226,13 @@ type materializedViewArgs struct {
 
 // The set of arguments for constructing a MaterializedView resource.
 type MaterializedViewArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Set to true to make the MaterializedView protected against deletion.
 	DeletionProtection pulumi.BoolPtrInput
 	// The name of the instance to create the materialized view within.
@@ -296,6 +331,16 @@ func (o MaterializedViewOutput) ToMaterializedViewOutput() MaterializedViewOutpu
 
 func (o MaterializedViewOutput) ToMaterializedViewOutputWithContext(ctx context.Context) MaterializedViewOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MaterializedViewOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MaterializedView) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Set to true to make the MaterializedView protected against deletion.

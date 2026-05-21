@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 public final class GetCloudExadataInfrastructureResult {
     private String cloudExadataInfrastructureId;
     private String createTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String displayName;
     private Map<String,String> effectiveLabels;
@@ -41,6 +42,9 @@ public final class GetCloudExadataInfrastructureResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -94,6 +98,7 @@ public final class GetCloudExadataInfrastructureResult {
     public static final class Builder {
         private String cloudExadataInfrastructureId;
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
@@ -111,6 +116,7 @@ public final class GetCloudExadataInfrastructureResult {
     	      Objects.requireNonNull(defaults);
     	      this.cloudExadataInfrastructureId = defaults.cloudExadataInfrastructureId;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -139,6 +145,14 @@ public final class GetCloudExadataInfrastructureResult {
               throw new MissingRequiredPropertyException("GetCloudExadataInfrastructureResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetCloudExadataInfrastructureResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -242,6 +256,7 @@ public final class GetCloudExadataInfrastructureResult {
             final var _resultValue = new GetCloudExadataInfrastructureResult();
             _resultValue.cloudExadataInfrastructureId = cloudExadataInfrastructureId;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;

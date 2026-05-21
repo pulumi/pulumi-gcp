@@ -120,6 +120,15 @@ export class Assistant extends pulumi.CustomResource {
      */
     declare public readonly customerPolicy: pulumi.Output<outputs.discoveryengine.AssistantCustomerPolicy | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description for additional information. Expected to be shown on the
      * configuration UI, not to the users of the assistant.
      */
@@ -177,6 +186,7 @@ export class Assistant extends pulumi.CustomResource {
             resourceInputs["assistantId"] = state?.assistantId;
             resourceInputs["collectionId"] = state?.collectionId;
             resourceInputs["customerPolicy"] = state?.customerPolicy;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["engineId"] = state?.engineId;
@@ -205,6 +215,7 @@ export class Assistant extends pulumi.CustomResource {
             resourceInputs["assistantId"] = args?.assistantId;
             resourceInputs["collectionId"] = args?.collectionId;
             resourceInputs["customerPolicy"] = args?.customerPolicy;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["engineId"] = args?.engineId;
@@ -236,6 +247,15 @@ export interface AssistantState {
      * Structure is documented below.
      */
     customerPolicy?: pulumi.Input<inputs.discoveryengine.AssistantCustomerPolicy | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description for additional information. Expected to be shown on the
      * configuration UI, not to the users of the assistant.
@@ -296,6 +316,15 @@ export interface AssistantArgs {
      * Structure is documented below.
      */
     customerPolicy?: pulumi.Input<inputs.discoveryengine.AssistantCustomerPolicy | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description for additional information. Expected to be shown on the
      * configuration UI, not to the users of the assistant.

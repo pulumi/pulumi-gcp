@@ -95,6 +95,15 @@ export class Peering extends pulumi.CustomResource {
      */
     declare public readonly authorizedNetwork: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
      */
     declare public readonly domainResource: pulumi.Output<string>;
@@ -149,6 +158,7 @@ export class Peering extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PeeringState | undefined;
             resourceInputs["authorizedNetwork"] = state?.authorizedNetwork;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["domainResource"] = state?.domainResource;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
@@ -170,6 +180,7 @@ export class Peering extends pulumi.CustomResource {
                 throw new Error("Missing required property 'peeringId'");
             }
             resourceInputs["authorizedNetwork"] = args?.authorizedNetwork;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["domainResource"] = args?.domainResource;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["peeringId"] = args?.peeringId;
@@ -195,6 +206,15 @@ export interface PeeringState {
      * The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
      */
     authorizedNetwork?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
      */
@@ -245,6 +265,15 @@ export interface PeeringArgs {
      * The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
      */
     authorizedNetwork: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
      */

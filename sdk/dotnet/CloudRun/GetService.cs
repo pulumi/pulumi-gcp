@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.CloudRun
     public sealed class GetServiceResult
     {
         public readonly bool AutogenerateRevisionName;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -172,6 +173,8 @@ namespace Pulumi.Gcp.CloudRun
         [OutputConstructor]
         private GetServiceResult(
             bool autogenerateRevisionName,
+
+            string deletionPolicy,
 
             string id,
 
@@ -190,6 +193,7 @@ namespace Pulumi.Gcp.CloudRun
             ImmutableArray<Outputs.GetServiceTrafficResult> traffics)
         {
             AutogenerateRevisionName = autogenerateRevisionName;
+            DeletionPolicy = deletionPolicy;
             Id = id;
             Location = location;
             Metadatas = metadatas;

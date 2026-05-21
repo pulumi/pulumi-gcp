@@ -50,6 +50,7 @@ export interface GetClientArgs {
 export interface GetClientResult {
     readonly brand: string;
     readonly clientId: string;
+    readonly deletionPolicy: string;
     readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.

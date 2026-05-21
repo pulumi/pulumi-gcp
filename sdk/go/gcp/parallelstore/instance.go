@@ -182,6 +182,13 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The version of DAOS software running in the instance.
 	DaosVersion pulumi.StringOutput `pulumi:"daosVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Parallelstore Instance deployment type.
 	// Possible values:
 	// DEPLOYMENT_TYPE_UNSPECIFIED
@@ -329,6 +336,13 @@ type instanceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The version of DAOS software running in the instance.
 	DaosVersion *string `pulumi:"daosVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Parallelstore Instance deployment type.
 	// Possible values:
 	// DEPLOYMENT_TYPE_UNSPECIFIED
@@ -433,6 +447,13 @@ type InstanceState struct {
 	CreateTime pulumi.StringPtrInput
 	// The version of DAOS software running in the instance.
 	DaosVersion pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Parallelstore Instance deployment type.
 	// Possible values:
 	// DEPLOYMENT_TYPE_UNSPECIFIED
@@ -534,6 +555,13 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 	CapacityGib string `pulumi:"capacityGib"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Parallelstore Instance deployment type.
 	// Possible values:
 	// DEPLOYMENT_TYPE_UNSPECIFIED
@@ -608,6 +636,13 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 	CapacityGib pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Parallelstore Instance deployment type.
 	// Possible values:
 	// DEPLOYMENT_TYPE_UNSPECIFIED
@@ -784,6 +819,16 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 // The version of DAOS software running in the instance.
 func (o InstanceOutput) DaosVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DaosVersion }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Parallelstore Instance deployment type.

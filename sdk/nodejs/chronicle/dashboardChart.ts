@@ -9,12 +9,9 @@ import * as utilities from "../utilities";
 /**
  * A chart resource used within a NativeDashboard. Its lifecycle (Create, Update, Delete) is managed via custom methods on the NativeDashboard resource.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about DashboardChart, see:
  *
- * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dashboardCharts)
+ * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dashboardCharts)
  * * How-to Guides
  *     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
  *
@@ -252,6 +249,15 @@ export class DashboardChart extends pulumi.CustomResource {
      */
     declare public readonly dashboardQuery: pulumi.Output<outputs.chronicle.DashboardChartDashboardQuery | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The ID of the Chronicle instance.
      */
     declare public readonly instance: pulumi.Output<string>;
@@ -290,6 +296,7 @@ export class DashboardChart extends pulumi.CustomResource {
             resourceInputs["chartLayout"] = state?.chartLayout;
             resourceInputs["dashboardChart"] = state?.dashboardChart;
             resourceInputs["dashboardQuery"] = state?.dashboardQuery;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["instance"] = state?.instance;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -309,6 +316,7 @@ export class DashboardChart extends pulumi.CustomResource {
             resourceInputs["chartLayout"] = args?.chartLayout;
             resourceInputs["dashboardChart"] = args?.dashboardChart;
             resourceInputs["dashboardQuery"] = args?.dashboardQuery;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["instance"] = args?.instance;
             resourceInputs["location"] = args?.location;
             resourceInputs["nativeDashboard"] = args?.nativeDashboard;
@@ -344,6 +352,15 @@ export interface DashboardChartState {
      * Structure is documented below.
      */
     dashboardQuery?: pulumi.Input<inputs.chronicle.DashboardChartDashboardQuery | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Chronicle instance.
      */
@@ -386,6 +403,15 @@ export interface DashboardChartArgs {
      * Structure is documented below.
      */
     dashboardQuery?: pulumi.Input<inputs.chronicle.DashboardChartDashboardQuery | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Chronicle instance.
      */

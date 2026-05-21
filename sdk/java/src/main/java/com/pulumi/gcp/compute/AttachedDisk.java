@@ -100,6 +100,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/attachedDisk:AttachedDisk")
 public class AttachedDisk extends com.pulumi.resources.CustomResource {
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * Specifies a unique device name of your choice that is
      * reflected into the /dev/disk/by-id/google-* tree of a Linux operating
      * system running within the instance. This name can be used to

@@ -79,6 +79,15 @@ export class DataSharingWithGoogleSetting extends pulumi.CustomResource {
      */
     declare public readonly dataSharingWithGoogleSettingId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -135,6 +144,7 @@ export class DataSharingWithGoogleSetting extends pulumi.CustomResource {
             const state = argsOrState as DataSharingWithGoogleSettingState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataSharingWithGoogleSettingId"] = state?.dataSharingWithGoogleSettingId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableDataSharing"] = state?.enableDataSharing;
             resourceInputs["enablePreviewDataSharing"] = state?.enablePreviewDataSharing;
@@ -150,6 +160,7 @@ export class DataSharingWithGoogleSetting extends pulumi.CustomResource {
                 throw new Error("Missing required property 'dataSharingWithGoogleSettingId'");
             }
             resourceInputs["dataSharingWithGoogleSettingId"] = args?.dataSharingWithGoogleSettingId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["enableDataSharing"] = args?.enableDataSharing;
             resourceInputs["enablePreviewDataSharing"] = args?.enablePreviewDataSharing;
             resourceInputs["labels"] = args?.labels;
@@ -180,6 +191,15 @@ export interface DataSharingWithGoogleSettingState {
      * Id of the Data Sharing With Google Setting.
      */
     dataSharingWithGoogleSettingId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -231,6 +251,15 @@ export interface DataSharingWithGoogleSettingArgs {
      * Id of the Data Sharing With Google Setting.
      */
     dataSharingWithGoogleSettingId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether data sharing should be enabled in GA products.
      */

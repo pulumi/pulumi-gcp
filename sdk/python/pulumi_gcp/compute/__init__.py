@@ -84,6 +84,7 @@ from .get_region_disk_iam_policy import *
 from .get_region_instance_group import *
 from .get_region_instance_group_manager import *
 from .get_region_instance_template import *
+from .get_region_instant_snapshot_iam_policy import *
 from .get_region_network_endpoint_group import *
 from .get_region_security_policy import *
 from .get_region_ssl_certificate import *
@@ -198,6 +199,10 @@ from .region_health_check import *
 from .region_health_source import *
 from .region_instance_group_manager import *
 from .region_instance_template import *
+from .region_instant_snapshot import *
+from .region_instant_snapshot_iam_binding import *
+from .region_instant_snapshot_iam_member import *
+from .region_instant_snapshot_iam_policy import *
 from .region_network_endpoint import *
 from .region_network_endpoint_group import *
 from .region_network_firewall_policy import *

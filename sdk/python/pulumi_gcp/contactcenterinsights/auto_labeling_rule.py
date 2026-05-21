@@ -25,6 +25,7 @@ class AutoLabelingRuleArgs:
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_labeling_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input['AutoLabelingRuleConditionArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  label_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +43,12 @@ class AutoLabelingRuleArgs:
                expression `^[A-Za-z0-9]{4,64}$`.
         :param pulumi.Input[Sequence[pulumi.Input['AutoLabelingRuleConditionArgs']]] conditions: Conditions to apply for auto-labeling the label_key.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] display_name: Display Name of the auto labeling rule.
         :param pulumi.Input[_builtins.str] label_key: The label key.
@@ -57,6 +64,8 @@ class AutoLabelingRuleArgs:
             pulumi.set(__self__, "auto_labeling_rule_id", auto_labeling_rule_id)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -120,6 +129,23 @@ class AutoLabelingRuleArgs:
     @conditions.setter
     def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AutoLabelingRuleConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -191,6 +217,7 @@ class _AutoLabelingRuleState:
                  auto_labeling_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input['AutoLabelingRuleConditionArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  label_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -211,6 +238,12 @@ class _AutoLabelingRuleState:
         :param pulumi.Input[Sequence[pulumi.Input['AutoLabelingRuleConditionArgs']]] conditions: Conditions to apply for auto-labeling the label_key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time at which this rule was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] display_name: Display Name of the auto labeling rule.
         :param pulumi.Input[_builtins.str] label_key: The label key.
@@ -232,6 +265,8 @@ class _AutoLabelingRuleState:
             pulumi.set(__self__, "conditions", conditions)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -301,6 +336,23 @@ class _AutoLabelingRuleState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -412,6 +464,7 @@ class AutoLabelingRule(pulumi.CustomResource):
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_labeling_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  label_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -458,6 +511,12 @@ class AutoLabelingRule(pulumi.CustomResource):
                expression `^[A-Za-z0-9]{4,64}$`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]] conditions: Conditions to apply for auto-labeling the label_key.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] display_name: Display Name of the auto labeling rule.
         :param pulumi.Input[_builtins.str] label_key: The label key.
@@ -520,6 +579,7 @@ class AutoLabelingRule(pulumi.CustomResource):
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_labeling_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  label_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -538,6 +598,7 @@ class AutoLabelingRule(pulumi.CustomResource):
             __props__.__dict__["active"] = active
             __props__.__dict__["auto_labeling_rule_id"] = auto_labeling_rule_id
             __props__.__dict__["conditions"] = conditions
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["label_key"] = label_key
@@ -563,6 +624,7 @@ class AutoLabelingRule(pulumi.CustomResource):
             auto_labeling_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
             conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             label_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -587,6 +649,12 @@ class AutoLabelingRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['AutoLabelingRuleConditionArgs', 'AutoLabelingRuleConditionArgsDict']]]] conditions: Conditions to apply for auto-labeling the label_key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time at which this rule was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] display_name: Display Name of the auto labeling rule.
         :param pulumi.Input[_builtins.str] label_key: The label key.
@@ -608,6 +676,7 @@ class AutoLabelingRule(pulumi.CustomResource):
         __props__.__dict__["auto_labeling_rule_id"] = auto_labeling_rule_id
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["label_key"] = label_key
@@ -654,6 +723,19 @@ class AutoLabelingRule(pulumi.CustomResource):
         The time at which this rule was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

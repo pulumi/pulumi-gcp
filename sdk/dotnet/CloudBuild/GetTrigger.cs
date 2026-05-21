@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.CloudBuild
         public readonly ImmutableArray<Outputs.GetTriggerBitbucketServerTriggerConfigResult> BitbucketServerTriggerConfigs;
         public readonly ImmutableArray<Outputs.GetTriggerBuildResult> Builds;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetTriggerDeveloperConnectEventConfigResult> DeveloperConnectEventConfigs;
         public readonly bool Disabled;
@@ -203,6 +204,8 @@ namespace Pulumi.Gcp.CloudBuild
             ImmutableArray<Outputs.GetTriggerBuildResult> builds,
 
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -254,6 +257,7 @@ namespace Pulumi.Gcp.CloudBuild
             BitbucketServerTriggerConfigs = bitbucketServerTriggerConfigs;
             Builds = builds;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DeveloperConnectEventConfigs = developerConnectEventConfigs;
             Disabled = disabled;

@@ -31,6 +31,7 @@ class BackendServiceArgs:
                  custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['BackendServiceCustomMetricArgs']]]] = None,
                  custom_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_forwarding: pulumi.Input[Optional['BackendServiceDynamicForwardingArgs']] = None,
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -93,6 +94,12 @@ class BackendServiceArgs:
                requests.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input['BackendServiceDynamicForwardingArgs'] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
@@ -271,6 +278,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "custom_request_headers", custom_request_headers)
         if custom_response_headers is not None:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dynamic_forwarding is not None:
@@ -468,6 +477,23 @@ class BackendServiceArgs:
     @custom_response_headers.setter
     def custom_response_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_response_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -949,6 +975,7 @@ class _BackendServiceState:
                  custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['BackendServiceCustomMetricArgs']]]] = None,
                  custom_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_forwarding: pulumi.Input[Optional['BackendServiceDynamicForwardingArgs']] = None,
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1015,6 +1042,12 @@ class _BackendServiceState:
                requests.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input['BackendServiceDynamicForwardingArgs'] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
@@ -1199,6 +1232,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "custom_request_headers", custom_request_headers)
         if custom_response_headers is not None:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dynamic_forwarding is not None:
@@ -1414,6 +1449,23 @@ class _BackendServiceState:
     @custom_response_headers.setter
     def custom_response_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_response_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1934,6 +1986,7 @@ class BackendService(pulumi.CustomResource):
                  custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServiceCustomMetricArgs', 'BackendServiceCustomMetricArgsDict']]]]] = None,
                  custom_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_forwarding: pulumi.Input[Optional[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']]] = None,
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2481,6 +2534,12 @@ class BackendService(pulumi.CustomResource):
                requests.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
@@ -3155,6 +3214,7 @@ class BackendService(pulumi.CustomResource):
                  custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServiceCustomMetricArgs', 'BackendServiceCustomMetricArgsDict']]]]] = None,
                  custom_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_forwarding: pulumi.Input[Optional[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']]] = None,
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3202,6 +3262,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["custom_metrics"] = custom_metrics
             __props__.__dict__["custom_request_headers"] = custom_request_headers
             __props__.__dict__["custom_response_headers"] = custom_response_headers
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["dynamic_forwarding"] = dynamic_forwarding
             __props__.__dict__["edge_security_policy"] = edge_security_policy
@@ -3255,6 +3316,7 @@ class BackendService(pulumi.CustomResource):
             custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServiceCustomMetricArgs', 'BackendServiceCustomMetricArgsDict']]]]] = None,
             custom_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dynamic_forwarding: pulumi.Input[Optional[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']]] = None,
             edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3325,6 +3387,12 @@ class BackendService(pulumi.CustomResource):
                requests.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
                Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
@@ -3502,6 +3570,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["custom_metrics"] = custom_metrics
         __props__.__dict__["custom_request_headers"] = custom_request_headers
         __props__.__dict__["custom_response_headers"] = custom_response_headers
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["dynamic_forwarding"] = dynamic_forwarding
         __props__.__dict__["edge_security_policy"] = edge_security_policy
@@ -3643,6 +3712,19 @@ class BackendService(pulumi.CustomResource):
         responses.
         """
         return pulumi.get(self, "custom_response_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -138,9 +138,18 @@ export class LocationTagBinding extends pulumi.CustomResource {
     }
 
     /**
-     * Location of the target resource.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
      *
      * - - -
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
+     * Location of the target resource.
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
@@ -169,6 +178,7 @@ export class LocationTagBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LocationTagBindingState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
@@ -181,6 +191,7 @@ export class LocationTagBinding extends pulumi.CustomResource {
             if (args?.tagValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagValue'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["tagValue"] = args?.tagValue;
@@ -196,9 +207,18 @@ export class LocationTagBinding extends pulumi.CustomResource {
  */
 export interface LocationTagBindingState {
     /**
-     * Location of the target resource.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
      *
      * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Location of the target resource.
      */
     location?: pulumi.Input<string | undefined>;
     /**
@@ -220,9 +240,18 @@ export interface LocationTagBindingState {
  */
 export interface LocationTagBindingArgs {
     /**
-     * Location of the target resource.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
      *
      * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Location of the target resource.
      */
     location?: pulumi.Input<string | undefined>;
     /**

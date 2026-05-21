@@ -26,6 +26,7 @@ class TargetArgs:
                  anthos_cluster: pulumi.Input[Optional['TargetAnthosClusterArgs']] = None,
                  associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]]] = None,
                  custom_target: pulumi.Input[Optional['TargetCustomTargetArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
@@ -47,6 +48,12 @@ class TargetArgs:
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
         :param pulumi.Input['TargetCustomTargetArgs'] custom_target: Optional. Information specifying a Custom Target.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -74,6 +81,8 @@ class TargetArgs:
             pulumi.set(__self__, "associated_entities", associated_entities)
         if custom_target is not None:
             pulumi.set(__self__, "custom_target", custom_target)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deploy_parameters is not None:
             pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description is not None:
@@ -157,6 +166,23 @@ class TargetArgs:
     @custom_target.setter
     def custom_target(self, value: pulumi.Input[Optional['TargetCustomTargetArgs']]):
         pulumi.set(self, "custom_target", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deployParameters")
@@ -294,6 +320,7 @@ class _TargetState:
                  associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_target: pulumi.Input[Optional['TargetCustomTargetArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -323,6 +350,12 @@ class _TargetState:
         :param pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input['TargetCustomTargetArgs'] custom_target: Optional. Information specifying a Custom Target.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -359,6 +392,8 @@ class _TargetState:
             pulumi.set(__self__, "create_time", create_time)
         if custom_target is not None:
             pulumi.set(__self__, "custom_target", custom_target)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deploy_parameters is not None:
             pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description is not None:
@@ -458,6 +493,23 @@ class _TargetState:
     @custom_target.setter
     def custom_target(self, value: pulumi.Input[Optional['TargetCustomTargetArgs']]):
         pulumi.set(self, "custom_target", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deployParameters")
@@ -693,6 +745,7 @@ class Target(pulumi.CustomResource):
                  anthos_cluster: pulumi.Input[Optional[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']]] = None,
                  associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]]] = None,
                  custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict']]]]] = None,
@@ -830,6 +883,12 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
         :param pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']] custom_target: Optional. Information specifying a Custom Target.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -990,6 +1049,7 @@ class Target(pulumi.CustomResource):
                  anthos_cluster: pulumi.Input[Optional[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']]] = None,
                  associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]]] = None,
                  custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetExecutionConfigArgs', 'TargetExecutionConfigArgsDict']]]]] = None,
@@ -1014,6 +1074,7 @@ class Target(pulumi.CustomResource):
             __props__.__dict__["anthos_cluster"] = anthos_cluster
             __props__.__dict__["associated_entities"] = associated_entities
             __props__.__dict__["custom_target"] = custom_target
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deploy_parameters"] = deploy_parameters
             __props__.__dict__["description"] = description
             __props__.__dict__["execution_configs"] = execution_configs
@@ -1052,6 +1113,7 @@ class Target(pulumi.CustomResource):
             associated_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_target: pulumi.Input[Optional[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deploy_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1085,6 +1147,12 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']] custom_target: Optional. Information specifying a Custom Target.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -1120,6 +1188,7 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["associated_entities"] = associated_entities
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_target"] = custom_target
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deploy_parameters"] = deploy_parameters
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -1182,6 +1251,19 @@ class Target(pulumi.CustomResource):
         Optional. Information specifying a Custom Target.
         """
         return pulumi.get(self, "custom_target")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deployParameters")

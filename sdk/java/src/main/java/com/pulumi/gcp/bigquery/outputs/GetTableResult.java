@@ -31,6 +31,7 @@ public final class GetTableResult {
     private List<String> clusterings;
     private Integer creationTime;
     private String datasetId;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String description;
     private Map<String,String> effectiveLabels;
@@ -84,6 +85,9 @@ public final class GetTableResult {
     }
     public String datasetId() {
         return this.datasetId;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -211,6 +215,7 @@ public final class GetTableResult {
         private List<String> clusterings;
         private Integer creationTime;
         private String datasetId;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String description;
         private Map<String,String> effectiveLabels;
@@ -254,6 +259,7 @@ public final class GetTableResult {
     	      this.clusterings = defaults.clusterings;
     	      this.creationTime = defaults.creationTime;
     	      this.datasetId = defaults.datasetId;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -328,6 +334,14 @@ public final class GetTableResult {
               throw new MissingRequiredPropertyException("GetTableResult", "datasetId");
             }
             this.datasetId = datasetId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetTableResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -655,6 +669,7 @@ public final class GetTableResult {
             _resultValue.clusterings = clusterings;
             _resultValue.creationTime = creationTime;
             _resultValue.datasetId = datasetId;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;

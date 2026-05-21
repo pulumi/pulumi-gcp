@@ -443,6 +443,13 @@ type BareMetalCluster struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A human readable description of this Bare Metal User Cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -610,6 +617,13 @@ type bareMetalClusterState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this Bare Metal User Cluster.
 	Description *string `pulumi:"description"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -727,6 +741,13 @@ type BareMetalClusterState struct {
 	CreateTime pulumi.StringPtrInput
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this Bare Metal User Cluster.
 	Description pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -844,6 +865,13 @@ type bareMetalClusterArgs struct {
 	// Specifies the control plane configuration.
 	// Structure is documented below.
 	ControlPlane BareMetalClusterControlPlane `pulumi:"controlPlane"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this Bare Metal User Cluster.
 	Description *string `pulumi:"description"`
 	// Specifies the load balancer configuration.
@@ -913,6 +941,13 @@ type BareMetalClusterArgs struct {
 	// Specifies the control plane configuration.
 	// Structure is documented below.
 	ControlPlane BareMetalClusterControlPlaneInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this Bare Metal User Cluster.
 	Description pulumi.StringPtrInput
 	// Specifies the load balancer configuration.
@@ -1093,6 +1128,16 @@ func (o BareMetalClusterOutput) CreateTime() pulumi.StringOutput {
 // The time the cluster was deleted, in RFC3339 text format.
 func (o BareMetalClusterOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BareMetalClusterOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human readable description of this Bare Metal User Cluster.

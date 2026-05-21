@@ -24,6 +24,7 @@ class PacketMirroringArgs:
                  collector_ilb: pulumi.Input['PacketMirroringCollectorIlbArgs'],
                  mirrored_resources: pulumi.Input['PacketMirroringMirroredResourcesArgs'],
                  network: pulumi.Input['PacketMirroringNetworkArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional['PacketMirroringFilterArgs']] = None,
@@ -45,6 +46,12 @@ class PacketMirroringArgs:
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the rule.
         :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
                policy will not be enforced on the network. The default is TRUE.
@@ -63,6 +70,8 @@ class PacketMirroringArgs:
         pulumi.set(__self__, "collector_ilb", collector_ilb)
         pulumi.set(__self__, "mirrored_resources", mirrored_resources)
         pulumi.set(__self__, "network", network)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable is not None:
@@ -121,6 +130,23 @@ class PacketMirroringArgs:
     @network.setter
     def network(self, value: pulumi.Input['PacketMirroringNetworkArgs']):
         pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -218,6 +244,7 @@ class PacketMirroringArgs:
 class _PacketMirroringState:
     def __init__(__self__, *,
                  collector_ilb: pulumi.Input[Optional['PacketMirroringCollectorIlbArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional['PacketMirroringFilterArgs']] = None,
@@ -235,6 +262,12 @@ class _PacketMirroringState:
                specified forwarding rule must have is_mirroring_collector
                set to true.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the rule.
         :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
                policy will not be enforced on the network. The default is TRUE.
@@ -258,6 +291,8 @@ class _PacketMirroringState:
         """
         if collector_ilb is not None:
             pulumi.set(__self__, "collector_ilb", collector_ilb)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable is not None:
@@ -292,6 +327,23 @@ class _PacketMirroringState:
     @collector_ilb.setter
     def collector_ilb(self, value: pulumi.Input[Optional['PacketMirroringCollectorIlbArgs']]):
         pulumi.set(self, "collector_ilb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -420,6 +472,7 @@ class PacketMirroring(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
@@ -539,6 +592,12 @@ class PacketMirroring(pulumi.CustomResource):
                specified forwarding rule must have is_mirroring_collector
                set to true.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the rule.
         :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
                policy will not be enforced on the network. The default is TRUE.
@@ -684,6 +743,7 @@ class PacketMirroring(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
@@ -705,6 +765,7 @@ class PacketMirroring(pulumi.CustomResource):
             if collector_ilb is None and not opts.urn:
                 raise TypeError("Missing required property 'collector_ilb'")
             __props__.__dict__["collector_ilb"] = collector_ilb
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["enable"] = enable
             __props__.__dict__["filter"] = filter
@@ -729,6 +790,7 @@ class PacketMirroring(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enable: pulumi.Input[Optional[_builtins.str]] = None,
             filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
@@ -750,6 +812,12 @@ class PacketMirroring(pulumi.CustomResource):
                specified forwarding rule must have is_mirroring_collector
                set to true.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the rule.
         :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
                policy will not be enforced on the network. The default is TRUE.
@@ -776,6 +844,7 @@ class PacketMirroring(pulumi.CustomResource):
         __props__ = _PacketMirroringState.__new__(_PacketMirroringState)
 
         __props__.__dict__["collector_ilb"] = collector_ilb
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["enable"] = enable
         __props__.__dict__["filter"] = filter
@@ -798,6 +867,19 @@ class PacketMirroring(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "collector_ilb")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

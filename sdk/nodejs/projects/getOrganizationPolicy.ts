@@ -52,6 +52,7 @@ export interface GetOrganizationPolicyArgs {
 export interface GetOrganizationPolicyResult {
     readonly booleanPolicies: outputs.projects.GetOrganizationPolicyBooleanPolicy[];
     readonly constraint: string;
+    readonly deletionPolicy: string;
     readonly etag: string;
     /**
      * The provider-assigned unique ID for this managed resource.

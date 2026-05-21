@@ -225,6 +225,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public readonly string CreateTime;
         public readonly string? DataStoreId;
         public readonly string DefaultSchemaId;
+        public readonly string DeletionPolicy;
         public readonly string? DisplayName;
         public readonly ImmutableArray<Outputs.GetDataStoreDocumentProcessingConfigResult> DocumentProcessingConfigs;
         /// <summary>
@@ -253,6 +254,8 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
             string defaultSchemaId,
 
+            string deletionPolicy,
+
             string? displayName,
 
             ImmutableArray<Outputs.GetDataStoreDocumentProcessingConfigResult> documentProcessingConfigs,
@@ -279,6 +282,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
             CreateTime = createTime;
             DataStoreId = dataStoreId;
             DefaultSchemaId = defaultSchemaId;
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             DocumentProcessingConfigs = documentProcessingConfigs;
             Id = id;

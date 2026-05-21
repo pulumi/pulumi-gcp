@@ -29,10 +29,12 @@ public final class GetDatabasesDatabase {
      */
     private String collation;
     /**
-     * @return The deletion policy for the database. Setting ABANDON allows the resource
-     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     private String deletionPolicy;
@@ -80,10 +82,12 @@ public final class GetDatabasesDatabase {
         return this.collation;
     }
     /**
-     * @return The deletion policy for the database. Setting ABANDON allows the resource
-     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     public String deletionPolicy() {

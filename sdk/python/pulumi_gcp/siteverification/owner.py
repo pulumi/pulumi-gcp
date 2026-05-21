@@ -20,26 +20,33 @@ __all__ = ['OwnerArgs', 'Owner']
 class OwnerArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[_builtins.str],
-                 web_resource_id: pulumi.Input[_builtins.str]):
+                 web_resource_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Owner resource.
 
         :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
-               
-               - - -
         :param pulumi.Input[_builtins.str] web_resource_id: The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
                such as `webResource/https://www.example.com/`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "web_resource_id", web_resource_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Input[_builtins.str]:
         """
         The email of the user to be added as an owner.
-
-        - - -
         """
         return pulumi.get(self, "email")
 
@@ -60,33 +67,78 @@ class OwnerArgs:
     def web_resource_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "web_resource_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _OwnerState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  web_resource_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Owner resources.
 
-        :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
+        :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
         :param pulumi.Input[_builtins.str] web_resource_id: The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
                such as `webResource/https://www.example.com/`
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if web_resource_id is not None:
             pulumi.set(__self__, "web_resource_id", web_resource_id)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user to be added as an owner.
-
-        - - -
         """
         return pulumi.get(self, "email")
 
@@ -114,6 +166,7 @@ class Owner(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  web_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -205,9 +258,15 @@ class Owner(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
+        :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
         :param pulumi.Input[_builtins.str] web_resource_id: The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
                such as `webResource/https://www.example.com/`
         """
@@ -318,6 +377,7 @@ class Owner(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  web_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -329,6 +389,7 @@ class Owner(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OwnerArgs.__new__(OwnerArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
@@ -345,6 +406,7 @@ class Owner(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             email: pulumi.Input[Optional[_builtins.str]] = None,
             web_resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Owner':
         """
@@ -354,9 +416,15 @@ class Owner(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
+        :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
         :param pulumi.Input[_builtins.str] web_resource_id: The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
                such as `webResource/https://www.example.com/`
         """
@@ -364,17 +432,31 @@ class Owner(pulumi.CustomResource):
 
         __props__ = _OwnerState.__new__(_OwnerState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["email"] = email
         __props__.__dict__["web_resource_id"] = web_resource_id
         return Owner(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:
         """
         The email of the user to be added as an owner.
-
-        - - -
         """
         return pulumi.get(self, "email")
 

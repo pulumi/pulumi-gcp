@@ -27,7 +27,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, application_id=None, attributes=None, create_time=None, description=None, display_name=None, id=None, location=None, name=None, project=None, scopes=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, application_id=None, attributes=None, create_time=None, deletion_policy=None, description=None, display_name=None, id=None, location=None, name=None, project=None, scopes=None, state=None, uid=None, update_time=None):
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
         pulumi.set(__self__, "application_id", application_id)
@@ -37,6 +37,9 @@ class GetApplicationResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -82,6 +85,11 @@ class GetApplicationResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -146,6 +154,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             application_id=self.application_id,
             attributes=self.attributes,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             display_name=self.display_name,
             id=self.id,
@@ -187,6 +196,7 @@ def get_application(application_id: Optional[_builtins.str] = None,
         application_id=pulumi.get(__ret__, 'application_id'),
         attributes=pulumi.get(__ret__, 'attributes'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
@@ -225,6 +235,7 @@ def get_application_output(application_id: pulumi.Input[Optional[_builtins.str]]
         application_id=pulumi.get(__response__, 'application_id'),
         attributes=pulumi.get(__response__, 'attributes'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         display_name=pulumi.get(__response__, 'display_name'),
         id=pulumi.get(__response__, 'id'),

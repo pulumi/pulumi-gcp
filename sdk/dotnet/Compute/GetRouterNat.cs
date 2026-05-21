@@ -177,6 +177,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetRouterNatResult
     {
         public readonly string AutoNetworkTier;
+        public readonly string DeletionPolicy;
         public readonly ImmutableArray<string> DrainNatIps;
         public readonly bool EnableDynamicPortAllocation;
         public readonly bool EnableEndpointIndependentMapping;
@@ -210,6 +211,8 @@ namespace Pulumi.Gcp.Compute
         [OutputConstructor]
         private GetRouterNatResult(
             string autoNetworkTier,
+
+            string deletionPolicy,
 
             ImmutableArray<string> drainNatIps,
 
@@ -264,6 +267,7 @@ namespace Pulumi.Gcp.Compute
             int udpIdleTimeoutSec)
         {
             AutoNetworkTier = autoNetworkTier;
+            DeletionPolicy = deletionPolicy;
             DrainNatIps = drainNatIps;
             EnableDynamicPortAllocation = enableDynamicPortAllocation;
             EnableEndpointIndependentMapping = enableEndpointIndependentMapping;

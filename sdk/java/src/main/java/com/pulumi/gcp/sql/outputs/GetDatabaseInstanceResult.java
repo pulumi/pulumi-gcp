@@ -29,6 +29,7 @@ public final class GetDatabaseInstanceResult {
     private List<GetDatabaseInstanceClone> clones;
     private String connectionName;
     private String databaseVersion;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String dnsName;
     private List<GetDatabaseInstanceDnsName> dnsNames;
@@ -79,6 +80,9 @@ public final class GetDatabaseInstanceResult {
     }
     public String databaseVersion() {
         return this.databaseVersion;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -189,6 +193,7 @@ public final class GetDatabaseInstanceResult {
         private List<GetDatabaseInstanceClone> clones;
         private String connectionName;
         private String databaseVersion;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String dnsName;
         private List<GetDatabaseInstanceDnsName> dnsNames;
@@ -227,6 +232,7 @@ public final class GetDatabaseInstanceResult {
     	      this.clones = defaults.clones;
     	      this.connectionName = defaults.connectionName;
     	      this.databaseVersion = defaults.databaseVersion;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.dnsName = defaults.dnsName;
     	      this.dnsNames = defaults.dnsNames;
@@ -303,6 +309,14 @@ public final class GetDatabaseInstanceResult {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "databaseVersion");
             }
             this.databaseVersion = databaseVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -577,6 +591,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.clones = clones;
             _resultValue.connectionName = connectionName;
             _resultValue.databaseVersion = databaseVersion;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.dnsName = dnsName;
             _resultValue.dnsNames = dnsNames;

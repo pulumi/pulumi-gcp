@@ -13,6 +13,185 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BackupOntapSource struct {
+	// The UUID of the ONTAP source snapshot.
+	SnapshotUuid *string `pulumi:"snapshotUuid"`
+	// Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
+	// Format: `projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}`
+	StoragePool string `pulumi:"storagePool"`
+	// The UUID of the ONTAP source volume.
+	VolumeUuid string `pulumi:"volumeUuid"`
+}
+
+// BackupOntapSourceInput is an input type that accepts BackupOntapSourceArgs and BackupOntapSourceOutput values.
+// You can construct a concrete instance of `BackupOntapSourceInput` via:
+//
+//	BackupOntapSourceArgs{...}
+type BackupOntapSourceInput interface {
+	pulumi.Input
+
+	ToBackupOntapSourceOutput() BackupOntapSourceOutput
+	ToBackupOntapSourceOutputWithContext(context.Context) BackupOntapSourceOutput
+}
+
+type BackupOntapSourceArgs struct {
+	// The UUID of the ONTAP source snapshot.
+	SnapshotUuid pulumi.StringPtrInput `pulumi:"snapshotUuid"`
+	// Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
+	// Format: `projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}`
+	StoragePool pulumi.StringInput `pulumi:"storagePool"`
+	// The UUID of the ONTAP source volume.
+	VolumeUuid pulumi.StringInput `pulumi:"volumeUuid"`
+}
+
+func (BackupOntapSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupOntapSource)(nil)).Elem()
+}
+
+func (i BackupOntapSourceArgs) ToBackupOntapSourceOutput() BackupOntapSourceOutput {
+	return i.ToBackupOntapSourceOutputWithContext(context.Background())
+}
+
+func (i BackupOntapSourceArgs) ToBackupOntapSourceOutputWithContext(ctx context.Context) BackupOntapSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupOntapSourceOutput)
+}
+
+func (i BackupOntapSourceArgs) ToBackupOntapSourcePtrOutput() BackupOntapSourcePtrOutput {
+	return i.ToBackupOntapSourcePtrOutputWithContext(context.Background())
+}
+
+func (i BackupOntapSourceArgs) ToBackupOntapSourcePtrOutputWithContext(ctx context.Context) BackupOntapSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupOntapSourceOutput).ToBackupOntapSourcePtrOutputWithContext(ctx)
+}
+
+// BackupOntapSourcePtrInput is an input type that accepts BackupOntapSourceArgs, BackupOntapSourcePtr and BackupOntapSourcePtrOutput values.
+// You can construct a concrete instance of `BackupOntapSourcePtrInput` via:
+//
+//	        BackupOntapSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupOntapSourcePtrInput interface {
+	pulumi.Input
+
+	ToBackupOntapSourcePtrOutput() BackupOntapSourcePtrOutput
+	ToBackupOntapSourcePtrOutputWithContext(context.Context) BackupOntapSourcePtrOutput
+}
+
+type backupOntapSourcePtrType BackupOntapSourceArgs
+
+func BackupOntapSourcePtr(v *BackupOntapSourceArgs) BackupOntapSourcePtrInput {
+	return (*backupOntapSourcePtrType)(v)
+}
+
+func (*backupOntapSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupOntapSource)(nil)).Elem()
+}
+
+func (i *backupOntapSourcePtrType) ToBackupOntapSourcePtrOutput() BackupOntapSourcePtrOutput {
+	return i.ToBackupOntapSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *backupOntapSourcePtrType) ToBackupOntapSourcePtrOutputWithContext(ctx context.Context) BackupOntapSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupOntapSourcePtrOutput)
+}
+
+type BackupOntapSourceOutput struct{ *pulumi.OutputState }
+
+func (BackupOntapSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupOntapSource)(nil)).Elem()
+}
+
+func (o BackupOntapSourceOutput) ToBackupOntapSourceOutput() BackupOntapSourceOutput {
+	return o
+}
+
+func (o BackupOntapSourceOutput) ToBackupOntapSourceOutputWithContext(ctx context.Context) BackupOntapSourceOutput {
+	return o
+}
+
+func (o BackupOntapSourceOutput) ToBackupOntapSourcePtrOutput() BackupOntapSourcePtrOutput {
+	return o.ToBackupOntapSourcePtrOutputWithContext(context.Background())
+}
+
+func (o BackupOntapSourceOutput) ToBackupOntapSourcePtrOutputWithContext(ctx context.Context) BackupOntapSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupOntapSource) *BackupOntapSource {
+		return &v
+	}).(BackupOntapSourcePtrOutput)
+}
+
+// The UUID of the ONTAP source snapshot.
+func (o BackupOntapSourceOutput) SnapshotUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupOntapSource) *string { return v.SnapshotUuid }).(pulumi.StringPtrOutput)
+}
+
+// Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
+// Format: `projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}`
+func (o BackupOntapSourceOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupOntapSource) string { return v.StoragePool }).(pulumi.StringOutput)
+}
+
+// The UUID of the ONTAP source volume.
+func (o BackupOntapSourceOutput) VolumeUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupOntapSource) string { return v.VolumeUuid }).(pulumi.StringOutput)
+}
+
+type BackupOntapSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupOntapSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupOntapSource)(nil)).Elem()
+}
+
+func (o BackupOntapSourcePtrOutput) ToBackupOntapSourcePtrOutput() BackupOntapSourcePtrOutput {
+	return o
+}
+
+func (o BackupOntapSourcePtrOutput) ToBackupOntapSourcePtrOutputWithContext(ctx context.Context) BackupOntapSourcePtrOutput {
+	return o
+}
+
+func (o BackupOntapSourcePtrOutput) Elem() BackupOntapSourceOutput {
+	return o.ApplyT(func(v *BackupOntapSource) BackupOntapSource {
+		if v != nil {
+			return *v
+		}
+		var ret BackupOntapSource
+		return ret
+	}).(BackupOntapSourceOutput)
+}
+
+// The UUID of the ONTAP source snapshot.
+func (o BackupOntapSourcePtrOutput) SnapshotUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupOntapSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
+// Format: `projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}`
+func (o BackupOntapSourcePtrOutput) StoragePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupOntapSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StoragePool
+	}).(pulumi.StringPtrOutput)
+}
+
+// The UUID of the ONTAP source volume.
+func (o BackupOntapSourcePtrOutput) VolumeUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupOntapSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VolumeUuid
+	}).(pulumi.StringPtrOutput)
+}
+
 type BackupVaultBackupRetentionPolicy struct {
 	// Minimum retention duration in days for backups in the backup vault.
 	BackupMinimumEnforcedRetentionDays int `pulumi:"backupMinimumEnforcedRetentionDays"`
@@ -4249,6 +4428,8 @@ func (o VolumeTieringPolicyPtrOutput) TierAction() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupOntapSourceInput)(nil)).Elem(), BackupOntapSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupOntapSourcePtrInput)(nil)).Elem(), BackupOntapSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupVaultBackupRetentionPolicyInput)(nil)).Elem(), BackupVaultBackupRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupVaultBackupRetentionPolicyPtrInput)(nil)).Elem(), BackupVaultBackupRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeBackupConfigInput)(nil)).Elem(), VolumeBackupConfigArgs{})
@@ -4293,6 +4474,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotPolicyWeeklySchedulePtrInput)(nil)).Elem(), VolumeSnapshotPolicyWeeklyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTieringPolicyInput)(nil)).Elem(), VolumeTieringPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTieringPolicyPtrInput)(nil)).Elem(), VolumeTieringPolicyArgs{})
+	pulumi.RegisterOutputType(BackupOntapSourceOutput{})
+	pulumi.RegisterOutputType(BackupOntapSourcePtrOutput{})
 	pulumi.RegisterOutputType(BackupVaultBackupRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(BackupVaultBackupRetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(VolumeBackupConfigOutput{})

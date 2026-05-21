@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceResult {
     private Boolean autogenerateRevisionName;
+    private String deletionPolicy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -35,6 +36,9 @@ public final class GetServiceResult {
     private GetServiceResult() {}
     public Boolean autogenerateRevisionName() {
         return this.autogenerateRevisionName;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -75,6 +79,7 @@ public final class GetServiceResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean autogenerateRevisionName;
+        private String deletionPolicy;
         private String id;
         private String location;
         private List<GetServiceMetadata> metadatas;
@@ -87,6 +92,7 @@ public final class GetServiceResult {
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autogenerateRevisionName = defaults.autogenerateRevisionName;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.metadatas = defaults.metadatas;
@@ -103,6 +109,14 @@ public final class GetServiceResult {
               throw new MissingRequiredPropertyException("GetServiceResult", "autogenerateRevisionName");
             }
             this.autogenerateRevisionName = autogenerateRevisionName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -182,6 +196,7 @@ public final class GetServiceResult {
         public GetServiceResult build() {
             final var _resultValue = new GetServiceResult();
             _resultValue.autogenerateRevisionName = autogenerateRevisionName;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.metadatas = metadatas;

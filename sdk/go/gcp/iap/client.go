@@ -103,6 +103,13 @@ type Client struct {
 	Brand pulumi.StringOutput `pulumi:"brand"`
 	// Output only. Unique identifier of the OAuth client.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Output only. Client secret of the OAuth client.
@@ -156,6 +163,13 @@ type clientState struct {
 	Brand *string `pulumi:"brand"`
 	// Output only. Unique identifier of the OAuth client.
 	ClientId *string `pulumi:"clientId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName *string `pulumi:"displayName"`
 	// Output only. Client secret of the OAuth client.
@@ -170,6 +184,13 @@ type ClientState struct {
 	Brand pulumi.StringPtrInput
 	// Output only. Unique identifier of the OAuth client.
 	ClientId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringPtrInput
 	// Output only. Client secret of the OAuth client.
@@ -186,6 +207,13 @@ type clientArgs struct {
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}`.
 	Brand string `pulumi:"brand"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName string `pulumi:"displayName"`
 }
@@ -196,6 +224,13 @@ type ClientArgs struct {
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}`.
 	Brand pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringInput
 }
@@ -297,6 +332,16 @@ func (o ClientOutput) Brand() pulumi.StringOutput {
 // Output only. Unique identifier of the OAuth client.
 func (o ClientOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ClientOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Human-friendly name given to the OAuth client.

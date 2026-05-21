@@ -26,6 +26,7 @@ class BackupPlanAssociationArgs:
                  location: pulumi.Input[_builtins.str],
                  resource: pulumi.Input[_builtins.str],
                  resource_type: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPlanAssociation resource.
@@ -40,6 +41,12 @@ class BackupPlanAssociationArgs:
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
                Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -48,6 +55,8 @@ class BackupPlanAssociationArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "resource_type", resource_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -117,6 +126,23 @@ class BackupPlanAssociationArgs:
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -137,6 +163,7 @@ class _BackupPlanAssociationState:
                  backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -155,6 +182,12 @@ class _BackupPlanAssociationState:
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[_builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location for the backupplan association
         :param pulumi.Input[_builtins.str] name: The name of backup plan association resource created
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -174,6 +207,8 @@ class _BackupPlanAssociationState:
             pulumi.set(__self__, "create_time", create_time)
         if data_source is not None:
             pulumi.set(__self__, "data_source", data_source)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -240,6 +275,23 @@ class _BackupPlanAssociationState:
     @data_source.setter
     def data_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -337,6 +389,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
@@ -489,6 +542,12 @@ class BackupPlanAssociation(pulumi.CustomResource):
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
                - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location for the backupplan association
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -658,6 +717,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
@@ -677,6 +737,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
             if backup_plan_association_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_plan_association_id'")
             __props__.__dict__["backup_plan_association_id"] = backup_plan_association_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -706,6 +767,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
             backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_source: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -728,6 +790,12 @@ class BackupPlanAssociation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[_builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location for the backupplan association
         :param pulumi.Input[_builtins.str] name: The name of backup plan association resource created
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -747,6 +815,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
         __props__.__dict__["backup_plan_association_id"] = backup_plan_association_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_source"] = data_source
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -791,6 +860,19 @@ class BackupPlanAssociation(pulumi.CustomResource):
         Resource name of data source which will be used as storage location for backups taken
         """
         return pulumi.get(self, "data_source")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

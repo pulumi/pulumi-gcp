@@ -113,6 +113,13 @@ type MulticastGroupRange struct {
 	// [Output only] The timestamp when the multicast group range was
 	// created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional text description of the multicast group range.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Multicast group range's distribution scope. Intra-zone or intra-region
@@ -243,6 +250,13 @@ type multicastGroupRangeState struct {
 	// [Output only] The timestamp when the multicast group range was
 	// created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional text description of the multicast group range.
 	Description *string `pulumi:"description"`
 	// Multicast group range's distribution scope. Intra-zone or intra-region
@@ -327,6 +341,13 @@ type MulticastGroupRangeState struct {
 	// [Output only] The timestamp when the multicast group range was
 	// created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional text description of the multicast group range.
 	Description pulumi.StringPtrInput
 	// Multicast group range's distribution scope. Intra-zone or intra-region
@@ -412,6 +433,13 @@ type multicastGroupRangeArgs struct {
 	// associated to the multicast domain. The current max length of the accept
 	// list is 100.
 	ConsumerAcceptLists []string `pulumi:"consumerAcceptLists"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional text description of the multicast group range.
 	Description *string `pulumi:"description"`
 	// Multicast group range's distribution scope. Intra-zone or intra-region
@@ -464,6 +492,13 @@ type MulticastGroupRangeArgs struct {
 	// associated to the multicast domain. The current max length of the accept
 	// list is 100.
 	ConsumerAcceptLists pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional text description of the multicast group range.
 	Description pulumi.StringPtrInput
 	// Multicast group range's distribution scope. Intra-zone or intra-region
@@ -608,6 +643,16 @@ func (o MulticastGroupRangeOutput) ConsumerAcceptLists() pulumi.StringArrayOutpu
 // created.
 func (o MulticastGroupRangeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MulticastGroupRange) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MulticastGroupRangeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MulticastGroupRange) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional text description of the multicast group range.

@@ -164,6 +164,15 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
      */
     declare public readonly cmekSettings: pulumi.Output<outputs.logging.ProjectBucketConfigCmekSettings | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Describes this bucket.
      */
     declare public readonly description: pulumi.Output<string>;
@@ -215,6 +224,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
             const state = argsOrState as ProjectBucketConfigState | undefined;
             resourceInputs["bucketId"] = state?.bucketId;
             resourceInputs["cmekSettings"] = state?.cmekSettings;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["enableAnalytics"] = state?.enableAnalytics;
             resourceInputs["indexConfigs"] = state?.indexConfigs;
@@ -237,6 +247,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
             }
             resourceInputs["bucketId"] = args?.bucketId;
             resourceInputs["cmekSettings"] = args?.cmekSettings;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["enableAnalytics"] = args?.enableAnalytics;
             resourceInputs["indexConfigs"] = args?.indexConfigs;
@@ -264,6 +275,15 @@ export interface ProjectBucketConfigState {
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
      */
     cmekSettings?: pulumi.Input<inputs.logging.ProjectBucketConfigCmekSettings | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Describes this bucket.
      */
@@ -314,6 +334,15 @@ export interface ProjectBucketConfigArgs {
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
      */
     cmekSettings?: pulumi.Input<inputs.logging.ProjectBucketConfigCmekSettings | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Describes this bucket.
      */

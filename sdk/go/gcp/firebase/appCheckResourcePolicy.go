@@ -79,6 +79,13 @@ import (
 type AppCheckResourcePolicy struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.
 	// Valid values are:
 	// (Unset)
@@ -162,6 +169,13 @@ func GetAppCheckResourcePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppCheckResourcePolicy resources.
 type appCheckResourcePolicyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.
 	// Valid values are:
 	// (Unset)
@@ -210,6 +224,13 @@ type appCheckResourcePolicyState struct {
 }
 
 type AppCheckResourcePolicyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.
 	// Valid values are:
 	// (Unset)
@@ -262,6 +283,13 @@ func (AppCheckResourcePolicyState) ElementType() reflect.Type {
 }
 
 type appCheckResourcePolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.
 	// Valid values are:
 	// (Unset)
@@ -305,6 +333,13 @@ type appCheckResourcePolicyArgs struct {
 
 // The set of arguments for constructing a AppCheckResourcePolicy resource.
 type AppCheckResourcePolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.
 	// Valid values are:
 	// (Unset)
@@ -431,6 +466,16 @@ func (o AppCheckResourcePolicyOutput) ToAppCheckResourcePolicyOutput() AppCheckR
 
 func (o AppCheckResourcePolicyOutput) ToAppCheckResourcePolicyOutputWithContext(ctx context.Context) AppCheckResourcePolicyOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppCheckResourcePolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppCheckResourcePolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.

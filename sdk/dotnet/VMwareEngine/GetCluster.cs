@@ -144,6 +144,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public readonly ImmutableArray<Outputs.GetClusterAutoscalingSettingResult> AutoscalingSettings;
         public readonly string CreateTime;
         public readonly ImmutableArray<Outputs.GetClusterDatastoreMountConfigResult> DatastoreMountConfigs;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -164,6 +165,8 @@ namespace Pulumi.Gcp.VMwareEngine
 
             ImmutableArray<Outputs.GetClusterDatastoreMountConfigResult> datastoreMountConfigs,
 
+            string deletionPolicy,
+
             string id,
 
             bool management,
@@ -183,6 +186,7 @@ namespace Pulumi.Gcp.VMwareEngine
             AutoscalingSettings = autoscalingSettings;
             CreateTime = createTime;
             DatastoreMountConfigs = datastoreMountConfigs;
+            DeletionPolicy = deletionPolicy;
             Id = id;
             Management = management;
             Name = name;

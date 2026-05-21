@@ -83,6 +83,7 @@ export interface GetIstioCanonicalServiceArgs {
 export interface GetIstioCanonicalServiceResult {
     readonly canonicalService: string;
     readonly canonicalServiceNamespace: string;
+    readonly deletionPolicy: string;
     /**
      * Name used for UI elements listing this (Monitoring) Service.
      */

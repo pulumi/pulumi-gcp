@@ -168,6 +168,7 @@ namespace Pulumi.Gcp.OracleDatabase
     public sealed class GetOdbNetworkResult
     {
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string EntitlementId;
@@ -188,6 +189,8 @@ namespace Pulumi.Gcp.OracleDatabase
         [OutputConstructor]
         private GetOdbNetworkResult(
             string createTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -216,6 +219,7 @@ namespace Pulumi.Gcp.OracleDatabase
             string state)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             EffectiveLabels = effectiveLabels;
             EntitlementId = entitlementId;

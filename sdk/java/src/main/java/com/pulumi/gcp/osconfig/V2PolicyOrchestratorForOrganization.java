@@ -40,10 +40,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.osconfig.V2PolicyOrchestratorForOrganizationArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestrationScopeArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -159,6 +166,30 @@ public class V2PolicyOrchestratorForOrganization extends com.pulumi.resources.Cu
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Optional. Freeform text describing the purpose of the resource.

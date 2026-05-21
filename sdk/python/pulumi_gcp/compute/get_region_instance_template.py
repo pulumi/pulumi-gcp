@@ -27,7 +27,7 @@ class GetRegionInstanceTemplateResult:
     """
     A collection of values returned by getRegionInstanceTemplate.
     """
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, creation_timestamp=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, key_revocation_action_type=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, numeric_id=None, partner_metadata=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_manager_tags=None, resource_policies=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, creation_timestamp=None, deletion_policy=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, key_revocation_action_type=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, numeric_id=None, partner_metadata=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_manager_tags=None, resource_policies=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -40,6 +40,9 @@ class GetRegionInstanceTemplateResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -172,6 +175,11 @@ class GetRegionInstanceTemplateResult:
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -447,6 +455,7 @@ class AwaitableGetRegionInstanceTemplateResult(GetRegionInstanceTemplateResult):
             can_ip_forward=self.can_ip_forward,
             confidential_instance_configs=self.confidential_instance_configs,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             disks=self.disks,
             effective_labels=self.effective_labels,
@@ -533,6 +542,7 @@ def get_region_instance_template(filter: Optional[_builtins.str] = None,
         can_ip_forward=pulumi.get(__ret__, 'can_ip_forward'),
         confidential_instance_configs=pulumi.get(__ret__, 'confidential_instance_configs'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         disks=pulumi.get(__ret__, 'disks'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -616,6 +626,7 @@ def get_region_instance_template_output(filter: pulumi.Input[Optional[Optional[_
         can_ip_forward=pulumi.get(__response__, 'can_ip_forward'),
         confidential_instance_configs=pulumi.get(__response__, 'confidential_instance_configs'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         disks=pulumi.get(__response__, 'disks'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

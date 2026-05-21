@@ -72,6 +72,7 @@ type LookupAuthorityResult struct {
 	CertificateAuthorityId *string                 `pulumi:"certificateAuthorityId"`
 	Configs                []GetAuthorityConfig    `pulumi:"configs"`
 	CreateTime             string                  `pulumi:"createTime"`
+	DeletionPolicy         string                  `pulumi:"deletionPolicy"`
 	DeletionProtection     bool                    `pulumi:"deletionProtection"`
 	DesiredState           string                  `pulumi:"desiredState"`
 	EffectiveLabels        map[string]string       `pulumi:"effectiveLabels"`
@@ -156,6 +157,10 @@ func (o LookupAuthorityResultOutput) Configs() GetAuthorityConfigArrayOutput {
 
 func (o LookupAuthorityResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupAuthorityResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAuthorityResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupAuthorityResultOutput) DeletionProtection() pulumi.BoolOutput {

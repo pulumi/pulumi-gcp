@@ -659,6 +659,17 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<Outputs.InstanceCrossInstanceReplicationConfig> CrossInstanceReplicationConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. If set to true deletion of the instance will fail.
         /// </summary>
         [Output("deletionProtectionEnabled")]
@@ -818,9 +829,15 @@ namespace Pulumi.Gcp.MemoryStore
         /// Optional. Machine type for individual nodes of the instance.
         /// Possible values:
         /// SHARED_CORE_NANO
+        /// CUSTOM_PICO
+        /// CUSTOM_MICRO
+        /// CUSTOM_MINI
         /// HIGHMEM_MEDIUM
+        /// HIGHCPU_MEDIUM
         /// HIGHMEM_XLARGE
         /// STANDARD_SMALL
+        /// STANDARD_LARGE
+        /// HIGHMEM_2XLARGE
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
@@ -1009,6 +1026,17 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<Inputs.InstanceCrossInstanceReplicationConfigArgs>? CrossInstanceReplicationConfig { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Optional. If set to true deletion of the instance will fail.
         /// </summary>
         [Input("deletionProtectionEnabled")]
@@ -1138,9 +1166,15 @@ namespace Pulumi.Gcp.MemoryStore
         /// Optional. Machine type for individual nodes of the instance.
         /// Possible values:
         /// SHARED_CORE_NANO
+        /// CUSTOM_PICO
+        /// CUSTOM_MICRO
+        /// CUSTOM_MINI
         /// HIGHMEM_MEDIUM
+        /// HIGHCPU_MEDIUM
         /// HIGHMEM_XLARGE
         /// STANDARD_SMALL
+        /// STANDARD_LARGE
+        /// HIGHMEM_2XLARGE
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -1257,6 +1291,17 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("crossInstanceReplicationConfig")]
         public Input<Inputs.InstanceCrossInstanceReplicationConfigGetArgs>? CrossInstanceReplicationConfig { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Optional. If set to true deletion of the instance will fail.
@@ -1484,9 +1529,15 @@ namespace Pulumi.Gcp.MemoryStore
         /// Optional. Machine type for individual nodes of the instance.
         /// Possible values:
         /// SHARED_CORE_NANO
+        /// CUSTOM_PICO
+        /// CUSTOM_MICRO
+        /// CUSTOM_MINI
         /// HIGHMEM_MEDIUM
+        /// HIGHCPU_MEDIUM
         /// HIGHMEM_XLARGE
         /// STANDARD_SMALL
+        /// STANDARD_LARGE
+        /// HIGHMEM_2XLARGE
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }

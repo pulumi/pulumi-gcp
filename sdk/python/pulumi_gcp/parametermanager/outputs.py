@@ -201,6 +201,7 @@ class GetParameterPolicyMemberResult(dict):
 class GetParametersParameterResult(dict):
     def __init__(__self__, *,
                  create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
                  effective_labels: Mapping[str, _builtins.str],
                  format: _builtins.str,
                  kms_key: _builtins.str,
@@ -213,6 +214,12 @@ class GetParametersParameterResult(dict):
                  update_time: _builtins.str):
         """
         :param _builtins.str create_time: The time at which the parameter was created.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str format: The format type of the parameter.
         :param _builtins.str kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
@@ -226,6 +233,7 @@ class GetParametersParameterResult(dict):
         :param _builtins.str update_time: The time at which the parameter was updated.
         """
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "kms_key", kms_key)
@@ -244,6 +252,19 @@ class GetParametersParameterResult(dict):
         The time at which the parameter was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -409,6 +430,7 @@ class GetRegionalParameterPolicyMemberResult(dict):
 class GetRegionalParametersParameterResult(dict):
     def __init__(__self__, *,
                  create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
                  effective_labels: Mapping[str, _builtins.str],
                  format: _builtins.str,
                  kms_key: _builtins.str,
@@ -422,6 +444,12 @@ class GetRegionalParametersParameterResult(dict):
                  update_time: _builtins.str):
         """
         :param _builtins.str create_time: The time at which the regional parameter was created.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str format: The format type of the regional parameter.
         :param _builtins.str kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
@@ -436,6 +464,7 @@ class GetRegionalParametersParameterResult(dict):
         :param _builtins.str update_time: The time at which the regional parameter was updated.
         """
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "kms_key", kms_key)
@@ -455,6 +484,19 @@ class GetRegionalParametersParameterResult(dict):
         The time at which the regional parameter was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

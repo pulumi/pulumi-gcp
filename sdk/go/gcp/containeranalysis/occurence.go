@@ -153,6 +153,13 @@ type Occurence struct {
 	Attestation OccurenceAttestationOutput `pulumi:"attestation"`
 	// The time when the repository was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The note kind which explicitly denotes which of the occurrence
 	// details are specified. This field can be used as a filter in list
 	// requests.
@@ -227,6 +234,13 @@ type occurenceState struct {
 	Attestation *OccurenceAttestation `pulumi:"attestation"`
 	// The time when the repository was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The note kind which explicitly denotes which of the occurrence
 	// details are specified. This field can be used as a filter in list
 	// requests.
@@ -263,6 +277,13 @@ type OccurenceState struct {
 	Attestation OccurenceAttestationPtrInput
 	// The time when the repository was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The note kind which explicitly denotes which of the occurrence
 	// details are specified. This field can be used as a filter in list
 	// requests.
@@ -301,6 +322,13 @@ type occurenceArgs struct {
 	// which authority this attestation was intended to sign.
 	// Structure is documented below.
 	Attestation OccurenceAttestation `pulumi:"attestation"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The analysis note associated with this occurrence, in the form of
 	// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
 	// filter in list requests.
@@ -328,6 +356,13 @@ type OccurenceArgs struct {
 	// which authority this attestation was intended to sign.
 	// Structure is documented below.
 	Attestation OccurenceAttestationInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The analysis note associated with this occurrence, in the form of
 	// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
 	// filter in list requests.
@@ -446,6 +481,16 @@ func (o OccurenceOutput) Attestation() OccurenceAttestationOutput {
 // The time when the repository was created.
 func (o OccurenceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurence) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OccurenceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurence) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The note kind which explicitly denotes which of the occurrence

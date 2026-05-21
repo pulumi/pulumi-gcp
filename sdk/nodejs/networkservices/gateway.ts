@@ -273,6 +273,15 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly deleteSwgAutogenRouterOnDestroy: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A free-text description of the resource. Max length 1024 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -389,6 +398,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["certificateUrls"] = state?.certificateUrls;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteSwgAutogenRouterOnDestroy"] = state?.deleteSwgAutogenRouterOnDestroy;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["envoyHeaders"] = state?.envoyHeaders;
@@ -417,6 +427,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["allPorts"] = args?.allPorts;
             resourceInputs["certificateUrls"] = args?.certificateUrls;
             resourceInputs["deleteSwgAutogenRouterOnDestroy"] = args?.deleteSwgAutogenRouterOnDestroy;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["envoyHeaders"] = args?.envoyHeaders;
             resourceInputs["gatewaySecurityPolicy"] = args?.gatewaySecurityPolicy;
@@ -477,6 +488,15 @@ export interface GatewayState {
      * If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
      */
     deleteSwgAutogenRouterOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
@@ -605,6 +625,15 @@ export interface GatewayArgs {
      * If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
      */
     deleteSwgAutogenRouterOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */

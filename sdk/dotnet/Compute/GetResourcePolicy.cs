@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetResourcePolicyResult
     {
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Description of this Resource Policy.
         /// </summary>
@@ -170,6 +171,8 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetResourcePolicyResult(
+            string deletionPolicy,
+
             string description,
 
             ImmutableArray<Outputs.GetResourcePolicyDiskConsistencyGroupPolicyResult> diskConsistencyGroupPolicies,
@@ -192,6 +195,7 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetResourcePolicyWorkloadPolicyResult> workloadPolicies)
         {
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DiskConsistencyGroupPolicies = diskConsistencyGroupPolicies;
             GroupPlacementPolicies = groupPlacementPolicies;

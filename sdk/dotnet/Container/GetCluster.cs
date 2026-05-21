@@ -266,6 +266,7 @@ namespace Pulumi.Gcp.Container
         public readonly string DatapathProvider;
         public readonly int DefaultMaxPodsPerNode;
         public readonly ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> DefaultSnatStatuses;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string Description;
         public readonly bool DisableL4LbFirewallReconciliation;
@@ -383,6 +384,8 @@ namespace Pulumi.Gcp.Container
             int defaultMaxPodsPerNode,
 
             ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> defaultSnatStatuses,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -557,6 +560,7 @@ namespace Pulumi.Gcp.Container
             DatapathProvider = datapathProvider;
             DefaultMaxPodsPerNode = defaultMaxPodsPerNode;
             DefaultSnatStatuses = defaultSnatStatuses;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             Description = description;
             DisableL4LbFirewallReconciliation = disableL4LbFirewallReconciliation;

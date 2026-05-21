@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ApiKeyArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -80,6 +82,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ApiKey;
  * import com.pulumi.gcp.projects.ApiKeyArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsBrowserKeyRestrictionsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -124,6 +127,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ApiKey;
  * import com.pulumi.gcp.projects.ApiKeyArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsIosKeyRestrictionsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -201,6 +205,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ApiKey;
  * import com.pulumi.gcp.projects.ApiKeyArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
  * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsServerKeyRestrictionsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -303,6 +308,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:projects/apiKey:ApiKey")
 public class ApiKey extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * Human-readable display name of this API key. Modifiable by user.
      * 

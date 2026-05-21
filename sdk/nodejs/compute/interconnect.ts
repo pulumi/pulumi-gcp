@@ -122,6 +122,15 @@ export class Interconnect extends pulumi.CustomResource {
      */
     declare public readonly customerName: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -312,6 +321,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["circuitInfos"] = state?.circuitInfos;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["customerName"] = state?.customerName;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["expectedOutages"] = state?.expectedOutages;
@@ -358,6 +368,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["adminEnabled"] = args?.adminEnabled;
             resourceInputs["applicationAwareInterconnect"] = args?.applicationAwareInterconnect;
             resourceInputs["customerName"] = args?.customerName;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["interconnectType"] = args?.interconnectType;
             resourceInputs["labels"] = args?.labels;
@@ -443,6 +454,15 @@ export interface InterconnectState {
      * for cross-cloud interconnect.
      */
     customerName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -643,6 +663,15 @@ export interface InterconnectArgs {
      * for cross-cloud interconnect.
      */
     customerName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

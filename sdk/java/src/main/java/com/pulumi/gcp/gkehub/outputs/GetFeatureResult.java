@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 public final class GetFeatureResult {
     private String createTime;
     private String deleteTime;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     private List<GetFeatureFleetDefaultMemberConfig> fleetDefaultMemberConfigs;
     /**
@@ -43,6 +44,9 @@ public final class GetFeatureResult {
     }
     public String deleteTime() {
         return this.deleteTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -96,6 +100,7 @@ public final class GetFeatureResult {
     public static final class Builder {
         private String createTime;
         private String deleteTime;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private List<GetFeatureFleetDefaultMemberConfig> fleetDefaultMemberConfigs;
         private String id;
@@ -113,6 +118,7 @@ public final class GetFeatureResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.deleteTime = defaults.deleteTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.fleetDefaultMemberConfigs = defaults.fleetDefaultMemberConfigs;
     	      this.id = defaults.id;
@@ -141,6 +147,14 @@ public final class GetFeatureResult {
               throw new MissingRequiredPropertyException("GetFeatureResult", "deleteTime");
             }
             this.deleteTime = deleteTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetFeatureResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -253,6 +267,7 @@ public final class GetFeatureResult {
             final var _resultValue = new GetFeatureResult();
             _resultValue.createTime = createTime;
             _resultValue.deleteTime = deleteTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.fleetDefaultMemberConfigs = fleetDefaultMemberConfigs;
             _resultValue.id = id;

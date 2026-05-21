@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.CertificateManager
     public sealed class GetCertificateMapResult
     {
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetCertificateMapGclbTargetResult> GclbTargets;
@@ -152,6 +153,8 @@ namespace Pulumi.Gcp.CertificateManager
         [OutputConstructor]
         private GetCertificateMapResult(
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -172,6 +175,7 @@ namespace Pulumi.Gcp.CertificateManager
             string updateTime)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EffectiveLabels = effectiveLabels;
             GclbTargets = gclbTargets;

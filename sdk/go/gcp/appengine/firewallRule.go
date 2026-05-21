@@ -91,6 +91,13 @@ type FirewallRule struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
 	Action pulumi.StringOutput `pulumi:"action"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional string description of this rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A positive integer that defines the order of rule evaluation.
@@ -145,6 +152,13 @@ type firewallRuleState struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
 	Action *string `pulumi:"action"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional string description of this rule.
 	Description *string `pulumi:"description"`
 	// A positive integer that defines the order of rule evaluation.
@@ -164,6 +178,13 @@ type FirewallRuleState struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
 	Action pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional string description of this rule.
 	Description pulumi.StringPtrInput
 	// A positive integer that defines the order of rule evaluation.
@@ -187,6 +208,13 @@ type firewallRuleArgs struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
 	Action string `pulumi:"action"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional string description of this rule.
 	Description *string `pulumi:"description"`
 	// A positive integer that defines the order of rule evaluation.
@@ -207,6 +235,13 @@ type FirewallRuleArgs struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
 	Action pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional string description of this rule.
 	Description pulumi.StringPtrInput
 	// A positive integer that defines the order of rule evaluation.
@@ -313,6 +348,16 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 // Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
 func (o FirewallRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FirewallRuleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional string description of this rule.

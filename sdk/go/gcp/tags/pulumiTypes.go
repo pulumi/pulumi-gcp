@@ -783,6 +783,13 @@ type GetTagKeysKey struct {
 	// Creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// User-assigned description of the TagKey.
 	Description string `pulumi:"description"`
 	// an identifier for the resource with format `tagKeys/{{name}}`
@@ -819,6 +826,13 @@ type GetTagKeysKeyArgs struct {
 	// Creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// User-assigned description of the TagKey.
 	Description pulumi.StringInput `pulumi:"description"`
 	// an identifier for the resource with format `tagKeys/{{name}}`
@@ -900,6 +914,16 @@ func (o GetTagKeysKeyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTagKeysKey) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetTagKeysKeyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // User-assigned description of the TagKey.
 func (o GetTagKeysKeyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTagKeysKey) string { return v.Description }).(pulumi.StringOutput)
@@ -965,6 +989,13 @@ type GetTagValuesValue struct {
 	// Creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// User-assigned description of the TagValue.
 	Description string `pulumi:"description"`
 	// an identifier for the resource with format `tagValues/{{name}}`
@@ -995,6 +1026,13 @@ type GetTagValuesValueArgs struct {
 	// Creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// User-assigned description of the TagValue.
 	Description pulumi.StringInput `pulumi:"description"`
 	// an identifier for the resource with format `tagValues/{{name}}`
@@ -1065,6 +1103,16 @@ func (o GetTagValuesValueOutput) ToGetTagValuesValueOutputWithContext(ctx contex
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetTagValuesValueOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTagValuesValue) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetTagValuesValueOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagValuesValue) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User-assigned description of the TagValue.

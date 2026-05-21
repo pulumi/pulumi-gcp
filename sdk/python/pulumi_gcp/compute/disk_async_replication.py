@@ -22,17 +22,26 @@ __all__ = ['DiskAsyncReplicationArgs', 'DiskAsyncReplication']
 class DiskAsyncReplicationArgs:
     def __init__(__self__, *,
                  primary_disk: pulumi.Input[_builtins.str],
-                 secondary_disk: pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']):
+                 secondary_disk: pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiskAsyncReplication resource.
 
         :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
         :param pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                The `secondary_disk` block includes:
         """
         pulumi.set(__self__, "primary_disk", primary_disk)
         pulumi.set(__self__, "secondary_disk", secondary_disk)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter(name="primaryDisk")
@@ -51,8 +60,6 @@ class DiskAsyncReplicationArgs:
     def secondary_disk(self) -> pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']:
         """
         The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-
-        The `secondary_disk` block includes:
         """
         return pulumi.get(self, "secondary_disk")
 
@@ -60,24 +67,71 @@ class DiskAsyncReplicationArgs:
     def secondary_disk(self, value: pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']):
         pulumi.set(self, "secondary_disk", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        The `secondary_disk` block includes:
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _DiskAsyncReplicationState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_disk: pulumi.Input[Optional['DiskAsyncReplicationSecondaryDiskArgs']] = None):
         """
         Input properties used for looking up and filtering DiskAsyncReplication resources.
 
-        :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
-        :param pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                The `secondary_disk` block includes:
+        :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
+        :param pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if primary_disk is not None:
             pulumi.set(__self__, "primary_disk", primary_disk)
         if secondary_disk is not None:
             pulumi.set(__self__, "secondary_disk", secondary_disk)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        The `secondary_disk` block includes:
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryDisk")
@@ -96,8 +150,6 @@ class _DiskAsyncReplicationState:
     def secondary_disk(self) -> pulumi.Input[Optional['DiskAsyncReplicationSecondaryDiskArgs']]:
         """
         The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-
-        The `secondary_disk` block includes:
         """
         return pulumi.get(self, "secondary_disk")
 
@@ -112,6 +164,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
                  __props__=None):
@@ -149,10 +202,16 @@ class DiskAsyncReplication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
-        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                The `secondary_disk` block includes:
+        :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
+        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
         """
         ...
     @overload
@@ -207,6 +266,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
                  __props__=None):
@@ -218,6 +278,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DiskAsyncReplicationArgs.__new__(DiskAsyncReplicationArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if primary_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'primary_disk'")
             __props__.__dict__["primary_disk"] = primary_disk
@@ -234,6 +295,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
             secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None) -> 'DiskAsyncReplication':
         """
@@ -243,18 +305,40 @@ class DiskAsyncReplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
-        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                The `secondary_disk` block includes:
+        :param pulumi.Input[_builtins.str] primary_disk: The primary disk (source of replication).
+        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DiskAsyncReplicationState.__new__(_DiskAsyncReplicationState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["primary_disk"] = primary_disk
         __props__.__dict__["secondary_disk"] = secondary_disk
         return DiskAsyncReplication(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        The `secondary_disk` block includes:
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="primaryDisk")
@@ -269,8 +353,6 @@ class DiskAsyncReplication(pulumi.CustomResource):
     def secondary_disk(self) -> pulumi.Output['outputs.DiskAsyncReplicationSecondaryDisk']:
         """
         The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-
-        The `secondary_disk` block includes:
         """
         return pulumi.get(self, "secondary_disk")
 

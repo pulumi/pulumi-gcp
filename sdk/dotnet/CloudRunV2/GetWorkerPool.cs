@@ -165,6 +165,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly string Creator;
         public readonly ImmutableArray<string> CustomAudiences;
         public readonly string DeleteTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
@@ -214,6 +215,8 @@ namespace Pulumi.Gcp.CloudRunV2
             ImmutableArray<string> customAudiences,
 
             string deleteTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -276,6 +279,7 @@ namespace Pulumi.Gcp.CloudRunV2
             Creator = creator;
             CustomAudiences = customAudiences;
             DeleteTime = deleteTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             Description = description;
             EffectiveAnnotations = effectiveAnnotations;

@@ -56,6 +56,7 @@ export interface GetSinkResult {
      * Options that affect sinks exporting data to BigQuery. Structure is documented below.
      */
     readonly bigqueryOptions: outputs.logging.GetSinkBigqueryOption[];
+    readonly deletionPolicy: string;
     /**
      * A description of this exclusion.
      */

@@ -30,6 +30,7 @@ class FlexibleAppVersionArgs:
                  beta_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  default_expiration: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment: pulumi.Input[Optional['FlexibleAppVersionDeploymentArgs']] = None,
                  endpoints_api_service: pulumi.Input[Optional['FlexibleAppVersionEndpointsApiServiceArgs']] = None,
                  entrypoint: pulumi.Input[Optional['FlexibleAppVersionEntrypointArgs']] = None,
@@ -68,6 +69,12 @@ class FlexibleAppVersionArgs:
         :param pulumi.Input[_builtins.str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[_builtins.bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['FlexibleAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs'] endpoints_api_service: Code and application artifacts that make up this version.
@@ -125,6 +132,8 @@ class FlexibleAppVersionArgs:
             pulumi.set(__self__, "default_expiration", default_expiration)
         if delete_service_on_destroy is not None:
             pulumi.set(__self__, "delete_service_on_destroy", delete_service_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment is not None:
             pulumi.set(__self__, "deployment", deployment)
         if endpoints_api_service is not None:
@@ -280,6 +289,23 @@ class FlexibleAppVersionArgs:
     @delete_service_on_destroy.setter
     def delete_service_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_service_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -563,6 +589,7 @@ class _FlexibleAppVersionState:
                  beta_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  default_expiration: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment: pulumi.Input[Optional['FlexibleAppVersionDeploymentArgs']] = None,
                  endpoints_api_service: pulumi.Input[Optional['FlexibleAppVersionEndpointsApiServiceArgs']] = None,
                  entrypoint: pulumi.Input[Optional['FlexibleAppVersionEntrypointArgs']] = None,
@@ -600,6 +627,12 @@ class _FlexibleAppVersionState:
         :param pulumi.Input[_builtins.str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[_builtins.bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['FlexibleAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionEndpointsApiServiceArgs'] endpoints_api_service: Code and application artifacts that make up this version.
@@ -660,6 +693,8 @@ class _FlexibleAppVersionState:
             pulumi.set(__self__, "default_expiration", default_expiration)
         if delete_service_on_destroy is not None:
             pulumi.set(__self__, "delete_service_on_destroy", delete_service_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment is not None:
             pulumi.set(__self__, "deployment", deployment)
         if endpoints_api_service is not None:
@@ -775,6 +810,23 @@ class _FlexibleAppVersionState:
     @delete_service_on_destroy.setter
     def delete_service_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_service_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1123,6 +1175,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  beta_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  default_expiration: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment: pulumi.Input[Optional[Union['FlexibleAppVersionDeploymentArgs', 'FlexibleAppVersionDeploymentArgsDict']]] = None,
                  endpoints_api_service: pulumi.Input[Optional[Union['FlexibleAppVersionEndpointsApiServiceArgs', 'FlexibleAppVersionEndpointsApiServiceArgsDict']]] = None,
                  entrypoint: pulumi.Input[Optional[Union['FlexibleAppVersionEntrypointArgs', 'FlexibleAppVersionEntrypointArgsDict']]] = None,
@@ -1286,6 +1339,12 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[_builtins.bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['FlexibleAppVersionDeploymentArgs', 'FlexibleAppVersionDeploymentArgsDict']] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
         :param pulumi.Input[Union['FlexibleAppVersionEndpointsApiServiceArgs', 'FlexibleAppVersionEndpointsApiServiceArgsDict']] endpoints_api_service: Code and application artifacts that make up this version.
@@ -1488,6 +1547,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  beta_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  default_expiration: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment: pulumi.Input[Optional[Union['FlexibleAppVersionDeploymentArgs', 'FlexibleAppVersionDeploymentArgsDict']]] = None,
                  endpoints_api_service: pulumi.Input[Optional[Union['FlexibleAppVersionEndpointsApiServiceArgs', 'FlexibleAppVersionEndpointsApiServiceArgsDict']]] = None,
                  entrypoint: pulumi.Input[Optional[Union['FlexibleAppVersionEntrypointArgs', 'FlexibleAppVersionEntrypointArgsDict']]] = None,
@@ -1527,6 +1587,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             __props__.__dict__["beta_settings"] = beta_settings
             __props__.__dict__["default_expiration"] = default_expiration
             __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deployment"] = deployment
             __props__.__dict__["endpoints_api_service"] = endpoints_api_service
             __props__.__dict__["entrypoint"] = entrypoint
@@ -1576,6 +1637,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             beta_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             default_expiration: pulumi.Input[Optional[_builtins.str]] = None,
             delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment: pulumi.Input[Optional[Union['FlexibleAppVersionDeploymentArgs', 'FlexibleAppVersionDeploymentArgsDict']]] = None,
             endpoints_api_service: pulumi.Input[Optional[Union['FlexibleAppVersionEndpointsApiServiceArgs', 'FlexibleAppVersionEndpointsApiServiceArgsDict']]] = None,
             entrypoint: pulumi.Input[Optional[Union['FlexibleAppVersionEntrypointArgs', 'FlexibleAppVersionEntrypointArgsDict']]] = None,
@@ -1617,6 +1679,12 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         :param pulumi.Input[_builtins.bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['FlexibleAppVersionDeploymentArgs', 'FlexibleAppVersionDeploymentArgsDict']] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
         :param pulumi.Input[Union['FlexibleAppVersionEndpointsApiServiceArgs', 'FlexibleAppVersionEndpointsApiServiceArgsDict']] endpoints_api_service: Code and application artifacts that make up this version.
@@ -1676,6 +1744,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         __props__.__dict__["beta_settings"] = beta_settings
         __props__.__dict__["default_expiration"] = default_expiration
         __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deployment"] = deployment
         __props__.__dict__["endpoints_api_service"] = endpoints_api_service
         __props__.__dict__["entrypoint"] = entrypoint
@@ -1746,6 +1815,19 @@ class FlexibleAppVersion(pulumi.CustomResource):
         If set to `true`, the service will be deleted if it is the last version.
         """
         return pulumi.get(self, "delete_service_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

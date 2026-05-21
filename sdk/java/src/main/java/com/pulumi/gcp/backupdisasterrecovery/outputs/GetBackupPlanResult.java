@@ -6,6 +6,7 @@ package com.pulumi.gcp.backupdisasterrecovery.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanBackupRule;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanComputeInstanceBackupPlanProperty;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanDiskBackupPlanProperty;
 import java.lang.Integer;
 import java.lang.String;
@@ -20,7 +21,9 @@ public final class GetBackupPlanResult {
     private List<GetBackupPlanBackupRule> backupRules;
     private String backupVault;
     private String backupVaultServiceAccount;
+    private List<GetBackupPlanComputeInstanceBackupPlanProperty> computeInstanceBackupPlanProperties;
     private String createTime;
+    private String deletionPolicy;
     private String description;
     private List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties;
     /**
@@ -50,8 +53,14 @@ public final class GetBackupPlanResult {
     public String backupVaultServiceAccount() {
         return this.backupVaultServiceAccount;
     }
+    public List<GetBackupPlanComputeInstanceBackupPlanProperty> computeInstanceBackupPlanProperties() {
+        return this.computeInstanceBackupPlanProperties;
+    }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -104,7 +113,9 @@ public final class GetBackupPlanResult {
         private List<GetBackupPlanBackupRule> backupRules;
         private String backupVault;
         private String backupVaultServiceAccount;
+        private List<GetBackupPlanComputeInstanceBackupPlanProperty> computeInstanceBackupPlanProperties;
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties;
         private String id;
@@ -123,7 +134,9 @@ public final class GetBackupPlanResult {
     	      this.backupRules = defaults.backupRules;
     	      this.backupVault = defaults.backupVault;
     	      this.backupVaultServiceAccount = defaults.backupVaultServiceAccount;
+    	      this.computeInstanceBackupPlanProperties = defaults.computeInstanceBackupPlanProperties;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.diskBackupPlanProperties = defaults.diskBackupPlanProperties;
     	      this.id = defaults.id;
@@ -173,11 +186,30 @@ public final class GetBackupPlanResult {
             return this;
         }
         @CustomType.Setter
+        public Builder computeInstanceBackupPlanProperties(List<GetBackupPlanComputeInstanceBackupPlanProperty> computeInstanceBackupPlanProperties) {
+            if (computeInstanceBackupPlanProperties == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanResult", "computeInstanceBackupPlanProperties");
+            }
+            this.computeInstanceBackupPlanProperties = computeInstanceBackupPlanProperties;
+            return this;
+        }
+        public Builder computeInstanceBackupPlanProperties(GetBackupPlanComputeInstanceBackupPlanProperty... computeInstanceBackupPlanProperties) {
+            return computeInstanceBackupPlanProperties(List.of(computeInstanceBackupPlanProperties));
+        }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
               throw new MissingRequiredPropertyException("GetBackupPlanResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -278,7 +310,9 @@ public final class GetBackupPlanResult {
             _resultValue.backupRules = backupRules;
             _resultValue.backupVault = backupVault;
             _resultValue.backupVaultServiceAccount = backupVaultServiceAccount;
+            _resultValue.computeInstanceBackupPlanProperties = computeInstanceBackupPlanProperties;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.diskBackupPlanProperties = diskBackupPlanProperties;
             _resultValue.id = id;

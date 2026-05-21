@@ -26,6 +26,7 @@ class GatewaySecurityPolicyRuleArgs:
                  priority: pulumi.Input[_builtins.int],
                  session_matcher: pulumi.Input[_builtins.str],
                  application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,6 +42,12 @@ class GatewaySecurityPolicyRuleArgs:
         :param pulumi.Input[_builtins.int] priority: Priority of the rule. Lower number corresponds to higher precedence.
         :param pulumi.Input[_builtins.str] session_matcher: CEL expression for matching on session criteria.
         :param pulumi.Input[_builtins.str] application_matcher: CEL expression for matching on L7/application level criteria.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
                rule should match the pattern: (^a-z?$).
@@ -57,6 +64,8 @@ class GatewaySecurityPolicyRuleArgs:
         pulumi.set(__self__, "session_matcher", session_matcher)
         if application_matcher is not None:
             pulumi.set(__self__, "application_matcher", application_matcher)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -152,6 +161,23 @@ class GatewaySecurityPolicyRuleArgs:
         pulumi.set(self, "application_matcher", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -209,6 +235,7 @@ class _GatewaySecurityPolicyRuleState:
                  application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
                  basic_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -229,6 +256,12 @@ class _GatewaySecurityPolicyRuleState:
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enforced.
         :param pulumi.Input[_builtins.str] gateway_security_policy: The name of the gatewat security policy this rule belongs to.
@@ -252,6 +285,8 @@ class _GatewaySecurityPolicyRuleState:
             pulumi.set(__self__, "basic_profile", basic_profile)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
@@ -313,6 +348,23 @@ class _GatewaySecurityPolicyRuleState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -460,6 +512,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
                  basic_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -545,6 +598,12 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_matcher: CEL expression for matching on L7/application level criteria.
         :param pulumi.Input[_builtins.str] basic_profile: Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
                Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enforced.
         :param pulumi.Input[_builtins.str] gateway_security_policy: The name of the gatewat security policy this rule belongs to.
@@ -651,6 +710,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
                  basic_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -673,6 +733,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             if basic_profile is None and not opts.urn:
                 raise TypeError("Missing required property 'basic_profile'")
             __props__.__dict__["basic_profile"] = basic_profile
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
@@ -708,6 +769,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
             basic_profile: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -732,6 +794,12 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enforced.
         :param pulumi.Input[_builtins.str] gateway_security_policy: The name of the gatewat security policy this rule belongs to.
@@ -756,6 +824,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         __props__.__dict__["application_matcher"] = application_matcher
         __props__.__dict__["basic_profile"] = basic_profile
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["gateway_security_policy"] = gateway_security_policy
@@ -795,6 +864,19 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

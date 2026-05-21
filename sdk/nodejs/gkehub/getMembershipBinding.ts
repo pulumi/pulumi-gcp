@@ -65,6 +65,7 @@ export interface GetMembershipBindingArgs {
 export interface GetMembershipBindingResult {
     readonly createTime: string;
     readonly deleteTime: string;
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.

@@ -66,6 +66,58 @@ import (
 //	}
 //
 // ```
+// ### Organization Security Policy Association Excluded
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			securityPolicyTarget, err := organizations.NewFolder(ctx, "security_policy_target", &organizations.FolderArgs{
+//				DisplayName:        pulumi.String("tf-test-secpol-_72490"),
+//				Parent:             pulumi.String("organizations/123456789"),
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
+//				ShortName: pulumi.String("tf-test_89605"),
+//				Parent:    securityPolicyTarget.Name,
+//				Type:      pulumi.String("CLOUD_ARMOR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewOrganizationSecurityPolicyAssociation(ctx, "policy", &compute.OrganizationSecurityPolicyAssociationArgs{
+//				Name:         pulumi.String("tf-test"),
+//				AttachmentId: pulumi.String("organizations/123456789"),
+//				PolicyId:     policy.ID(),
+//				ExcludedProjects: pulumi.StringArray{
+//					pulumi.String("projects/2000000002"),
+//					pulumi.String("projects/3000000003"),
+//				},
+//				ExcludedFolders: pulumi.StringArray{
+//					pulumi.String("folders/4000000004"),
+//					pulumi.String("folders/5000000005"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -83,6 +135,13 @@ type OrganizationSecurityPolicyAssociation struct {
 
 	// The resource that the security policy is attached to.
 	AttachmentId pulumi.StringOutput `pulumi:"attachmentId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the security policy of the association.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A list of folders to exclude from the security policy.
@@ -133,6 +192,13 @@ func GetOrganizationSecurityPolicyAssociation(ctx *pulumi.Context,
 type organizationSecurityPolicyAssociationState struct {
 	// The resource that the security policy is attached to.
 	AttachmentId *string `pulumi:"attachmentId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the security policy of the association.
 	DisplayName *string `pulumi:"displayName"`
 	// A list of folders to exclude from the security policy.
@@ -148,6 +214,13 @@ type organizationSecurityPolicyAssociationState struct {
 type OrganizationSecurityPolicyAssociationState struct {
 	// The resource that the security policy is attached to.
 	AttachmentId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the security policy of the association.
 	DisplayName pulumi.StringPtrInput
 	// A list of folders to exclude from the security policy.
@@ -167,6 +240,13 @@ func (OrganizationSecurityPolicyAssociationState) ElementType() reflect.Type {
 type organizationSecurityPolicyAssociationArgs struct {
 	// The resource that the security policy is attached to.
 	AttachmentId string `pulumi:"attachmentId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A list of folders to exclude from the security policy.
 	ExcludedFolders []string `pulumi:"excludedFolders"`
 	// A list of projects to exclude from the security policy.
@@ -181,6 +261,13 @@ type organizationSecurityPolicyAssociationArgs struct {
 type OrganizationSecurityPolicyAssociationArgs struct {
 	// The resource that the security policy is attached to.
 	AttachmentId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A list of folders to exclude from the security policy.
 	ExcludedFolders pulumi.StringArrayInput
 	// A list of projects to exclude from the security policy.
@@ -281,6 +368,16 @@ func (o OrganizationSecurityPolicyAssociationOutput) ToOrganizationSecurityPolic
 // The resource that the security policy is attached to.
 func (o OrganizationSecurityPolicyAssociationOutput) AttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyAssociation) pulumi.StringOutput { return v.AttachmentId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OrganizationSecurityPolicyAssociationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyAssociation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the security policy of the association.

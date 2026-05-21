@@ -138,6 +138,13 @@ type GitRepositoryLink struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. [Output only] Delete timestamp
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -233,6 +240,13 @@ type gitRepositoryLinkState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. [Output only] Delete timestamp
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -282,6 +296,13 @@ type GitRepositoryLinkState struct {
 	CreateTime pulumi.StringPtrInput
 	// Output only. [Output only] Delete timestamp
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -331,6 +352,13 @@ type gitRepositoryLinkArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Required. Git Clone URI.
 	CloneUri string `pulumi:"cloneUri"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
@@ -360,6 +388,13 @@ type GitRepositoryLinkArgs struct {
 	Annotations pulumi.StringMapInput
 	// Required. Git Clone URI.
 	CloneUri pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
@@ -488,6 +523,16 @@ func (o GitRepositoryLinkOutput) CreateTime() pulumi.StringOutput {
 // Output only. [Output only] Delete timestamp
 func (o GitRepositoryLinkOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitRepositoryLink) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GitRepositoryLinkOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *GitRepositoryLink) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.

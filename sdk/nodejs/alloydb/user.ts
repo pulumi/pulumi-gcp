@@ -168,6 +168,15 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly databaseRoles: pulumi.Output<string[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
@@ -214,6 +223,7 @@ export class User extends pulumi.CustomResource {
             const state = argsOrState as UserState | undefined;
             resourceInputs["cluster"] = state?.cluster;
             resourceInputs["databaseRoles"] = state?.databaseRoles;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["password"] = state?.password;
             resourceInputs["passwordWo"] = state?.passwordWo;
@@ -233,6 +243,7 @@ export class User extends pulumi.CustomResource {
             }
             resourceInputs["cluster"] = args?.cluster;
             resourceInputs["databaseRoles"] = args?.databaseRoles;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
             resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
@@ -260,6 +271,15 @@ export interface UserState {
      * List of database roles this database user has.
      */
     databaseRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
      */
@@ -306,6 +326,15 @@ export interface UserArgs {
      * List of database roles this database user has.
      */
     databaseRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Password for this database user.
      * **Note**: This property is sensitive and will not be displayed in the plan.

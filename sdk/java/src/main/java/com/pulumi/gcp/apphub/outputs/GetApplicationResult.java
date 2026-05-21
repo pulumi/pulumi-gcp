@@ -16,6 +16,7 @@ public final class GetApplicationResult {
     private String applicationId;
     private List<GetApplicationAttribute> attributes;
     private String createTime;
+    private String deletionPolicy;
     private String description;
     private String displayName;
     /**
@@ -40,6 +41,9 @@ public final class GetApplicationResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -88,6 +92,7 @@ public final class GetApplicationResult {
         private String applicationId;
         private List<GetApplicationAttribute> attributes;
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private String displayName;
         private String id;
@@ -104,6 +109,7 @@ public final class GetApplicationResult {
     	      this.applicationId = defaults.applicationId;
     	      this.attributes = defaults.attributes;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
@@ -141,6 +147,14 @@ public final class GetApplicationResult {
               throw new MissingRequiredPropertyException("GetApplicationResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetApplicationResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -231,6 +245,7 @@ public final class GetApplicationResult {
             _resultValue.applicationId = applicationId;
             _resultValue.attributes = attributes;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.displayName = displayName;
             _resultValue.id = id;

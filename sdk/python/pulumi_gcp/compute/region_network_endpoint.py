@@ -22,6 +22,7 @@ class RegionNetworkEndpointArgs:
                  port: pulumi.Input[_builtins.int],
                  region_network_endpoint_group: pulumi.Input[_builtins.str],
                  client_destination_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fqdn: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -33,6 +34,12 @@ class RegionNetworkEndpointArgs:
         :param pulumi.Input[_builtins.int] port: Port number of network endpoint.
         :param pulumi.Input[_builtins.str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[_builtins.int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         :param pulumi.Input[_builtins.str] instance: The name for a specific VM instance that the IP address belongs to.
@@ -47,6 +54,8 @@ class RegionNetworkEndpointArgs:
         pulumi.set(__self__, "region_network_endpoint_group", region_network_endpoint_group)
         if client_destination_port is not None:
             pulumi.set(__self__, "client_destination_port", client_destination_port)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if fqdn is not None:
             pulumi.set(__self__, "fqdn", fqdn)
         if instance is not None:
@@ -93,6 +102,23 @@ class RegionNetworkEndpointArgs:
     @client_destination_port.setter
     def client_destination_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_destination_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -163,6 +189,7 @@ class RegionNetworkEndpointArgs:
 class _RegionNetworkEndpointState:
     def __init__(__self__, *,
                  client_destination_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fqdn: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -175,6 +202,12 @@ class _RegionNetworkEndpointState:
         Input properties used for looking up and filtering RegionNetworkEndpoint resources.
 
         :param pulumi.Input[_builtins.int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         :param pulumi.Input[_builtins.str] instance: The name for a specific VM instance that the IP address belongs to.
@@ -190,6 +223,8 @@ class _RegionNetworkEndpointState:
         """
         if client_destination_port is not None:
             pulumi.set(__self__, "client_destination_port", client_destination_port)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if fqdn is not None:
             pulumi.set(__self__, "fqdn", fqdn)
         if instance is not None:
@@ -218,6 +253,23 @@ class _RegionNetworkEndpointState:
     @client_destination_port.setter
     def client_destination_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_destination_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -327,6 +379,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_destination_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fqdn: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -456,6 +509,12 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         :param pulumi.Input[_builtins.str] instance: The name for a specific VM instance that the IP address belongs to.
@@ -608,6 +667,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_destination_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fqdn: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -625,6 +685,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             __props__ = RegionNetworkEndpointArgs.__new__(RegionNetworkEndpointArgs)
 
             __props__.__dict__["client_destination_port"] = client_destination_port
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["fqdn"] = fqdn
             __props__.__dict__["instance"] = instance
             __props__.__dict__["ip_address"] = ip_address
@@ -648,6 +709,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             client_destination_port: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             fqdn: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -664,6 +726,12 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         :param pulumi.Input[_builtins.str] instance: The name for a specific VM instance that the IP address belongs to.
@@ -682,6 +750,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         __props__ = _RegionNetworkEndpointState.__new__(_RegionNetworkEndpointState)
 
         __props__.__dict__["client_destination_port"] = client_destination_port
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["fqdn"] = fqdn
         __props__.__dict__["instance"] = instance
         __props__.__dict__["ip_address"] = ip_address
@@ -699,6 +768,19 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
         """
         return pulumi.get(self, "client_destination_port")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

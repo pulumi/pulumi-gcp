@@ -144,6 +144,7 @@ namespace Pulumi.Gcp.MemoryStore
         public readonly string BackupCollection;
         public readonly string CreateTime;
         public readonly ImmutableArray<Outputs.GetInstanceCrossInstanceReplicationConfigResult> CrossInstanceReplicationConfigs;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtectionEnabled;
         public readonly ImmutableArray<Outputs.GetInstanceDesiredAutoCreatedEndpointResult> DesiredAutoCreatedEndpoints;
         public readonly ImmutableArray<Outputs.GetInstanceDesiredPscAutoConnectionResult> DesiredPscAutoConnections;
@@ -200,6 +201,8 @@ namespace Pulumi.Gcp.MemoryStore
             string createTime,
 
             ImmutableArray<Outputs.GetInstanceCrossInstanceReplicationConfigResult> crossInstanceReplicationConfigs,
+
+            string deletionPolicy,
 
             bool deletionProtectionEnabled,
 
@@ -285,6 +288,7 @@ namespace Pulumi.Gcp.MemoryStore
             BackupCollection = backupCollection;
             CreateTime = createTime;
             CrossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
+            DeletionPolicy = deletionPolicy;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DesiredAutoCreatedEndpoints = desiredAutoCreatedEndpoints;
             DesiredPscAutoConnections = desiredPscAutoConnections;

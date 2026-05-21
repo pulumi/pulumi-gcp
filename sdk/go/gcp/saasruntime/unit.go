@@ -96,6 +96,13 @@ type Unit struct {
 	Conditions UnitConditionArrayOutput `pulumi:"conditions"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Set of dependencies for this unit. Maximum 10.
 	// Structure is documented below.
 	Dependencies UnitDependencyArrayOutput `pulumi:"dependencies"`
@@ -246,6 +253,13 @@ type unitState struct {
 	Conditions []UnitCondition `pulumi:"conditions"`
 	// The timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Set of dependencies for this unit. Maximum 10.
 	// Structure is documented below.
 	Dependencies []UnitDependency `pulumi:"dependencies"`
@@ -356,6 +370,13 @@ type UnitState struct {
 	Conditions UnitConditionArrayInput
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Set of dependencies for this unit. Maximum 10.
 	// Structure is documented below.
 	Dependencies UnitDependencyArrayInput
@@ -464,6 +485,13 @@ type unitArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The labels on the resource, which can be used for categorization.
 	// similar to Kubernetes resource labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -506,6 +534,13 @@ type UnitArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The labels on the resource, which can be used for categorization.
 	// similar to Kubernetes resource labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -646,6 +681,16 @@ func (o UnitOutput) Conditions() UnitConditionArrayOutput {
 // The timestamp when the resource was created.
 func (o UnitOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Unit) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o UnitOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Unit) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Set of dependencies for this unit. Maximum 10.

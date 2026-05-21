@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionHeaderActionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginRedirectArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -244,6 +245,30 @@ public class EdgeCacheOrigin extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<EdgeCacheOriginAwsV4Authentication>> awsV4Authentication() {
         return Codegen.optional(this.awsV4Authentication);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A human-readable description of the resource.

@@ -26,7 +26,10 @@ class GetPeeredDnsDomainResult:
     """
     A collection of values returned by getPeeredDnsDomain.
     """
-    def __init__(__self__, dns_suffix=None, id=None, name=None, network=None, parent=None, project=None, service=None):
+    def __init__(__self__, deletion_policy=None, dns_suffix=None, id=None, name=None, network=None, parent=None, project=None, service=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if dns_suffix and not isinstance(dns_suffix, str):
             raise TypeError("Expected argument 'dns_suffix' to be a str")
         pulumi.set(__self__, "dns_suffix", dns_suffix)
@@ -48,6 +51,11 @@ class GetPeeredDnsDomainResult:
         if service and not isinstance(service, str):
             raise TypeError("Expected argument 'service' to be a str")
         pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="dnsSuffix")
@@ -94,6 +102,7 @@ class AwaitableGetPeeredDnsDomainResult(GetPeeredDnsDomainResult):
         if False:
             yield self
         return GetPeeredDnsDomainResult(
+            deletion_policy=self.deletion_policy,
             dns_suffix=self.dns_suffix,
             id=self.id,
             name=self.name,
@@ -103,7 +112,8 @@ class AwaitableGetPeeredDnsDomainResult(GetPeeredDnsDomainResult):
             service=self.service)
 
 
-def get_peered_dns_domain(name: Optional[_builtins.str] = None,
+def get_peered_dns_domain(deletion_policy: Optional[_builtins.str] = None,
+                          name: Optional[_builtins.str] = None,
                           network: Optional[_builtins.str] = None,
                           project: Optional[_builtins.str] = None,
                           service: Optional[_builtins.str] = None,
@@ -112,6 +122,7 @@ def get_peered_dns_domain(name: Optional[_builtins.str] = None,
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
+    __args__['deletionPolicy'] = deletion_policy
     __args__['name'] = name
     __args__['network'] = network
     __args__['project'] = project
@@ -120,6 +131,7 @@ def get_peered_dns_domain(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain', __args__, opts=opts, typ=GetPeeredDnsDomainResult).value
 
     return AwaitableGetPeeredDnsDomainResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         dns_suffix=pulumi.get(__ret__, 'dns_suffix'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -127,7 +139,8 @@ def get_peered_dns_domain(name: Optional[_builtins.str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         project=pulumi.get(__ret__, 'project'),
         service=pulumi.get(__ret__, 'service'))
-def get_peered_dns_domain_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+def get_peered_dns_domain_output(deletion_policy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 name: pulumi.Input[Optional[_builtins.str]] = None,
                                  network: pulumi.Input[Optional[_builtins.str]] = None,
                                  project: pulumi.Input[Optional[_builtins.str]] = None,
                                  service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -136,6 +149,7 @@ def get_peered_dns_domain_output(name: pulumi.Input[Optional[_builtins.str]] = N
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
+    __args__['deletionPolicy'] = deletion_policy
     __args__['name'] = name
     __args__['network'] = network
     __args__['project'] = project
@@ -143,6 +157,7 @@ def get_peered_dns_domain_output(name: pulumi.Input[Optional[_builtins.str]] = N
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain', __args__, opts=opts, typ=GetPeeredDnsDomainResult)
     return __ret__.apply(lambda __response__: GetPeeredDnsDomainResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         dns_suffix=pulumi.get(__response__, 'dns_suffix'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

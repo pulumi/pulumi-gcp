@@ -118,9 +118,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ReservationArgs;
  * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
  * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupAcceleratorConfigArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupVmImageArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupReservationAffinityArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -191,6 +193,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupServiceAccountArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -248,12 +251,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ReservationArgs;
  * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
  * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupAcceleratorConfigArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupServiceAccountArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupNetworkInterfaceArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupNetworkInterfaceAccessConfigArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupReservationAffinityArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
@@ -526,6 +534,30 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creator() {
         return this.creator;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.

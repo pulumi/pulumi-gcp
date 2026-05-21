@@ -23,6 +23,7 @@ class AppProfileArgs:
     def __init__(__self__, *,
                  app_profile_id: pulumi.Input[_builtins.str],
                  data_boost_isolation_read_only: pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -38,6 +39,12 @@ class AppProfileArgs:
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[_builtins.bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[_builtins.str] instance: The name of the instance to create the app profile within.
@@ -56,6 +63,8 @@ class AppProfileArgs:
         pulumi.set(__self__, "app_profile_id", app_profile_id)
         if data_boost_isolation_read_only is not None:
             pulumi.set(__self__, "data_boost_isolation_read_only", data_boost_isolation_read_only)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ignore_warnings is not None:
@@ -99,6 +108,23 @@ class AppProfileArgs:
     @data_boost_isolation_read_only.setter
     def data_boost_isolation_read_only(self, value: pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']]):
         pulumi.set(self, "data_boost_isolation_read_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -219,6 +245,7 @@ class _AppProfileState:
     def __init__(__self__, *,
                  app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_boost_isolation_read_only: pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -235,6 +262,12 @@ class _AppProfileState:
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[_builtins.bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[_builtins.str] instance: The name of the instance to create the app profile within.
@@ -255,6 +288,8 @@ class _AppProfileState:
             pulumi.set(__self__, "app_profile_id", app_profile_id)
         if data_boost_isolation_read_only is not None:
             pulumi.set(__self__, "data_boost_isolation_read_only", data_boost_isolation_read_only)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ignore_warnings is not None:
@@ -300,6 +335,23 @@ class _AppProfileState:
     @data_boost_isolation_read_only.setter
     def data_boost_isolation_read_only(self, value: pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']]):
         pulumi.set(self, "data_boost_isolation_read_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -435,6 +487,7 @@ class AppProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -602,6 +655,12 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[_builtins.bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[_builtins.str] instance: The name of the instance to create the app profile within.
@@ -792,6 +851,7 @@ class AppProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -814,6 +874,7 @@ class AppProfile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'app_profile_id'")
             __props__.__dict__["app_profile_id"] = app_profile_id
             __props__.__dict__["data_boost_isolation_read_only"] = data_boost_isolation_read_only
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["ignore_warnings"] = ignore_warnings
             __props__.__dict__["instance"] = instance
@@ -838,6 +899,7 @@ class AppProfile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -858,6 +920,12 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[_builtins.bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[_builtins.str] instance: The name of the instance to create the app profile within.
@@ -880,6 +948,7 @@ class AppProfile(pulumi.CustomResource):
 
         __props__.__dict__["app_profile_id"] = app_profile_id
         __props__.__dict__["data_boost_isolation_read_only"] = data_boost_isolation_read_only
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["ignore_warnings"] = ignore_warnings
         __props__.__dict__["instance"] = instance
@@ -908,6 +977,19 @@ class AppProfile(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "data_boost_isolation_read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

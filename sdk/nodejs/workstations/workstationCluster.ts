@@ -17,6 +17,32 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Workstation Cluster Custom Urls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "workstations-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstations-network",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.name,
+ * });
+ * const _default = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "custom-urls-cluster",
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ *     workstationAuthorizationUrl: "https://workstations.cloud.google.com/ui/auth",
+ *     workstationLaunchUrl: "https://console.cloud.google.com/workstations/launch",
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
  * ### Workstation Cluster Basic
  *
  * ```typescript
@@ -222,6 +248,15 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly degraded: pulumi.Output<boolean>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Human-readable name for this resource.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -294,9 +329,19 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
+     * Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+     * Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+     */
+    declare public readonly workstationAuthorizationUrl: pulumi.Output<string>;
+    /**
      * ID to use for the workstation cluster.
      */
     declare public readonly workstationClusterId: pulumi.Output<string>;
+    /**
+     * Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+     * Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+     */
+    declare public readonly workstationLaunchUrl: pulumi.Output<string | undefined>;
 
     /**
      * Create a WorkstationCluster resource with the given unique name, arguments, and options.
@@ -316,6 +361,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["controlPlaneIp"] = state?.controlPlaneIp;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["degraded"] = state?.degraded;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["domainConfig"] = state?.domainConfig;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
@@ -331,7 +377,9 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = state?.subnetwork;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["uid"] = state?.uid;
+            resourceInputs["workstationAuthorizationUrl"] = state?.workstationAuthorizationUrl;
             resourceInputs["workstationClusterId"] = state?.workstationClusterId;
+            resourceInputs["workstationLaunchUrl"] = state?.workstationLaunchUrl;
         } else {
             const args = argsOrState as WorkstationClusterArgs | undefined;
             if (args?.network === undefined && !opts.urn) {
@@ -344,6 +392,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workstationClusterId'");
             }
             resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["domainConfig"] = args?.domainConfig;
             resourceInputs["labels"] = args?.labels;
@@ -353,7 +402,9 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["subnetwork"] = args?.subnetwork;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["workstationAuthorizationUrl"] = args?.workstationAuthorizationUrl;
             resourceInputs["workstationClusterId"] = args?.workstationClusterId;
+            resourceInputs["workstationLaunchUrl"] = args?.workstationLaunchUrl;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["controlPlaneIp"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -401,6 +452,15 @@ export interface WorkstationClusterState {
      * Details can be found in the conditions field.
      */
     degraded?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Human-readable name for this resource.
      */
@@ -474,9 +534,19 @@ export interface WorkstationClusterState {
      */
     uid?: pulumi.Input<string | undefined>;
     /**
+     * Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+     * Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+     */
+    workstationAuthorizationUrl?: pulumi.Input<string | undefined>;
+    /**
      * ID to use for the workstation cluster.
      */
     workstationClusterId?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+     * Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+     */
+    workstationLaunchUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -489,6 +559,15 @@ export interface WorkstationClusterArgs {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Human-readable name for this resource.
      */
@@ -536,7 +615,17 @@ export interface WorkstationClusterArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+     * Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+     */
+    workstationAuthorizationUrl?: pulumi.Input<string | undefined>;
+    /**
      * ID to use for the workstation cluster.
      */
     workstationClusterId: pulumi.Input<string>;
+    /**
+     * Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+     * Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+     */
+    workstationLaunchUrl?: pulumi.Input<string | undefined>;
 }

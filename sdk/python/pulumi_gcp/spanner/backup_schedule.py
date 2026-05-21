@@ -24,6 +24,7 @@ class BackupScheduleArgs:
                  database: pulumi.Input[_builtins.str],
                  instance: pulumi.Input[_builtins.str],
                  retention_duration: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_config: pulumi.Input[Optional['BackupScheduleEncryptionConfigArgs']] = None,
                  full_backup_spec: pulumi.Input[Optional['BackupScheduleFullBackupSpecArgs']] = None,
                  incremental_backup_spec: pulumi.Input[Optional['BackupScheduleIncrementalBackupSpecArgs']] = None,
@@ -38,6 +39,12 @@ class BackupScheduleArgs:
         :param pulumi.Input[_builtins.str] retention_duration: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
                You can set this to a value up to 366 days.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['BackupScheduleEncryptionConfigArgs'] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
         :param pulumi.Input['BackupScheduleFullBackupSpecArgs'] full_backup_spec: The schedule creates only full backups..
@@ -52,6 +59,8 @@ class BackupScheduleArgs:
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "retention_duration", retention_duration)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if full_backup_spec is not None:
@@ -102,6 +111,23 @@ class BackupScheduleArgs:
     @retention_duration.setter
     def retention_duration(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "retention_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
@@ -184,6 +210,7 @@ class BackupScheduleArgs:
 class _BackupScheduleState:
     def __init__(__self__, *,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_config: pulumi.Input[Optional['BackupScheduleEncryptionConfigArgs']] = None,
                  full_backup_spec: pulumi.Input[Optional['BackupScheduleFullBackupSpecArgs']] = None,
                  incremental_backup_spec: pulumi.Input[Optional['BackupScheduleIncrementalBackupSpecArgs']] = None,
@@ -196,6 +223,12 @@ class _BackupScheduleState:
         Input properties used for looking up and filtering BackupSchedule resources.
 
         :param pulumi.Input[_builtins.str] database: The database to create the backup schedule on.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['BackupScheduleEncryptionConfigArgs'] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
         :param pulumi.Input['BackupScheduleFullBackupSpecArgs'] full_backup_spec: The schedule creates only full backups..
@@ -213,6 +246,8 @@ class _BackupScheduleState:
         """
         if database is not None:
             pulumi.set(__self__, "database", database)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if full_backup_spec is not None:
@@ -241,6 +276,23 @@ class _BackupScheduleState:
     @database.setter
     def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
@@ -352,6 +404,7 @@ class BackupSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']]] = None,
                  full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']]] = None,
                  incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']]] = None,
@@ -471,6 +524,12 @@ class BackupSchedule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The database to create the backup schedule on.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
         :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']] full_backup_spec: The schedule creates only full backups..
@@ -615,6 +674,7 @@ class BackupSchedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']]] = None,
                  full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']]] = None,
                  incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']]] = None,
@@ -635,6 +695,7 @@ class BackupSchedule(pulumi.CustomResource):
             if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")
             __props__.__dict__["database"] = database
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["full_backup_spec"] = full_backup_spec
             __props__.__dict__["incremental_backup_spec"] = incremental_backup_spec
@@ -658,6 +719,7 @@ class BackupSchedule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             database: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             encryption_config: pulumi.Input[Optional[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']]] = None,
             full_backup_spec: pulumi.Input[Optional[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']]] = None,
             incremental_backup_spec: pulumi.Input[Optional[Union['BackupScheduleIncrementalBackupSpecArgs', 'BackupScheduleIncrementalBackupSpecArgsDict']]] = None,
@@ -674,6 +736,12 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The database to create the backup schedule on.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
         :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']] full_backup_spec: The schedule creates only full backups..
@@ -694,6 +762,7 @@ class BackupSchedule(pulumi.CustomResource):
         __props__ = _BackupScheduleState.__new__(_BackupScheduleState)
 
         __props__.__dict__["database"] = database
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["full_backup_spec"] = full_backup_spec
         __props__.__dict__["incremental_backup_spec"] = incremental_backup_spec
@@ -711,6 +780,19 @@ class BackupSchedule(pulumi.CustomResource):
         The database to create the backup schedule on.
         """
         return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")

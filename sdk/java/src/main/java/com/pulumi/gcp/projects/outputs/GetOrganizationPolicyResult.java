@@ -17,6 +17,7 @@ import java.util.Objects;
 public final class GetOrganizationPolicyResult {
     private List<GetOrganizationPolicyBooleanPolicy> booleanPolicies;
     private String constraint;
+    private String deletionPolicy;
     private String etag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -35,6 +36,9 @@ public final class GetOrganizationPolicyResult {
     }
     public String constraint() {
         return this.constraint;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String etag() {
         return this.etag;
@@ -73,6 +77,7 @@ public final class GetOrganizationPolicyResult {
     public static final class Builder {
         private List<GetOrganizationPolicyBooleanPolicy> booleanPolicies;
         private String constraint;
+        private String deletionPolicy;
         private String etag;
         private String id;
         private List<GetOrganizationPolicyListPolicy> listPolicies;
@@ -85,6 +90,7 @@ public final class GetOrganizationPolicyResult {
     	      Objects.requireNonNull(defaults);
     	      this.booleanPolicies = defaults.booleanPolicies;
     	      this.constraint = defaults.constraint;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.etag = defaults.etag;
     	      this.id = defaults.id;
     	      this.listPolicies = defaults.listPolicies;
@@ -111,6 +117,14 @@ public final class GetOrganizationPolicyResult {
               throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "constraint");
             }
             this.constraint = constraint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -179,6 +193,7 @@ public final class GetOrganizationPolicyResult {
             final var _resultValue = new GetOrganizationPolicyResult();
             _resultValue.booleanPolicies = booleanPolicies;
             _resultValue.constraint = constraint;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.etag = etag;
             _resultValue.id = id;
             _resultValue.listPolicies = listPolicies;

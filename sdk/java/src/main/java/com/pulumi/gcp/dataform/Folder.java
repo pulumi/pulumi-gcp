@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataformFolderBasic = new Folder("dataformFolderBasic", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Basic Folder-_8493")
+ *             .displayName("Basic Folder-_41819")
  *             .build());
  * 
  *     }
@@ -84,12 +84,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataformFolderRoot = new Folder("dataformFolderRoot", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Root Folder-_9106")
+ *             .displayName("Root Folder-_75092")
  *             .build());
  * 
  *         var dataformFolderFull = new Folder("dataformFolderFull", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Nested Folder-_27169")
+ *             .displayName("Nested Folder-_2605")
  *             .containingFolder(dataformFolderRoot.id())
  *             .build());
  * 
@@ -136,6 +136,30 @@ public class Folder extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> containingFolder() {
         return Codegen.optional(this.containingFolder);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Required. The Folder&#39;s user-friendly name.

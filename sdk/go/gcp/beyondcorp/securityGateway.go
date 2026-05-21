@@ -159,6 +159,13 @@ type SecurityGateway struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Service account used for operations that involve resources in consumer projects.
 	DelegatingServiceAccount pulumi.StringOutput `pulumi:"delegatingServiceAccount"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. An arbitrary user-provided name for the SecurityGateway.
 	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -245,6 +252,13 @@ type securityGatewayState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Service account used for operations that involve resources in consumer projects.
 	DelegatingServiceAccount *string `pulumi:"delegatingServiceAccount"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. An arbitrary user-provided name for the SecurityGateway.
 	// Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -299,6 +313,13 @@ type SecurityGatewayState struct {
 	CreateTime pulumi.StringPtrInput
 	// Service account used for operations that involve resources in consumer projects.
 	DelegatingServiceAccount pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. An arbitrary user-provided name for the SecurityGateway.
 	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
@@ -353,6 +374,13 @@ func (SecurityGatewayState) ElementType() reflect.Type {
 }
 
 type securityGatewayArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. An arbitrary user-provided name for the SecurityGateway.
 	// Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -387,6 +415,13 @@ type securityGatewayArgs struct {
 
 // The set of arguments for constructing a SecurityGateway resource.
 type SecurityGatewayArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. An arbitrary user-provided name for the SecurityGateway.
 	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
@@ -514,6 +549,16 @@ func (o SecurityGatewayOutput) CreateTime() pulumi.StringOutput {
 // Service account used for operations that involve resources in consumer projects.
 func (o SecurityGatewayOutput) DelegatingServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGateway) pulumi.StringOutput { return v.DelegatingServiceAccount }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SecurityGatewayOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGateway) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. An arbitrary user-provided name for the SecurityGateway.

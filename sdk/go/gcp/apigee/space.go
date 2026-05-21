@@ -111,6 +111,13 @@ type Space struct {
 
 	// Create timestamp of the space.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the Space.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Identifier. Id of the space. This field is used as the resource name, and must follow AIP-122 guidelines.
@@ -164,6 +171,13 @@ func GetSpace(ctx *pulumi.Context,
 type spaceState struct {
 	// Create timestamp of the space.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the Space.
 	DisplayName *string `pulumi:"displayName"`
 	// Identifier. Id of the space. This field is used as the resource name, and must follow AIP-122 guidelines.
@@ -179,6 +193,13 @@ type spaceState struct {
 type SpaceState struct {
 	// Create timestamp of the space.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the Space.
 	DisplayName pulumi.StringPtrInput
 	// Identifier. Id of the space. This field is used as the resource name, and must follow AIP-122 guidelines.
@@ -196,6 +217,13 @@ func (SpaceState) ElementType() reflect.Type {
 }
 
 type spaceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the Space.
 	DisplayName string `pulumi:"displayName"`
 	// The Apigee Organization associated with the Apigee Space, in the format `organizations/{{org_name}}`.
@@ -206,6 +234,13 @@ type spaceArgs struct {
 
 // The set of arguments for constructing a Space resource.
 type SpaceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the Space.
 	DisplayName pulumi.StringInput
 	// The Apigee Organization associated with the Apigee Space, in the format `organizations/{{org_name}}`.
@@ -304,6 +339,16 @@ func (o SpaceOutput) ToSpaceOutputWithContext(ctx context.Context) SpaceOutput {
 // Create timestamp of the space.
 func (o SpaceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Space) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SpaceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Space) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the Space.

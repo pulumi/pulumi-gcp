@@ -21,6 +21,7 @@ class AddressArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -44,6 +45,12 @@ class AddressArgs:
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
                Possible values are: `INTERNAL`, `EXTERNAL`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
                The PDP must support enhanced IPv4 allocations.
@@ -103,6 +110,8 @@ class AddressArgs:
             pulumi.set(__self__, "address", address)
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ip_collection is not None:
@@ -158,6 +167,23 @@ class AddressArgs:
     @address_type.setter
     def address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -361,8 +387,10 @@ class AddressArgs:
 class _AddressState:
     def __init__(__self__, *,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_id: pulumi.Input[Optional[_builtins.str]] = None,
                  address_type: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -387,11 +415,18 @@ class _AddressState:
         :param pulumi.Input[_builtins.str] address: The static external IP address represented by this resource.
                The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
+        :param pulumi.Input[_builtins.str] address_id: The unique numeric identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
@@ -456,10 +491,14 @@ class _AddressState:
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
+        if address_id is not None:
+            pulumi.set(__self__, "address_id", address_id)
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -512,6 +551,18 @@ class _AddressState:
         pulumi.set(self, "address", value)
 
     @_builtins.property
+    @pulumi.getter(name="addressId")
+    def address_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unique numeric identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "address_id")
+
+    @address_id.setter
+    def address_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "address_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -537,6 +588,23 @@ class _AddressState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -806,6 +874,7 @@ class Address(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -952,6 +1021,12 @@ class Address(pulumi.CustomResource):
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
                Possible values are: `INTERNAL`, `EXTERNAL`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
                The PDP must support enhanced IPv4 allocations.
@@ -1153,6 +1228,7 @@ class Address(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1177,6 +1253,7 @@ class Address(pulumi.CustomResource):
 
             __props__.__dict__["address"] = address
             __props__.__dict__["address_type"] = address_type
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["ip_collection"] = ip_collection
             __props__.__dict__["ip_version"] = ip_version
@@ -1190,6 +1267,7 @@ class Address(pulumi.CustomResource):
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["region"] = region
             __props__.__dict__["subnetwork"] = subnetwork
+            __props__.__dict__["address_id"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
@@ -1209,8 +1287,10 @@ class Address(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
+            address_id: pulumi.Input[Optional[_builtins.str]] = None,
             address_type: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1239,11 +1319,18 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] address: The static external IP address represented by this resource.
                The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
+        :param pulumi.Input[_builtins.str] address_id: The unique numeric identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
@@ -1311,8 +1398,10 @@ class Address(pulumi.CustomResource):
         __props__ = _AddressState.__new__(_AddressState)
 
         __props__.__dict__["address"] = address
+        __props__.__dict__["address_id"] = address_id
         __props__.__dict__["address_type"] = address_type
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ip_collection"] = ip_collection
@@ -1344,6 +1433,14 @@ class Address(pulumi.CustomResource):
         return pulumi.get(self, "address")
 
     @_builtins.property
+    @pulumi.getter(name="addressId")
+    def address_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique numeric identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "address_id")
+
+    @_builtins.property
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1361,6 +1458,19 @@ class Address(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

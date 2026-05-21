@@ -27,13 +27,16 @@ class GetAppConnectionResult:
     """
     A collection of values returned by getAppConnection.
     """
-    def __init__(__self__, application_endpoints=None, connectors=None, display_name=None, effective_labels=None, gateways=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, type=None):
+    def __init__(__self__, application_endpoints=None, connectors=None, deletion_policy=None, display_name=None, effective_labels=None, gateways=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, type=None):
         if application_endpoints and not isinstance(application_endpoints, list):
             raise TypeError("Expected argument 'application_endpoints' to be a list")
         pulumi.set(__self__, "application_endpoints", application_endpoints)
         if connectors and not isinstance(connectors, list):
             raise TypeError("Expected argument 'connectors' to be a list")
         pulumi.set(__self__, "connectors", connectors)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -74,6 +77,11 @@ class GetAppConnectionResult:
     @pulumi.getter
     def connectors(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "connectors")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -137,6 +145,7 @@ class AwaitableGetAppConnectionResult(GetAppConnectionResult):
         return GetAppConnectionResult(
             application_endpoints=self.application_endpoints,
             connectors=self.connectors,
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
             gateways=self.gateways,
@@ -184,6 +193,7 @@ def get_app_connection(name: Optional[_builtins.str] = None,
     return AwaitableGetAppConnectionResult(
         application_endpoints=pulumi.get(__ret__, 'application_endpoints'),
         connectors=pulumi.get(__ret__, 'connectors'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         gateways=pulumi.get(__ret__, 'gateways'),
@@ -228,6 +238,7 @@ def get_app_connection_output(name: pulumi.Input[Optional[_builtins.str]] = None
     return __ret__.apply(lambda __response__: GetAppConnectionResult(
         application_endpoints=pulumi.get(__response__, 'application_endpoints'),
         connectors=pulumi.get(__response__, 'connectors'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         gateways=pulumi.get(__response__, 'gateways'),

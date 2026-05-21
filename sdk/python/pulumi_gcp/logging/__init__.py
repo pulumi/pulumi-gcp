@@ -14,6 +14,7 @@ from .folder_exclusion import *
 from .folder_settings import *
 from .folder_sink import *
 from .get_folder_settings import *
+from .get_log_view import *
 from .get_log_view_iam_policy import *
 from .get_organization_settings import *
 from .get_project_cmek_settings import *

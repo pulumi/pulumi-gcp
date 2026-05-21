@@ -75,6 +75,15 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly defaultHostname: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A user-visible name for the API.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -127,6 +136,7 @@ export class Gateway extends pulumi.CustomResource {
             const state = argsOrState as GatewayState | undefined;
             resourceInputs["apiConfig"] = state?.apiConfig;
             resourceInputs["defaultHostname"] = state?.defaultHostname;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["gatewayId"] = state?.gatewayId;
@@ -144,6 +154,7 @@ export class Gateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'gatewayId'");
             }
             resourceInputs["apiConfig"] = args?.apiConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["gatewayId"] = args?.gatewayId;
             resourceInputs["labels"] = args?.labels;
@@ -175,6 +186,15 @@ export interface GatewayState {
      * The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
      */
     defaultHostname?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-visible name for the API.
      */
@@ -224,6 +244,15 @@ export interface GatewayArgs {
      * lifecycle rule `createBeforeDestroy` is set.
      */
     apiConfig: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-visible name for the API.
      */

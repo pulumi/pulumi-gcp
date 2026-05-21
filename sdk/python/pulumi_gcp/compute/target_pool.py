@@ -20,6 +20,7 @@ __all__ = ['TargetPoolArgs', 'TargetPool']
 class TargetPoolArgs:
     def __init__(__self__, *,
                  backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
                  health_checks: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,6 +35,12 @@ class TargetPoolArgs:
 
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
                failover_ratio.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Textual description field.
         :param pulumi.Input[_builtins.float] failover_ratio: Ratio (0 to 1) of failed nodes before using the
                backup pool (which must also be set).
@@ -59,6 +66,8 @@ class TargetPoolArgs:
         """
         if backup_pool is not None:
             pulumi.set(__self__, "backup_pool", backup_pool)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if failover_ratio is not None:
@@ -90,6 +99,23 @@ class TargetPoolArgs:
     @backup_pool.setter
     def backup_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -217,6 +243,7 @@ class TargetPoolArgs:
 class _TargetPoolState:
     def __init__(__self__, *,
                  backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
                  health_checks: pulumi.Input[Optional[_builtins.str]] = None,
@@ -232,6 +259,12 @@ class _TargetPoolState:
 
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
                failover_ratio.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Textual description field.
         :param pulumi.Input[_builtins.float] failover_ratio: Ratio (0 to 1) of failed nodes before using the
                backup pool (which must also be set).
@@ -258,6 +291,8 @@ class _TargetPoolState:
         """
         if backup_pool is not None:
             pulumi.set(__self__, "backup_pool", backup_pool)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if failover_ratio is not None:
@@ -291,6 +326,23 @@ class _TargetPoolState:
     @backup_pool.setter
     def backup_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -433,6 +485,7 @@ class TargetPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
                  health_checks: pulumi.Input[Optional[_builtins.str]] = None,
@@ -493,6 +546,12 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
                failover_ratio.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Textual description field.
         :param pulumi.Input[_builtins.float] failover_ratio: Ratio (0 to 1) of failed nodes before using the
                backup pool (which must also be set).
@@ -584,6 +643,7 @@ class TargetPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
                  health_checks: pulumi.Input[Optional[_builtins.str]] = None,
@@ -603,6 +663,7 @@ class TargetPool(pulumi.CustomResource):
             __props__ = TargetPoolArgs.__new__(TargetPoolArgs)
 
             __props__.__dict__["backup_pool"] = backup_pool
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["failover_ratio"] = failover_ratio
             __props__.__dict__["health_checks"] = health_checks
@@ -624,6 +685,7 @@ class TargetPool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
             health_checks: pulumi.Input[Optional[_builtins.str]] = None,
@@ -643,6 +705,12 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_pool: URL to the backup target pool. Must also set
                failover_ratio.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Textual description field.
         :param pulumi.Input[_builtins.float] failover_ratio: Ratio (0 to 1) of failed nodes before using the
                backup pool (which must also be set).
@@ -672,6 +740,7 @@ class TargetPool(pulumi.CustomResource):
         __props__ = _TargetPoolState.__new__(_TargetPoolState)
 
         __props__.__dict__["backup_pool"] = backup_pool
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["failover_ratio"] = failover_ratio
         __props__.__dict__["health_checks"] = health_checks
@@ -692,6 +761,19 @@ class TargetPool(pulumi.CustomResource):
         failover_ratio.
         """
         return pulumi.get(self, "backup_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

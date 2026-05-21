@@ -24,6 +24,7 @@ class OrganizationVpcFlowLogsConfigArgs:
                  vpc_flow_logs_config_id: pulumi.Input[_builtins.str],
                  aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_project_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
                  flow_sampling: pulumi.Input[Optional[_builtins.float]] = None,
@@ -48,6 +49,12 @@ class OrganizationVpcFlowLogsConfigArgs:
                CROSS_PROJECT_METADATA_ENABLED
                CROSS_PROJECT_METADATA_DISABLED
                Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[_builtins.str] filter_expr: Optional. Export filter used to define which VPC Flow Logs should be logged.
@@ -75,6 +82,8 @@ class OrganizationVpcFlowLogsConfigArgs:
             pulumi.set(__self__, "aggregation_interval", aggregation_interval)
         if cross_project_metadata is not None:
             pulumi.set(__self__, "cross_project_metadata", cross_project_metadata)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if filter_expr is not None:
@@ -158,6 +167,23 @@ class OrganizationVpcFlowLogsConfigArgs:
     @cross_project_metadata.setter
     def cross_project_metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_project_metadata", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -262,6 +288,7 @@ class _OrganizationVpcFlowLogsConfigState:
                  aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_project_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -289,6 +316,12 @@ class _OrganizationVpcFlowLogsConfigState:
                CROSS_PROJECT_METADATA_ENABLED
                CROSS_PROJECT_METADATA_DISABLED
                Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -325,6 +358,8 @@ class _OrganizationVpcFlowLogsConfigState:
             pulumi.set(__self__, "create_time", create_time)
         if cross_project_metadata is not None:
             pulumi.set(__self__, "cross_project_metadata", cross_project_metadata)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -396,6 +431,23 @@ class _OrganizationVpcFlowLogsConfigState:
     @cross_project_metadata.setter
     def cross_project_metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_project_metadata", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -589,6 +641,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_project_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
                  flow_sampling: pulumi.Input[Optional[_builtins.float]] = None,
@@ -643,6 +696,12 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
                CROSS_PROJECT_METADATA_ENABLED
                CROSS_PROJECT_METADATA_DISABLED
                Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[_builtins.str] filter_expr: Optional. Export filter used to define which VPC Flow Logs should be logged.
@@ -723,6 +782,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_project_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
                  flow_sampling: pulumi.Input[Optional[_builtins.float]] = None,
@@ -744,6 +804,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
 
             __props__.__dict__["aggregation_interval"] = aggregation_interval
             __props__.__dict__["cross_project_metadata"] = cross_project_metadata
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["filter_expr"] = filter_expr
             __props__.__dict__["flow_sampling"] = flow_sampling
@@ -780,6 +841,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
             aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             cross_project_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -811,6 +873,12 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
                CROSS_PROJECT_METADATA_ENABLED
                CROSS_PROJECT_METADATA_DISABLED
                Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -848,6 +916,7 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
         __props__.__dict__["aggregation_interval"] = aggregation_interval
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["cross_project_metadata"] = cross_project_metadata
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["filter_expr"] = filter_expr
@@ -894,6 +963,19 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
         Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
         """
         return pulumi.get(self, "cross_project_metadata")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

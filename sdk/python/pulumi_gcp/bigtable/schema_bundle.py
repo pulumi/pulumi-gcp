@@ -23,6 +23,7 @@ class SchemaBundleArgs:
     def __init__(__self__, *,
                  proto_schema: pulumi.Input['SchemaBundleProtoSchemaArgs'],
                  schema_bundle_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35,6 +36,12 @@ class SchemaBundleArgs:
                $ protoc --include_imports --include_source_info test.proto -o out.pb
                Structure is documented below.
         :param pulumi.Input[_builtins.str] schema_bundle_id: The unique name of the schema bundle in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] ignore_warnings: If true, allow backwards incompatible changes.
         :param pulumi.Input[_builtins.str] instance: The name of the instance to create the schema bundle within.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -43,6 +50,8 @@ class SchemaBundleArgs:
         """
         pulumi.set(__self__, "proto_schema", proto_schema)
         pulumi.set(__self__, "schema_bundle_id", schema_bundle_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if ignore_warnings is not None:
             pulumi.set(__self__, "ignore_warnings", ignore_warnings)
         if instance is not None:
@@ -78,6 +87,23 @@ class SchemaBundleArgs:
     @schema_bundle_id.setter
     def schema_bundle_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "schema_bundle_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreWarnings")
@@ -132,6 +158,7 @@ class SchemaBundleArgs:
 @pulumi.input_type
 class _SchemaBundleState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -143,6 +170,12 @@ class _SchemaBundleState:
         """
         Input properties used for looking up and filtering SchemaBundle resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
                updates of a schema bundle from overwriting each other. This may be sent on update and delete
                requests to ensure the client has an update-to-date value before proceeding. The server returns
@@ -159,6 +192,8 @@ class _SchemaBundleState:
         :param pulumi.Input[_builtins.str] schema_bundle_id: The unique name of the schema bundle in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input[_builtins.str] table: The name of the table to create the schema bundle within.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if ignore_warnings is not None:
@@ -175,6 +210,23 @@ class _SchemaBundleState:
             pulumi.set(__self__, "schema_bundle_id", schema_bundle_id)
         if table is not None:
             pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -286,6 +338,7 @@ class SchemaBundle(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -352,6 +405,12 @@ class SchemaBundle(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] ignore_warnings: If true, allow backwards incompatible changes.
         :param pulumi.Input[_builtins.str] instance: The name of the instance to create the schema bundle within.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -441,6 +500,7 @@ class SchemaBundle(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -456,6 +516,7 @@ class SchemaBundle(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SchemaBundleArgs.__new__(SchemaBundleArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["ignore_warnings"] = ignore_warnings
             __props__.__dict__["instance"] = instance
             __props__.__dict__["project"] = project
@@ -478,6 +539,7 @@ class SchemaBundle(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
@@ -493,6 +555,12 @@ class SchemaBundle(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
                updates of a schema bundle from overwriting each other. This may be sent on update and delete
                requests to ensure the client has an update-to-date value before proceeding. The server returns
@@ -513,6 +581,7 @@ class SchemaBundle(pulumi.CustomResource):
 
         __props__ = _SchemaBundleState.__new__(_SchemaBundleState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["etag"] = etag
         __props__.__dict__["ignore_warnings"] = ignore_warnings
         __props__.__dict__["instance"] = instance
@@ -522,6 +591,19 @@ class SchemaBundle(pulumi.CustomResource):
         __props__.__dict__["schema_bundle_id"] = schema_bundle_id
         __props__.__dict__["table"] = table
         return SchemaBundle(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

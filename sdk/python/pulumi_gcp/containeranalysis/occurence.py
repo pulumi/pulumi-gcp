@@ -24,6 +24,7 @@ class OccurenceArgs:
                  attestation: pulumi.Input['OccurenceAttestationArgs'],
                  note_name: pulumi.Input[_builtins.str],
                  resource_uri: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remediation: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -44,6 +45,12 @@ class OccurenceArgs:
         :param pulumi.Input[_builtins.str] resource_uri: Required. Immutable. A URI that represents the resource for which
                the occurrence applies. For example,
                https://gcr.io/project/image@sha256:123abc for a Docker image.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] remediation: A description of actions that can be taken to remedy the note.
@@ -51,6 +58,8 @@ class OccurenceArgs:
         pulumi.set(__self__, "attestation", attestation)
         pulumi.set(__self__, "note_name", note_name)
         pulumi.set(__self__, "resource_uri", resource_uri)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if remediation is not None:
@@ -105,6 +114,23 @@ class OccurenceArgs:
         pulumi.set(self, "resource_uri", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -135,6 +161,7 @@ class _OccurenceState:
     def __init__(__self__, *,
                  attestation: pulumi.Input[Optional['OccurenceAttestationArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  note_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -155,6 +182,12 @@ class _OccurenceState:
                which authority this attestation was intended to sign.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the repository was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] kind: The note kind which explicitly denotes which of the occurrence
                details are specified. This field can be used as a filter in list
                requests.
@@ -174,6 +207,8 @@ class _OccurenceState:
             pulumi.set(__self__, "attestation", attestation)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
@@ -220,6 +255,23 @@ class _OccurenceState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -320,6 +372,7 @@ class Occurence(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  note_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remediation: pulumi.Input[Optional[_builtins.str]] = None,
@@ -408,6 +461,12 @@ class Occurence(pulumi.CustomResource):
                know the authority and artifact to be verified) and intent (for
                which authority this attestation was intended to sign.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] note_name: The analysis note associated with this occurrence, in the form of
                projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
                filter in list requests.
@@ -512,6 +571,7 @@ class Occurence(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  note_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  remediation: pulumi.Input[Optional[_builtins.str]] = None,
@@ -528,6 +588,7 @@ class Occurence(pulumi.CustomResource):
             if attestation is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation'")
             __props__.__dict__["attestation"] = attestation
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if note_name is None and not opts.urn:
                 raise TypeError("Missing required property 'note_name'")
             __props__.__dict__["note_name"] = note_name
@@ -552,6 +613,7 @@ class Occurence(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             note_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -576,6 +638,12 @@ class Occurence(pulumi.CustomResource):
                which authority this attestation was intended to sign.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the repository was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] kind: The note kind which explicitly denotes which of the occurrence
                details are specified. This field can be used as a filter in list
                requests.
@@ -597,6 +665,7 @@ class Occurence(pulumi.CustomResource):
 
         __props__.__dict__["attestation"] = attestation
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
         __props__.__dict__["note_name"] = note_name
@@ -629,6 +698,19 @@ class Occurence(pulumi.CustomResource):
         The time when the repository was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 public final class GetSecretResult {
     private Map<String,String> annotations;
     private String createTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private Map<String,String> effectiveAnnotations;
     private Map<String,String> effectiveLabels;
@@ -48,6 +49,9 @@ public final class GetSecretResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -116,6 +120,7 @@ public final class GetSecretResult {
     public static final class Builder {
         private Map<String,String> annotations;
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
@@ -138,6 +143,7 @@ public final class GetSecretResult {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -171,6 +177,14 @@ public final class GetSecretResult {
               throw new MissingRequiredPropertyException("GetSecretResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -320,6 +334,7 @@ public final class GetSecretResult {
             final var _resultValue = new GetSecretResult();
             _resultValue.annotations = annotations;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;

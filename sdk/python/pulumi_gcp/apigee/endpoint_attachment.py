@@ -22,7 +22,8 @@ class EndpointAttachmentArgs:
                  endpoint_attachment_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 service_attachment: pulumi.Input[_builtins.str]):
+                 service_attachment: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EndpointAttachment resource.
 
@@ -31,11 +32,19 @@ class EndpointAttachmentArgs:
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[_builtins.str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         """
         pulumi.set(__self__, "endpoint_attachment_id", endpoint_attachment_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "service_attachment", service_attachment)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter(name="endpointAttachmentId")
@@ -86,11 +95,29 @@ class EndpointAttachmentArgs:
     def service_attachment(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_attachment", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _EndpointAttachmentState:
     def __init__(__self__, *,
                  connection_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -101,6 +128,12 @@ class _EndpointAttachmentState:
         Input properties used for looking up and filtering EndpointAttachment resources.
 
         :param pulumi.Input[_builtins.str] connection_state: State of the endpoint attachment connection to the service attachment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
         :param pulumi.Input[_builtins.str] host: Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
         :param pulumi.Input[_builtins.str] location: Location of the endpoint attachment.
@@ -112,6 +145,8 @@ class _EndpointAttachmentState:
         """
         if connection_state is not None:
             pulumi.set(__self__, "connection_state", connection_state)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if endpoint_attachment_id is not None:
             pulumi.set(__self__, "endpoint_attachment_id", endpoint_attachment_id)
         if host is not None:
@@ -136,6 +171,23 @@ class _EndpointAttachmentState:
     @connection_state.setter
     def connection_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointAttachmentId")
@@ -218,6 +270,7 @@ class EndpointAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -249,6 +302,12 @@ class EndpointAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
         :param pulumi.Input[_builtins.str] location: Location of the endpoint attachment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
@@ -300,6 +359,7 @@ class EndpointAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -313,6 +373,7 @@ class EndpointAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EndpointAttachmentArgs.__new__(EndpointAttachmentArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if endpoint_attachment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_attachment_id'")
             __props__.__dict__["endpoint_attachment_id"] = endpoint_attachment_id
@@ -339,6 +400,7 @@ class EndpointAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_state: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
             host: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -353,6 +415,12 @@ class EndpointAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_state: State of the endpoint attachment connection to the service attachment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] endpoint_attachment_id: ID of the endpoint attachment.
         :param pulumi.Input[_builtins.str] host: Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
         :param pulumi.Input[_builtins.str] location: Location of the endpoint attachment.
@@ -367,6 +435,7 @@ class EndpointAttachment(pulumi.CustomResource):
         __props__ = _EndpointAttachmentState.__new__(_EndpointAttachmentState)
 
         __props__.__dict__["connection_state"] = connection_state
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["endpoint_attachment_id"] = endpoint_attachment_id
         __props__.__dict__["host"] = host
         __props__.__dict__["location"] = location
@@ -382,6 +451,19 @@ class EndpointAttachment(pulumi.CustomResource):
         State of the endpoint attachment connection to the service attachment.
         """
         return pulumi.get(self, "connection_state")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="endpointAttachmentId")

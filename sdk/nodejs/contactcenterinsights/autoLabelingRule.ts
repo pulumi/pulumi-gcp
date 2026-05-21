@@ -84,6 +84,15 @@ export class AutoLabelingRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The description of the rule.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -137,6 +146,7 @@ export class AutoLabelingRule extends pulumi.CustomResource {
             resourceInputs["autoLabelingRuleId"] = state?.autoLabelingRuleId;
             resourceInputs["conditions"] = state?.conditions;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["labelKey"] = state?.labelKey;
@@ -153,6 +163,7 @@ export class AutoLabelingRule extends pulumi.CustomResource {
             resourceInputs["active"] = args?.active;
             resourceInputs["autoLabelingRuleId"] = args?.autoLabelingRuleId;
             resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labelKey"] = args?.labelKey;
@@ -193,6 +204,15 @@ export interface AutoLabelingRuleState {
      * The time at which this rule was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the rule.
      */
@@ -252,6 +272,15 @@ export interface AutoLabelingRuleArgs {
      * Structure is documented below.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.AutoLabelingRuleCondition>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the rule.
      */

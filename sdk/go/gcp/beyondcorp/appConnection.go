@@ -170,6 +170,13 @@ type AppConnection struct {
 	ApplicationEndpoint AppConnectionApplicationEndpointOutput `pulumi:"applicationEndpoint"`
 	// List of AppConnectors that are authorised to be associated with this AppConnection
 	Connectors pulumi.StringArrayOutput `pulumi:"connectors"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -241,6 +248,13 @@ type appConnectionState struct {
 	ApplicationEndpoint *AppConnectionApplicationEndpoint `pulumi:"applicationEndpoint"`
 	// List of AppConnectors that are authorised to be associated with this AppConnection
 	Connectors []string `pulumi:"connectors"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -275,6 +289,13 @@ type AppConnectionState struct {
 	ApplicationEndpoint AppConnectionApplicationEndpointPtrInput
 	// List of AppConnectors that are authorised to be associated with this AppConnection
 	Connectors pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -313,6 +334,13 @@ type appConnectionArgs struct {
 	ApplicationEndpoint AppConnectionApplicationEndpoint `pulumi:"applicationEndpoint"`
 	// List of AppConnectors that are authorised to be associated with this AppConnection
 	Connectors []string `pulumi:"connectors"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName *string `pulumi:"displayName"`
 	// Gateway used by the AppConnection.
@@ -343,6 +371,13 @@ type AppConnectionArgs struct {
 	ApplicationEndpoint AppConnectionApplicationEndpointInput
 	// List of AppConnectors that are authorised to be associated with this AppConnection
 	Connectors pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An arbitrary user-provided name for the AppConnection.
 	DisplayName pulumi.StringPtrInput
 	// Gateway used by the AppConnection.
@@ -462,6 +497,16 @@ func (o AppConnectionOutput) ApplicationEndpoint() AppConnectionApplicationEndpo
 // List of AppConnectors that are authorised to be associated with this AppConnection
 func (o AppConnectionOutput) Connectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringArrayOutput { return v.Connectors }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppConnectionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppConnection) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An arbitrary user-provided name for the AppConnection.

@@ -438,6 +438,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigquery.Job;
  * import com.pulumi.gcp.bigquery.JobArgs;
  * import com.pulumi.gcp.bigquery.inputs.JobCopyArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobCopySourceTableArgs;
  * import com.pulumi.gcp.bigquery.inputs.JobCopyDestinationTableArgs;
  * import com.pulumi.gcp.bigquery.inputs.JobCopyDestinationEncryptionConfigurationArgs;
  * import com.pulumi.codegen.internal.KeyedValue;

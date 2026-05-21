@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Dataform
     ///     var dataformTeamFolderBasic = new Gcp.Dataform.TeamFolder("dataform_team_folder_basic", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Basic TeamFolder-_75223",
+    ///         DisplayName = "Basic TeamFolder-_34535",
     ///     });
     /// 
     /// });
@@ -62,6 +62,17 @@ namespace Pulumi.Gcp.Dataform
     [GcpResourceType("gcp:dataform/teamFolder:TeamFolder")]
     public partial class TeamFolder : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
         /// <summary>
         /// Required. The TeamFolder's user-friendly name.
         /// </summary>
@@ -140,6 +151,17 @@ namespace Pulumi.Gcp.Dataform
     public sealed class TeamFolderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Required. The TeamFolder's user-friendly name.
         /// </summary>
         [Input("displayName", required: true)]
@@ -166,6 +188,17 @@ namespace Pulumi.Gcp.Dataform
 
     public sealed class TeamFolderState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// Required. The TeamFolder's user-friendly name.
         /// </summary>

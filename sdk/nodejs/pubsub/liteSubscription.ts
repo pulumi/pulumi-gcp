@@ -97,6 +97,15 @@ export class LiteSubscription extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The settings for this subscription's message delivery.
      * Structure is documented below.
      */
@@ -136,6 +145,7 @@ export class LiteSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LiteSubscriptionState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deliveryConfig"] = state?.deliveryConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -147,6 +157,7 @@ export class LiteSubscription extends pulumi.CustomResource {
             if (args?.topic === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deliveryConfig"] = args?.deliveryConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -163,6 +174,15 @@ export class LiteSubscription extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LiteSubscription resources.
  */
 export interface LiteSubscriptionState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The settings for this subscription's message delivery.
      * Structure is documented below.
@@ -195,6 +215,15 @@ export interface LiteSubscriptionState {
  * The set of arguments for constructing a LiteSubscription resource.
  */
 export interface LiteSubscriptionArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The settings for this subscription's message delivery.
      * Structure is documented below.

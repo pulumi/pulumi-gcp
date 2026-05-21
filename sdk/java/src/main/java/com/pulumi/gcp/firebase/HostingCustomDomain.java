@@ -127,9 +127,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
  * import com.pulumi.gcp.firebase.HostingVersion;
  * import com.pulumi.gcp.firebase.HostingVersionArgs;
  * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+ * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRewriteArgs;
+ * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRewriteRunArgs;
  * import com.pulumi.gcp.firebase.HostingRelease;
  * import com.pulumi.gcp.firebase.HostingReleaseArgs;
  * import com.pulumi.gcp.firebase.HostingCustomDomain;
@@ -304,6 +307,30 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A string that represents the current state of the `CustomDomain` and

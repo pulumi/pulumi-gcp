@@ -60,6 +60,7 @@ export interface GetTableResult {
     readonly clusterings: string[];
     readonly creationTime: number;
     readonly datasetId: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};

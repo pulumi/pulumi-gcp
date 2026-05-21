@@ -296,6 +296,15 @@ export class Budget extends pulumi.CustomResource {
      */
     declare public readonly budgetFilter: pulumi.Output<outputs.billing.BudgetBudgetFilter>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * User data for display name in UI. Must be <= 60 chars.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -336,6 +345,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["amount"] = state?.amount;
             resourceInputs["billingAccount"] = state?.billingAccount;
             resourceInputs["budgetFilter"] = state?.budgetFilter;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["name"] = state?.name;
             resourceInputs["ownershipScope"] = state?.ownershipScope;
@@ -352,6 +362,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["amount"] = args?.amount;
             resourceInputs["billingAccount"] = args?.billingAccount;
             resourceInputs["budgetFilter"] = args?.budgetFilter;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["ownershipScope"] = args?.ownershipScope;
             resourceInputs["thresholdRules"] = args?.thresholdRules;
@@ -388,6 +399,15 @@ export interface BudgetState {
      * Structure is documented below.
      */
     budgetFilter?: pulumi.Input<inputs.billing.BudgetBudgetFilter | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User data for display name in UI. Must be <= 60 chars.
      */
@@ -439,6 +459,15 @@ export interface BudgetArgs {
      * Structure is documented below.
      */
     budgetFilter?: pulumi.Input<inputs.billing.BudgetBudgetFilter | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User data for display name in UI. Must be <= 60 chars.
      */

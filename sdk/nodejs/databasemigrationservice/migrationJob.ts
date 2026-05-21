@@ -476,6 +476,15 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      */
     declare public readonly destination: pulumi.Output<string>;
@@ -544,6 +553,11 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly phase: pulumi.Output<string>;
     /**
+     * PostgreSQL to PostgreSQL configuration.
+     * Structure is documented below.
+     */
+    declare public readonly postgresHomogeneousConfig: pulumi.Output<outputs.databasemigrationservice.MigrationJobPostgresHomogeneousConfig | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -598,6 +612,7 @@ export class MigrationJob extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MigrationJobState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["destination"] = state?.destination;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["dumpFlags"] = state?.dumpFlags;
@@ -612,6 +627,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["objectsConfig"] = state?.objectsConfig;
             resourceInputs["performanceConfig"] = state?.performanceConfig;
             resourceInputs["phase"] = state?.phase;
+            resourceInputs["postgresHomogeneousConfig"] = state?.postgresHomogeneousConfig;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["reverseSshConnectivity"] = state?.reverseSshConnectivity;
@@ -634,6 +650,7 @@ export class MigrationJob extends pulumi.CustomResource {
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["destination"] = args?.destination;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["dumpFlags"] = args?.dumpFlags;
@@ -644,6 +661,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["migrationJobId"] = args?.migrationJobId;
             resourceInputs["objectsConfig"] = args?.objectsConfig;
             resourceInputs["performanceConfig"] = args?.performanceConfig;
+            resourceInputs["postgresHomogeneousConfig"] = args?.postgresHomogeneousConfig;
             resourceInputs["project"] = args?.project;
             resourceInputs["reverseSshConnectivity"] = args?.reverseSshConnectivity;
             resourceInputs["source"] = args?.source;
@@ -673,6 +691,15 @@ export interface MigrationJobState {
      * Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      */
@@ -742,6 +769,11 @@ export interface MigrationJobState {
      */
     phase?: pulumi.Input<string | undefined>;
     /**
+     * PostgreSQL to PostgreSQL configuration.
+     * Structure is documented below.
+     */
+    postgresHomogeneousConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobPostgresHomogeneousConfig | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -787,6 +819,15 @@ export interface MigrationJobState {
  * The set of arguments for constructing a MigrationJob resource.
  */
 export interface MigrationJobArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      */
@@ -838,6 +879,11 @@ export interface MigrationJobArgs {
      * Structure is documented below.
      */
     performanceConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobPerformanceConfig | undefined>;
+    /**
+     * PostgreSQL to PostgreSQL configuration.
+     * Structure is documented below.
+     */
+    postgresHomogeneousConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobPostgresHomogeneousConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

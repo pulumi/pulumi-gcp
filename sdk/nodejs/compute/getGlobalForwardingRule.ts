@@ -51,6 +51,7 @@ export interface GetGlobalForwardingRuleArgs {
 export interface GetGlobalForwardingRuleResult {
     readonly allowPscGlobalAccess: boolean;
     readonly baseForwardingRule: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly externalManagedBackendBucketMigrationState: string;

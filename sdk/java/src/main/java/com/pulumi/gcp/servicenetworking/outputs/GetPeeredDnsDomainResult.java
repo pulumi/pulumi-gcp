@@ -10,6 +10,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPeeredDnsDomainResult {
+    private String deletionPolicy;
     private String dnsSuffix;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,6 +24,9 @@ public final class GetPeeredDnsDomainResult {
     private String service;
 
     private GetPeeredDnsDomainResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     public String dnsSuffix() {
         return this.dnsSuffix;
     }
@@ -58,6 +62,7 @@ public final class GetPeeredDnsDomainResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String dnsSuffix;
         private String id;
         private String name;
@@ -68,6 +73,7 @@ public final class GetPeeredDnsDomainResult {
         public Builder() {}
         public Builder(GetPeeredDnsDomainResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.dnsSuffix = defaults.dnsSuffix;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -77,6 +83,14 @@ public final class GetPeeredDnsDomainResult {
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetPeeredDnsDomainResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder dnsSuffix(String dnsSuffix) {
             if (dnsSuffix == null) {
@@ -135,6 +149,7 @@ public final class GetPeeredDnsDomainResult {
         }
         public GetPeeredDnsDomainResult build() {
             final var _resultValue = new GetPeeredDnsDomainResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.dnsSuffix = dnsSuffix;
             _resultValue.id = id;
             _resultValue.name = name;

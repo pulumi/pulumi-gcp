@@ -121,6 +121,13 @@ type Release struct {
 
 	// Output only. Time the release was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
@@ -170,6 +177,13 @@ func GetRelease(ctx *pulumi.Context,
 type releaseState struct {
 	// Output only. Time the release was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
 	Disabled *bool `pulumi:"disabled"`
 	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
@@ -187,6 +201,13 @@ type releaseState struct {
 type ReleaseState struct {
 	// Output only. Time the release was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
 	Disabled pulumi.BoolPtrInput
 	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
@@ -206,6 +227,13 @@ func (ReleaseState) ElementType() reflect.Type {
 }
 
 type releaseArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name *string `pulumi:"name"`
 	// The project for the resource
@@ -218,6 +246,13 @@ type releaseArgs struct {
 
 // The set of arguments for constructing a Release resource.
 type ReleaseArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name pulumi.StringPtrInput
 	// The project for the resource
@@ -318,6 +353,16 @@ func (o ReleaseOutput) ToReleaseOutputWithContext(ctx context.Context) ReleaseOu
 // Output only. Time the release was created.
 func (o ReleaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ReleaseOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.

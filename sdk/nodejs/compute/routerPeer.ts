@@ -445,6 +445,15 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     declare public readonly customLearnedRoutePriority: pulumi.Output<number | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
      * If set to true, the peer connection can be established with routing information.
@@ -601,6 +610,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["bfd"] = state?.bfd;
             resourceInputs["customLearnedIpRanges"] = state?.customLearnedIpRanges;
             resourceInputs["customLearnedRoutePriority"] = state?.customLearnedRoutePriority;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["enable"] = state?.enable;
             resourceInputs["enableIpv4"] = state?.enableIpv4;
             resourceInputs["enableIpv6"] = state?.enableIpv6;
@@ -643,6 +653,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["bfd"] = args?.bfd;
             resourceInputs["customLearnedIpRanges"] = args?.customLearnedIpRanges;
             resourceInputs["customLearnedRoutePriority"] = args?.customLearnedRoutePriority;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["enable"] = args?.enable;
             resourceInputs["enableIpv4"] = args?.enableIpv4;
             resourceInputs["enableIpv6"] = args?.enableIpv6;
@@ -731,6 +742,15 @@ export interface RouterPeerState {
      * Google Cloud assigns a priority of 100 to the ranges.
      */
     customLearnedRoutePriority?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
@@ -927,6 +947,15 @@ export interface RouterPeerArgs {
      * Google Cloud assigns a priority of 100 to the ranges.
      */
     customLearnedRoutePriority?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.

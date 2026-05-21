@@ -27,13 +27,16 @@ class GetSecurityPolicyResult:
     """
     A collection of values returned by getSecurityPolicy.
     """
-    def __init__(__self__, adaptive_protection_configs=None, advanced_options_configs=None, description=None, effective_labels=None, fingerprint=None, id=None, label_fingerprint=None, labels=None, name=None, project=None, pulumi_labels=None, recaptcha_options_configs=None, rules=None, self_link=None, type=None):
+    def __init__(__self__, adaptive_protection_configs=None, advanced_options_configs=None, deletion_policy=None, description=None, effective_labels=None, fingerprint=None, id=None, label_fingerprint=None, labels=None, name=None, project=None, pulumi_labels=None, recaptcha_options_configs=None, rules=None, self_link=None, type=None):
         if adaptive_protection_configs and not isinstance(adaptive_protection_configs, list):
             raise TypeError("Expected argument 'adaptive_protection_configs' to be a list")
         pulumi.set(__self__, "adaptive_protection_configs", adaptive_protection_configs)
         if advanced_options_configs and not isinstance(advanced_options_configs, list):
             raise TypeError("Expected argument 'advanced_options_configs' to be a list")
         pulumi.set(__self__, "advanced_options_configs", advanced_options_configs)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -83,6 +86,11 @@ class GetSecurityPolicyResult:
     @pulumi.getter(name="advancedOptionsConfigs")
     def advanced_options_configs(self) -> Sequence['outputs.GetSecurityPolicyAdvancedOptionsConfigResult']:
         return pulumi.get(self, "advanced_options_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -161,6 +169,7 @@ class AwaitableGetSecurityPolicyResult(GetSecurityPolicyResult):
         return GetSecurityPolicyResult(
             adaptive_protection_configs=self.adaptive_protection_configs,
             advanced_options_configs=self.advanced_options_configs,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             effective_labels=self.effective_labels,
             fingerprint=self.fingerprint,
@@ -213,6 +222,7 @@ def get_security_policy(name: Optional[_builtins.str] = None,
     return AwaitableGetSecurityPolicyResult(
         adaptive_protection_configs=pulumi.get(__ret__, 'adaptive_protection_configs'),
         advanced_options_configs=pulumi.get(__ret__, 'advanced_options_configs'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
@@ -262,6 +272,7 @@ def get_security_policy_output(name: pulumi.Input[Optional[Optional[_builtins.st
     return __ret__.apply(lambda __response__: GetSecurityPolicyResult(
         adaptive_protection_configs=pulumi.get(__response__, 'adaptive_protection_configs'),
         advanced_options_configs=pulumi.get(__response__, 'advanced_options_configs'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         fingerprint=pulumi.get(__response__, 'fingerprint'),

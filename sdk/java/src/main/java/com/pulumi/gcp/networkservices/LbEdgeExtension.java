@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.URLMapArgs;
  * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleArgs;
  * import com.pulumi.gcp.compute.TargetHttpProxy;
  * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
  * import com.pulumi.gcp.compute.GlobalForwardingRule;
@@ -55,6 +56,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.LbEdgeExtensionArgs;
  * import com.pulumi.gcp.networkservices.inputs.LbEdgeExtensionExtensionChainArgs;
  * import com.pulumi.gcp.networkservices.inputs.LbEdgeExtensionExtensionChainMatchConditionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.LbEdgeExtensionExtensionChainExtensionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -173,6 +175,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:networkservices/lbEdgeExtension:LbEdgeExtension")
 public class LbEdgeExtension extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * A human-readable description of the resource.
      * 

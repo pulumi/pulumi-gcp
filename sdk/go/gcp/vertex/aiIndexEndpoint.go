@@ -185,6 +185,13 @@ type AiIndexEndpoint struct {
 
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the Index.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -266,6 +273,13 @@ func GetAiIndexEndpoint(ctx *pulumi.Context,
 type aiIndexEndpointState struct {
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the Index.
 	Description *string `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -310,6 +324,13 @@ type aiIndexEndpointState struct {
 type AiIndexEndpointState struct {
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the Index.
 	Description pulumi.StringPtrInput
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -356,6 +377,13 @@ func (AiIndexEndpointState) ElementType() reflect.Type {
 }
 
 type aiIndexEndpointArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the Index.
 	Description *string `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -386,6 +414,13 @@ type aiIndexEndpointArgs struct {
 
 // The set of arguments for constructing a AiIndexEndpoint resource.
 type AiIndexEndpointArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the Index.
 	Description pulumi.StringPtrInput
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -504,6 +539,16 @@ func (o AiIndexEndpointOutput) ToAiIndexEndpointOutputWithContext(ctx context.Co
 // The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiIndexEndpointOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AiIndexEndpointOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the Index.

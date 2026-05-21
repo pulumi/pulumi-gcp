@@ -356,6 +356,13 @@ type Organization struct {
 	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
 	// Only used for the data residency region "US" or "EU".
 	ControlPlaneEncryptionKeyName pulumi.StringPtrOutput `pulumi:"controlPlaneEncryptionKeyName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -449,6 +456,13 @@ type organizationState struct {
 	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
 	// Only used for the data residency region "US" or "EU".
 	ControlPlaneEncryptionKeyName *string `pulumi:"controlPlaneEncryptionKeyName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -510,6 +524,13 @@ type OrganizationState struct {
 	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
 	// Only used for the data residency region "US" or "EU".
 	ControlPlaneEncryptionKeyName pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -570,6 +591,13 @@ type organizationArgs struct {
 	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
 	// Only used for the data residency region "US" or "EU".
 	ControlPlaneEncryptionKeyName *string `pulumi:"controlPlaneEncryptionKeyName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -622,6 +650,13 @@ type OrganizationArgs struct {
 	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
 	// Only used for the data residency region "US" or "EU".
 	ControlPlaneEncryptionKeyName pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -786,6 +821,16 @@ func (o OrganizationOutput) CaCertificate() pulumi.StringOutput {
 // Only used for the data residency region "US" or "EU".
 func (o OrganizationOutput) ControlPlaneEncryptionKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.ControlPlaneEncryptionKeyName }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OrganizationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the Apigee organization.

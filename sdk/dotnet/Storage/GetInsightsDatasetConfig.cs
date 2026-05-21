@@ -163,6 +163,7 @@ namespace Pulumi.Gcp.Storage
         public readonly string CreateTime;
         public readonly string DatasetConfigId;
         public readonly string DatasetConfigState;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetInsightsDatasetConfigExcludeCloudStorageBucketResult> ExcludeCloudStorageBuckets;
         public readonly ImmutableArray<Outputs.GetInsightsDatasetConfigExcludeCloudStorageLocationResult> ExcludeCloudStorageLocations;
@@ -196,6 +197,8 @@ namespace Pulumi.Gcp.Storage
             string datasetConfigId,
 
             string datasetConfigState,
+
+            string deletionPolicy,
 
             string description,
 
@@ -241,6 +244,7 @@ namespace Pulumi.Gcp.Storage
             CreateTime = createTime;
             DatasetConfigId = datasetConfigId;
             DatasetConfigState = datasetConfigState;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             ExcludeCloudStorageBuckets = excludeCloudStorageBuckets;
             ExcludeCloudStorageLocations = excludeCloudStorageLocations;

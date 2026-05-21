@@ -30,9 +30,12 @@ class WebAppArgs:
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
-        :param pulumi.Input[_builtins.str] deletion_policy: Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-               serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -74,9 +77,12 @@ class WebAppArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-        rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-        serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -117,9 +123,12 @@ class _WebAppState:
         :param pulumi.Input[_builtins.str] app_id: The globally unique, Firebase-assigned identifier of the App.
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_urls: The URLs where the `WebApp` is hosted.
-        :param pulumi.Input[_builtins.str] deletion_policy: Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-               serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/webApps/appId
@@ -184,9 +193,12 @@ class _WebAppState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-        rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-        serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -342,9 +354,12 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
-        :param pulumi.Input[_builtins.str] deletion_policy: Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-               serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -515,9 +530,12 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_id: The globally unique, Firebase-assigned identifier of the App.
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_urls: The URLs where the `WebApp` is hosted.
-        :param pulumi.Input[_builtins.str] deletion_policy: Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-               serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/webApps/appId
@@ -566,11 +584,14 @@ class WebApp(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-        rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-        serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 

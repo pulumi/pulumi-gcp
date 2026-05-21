@@ -49,6 +49,7 @@ export interface GetExternalAddressArgs {
  */
 export interface GetExternalAddressResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly externalIp: string;
     /**

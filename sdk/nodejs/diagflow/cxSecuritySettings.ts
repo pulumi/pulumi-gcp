@@ -148,6 +148,15 @@ export class CxSecuritySettings extends pulumi.CustomResource {
      */
     declare public readonly deidentifyTemplate: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The human-readable name of the security settings, unique within the location.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -222,6 +231,7 @@ export class CxSecuritySettings extends pulumi.CustomResource {
             const state = argsOrState as CxSecuritySettingsState | undefined;
             resourceInputs["audioExportSettings"] = state?.audioExportSettings;
             resourceInputs["deidentifyTemplate"] = state?.deidentifyTemplate;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["insightsExportSettings"] = state?.insightsExportSettings;
             resourceInputs["inspectTemplate"] = state?.inspectTemplate;
@@ -243,6 +253,7 @@ export class CxSecuritySettings extends pulumi.CustomResource {
             }
             resourceInputs["audioExportSettings"] = args?.audioExportSettings;
             resourceInputs["deidentifyTemplate"] = args?.deidentifyTemplate;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["insightsExportSettings"] = args?.insightsExportSettings;
             resourceInputs["inspectTemplate"] = args?.inspectTemplate;
@@ -278,6 +289,15 @@ export interface CxSecuritySettingsState {
      * Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
      */
     deidentifyTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the security settings, unique within the location.
      */
@@ -357,6 +377,15 @@ export interface CxSecuritySettingsArgs {
      * Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
      */
     deidentifyTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the security settings, unique within the location.
      */

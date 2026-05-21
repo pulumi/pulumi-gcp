@@ -69,6 +69,7 @@ type LookupCloudExadataInfrastructureArgs struct {
 type LookupCloudExadataInfrastructureResult struct {
 	CloudExadataInfrastructureId string            `pulumi:"cloudExadataInfrastructureId"`
 	CreateTime                   string            `pulumi:"createTime"`
+	DeletionPolicy               string            `pulumi:"deletionPolicy"`
 	DeletionProtection           bool              `pulumi:"deletionProtection"`
 	DisplayName                  string            `pulumi:"displayName"`
 	EffectiveLabels              map[string]string `pulumi:"effectiveLabels"`
@@ -131,6 +132,10 @@ func (o LookupCloudExadataInfrastructureResultOutput) CloudExadataInfrastructure
 
 func (o LookupCloudExadataInfrastructureResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudExadataInfrastructureResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudExadataInfrastructureResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudExadataInfrastructureResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupCloudExadataInfrastructureResultOutput) DeletionProtection() pulumi.BoolOutput {

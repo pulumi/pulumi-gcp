@@ -128,6 +128,15 @@ export class AccessLevels extends pulumi.CustomResource {
      */
     declare public readonly accessLevels: pulumi.Output<outputs.accesscontextmanager.AccessLevelsAccessLevel[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
      */
@@ -147,6 +156,7 @@ export class AccessLevels extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessLevelsState | undefined;
             resourceInputs["accessLevels"] = state?.accessLevels;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["parent"] = state?.parent;
         } else {
             const args = argsOrState as AccessLevelsArgs | undefined;
@@ -154,6 +164,7 @@ export class AccessLevels extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["accessLevels"] = args?.accessLevels;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["parent"] = args?.parent;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -171,6 +182,15 @@ export interface AccessLevelsState {
      */
     accessLevels?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevel>[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
      */
@@ -186,6 +206,15 @@ export interface AccessLevelsArgs {
      * Structure is documented below.
      */
     accessLevels?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevel>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}

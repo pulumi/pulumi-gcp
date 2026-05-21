@@ -23,6 +23,7 @@ class SecurityPolicyArgs:
     def __init__(__self__, *,
                  adaptive_protection_config: pulumi.Input[Optional['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
                  advanced_options_config: pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +37,12 @@ class SecurityPolicyArgs:
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this address. A list of key->value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -62,6 +69,8 @@ class SecurityPolicyArgs:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:
             pulumi.set(__self__, "advanced_options_config", advanced_options_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -101,6 +110,23 @@ class SecurityPolicyArgs:
     @advanced_options_config.setter
     def advanced_options_config(self, value: pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']]):
         pulumi.set(self, "advanced_options_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -206,6 +232,7 @@ class _SecurityPolicyState:
     def __init__(__self__, *,
                  adaptive_protection_config: pulumi.Input[Optional['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
                  advanced_options_config: pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -224,6 +251,12 @@ class _SecurityPolicyState:
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource.
@@ -255,6 +288,8 @@ class _SecurityPolicyState:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:
             pulumi.set(__self__, "advanced_options_config", advanced_options_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -304,6 +339,23 @@ class _SecurityPolicyState:
     @advanced_options_config.setter
     def advanced_options_config(self, value: pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']]):
         pulumi.set(self, "advanced_options_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -472,6 +524,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
                  advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -678,6 +731,12 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this address. A list of key->value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -916,6 +975,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
                  advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -934,6 +994,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
             __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
             __props__.__dict__["advanced_options_config"] = advanced_options_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -960,6 +1021,7 @@ class SecurityPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
             advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -982,6 +1044,12 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource.
@@ -1015,6 +1083,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
         __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
         __props__.__dict__["advanced_options_config"] = advanced_options_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["fingerprint"] = fingerprint
@@ -1045,6 +1114,19 @@ class SecurityPolicy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "advanced_options_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

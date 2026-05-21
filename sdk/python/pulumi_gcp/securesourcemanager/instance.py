@@ -34,14 +34,12 @@ class InstanceArgs:
 
         :param pulumi.Input[_builtins.str] instance_id: The name for the Instance.
         :param pulumi.Input[_builtins.str] location: The location for the Instance.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
-               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-               and all its contents. Setting `PREVENT` prevents the resource from accidental
-               deletion by erroring out during plan.
-               Default is `PREVENT`.  Possible values are:
-               * DELETE
-               * PREVENT
-               * ABANDON
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                
@@ -98,14 +96,12 @@ class InstanceArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the instance. Setting `ABANDON` allows the resource
-        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-        and all its contents. Setting `PREVENT` prevents the resource from accidental
-        deletion by erroring out during plan.
-        Default is `PREVENT`.  Possible values are:
-        * DELETE
-        * PREVENT
-        * ABANDON
+        Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -204,14 +200,12 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
 
         :param pulumi.Input[_builtins.str] create_time: Time the Instance was created in UTC.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
-               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-               and all its contents. Setting `PREVENT` prevents the resource from accidental
-               deletion by erroring out during plan.
-               Default is `PREVENT`.  Possible values are:
-               * DELETE
-               * PREVENT
-               * ABANDON
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceHostConfigArgs']]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
@@ -285,14 +279,12 @@ class _InstanceState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the instance. Setting `ABANDON` allows the resource
-        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-        and all its contents. Setting `PREVENT` prevents the resource from accidental
-        deletion by erroring out during plan.
-        Default is `PREVENT`.  Possible values are:
-        * DELETE
-        * PREVENT
-        * ABANDON
+        Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -978,14 +970,12 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
-               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-               and all its contents. Setting `PREVENT` prevents the resource from accidental
-               deletion by erroring out during plan.
-               Default is `PREVENT`.  Possible values are:
-               * DELETE
-               * PREVENT
-               * ABANDON
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance_id: The name for the Instance.
         :param pulumi.Input[_builtins.str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -1578,14 +1568,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Time the Instance was created in UTC.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
-               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-               and all its contents. Setting `PREVENT` prevents the resource from accidental
-               deletion by erroring out during plan.
-               Default is `PREVENT`.  Possible values are:
-               * DELETE
-               * PREVENT
-               * ABANDON
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict']]]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
@@ -1642,16 +1630,14 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        The deletion policy for the instance. Setting `ABANDON` allows the resource
-        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-        and all its contents. Setting `PREVENT` prevents the resource from accidental
-        deletion by erroring out during plan.
-        Default is `PREVENT`.  Possible values are:
-        * DELETE
-        * PREVENT
-        * ABANDON
+        Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 

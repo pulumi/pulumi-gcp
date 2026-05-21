@@ -27,13 +27,16 @@ class GetIstioCanonicalServiceResult:
     """
     A collection of values returned by getIstioCanonicalService.
     """
-    def __init__(__self__, canonical_service=None, canonical_service_namespace=None, display_name=None, id=None, mesh_uid=None, name=None, project=None, service_id=None, telemetries=None, user_labels=None):
+    def __init__(__self__, canonical_service=None, canonical_service_namespace=None, deletion_policy=None, display_name=None, id=None, mesh_uid=None, name=None, project=None, service_id=None, telemetries=None, user_labels=None):
         if canonical_service and not isinstance(canonical_service, str):
             raise TypeError("Expected argument 'canonical_service' to be a str")
         pulumi.set(__self__, "canonical_service", canonical_service)
         if canonical_service_namespace and not isinstance(canonical_service_namespace, str):
             raise TypeError("Expected argument 'canonical_service_namespace' to be a str")
         pulumi.set(__self__, "canonical_service_namespace", canonical_service_namespace)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -68,6 +71,11 @@ class GetIstioCanonicalServiceResult:
     @pulumi.getter(name="canonicalServiceNamespace")
     def canonical_service_namespace(self) -> _builtins.str:
         return pulumi.get(self, "canonical_service_namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -131,6 +139,7 @@ class AwaitableGetIstioCanonicalServiceResult(GetIstioCanonicalServiceResult):
         return GetIstioCanonicalServiceResult(
             canonical_service=self.canonical_service,
             canonical_service_namespace=self.canonical_service_namespace,
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             id=self.id,
             mesh_uid=self.mesh_uid,
@@ -200,6 +209,7 @@ def get_istio_canonical_service(canonical_service: Optional[_builtins.str] = Non
     return AwaitableGetIstioCanonicalServiceResult(
         canonical_service=pulumi.get(__ret__, 'canonical_service'),
         canonical_service_namespace=pulumi.get(__ret__, 'canonical_service_namespace'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         mesh_uid=pulumi.get(__ret__, 'mesh_uid'),
@@ -266,6 +276,7 @@ def get_istio_canonical_service_output(canonical_service: pulumi.Input[Optional[
     return __ret__.apply(lambda __response__: GetIstioCanonicalServiceResult(
         canonical_service=pulumi.get(__response__, 'canonical_service'),
         canonical_service_namespace=pulumi.get(__response__, 'canonical_service_namespace'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         id=pulumi.get(__response__, 'id'),
         mesh_uid=pulumi.get(__response__, 'mesh_uid'),

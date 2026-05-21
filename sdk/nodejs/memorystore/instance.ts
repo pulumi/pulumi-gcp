@@ -475,6 +475,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly crossInstanceReplicationConfig: pulumi.Output<outputs.memorystore.InstanceCrossInstanceReplicationConfig>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. If set to true deletion of the instance will fail.
      */
     declare public readonly deletionProtectionEnabled: pulumi.Output<boolean | undefined>;
@@ -594,9 +603,15 @@ export class Instance extends pulumi.CustomResource {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      */
     declare public readonly nodeType: pulumi.Output<string>;
     /**
@@ -701,6 +716,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupCollection"] = state?.backupCollection;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["crossInstanceReplicationConfig"] = state?.crossInstanceReplicationConfig;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtectionEnabled"] = state?.deletionProtectionEnabled;
             resourceInputs["desiredAutoCreatedEndpoints"] = state?.desiredAutoCreatedEndpoints;
             resourceInputs["desiredPscAutoConnections"] = state?.desiredPscAutoConnections;
@@ -753,6 +769,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["authorizationMode"] = args?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = args?.automatedBackupConfig;
             resourceInputs["crossInstanceReplicationConfig"] = args?.crossInstanceReplicationConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtectionEnabled"] = args?.deletionProtectionEnabled;
             resourceInputs["desiredAutoCreatedEndpoints"] = args?.desiredAutoCreatedEndpoints;
             resourceInputs["desiredPscAutoConnections"] = args?.desiredPscAutoConnections;
@@ -835,6 +852,15 @@ export interface InstanceState {
      * Structure is documented below.
      */
     crossInstanceReplicationConfig?: pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. If set to true deletion of the instance will fail.
      */
@@ -955,9 +981,15 @@ export interface InstanceState {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**
@@ -1065,6 +1097,15 @@ export interface InstanceArgs {
      */
     crossInstanceReplicationConfig?: pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfig | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Optional. If set to true deletion of the instance will fail.
      */
     deletionProtectionEnabled?: pulumi.Input<boolean | undefined>;
@@ -1143,9 +1184,15 @@ export interface InstanceArgs {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**

@@ -321,6 +321,15 @@ export class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A list of desired user endpoints
      * Structure is documented below.
      */
@@ -352,6 +361,7 @@ export class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceDesiredUserCreatedEndpointsState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["desiredUserCreatedEndpoints"] = state?.desiredUserCreatedEndpoints;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -361,6 +371,7 @@ export class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
             if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["desiredUserCreatedEndpoints"] = args?.desiredUserCreatedEndpoints;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -375,6 +386,15 @@ export class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceDesiredUserCreatedEndpoints resources.
  */
 export interface InstanceDesiredUserCreatedEndpointsState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A list of desired user endpoints
      * Structure is documented below.
@@ -399,6 +419,15 @@ export interface InstanceDesiredUserCreatedEndpointsState {
  * The set of arguments for constructing a InstanceDesiredUserCreatedEndpoints resource.
  */
 export interface InstanceDesiredUserCreatedEndpointsArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A list of desired user endpoints
      * Structure is documented below.

@@ -2111,6 +2111,13 @@ func (o GetCertificateMapGclbTargetIpConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetCertificatesCertificate struct {
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// A human-readable description of the resource.
 	Description string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
@@ -2166,6 +2173,13 @@ type GetCertificatesCertificateInput interface {
 }
 
 type GetCertificatesCertificateArgs struct {
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// A human-readable description of the resource.
 	Description pulumi.StringInput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
@@ -2258,6 +2272,16 @@ func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutput() G
 
 func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutputWithContext(ctx context.Context) GetCertificatesCertificateOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetCertificatesCertificateOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human-readable description of the resource.

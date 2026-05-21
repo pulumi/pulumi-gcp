@@ -119,6 +119,13 @@ type AuthorizedOrgsDesc struct {
 	AuthorizationType pulumi.StringPtrOutput `pulumi:"authorizationType"`
 	// Time the AuthorizedOrgsDesc was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Resource name for the `AuthorizedOrgsDesc`. Format:
 	// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
@@ -194,6 +201,13 @@ type authorizedOrgsDescState struct {
 	AuthorizationType *string `pulumi:"authorizationType"`
 	// Time the AuthorizedOrgsDesc was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Resource name for the `AuthorizedOrgsDesc`. Format:
 	// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
@@ -237,6 +251,13 @@ type AuthorizedOrgsDescState struct {
 	AuthorizationType pulumi.StringPtrInput
 	// Time the AuthorizedOrgsDesc was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Resource name for the `AuthorizedOrgsDesc`. Format:
 	// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
@@ -282,6 +303,13 @@ type authorizedOrgsDescArgs struct {
 	// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
 	// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType *string `pulumi:"authorizationType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Resource name for the `AuthorizedOrgsDesc`. Format:
 	// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
@@ -322,6 +350,13 @@ type AuthorizedOrgsDescArgs struct {
 	// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
 	// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Resource name for the `AuthorizedOrgsDesc`. Format:
 	// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
@@ -459,6 +494,16 @@ func (o AuthorizedOrgsDescOutput) AuthorizationType() pulumi.StringPtrOutput {
 // Time the AuthorizedOrgsDesc was created in UTC.
 func (o AuthorizedOrgsDescOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AuthorizedOrgsDescOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Resource name for the `AuthorizedOrgsDesc`. Format:

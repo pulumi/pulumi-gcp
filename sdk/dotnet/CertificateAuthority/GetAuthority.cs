@@ -181,6 +181,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string? CertificateAuthorityId;
         public readonly ImmutableArray<Outputs.GetAuthorityConfigResult> Configs;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string DesiredState;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -220,6 +221,8 @@ namespace Pulumi.Gcp.CertificateAuthority
             ImmutableArray<Outputs.GetAuthorityConfigResult> configs,
 
             string createTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -271,6 +274,7 @@ namespace Pulumi.Gcp.CertificateAuthority
             CertificateAuthorityId = certificateAuthorityId;
             Configs = configs;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DesiredState = desiredState;
             EffectiveLabels = effectiveLabels;

@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 public final class GetStoragePoolResult {
     private String capacityProvisioningType;
     private String creationTimestamp;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String description;
     private Map<String,String> effectiveLabels;
@@ -46,6 +47,9 @@ public final class GetStoragePoolResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -116,6 +120,7 @@ public final class GetStoragePoolResult {
     public static final class Builder {
         private String capacityProvisioningType;
         private String creationTimestamp;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String description;
         private Map<String,String> effectiveLabels;
@@ -140,6 +145,7 @@ public final class GetStoragePoolResult {
     	      Objects.requireNonNull(defaults);
     	      this.capacityProvisioningType = defaults.capacityProvisioningType;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -175,6 +181,14 @@ public final class GetStoragePoolResult {
               throw new MissingRequiredPropertyException("GetStoragePoolResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetStoragePoolResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -340,6 +354,7 @@ public final class GetStoragePoolResult {
             final var _resultValue = new GetStoragePoolResult();
             _resultValue.capacityProvisioningType = capacityProvisioningType;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;

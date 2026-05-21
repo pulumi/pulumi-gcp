@@ -50,6 +50,13 @@ type ApiConfig struct {
 	// Creates a unique name beginning with the
 	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
 	ApiConfigIdPrefix pulumi.StringOutput `pulumi:"apiConfigIdPrefix"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A user-visible name for the API.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -130,6 +137,13 @@ type apiConfigState struct {
 	// Creates a unique name beginning with the
 	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
 	ApiConfigIdPrefix *string `pulumi:"apiConfigIdPrefix"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -173,6 +187,13 @@ type ApiConfigState struct {
 	// Creates a unique name beginning with the
 	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
 	ApiConfigIdPrefix pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -220,6 +241,13 @@ type apiConfigArgs struct {
 	// Creates a unique name beginning with the
 	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
 	ApiConfigIdPrefix *string `pulumi:"apiConfigIdPrefix"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// Immutable. Gateway specific configuration.
@@ -255,6 +283,13 @@ type ApiConfigArgs struct {
 	// Creates a unique name beginning with the
 	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
 	ApiConfigIdPrefix pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// Immutable. Gateway specific configuration.
@@ -382,6 +417,16 @@ func (o ApiConfigOutput) ApiConfigId() pulumi.StringOutput {
 // specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
 func (o ApiConfigOutput) ApiConfigIdPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.ApiConfigIdPrefix }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ApiConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A user-visible name for the API.

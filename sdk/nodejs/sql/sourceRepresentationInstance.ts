@@ -109,6 +109,15 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
      */
     declare public readonly databaseVersion: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A file in the bucket that contains the data from the external server.
      */
     declare public readonly dumpFilePath: pulumi.Output<string | undefined>;
@@ -162,6 +171,7 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
             resourceInputs["clientCertificate"] = state?.clientCertificate;
             resourceInputs["clientKey"] = state?.clientKey;
             resourceInputs["databaseVersion"] = state?.databaseVersion;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["dumpFilePath"] = state?.dumpFilePath;
             resourceInputs["host"] = state?.host;
             resourceInputs["name"] = state?.name;
@@ -182,6 +192,7 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
             resourceInputs["clientCertificate"] = args?.clientCertificate;
             resourceInputs["clientKey"] = args?.clientKey;
             resourceInputs["databaseVersion"] = args?.databaseVersion;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["dumpFilePath"] = args?.dumpFilePath;
             resourceInputs["host"] = args?.host;
             resourceInputs["name"] = args?.name;
@@ -218,6 +229,15 @@ export interface SourceRepresentationInstanceState {
      * The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date reference of supported versions.
      */
     databaseVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A file in the bucket that contains the data from the external server.
      */
@@ -276,6 +296,15 @@ export interface SourceRepresentationInstanceArgs {
      * The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date reference of supported versions.
      */
     databaseVersion: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A file in the bucket that contains the data from the external server.
      */

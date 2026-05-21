@@ -51,6 +51,7 @@ public final class GetBackendServiceResult {
     private List<GetBackendServiceCustomMetric> customMetrics;
     private List<String> customRequestHeaders;
     private List<String> customResponseHeaders;
+    private String deletionPolicy;
     /**
      * @return Textual description for the Backend Service.
      * 
@@ -169,6 +170,9 @@ public final class GetBackendServiceResult {
     }
     public List<String> customResponseHeaders() {
         return this.customResponseHeaders;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Textual description for the Backend Service.
@@ -331,6 +335,7 @@ public final class GetBackendServiceResult {
         private List<GetBackendServiceCustomMetric> customMetrics;
         private List<String> customRequestHeaders;
         private List<String> customResponseHeaders;
+        private String deletionPolicy;
         private String description;
         private List<GetBackendServiceDynamicForwarding> dynamicForwardings;
         private String edgeSecurityPolicy;
@@ -377,6 +382,7 @@ public final class GetBackendServiceResult {
     	      this.customMetrics = defaults.customMetrics;
     	      this.customRequestHeaders = defaults.customRequestHeaders;
     	      this.customResponseHeaders = defaults.customResponseHeaders;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.dynamicForwardings = defaults.dynamicForwardings;
     	      this.edgeSecurityPolicy = defaults.edgeSecurityPolicy;
@@ -519,6 +525,14 @@ public final class GetBackendServiceResult {
         }
         public Builder customResponseHeaders(String... customResponseHeaders) {
             return customResponseHeaders(List.of(customResponseHeaders));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -823,6 +837,7 @@ public final class GetBackendServiceResult {
             _resultValue.customMetrics = customMetrics;
             _resultValue.customRequestHeaders = customRequestHeaders;
             _resultValue.customResponseHeaders = customResponseHeaders;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.dynamicForwardings = dynamicForwardings;
             _resultValue.edgeSecurityPolicy = edgeSecurityPolicy;

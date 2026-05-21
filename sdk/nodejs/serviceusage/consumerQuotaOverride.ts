@@ -149,6 +149,15 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
     declare public readonly dimensions: pulumi.Output<{[key: string]: string} | undefined>;
@@ -198,6 +207,7 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsumerQuotaOverrideState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["dimensions"] = state?.dimensions;
             resourceInputs["force"] = state?.force;
             resourceInputs["limit"] = state?.limit;
@@ -220,6 +230,7 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
             if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["dimensions"] = args?.dimensions;
             resourceInputs["force"] = args?.force;
             resourceInputs["limit"] = args?.limit;
@@ -238,6 +249,15 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConsumerQuotaOverride resources.
  */
 export interface ConsumerQuotaOverrideState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
@@ -280,6 +300,15 @@ export interface ConsumerQuotaOverrideState {
  * The set of arguments for constructing a ConsumerQuotaOverride resource.
  */
 export interface ConsumerQuotaOverrideArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */

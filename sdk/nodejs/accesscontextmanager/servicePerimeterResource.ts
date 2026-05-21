@@ -98,6 +98,15 @@ export class ServicePerimeterResource extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly accessPolicyId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
@@ -126,6 +135,7 @@ export class ServicePerimeterResource extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServicePerimeterResourceState | undefined;
             resourceInputs["accessPolicyId"] = state?.accessPolicyId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["perimeterName"] = state?.perimeterName;
             resourceInputs["resource"] = state?.resource;
@@ -137,6 +147,7 @@ export class ServicePerimeterResource extends pulumi.CustomResource {
             if (args?.resource === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["perimeterName"] = args?.perimeterName;
             resourceInputs["resource"] = args?.resource;
             resourceInputs["accessPolicyId"] = undefined /*out*/;
@@ -155,6 +166,15 @@ export interface ServicePerimeterResourceState {
      * The name of the Access Policy this resource belongs to.
      */
     accessPolicyId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
      */
@@ -175,6 +195,15 @@ export interface ServicePerimeterResourceState {
  * The set of arguments for constructing a ServicePerimeterResource resource.
  */
 export interface ServicePerimeterResourceArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the Service Perimeter to add this resource to.
      */

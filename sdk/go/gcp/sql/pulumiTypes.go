@@ -11098,6 +11098,13 @@ type GetDatabaseInstancesInstance struct {
 	ConnectionName string `pulumi:"connectionName"`
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion string `pulumi:"databaseVersion"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Used to block Terraform from deleting a SQL Instance. Defaults to true.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
@@ -11177,6 +11184,13 @@ type GetDatabaseInstancesInstanceArgs struct {
 	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion pulumi.StringInput `pulumi:"databaseVersion"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// Used to block Terraform from deleting a SQL Instance. Defaults to true.
 	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
@@ -11308,6 +11322,16 @@ func (o GetDatabaseInstancesInstanceOutput) ConnectionName() pulumi.StringOutput
 // To filter out the Cloud SQL instances which are of the specified database version.
 func (o GetDatabaseInstancesInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetDatabaseInstancesInstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Used to block Terraform from deleting a SQL Instance. Defaults to true.
@@ -15719,10 +15743,12 @@ type GetDatabasesDatabase struct {
 	// for more details and supported values. Postgres databases only support
 	// a value of 'en_US.UTF8' at creation time.
 	Collation string `pulumi:"collation"`
-	// The deletion policy for the database. Setting ABANDON allows the resource
-	// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-	// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-	// values are: "ABANDON", "DELETE". Defaults to "DELETE".
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// The name of the Cloud SQL database instance in which the database belongs.
 	Instance string `pulumi:"instance"`
@@ -15760,10 +15786,12 @@ type GetDatabasesDatabaseArgs struct {
 	// for more details and supported values. Postgres databases only support
 	// a value of 'en_US.UTF8' at creation time.
 	Collation pulumi.StringInput `pulumi:"collation"`
-	// The deletion policy for the database. Setting ABANDON allows the resource
-	// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-	// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-	// values are: "ABANDON", "DELETE". Defaults to "DELETE".
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// The name of the Cloud SQL database instance in which the database belongs.
 	Instance pulumi.StringInput `pulumi:"instance"`
@@ -15846,10 +15874,12 @@ func (o GetDatabasesDatabaseOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Collation }).(pulumi.StringOutput)
 }
 
-// The deletion policy for the database. Setting ABANDON allows the resource
-// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-// values are: "ABANDON", "DELETE". Defaults to "DELETE".
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
 func (o GetDatabasesDatabaseOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }

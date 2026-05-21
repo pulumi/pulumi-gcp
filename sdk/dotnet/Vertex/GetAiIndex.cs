@@ -92,6 +92,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class GetAiIndexResult
     {
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly ImmutableArray<Outputs.GetAiIndexDeployedIndexResult> DeployedIndexes;
         public readonly string Description;
         public readonly string DisplayName;
@@ -116,6 +117,8 @@ namespace Pulumi.Gcp.Vertex
         [OutputConstructor]
         private GetAiIndexResult(
             string createTime,
+
+            string deletionPolicy,
 
             ImmutableArray<Outputs.GetAiIndexDeployedIndexResult> deployedIndexes,
 
@@ -152,6 +155,7 @@ namespace Pulumi.Gcp.Vertex
             string updateTime)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeployedIndexes = deployedIndexes;
             Description = description;
             DisplayName = displayName;

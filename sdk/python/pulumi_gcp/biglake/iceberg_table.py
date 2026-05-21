@@ -24,6 +24,7 @@ class IcebergTableArgs:
                  catalog: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
                  schema: pulumi.Input['IcebergTableSchemaArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  partition_spec: pulumi.Input[Optional['IcebergTablePartitionSpecArgs']] = None,
@@ -36,6 +37,12 @@ class IcebergTableArgs:
         :param pulumi.Input[_builtins.str] namespace: The parent namespace of the table.
         :param pulumi.Input['IcebergTableSchemaArgs'] schema: The schema of the table.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the table.
         :param pulumi.Input[_builtins.str] name: The name of the table.
         :param pulumi.Input['IcebergTablePartitionSpecArgs'] partition_spec: The partition spec of the table.
@@ -47,6 +54,8 @@ class IcebergTableArgs:
         pulumi.set(__self__, "catalog", catalog)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "schema", schema)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -94,6 +103,23 @@ class IcebergTableArgs:
     @schema.setter
     def schema(self, value: pulumi.Input['IcebergTableSchemaArgs']):
         pulumi.set(self, "schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -162,6 +188,7 @@ class IcebergTableArgs:
 class _IcebergTableState:
     def __init__(__self__, *,
                  catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -173,6 +200,12 @@ class _IcebergTableState:
         Input properties used for looking up and filtering IcebergTable resources.
 
         :param pulumi.Input[_builtins.str] catalog: The name of the IcebergCatalog.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the table.
         :param pulumi.Input[_builtins.str] name: The name of the table.
         :param pulumi.Input[_builtins.str] namespace: The parent namespace of the table.
@@ -186,6 +219,8 @@ class _IcebergTableState:
         """
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -212,6 +247,23 @@ class _IcebergTableState:
     @catalog.setter
     def catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -308,6 +360,7 @@ class IcebergTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -429,6 +482,12 @@ class IcebergTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog: The name of the IcebergCatalog.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the table.
         :param pulumi.Input[_builtins.str] name: The name of the table.
         :param pulumi.Input[_builtins.str] namespace: The parent namespace of the table.
@@ -572,6 +631,7 @@ class IcebergTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -591,6 +651,7 @@ class IcebergTable(pulumi.CustomResource):
             if catalog is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog'")
             __props__.__dict__["catalog"] = catalog
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if namespace is None and not opts.urn:
@@ -613,6 +674,7 @@ class IcebergTable(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -628,6 +690,12 @@ class IcebergTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog: The name of the IcebergCatalog.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the table.
         :param pulumi.Input[_builtins.str] name: The name of the table.
         :param pulumi.Input[_builtins.str] namespace: The parent namespace of the table.
@@ -644,6 +712,7 @@ class IcebergTable(pulumi.CustomResource):
         __props__ = _IcebergTableState.__new__(_IcebergTableState)
 
         __props__.__dict__["catalog"] = catalog
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace"] = namespace
@@ -660,6 +729,19 @@ class IcebergTable(pulumi.CustomResource):
         The name of the IcebergCatalog.
         """
         return pulumi.get(self, "catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

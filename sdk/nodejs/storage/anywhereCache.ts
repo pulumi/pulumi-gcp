@@ -96,6 +96,19 @@ export class AnywhereCache extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     */
+    declare public readonly ingestOnWrite: pulumi.Output<boolean | undefined>;
+    /**
      * True if the cache instance has an active Update long-running operation.
      */
     declare public /*out*/ readonly pendingUpdate: pulumi.Output<boolean>;
@@ -133,6 +146,8 @@ export class AnywhereCache extends pulumi.CustomResource {
             resourceInputs["anywhereCacheId"] = state?.anywhereCacheId;
             resourceInputs["bucket"] = state?.bucket;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["ingestOnWrite"] = state?.ingestOnWrite;
             resourceInputs["pendingUpdate"] = state?.pendingUpdate;
             resourceInputs["state"] = state?.state;
             resourceInputs["ttl"] = state?.ttl;
@@ -148,6 +163,8 @@ export class AnywhereCache extends pulumi.CustomResource {
             }
             resourceInputs["admissionPolicy"] = args?.admissionPolicy;
             resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["ingestOnWrite"] = args?.ingestOnWrite;
             resourceInputs["ttl"] = args?.ttl;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["anywhereCacheId"] = undefined /*out*/;
@@ -184,6 +201,19 @@ export interface AnywhereCacheState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     */
+    ingestOnWrite?: pulumi.Input<boolean | undefined>;
+    /**
      * True if the cache instance has an active Update long-running operation.
      */
     pendingUpdate?: pulumi.Input<boolean | undefined>;
@@ -219,6 +249,19 @@ export interface AnywhereCacheArgs {
      * A reference to Bucket resource
      */
     bucket: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     */
+    ingestOnWrite?: pulumi.Input<boolean | undefined>;
     /**
      * The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
      */

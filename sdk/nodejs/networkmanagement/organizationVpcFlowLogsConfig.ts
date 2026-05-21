@@ -84,6 +84,15 @@ export class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
      */
     declare public readonly crossProjectMetadata: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
      * of 512 characters.
      */
@@ -171,6 +180,7 @@ export class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
             resourceInputs["aggregationInterval"] = state?.aggregationInterval;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["crossProjectMetadata"] = state?.crossProjectMetadata;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["filterExpr"] = state?.filterExpr;
@@ -198,6 +208,7 @@ export class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
             }
             resourceInputs["aggregationInterval"] = args?.aggregationInterval;
             resourceInputs["crossProjectMetadata"] = args?.crossProjectMetadata;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["filterExpr"] = args?.filterExpr;
             resourceInputs["flowSampling"] = args?.flowSampling;
@@ -244,6 +255,15 @@ export interface OrganizationVpcFlowLogsConfigState {
      * Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
      */
     crossProjectMetadata?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
      * of 512 characters.
@@ -336,6 +356,15 @@ export interface OrganizationVpcFlowLogsConfigArgs {
      * Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
      */
     crossProjectMetadata?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
      * of 512 characters.

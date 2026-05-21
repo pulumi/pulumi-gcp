@@ -20,8 +20,6 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
     /**
      * Path to the config zip bundle.
      * 
-     * ***
-     * 
      */
     @Import(name="configBundle")
     private @Nullable Output<String> configBundle;
@@ -29,11 +27,38 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Path to the config zip bundle.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> configBundle() {
         return Optional.ofNullable(this.configBundle);
+    }
+
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -147,6 +172,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
 
     private ApiState(ApiState $) {
         this.configBundle = $.configBundle;
+        this.deletionPolicy = $.deletionPolicy;
         this.detectMd5hash = $.detectMd5hash;
         this.latestRevisionId = $.latestRevisionId;
         this.md5hash = $.md5hash;
@@ -177,8 +203,6 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param configBundle Path to the config zip bundle.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -190,13 +214,46 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param configBundle Path to the config zip bundle.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder configBundle(String configBundle) {
             return configBundle(Output.of(configBundle));
+        }
+
+        /**
+         * @param deletionPolicy (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

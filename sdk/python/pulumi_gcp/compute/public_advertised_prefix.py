@@ -20,6 +20,7 @@ __all__ = ['PublicAdvertisedPrefixArgs', 'PublicAdvertisedPrefix']
 class PublicAdvertisedPrefixArgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_verification_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -30,6 +31,12 @@ class PublicAdvertisedPrefixArgs:
         The set of arguments for constructing a PublicAdvertisedPrefix resource.
 
         :param pulumi.Input[_builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
         :param pulumi.Input[_builtins.str] ipv6_access_type: The internet access type for IPv6 Public Advertised Prefixes. It can be
@@ -57,6 +64,8 @@ class PublicAdvertisedPrefixArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dns_verification_ip is not None:
@@ -81,6 +90,23 @@ class PublicAdvertisedPrefixArgs:
     @ip_cidr_range.setter
     def ip_cidr_range(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "ip_cidr_range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -177,6 +203,7 @@ class PublicAdvertisedPrefixArgs:
 @pulumi.input_type
 class _PublicAdvertisedPrefixState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_verification_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -189,6 +216,12 @@ class _PublicAdvertisedPrefixState:
         """
         Input properties used for looking up and filtering PublicAdvertisedPrefix resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
@@ -218,6 +251,8 @@ class _PublicAdvertisedPrefixState:
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] shared_secret: Output Only. The shared secret to be used for reverse DNS verification.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dns_verification_ip is not None:
@@ -236,6 +271,23 @@ class _PublicAdvertisedPrefixState:
             pulumi.set(__self__, "self_link", self_link)
         if shared_secret is not None:
             pulumi.set(__self__, "shared_secret", shared_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -371,6 +423,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_verification_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -448,6 +501,12 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
@@ -563,6 +622,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_verification_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -579,6 +639,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PublicAdvertisedPrefixArgs.__new__(PublicAdvertisedPrefixArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_verification_ip"] = dns_verification_ip
             if ip_cidr_range is None and not opts.urn:
@@ -600,6 +661,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dns_verification_ip: pulumi.Input[Optional[_builtins.str]] = None,
             ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -616,6 +678,12 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
@@ -649,6 +717,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
 
         __props__ = _PublicAdvertisedPrefixState.__new__(_PublicAdvertisedPrefixState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_verification_ip"] = dns_verification_ip
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
@@ -659,6 +728,19 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["shared_secret"] = shared_secret
         return PublicAdvertisedPrefix(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

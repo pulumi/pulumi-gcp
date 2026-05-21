@@ -71,6 +71,7 @@ type LookupVariableArgs struct {
 
 // A collection of values returned by getVariable.
 type LookupVariableResult struct {
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	Name       string  `pulumi:"name"`
@@ -120,6 +121,10 @@ func (o LookupVariableResultOutput) ToLookupVariableResultOutput() LookupVariabl
 
 func (o LookupVariableResultOutput) ToLookupVariableResultOutputWithContext(ctx context.Context) LookupVariableResultOutput {
 	return o
+}
+
+func (o LookupVariableResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVariableResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

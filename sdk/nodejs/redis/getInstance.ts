@@ -66,6 +66,7 @@ export interface GetInstanceResult {
     readonly createTime: string;
     readonly currentLocationId: string;
     readonly customerManagedKey: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};

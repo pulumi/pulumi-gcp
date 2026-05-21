@@ -18,6 +18,7 @@ public final class GetNetworkEndpointGroupResult {
      * 
      */
     private Integer defaultPort;
+    private String deletionPolicy;
     /**
      * @return The NEG description.
      * 
@@ -61,6 +62,9 @@ public final class GetNetworkEndpointGroupResult {
      */
     public Integer defaultPort() {
         return this.defaultPort;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The NEG description.
@@ -130,6 +134,7 @@ public final class GetNetworkEndpointGroupResult {
     @CustomType.Builder
     public static final class Builder {
         private Integer defaultPort;
+        private String deletionPolicy;
         private String description;
         private Integer generatedId;
         private String id;
@@ -145,6 +150,7 @@ public final class GetNetworkEndpointGroupResult {
         public Builder(GetNetworkEndpointGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultPort = defaults.defaultPort;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.generatedId = defaults.generatedId;
     	      this.id = defaults.id;
@@ -164,6 +170,14 @@ public final class GetNetworkEndpointGroupResult {
               throw new MissingRequiredPropertyException("GetNetworkEndpointGroupResult", "defaultPort");
             }
             this.defaultPort = defaultPort;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetNetworkEndpointGroupResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -249,6 +263,7 @@ public final class GetNetworkEndpointGroupResult {
         public GetNetworkEndpointGroupResult build() {
             final var _resultValue = new GetNetworkEndpointGroupResult();
             _resultValue.defaultPort = defaultPort;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.generatedId = generatedId;
             _resultValue.id = id;

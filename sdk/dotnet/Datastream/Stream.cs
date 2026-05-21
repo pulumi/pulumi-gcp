@@ -1291,8 +1291,8 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var cross_project_dataset = new Gcp.Organizations.Project("cross-project-dataset", new()
     ///     {
-    ///         ProjectId = "tf-test_45397",
-    ///         Name = "tf-test_16451",
+    ///         ProjectId = "tf-test_11171",
+    ///         Name = "tf-test_40472",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -1998,6 +1998,17 @@ namespace Pulumi.Gcp.Datastream
         public Output<string?> CustomerManagedEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
         /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
         /// the stream from a `RUNNING` state.
@@ -2163,6 +2174,17 @@ namespace Pulumi.Gcp.Datastream
         public Input<string>? CustomerManagedEncryptionKey { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
         /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
         /// the stream from a `RUNNING` state.
@@ -2270,6 +2292,17 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Input("customerManagedEncryptionKey")]
         public Input<string>? CustomerManagedEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,

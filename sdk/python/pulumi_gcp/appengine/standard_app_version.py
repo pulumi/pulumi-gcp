@@ -29,6 +29,7 @@ class StandardAppVersionArgs:
                  automatic_scaling: pulumi.Input[Optional['StandardAppVersionAutomaticScalingArgs']] = None,
                  basic_scaling: pulumi.Input[Optional['StandardAppVersionBasicScalingArgs']] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  env_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  handlers: pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionHandlerArgs']]]] = None,
                  inbound_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -57,6 +58,12 @@ class StandardAppVersionArgs:
         :param pulumi.Input['StandardAppVersionBasicScalingArgs'] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.
         :param pulumi.Input[Sequence[pulumi.Input['StandardAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
@@ -95,6 +102,8 @@ class StandardAppVersionArgs:
             pulumi.set(__self__, "basic_scaling", basic_scaling)
         if delete_service_on_destroy is not None:
             pulumi.set(__self__, "delete_service_on_destroy", delete_service_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if env_variables is not None:
             pulumi.set(__self__, "env_variables", env_variables)
         if handlers is not None:
@@ -221,6 +230,23 @@ class StandardAppVersionArgs:
     @delete_service_on_destroy.setter
     def delete_service_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_service_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="envVariables")
@@ -398,6 +424,7 @@ class _StandardAppVersionState:
                  automatic_scaling: pulumi.Input[Optional['StandardAppVersionAutomaticScalingArgs']] = None,
                  basic_scaling: pulumi.Input[Optional['StandardAppVersionBasicScalingArgs']] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment: pulumi.Input[Optional['StandardAppVersionDeploymentArgs']] = None,
                  entrypoint: pulumi.Input[Optional['StandardAppVersionEntrypointArgs']] = None,
                  env_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -425,6 +452,12 @@ class _StandardAppVersionState:
         :param pulumi.Input['StandardAppVersionBasicScalingArgs'] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['StandardAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
@@ -466,6 +499,8 @@ class _StandardAppVersionState:
             pulumi.set(__self__, "basic_scaling", basic_scaling)
         if delete_service_on_destroy is not None:
             pulumi.set(__self__, "delete_service_on_destroy", delete_service_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment is not None:
             pulumi.set(__self__, "deployment", deployment)
         if entrypoint is not None:
@@ -552,6 +587,23 @@ class _StandardAppVersionState:
     @delete_service_on_destroy.setter
     def delete_service_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_service_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -794,6 +846,7 @@ class StandardAppVersion(pulumi.CustomResource):
                  automatic_scaling: pulumi.Input[Optional[Union['StandardAppVersionAutomaticScalingArgs', 'StandardAppVersionAutomaticScalingArgsDict']]] = None,
                  basic_scaling: pulumi.Input[Optional[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']]] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment: pulumi.Input[Optional[Union['StandardAppVersionDeploymentArgs', 'StandardAppVersionDeploymentArgsDict']]] = None,
                  entrypoint: pulumi.Input[Optional[Union['StandardAppVersionEntrypointArgs', 'StandardAppVersionEntrypointArgsDict']]] = None,
                  env_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -936,6 +989,12 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['StandardAppVersionDeploymentArgs', 'StandardAppVersionDeploymentArgsDict']] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
         :param pulumi.Input[Union['StandardAppVersionEntrypointArgs', 'StandardAppVersionEntrypointArgsDict']] entrypoint: The entrypoint for the application.
@@ -1109,6 +1168,7 @@ class StandardAppVersion(pulumi.CustomResource):
                  automatic_scaling: pulumi.Input[Optional[Union['StandardAppVersionAutomaticScalingArgs', 'StandardAppVersionAutomaticScalingArgsDict']]] = None,
                  basic_scaling: pulumi.Input[Optional[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']]] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment: pulumi.Input[Optional[Union['StandardAppVersionDeploymentArgs', 'StandardAppVersionDeploymentArgsDict']]] = None,
                  entrypoint: pulumi.Input[Optional[Union['StandardAppVersionEntrypointArgs', 'StandardAppVersionEntrypointArgsDict']]] = None,
                  env_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1139,6 +1199,7 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__.__dict__["automatic_scaling"] = automatic_scaling
             __props__.__dict__["basic_scaling"] = basic_scaling
             __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if deployment is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment'")
             __props__.__dict__["deployment"] = deployment
@@ -1179,6 +1240,7 @@ class StandardAppVersion(pulumi.CustomResource):
             automatic_scaling: pulumi.Input[Optional[Union['StandardAppVersionAutomaticScalingArgs', 'StandardAppVersionAutomaticScalingArgsDict']]] = None,
             basic_scaling: pulumi.Input[Optional[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']]] = None,
             delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment: pulumi.Input[Optional[Union['StandardAppVersionDeploymentArgs', 'StandardAppVersionDeploymentArgsDict']]] = None,
             entrypoint: pulumi.Input[Optional[Union['StandardAppVersionEntrypointArgs', 'StandardAppVersionEntrypointArgsDict']]] = None,
             env_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1210,6 +1272,12 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['StandardAppVersionDeploymentArgs', 'StandardAppVersionDeploymentArgsDict']] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
         :param pulumi.Input[Union['StandardAppVersionEntrypointArgs', 'StandardAppVersionEntrypointArgsDict']] entrypoint: The entrypoint for the application.
@@ -1251,6 +1319,7 @@ class StandardAppVersion(pulumi.CustomResource):
         __props__.__dict__["automatic_scaling"] = automatic_scaling
         __props__.__dict__["basic_scaling"] = basic_scaling
         __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deployment"] = deployment
         __props__.__dict__["entrypoint"] = entrypoint
         __props__.__dict__["env_variables"] = env_variables
@@ -1304,6 +1373,19 @@ class StandardAppVersion(pulumi.CustomResource):
         If set to `true`, the service will be deleted if it is the last version.
         """
         return pulumi.get(self, "delete_service_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -26,10 +26,13 @@ class GetNetworkEndpointGroupResult:
     """
     A collection of values returned by getNetworkEndpointGroup.
     """
-    def __init__(__self__, default_port=None, description=None, generated_id=None, id=None, name=None, network=None, network_endpoint_type=None, project=None, self_link=None, size=None, subnetwork=None, zone=None):
+    def __init__(__self__, default_port=None, deletion_policy=None, description=None, generated_id=None, id=None, name=None, network=None, network_endpoint_type=None, project=None, self_link=None, size=None, subnetwork=None, zone=None):
         if default_port and not isinstance(default_port, int):
             raise TypeError("Expected argument 'default_port' to be a int")
         pulumi.set(__self__, "default_port", default_port)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -71,6 +74,11 @@ class GetNetworkEndpointGroupResult:
         The NEG default port.
         """
         return pulumi.get(self, "default_port")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -153,6 +161,7 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
             yield self
         return GetNetworkEndpointGroupResult(
             default_port=self.default_port,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             generated_id=self.generated_id,
             id=self.id,
@@ -205,6 +214,7 @@ def get_network_endpoint_group(name: Optional[_builtins.str] = None,
 
     return AwaitableGetNetworkEndpointGroupResult(
         default_port=pulumi.get(__ret__, 'default_port'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         generated_id=pulumi.get(__ret__, 'generated_id'),
         id=pulumi.get(__ret__, 'id'),
@@ -254,6 +264,7 @@ def get_network_endpoint_group_output(name: pulumi.Input[Optional[Optional[_buil
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup', __args__, opts=opts, typ=GetNetworkEndpointGroupResult)
     return __ret__.apply(lambda __response__: GetNetworkEndpointGroupResult(
         default_port=pulumi.get(__response__, 'default_port'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         generated_id=pulumi.get(__response__, 'generated_id'),
         id=pulumi.get(__response__, 'id'),

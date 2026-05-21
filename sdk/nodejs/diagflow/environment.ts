@@ -113,6 +113,15 @@ export class Environment extends pulumi.CustomResource {
      */
     declare public readonly agentVersion: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The developer-provided description for this environment.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -162,6 +171,7 @@ export class Environment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
             resourceInputs["agentVersion"] = state?.agentVersion;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["environmentid"] = state?.environmentid;
             resourceInputs["fulfillment"] = state?.fulfillment;
@@ -176,6 +186,7 @@ export class Environment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'environmentid'");
             }
             resourceInputs["agentVersion"] = args?.agentVersion;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["environmentid"] = args?.environmentid;
             resourceInputs["fulfillment"] = args?.fulfillment;
@@ -200,6 +211,15 @@ export interface EnvironmentState {
      * - projects/<Project ID>/locations/<Location ID>/agent/versions/<Version ID>
      */
     agentVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The developer-provided description for this environment.
      */
@@ -247,6 +267,15 @@ export interface EnvironmentArgs {
      * - projects/<Project ID>/locations/<Location ID>/agent/versions/<Version ID>
      */
     agentVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The developer-provided description for this environment.
      */

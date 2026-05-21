@@ -149,6 +149,13 @@ import (
 type V2QueuedResource struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The immutable name of the Queued Resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -191,6 +198,13 @@ func GetV2QueuedResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering V2QueuedResource resources.
 type v2queuedResourceState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The immutable name of the Queued Resource.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -204,6 +218,13 @@ type v2queuedResourceState struct {
 }
 
 type V2QueuedResourceState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The immutable name of the Queued Resource.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -221,6 +242,13 @@ func (V2QueuedResourceState) ElementType() reflect.Type {
 }
 
 type v2queuedResourceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The immutable name of the Queued Resource.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -235,6 +263,13 @@ type v2queuedResourceArgs struct {
 
 // The set of arguments for constructing a V2QueuedResource resource.
 type V2QueuedResourceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The immutable name of the Queued Resource.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -332,6 +367,16 @@ func (o V2QueuedResourceOutput) ToV2QueuedResourceOutput() V2QueuedResourceOutpu
 
 func (o V2QueuedResourceOutput) ToV2QueuedResourceOutputWithContext(ctx context.Context) V2QueuedResourceOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o V2QueuedResourceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *V2QueuedResource) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The immutable name of the Queued Resource.

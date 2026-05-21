@@ -105,6 +105,13 @@ type Interconnect struct {
 	// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
 	// for cross-cloud interconnect.
 	CustomerName pulumi.StringPtrOutput `pulumi:"customerName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -296,6 +303,13 @@ type interconnectState struct {
 	// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
 	// for cross-cloud interconnect.
 	CustomerName *string `pulumi:"customerName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -441,6 +455,13 @@ type InterconnectState struct {
 	// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
 	// for cross-cloud interconnect.
 	CustomerName pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -578,6 +599,13 @@ type interconnectArgs struct {
 	// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
 	// for cross-cloud interconnect.
 	CustomerName *string `pulumi:"customerName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
@@ -660,6 +688,13 @@ type InterconnectArgs struct {
 	// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
 	// for cross-cloud interconnect.
 	CustomerName pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
@@ -860,6 +895,16 @@ func (o InterconnectOutput) CreationTimestamp() pulumi.StringOutput {
 // for cross-cloud interconnect.
 func (o InterconnectOutput) CustomerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringPtrOutput { return v.CustomerName }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InterconnectOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource. Provide this property when you create the resource.

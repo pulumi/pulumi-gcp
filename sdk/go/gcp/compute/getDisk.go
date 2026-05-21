@@ -82,6 +82,7 @@ type LookupDiskResult struct {
 	CreateSnapshotBeforeDestroyPrefix string                    `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
+	DeletionPolicy    string `pulumi:"deletionPolicy"`
 	// The optional description of this resource.
 	Description               string                     `pulumi:"description"`
 	DiskEncryptionKeys        []GetDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
@@ -218,6 +219,10 @@ func (o LookupDiskResultOutput) CreateSnapshotBeforeDestroyPrefix() pulumi.Strin
 // Creation timestamp in RFC3339 text format.
 func (o LookupDiskResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The optional description of this resource.

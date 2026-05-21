@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
  * import com.pulumi.gcp.vmwareengine.Cluster;
  * import com.pulumi.gcp.vmwareengine.ClusterArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.ClusterNodeTypeConfigArgs;
@@ -111,10 +112,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
  * import com.pulumi.gcp.vmwareengine.Cluster;
  * import com.pulumi.gcp.vmwareengine.ClusterArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.ClusterNodeTypeConfigArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.ClusterAutoscalingSettingsArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterAutoscalingSettingsAutoscalingPolicyArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -203,6 +209,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.filestore.Instance;
  * import com.pulumi.gcp.filestore.InstanceArgs;
  * import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceFileSharesNfsExportOptionArgs;
  * import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
  * import com.pulumi.gcp.vmwareengine.Network;
  * import com.pulumi.gcp.vmwareengine.NetworkArgs;
@@ -210,6 +217,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
  * import com.pulumi.gcp.vmwareengine.Subnet;
  * import com.pulumi.gcp.vmwareengine.SubnetArgs;
  * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
@@ -379,6 +387,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
  * import com.pulumi.gcp.vmwareengine.Subnet;
  * import com.pulumi.gcp.vmwareengine.SubnetArgs;
  * import com.pulumi.gcp.netapp.StoragePool;
@@ -386,6 +395,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.netapp.Volume;
  * import com.pulumi.gcp.netapp.VolumeArgs;
  * import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
+ * import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyRuleArgs;
  * import com.pulumi.gcp.vmwareengine.Datastore;
  * import com.pulumi.gcp.vmwareengine.DatastoreArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreArgs;
@@ -611,6 +621,30 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<ClusterDatastoreMountConfig>>> datastoreMountConfigs() {
         return Codegen.optional(this.datastoreMountConfigs);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * True if the cluster is a management cluster; false otherwise.

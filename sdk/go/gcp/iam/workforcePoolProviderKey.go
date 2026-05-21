@@ -95,6 +95,13 @@ import (
 type WorkforcePoolProviderKey struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The time after which the key will be permanently deleted and cannot be recovered.
 	// Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
@@ -167,6 +174,13 @@ func GetWorkforcePoolProviderKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkforcePoolProviderKey resources.
 type workforcePoolProviderKeyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The time after which the key will be permanently deleted and cannot be recovered.
 	// Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
 	ExpireTime *string `pulumi:"expireTime"`
@@ -192,6 +206,13 @@ type workforcePoolProviderKeyState struct {
 }
 
 type WorkforcePoolProviderKeyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The time after which the key will be permanently deleted and cannot be recovered.
 	// Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
 	ExpireTime pulumi.StringPtrInput
@@ -221,6 +242,13 @@ func (WorkforcePoolProviderKeyState) ElementType() reflect.Type {
 }
 
 type workforcePoolProviderKeyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Immutable. Public half of the asymmetric key.
 	// Structure is documented below.
 	KeyData WorkforcePoolProviderKeyKeyData `pulumi:"keyData"`
@@ -239,6 +267,13 @@ type workforcePoolProviderKeyArgs struct {
 
 // The set of arguments for constructing a WorkforcePoolProviderKey resource.
 type WorkforcePoolProviderKeyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Immutable. Public half of the asymmetric key.
 	// Structure is documented below.
 	KeyData WorkforcePoolProviderKeyKeyDataInput
@@ -340,6 +375,16 @@ func (o WorkforcePoolProviderKeyOutput) ToWorkforcePoolProviderKeyOutput() Workf
 
 func (o WorkforcePoolProviderKeyOutput) ToWorkforcePoolProviderKeyOutputWithContext(ctx context.Context) WorkforcePoolProviderKeyOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkforcePoolProviderKeyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderKey) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The time after which the key will be permanently deleted and cannot be recovered.

@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_41819")
+ *             .dataProductId("tf-test-dp-_22375")
  *             .displayName("Parent Data Product")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(DataProductAccessGroupArgs.builder()
@@ -74,14 +74,14 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_75092}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_29439}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__2605")
+ *             .datasetId("tf_test_dataset__87786")
  *             .location("us-central1")
  *             .build());
  * 
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_34535")
+ *             .dataProductId("tf-test-dp-_2067")
  *             .displayName("Full Example Parent DP")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(            
@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__22375")
+ *             .datasetId("tf_test_dataset__40785")
  *             .location("us-central1")
  *             .build());
  * 
@@ -255,6 +255,30 @@ public class DataAsset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dataProductId() {
         return this.dataProductId;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

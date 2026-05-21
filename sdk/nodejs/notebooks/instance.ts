@@ -237,6 +237,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly dataDiskType: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
      */
     declare public readonly desiredState: pulumi.Output<string | undefined>;
@@ -408,6 +417,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["customGpuDriverPath"] = state?.customGpuDriverPath;
             resourceInputs["dataDiskSizeGb"] = state?.dataDiskSizeGb;
             resourceInputs["dataDiskType"] = state?.dataDiskType;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["diskEncryption"] = state?.diskEncryption;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -453,6 +463,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["customGpuDriverPath"] = args?.customGpuDriverPath;
             resourceInputs["dataDiskSizeGb"] = args?.dataDiskSizeGb;
             resourceInputs["dataDiskType"] = args?.dataDiskType;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["diskEncryption"] = args?.diskEncryption;
             resourceInputs["installGpuDriver"] = args?.installGpuDriver;
@@ -538,6 +549,15 @@ export interface InstanceState {
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     dataDiskType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
      */
@@ -738,6 +758,15 @@ export interface InstanceArgs {
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     dataDiskType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
      */

@@ -24,6 +24,7 @@ public final class GetFolderResult {
      * 
      */
     private String createTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     /**
      * @return The folder&#39;s display name.
@@ -78,6 +79,9 @@ public final class GetFolderResult {
      */
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -152,6 +156,7 @@ public final class GetFolderResult {
     public static final class Builder {
         private List<String> configuredCapabilities;
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String displayName;
         private String folder;
@@ -168,6 +173,7 @@ public final class GetFolderResult {
     	      Objects.requireNonNull(defaults);
     	      this.configuredCapabilities = defaults.configuredCapabilities;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.folder = defaults.folder;
@@ -198,6 +204,14 @@ public final class GetFolderResult {
               throw new MissingRequiredPropertyException("GetFolderResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -290,6 +304,7 @@ public final class GetFolderResult {
             final var _resultValue = new GetFolderResult();
             _resultValue.configuredCapabilities = configuredCapabilities;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.folder = folder;

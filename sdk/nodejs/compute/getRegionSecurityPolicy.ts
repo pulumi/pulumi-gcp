@@ -54,6 +54,7 @@ export interface GetRegionSecurityPolicyArgs {
 export interface GetRegionSecurityPolicyResult {
     readonly advancedOptionsConfigs: outputs.compute.GetRegionSecurityPolicyAdvancedOptionsConfig[];
     readonly ddosProtectionConfigs: outputs.compute.GetRegionSecurityPolicyDdosProtectionConfig[];
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly fingerprint: string;
     /**

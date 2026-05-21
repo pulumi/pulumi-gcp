@@ -25,6 +25,7 @@ class PublicDelegatedPrefixArgs:
                  parent_prefix: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  allocatable_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  is_live_migration: pulumi.Input[Optional[_builtins.bool]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +38,12 @@ class PublicDelegatedPrefixArgs:
         :param pulumi.Input[_builtins.str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         :param pulumi.Input[_builtins.str] region: A region where the prefix will reside.
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of:
@@ -59,6 +66,8 @@ class PublicDelegatedPrefixArgs:
         pulumi.set(__self__, "region", region)
         if allocatable_prefix_length is not None:
             pulumi.set(__self__, "allocatable_prefix_length", allocatable_prefix_length)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if is_live_migration is not None:
@@ -117,6 +126,23 @@ class PublicDelegatedPrefixArgs:
     @allocatable_prefix_length.setter
     def allocatable_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allocatable_prefix_length", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -194,6 +220,7 @@ class PublicDelegatedPrefixArgs:
 class _PublicDelegatedPrefixState:
     def __init__(__self__, *,
                  allocatable_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_enhanced_ipv4_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -210,6 +237,12 @@ class _PublicDelegatedPrefixState:
         Input properties used for looking up and filtering PublicDelegatedPrefix resources.
 
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enable_enhanced_ipv4_allocation: (Output)
                Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
@@ -248,6 +281,8 @@ class _PublicDelegatedPrefixState:
         """
         if allocatable_prefix_length is not None:
             pulumi.set(__self__, "allocatable_prefix_length", allocatable_prefix_length)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_enhanced_ipv4_allocation is not None:
@@ -284,6 +319,23 @@ class _PublicDelegatedPrefixState:
     @allocatable_prefix_length.setter
     def allocatable_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allocatable_prefix_length", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -460,6 +512,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocatable_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
                  is_live_migration: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -603,6 +656,12 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[_builtins.bool] is_live_migration: If true, the prefix will be live migrated.
@@ -776,6 +835,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocatable_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
                  is_live_migration: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -794,6 +854,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             __props__ = PublicDelegatedPrefixArgs.__new__(PublicDelegatedPrefixArgs)
 
             __props__.__dict__["allocatable_prefix_length"] = allocatable_prefix_length
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if ip_cidr_range is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_cidr_range'")
@@ -823,6 +884,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allocatable_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enable_enhanced_ipv4_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
             ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -843,6 +905,12 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enable_enhanced_ipv4_allocation: (Output)
                Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
@@ -884,6 +952,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         __props__ = _PublicDelegatedPrefixState.__new__(_PublicDelegatedPrefixState)
 
         __props__.__dict__["allocatable_prefix_length"] = allocatable_prefix_length
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_enhanced_ipv4_allocation"] = enable_enhanced_ipv4_allocation
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
@@ -905,6 +974,19 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         """
         return pulumi.get(self, "allocatable_prefix_length")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

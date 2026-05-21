@@ -68,6 +68,7 @@ type LookupClusterResult struct {
 	BackupCollection               string                                    `pulumi:"backupCollection"`
 	CreateTime                     string                                    `pulumi:"createTime"`
 	CrossClusterReplicationConfigs []GetClusterCrossClusterReplicationConfig `pulumi:"crossClusterReplicationConfigs"`
+	DeletionPolicy                 string                                    `pulumi:"deletionPolicy"`
 	DeletionProtectionEnabled      bool                                      `pulumi:"deletionProtectionEnabled"`
 	DiscoveryEndpoints             []GetClusterDiscoveryEndpoint             `pulumi:"discoveryEndpoints"`
 	EffectiveLabels                map[string]string                         `pulumi:"effectiveLabels"`
@@ -168,6 +169,10 @@ func (o LookupClusterResultOutput) CrossClusterReplicationConfigs() GetClusterCr
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterCrossClusterReplicationConfig {
 		return v.CrossClusterReplicationConfigs
 	}).(GetClusterCrossClusterReplicationConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupClusterResultOutput) DeletionProtectionEnabled() pulumi.BoolOutput {

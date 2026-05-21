@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCertificateMapResult {
     private String createTime;
+    private String deletionPolicy;
     private String description;
     private Map<String,String> effectiveLabels;
     private List<GetCertificateMapGclbTarget> gclbTargets;
@@ -33,6 +34,9 @@ public final class GetCertificateMapResult {
     private GetCertificateMapResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -76,6 +80,7 @@ public final class GetCertificateMapResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private Map<String,String> effectiveLabels;
         private List<GetCertificateMapGclbTarget> gclbTargets;
@@ -89,6 +94,7 @@ public final class GetCertificateMapResult {
         public Builder(GetCertificateMapResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.gclbTargets = defaults.gclbTargets;
@@ -106,6 +112,14 @@ public final class GetCertificateMapResult {
               throw new MissingRequiredPropertyException("GetCertificateMapResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetCertificateMapResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -184,6 +198,7 @@ public final class GetCertificateMapResult {
         public GetCertificateMapResult build() {
             final var _resultValue = new GetCertificateMapResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.gclbTargets = gclbTargets;

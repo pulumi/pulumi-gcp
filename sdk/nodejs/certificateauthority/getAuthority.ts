@@ -67,6 +67,7 @@ export interface GetAuthorityResult {
     readonly certificateAuthorityId?: string;
     readonly configs: outputs.certificateauthority.GetAuthorityConfig[];
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly desiredState: string;
     readonly effectiveLabels: {[key: string]: string};

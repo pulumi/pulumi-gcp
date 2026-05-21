@@ -86,6 +86,13 @@ type AutoscalingPolicy struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrOutput `pulumi:"basicAlgorithm"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -142,6 +149,13 @@ type autoscalingPolicyState struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm *AutoscalingPolicyBasicAlgorithm `pulumi:"basicAlgorithm"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
@@ -166,6 +180,13 @@ type AutoscalingPolicyState struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
@@ -194,6 +215,13 @@ type autoscalingPolicyArgs struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm *AutoscalingPolicyBasicAlgorithm `pulumi:"basicAlgorithm"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
@@ -217,6 +245,13 @@ type AutoscalingPolicyArgs struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
@@ -326,6 +361,16 @@ func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutputWithContext(ctx contex
 // Structure is documented below.
 func (o AutoscalingPolicyOutput) BasicAlgorithm() AutoscalingPolicyBasicAlgorithmPtrOutput {
 	return o.ApplyT(func(v *AutoscalingPolicy) AutoscalingPolicyBasicAlgorithmPtrOutput { return v.BasicAlgorithm }).(AutoscalingPolicyBasicAlgorithmPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AutoscalingPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The  location where the autoscaling policy should reside.

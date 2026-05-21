@@ -755,6 +755,15 @@ export class CxPage extends pulumi.CustomResource {
      */
     declare public readonly advancedSettings: pulumi.Output<outputs.diagflow.CxPageAdvancedSettings | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The human-readable name of the page, unique within the agent.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -837,6 +846,7 @@ export class CxPage extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CxPageState | undefined;
             resourceInputs["advancedSettings"] = state?.advancedSettings;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["entryFulfillment"] = state?.entryFulfillment;
             resourceInputs["eventHandlers"] = state?.eventHandlers;
@@ -853,6 +863,7 @@ export class CxPage extends pulumi.CustomResource {
                 throw new Error("Missing required property 'displayName'");
             }
             resourceInputs["advancedSettings"] = args?.advancedSettings;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["entryFulfillment"] = args?.entryFulfillment;
             resourceInputs["eventHandlers"] = args?.eventHandlers;
@@ -879,6 +890,15 @@ export interface CxPageState {
      * Structure is documented below.
      */
     advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the page, unique within the agent.
      */
@@ -959,6 +979,15 @@ export interface CxPageArgs {
      * Structure is documented below.
      */
     advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the page, unique within the agent.
      */

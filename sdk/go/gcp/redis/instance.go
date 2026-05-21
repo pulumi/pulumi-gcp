@@ -390,6 +390,13 @@ type Instance struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrOutput `pulumi:"customerManagedKey"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a`terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -578,6 +585,13 @@ type instanceState struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey *string `pulumi:"customerManagedKey"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a`terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -728,6 +742,13 @@ type InstanceState struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a`terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -871,6 +892,13 @@ type instanceArgs struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey *string `pulumi:"customerManagedKey"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a`terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -974,6 +1002,13 @@ type InstanceArgs struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a`terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1195,6 +1230,16 @@ func (o InstanceOutput) CurrentLocationId() pulumi.StringOutput {
 // instance. If this is provided, CMEK is enabled.
 func (o InstanceOutput) CustomerManagedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CustomerManagedKey }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the instance.

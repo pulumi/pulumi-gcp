@@ -144,6 +144,15 @@ export class SearchEngine extends pulumi.CustomResource {
      */
     declare public readonly dataStoreIds: pulumi.Output<string[]>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether to disable analytics for searches performed on this engine.
      */
     declare public readonly disableAnalytics: pulumi.Output<boolean | undefined>;
@@ -222,6 +231,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["commonConfig"] = state?.commonConfig;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataStoreIds"] = state?.dataStoreIds;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disableAnalytics"] = state?.disableAnalytics;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["engineId"] = state?.engineId;
@@ -258,6 +268,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["collectionId"] = args?.collectionId;
             resourceInputs["commonConfig"] = args?.commonConfig;
             resourceInputs["dataStoreIds"] = args?.dataStoreIds;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disableAnalytics"] = args?.disableAnalytics;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["engineId"] = args?.engineId;
@@ -303,6 +314,15 @@ export interface SearchEngineState {
      * The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
      */
     dataStoreIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether to disable analytics for searches performed on this engine.
      */
@@ -387,6 +407,15 @@ export interface SearchEngineArgs {
      * The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
      */
     dataStoreIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether to disable analytics for searches performed on this engine.
      */

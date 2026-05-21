@@ -87,11 +87,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.backupdisasterrecovery.RestoreWorkloadArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceTargetEnvironmentArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -228,7 +233,7 @@ import javax.annotation.Nullable;
  *                 .sizeGb(100)
  *                 .type("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard")
  *                 .description("Restored persistent disk from backup")
- *                 .labels(RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
+ *                 .labels(com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
  *                     .environment("production")
  *                     .restored("true")
  *                     .build())
@@ -282,7 +287,7 @@ import javax.annotation.Nullable;
  *                 .sizeGb(200)
  *                 .type("pd-balanced")
  *                 .description("Restored regional persistent disk")
- *                 .labels(RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
+ *                 .labels(com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
  *                     .type("regional")
  *                     .environment("production")
  *                     .build())
@@ -463,6 +468,30 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> deleteRestoredInstance() {
         return Codegen.optional(this.deleteRestoredInstance);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Optional. Disk properties to be overridden during restore.

@@ -113,6 +113,15 @@ export class HostingSite extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly defaultUrl: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Output only. The fully-qualified resource name of the Hosting site, in
      * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
      * Firebase project's
@@ -153,6 +162,7 @@ export class HostingSite extends pulumi.CustomResource {
             const state = argsOrState as HostingSiteState | undefined;
             resourceInputs["appId"] = state?.appId;
             resourceInputs["defaultUrl"] = state?.defaultUrl;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["siteId"] = state?.siteId;
@@ -160,6 +170,7 @@ export class HostingSite extends pulumi.CustomResource {
         } else {
             const args = argsOrState as HostingSiteArgs | undefined;
             resourceInputs["appId"] = args?.appId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["project"] = args?.project;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["defaultUrl"] = undefined /*out*/;
@@ -184,6 +195,15 @@ export interface HostingSiteState {
      * The default URL for the site in the form of https://{name}.web.app
      */
     defaultUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Output only. The fully-qualified resource name of the Hosting site, in
      * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
@@ -220,6 +240,15 @@ export interface HostingSiteArgs {
      * associated with the Hosting site.
      */
     appId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

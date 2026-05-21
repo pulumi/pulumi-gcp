@@ -119,6 +119,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
  * import com.pulumi.gcp.storage.inputs.BucketObjectContextsArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketObjectContextsCustomArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -306,18 +307,28 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customerEncryption);
     }
     /**
-     * When set to ABANDON, the object won&#39;t be deleted from storage bucket. Instead, it will only be removed from terraform&#39;s state file.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
-     * @return When set to ABANDON, the object won&#39;t be deleted from storage bucket. Instead, it will only be removed from terraform&#39;s state file.
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).

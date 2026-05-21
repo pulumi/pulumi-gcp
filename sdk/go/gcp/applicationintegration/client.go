@@ -150,6 +150,13 @@ type Client struct {
 	CloudKmsConfig ClientCloudKmsConfigPtrOutput `pulumi:"cloudKmsConfig"`
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations pulumi.BoolPtrOutput `pulumi:"createSampleIntegrations"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Location in which client needs to be provisioned.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -202,6 +209,13 @@ type clientState struct {
 	CloudKmsConfig *ClientCloudKmsConfig `pulumi:"cloudKmsConfig"`
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations *bool `pulumi:"createSampleIntegrations"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Location in which client needs to be provisioned.
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -222,6 +236,13 @@ type ClientState struct {
 	CloudKmsConfig ClientCloudKmsConfigPtrInput
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Location in which client needs to be provisioned.
 	Location pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -246,6 +267,13 @@ type clientArgs struct {
 	CloudKmsConfig *ClientCloudKmsConfig `pulumi:"cloudKmsConfig"`
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations *bool `pulumi:"createSampleIntegrations"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Location in which client needs to be provisioned.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -267,6 +295,13 @@ type ClientArgs struct {
 	CloudKmsConfig ClientCloudKmsConfigPtrInput
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Location in which client needs to be provisioned.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -377,6 +412,16 @@ func (o ClientOutput) CloudKmsConfig() ClientCloudKmsConfigPtrOutput {
 // Indicates if sample integrations should be created along with provisioning.
 func (o ClientOutput) CreateSampleIntegrations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.CreateSampleIntegrations }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ClientOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Location in which client needs to be provisioned.

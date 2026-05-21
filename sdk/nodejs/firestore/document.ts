@@ -169,6 +169,15 @@ export class Document extends pulumi.CustomResource {
      */
     declare public readonly database: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The client-assigned document ID to use for this document during creation.
      */
     declare public readonly documentId: pulumi.Output<string>;
@@ -211,6 +220,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["collection"] = state?.collection;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["database"] = state?.database;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["documentId"] = state?.documentId;
             resourceInputs["fields"] = state?.fields;
             resourceInputs["name"] = state?.name;
@@ -230,6 +240,7 @@ export class Document extends pulumi.CustomResource {
             }
             resourceInputs["collection"] = args?.collection;
             resourceInputs["database"] = args?.database;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["documentId"] = args?.documentId;
             resourceInputs["fields"] = args?.fields;
             resourceInputs["project"] = args?.project;
@@ -259,6 +270,15 @@ export interface DocumentState {
      * The Firestore database id. Defaults to `"(default)"`.
      */
     database?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The client-assigned document ID to use for this document during creation.
      */
@@ -299,6 +319,15 @@ export interface DocumentArgs {
      * The Firestore database id. Defaults to `"(default)"`.
      */
     database?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The client-assigned document ID to use for this document during creation.
      */

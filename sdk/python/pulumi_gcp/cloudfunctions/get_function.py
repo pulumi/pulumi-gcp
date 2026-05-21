@@ -27,7 +27,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, automatic_update_policies=None, available_memory_mb=None, build_environment_variables=None, build_service_account=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, on_deploy_update_policies=None, project=None, pulumi_labels=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, automatic_update_policies=None, available_memory_mb=None, build_environment_variables=None, build_service_account=None, build_worker_pool=None, deletion_policy=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, on_deploy_update_policies=None, project=None, pulumi_labels=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if automatic_update_policies and not isinstance(automatic_update_policies, list):
             raise TypeError("Expected argument 'automatic_update_policies' to be a list")
         pulumi.set(__self__, "automatic_update_policies", automatic_update_policies)
@@ -43,6 +43,9 @@ class GetFunctionResult:
         if build_worker_pool and not isinstance(build_worker_pool, str):
             raise TypeError("Expected argument 'build_worker_pool' to be a str")
         pulumi.set(__self__, "build_worker_pool", build_worker_pool)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -170,6 +173,11 @@ class GetFunctionResult:
     @pulumi.getter(name="buildWorkerPool")
     def build_worker_pool(self) -> _builtins.str:
         return pulumi.get(self, "build_worker_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -402,6 +410,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             build_environment_variables=self.build_environment_variables,
             build_service_account=self.build_service_account,
             build_worker_pool=self.build_worker_pool,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             docker_registry=self.docker_registry,
             docker_repository=self.docker_repository,
@@ -477,6 +486,7 @@ def get_function(name: Optional[_builtins.str] = None,
         build_environment_variables=pulumi.get(__ret__, 'build_environment_variables'),
         build_service_account=pulumi.get(__ret__, 'build_service_account'),
         build_worker_pool=pulumi.get(__ret__, 'build_worker_pool'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         docker_registry=pulumi.get(__ret__, 'docker_registry'),
         docker_repository=pulumi.get(__ret__, 'docker_repository'),
@@ -549,6 +559,7 @@ def get_function_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         build_environment_variables=pulumi.get(__response__, 'build_environment_variables'),
         build_service_account=pulumi.get(__response__, 'build_service_account'),
         build_worker_pool=pulumi.get(__response__, 'build_worker_pool'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         docker_registry=pulumi.get(__response__, 'docker_registry'),
         docker_repository=pulumi.get(__response__, 'docker_repository'),

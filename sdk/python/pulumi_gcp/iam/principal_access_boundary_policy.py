@@ -25,6 +25,7 @@ class PrincipalAccessBoundaryPolicyArgs:
                  organization: pulumi.Input[_builtins.str],
                  principal_access_boundary_policy_id: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  details: pulumi.Input[Optional['PrincipalAccessBoundaryPolicyDetailsArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -39,6 +40,12 @@ class PrincipalAccessBoundaryPolicyArgs:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['PrincipalAccessBoundaryPolicyDetailsArgs'] details: Principal access boundary policy details
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the principal access boundary policy. Must be less than or equal to 63 characters.
@@ -48,6 +55,8 @@ class PrincipalAccessBoundaryPolicyArgs:
         pulumi.set(__self__, "principal_access_boundary_policy_id", principal_access_boundary_policy_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if details is not None:
             pulumi.set(__self__, "details", details)
         if display_name is not None:
@@ -107,6 +116,23 @@ class PrincipalAccessBoundaryPolicyArgs:
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def details(self) -> pulumi.Input[Optional['PrincipalAccessBoundaryPolicyDetailsArgs']]:
         """
@@ -137,6 +163,7 @@ class _PrincipalAccessBoundaryPolicyState:
     def __init__(__self__, *,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  details: pulumi.Input[Optional['PrincipalAccessBoundaryPolicyDetailsArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -156,6 +183,12 @@ class _PrincipalAccessBoundaryPolicyState:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the principal access boundary policy was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['PrincipalAccessBoundaryPolicyDetailsArgs'] details: Principal access boundary policy details
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the principal access boundary policy. Must be less than or equal to 63 characters.
@@ -174,6 +207,8 @@ class _PrincipalAccessBoundaryPolicyState:
             pulumi.set(__self__, "annotations", annotations)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if details is not None:
             pulumi.set(__self__, "details", details)
         if display_name is not None:
@@ -222,6 +257,23 @@ class _PrincipalAccessBoundaryPolicyState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -354,6 +406,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -436,6 +489,12 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']] details: Principal access boundary policy details
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the principal access boundary policy. Must be less than or equal to 63 characters.
@@ -535,6 +594,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -550,6 +610,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
             __props__ = PrincipalAccessBoundaryPolicyArgs.__new__(PrincipalAccessBoundaryPolicyArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["details"] = details
             __props__.__dict__["display_name"] = display_name
             if location is None and not opts.urn:
@@ -579,6 +640,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -602,6 +664,12 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the principal access boundary policy was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']] details: Principal access boundary policy details
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the principal access boundary policy. Must be less than or equal to 63 characters.
@@ -622,6 +690,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["details"] = details
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -653,6 +722,19 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         Output only. The time when the principal access boundary policy was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

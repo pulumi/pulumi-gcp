@@ -76,6 +76,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string> AttachmentTarget { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The firewall policy of the resource.
         /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
         /// firewall policy with the flag to override the existing attachmentTarget's policy association.
@@ -150,6 +161,17 @@ namespace Pulumi.Gcp.Compute
         public Input<string> AttachmentTarget { get; set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The firewall policy of the resource.
         /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
         /// firewall policy with the flag to override the existing attachmentTarget's policy association.
@@ -178,6 +200,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("attachmentTarget")]
         public Input<string>? AttachmentTarget { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The firewall policy of the resource.

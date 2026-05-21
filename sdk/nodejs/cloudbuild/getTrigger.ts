@@ -63,6 +63,7 @@ export interface GetTriggerResult {
     readonly bitbucketServerTriggerConfigs: outputs.cloudbuild.GetTriggerBitbucketServerTriggerConfig[];
     readonly builds: outputs.cloudbuild.GetTriggerBuild[];
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly developerConnectEventConfigs: outputs.cloudbuild.GetTriggerDeveloperConnectEventConfig[];
     readonly disabled: boolean;

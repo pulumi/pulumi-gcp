@@ -57,6 +57,7 @@ export interface GetDnsAuthorizationArgs {
  * A collection of values returned by getDnsAuthorization.
  */
 export interface GetDnsAuthorizationResult {
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly dnsResourceRecords: outputs.certificatemanager.GetDnsAuthorizationDnsResourceRecord[];
     readonly domain: string;

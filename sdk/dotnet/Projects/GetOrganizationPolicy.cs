@@ -152,6 +152,7 @@ namespace Pulumi.Gcp.Projects
     {
         public readonly ImmutableArray<Outputs.GetOrganizationPolicyBooleanPolicyResult> BooleanPolicies;
         public readonly string Constraint;
+        public readonly string DeletionPolicy;
         public readonly string Etag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -169,6 +170,8 @@ namespace Pulumi.Gcp.Projects
 
             string constraint,
 
+            string deletionPolicy,
+
             string etag,
 
             string id,
@@ -185,6 +188,7 @@ namespace Pulumi.Gcp.Projects
         {
             BooleanPolicies = booleanPolicies;
             Constraint = constraint;
+            DeletionPolicy = deletionPolicy;
             Etag = etag;
             Id = id;
             ListPolicies = listPolicies;

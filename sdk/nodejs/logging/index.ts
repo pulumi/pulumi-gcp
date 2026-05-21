@@ -45,6 +45,11 @@ export const getFolderSettings: typeof import("./getFolderSettings").getFolderSe
 export const getFolderSettingsOutput: typeof import("./getFolderSettings").getFolderSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getFolderSettings","getFolderSettingsOutput"], () => require("./getFolderSettings"));
 
+export { GetLogViewArgs, GetLogViewResult, GetLogViewOutputArgs } from "./getLogView";
+export const getLogView: typeof import("./getLogView").getLogView = null as any;
+export const getLogViewOutput: typeof import("./getLogView").getLogViewOutput = null as any;
+utilities.lazyLoad(exports, ["getLogView","getLogViewOutput"], () => require("./getLogView"));
+
 export { GetLogViewIamPolicyArgs, GetLogViewIamPolicyResult, GetLogViewIamPolicyOutputArgs } from "./getLogViewIamPolicy";
 export const getLogViewIamPolicy: typeof import("./getLogViewIamPolicy").getLogViewIamPolicy = null as any;
 export const getLogViewIamPolicyOutput: typeof import("./getLogViewIamPolicy").getLogViewIamPolicyOutput = null as any;

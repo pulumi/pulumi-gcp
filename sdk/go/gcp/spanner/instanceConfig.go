@@ -47,6 +47,13 @@ type InstanceConfig struct {
 	BaseConfig pulumi.StringOutput `pulumi:"baseConfig"`
 	// Output only. Whether this instance config is a Google or User Managed Configuration.
 	ConfigType pulumi.StringOutput `pulumi:"configType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of this instance configuration as it appears in UIs.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -118,6 +125,13 @@ type instanceConfigState struct {
 	BaseConfig *string `pulumi:"baseConfig"`
 	// Output only. Whether this instance config is a Google or User Managed Configuration.
 	ConfigType *string `pulumi:"configType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of this instance configuration as it appears in UIs.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -149,6 +163,13 @@ type InstanceConfigState struct {
 	BaseConfig pulumi.StringPtrInput
 	// Output only. Whether this instance config is a Google or User Managed Configuration.
 	ConfigType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of this instance configuration as it appears in UIs.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -182,6 +203,13 @@ type instanceConfigArgs struct {
 	// Only set for user managed configurations.
 	// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
 	BaseConfig *string `pulumi:"baseConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of this instance configuration as it appears in UIs.
 	DisplayName string `pulumi:"displayName"`
 	// An object containing a list of "key": value pairs.
@@ -207,6 +235,13 @@ type InstanceConfigArgs struct {
 	// Only set for user managed configurations.
 	// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
 	BaseConfig pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of this instance configuration as it appears in UIs.
 	DisplayName pulumi.StringInput
 	// An object containing a list of "key": value pairs.
@@ -323,6 +358,16 @@ func (o InstanceConfigOutput) BaseConfig() pulumi.StringOutput {
 // Output only. Whether this instance config is a Google or User Managed Configuration.
 func (o InstanceConfigOutput) ConfigType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringOutput { return v.ConfigType }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of this instance configuration as it appears in UIs.

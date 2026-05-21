@@ -14,12 +14,9 @@ import (
 
 // A configuration for a native dashboard within a Google SecOps (Chronicle) instance.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about NativeDashboard, see:
 //
-// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.nativeDashboards)
+// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.nativeDashboards)
 // * How-to Guides
 //   - [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 //
@@ -106,6 +103,13 @@ type NativeDashboard struct {
 	CreateUserId pulumi.StringOutput `pulumi:"createUserId"`
 	// The unique ID of the Dashboard.
 	DashboardId pulumi.StringOutput `pulumi:"dashboardId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the dashboard.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name/title of the dashboard visible to users.
@@ -196,6 +200,13 @@ type nativeDashboardState struct {
 	CreateUserId *string `pulumi:"createUserId"`
 	// The unique ID of the Dashboard.
 	DashboardId *string `pulumi:"dashboardId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the dashboard.
 	Description *string `pulumi:"description"`
 	// The display name/title of the dashboard visible to users.
@@ -248,6 +259,13 @@ type NativeDashboardState struct {
 	CreateUserId pulumi.StringPtrInput
 	// The unique ID of the Dashboard.
 	DashboardId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the dashboard.
 	Description pulumi.StringPtrInput
 	// The display name/title of the dashboard visible to users.
@@ -298,6 +316,13 @@ type nativeDashboardArgs struct {
 	// A list of charts included in the dashboard definition.
 	// Structure is documented below.
 	Charts []NativeDashboardChart `pulumi:"charts"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the dashboard.
 	Description *string `pulumi:"description"`
 	// The display name/title of the dashboard visible to users.
@@ -330,6 +355,13 @@ type NativeDashboardArgs struct {
 	// A list of charts included in the dashboard definition.
 	// Structure is documented below.
 	Charts NativeDashboardChartArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the dashboard.
 	Description pulumi.StringPtrInput
 	// The display name/title of the dashboard visible to users.
@@ -466,6 +498,16 @@ func (o NativeDashboardOutput) CreateUserId() pulumi.StringOutput {
 // The unique ID of the Dashboard.
 func (o NativeDashboardOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NativeDashboard) pulumi.StringOutput { return v.DashboardId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o NativeDashboardOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *NativeDashboard) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the dashboard.

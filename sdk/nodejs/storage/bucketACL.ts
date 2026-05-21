@@ -80,6 +80,15 @@ export class BucketACL extends pulumi.CustomResource {
      */
     declare public readonly defaultAcl: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
     declare public readonly predefinedAcl: pulumi.Output<string | undefined>;
@@ -103,6 +112,7 @@ export class BucketACL extends pulumi.CustomResource {
             const state = argsOrState as BucketACLState | undefined;
             resourceInputs["bucket"] = state?.bucket;
             resourceInputs["defaultAcl"] = state?.defaultAcl;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["predefinedAcl"] = state?.predefinedAcl;
             resourceInputs["roleEntities"] = state?.roleEntities;
         } else {
@@ -112,6 +122,7 @@ export class BucketACL extends pulumi.CustomResource {
             }
             resourceInputs["bucket"] = args?.bucket;
             resourceInputs["defaultAcl"] = args?.defaultAcl;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["predefinedAcl"] = args?.predefinedAcl;
             resourceInputs["roleEntities"] = args?.roleEntities;
         }
@@ -134,6 +145,15 @@ export interface BucketACLState {
      * Configure this ACL to be the default ACL.
      */
     defaultAcl?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
@@ -158,6 +178,15 @@ export interface BucketACLArgs {
      * Configure this ACL to be the default ACL.
      */
     defaultAcl?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */

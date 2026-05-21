@@ -666,6 +666,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         /// </summary>
         [Output("destination")]
@@ -760,6 +771,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Output("phase")]
         public Output<string> Phase { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL to PostgreSQL configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("postgresHomogeneousConfig")]
+        public Output<Outputs.MigrationJobPostgresHomogeneousConfig?> PostgresHomogeneousConfig { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -869,6 +887,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     public sealed class MigrationJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         /// </summary>
         [Input("destination", required: true)]
@@ -946,6 +975,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Input<Inputs.MigrationJobPerformanceConfigArgs>? PerformanceConfig { get; set; }
 
         /// <summary>
+        /// PostgreSQL to PostgreSQL configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("postgresHomogeneousConfig")]
+        public Input<Inputs.MigrationJobPostgresHomogeneousConfigArgs>? PostgresHomogeneousConfig { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -1001,6 +1037,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
@@ -1119,6 +1166,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("phase")]
         public Input<string>? Phase { get; set; }
+
+        /// <summary>
+        /// PostgreSQL to PostgreSQL configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("postgresHomogeneousConfig")]
+        public Input<Inputs.MigrationJobPostgresHomogeneousConfigGetArgs>? PostgresHomogeneousConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

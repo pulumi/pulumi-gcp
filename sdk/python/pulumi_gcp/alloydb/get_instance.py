@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, activation_policy=None, annotations=None, availability_type=None, client_connection_configs=None, cluster=None, cluster_id=None, connection_pool_configs=None, create_time=None, database_flags=None, display_name=None, effective_annotations=None, effective_labels=None, gce_zone=None, id=None, instance_id=None, instance_type=None, ip_address=None, labels=None, location=None, machine_configs=None, name=None, network_configs=None, observability_configs=None, outbound_public_ip_addresses=None, project=None, psc_instance_configs=None, public_ip_address=None, pulumi_labels=None, query_insights_configs=None, read_pool_configs=None, reconciling=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, activation_policy=None, annotations=None, availability_type=None, client_connection_configs=None, cluster=None, cluster_id=None, connection_pool_configs=None, create_time=None, database_flags=None, deletion_policy=None, display_name=None, effective_annotations=None, effective_labels=None, gce_zone=None, id=None, instance_id=None, instance_type=None, ip_address=None, labels=None, location=None, machine_configs=None, name=None, network_configs=None, observability_configs=None, outbound_public_ip_addresses=None, project=None, psc_instance_configs=None, public_ip_address=None, pulumi_labels=None, query_insights_configs=None, read_pool_configs=None, reconciling=None, state=None, uid=None, update_time=None):
         if activation_policy and not isinstance(activation_policy, str):
             raise TypeError("Expected argument 'activation_policy' to be a str")
         pulumi.set(__self__, "activation_policy", activation_policy)
@@ -55,6 +55,9 @@ class GetInstanceResult:
         if database_flags and not isinstance(database_flags, dict):
             raise TypeError("Expected argument 'database_flags' to be a dict")
         pulumi.set(__self__, "database_flags", database_flags)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -175,6 +178,11 @@ class GetInstanceResult:
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "database_flags")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -320,6 +328,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             connection_pool_configs=self.connection_pool_configs,
             create_time=self.create_time,
             database_flags=self.database_flags,
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             effective_annotations=self.effective_annotations,
             effective_labels=self.effective_labels,
@@ -392,6 +401,7 @@ def get_instance(cluster_id: Optional[_builtins.str] = None,
         connection_pool_configs=pulumi.get(__ret__, 'connection_pool_configs'),
         create_time=pulumi.get(__ret__, 'create_time'),
         database_flags=pulumi.get(__ret__, 'database_flags'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -461,6 +471,7 @@ def get_instance_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None
         connection_pool_configs=pulumi.get(__response__, 'connection_pool_configs'),
         create_time=pulumi.get(__response__, 'create_time'),
         database_flags=pulumi.get(__response__, 'database_flags'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_annotations=pulumi.get(__response__, 'effective_annotations'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

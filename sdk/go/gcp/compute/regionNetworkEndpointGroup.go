@@ -552,6 +552,13 @@ type RegionNetworkEndpointGroup struct {
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun RegionNetworkEndpointGroupCloudRunPtrOutput `pulumi:"cloudRun"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -640,6 +647,13 @@ type regionNetworkEndpointGroupState struct {
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun *RegionNetworkEndpointGroupCloudRun `pulumi:"cloudRun"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
@@ -696,6 +710,13 @@ type RegionNetworkEndpointGroupState struct {
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun RegionNetworkEndpointGroupCloudRunPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
@@ -756,6 +777,13 @@ type regionNetworkEndpointGroupArgs struct {
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun *RegionNetworkEndpointGroupCloudRun `pulumi:"cloudRun"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
@@ -811,6 +839,13 @@ type RegionNetworkEndpointGroupArgs struct {
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun RegionNetworkEndpointGroupCloudRunPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
@@ -960,6 +995,16 @@ func (o RegionNetworkEndpointGroupOutput) CloudFunction() RegionNetworkEndpointG
 // Structure is documented below.
 func (o RegionNetworkEndpointGroupOutput) CloudRun() RegionNetworkEndpointGroupCloudRunPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) RegionNetworkEndpointGroupCloudRunPtrOutput { return v.CloudRun }).(RegionNetworkEndpointGroupCloudRunPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionNetworkEndpointGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource. Provide this property when

@@ -1014,6 +1014,17 @@ namespace Pulumi.Gcp.Redis
         public Output<Outputs.ClusterCrossClusterReplicationConfig> CrossClusterReplicationConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Indicates if the cluster is deletion protected or not.
         /// If the value if set to true, any delete cluster operation will fail.
         /// Default value is true.
@@ -1108,7 +1119,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The nodeType for the Redis cluster.
         /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
@@ -1320,6 +1331,17 @@ namespace Pulumi.Gcp.Redis
         public Input<Inputs.ClusterCrossClusterReplicationConfigArgs>? CrossClusterReplicationConfig { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Optional. Indicates if the cluster is deletion protected or not.
         /// If the value if set to true, any delete cluster operation will fail.
         /// Default value is true.
@@ -1385,7 +1407,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The nodeType for the Redis cluster.
         /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -1541,6 +1563,17 @@ namespace Pulumi.Gcp.Redis
         public Input<Inputs.ClusterCrossClusterReplicationConfigGetArgs>? CrossClusterReplicationConfig { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Optional. Indicates if the cluster is deletion protected or not.
         /// If the value if set to true, any delete cluster operation will fail.
         /// Default value is true.
@@ -1669,7 +1702,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The nodeType for the Redis cluster.
         /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }

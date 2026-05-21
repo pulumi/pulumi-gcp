@@ -23,6 +23,7 @@ class SecurityGatewayApplicationArgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[_builtins.str],
                  security_gateway_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +37,12 @@ class SecurityGatewayApplicationArgs:
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]] endpoint_matchers: Required. Endpoint matchers associated with an application.
@@ -59,6 +66,8 @@ class SecurityGatewayApplicationArgs:
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "security_gateway_id", security_gateway_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if endpoint_matchers is not None:
@@ -96,6 +105,23 @@ class SecurityGatewayApplicationArgs:
     @security_gateway_id.setter
     def security_gateway_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "security_gateway_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -178,6 +204,7 @@ class _SecurityGatewayApplicationState:
     def __init__(__self__, *,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -194,6 +221,12 @@ class _SecurityGatewayApplicationState:
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
         :param pulumi.Input[_builtins.str] create_time: Output only. Timestamp when the resource was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]] endpoint_matchers: Required. Endpoint matchers associated with an application.
@@ -222,6 +255,8 @@ class _SecurityGatewayApplicationState:
             pulumi.set(__self__, "application_id", application_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if endpoint_matchers is not None:
@@ -265,6 +300,23 @@ class _SecurityGatewayApplicationState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -385,6 +437,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -551,6 +604,12 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]] endpoint_matchers: Required. Endpoint matchers associated with an application.
@@ -748,6 +807,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -766,6 +826,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["endpoint_matchers"] = endpoint_matchers
             __props__.__dict__["project"] = project
@@ -789,6 +850,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -809,6 +871,12 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
         :param pulumi.Input[_builtins.str] create_time: Output only. Timestamp when the resource was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]] endpoint_matchers: Required. Endpoint matchers associated with an application.
@@ -839,6 +907,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
 
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["endpoint_matchers"] = endpoint_matchers
         __props__.__dict__["name"] = name
@@ -867,6 +936,19 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         Output only. Timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

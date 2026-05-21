@@ -35,9 +35,16 @@ type Api struct {
 	pulumi.CustomResourceState
 
 	// Path to the config zip bundle.
+	ConfigBundle pulumi.StringOutput `pulumi:"configBundle"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle pulumi.StringOutput `pulumi:"configBundle"`
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this API proxy.
@@ -92,9 +99,16 @@ func GetApi(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Api resources.
 type apiState struct {
 	// Path to the config zip bundle.
+	ConfigBundle *string `pulumi:"configBundle"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle *string `pulumi:"configBundle"`
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this API proxy.
@@ -114,9 +128,16 @@ type apiState struct {
 
 type ApiState struct {
 	// Path to the config zip bundle.
+	ConfigBundle pulumi.StringPtrInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle pulumi.StringPtrInput
+	DeletionPolicy pulumi.StringPtrInput
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
 	// The id of the most recently created revision for this API proxy.
@@ -140,9 +161,16 @@ func (ApiState) ElementType() reflect.Type {
 
 type apiArgs struct {
 	// Path to the config zip bundle.
+	ConfigBundle string `pulumi:"configBundle"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle string `pulumi:"configBundle"`
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The ID of the API proxy.
@@ -154,9 +182,16 @@ type apiArgs struct {
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
 	// Path to the config zip bundle.
+	ConfigBundle pulumi.StringInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle pulumi.StringInput
+	DeletionPolicy pulumi.StringPtrInput
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
 	// The ID of the API proxy.
@@ -253,10 +288,20 @@ func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 }
 
 // Path to the config zip bundle.
-//
-// ***
 func (o ApiOutput) ConfigBundle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ConfigBundle }).(pulumi.StringOutput)
+}
+
+// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+//
+// ***
+func (o ApiOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.

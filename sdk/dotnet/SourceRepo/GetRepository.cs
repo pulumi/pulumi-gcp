@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.SourceRepo
     public sealed class GetRepositoryResult
     {
         public readonly bool CreateIgnoreAlreadyExists;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -156,6 +157,8 @@ namespace Pulumi.Gcp.SourceRepo
         private GetRepositoryResult(
             bool createIgnoreAlreadyExists,
 
+            string deletionPolicy,
+
             string id,
 
             string name,
@@ -169,6 +172,7 @@ namespace Pulumi.Gcp.SourceRepo
             string url)
         {
             CreateIgnoreAlreadyExists = createIgnoreAlreadyExists;
+            DeletionPolicy = deletionPolicy;
             Id = id;
             Name = name;
             Project = project;

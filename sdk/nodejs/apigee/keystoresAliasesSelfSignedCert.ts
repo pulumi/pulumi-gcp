@@ -167,6 +167,15 @@ export class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly certsInfos: pulumi.Output<outputs.apigee.KeystoresAliasesSelfSignedCertCertsInfo[]>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The Apigee environment name
      */
     declare public readonly environment: pulumi.Output<string>;
@@ -217,6 +226,7 @@ export class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
             resourceInputs["alias"] = state?.alias;
             resourceInputs["certValidityInDays"] = state?.certValidityInDays;
             resourceInputs["certsInfos"] = state?.certsInfos;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["keySize"] = state?.keySize;
             resourceInputs["keystore"] = state?.keystore;
@@ -247,6 +257,7 @@ export class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
             }
             resourceInputs["alias"] = args?.alias;
             resourceInputs["certValidityInDays"] = args?.certValidityInDays;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["keySize"] = args?.keySize;
             resourceInputs["keystore"] = args?.keystore;
@@ -281,6 +292,15 @@ export interface KeystoresAliasesSelfSignedCertState {
      * Structure is documented below.
      */
     certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertCertsInfo>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The Apigee environment name
      */
@@ -331,6 +351,15 @@ export interface KeystoresAliasesSelfSignedCertArgs {
      * Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
      */
     certValidityInDays?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The Apigee environment name
      */

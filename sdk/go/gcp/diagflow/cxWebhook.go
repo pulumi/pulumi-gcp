@@ -440,6 +440,13 @@ import (
 type CxWebhook struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
@@ -501,6 +508,13 @@ func GetCxWebhook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CxWebhook resources.
 type cxWebhookState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Indicates whether the webhook is disabled.
 	Disabled *bool `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
@@ -530,6 +544,13 @@ type cxWebhookState struct {
 }
 
 type CxWebhookState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolPtrInput
 	// The human-readable name of the webhook, unique within the agent.
@@ -563,6 +584,13 @@ func (CxWebhookState) ElementType() reflect.Type {
 }
 
 type cxWebhookArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Indicates whether the webhook is disabled.
 	Disabled *bool `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
@@ -588,6 +616,13 @@ type cxWebhookArgs struct {
 
 // The set of arguments for constructing a CxWebhook resource.
 type CxWebhookArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolPtrInput
 	// The human-readable name of the webhook, unique within the agent.
@@ -696,6 +731,16 @@ func (o CxWebhookOutput) ToCxWebhookOutput() CxWebhookOutput {
 
 func (o CxWebhookOutput) ToCxWebhookOutputWithContext(ctx context.Context) CxWebhookOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CxWebhookOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CxWebhook) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Indicates whether the webhook is disabled.

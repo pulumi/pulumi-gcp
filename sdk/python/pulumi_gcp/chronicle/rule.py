@@ -38,9 +38,16 @@ class RuleArgs:
                If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
                will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
                rule has no associated retrohunts, including completed retrohunts, and no
-               associated detections. Regardless of this field's value, the rule
-               deployment associated with this rule will also be deleted.
-               Possible values: DEFAULT, FORCE
+               associated detections. Regardless of being set to "FORCE" the rule
+               deployment associated with this rule will also be deleted if deletion is successful.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[_builtins.str] etag: The etag for this rule.
                If this is provided on update, the request will succeed if and only if it
                matches the server-computed value, and will fail with an ABORTED error
@@ -106,9 +113,16 @@ class RuleArgs:
         If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
         will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
         rule has no associated retrohunts, including completed retrohunts, and no
-        associated detections. Regardless of this field's value, the rule
-        deployment associated with this rule will also be deleted.
-        Possible values: DEFAULT, FORCE
+        associated detections. Regardless of being set to "FORCE" the rule
+        deployment associated with this rule will also be deleted if deletion is successful.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -239,9 +253,16 @@ class _RuleState:
                If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
                will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
                rule has no associated retrohunts, including completed retrohunts, and no
-               associated detections. Regardless of this field's value, the rule
-               deployment associated with this rule will also be deleted.
-               Possible values: DEFAULT, FORCE
+               associated detections. Regardless of being set to "FORCE" the rule
+               deployment associated with this rule will also be deleted if deletion is successful.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[_builtins.str] display_name: The display name of the severity level. Extracted from the meta section of
                the rule text.
         :param pulumi.Input[_builtins.str] etag: The etag for this rule.
@@ -428,9 +449,16 @@ class _RuleState:
         If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
         will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
         rule has no associated retrohunts, including completed retrohunts, and no
-        associated detections. Regardless of this field's value, the rule
-        deployment associated with this rule will also be deleted.
-        Possible values: DEFAULT, FORCE
+        associated detections. Regardless of being set to "FORCE" the rule
+        deployment associated with this rule will also be deleted if deletion is successful.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -756,9 +784,16 @@ class Rule(pulumi.CustomResource):
                If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
                will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
                rule has no associated retrohunts, including completed retrohunts, and no
-               associated detections. Regardless of this field's value, the rule
-               deployment associated with this rule will also be deleted.
-               Possible values: DEFAULT, FORCE
+               associated detections. Regardless of being set to "FORCE" the rule
+               deployment associated with this rule will also be deleted if deletion is successful.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[_builtins.str] etag: The etag for this rule.
                If this is provided on update, the request will succeed if and only if it
                matches the server-computed value, and will fail with an ABORTED error
@@ -978,9 +1013,16 @@ class Rule(pulumi.CustomResource):
                If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
                will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
                rule has no associated retrohunts, including completed retrohunts, and no
-               associated detections. Regardless of this field's value, the rule
-               deployment associated with this rule will also be deleted.
-               Possible values: DEFAULT, FORCE
+               associated detections. Regardless of being set to "FORCE" the rule
+               deployment associated with this rule will also be deleted if deletion is successful.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[_builtins.str] display_name: The display name of the severity level. Extracted from the meta section of
                the rule text.
         :param pulumi.Input[_builtins.str] etag: The etag for this rule.
@@ -1119,15 +1161,22 @@ class Rule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
         Policy to determine if the rule should be deleted forcefully.
         If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
         will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
         rule has no associated retrohunts, including completed retrohunts, and no
-        associated detections. Regardless of this field's value, the rule
-        deployment associated with this rule will also be deleted.
-        Possible values: DEFAULT, FORCE
+        associated detections. Regardless of being set to "FORCE" the rule
+        deployment associated with this rule will also be deleted if deletion is successful.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         """
         return pulumi.get(self, "deletion_policy")
 

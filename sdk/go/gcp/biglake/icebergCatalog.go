@@ -136,6 +136,13 @@ type IcebergCatalog struct {
 	CredentialMode pulumi.StringOutput `pulumi:"credentialMode"`
 	// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
 	DefaultLocation pulumi.StringOutput `pulumi:"defaultLocation"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the IcebergCatalog.
 	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
 	// exact same value of the GCS bucket's name. For example, for a bucket:
@@ -202,6 +209,13 @@ type icebergCatalogState struct {
 	CredentialMode *string `pulumi:"credentialMode"`
 	// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
 	DefaultLocation *string `pulumi:"defaultLocation"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the IcebergCatalog.
 	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
 	// exact same value of the GCS bucket's name. For example, for a bucket:
@@ -236,6 +250,13 @@ type IcebergCatalogState struct {
 	CredentialMode pulumi.StringPtrInput
 	// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
 	DefaultLocation pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the IcebergCatalog.
 	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
 	// exact same value of the GCS bucket's name. For example, for a bucket:
@@ -268,6 +289,13 @@ type icebergCatalogArgs struct {
 	// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
 	// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
 	CredentialMode *string `pulumi:"credentialMode"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the IcebergCatalog.
 	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
 	// exact same value of the GCS bucket's name. For example, for a bucket:
@@ -290,6 +318,13 @@ type IcebergCatalogArgs struct {
 	// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
 	// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
 	CredentialMode pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the IcebergCatalog.
 	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
 	// exact same value of the GCS bucket's name. For example, for a bucket:
@@ -416,6 +451,16 @@ func (o IcebergCatalogOutput) CredentialMode() pulumi.StringOutput {
 // Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
 func (o IcebergCatalogOutput) DefaultLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringOutput { return v.DefaultLocation }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o IcebergCatalogOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of the IcebergCatalog.

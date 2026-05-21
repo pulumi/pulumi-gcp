@@ -560,6 +560,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.defaultLabels);
     }
 
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
     @Import(name="deploymentManagerCustomEndpoint")
     private @Nullable Output<String> deploymentManagerCustomEndpoint;
 
@@ -1571,6 +1578,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dataprocMetastoreCustomEndpoint = $.dataprocMetastoreCustomEndpoint;
         this.datastreamCustomEndpoint = $.datastreamCustomEndpoint;
         this.defaultLabels = $.defaultLabels;
+        this.deletionPolicy = $.deletionPolicy;
         this.deploymentManagerCustomEndpoint = $.deploymentManagerCustomEndpoint;
         this.developerConnectCustomEndpoint = $.developerConnectCustomEndpoint;
         this.dialogflowCustomEndpoint = $.dialogflowCustomEndpoint;
@@ -2415,6 +2423,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder defaultLabels(Map<String,String> defaultLabels) {
             return defaultLabels(Output.of(defaultLabels));
+        }
+
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         public Builder deploymentManagerCustomEndpoint(@Nullable Output<String> deploymentManagerCustomEndpoint) {

@@ -128,6 +128,13 @@ type AiTensorboard struct {
 	BlobStoragePathPrefix pulumi.StringOutput `pulumi:"blobStoragePathPrefix"`
 	// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of this Tensorboard.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User provided name of this Tensorboard.
@@ -200,6 +207,13 @@ type aiTensorboardState struct {
 	BlobStoragePathPrefix *string `pulumi:"blobStoragePathPrefix"`
 	// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of this Tensorboard.
 	Description *string `pulumi:"description"`
 	// User provided name of this Tensorboard.
@@ -235,6 +249,13 @@ type AiTensorboardState struct {
 	BlobStoragePathPrefix pulumi.StringPtrInput
 	// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of this Tensorboard.
 	Description pulumi.StringPtrInput
 	// User provided name of this Tensorboard.
@@ -270,6 +291,13 @@ func (AiTensorboardState) ElementType() reflect.Type {
 }
 
 type aiTensorboardArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of this Tensorboard.
 	Description *string `pulumi:"description"`
 	// User provided name of this Tensorboard.
@@ -291,6 +319,13 @@ type aiTensorboardArgs struct {
 
 // The set of arguments for constructing a AiTensorboard resource.
 type AiTensorboardArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of this Tensorboard.
 	Description pulumi.StringPtrInput
 	// User provided name of this Tensorboard.
@@ -405,6 +440,16 @@ func (o AiTensorboardOutput) BlobStoragePathPrefix() pulumi.StringOutput {
 // The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiTensorboardOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AiTensorboardOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiTensorboard) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of this Tensorboard.

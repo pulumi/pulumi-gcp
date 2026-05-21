@@ -107,6 +107,15 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The name of the instance group.
      */
     declare public readonly group: pulumi.Output<string>;
@@ -142,6 +151,7 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGroupNamedPortState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["group"] = state?.group;
             resourceInputs["name"] = state?.name;
             resourceInputs["port"] = state?.port;
@@ -155,6 +165,7 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
             if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["group"] = args?.group;
             resourceInputs["name"] = args?.name;
             resourceInputs["port"] = args?.port;
@@ -170,6 +181,15 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceGroupNamedPort resources.
  */
 export interface InstanceGroupNamedPortState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance group.
      */
@@ -198,6 +218,15 @@ export interface InstanceGroupNamedPortState {
  * The set of arguments for constructing a InstanceGroupNamedPort resource.
  */
 export interface InstanceGroupNamedPortArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance group.
      */

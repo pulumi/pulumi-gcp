@@ -23,6 +23,7 @@ class GlobalForwardingRuleArgs:
     def __init__(__self__, *,
                  target: pulumi.Input[_builtins.str],
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
@@ -56,6 +57,12 @@ class GlobalForwardingRuleArgs:
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         :param pulumi.Input[_builtins.bool] allow_psc_global_access: (Optional, Beta)
                This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[_builtins.str] external_managed_backend_bucket_migration_state: Specifies the canary migration state for the backend buckets attached to this forwarding rule.
@@ -204,6 +211,8 @@ class GlobalForwardingRuleArgs:
         pulumi.set(__self__, "target", target)
         if allow_psc_global_access is not None:
             pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if external_managed_backend_bucket_migration_state is not None:
@@ -274,6 +283,23 @@ class GlobalForwardingRuleArgs:
     @allow_psc_global_access.setter
     def allow_psc_global_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_psc_global_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -623,6 +649,7 @@ class _GlobalForwardingRuleState:
     def __init__(__self__, *,
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -655,6 +682,12 @@ class _GlobalForwardingRuleState:
         :param pulumi.Input[_builtins.bool] allow_psc_global_access: (Optional, Beta)
                This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[_builtins.str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -823,6 +856,8 @@ class _GlobalForwardingRuleState:
             pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
         if base_forwarding_rule is not None:
             pulumi.set(__self__, "base_forwarding_rule", base_forwarding_rule)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -900,6 +935,23 @@ class _GlobalForwardingRuleState:
     @base_forwarding_rule.setter
     def base_forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_forwarding_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1358,6 +1410,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1749,6 +1802,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_psc_global_access: (Optional, Beta)
                This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[_builtins.str] external_managed_backend_bucket_migration_state: Specifies the canary migration state for the backend buckets attached to this forwarding rule.
@@ -2293,6 +2352,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
@@ -2322,6 +2382,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__ = GlobalForwardingRuleArgs.__new__(GlobalForwardingRuleArgs)
 
             __props__.__dict__["allow_psc_global_access"] = allow_psc_global_access
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["external_managed_backend_bucket_migration_state"] = external_managed_backend_bucket_migration_state
             __props__.__dict__["external_managed_backend_bucket_migration_testing_percentage"] = external_managed_backend_bucket_migration_testing_percentage
@@ -2365,6 +2426,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
             base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2401,6 +2463,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_psc_global_access: (Optional, Beta)
                This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[_builtins.str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -2571,6 +2639,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         __props__.__dict__["allow_psc_global_access"] = allow_psc_global_access
         __props__.__dict__["base_forwarding_rule"] = base_forwarding_rule
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["external_managed_backend_bucket_migration_state"] = external_managed_backend_bucket_migration_state
@@ -2615,6 +2684,19 @@ class GlobalForwardingRule(pulumi.CustomResource):
         [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         """
         return pulumi.get(self, "base_forwarding_rule")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

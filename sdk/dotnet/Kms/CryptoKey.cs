@@ -107,6 +107,17 @@ namespace Pulumi.Gcp.Kms
         public Output<string> CryptoKeyBackend { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
         /// If not specified at creation time, the default duration is 30 days.
         /// </summary>
@@ -270,6 +281,17 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? CryptoKeyBackend { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
         /// If not specified at creation time, the default duration is 30 days.
         /// </summary>
@@ -373,6 +395,17 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Input("cryptoKeyBackend")]
         public Input<string>? CryptoKeyBackend { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.

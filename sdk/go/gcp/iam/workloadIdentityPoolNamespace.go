@@ -111,6 +111,13 @@ import (
 type WorkloadIdentityPoolNamespace struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the namespace. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
@@ -184,6 +191,13 @@ func GetWorkloadIdentityPoolNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkloadIdentityPoolNamespace resources.
 type workloadIdentityPoolNamespaceState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the namespace. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
@@ -222,6 +236,13 @@ type workloadIdentityPoolNamespaceState struct {
 }
 
 type WorkloadIdentityPoolNamespaceState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the namespace. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
@@ -264,6 +285,13 @@ func (WorkloadIdentityPoolNamespaceState) ElementType() reflect.Type {
 }
 
 type workloadIdentityPoolNamespaceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the namespace. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
@@ -289,6 +317,13 @@ type workloadIdentityPoolNamespaceArgs struct {
 
 // The set of arguments for constructing a WorkloadIdentityPoolNamespace resource.
 type WorkloadIdentityPoolNamespaceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the namespace. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
@@ -397,6 +432,16 @@ func (o WorkloadIdentityPoolNamespaceOutput) ToWorkloadIdentityPoolNamespaceOutp
 
 func (o WorkloadIdentityPoolNamespaceOutput) ToWorkloadIdentityPoolNamespaceOutputWithContext(ctx context.Context) WorkloadIdentityPoolNamespaceOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkloadIdentityPoolNamespaceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolNamespace) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the namespace. Cannot exceed 256 characters.

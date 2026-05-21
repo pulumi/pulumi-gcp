@@ -25,6 +25,7 @@ class FrameworkArgs:
                  location: pulumi.Input[_builtins.str],
                  organization: pulumi.Input[_builtins.str],
                  cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -38,6 +39,12 @@ class FrameworkArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]] cloud_control_details: The details of the cloud controls directly added without any grouping in
                the framework.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the framework. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: Display name of the framework. The maximum length is 200 characters.
         """
@@ -46,6 +53,8 @@ class FrameworkArgs:
         pulumi.set(__self__, "organization", organization)
         if cloud_control_details is not None:
             pulumi.set(__self__, "cloud_control_details", cloud_control_details)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -104,6 +113,23 @@ class FrameworkArgs:
         pulumi.set(self, "cloud_control_details", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -133,6 +159,7 @@ class _FrameworkState:
     def __init__(__self__, *,
                  categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  framework_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -151,6 +178,12 @@ class _FrameworkState:
         :param pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]] cloud_control_details: The details of the cloud controls directly added without any grouping in
                the framework.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the framework. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: Display name of the framework. The maximum length is 200 characters.
         :param pulumi.Input[_builtins.str] framework_id: ID of the framework.
@@ -174,6 +207,8 @@ class _FrameworkState:
             pulumi.set(__self__, "categories", categories)
         if cloud_control_details is not None:
             pulumi.set(__self__, "cloud_control_details", cloud_control_details)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -222,6 +257,23 @@ class _FrameworkState:
     @cloud_control_details.setter
     def cloud_control_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]]):
         pulumi.set(self, "cloud_control_details", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -370,6 +422,7 @@ class Framework(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  framework_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -466,6 +519,12 @@ class Framework(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]] cloud_control_details: The details of the cloud controls directly added without any grouping in
                the framework.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the framework. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: Display name of the framework. The maximum length is 200 characters.
         :param pulumi.Input[_builtins.str] framework_id: ID of the framework.
@@ -581,6 +640,7 @@ class Framework(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  framework_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -596,6 +656,7 @@ class Framework(pulumi.CustomResource):
             __props__ = FrameworkArgs.__new__(FrameworkArgs)
 
             __props__.__dict__["cloud_control_details"] = cloud_control_details
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if framework_id is None and not opts.urn:
@@ -626,6 +687,7 @@ class Framework(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             framework_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -648,6 +710,12 @@ class Framework(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]] cloud_control_details: The details of the cloud controls directly added without any grouping in
                the framework.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the framework. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: Display name of the framework. The maximum length is 200 characters.
         :param pulumi.Input[_builtins.str] framework_id: ID of the framework.
@@ -673,6 +741,7 @@ class Framework(pulumi.CustomResource):
 
         __props__.__dict__["categories"] = categories
         __props__.__dict__["cloud_control_details"] = cloud_control_details
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["framework_id"] = framework_id
@@ -703,6 +772,19 @@ class Framework(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_control_details")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -1829,12 +1829,36 @@ class ClusterStorageResourceConfigNewBucket(dict):
 
 @pulumi.output_type
 class ClusterStorageResourceConfigNewBucketAutoclass(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "terminalStorageClass":
+            suggest = "terminal_storage_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterStorageResourceConfigNewBucketAutoclass. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterStorageResourceConfigNewBucketAutoclass.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterStorageResourceConfigNewBucketAutoclass.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: _builtins.bool):
+                 enabled: _builtins.bool,
+                 terminal_storage_class: Optional[_builtins.str] = None):
         """
         :param _builtins.bool enabled: Enables Auto-class feature.
+        :param _builtins.str terminal_storage_class: Terminal storage class of the autoclass bucket
+               Possible values:
+               NEARLINE
+               ARCHIVE
         """
         pulumi.set(__self__, "enabled", enabled)
+        if terminal_storage_class is not None:
+            pulumi.set(__self__, "terminal_storage_class", terminal_storage_class)
 
     @_builtins.property
     @pulumi.getter
@@ -1843,6 +1867,17 @@ class ClusterStorageResourceConfigNewBucketAutoclass(dict):
         Enables Auto-class feature.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="terminalStorageClass")
+    def terminal_storage_class(self) -> Optional[_builtins.str]:
+        """
+        Terminal storage class of the autoclass bucket
+        Possible values:
+        NEARLINE
+        ARCHIVE
+        """
+        return pulumi.get(self, "terminal_storage_class")
 
 
 @pulumi.output_type
@@ -2028,6 +2063,8 @@ class ClusterStorageResourceConfigNewLustre(dict):
         suggest = None
         if key == "capacityGb":
             suggest = "capacity_gb"
+        elif key == "perUnitStorageThroughput":
+            suggest = "per_unit_storage_throughput"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterStorageResourceConfigNewLustre. Access the value via the '{suggest}' property getter instead.")
@@ -2044,7 +2081,8 @@ class ClusterStorageResourceConfigNewLustre(dict):
                  capacity_gb: _builtins.str,
                  filesystem: _builtins.str,
                  lustre: _builtins.str,
-                 description: Optional[_builtins.str] = None):
+                 description: Optional[_builtins.str] = None,
+                 per_unit_storage_throughput: Optional[_builtins.str] = None):
         """
         :param _builtins.str capacity_gb: Storage capacity of the instance in gibibytes (GiB). Allowed values are
                between 18000 and 7632000.
@@ -2055,12 +2093,20 @@ class ClusterStorageResourceConfigNewLustre(dict):
                Name of the Managed Lustre instance, in the format
                `projects/{project}/locations/{location}/instances/{instance}`
         :param _builtins.str description: Description of the Managed Lustre instance. Maximum of 2048 characters.
+        :param _builtins.str per_unit_storage_throughput: Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+               500, 1000. See [Performance tiers and maximum storage
+               capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+               for more information.
+               
+               <a name="nested_storage_resources_filestore"></a>The `filestore` block contains:
         """
         pulumi.set(__self__, "capacity_gb", capacity_gb)
         pulumi.set(__self__, "filesystem", filesystem)
         pulumi.set(__self__, "lustre", lustre)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if per_unit_storage_throughput is not None:
+            pulumi.set(__self__, "per_unit_storage_throughput", per_unit_storage_throughput)
 
     @_builtins.property
     @pulumi.getter(name="capacityGb")
@@ -2098,6 +2144,19 @@ class ClusterStorageResourceConfigNewLustre(dict):
         Description of the Managed Lustre instance. Maximum of 2048 characters.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="perUnitStorageThroughput")
+    def per_unit_storage_throughput(self) -> Optional[_builtins.str]:
+        """
+        Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+        500, 1000. See [Performance tiers and maximum storage
+        capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        for more information.
+
+        <a name="nested_storage_resources_filestore"></a>The `filestore` block contains:
+        """
+        return pulumi.get(self, "per_unit_storage_throughput")
 
 
 @pulumi.output_type

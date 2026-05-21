@@ -13,6 +13,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetManagementServerResult {
+    private String deletionPolicy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -27,6 +28,9 @@ public final class GetManagementServerResult {
     private String type;
 
     private GetManagementServerResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -65,6 +69,7 @@ public final class GetManagementServerResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String id;
         private String location;
         private List<GetManagementServerManagementUri> managementUris;
@@ -76,6 +81,7 @@ public final class GetManagementServerResult {
         public Builder() {}
         public Builder(GetManagementServerResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.managementUris = defaults.managementUris;
@@ -86,6 +92,14 @@ public final class GetManagementServerResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -158,6 +172,7 @@ public final class GetManagementServerResult {
         }
         public GetManagementServerResult build() {
             final var _resultValue = new GetManagementServerResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.managementUris = managementUris;

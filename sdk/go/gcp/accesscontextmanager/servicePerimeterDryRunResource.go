@@ -106,6 +106,13 @@ type ServicePerimeterDryRunResource struct {
 
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Service Perimeter to add this resource to.
@@ -154,6 +161,13 @@ func GetServicePerimeterDryRunResource(ctx *pulumi.Context,
 type servicePerimeterDryRunResourceState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId *string `pulumi:"accessPolicyId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
 	Etag *string `pulumi:"etag"`
 	// The name of the Service Perimeter to add this resource to.
@@ -167,6 +181,13 @@ type servicePerimeterDryRunResourceState struct {
 type ServicePerimeterDryRunResourceState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
 	Etag pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
@@ -182,6 +203,13 @@ func (ServicePerimeterDryRunResourceState) ElementType() reflect.Type {
 }
 
 type servicePerimeterDryRunResourceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Service Perimeter to add this resource to.
 	PerimeterName string `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
@@ -192,6 +220,13 @@ type servicePerimeterDryRunResourceArgs struct {
 
 // The set of arguments for constructing a ServicePerimeterDryRunResource resource.
 type ServicePerimeterDryRunResourceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
 	PerimeterName pulumi.StringInput
 	// A GCP resource that is inside of the service perimeter.
@@ -290,6 +325,16 @@ func (o ServicePerimeterDryRunResourceOutput) ToServicePerimeterDryRunResourceOu
 // The name of the Access Policy this resource belongs to.
 func (o ServicePerimeterDryRunResourceOutput) AccessPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterDryRunResource) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ServicePerimeterDryRunResourceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunResource) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.

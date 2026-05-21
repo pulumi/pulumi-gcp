@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetSecurityGatewayResult {
     private String createTime;
     private String delegatingServiceAccount;
+    private String deletionPolicy;
     private String displayName;
     private List<String> externalIps;
     private List<GetSecurityGatewayHub> hubs;
@@ -43,6 +44,9 @@ public final class GetSecurityGatewayResult {
     }
     public String delegatingServiceAccount() {
         return this.delegatingServiceAccount;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String displayName() {
         return this.displayName;
@@ -99,6 +103,7 @@ public final class GetSecurityGatewayResult {
     public static final class Builder {
         private String createTime;
         private String delegatingServiceAccount;
+        private String deletionPolicy;
         private String displayName;
         private List<String> externalIps;
         private List<GetSecurityGatewayHub> hubs;
@@ -117,6 +122,7 @@ public final class GetSecurityGatewayResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.delegatingServiceAccount = defaults.delegatingServiceAccount;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.externalIps = defaults.externalIps;
     	      this.hubs = defaults.hubs;
@@ -146,6 +152,14 @@ public final class GetSecurityGatewayResult {
               throw new MissingRequiredPropertyException("GetSecurityGatewayResult", "delegatingServiceAccount");
             }
             this.delegatingServiceAccount = delegatingServiceAccount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGatewayResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -269,6 +283,7 @@ public final class GetSecurityGatewayResult {
             final var _resultValue = new GetSecurityGatewayResult();
             _resultValue.createTime = createTime;
             _resultValue.delegatingServiceAccount = delegatingServiceAccount;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.externalIps = externalIps;
             _resultValue.hubs = hubs;

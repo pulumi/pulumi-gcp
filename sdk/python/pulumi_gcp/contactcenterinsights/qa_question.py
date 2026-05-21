@@ -27,6 +27,7 @@ class QaQuestionArgs:
                  abbreviation: pulumi.Input[Optional[_builtins.str]] = None,
                  answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input['QaQuestionAnswerChoiceArgs']]]] = None,
                  answer_instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  metrics: pulumi.Input[Optional['QaQuestionMetricsArgs']] = None,
                  order: pulumi.Input[Optional[_builtins.int]] = None,
                  predefined_question_config: pulumi.Input[Optional['QaQuestionPredefinedQuestionConfigArgs']] = None,
@@ -47,6 +48,12 @@ class QaQuestionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['QaQuestionAnswerChoiceArgs']]] answer_choices: A list of valid answers to the question, which the LLM must choose from.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] answer_instructions: Instructions describing how to determine the answer.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['QaQuestionMetricsArgs'] metrics: A wrapper representing metrics calculated against a test-set on a LLM that
                was fine tuned for this question.
                Structure is documented below.
@@ -84,6 +91,8 @@ class QaQuestionArgs:
             pulumi.set(__self__, "answer_choices", answer_choices)
         if answer_instructions is not None:
             pulumi.set(__self__, "answer_instructions", answer_instructions)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if metrics is not None:
             pulumi.set(__self__, "metrics", metrics)
         if order is not None:
@@ -176,6 +185,23 @@ class QaQuestionArgs:
     @answer_instructions.setter
     def answer_instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "answer_instructions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -311,6 +337,7 @@ class _QaQuestionState:
                  answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input['QaQuestionAnswerChoiceArgs']]]] = None,
                  answer_instructions: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  metrics: pulumi.Input[Optional['QaQuestionMetricsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -334,6 +361,12 @@ class _QaQuestionState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] answer_instructions: Instructions describing how to determine the answer.
         :param pulumi.Input[_builtins.str] create_time: The time at which this question was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input['QaQuestionMetricsArgs'] metrics: A wrapper representing metrics calculated against a test-set on a LLM that
                was fine tuned for this question.
@@ -377,6 +410,8 @@ class _QaQuestionState:
             pulumi.set(__self__, "answer_instructions", answer_instructions)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if metrics is not None:
@@ -455,6 +490,23 @@ class _QaQuestionState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -654,6 +706,7 @@ class QaQuestion(pulumi.CustomResource):
                  abbreviation: pulumi.Input[Optional[_builtins.str]] = None,
                  answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict']]]]] = None,
                  answer_instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']]] = None,
                  order: pulumi.Input[Optional[_builtins.int]] = None,
@@ -696,6 +749,12 @@ class QaQuestion(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict']]]] answer_choices: A list of valid answers to the question, which the LLM must choose from.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] answer_instructions: Instructions describing how to determine the answer.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']] metrics: A wrapper representing metrics calculated against a test-set on a LLM that
                was fine tuned for this question.
@@ -773,6 +832,7 @@ class QaQuestion(pulumi.CustomResource):
                  abbreviation: pulumi.Input[Optional[_builtins.str]] = None,
                  answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict']]]]] = None,
                  answer_instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']]] = None,
                  order: pulumi.Input[Optional[_builtins.int]] = None,
@@ -797,6 +857,7 @@ class QaQuestion(pulumi.CustomResource):
             __props__.__dict__["abbreviation"] = abbreviation
             __props__.__dict__["answer_choices"] = answer_choices
             __props__.__dict__["answer_instructions"] = answer_instructions
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -832,6 +893,7 @@ class QaQuestion(pulumi.CustomResource):
             answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict']]]]] = None,
             answer_instructions: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -859,6 +921,12 @@ class QaQuestion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] answer_instructions: Instructions describing how to determine the answer.
         :param pulumi.Input[_builtins.str] create_time: The time at which this question was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict']] metrics: A wrapper representing metrics calculated against a test-set on a LLM that
                was fine tuned for this question.
@@ -902,6 +970,7 @@ class QaQuestion(pulumi.CustomResource):
         __props__.__dict__["answer_choices"] = answer_choices
         __props__.__dict__["answer_instructions"] = answer_instructions
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["location"] = location
         __props__.__dict__["metrics"] = metrics
         __props__.__dict__["name"] = name
@@ -951,6 +1020,19 @@ class QaQuestion(pulumi.CustomResource):
         The time at which this question was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -83,6 +83,13 @@ type FirewallPolicyAssociation struct {
 
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringOutput `pulumi:"attachmentTarget"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The firewall policy of the resource.
 	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
@@ -133,6 +140,13 @@ func GetFirewallPolicyAssociation(ctx *pulumi.Context,
 type firewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget *string `pulumi:"attachmentTarget"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The firewall policy of the resource.
 	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
@@ -148,6 +162,13 @@ type firewallPolicyAssociationState struct {
 type FirewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The firewall policy of the resource.
 	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
@@ -167,6 +188,13 @@ func (FirewallPolicyAssociationState) ElementType() reflect.Type {
 type firewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget string `pulumi:"attachmentTarget"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The firewall policy of the resource.
 	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
@@ -181,6 +209,13 @@ type firewallPolicyAssociationArgs struct {
 type FirewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The firewall policy of the resource.
 	// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
@@ -281,6 +316,16 @@ func (o FirewallPolicyAssociationOutput) ToFirewallPolicyAssociationOutputWithCo
 // The target that the firewall policy is attached to.
 func (o FirewallPolicyAssociationOutput) AttachmentTarget() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyAssociation) pulumi.StringOutput { return v.AttachmentTarget }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FirewallPolicyAssociationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallPolicyAssociation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The firewall policy of the resource.

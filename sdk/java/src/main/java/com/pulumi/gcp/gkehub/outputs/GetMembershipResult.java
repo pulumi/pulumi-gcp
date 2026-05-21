@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetMembershipResult {
     private List<GetMembershipAuthority> authorities;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     private List<GetMembershipEndpoint> endpoints;
     /**
@@ -34,6 +35,9 @@ public final class GetMembershipResult {
     private GetMembershipResult() {}
     public List<GetMembershipAuthority> authorities() {
         return this.authorities;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -77,6 +81,7 @@ public final class GetMembershipResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetMembershipAuthority> authorities;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private List<GetMembershipEndpoint> endpoints;
         private String id;
@@ -90,6 +95,7 @@ public final class GetMembershipResult {
         public Builder(GetMembershipResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorities = defaults.authorities;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.endpoints = defaults.endpoints;
     	      this.id = defaults.id;
@@ -111,6 +117,14 @@ public final class GetMembershipResult {
         }
         public Builder authorities(GetMembershipAuthority... authorities) {
             return authorities(List.of(authorities));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetMembershipResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
@@ -188,6 +202,7 @@ public final class GetMembershipResult {
         public GetMembershipResult build() {
             final var _resultValue = new GetMembershipResult();
             _resultValue.authorities = authorities;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.endpoints = endpoints;
             _resultValue.id = id;

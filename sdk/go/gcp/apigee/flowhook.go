@@ -38,6 +38,13 @@ type Flowhook struct {
 
 	// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
 	ContinueOnError pulumi.BoolPtrOutput `pulumi:"continueOnError"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the flow hook.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The resource ID of the environment.
@@ -94,6 +101,13 @@ func GetFlowhook(ctx *pulumi.Context,
 type flowhookState struct {
 	// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
 	ContinueOnError *bool `pulumi:"continueOnError"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the flow hook.
 	Description *string `pulumi:"description"`
 	// The resource ID of the environment.
@@ -109,6 +123,13 @@ type flowhookState struct {
 type FlowhookState struct {
 	// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
 	ContinueOnError pulumi.BoolPtrInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the flow hook.
 	Description pulumi.StringPtrInput
 	// The resource ID of the environment.
@@ -128,6 +149,13 @@ func (FlowhookState) ElementType() reflect.Type {
 type flowhookArgs struct {
 	// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
 	ContinueOnError *bool `pulumi:"continueOnError"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the flow hook.
 	Description *string `pulumi:"description"`
 	// The resource ID of the environment.
@@ -144,6 +172,13 @@ type flowhookArgs struct {
 type FlowhookArgs struct {
 	// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
 	ContinueOnError pulumi.BoolPtrInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the flow hook.
 	Description pulumi.StringPtrInput
 	// The resource ID of the environment.
@@ -246,6 +281,16 @@ func (o FlowhookOutput) ToFlowhookOutputWithContext(ctx context.Context) Flowhoo
 // Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
 func (o FlowhookOutput) ContinueOnError() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Flowhook) pulumi.BoolPtrOutput { return v.ContinueOnError }).(pulumi.BoolPtrOutput)
+}
+
+// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FlowhookOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flowhook) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the flow hook.

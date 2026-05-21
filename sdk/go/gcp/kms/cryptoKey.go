@@ -120,6 +120,13 @@ type CryptoKey struct {
 	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend pulumi.StringOutput `pulumi:"cryptoKeyBackend"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
@@ -216,6 +223,13 @@ type cryptoKeyState struct {
 	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend *string `pulumi:"cryptoKeyBackend"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
@@ -275,6 +289,13 @@ type CryptoKeyState struct {
 	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration pulumi.StringPtrInput
@@ -338,6 +359,13 @@ type cryptoKeyArgs struct {
 	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend *string `pulumi:"cryptoKeyBackend"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
@@ -389,6 +417,13 @@ type CryptoKeyArgs struct {
 	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration pulumi.StringPtrInput
@@ -526,6 +561,16 @@ func (o CryptoKeyOutput) ToCryptoKeyOutputWithContext(ctx context.Context) Crypt
 // The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 func (o CryptoKeyOutput) CryptoKeyBackend() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.CryptoKeyBackend }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CryptoKeyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.

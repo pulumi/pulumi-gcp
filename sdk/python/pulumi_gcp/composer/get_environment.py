@@ -27,10 +27,13 @@ class GetEnvironmentResult:
     """
     A collection of values returned by getEnvironment.
     """
-    def __init__(__self__, configs=None, effective_labels=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, storage_configs=None):
+    def __init__(__self__, configs=None, deletion_policy=None, effective_labels=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, storage_configs=None):
         if configs and not isinstance(configs, list):
             raise TypeError("Expected argument 'configs' to be a list")
         pulumi.set(__self__, "configs", configs)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -63,6 +66,11 @@ class GetEnvironmentResult:
         Configuration parameters for the environment.
         """
         return pulumi.get(self, "configs")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -115,6 +123,7 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             yield self
         return GetEnvironmentResult(
             configs=self.configs,
+            deletion_policy=self.deletion_policy,
             effective_labels=self.effective_labels,
             id=self.id,
             labels=self.labels,
@@ -130,13 +139,14 @@ def get_environment(name: Optional[_builtins.str] = None,
                     region: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnvironmentResult:
     """
-    Provides access to Cloud Composer environment configuration in a region for a given project.
+    Provides access to Managed Airflow environment configuration in a region for a
+    given project.
 
-    To get more information about Composer Environment, see:
+    To get more information about Managed Airflow Environment, see:
 
     * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
 
     ## Example Usage
 
@@ -164,6 +174,7 @@ def get_environment(name: Optional[_builtins.str] = None,
 
     return AwaitableGetEnvironmentResult(
         configs=pulumi.get(__ret__, 'configs'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -177,13 +188,14 @@ def get_environment_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                            region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentResult]:
     """
-    Provides access to Cloud Composer environment configuration in a region for a given project.
+    Provides access to Managed Airflow environment configuration in a region for a
+    given project.
 
-    To get more information about Composer Environment, see:
+    To get more information about Managed Airflow Environment, see:
 
     * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
 
     ## Example Usage
 
@@ -210,6 +222,7 @@ def get_environment_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:composer/getEnvironment:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult)
     return __ret__.apply(lambda __response__: GetEnvironmentResult(
         configs=pulumi.get(__response__, 'configs'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),

@@ -24,6 +24,7 @@ class DeploymentArgs:
                  target: pulumi.Input['DeploymentTargetArgs'],
                  create_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLabelArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,6 +51,12 @@ class DeploymentArgs:
                actually change the deployment, just how it is updated.
                Default value is `DELETE`.
                Possible values are: `ABANDON`, `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
@@ -70,6 +77,8 @@ class DeploymentArgs:
             pulumi.set(__self__, "create_policy", create_policy)
         if delete_policy is not None:
             pulumi.set(__self__, "delete_policy", delete_policy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -131,6 +140,23 @@ class DeploymentArgs:
     @delete_policy.setter
     def delete_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -207,6 +233,7 @@ class _DeploymentState:
     def __init__(__self__, *,
                  create_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLabelArgs']]]] = None,
@@ -234,6 +261,12 @@ class _DeploymentState:
                actually change the deployment, just how it is updated.
                Default value is `DELETE`.
                Possible values are: `ABANDON`, `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[_builtins.str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
@@ -260,6 +293,8 @@ class _DeploymentState:
             pulumi.set(__self__, "create_policy", create_policy)
         if delete_policy is not None:
             pulumi.set(__self__, "delete_policy", delete_policy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_id is not None:
             pulumi.set(__self__, "deployment_id", deployment_id)
         if description is not None:
@@ -315,6 +350,23 @@ class _DeploymentState:
     @delete_policy.setter
     def delete_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentId")
@@ -445,6 +497,7 @@ class Deployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -522,6 +575,12 @@ class Deployment(pulumi.CustomResource):
                actually change the deployment, just how it is updated.
                Default value is `DELETE`.
                Possible values are: `ABANDON`, `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
@@ -616,6 +675,7 @@ class Deployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -633,6 +693,7 @@ class Deployment(pulumi.CustomResource):
 
             __props__.__dict__["create_policy"] = create_policy
             __props__.__dict__["delete_policy"] = delete_policy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -656,6 +717,7 @@ class Deployment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_policy: pulumi.Input[Optional[_builtins.str]] = None,
             delete_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]]] = None,
@@ -687,6 +749,12 @@ class Deployment(pulumi.CustomResource):
                actually change the deployment, just how it is updated.
                Default value is `DELETE`.
                Possible values are: `ABANDON`, `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[_builtins.str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]] labels: Key-value pairs to apply to this labels.
@@ -715,6 +783,7 @@ class Deployment(pulumi.CustomResource):
 
         __props__.__dict__["create_policy"] = create_policy
         __props__.__dict__["delete_policy"] = delete_policy
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deployment_id"] = deployment_id
         __props__.__dict__["description"] = description
         __props__.__dict__["labels"] = labels
@@ -754,6 +823,19 @@ class Deployment(pulumi.CustomResource):
         Possible values are: `ABANDON`, `DELETE`.
         """
         return pulumi.get(self, "delete_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deploymentId")

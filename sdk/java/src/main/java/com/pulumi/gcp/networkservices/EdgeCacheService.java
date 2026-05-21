@@ -43,6 +43,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.EdgeCacheService;
  * import com.pulumi.gcp.networkservices.EdgeCacheServiceArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingHostRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -128,6 +136,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.EdgeCacheService;
  * import com.pulumi.gcp.networkservices.EdgeCacheServiceArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingHostRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceLogConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -355,6 +378,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.EdgeCacheService;
  * import com.pulumi.gcp.networkservices.EdgeCacheServiceArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingHostRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -513,6 +544,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:networkservices/edgeCacheService:EdgeCacheService")
 public class EdgeCacheService extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * A human-readable description of the resource.
      * 

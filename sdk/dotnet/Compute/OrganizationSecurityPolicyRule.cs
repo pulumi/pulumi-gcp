@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_72490",
+    ///         ShortName = "tf-test_56730",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_89605",
+    ///         ShortName = "tf-test_95154",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_56730",
+    ///         ShortName = "tf-test_64336",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -175,7 +175,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_95154",
+    ///         ShortName = "tf-test_34962",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_64336",
+    ///         ShortName = "tf-test_74000",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -334,6 +334,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// A description of the rule.
@@ -485,6 +496,17 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// A description of the rule.
         /// </summary>
         [Input("description")]
@@ -606,6 +628,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// A description of the rule.

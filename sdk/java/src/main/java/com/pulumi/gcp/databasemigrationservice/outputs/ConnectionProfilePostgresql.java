@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfilePostgresqlPrivateConnectivity;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfilePostgresqlSsl;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -15,15 +16,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionProfilePostgresql {
     /**
-     * @return If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+     * @return If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
      * 
      */
     private @Nullable String alloydbClusterId;
     /**
-     * @return If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+     * @return If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
      * 
      */
     private @Nullable String cloudSqlId;
+    /**
+     * @return The name of the specific database within the host.
+     * 
+     */
+    private @Nullable String database;
     /**
      * @return The IP or hostname of the source MySQL database.
      * 
@@ -54,6 +60,12 @@ public final class ConnectionProfilePostgresql {
      */
     private @Nullable Integer port;
     /**
+     * @return Private connectivity.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ConnectionProfilePostgresqlPrivateConnectivity privateConnectivity;
+    /**
      * @return SSL configuration for the destination to connect to the source database.
      * Structure is documented below.
      * 
@@ -67,18 +79,25 @@ public final class ConnectionProfilePostgresql {
 
     private ConnectionProfilePostgresql() {}
     /**
-     * @return If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+     * @return If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
      * 
      */
     public Optional<String> alloydbClusterId() {
         return Optional.ofNullable(this.alloydbClusterId);
     }
     /**
-     * @return If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+     * @return If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
      * 
      */
     public Optional<String> cloudSqlId() {
         return Optional.ofNullable(this.cloudSqlId);
+    }
+    /**
+     * @return The name of the specific database within the host.
+     * 
+     */
+    public Optional<String> database() {
+        return Optional.ofNullable(this.database);
     }
     /**
      * @return The IP or hostname of the source MySQL database.
@@ -120,6 +139,14 @@ public final class ConnectionProfilePostgresql {
         return Optional.ofNullable(this.port);
     }
     /**
+     * @return Private connectivity.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ConnectionProfilePostgresqlPrivateConnectivity> privateConnectivity() {
+        return Optional.ofNullable(this.privateConnectivity);
+    }
+    /**
      * @return SSL configuration for the destination to connect to the source database.
      * Structure is documented below.
      * 
@@ -146,11 +173,13 @@ public final class ConnectionProfilePostgresql {
     public static final class Builder {
         private @Nullable String alloydbClusterId;
         private @Nullable String cloudSqlId;
+        private @Nullable String database;
         private @Nullable String host;
         private @Nullable String networkArchitecture;
         private @Nullable String password;
         private @Nullable Boolean passwordSet;
         private @Nullable Integer port;
+        private @Nullable ConnectionProfilePostgresqlPrivateConnectivity privateConnectivity;
         private @Nullable ConnectionProfilePostgresqlSsl ssl;
         private @Nullable String username;
         public Builder() {}
@@ -158,11 +187,13 @@ public final class ConnectionProfilePostgresql {
     	      Objects.requireNonNull(defaults);
     	      this.alloydbClusterId = defaults.alloydbClusterId;
     	      this.cloudSqlId = defaults.cloudSqlId;
+    	      this.database = defaults.database;
     	      this.host = defaults.host;
     	      this.networkArchitecture = defaults.networkArchitecture;
     	      this.password = defaults.password;
     	      this.passwordSet = defaults.passwordSet;
     	      this.port = defaults.port;
+    	      this.privateConnectivity = defaults.privateConnectivity;
     	      this.ssl = defaults.ssl;
     	      this.username = defaults.username;
         }
@@ -177,6 +208,12 @@ public final class ConnectionProfilePostgresql {
         public Builder cloudSqlId(@Nullable String cloudSqlId) {
 
             this.cloudSqlId = cloudSqlId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder database(@Nullable String database) {
+
+            this.database = database;
             return this;
         }
         @CustomType.Setter
@@ -210,6 +247,12 @@ public final class ConnectionProfilePostgresql {
             return this;
         }
         @CustomType.Setter
+        public Builder privateConnectivity(@Nullable ConnectionProfilePostgresqlPrivateConnectivity privateConnectivity) {
+
+            this.privateConnectivity = privateConnectivity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ssl(@Nullable ConnectionProfilePostgresqlSsl ssl) {
 
             this.ssl = ssl;
@@ -225,11 +268,13 @@ public final class ConnectionProfilePostgresql {
             final var _resultValue = new ConnectionProfilePostgresql();
             _resultValue.alloydbClusterId = alloydbClusterId;
             _resultValue.cloudSqlId = cloudSqlId;
+            _resultValue.database = database;
             _resultValue.host = host;
             _resultValue.networkArchitecture = networkArchitecture;
             _resultValue.password = password;
             _resultValue.passwordSet = passwordSet;
             _resultValue.port = port;
+            _resultValue.privateConnectivity = privateConnectivity;
             _resultValue.ssl = ssl;
             _resultValue.username = username;
             return _resultValue;

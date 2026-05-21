@@ -23,6 +23,7 @@ class FirewallArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
                  allows: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  denies: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -47,6 +48,12 @@ class FirewallArgs:
                specifies a protocol and port-range tuple that describes a permitted
                connection.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]] denies: The list of DENY rules specified by this firewall. Each rule specifies
                a protocol and port-range tuple that describes a denied connection.
                Structure is documented below.
@@ -130,6 +137,8 @@ class FirewallArgs:
         pulumi.set(__self__, "network", network)
         if allows is not None:
             pulumi.set(__self__, "allows", allows)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if denies is not None:
             pulumi.set(__self__, "denies", denies)
         if description is not None:
@@ -192,6 +201,23 @@ class FirewallArgs:
     @allows.setter
     def allows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallAllowArgs']]]]):
         pulumi.set(self, "allows", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -455,6 +481,7 @@ class _FirewallState:
     def __init__(__self__, *,
                  allows: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  denies: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -481,6 +508,12 @@ class _FirewallState:
                connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]] denies: The list of DENY rules specified by this firewall. Each rule specifies
                a protocol and port-range tuple that describes a denied connection.
                Structure is documented below.
@@ -567,6 +600,8 @@ class _FirewallState:
             pulumi.set(__self__, "allows", allows)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if denies is not None:
             pulumi.set(__self__, "denies", denies)
         if description is not None:
@@ -633,6 +668,23 @@ class _FirewallState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -922,6 +974,7 @@ class Firewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  denies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1033,6 +1086,12 @@ class Firewall(pulumi.CustomResource):
                specifies a protocol and port-range tuple that describes a permitted
                connection.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]] denies: The list of DENY rules specified by this firewall. Each rule specifies
                a protocol and port-range tuple that describes a denied connection.
                Structure is documented below.
@@ -1223,6 +1282,7 @@ class Firewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  denies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1250,6 +1310,7 @@ class Firewall(pulumi.CustomResource):
             __props__ = FirewallArgs.__new__(FirewallArgs)
 
             __props__.__dict__["allows"] = allows
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["denies"] = denies
             __props__.__dict__["description"] = description
             __props__.__dict__["destination_ranges"] = destination_ranges
@@ -1283,6 +1344,7 @@ class Firewall(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             denies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1313,6 +1375,12 @@ class Firewall(pulumi.CustomResource):
                connection.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]] denies: The list of DENY rules specified by this firewall. Each rule specifies
                a protocol and port-range tuple that describes a denied connection.
                Structure is documented below.
@@ -1401,6 +1469,7 @@ class Firewall(pulumi.CustomResource):
 
         __props__.__dict__["allows"] = allows
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["denies"] = denies
         __props__.__dict__["description"] = description
         __props__.__dict__["destination_ranges"] = destination_ranges
@@ -1439,6 +1508,19 @@ class Firewall(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

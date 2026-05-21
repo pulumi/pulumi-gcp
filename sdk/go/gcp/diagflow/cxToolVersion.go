@@ -615,6 +615,13 @@ type CxToolVersion struct {
 	// Offsets other than "Z" are also accepted.
 	// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the tool version.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The unique identifier of the tool version.
@@ -677,6 +684,13 @@ type cxToolVersionState struct {
 	// Offsets other than "Z" are also accepted.
 	// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the tool version.
 	DisplayName *string `pulumi:"displayName"`
 	// The unique identifier of the tool version.
@@ -701,6 +715,13 @@ type CxToolVersionState struct {
 	// Offsets other than "Z" are also accepted.
 	// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the tool version.
 	DisplayName pulumi.StringPtrInput
 	// The unique identifier of the tool version.
@@ -724,6 +745,13 @@ func (CxToolVersionState) ElementType() reflect.Type {
 }
 
 type cxToolVersionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the tool version.
 	DisplayName string `pulumi:"displayName"`
 	// The tool to create a Version for.
@@ -736,6 +764,13 @@ type cxToolVersionArgs struct {
 
 // The set of arguments for constructing a CxToolVersion resource.
 type CxToolVersionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the tool version.
 	DisplayName pulumi.StringInput
 	// The tool to create a Version for.
@@ -839,6 +874,16 @@ func (o CxToolVersionOutput) ToCxToolVersionOutputWithContext(ctx context.Contex
 // Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
 func (o CxToolVersionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxToolVersion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CxToolVersionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CxToolVersion) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the tool version.

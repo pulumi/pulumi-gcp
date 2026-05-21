@@ -153,6 +153,7 @@ namespace Pulumi.Gcp.Iam
     public sealed class GetWorkloadIdentityPoolResult
     {
         public readonly ImmutableArray<Outputs.GetWorkloadIdentityPoolAttestationRuleResult> AttestationRules;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly bool Disabled;
         public readonly string DisplayName;
@@ -171,6 +172,8 @@ namespace Pulumi.Gcp.Iam
         [OutputConstructor]
         private GetWorkloadIdentityPoolResult(
             ImmutableArray<Outputs.GetWorkloadIdentityPoolAttestationRuleResult> attestationRules,
+
+            string deletionPolicy,
 
             string description,
 
@@ -195,6 +198,7 @@ namespace Pulumi.Gcp.Iam
             string workloadIdentityPoolId)
         {
             AttestationRules = attestationRules;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Disabled = disabled;
             DisplayName = displayName;

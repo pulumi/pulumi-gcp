@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * User workloads Secret used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
- * Intended for Composer 3 Environments.
+ * User workloads Secret used by Airflow tasks that run with Kubernetes Executor
+ * or KubernetesPodOperator. Intended for Managed Airflow (Gen 3) Environments.
  *
  * ## Example Usage
  *
@@ -97,6 +97,15 @@ export class UserWorkloadsSecret extends pulumi.CustomResource {
      */
     declare public readonly data: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Environment where the Kubernetes Secret will be stored and used.
      */
     declare public readonly environment: pulumi.Output<string>;
@@ -128,6 +137,7 @@ export class UserWorkloadsSecret extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as UserWorkloadsSecretState | undefined;
             resourceInputs["data"] = state?.data;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -138,6 +148,7 @@ export class UserWorkloadsSecret extends pulumi.CustomResource {
                 throw new Error("Missing required property 'environment'");
             }
             resourceInputs["data"] = args?.data ? pulumi.secret(args.data) : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -165,6 +176,15 @@ export interface UserWorkloadsSecretState {
      * For details see: https://kubernetes.io/docs/concepts/configuration/secret/
      */
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Environment where the Kubernetes Secret will be stored and used.
      */
@@ -199,6 +219,15 @@ export interface UserWorkloadsSecretArgs {
      * For details see: https://kubernetes.io/docs/concepts/configuration/secret/
      */
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Environment where the Kubernetes Secret will be stored and used.
      */

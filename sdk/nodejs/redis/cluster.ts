@@ -728,6 +728,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly crossClusterReplicationConfig: pulumi.Output<outputs.redis.ClusterCrossClusterReplicationConfig>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. Indicates if the cluster is deletion protected or not.
      * If the value if set to true, any delete cluster operation will fail.
      * Default value is true.
@@ -796,7 +805,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
      */
     declare public readonly nodeType: pulumi.Output<string>;
     /**
@@ -914,6 +923,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["backupCollection"] = state?.backupCollection;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["crossClusterReplicationConfig"] = state?.crossClusterReplicationConfig;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtectionEnabled"] = state?.deletionProtectionEnabled;
             resourceInputs["discoveryEndpoints"] = state?.discoveryEndpoints;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -955,6 +965,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["authorizationMode"] = args?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = args?.automatedBackupConfig;
             resourceInputs["crossClusterReplicationConfig"] = args?.crossClusterReplicationConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtectionEnabled"] = args?.deletionProtectionEnabled;
             resourceInputs["gcsSource"] = args?.gcsSource;
             resourceInputs["kmsKey"] = args?.kmsKey;
@@ -1035,6 +1046,15 @@ export interface ClusterState {
      */
     crossClusterReplicationConfig?: pulumi.Input<inputs.redis.ClusterCrossClusterReplicationConfig | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Optional. Indicates if the cluster is deletion protected or not.
      * If the value if set to true, any delete cluster operation will fail.
      * Default value is true.
@@ -1103,7 +1123,7 @@ export interface ClusterState {
     /**
      * The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**
@@ -1224,6 +1244,15 @@ export interface ClusterArgs {
      */
     crossClusterReplicationConfig?: pulumi.Input<inputs.redis.ClusterCrossClusterReplicationConfig | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Optional. Indicates if the cluster is deletion protected or not.
      * If the value if set to true, any delete cluster operation will fail.
      * Default value is true.
@@ -1267,7 +1296,7 @@ export interface ClusterArgs {
     /**
      * The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**

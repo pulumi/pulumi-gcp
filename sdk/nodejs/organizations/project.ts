@@ -136,7 +136,7 @@ export class Project extends pulumi.CustomResource {
      * to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
      * the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
      */
-    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */

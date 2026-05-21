@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.OracleDatabase
     {
         public readonly string CloudExadataInfrastructureId;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -182,6 +183,8 @@ namespace Pulumi.Gcp.OracleDatabase
             string cloudExadataInfrastructureId,
 
             string createTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -209,6 +212,7 @@ namespace Pulumi.Gcp.OracleDatabase
         {
             CloudExadataInfrastructureId = cloudExadataInfrastructureId;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;

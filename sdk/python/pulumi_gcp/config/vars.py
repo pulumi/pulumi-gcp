@@ -330,6 +330,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('defaultLabels')
 
     @_builtins.property
+    def deletion_policy(self) -> Optional[str]:
+        return __config__.get('deletionPolicy')
+
+    @_builtins.property
     def deployment_manager_custom_endpoint(self) -> Optional[str]:
         return __config__.get('deploymentManagerCustomEndpoint')
 

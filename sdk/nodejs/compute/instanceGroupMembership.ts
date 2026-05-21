@@ -99,6 +99,15 @@ export class InstanceGroupMembership extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An instance being added to the InstanceGroup
      */
     declare public readonly instance: pulumi.Output<string>;
@@ -129,6 +138,7 @@ export class InstanceGroupMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGroupMembershipState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["instance"] = state?.instance;
             resourceInputs["instanceGroup"] = state?.instanceGroup;
             resourceInputs["project"] = state?.project;
@@ -141,6 +151,7 @@ export class InstanceGroupMembership extends pulumi.CustomResource {
             if (args?.instanceGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroup'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["instance"] = args?.instance;
             resourceInputs["instanceGroup"] = args?.instanceGroup;
             resourceInputs["project"] = args?.project;
@@ -155,6 +166,15 @@ export class InstanceGroupMembership extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceGroupMembership resources.
  */
 export interface InstanceGroupMembershipState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An instance being added to the InstanceGroup
      */
@@ -178,6 +198,15 @@ export interface InstanceGroupMembershipState {
  * The set of arguments for constructing a InstanceGroupMembership resource.
  */
 export interface InstanceGroupMembershipArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An instance being added to the InstanceGroup
      */

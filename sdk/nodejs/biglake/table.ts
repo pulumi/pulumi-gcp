@@ -138,6 +138,15 @@ export class Table extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The checksum of a table object computed by the server based on the value
      * of other fields. It may be sent on update requests to ensure the client
      * has an up-to-date value before proceeding. It is only checked for update
@@ -190,6 +199,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["database"] = state?.database;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["hiveOptions"] = state?.hiveOptions;
@@ -199,6 +209,7 @@ export class Table extends pulumi.CustomResource {
         } else {
             const args = argsOrState as TableArgs | undefined;
             resourceInputs["database"] = args?.database;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["hiveOptions"] = args?.hiveOptions;
             resourceInputs["name"] = args?.name;
             resourceInputs["type"] = args?.type;
@@ -235,6 +246,15 @@ export interface TableState {
      * "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The checksum of a table object computed by the server based on the value
      * of other fields. It may be sent on update requests to ensure the client
@@ -281,6 +301,15 @@ export interface TableArgs {
      * The id of the parent database.
      */
     database?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Options of a Hive table.
      * Structure is documented below.

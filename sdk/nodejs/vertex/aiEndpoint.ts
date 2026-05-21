@@ -82,10 +82,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {name: "psc-network-_34534"});
+ * const _default = new gcp.compute.Network("default", {name: "psc-network-_9873"});
  * const project = gcp.organizations.getProject({});
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_87829",
+ *     name: "endpoint-name_48153",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",
@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_44023",
+ *     name: "endpoint-name_58845",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",
@@ -180,6 +180,15 @@ export class AiEndpoint extends pulumi.CustomResource {
      * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
      */
     declare public readonly dedicatedEndpointEnabled: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
      * Structure is documented below.
@@ -282,6 +291,7 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dedicatedEndpointDns"] = state?.dedicatedEndpointDns;
             resourceInputs["dedicatedEndpointEnabled"] = state?.dedicatedEndpointEnabled;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deployedModels"] = state?.deployedModels;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
@@ -309,6 +319,7 @@ export class AiEndpoint extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["dedicatedEndpointEnabled"] = args?.dedicatedEndpointEnabled;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["encryptionSpec"] = args?.encryptionSpec;
@@ -354,6 +365,15 @@ export interface AiEndpointState {
      * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
      */
     dedicatedEndpointEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
      * Structure is documented below.
@@ -449,6 +469,15 @@ export interface AiEndpointArgs {
      * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
      */
     dedicatedEndpointEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the Endpoint.
      */

@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.Instance;
  * import com.pulumi.gcp.compute.InstanceArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
  * import com.pulumi.gcp.dns.ManagedZone;
@@ -288,6 +289,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.RecordSet;
  * import com.pulumi.gcp.dns.RecordSetArgs;
  * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyGeoArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -346,6 +348,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
  * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupArgs;
  * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -440,6 +444,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
  * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupArgs;
  * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -518,6 +524,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dns/recordSet:RecordSet")
 public class RecordSet extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * The name of the zone in which this record set will
      * reside.

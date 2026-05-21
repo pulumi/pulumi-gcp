@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetOdbSubnetResult {
     private String cidrRange;
     private String createTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private Map<String,String> effectiveLabels;
     /**
@@ -39,6 +40,9 @@ public final class GetOdbSubnetResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -92,6 +96,7 @@ public final class GetOdbSubnetResult {
     public static final class Builder {
         private String cidrRange;
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private Map<String,String> effectiveLabels;
         private String id;
@@ -109,6 +114,7 @@ public final class GetOdbSubnetResult {
     	      Objects.requireNonNull(defaults);
     	      this.cidrRange = defaults.cidrRange;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
@@ -137,6 +143,14 @@ public final class GetOdbSubnetResult {
               throw new MissingRequiredPropertyException("GetOdbSubnetResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetOdbSubnetResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -237,6 +251,7 @@ public final class GetOdbSubnetResult {
             final var _resultValue = new GetOdbSubnetResult();
             _resultValue.cidrRange = cidrRange;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;

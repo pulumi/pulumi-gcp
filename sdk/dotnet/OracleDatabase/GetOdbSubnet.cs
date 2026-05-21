@@ -187,6 +187,7 @@ namespace Pulumi.Gcp.OracleDatabase
     {
         public readonly string CidrRange;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
@@ -208,6 +209,8 @@ namespace Pulumi.Gcp.OracleDatabase
             string cidrRange,
 
             string createTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -235,6 +238,7 @@ namespace Pulumi.Gcp.OracleDatabase
         {
             CidrRange = cidrRange;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             EffectiveLabels = effectiveLabels;
             Id = id;

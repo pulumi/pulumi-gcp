@@ -87,6 +87,7 @@ type GetMeshIstioServiceArgs struct {
 
 // A collection of values returned by getMeshIstioService.
 type GetMeshIstioServiceResult struct {
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this (Monitoring) Service.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -150,6 +151,10 @@ func (o GetMeshIstioServiceResultOutput) ToGetMeshIstioServiceResultOutput() Get
 
 func (o GetMeshIstioServiceResultOutput) ToGetMeshIstioServiceResultOutputWithContext(ctx context.Context) GetMeshIstioServiceResultOutput {
 	return o
+}
+
+func (o GetMeshIstioServiceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name used for UI elements listing this (Monitoring) Service.

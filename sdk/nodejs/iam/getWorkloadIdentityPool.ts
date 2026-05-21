@@ -56,6 +56,7 @@ export interface GetWorkloadIdentityPoolArgs {
  */
 export interface GetWorkloadIdentityPoolResult {
     readonly attestationRules: outputs.iam.GetWorkloadIdentityPoolAttestationRule[];
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly disabled: boolean;
     readonly displayName: string;

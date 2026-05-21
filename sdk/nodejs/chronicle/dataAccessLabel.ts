@@ -90,6 +90,15 @@ export class DataAccessLabel extends pulumi.CustomResource {
      */
     declare public readonly dataAccessLabelId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. A description of the data access label for a human reader.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -145,6 +154,7 @@ export class DataAccessLabel extends pulumi.CustomResource {
             resourceInputs["author"] = state?.author;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataAccessLabelId"] = state?.dataAccessLabelId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["instance"] = state?.instance;
@@ -169,6 +179,7 @@ export class DataAccessLabel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'udmQuery'");
             }
             resourceInputs["dataAccessLabelId"] = args?.dataAccessLabelId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["instance"] = args?.instance;
             resourceInputs["location"] = args?.location;
@@ -205,6 +216,15 @@ export interface DataAccessLabelState {
      * https://google.aip.dev/122#resource-id-segments
      */
     dataAccessLabelId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. A description of the data access label for a human reader.
      */
@@ -257,6 +277,15 @@ export interface DataAccessLabelArgs {
      * https://google.aip.dev/122#resource-id-segments
      */
     dataAccessLabelId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. A description of the data access label for a human reader.
      */

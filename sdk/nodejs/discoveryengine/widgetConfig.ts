@@ -56,6 +56,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
+ * export const widgetConfigId = basicWidgetConfig.configId;
  * ```
  *
  * ## Import
@@ -112,6 +113,10 @@ export class WidgetConfig extends pulumi.CustomResource {
      */
     declare public readonly collectionId: pulumi.Output<string | undefined>;
     /**
+     * Output only. Unique obfuscated identifier of a WidgetConfig.
+     */
+    declare public /*out*/ readonly configId: pulumi.Output<string>;
+    /**
      * The engine ID.
      */
     declare public readonly engineId: pulumi.Output<string>;
@@ -167,6 +172,7 @@ export class WidgetConfig extends pulumi.CustomResource {
             const state = argsOrState as WidgetConfigState | undefined;
             resourceInputs["accessSettings"] = state?.accessSettings;
             resourceInputs["collectionId"] = state?.collectionId;
+            resourceInputs["configId"] = state?.configId;
             resourceInputs["engineId"] = state?.engineId;
             resourceInputs["homepageSetting"] = state?.homepageSetting;
             resourceInputs["location"] = state?.location;
@@ -192,6 +198,7 @@ export class WidgetConfig extends pulumi.CustomResource {
             resourceInputs["uiBranding"] = args?.uiBranding;
             resourceInputs["uiSettings"] = args?.uiSettings;
             resourceInputs["widgetConfigId"] = args?.widgetConfigId;
+            resourceInputs["configId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -212,6 +219,10 @@ export interface WidgetConfigState {
      * The collection ID.
      */
     collectionId?: pulumi.Input<string | undefined>;
+    /**
+     * Output only. Unique obfuscated identifier of a WidgetConfig.
+     */
+    configId?: pulumi.Input<string | undefined>;
     /**
      * The engine ID.
      */

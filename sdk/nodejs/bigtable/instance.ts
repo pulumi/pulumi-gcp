@@ -119,6 +119,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly clusters: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
      * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
      */
@@ -186,6 +195,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["clusters"] = state?.clusters;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -199,6 +209,7 @@ export class Instance extends pulumi.CustomResource {
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             resourceInputs["clusters"] = args?.clusters;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
@@ -229,6 +240,15 @@ export interface InstanceState {
      * -----
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[] | undefined>;
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
      * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -296,6 +316,15 @@ export interface InstanceArgs {
      * -----
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[] | undefined>;
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
      * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.

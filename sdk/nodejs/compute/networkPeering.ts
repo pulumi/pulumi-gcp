@@ -82,6 +82,15 @@ export class NetworkPeering extends pulumi.CustomResource {
     }
 
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
     declare public readonly exportCustomRoutes: pulumi.Output<boolean | undefined>;
@@ -141,6 +150,7 @@ export class NetworkPeering extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkPeeringState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["exportCustomRoutes"] = state?.exportCustomRoutes;
             resourceInputs["exportSubnetRoutesWithPublicIp"] = state?.exportSubnetRoutesWithPublicIp;
             resourceInputs["importCustomRoutes"] = state?.importCustomRoutes;
@@ -160,6 +170,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             if (args?.peerNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerNetwork'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["exportCustomRoutes"] = args?.exportCustomRoutes;
             resourceInputs["exportSubnetRoutesWithPublicIp"] = args?.exportSubnetRoutesWithPublicIp;
             resourceInputs["importCustomRoutes"] = args?.importCustomRoutes;
@@ -181,6 +192,15 @@ export class NetworkPeering extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkPeering resources.
  */
 export interface NetworkPeeringState {
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
@@ -233,6 +253,15 @@ export interface NetworkPeeringState {
  * The set of arguments for constructing a NetworkPeering resource.
  */
 export interface NetworkPeeringArgs {
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether to export the custom routes to the peer network. Defaults to `false`.
      */

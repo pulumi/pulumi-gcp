@@ -22,6 +22,7 @@ __all__ = ['TransferAgentPoolArgs', 'TransferAgentPool']
 class TransferAgentPoolArgs:
     def __init__(__self__, *,
                  bandwidth_limit: pulumi.Input[Optional['TransferAgentPoolBandwidthLimitArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -30,6 +31,12 @@ class TransferAgentPoolArgs:
 
         :param pulumi.Input['TransferAgentPoolBandwidthLimitArgs'] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Specifies the client-specified AgentPool description.
         :param pulumi.Input[_builtins.str] name: The ID of the agent pool to create.
                The agentPoolId must meet the following requirements:
@@ -44,6 +51,8 @@ class TransferAgentPoolArgs:
         """
         if bandwidth_limit is not None:
             pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
@@ -63,6 +72,23 @@ class TransferAgentPoolArgs:
     @bandwidth_limit.setter
     def bandwidth_limit(self, value: pulumi.Input[Optional['TransferAgentPoolBandwidthLimitArgs']]):
         pulumi.set(self, "bandwidth_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -113,6 +139,7 @@ class TransferAgentPoolArgs:
 class _TransferAgentPoolState:
     def __init__(__self__, *,
                  bandwidth_limit: pulumi.Input[Optional['TransferAgentPoolBandwidthLimitArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -122,6 +149,12 @@ class _TransferAgentPoolState:
 
         :param pulumi.Input['TransferAgentPoolBandwidthLimitArgs'] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Specifies the client-specified AgentPool description.
         :param pulumi.Input[_builtins.str] name: The ID of the agent pool to create.
                The agentPoolId must meet the following requirements:
@@ -137,6 +170,8 @@ class _TransferAgentPoolState:
         """
         if bandwidth_limit is not None:
             pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
@@ -158,6 +193,23 @@ class _TransferAgentPoolState:
     @bandwidth_limit.setter
     def bandwidth_limit(self, value: pulumi.Input[Optional['TransferAgentPoolBandwidthLimitArgs']]):
         pulumi.set(self, "bandwidth_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -223,6 +275,7 @@ class TransferAgentPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth_limit: pulumi.Input[Optional[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -279,6 +332,12 @@ class TransferAgentPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Specifies the client-specified AgentPool description.
         :param pulumi.Input[_builtins.str] name: The ID of the agent pool to create.
                The agentPoolId must meet the following requirements:
@@ -361,6 +420,7 @@ class TransferAgentPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth_limit: pulumi.Input[Optional[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -374,6 +434,7 @@ class TransferAgentPool(pulumi.CustomResource):
             __props__ = TransferAgentPoolArgs.__new__(TransferAgentPoolArgs)
 
             __props__.__dict__["bandwidth_limit"] = bandwidth_limit
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -389,6 +450,7 @@ class TransferAgentPool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bandwidth_limit: pulumi.Input[Optional[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -402,6 +464,12 @@ class TransferAgentPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Specifies the client-specified AgentPool description.
         :param pulumi.Input[_builtins.str] name: The ID of the agent pool to create.
                The agentPoolId must meet the following requirements:
@@ -420,6 +488,7 @@ class TransferAgentPool(pulumi.CustomResource):
         __props__ = _TransferAgentPoolState.__new__(_TransferAgentPoolState)
 
         __props__.__dict__["bandwidth_limit"] = bandwidth_limit
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -434,6 +503,19 @@ class TransferAgentPool(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "bandwidth_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

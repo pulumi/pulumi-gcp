@@ -628,6 +628,13 @@ type ConnectionProfile struct {
 	ConnectionProfileId pulumi.StringOutput `pulumi:"connectionProfileId"`
 	// Create the connection profile without validating it.
 	CreateWithoutValidation pulumi.BoolPtrOutput `pulumi:"createWithoutValidation"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -730,6 +737,13 @@ type connectionProfileState struct {
 	ConnectionProfileId *string `pulumi:"connectionProfileId"`
 	// Create the connection profile without validating it.
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -789,6 +803,13 @@ type ConnectionProfileState struct {
 	ConnectionProfileId pulumi.StringPtrInput
 	// Create the connection profile without validating it.
 	CreateWithoutValidation pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -852,6 +873,13 @@ type connectionProfileArgs struct {
 	ConnectionProfileId string `pulumi:"connectionProfileId"`
 	// Create the connection profile without validating it.
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Forward SSH tunnel connectivity.
@@ -905,6 +933,13 @@ type ConnectionProfileArgs struct {
 	ConnectionProfileId pulumi.StringInput
 	// Create the connection profile without validating it.
 	CreateWithoutValidation pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Forward SSH tunnel connectivity.
@@ -1050,6 +1085,16 @@ func (o ConnectionProfileOutput) ConnectionProfileId() pulumi.StringOutput {
 // Create the connection profile without validating it.
 func (o ConnectionProfileOutput) CreateWithoutValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.BoolPtrOutput { return v.CreateWithoutValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ConnectionProfileOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Display name.

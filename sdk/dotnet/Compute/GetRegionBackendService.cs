@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceConsistentHashResult> ConsistentHashes;
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceCustomMetricResult> CustomMetrics;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceDynamicForwardingResult> DynamicForwardings;
         public readonly bool EnableCdn;
@@ -214,6 +215,8 @@ namespace Pulumi.Gcp.Compute
             string creationTimestamp,
 
             ImmutableArray<Outputs.GetRegionBackendServiceCustomMetricResult> customMetrics,
+
+            string deletionPolicy,
 
             string description,
 
@@ -284,6 +287,7 @@ namespace Pulumi.Gcp.Compute
             ConsistentHashes = consistentHashes;
             CreationTimestamp = creationTimestamp;
             CustomMetrics = customMetrics;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DynamicForwardings = dynamicForwardings;
             EnableCdn = enableCdn;

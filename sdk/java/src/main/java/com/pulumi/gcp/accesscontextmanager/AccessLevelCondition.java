@@ -56,11 +56,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.accesscontextmanager.AccessLevel;
  * import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
  * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs;
  * import com.pulumi.gcp.serviceaccount.Account;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.accesscontextmanager.AccessLevelCondition;
  * import com.pulumi.gcp.accesscontextmanager.AccessLevelConditionArgs;
  * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelConditionDevicePolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelConditionDevicePolicyOsConstraintArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -163,6 +167,30 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accessPolicyId() {
         return this.accessPolicyId;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Device specific restrictions, all restrictions must hold for

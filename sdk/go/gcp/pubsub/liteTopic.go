@@ -96,6 +96,13 @@ import (
 type LiteTopic struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Name of the topic.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The settings for this topic's partitions.
@@ -146,6 +153,13 @@ func GetLiteTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LiteTopic resources.
 type liteTopicState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the topic.
 	Name *string `pulumi:"name"`
 	// The settings for this topic's partitions.
@@ -167,6 +181,13 @@ type liteTopicState struct {
 }
 
 type LiteTopicState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the topic.
 	Name pulumi.StringPtrInput
 	// The settings for this topic's partitions.
@@ -192,6 +213,13 @@ func (LiteTopicState) ElementType() reflect.Type {
 }
 
 type liteTopicArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the topic.
 	Name *string `pulumi:"name"`
 	// The settings for this topic's partitions.
@@ -214,6 +242,13 @@ type liteTopicArgs struct {
 
 // The set of arguments for constructing a LiteTopic resource.
 type LiteTopicArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the topic.
 	Name pulumi.StringPtrInput
 	// The settings for this topic's partitions.
@@ -319,6 +354,16 @@ func (o LiteTopicOutput) ToLiteTopicOutput() LiteTopicOutput {
 
 func (o LiteTopicOutput) ToLiteTopicOutputWithContext(ctx context.Context) LiteTopicOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o LiteTopicOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *LiteTopic) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name of the topic.

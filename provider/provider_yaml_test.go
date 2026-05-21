@@ -551,14 +551,12 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
         "inputs": {
             "__defaults": [
                 "autoCreateNetwork",
- 				"deletionPolicy",
                 "name",
                 "projectId"
             ],
             "autoCreateNetwork": true,
             "name": "my-proj",
-            "projectId": "my-proj-d662a01",
-			"deletionPolicy": "PREVENT"
+            "projectId": "my-proj-d662a01"
         }
     },
     "metadata": {

@@ -49,11 +49,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The deletion policy for the user.
-     * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
-     * Possible values are: `ABANDON`.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      * ***
      * 
@@ -62,11 +65,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the user.
-     * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
-     * Possible values are: `ABANDON`.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      * ***
      * 
@@ -351,11 +357,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the user.
-         * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API. This is useful
          * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
          * 
-         * Possible values are: `ABANDON`.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
          * 
          * ***
          * 
@@ -368,11 +377,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the user.
-         * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API. This is useful
          * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
          * 
-         * Possible values are: `ABANDON`.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
          * 
          * ***
          * 

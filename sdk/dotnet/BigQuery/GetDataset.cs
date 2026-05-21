@@ -148,6 +148,7 @@ namespace Pulumi.Gcp.BigQuery
         public readonly int DefaultPartitionExpirationMs;
         public readonly int DefaultTableExpirationMs;
         public readonly bool DeleteContentsOnDestroy;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Etag;
@@ -186,6 +187,8 @@ namespace Pulumi.Gcp.BigQuery
             int defaultTableExpirationMs,
 
             bool deleteContentsOnDestroy,
+
+            string deletionPolicy,
 
             string description,
 
@@ -229,6 +232,7 @@ namespace Pulumi.Gcp.BigQuery
             DefaultPartitionExpirationMs = defaultPartitionExpirationMs;
             DefaultTableExpirationMs = defaultTableExpirationMs;
             DeleteContentsOnDestroy = deleteContentsOnDestroy;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EffectiveLabels = effectiveLabels;
             Etag = etag;

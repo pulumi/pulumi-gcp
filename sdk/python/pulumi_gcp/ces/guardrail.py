@@ -28,6 +28,7 @@ class GuardrailArgs:
                  action: pulumi.Input[Optional['GuardrailActionArgs']] = None,
                  code_callback: pulumi.Input[Optional['GuardrailCodeCallbackArgs']] = None,
                  content_filter: pulumi.Input[Optional['GuardrailContentFilterArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  llm_policy: pulumi.Input[Optional['GuardrailLlmPolicyArgs']] = None,
@@ -50,6 +51,12 @@ class GuardrailArgs:
                Structure is documented below.
         :param pulumi.Input['GuardrailContentFilterArgs'] content_filter: Guardrail that bans certain content from being used in the conversation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the guardrail.
         :param pulumi.Input[_builtins.bool] enabled: Whether the guardrail is enabled.
         :param pulumi.Input['GuardrailLlmPolicyArgs'] llm_policy: Guardrail that blocks the conversation if the LLM response is considered
@@ -75,6 +82,8 @@ class GuardrailArgs:
             pulumi.set(__self__, "code_callback", code_callback)
         if content_filter is not None:
             pulumi.set(__self__, "content_filter", content_filter)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
@@ -179,6 +188,23 @@ class GuardrailArgs:
         pulumi.set(self, "content_filter", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -267,6 +293,7 @@ class _GuardrailState:
                  code_callback: pulumi.Input[Optional['GuardrailCodeCallbackArgs']] = None,
                  content_filter: pulumi.Input[Optional['GuardrailContentFilterArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -291,6 +318,12 @@ class _GuardrailState:
         :param pulumi.Input['GuardrailContentFilterArgs'] content_filter: Guardrail that bans certain content from being used in the conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the guardrail was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the guardrail.
         :param pulumi.Input[_builtins.str] display_name: Display name of the guardrail.
         :param pulumi.Input[_builtins.bool] enabled: Whether the guardrail is enabled.
@@ -328,6 +361,8 @@ class _GuardrailState:
             pulumi.set(__self__, "content_filter", content_filter)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -416,6 +451,23 @@ class _GuardrailState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -586,6 +638,7 @@ class Guardrail(pulumi.CustomResource):
                  app: pulumi.Input[Optional[_builtins.str]] = None,
                  code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
                  content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -879,6 +932,12 @@ class Guardrail(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']] content_filter: Guardrail that bans certain content from being used in the conversation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the guardrail.
         :param pulumi.Input[_builtins.str] display_name: Display name of the guardrail.
         :param pulumi.Input[_builtins.bool] enabled: Whether the guardrail is enabled.
@@ -1197,6 +1256,7 @@ class Guardrail(pulumi.CustomResource):
                  app: pulumi.Input[Optional[_builtins.str]] = None,
                  code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
                  content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1221,6 +1281,7 @@ class Guardrail(pulumi.CustomResource):
             __props__.__dict__["app"] = app
             __props__.__dict__["code_callback"] = code_callback
             __props__.__dict__["content_filter"] = content_filter
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1255,6 +1316,7 @@ class Guardrail(pulumi.CustomResource):
             code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
             content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1283,6 +1345,12 @@ class Guardrail(pulumi.CustomResource):
         :param pulumi.Input[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']] content_filter: Guardrail that bans certain content from being used in the conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the guardrail was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the guardrail.
         :param pulumi.Input[_builtins.str] display_name: Display name of the guardrail.
         :param pulumi.Input[_builtins.bool] enabled: Whether the guardrail is enabled.
@@ -1319,6 +1387,7 @@ class Guardrail(pulumi.CustomResource):
         __props__.__dict__["code_callback"] = code_callback
         __props__.__dict__["content_filter"] = content_filter
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enabled"] = enabled
@@ -1376,6 +1445,19 @@ class Guardrail(pulumi.CustomResource):
         Timestamp when the guardrail was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

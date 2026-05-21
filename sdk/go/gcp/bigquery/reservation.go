@@ -79,6 +79,13 @@ type Reservation struct {
 	Autoscale ReservationAutoscalePtrOutput `pulumi:"autoscale"`
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency pulumi.IntPtrOutput `pulumi:"concurrency"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringOutput `pulumi:"edition"`
 	// If false, any query using this reservation will use idle slots from other reservations within
@@ -227,6 +234,13 @@ type reservationState struct {
 	Autoscale *ReservationAutoscale `pulumi:"autoscale"`
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency *int `pulumi:"concurrency"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition *string `pulumi:"edition"`
 	// If false, any query using this reservation will use idle slots from other reservations within
@@ -343,6 +357,13 @@ type ReservationState struct {
 	Autoscale ReservationAutoscalePtrInput
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringPtrInput
 	// If false, any query using this reservation will use idle slots from other reservations within
@@ -463,6 +484,13 @@ type reservationArgs struct {
 	Autoscale *ReservationAutoscale `pulumi:"autoscale"`
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency *int `pulumi:"concurrency"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition *string `pulumi:"edition"`
 	// If false, any query using this reservation will use idle slots from other reservations within
@@ -565,6 +593,13 @@ type ReservationArgs struct {
 	Autoscale ReservationAutoscalePtrInput
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringPtrInput
 	// If false, any query using this reservation will use idle slots from other reservations within
@@ -756,6 +791,16 @@ func (o ReservationOutput) Autoscale() ReservationAutoscalePtrOutput {
 // Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 func (o ReservationOutput) Concurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.IntPtrOutput { return v.Concurrency }).(pulumi.IntPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ReservationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS

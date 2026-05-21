@@ -169,6 +169,15 @@ export class HaVpnGateway extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -261,6 +270,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HaVpnGatewayState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["gatewayIpVersion"] = state?.gatewayIpVersion;
@@ -280,6 +290,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
             if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["gatewayIpVersion"] = args?.gatewayIpVersion;
             resourceInputs["labels"] = args?.labels;
@@ -306,6 +317,15 @@ export class HaVpnGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HaVpnGateway resources.
  */
 export interface HaVpnGatewayState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -391,6 +411,15 @@ export interface HaVpnGatewayState {
  * The set of arguments for constructing a HaVpnGateway resource.
  */
 export interface HaVpnGatewayArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

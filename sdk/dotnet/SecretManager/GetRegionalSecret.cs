@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.SecretManager
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string CreateTime;
         public readonly ImmutableArray<Outputs.GetRegionalSecretCustomerManagedEncryptionResult> CustomerManagedEncryptions;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -175,6 +176,8 @@ namespace Pulumi.Gcp.SecretManager
             string createTime,
 
             ImmutableArray<Outputs.GetRegionalSecretCustomerManagedEncryptionResult> customerManagedEncryptions,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -213,6 +216,7 @@ namespace Pulumi.Gcp.SecretManager
             Annotations = annotations;
             CreateTime = createTime;
             CustomerManagedEncryptions = customerManagedEncryptions;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             EffectiveAnnotations = effectiveAnnotations;
             EffectiveLabels = effectiveLabels;

@@ -213,6 +213,15 @@ export class DataAccessScope extends pulumi.CustomResource {
      */
     declare public readonly dataAccessScopeId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. The denied labels for the scope.
      * The logical operator for evaluation of the denied labels is AND.
      * E.g.: A customer with scope with denied labels A and B won't be able
@@ -275,6 +284,7 @@ export class DataAccessScope extends pulumi.CustomResource {
             resourceInputs["author"] = state?.author;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataAccessScopeId"] = state?.dataAccessScopeId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deniedDataAccessLabels"] = state?.deniedDataAccessLabels;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
@@ -298,6 +308,7 @@ export class DataAccessScope extends pulumi.CustomResource {
             resourceInputs["allowAll"] = args?.allowAll;
             resourceInputs["allowedDataAccessLabels"] = args?.allowedDataAccessLabels;
             resourceInputs["dataAccessScopeId"] = args?.dataAccessScopeId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deniedDataAccessLabels"] = args?.deniedDataAccessLabels;
             resourceInputs["description"] = args?.description;
             resourceInputs["instance"] = args?.instance;
@@ -354,6 +365,15 @@ export interface DataAccessScopeState {
      * Needs to be compliant with https://google.aip.dev/122
      */
     dataAccessScopeId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The denied labels for the scope.
      * The logical operator for evaluation of the denied labels is AND.
@@ -431,6 +451,15 @@ export interface DataAccessScopeArgs {
      * Needs to be compliant with https://google.aip.dev/122
      */
     dataAccessScopeId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The denied labels for the scope.
      * The logical operator for evaluation of the denied labels is AND.

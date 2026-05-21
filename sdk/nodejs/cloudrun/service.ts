@@ -405,6 +405,15 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly autogenerateRevisionName: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The location of the cloud run instance. eg us-central1
      */
     declare public readonly location: pulumi.Output<string>;
@@ -465,6 +474,7 @@ export class Service extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
             resourceInputs["autogenerateRevisionName"] = state?.autogenerateRevisionName;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
@@ -478,6 +488,7 @@ export class Service extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["autogenerateRevisionName"] = args?.autogenerateRevisionName;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["name"] = args?.name;
@@ -503,6 +514,15 @@ export interface ServiceState {
      * this field is set to false, the revision name will still autogenerate.)
      */
     autogenerateRevisionName?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The location of the cloud run instance. eg us-central1
      */
@@ -563,6 +583,15 @@ export interface ServiceArgs {
      * this field is set to false, the revision name will still autogenerate.)
      */
     autogenerateRevisionName?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The location of the cloud run instance. eg us-central1
      */

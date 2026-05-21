@@ -97,6 +97,15 @@ export class WebResource extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The email addresses of all direct, verified owners of this exact property. Indirect owners —
      * for example verified owners of the containing domain—are not included in this list.
      */
@@ -130,6 +139,7 @@ export class WebResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebResourceState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["owners"] = state?.owners;
             resourceInputs["site"] = state?.site;
             resourceInputs["verificationMethod"] = state?.verificationMethod;
@@ -142,6 +152,7 @@ export class WebResource extends pulumi.CustomResource {
             if (args?.verificationMethod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'verificationMethod'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["site"] = args?.site;
             resourceInputs["verificationMethod"] = args?.verificationMethod;
             resourceInputs["owners"] = undefined /*out*/;
@@ -156,6 +167,15 @@ export class WebResource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebResource resources.
  */
 export interface WebResourceState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The email addresses of all direct, verified owners of this exact property. Indirect owners —
      * for example verified owners of the containing domain—are not included in this list.
@@ -182,6 +202,15 @@ export interface WebResourceState {
  * The set of arguments for constructing a WebResource resource.
  */
 export interface WebResourceArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Container for the address and type of a site for which a verification token will be verified.
      * Structure is documented below.

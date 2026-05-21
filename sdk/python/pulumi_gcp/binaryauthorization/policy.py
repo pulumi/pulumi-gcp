@@ -24,6 +24,7 @@ class PolicyArgs:
                  default_admission_rule: pulumi.Input['PolicyDefaultAdmissionRuleArgs'],
                  admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
                  cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -47,6 +48,12 @@ class PolicyArgs:
                A location is either a compute zone (e.g. `us-central1-a`) or a region
                (e.g. `us-central1`).
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive comment.
         :param pulumi.Input[_builtins.str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
                for common system-level images. Images not covered by the global
@@ -60,6 +67,8 @@ class PolicyArgs:
             pulumi.set(__self__, "admission_whitelist_patterns", admission_whitelist_patterns)
         if cluster_admission_rules is not None:
             pulumi.set(__self__, "cluster_admission_rules", cluster_admission_rules)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if global_policy_evaluation_mode is not None:
@@ -118,6 +127,23 @@ class PolicyArgs:
         pulumi.set(self, "cluster_admission_rules", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -164,6 +190,7 @@ class _PolicyState:
                  admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
                  cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
                  default_admission_rule: pulumi.Input[Optional['PolicyDefaultAdmissionRuleArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -187,6 +214,12 @@ class _PolicyState:
         :param pulumi.Input['PolicyDefaultAdmissionRuleArgs'] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive comment.
         :param pulumi.Input[_builtins.str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
                for common system-level images. Images not covered by the global
@@ -201,6 +234,8 @@ class _PolicyState:
             pulumi.set(__self__, "cluster_admission_rules", cluster_admission_rules)
         if default_admission_rule is not None:
             pulumi.set(__self__, "default_admission_rule", default_admission_rule)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if global_policy_evaluation_mode is not None:
@@ -259,6 +294,23 @@ class _PolicyState:
         pulumi.set(self, "default_admission_rule", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -308,6 +360,7 @@ class Policy(pulumi.CustomResource):
                  admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
                  cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
                  default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -417,6 +470,12 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive comment.
         :param pulumi.Input[_builtins.str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
                for common system-level images. Images not covered by the global
@@ -535,6 +594,7 @@ class Policy(pulumi.CustomResource):
                  admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
                  cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
                  default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -552,6 +612,7 @@ class Policy(pulumi.CustomResource):
             if default_admission_rule is None and not opts.urn:
                 raise TypeError("Missing required property 'default_admission_rule'")
             __props__.__dict__["default_admission_rule"] = default_admission_rule
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["global_policy_evaluation_mode"] = global_policy_evaluation_mode
             __props__.__dict__["project"] = project
@@ -568,6 +629,7 @@ class Policy(pulumi.CustomResource):
             admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
             cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
             default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'Policy':
@@ -595,6 +657,12 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive comment.
         :param pulumi.Input[_builtins.str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
                for common system-level images. Images not covered by the global
@@ -610,6 +678,7 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["admission_whitelist_patterns"] = admission_whitelist_patterns
         __props__.__dict__["cluster_admission_rules"] = cluster_admission_rules
         __props__.__dict__["default_admission_rule"] = default_admission_rule
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["global_policy_evaluation_mode"] = global_policy_evaluation_mode
         __props__.__dict__["project"] = project
@@ -652,6 +721,19 @@ class Policy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "default_admission_rule")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

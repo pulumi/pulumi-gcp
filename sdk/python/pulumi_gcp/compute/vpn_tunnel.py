@@ -22,6 +22,7 @@ __all__ = ['VPNTunnelArgs', 'VPNTunnel']
 class VPNTunnelArgs:
     def __init__(__self__, *,
                  cipher_suite: pulumi.Input[Optional['VPNTunnelCipherSuiteArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ike_version: pulumi.Input[Optional[_builtins.int]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -47,6 +48,12 @@ class VPNTunnelArgs:
 
         :param pulumi.Input['VPNTunnelCipherSuiteArgs'] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
                peer VPN gateway.
@@ -102,6 +109,8 @@ class VPNTunnelArgs:
         """
         if cipher_suite is not None:
             pulumi.set(__self__, "cipher_suite", cipher_suite)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ike_version is not None:
@@ -155,6 +164,23 @@ class VPNTunnelArgs:
     @cipher_suite.setter
     def cipher_suite(self, value: pulumi.Input[Optional['VPNTunnelCipherSuiteArgs']]):
         pulumi.set(self, "cipher_suite", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -434,6 +460,7 @@ class _VPNTunnelState:
     def __init__(__self__, *,
                  cipher_suite: pulumi.Input[Optional['VPNTunnelCipherSuiteArgs']] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  detailed_status: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -467,6 +494,12 @@ class _VPNTunnelState:
         :param pulumi.Input['VPNTunnelCipherSuiteArgs'] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] detailed_status: Detailed status message for the VPN tunnel.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -533,6 +566,8 @@ class _VPNTunnelState:
             pulumi.set(__self__, "cipher_suite", cipher_suite)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if detailed_status is not None:
@@ -612,6 +647,23 @@ class _VPNTunnelState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -979,6 +1031,7 @@ class VPNTunnel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ike_version: pulumi.Input[Optional[_builtins.int]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1148,6 +1201,12 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
                peer VPN gateway.
@@ -1367,6 +1426,7 @@ class VPNTunnel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ike_version: pulumi.Input[Optional[_builtins.int]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1397,6 +1457,7 @@ class VPNTunnel(pulumi.CustomResource):
             __props__ = VPNTunnelArgs.__new__(VPNTunnelArgs)
 
             __props__.__dict__["cipher_suite"] = cipher_suite
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["ike_version"] = ike_version
             __props__.__dict__["labels"] = labels
@@ -1439,6 +1500,7 @@ class VPNTunnel(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             detailed_status: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1476,6 +1538,12 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] detailed_status: Detailed status message for the VPN tunnel.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1544,6 +1612,7 @@ class VPNTunnel(pulumi.CustomResource):
 
         __props__.__dict__["cipher_suite"] = cipher_suite
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["detailed_status"] = detailed_status
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1589,6 +1658,19 @@ class VPNTunnel(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

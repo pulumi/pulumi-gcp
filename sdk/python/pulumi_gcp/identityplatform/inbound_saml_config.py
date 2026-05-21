@@ -24,6 +24,7 @@ class InboundSamlConfigArgs:
                  display_name: pulumi.Input[_builtins.str],
                  idp_config: pulumi.Input['InboundSamlConfigIdpConfigArgs'],
                  sp_config: pulumi.Input['InboundSamlConfigSpConfigArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -36,6 +37,12 @@ class InboundSamlConfigArgs:
         :param pulumi.Input['InboundSamlConfigSpConfigArgs'] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enabled: If this config allows users to sign in with the provider.
         :param pulumi.Input[_builtins.str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
                hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
@@ -46,6 +53,8 @@ class InboundSamlConfigArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "idp_config", idp_config)
         pulumi.set(__self__, "sp_config", sp_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
@@ -93,6 +102,23 @@ class InboundSamlConfigArgs:
         pulumi.set(self, "sp_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -135,6 +161,7 @@ class InboundSamlConfigArgs:
 @pulumi.input_type
 class _InboundSamlConfigState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  idp_config: pulumi.Input[Optional['InboundSamlConfigIdpConfigArgs']] = None,
@@ -144,6 +171,12 @@ class _InboundSamlConfigState:
         """
         Input properties used for looking up and filtering InboundSamlConfig resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input[_builtins.bool] enabled: If this config allows users to sign in with the provider.
         :param pulumi.Input['InboundSamlConfigIdpConfigArgs'] idp_config: SAML IdP configuration when the project acts as the relying party
@@ -157,6 +190,8 @@ class _InboundSamlConfigState:
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if enabled is not None:
@@ -169,6 +204,23 @@ class _InboundSamlConfigState:
             pulumi.set(__self__, "project", project)
         if sp_config is not None:
             pulumi.set(__self__, "sp_config", sp_config)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -255,6 +307,7 @@ class InboundSamlConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
@@ -314,6 +367,12 @@ class InboundSamlConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input[_builtins.bool] enabled: If this config allows users to sign in with the provider.
         :param pulumi.Input[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']] idp_config: SAML IdP configuration when the project acts as the relying party
@@ -398,6 +457,7 @@ class InboundSamlConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
@@ -413,6 +473,7 @@ class InboundSamlConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InboundSamlConfigArgs.__new__(InboundSamlConfigArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -435,6 +496,7 @@ class InboundSamlConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
@@ -448,6 +510,12 @@ class InboundSamlConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input[_builtins.bool] enabled: If this config allows users to sign in with the provider.
         :param pulumi.Input[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']] idp_config: SAML IdP configuration when the project acts as the relying party
@@ -465,6 +533,7 @@ class InboundSamlConfig(pulumi.CustomResource):
 
         __props__ = _InboundSamlConfigState.__new__(_InboundSamlConfigState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["idp_config"] = idp_config
@@ -472,6 +541,19 @@ class InboundSamlConfig(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["sp_config"] = sp_config
         return InboundSamlConfig(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

@@ -203,6 +203,15 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
     declare public readonly disabled: pulumi.Output<boolean | undefined>;
@@ -273,6 +282,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["bitbucketCloudConfig"] = state?.bitbucketCloudConfig;
             resourceInputs["bitbucketDataCenterConfig"] = state?.bitbucketDataCenterConfig;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["etag"] = state?.etag;
@@ -293,6 +303,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["annotations"] = args?.annotations;
             resourceInputs["bitbucketCloudConfig"] = args?.bitbucketCloudConfig;
             resourceInputs["bitbucketDataCenterConfig"] = args?.bitbucketDataCenterConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["githubConfig"] = args?.githubConfig;
             resourceInputs["githubEnterpriseConfig"] = args?.githubEnterpriseConfig;
@@ -336,6 +347,15 @@ export interface ConnectionState {
      * Output only. Server assigned timestamp for when the connection was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
@@ -411,6 +431,15 @@ export interface ConnectionArgs {
      * Structure is documented below.
      */
     bitbucketDataCenterConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */

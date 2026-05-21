@@ -22,6 +22,7 @@ __all__ = ['TransferJobArgs', 'TransferJob']
 class TransferJobArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  event_stream: pulumi.Input[Optional['TransferJobEventStreamArgs']] = None,
                  logging_config: pulumi.Input[Optional['TransferJobLoggingConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +37,12 @@ class TransferJobArgs:
         The set of arguments for constructing a TransferJob resource.
 
         :param pulumi.Input[_builtins.str] description: Unique description to identify the Transfer Job.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['TransferJobEventStreamArgs'] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input['TransferJobLoggingConfigArgs'] logging_config: Logging configuration. Structure documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
@@ -51,6 +58,8 @@ class TransferJobArgs:
         :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         pulumi.set(__self__, "description", description)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if event_stream is not None:
             pulumi.set(__self__, "event_stream", event_stream)
         if logging_config is not None:
@@ -83,6 +92,23 @@ class TransferJobArgs:
     @description.setter
     def description(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="eventStream")
@@ -212,6 +238,7 @@ class TransferJobArgs:
 class _TransferJobState:
     def __init__(__self__, *,
                  creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_stream: pulumi.Input[Optional['TransferJobEventStreamArgs']] = None,
@@ -229,6 +256,12 @@ class _TransferJobState:
         Input properties used for looking up and filtering TransferJob resources.
 
         :param pulumi.Input[_builtins.str] creation_time: When the Transfer Job was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deletion_time: When the Transfer Job was deleted.
         :param pulumi.Input[_builtins.str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input['TransferJobEventStreamArgs'] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
@@ -248,6 +281,8 @@ class _TransferJobState:
         """
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_time is not None:
             pulumi.set(__self__, "deletion_time", deletion_time)
         if description is not None:
@@ -286,6 +321,23 @@ class _TransferJobState:
     @creation_time.setter
     def creation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionTime")
@@ -453,6 +505,7 @@ class TransferJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
                  logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
@@ -580,6 +633,12 @@ class TransferJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']] logging_config: Logging configuration. Structure documented below.
@@ -729,6 +788,7 @@ class TransferJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
                  logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
@@ -749,6 +809,7 @@ class TransferJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TransferJobArgs.__new__(TransferJobArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
@@ -776,6 +837,7 @@ class TransferJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
@@ -797,6 +859,12 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] creation_time: When the Transfer Job was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deletion_time: When the Transfer Job was deleted.
         :param pulumi.Input[_builtins.str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
@@ -819,6 +887,7 @@ class TransferJob(pulumi.CustomResource):
         __props__ = _TransferJobState.__new__(_TransferJobState)
 
         __props__.__dict__["creation_time"] = creation_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_time"] = deletion_time
         __props__.__dict__["description"] = description
         __props__.__dict__["event_stream"] = event_stream
@@ -841,6 +910,19 @@ class TransferJob(pulumi.CustomResource):
         When the Transfer Job was created.
         """
         return pulumi.get(self, "creation_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionTime")

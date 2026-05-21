@@ -51,6 +51,7 @@ export interface GetDatabaseInstanceResult {
     readonly clones: outputs.sql.GetDatabaseInstanceClone[];
     readonly connectionName: string;
     readonly databaseVersion: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly dnsName: string;
     readonly dnsNames: outputs.sql.GetDatabaseInstanceDnsName[];

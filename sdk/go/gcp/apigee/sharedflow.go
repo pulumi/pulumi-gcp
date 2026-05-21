@@ -39,9 +39,16 @@ type Sharedflow struct {
 	pulumi.CustomResourceState
 
 	// Path to the config zip bundle.
+	ConfigBundle pulumi.StringOutput `pulumi:"configBundle"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle pulumi.StringOutput `pulumi:"configBundle"`
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this shared flow.
@@ -96,9 +103,16 @@ func GetSharedflow(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Sharedflow resources.
 type sharedflowState struct {
 	// Path to the config zip bundle.
+	ConfigBundle *string `pulumi:"configBundle"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle *string `pulumi:"configBundle"`
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this shared flow.
@@ -118,9 +132,16 @@ type sharedflowState struct {
 
 type SharedflowState struct {
 	// Path to the config zip bundle.
+	ConfigBundle pulumi.StringPtrInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle pulumi.StringPtrInput
+	DeletionPolicy pulumi.StringPtrInput
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
 	// The id of the most recently created revision for this shared flow.
@@ -144,9 +165,16 @@ func (SharedflowState) ElementType() reflect.Type {
 
 type sharedflowArgs struct {
 	// Path to the config zip bundle.
+	ConfigBundle string `pulumi:"configBundle"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle string `pulumi:"configBundle"`
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The ID of the shared flow.
@@ -158,9 +186,16 @@ type sharedflowArgs struct {
 // The set of arguments for constructing a Sharedflow resource.
 type SharedflowArgs struct {
 	// Path to the config zip bundle.
+	ConfigBundle pulumi.StringInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	ConfigBundle pulumi.StringInput
+	DeletionPolicy pulumi.StringPtrInput
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
 	// The ID of the shared flow.
@@ -257,10 +292,20 @@ func (o SharedflowOutput) ToSharedflowOutputWithContext(ctx context.Context) Sha
 }
 
 // Path to the config zip bundle.
-//
-// ***
 func (o SharedflowOutput) ConfigBundle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.ConfigBundle }).(pulumi.StringOutput)
+}
+
+// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+//
+// ***
+func (o SharedflowOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.

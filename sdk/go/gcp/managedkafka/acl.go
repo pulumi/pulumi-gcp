@@ -108,6 +108,13 @@ type Acl struct {
 	AclId pulumi.StringOutput `pulumi:"aclId"`
 	// The cluster name.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// `etag` is used for concurrency control. An `etag` is returned in the
 	// response to `GetAcl` and `CreateAcl`. Callers are required to put that etag
 	// in the request to `UpdateAcl` to ensure that their change will be applied
@@ -183,6 +190,13 @@ type aclState struct {
 	AclId *string `pulumi:"aclId"`
 	// The cluster name.
 	Cluster *string `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// `etag` is used for concurrency control. An `etag` is returned in the
 	// response to `GetAcl` and `CreateAcl`. Callers are required to put that etag
 	// in the request to `UpdateAcl` to ensure that their change will be applied
@@ -217,6 +231,13 @@ type AclState struct {
 	AclId pulumi.StringPtrInput
 	// The cluster name.
 	Cluster pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// `etag` is used for concurrency control. An `etag` is returned in the
 	// response to `GetAcl` and `CreateAcl`. Callers are required to put that etag
 	// in the request to `UpdateAcl` to ensure that their change will be applied
@@ -255,6 +276,13 @@ type aclArgs struct {
 	AclId string `pulumi:"aclId"`
 	// The cluster name.
 	Cluster string `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -275,6 +303,13 @@ type AclArgs struct {
 	AclId pulumi.StringInput
 	// The cluster name.
 	Cluster pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -387,6 +422,16 @@ func (o AclOutput) AclId() pulumi.StringOutput {
 // The cluster name.
 func (o AclOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AclOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // `etag` is used for concurrency control. An `etag` is returned in the

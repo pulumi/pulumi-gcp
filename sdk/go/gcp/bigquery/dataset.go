@@ -432,6 +432,13 @@ type Dataset struct {
 	// dataset when destroying the resource; otherwise,
 	// destroying the resource will fail if tables are present.
 	DeleteContentsOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteContentsOnDestroy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -585,6 +592,13 @@ type datasetState struct {
 	// dataset when destroying the resource; otherwise,
 	// destroying the resource will fail if tables are present.
 	DeleteContentsOnDestroy *bool `pulumi:"deleteContentsOnDestroy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-friendly description of the dataset
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -701,6 +715,13 @@ type DatasetState struct {
 	// dataset when destroying the resource; otherwise,
 	// destroying the resource will fail if tables are present.
 	DeleteContentsOnDestroy pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -818,6 +839,13 @@ type datasetArgs struct {
 	// dataset when destroying the resource; otherwise,
 	// destroying the resource will fail if tables are present.
 	DeleteContentsOnDestroy *bool `pulumi:"deleteContentsOnDestroy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-friendly description of the dataset
 	Description *string `pulumi:"description"`
 	// Options defining open source compatible datasets living in the BigQuery catalog. Contains
@@ -920,6 +948,13 @@ type DatasetArgs struct {
 	// dataset when destroying the resource; otherwise,
 	// destroying the resource will fail if tables are present.
 	DeleteContentsOnDestroy pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrInput
 	// Options defining open source compatible datasets living in the BigQuery catalog. Contains
@@ -1134,6 +1169,16 @@ func (o DatasetOutput) DefaultTableExpirationMs() pulumi.IntPtrOutput {
 // destroying the resource will fail if tables are present.
 func (o DatasetOutput) DeleteContentsOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.BoolPtrOutput { return v.DeleteContentsOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DatasetOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A user-friendly description of the dataset

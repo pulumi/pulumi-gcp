@@ -84,6 +84,15 @@ export class ReservationAssignment extends pulumi.CustomResource {
      */
     declare public readonly assignee: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */
     declare public readonly jobType: pulumi.Output<string>;
@@ -124,6 +133,7 @@ export class ReservationAssignment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ReservationAssignmentState | undefined;
             resourceInputs["assignee"] = state?.assignee;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["jobType"] = state?.jobType;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -142,6 +152,7 @@ export class ReservationAssignment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'reservation'");
             }
             resourceInputs["assignee"] = args?.assignee;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["jobType"] = args?.jobType;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -162,6 +173,15 @@ export interface ReservationAssignmentState {
      * The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
      */
     assignee?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */
@@ -198,6 +218,15 @@ export interface ReservationAssignmentArgs {
      * The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
      */
     assignee: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */

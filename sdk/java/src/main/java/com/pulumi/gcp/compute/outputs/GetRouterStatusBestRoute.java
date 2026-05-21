@@ -22,6 +22,16 @@ public final class GetRouterStatusBestRoute {
      */
     private String creationTimestamp;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return An optional description of this resource. Provide this property
      * when you create the resource.
      * 
@@ -190,6 +200,18 @@ public final class GetRouterStatusBestRoute {
      */
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return An optional description of this resource. Provide this property
@@ -409,6 +431,7 @@ public final class GetRouterStatusBestRoute {
     public static final class Builder {
         private List<GetRouterStatusBestRouteAsPath> asPaths;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private String destRange;
         private String name;
@@ -438,6 +461,7 @@ public final class GetRouterStatusBestRoute {
     	      Objects.requireNonNull(defaults);
     	      this.asPaths = defaults.asPaths;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.destRange = defaults.destRange;
     	      this.name = defaults.name;
@@ -481,6 +505,14 @@ public final class GetRouterStatusBestRoute {
               throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoute", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -688,6 +720,7 @@ public final class GetRouterStatusBestRoute {
             final var _resultValue = new GetRouterStatusBestRoute();
             _resultValue.asPaths = asPaths;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.destRange = destRange;
             _resultValue.name = name;

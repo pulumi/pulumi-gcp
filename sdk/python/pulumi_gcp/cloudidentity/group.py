@@ -24,6 +24,7 @@ class GroupArgs:
                  group_key: pulumi.Input['GroupGroupKeyArgs'],
                  labels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
                  parent: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_group_config: pulumi.Input[Optional[_builtins.str]] = None):
@@ -41,6 +42,12 @@ class GroupArgs:
                Cloud Identity resource hierarchy.
                Must be of the form identitysources/{identity_source_id} for external-identity-mapped
                groups or customers/{customer_id} for Google Groups.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Group.
@@ -54,6 +61,8 @@ class GroupArgs:
         pulumi.set(__self__, "group_key", group_key)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "parent", parent)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -106,6 +115,23 @@ class GroupArgs:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -153,6 +179,7 @@ class _GroupState:
     def __init__(__self__, *,
                  additional_group_keys: pulumi.Input[Optional[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  group_key: pulumi.Input[Optional['GroupGroupKeyArgs']] = None,
@@ -167,6 +194,12 @@ class _GroupState:
         :param pulumi.Input[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]] additional_group_keys: Additional group keys associated with the Group
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Group was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Group.
@@ -195,6 +228,8 @@ class _GroupState:
             pulumi.set(__self__, "additional_group_keys", additional_group_keys)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -236,6 +271,23 @@ class _GroupState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -355,6 +407,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
@@ -412,6 +465,12 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Group.
@@ -502,6 +561,7 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
@@ -517,6 +577,7 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupArgs.__new__(GroupArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if group_key is None and not opts.urn:
@@ -545,6 +606,7 @@ class Group(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_group_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
@@ -563,6 +625,12 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict']]]] additional_group_keys: Additional group keys associated with the Group
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Group was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Group.
@@ -593,6 +661,7 @@ class Group(pulumi.CustomResource):
 
         __props__.__dict__["additional_group_keys"] = additional_group_keys
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["group_key"] = group_key
@@ -619,6 +688,19 @@ class Group(pulumi.CustomResource):
         The time when the Group was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

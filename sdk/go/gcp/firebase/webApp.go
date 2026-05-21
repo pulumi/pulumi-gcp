@@ -188,10 +188,13 @@ type WebApp struct {
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The URLs where the `WebApp` is hosted.
 	AppUrls pulumi.StringArrayOutput `pulumi:"appUrls"`
-	// Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-	// serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fully qualified resource name of the App, for example:
@@ -244,9 +247,12 @@ type webAppState struct {
 	AppId *string `pulumi:"appId"`
 	// The URLs where the `WebApp` is hosted.
 	AppUrls []string `pulumi:"appUrls"`
-	// Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-	// serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName *string `pulumi:"displayName"`
@@ -268,9 +274,12 @@ type WebAppState struct {
 	AppId pulumi.StringPtrInput
 	// The URLs where the `WebApp` is hosted.
 	AppUrls pulumi.StringArrayInput
-	// Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-	// serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringPtrInput
@@ -291,9 +300,12 @@ type webAppArgs struct {
 	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
 	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
 	ApiKeyId *string `pulumi:"apiKeyId"`
-	// Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-	// serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName string `pulumi:"displayName"`
@@ -308,9 +320,12 @@ type WebAppArgs struct {
 	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
 	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
 	ApiKeyId pulumi.StringPtrInput
-	// Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-	// serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringInput
@@ -424,11 +439,14 @@ func (o WebAppOutput) AppUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringArrayOutput { return v.AppUrls }).(pulumi.StringArrayOutput)
 }
 
-// Set to `ABANDON` to allow the WebApp to be untracked from terraform state
-// rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
-// serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
-func (o WebAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebApp) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WebAppOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The user-assigned display name of the App.

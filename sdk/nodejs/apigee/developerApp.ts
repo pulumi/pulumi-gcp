@@ -218,6 +218,15 @@ export class DeveloperApp extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly credentials: pulumi.Output<outputs.apigee.DeveloperAppCredential[]>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Email address of the developer.
      * This value is used to uniquely identify the developer in Apigee hybrid.
      * Note that the email address has to be in lowercase only.
@@ -277,6 +286,7 @@ export class DeveloperApp extends pulumi.CustomResource {
             resourceInputs["callbackUrl"] = state?.callbackUrl;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["developerEmail"] = state?.developerEmail;
             resourceInputs["developerId"] = state?.developerId;
             resourceInputs["keyExpiresIn"] = state?.keyExpiresIn;
@@ -300,6 +310,7 @@ export class DeveloperApp extends pulumi.CustomResource {
             resourceInputs["appFamily"] = args?.appFamily;
             resourceInputs["attributes"] = args?.attributes;
             resourceInputs["callbackUrl"] = args?.callbackUrl;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["developerEmail"] = args?.developerEmail;
             resourceInputs["keyExpiresIn"] = args?.keyExpiresIn;
             resourceInputs["name"] = args?.name;
@@ -354,6 +365,15 @@ export interface DeveloperAppState {
      * Structure is documented below.
      */
     credentials?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAppCredential>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Email address of the developer.
      * This value is used to uniquely identify the developer in Apigee hybrid.
@@ -417,6 +437,15 @@ export interface DeveloperAppArgs {
      * authorization codes back to developer apps.
      */
     callbackUrl: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Email address of the developer.
      * This value is used to uniquely identify the developer in Apigee hybrid.

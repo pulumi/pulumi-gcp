@@ -146,6 +146,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateShieldedVmConfigArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateEncryptionSpecArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigEnvArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigColabImageArgs;
  * import java.util.ArrayList;
@@ -263,6 +264,30 @@ public class RuntimeTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<RuntimeTemplateDataPersistentDiskSpec> dataPersistentDiskSpec() {
         return this.dataPersistentDiskSpec;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The description of the Runtime Template.

@@ -574,26 +574,28 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.deleteProtectionState;
     }
     /**
-     * Deletion behavior for this database.
-     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
-     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-     * The default value is `ABANDON`.
-     * See also `deleteProtection`.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to ABANDON.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
-     * @return Deletion behavior for this database.
-     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
-     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-     * The default value is `ABANDON`.
-     * See also `deleteProtection`.
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to ABANDON.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.

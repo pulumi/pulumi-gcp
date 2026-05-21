@@ -174,6 +174,13 @@ type OsPolicyAssignment struct {
 	// Output only. Indicates that this revision deletes the OS policy
 	// assignment.
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The etag for this OS policy assignment. If this is provided on
@@ -265,6 +272,13 @@ type osPolicyAssignmentState struct {
 	// Output only. Indicates that this revision deletes the OS policy
 	// assignment.
 	Deleted *bool `pulumi:"deleted"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// The etag for this OS policy assignment. If this is provided on
@@ -315,6 +329,13 @@ type OsPolicyAssignmentState struct {
 	// Output only. Indicates that this revision deletes the OS policy
 	// assignment.
 	Deleted pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// The etag for this OS policy assignment. If this is provided on
@@ -361,6 +382,13 @@ func (OsPolicyAssignmentState) ElementType() reflect.Type {
 }
 
 type osPolicyAssignmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// Filter to select VMs. Structure is
@@ -387,6 +415,13 @@ type osPolicyAssignmentArgs struct {
 
 // The set of arguments for constructing a OsPolicyAssignment resource.
 type OsPolicyAssignmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// Filter to select VMs. Structure is
@@ -510,6 +545,16 @@ func (o OsPolicyAssignmentOutput) Baseline() pulumi.BoolOutput {
 // assignment.
 func (o OsPolicyAssignmentOutput) Deleted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.BoolOutput { return v.Deleted }).(pulumi.BoolOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OsPolicyAssignmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // OS policy assignment description. Length of the description is limited to 1024 characters.

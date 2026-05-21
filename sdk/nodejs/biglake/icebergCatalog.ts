@@ -130,6 +130,15 @@ export class IcebergCatalog extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly defaultLocation: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The name of the IcebergCatalog.
      * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
      * exact same value of the GCS bucket's name. For example, for a bucket:
@@ -179,6 +188,7 @@ export class IcebergCatalog extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["credentialMode"] = state?.credentialMode;
             resourceInputs["defaultLocation"] = state?.defaultLocation;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["primaryLocation"] = state?.primaryLocation;
             resourceInputs["project"] = state?.project;
@@ -192,6 +202,7 @@ export class IcebergCatalog extends pulumi.CustomResource {
             }
             resourceInputs["catalogType"] = args?.catalogType;
             resourceInputs["credentialMode"] = args?.credentialMode;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["primaryLocation"] = args?.primaryLocation;
             resourceInputs["project"] = args?.project;
@@ -233,6 +244,15 @@ export interface IcebergCatalogState {
      * Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
      */
     defaultLocation?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the IcebergCatalog.
      * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
@@ -280,6 +300,15 @@ export interface IcebergCatalogArgs {
      * Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
      */
     credentialMode?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the IcebergCatalog.
      * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the

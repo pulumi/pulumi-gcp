@@ -45,6 +45,7 @@ export interface GetNetworkPeeringArgs {
  */
 export interface GetNetworkPeeringResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly exportCustomRoutes: boolean;
     readonly exportCustomRoutesWithPublicIp: boolean;

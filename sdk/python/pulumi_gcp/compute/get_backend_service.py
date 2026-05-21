@@ -27,7 +27,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, dynamic_forwardings=None, edge_security_policy=None, enable_cdn=None, external_managed_migration_state=None, external_managed_migration_testing_percentage=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, max_stream_durations=None, name=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, deletion_policy=None, description=None, dynamic_forwardings=None, edge_security_policy=None, enable_cdn=None, external_managed_migration_state=None, external_managed_migration_testing_percentage=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, max_stream_durations=None, name=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -61,6 +61,9 @@ class GetBackendServiceResult:
         if custom_response_headers and not isinstance(custom_response_headers, list):
             raise TypeError("Expected argument 'custom_response_headers' to be a list")
         pulumi.set(__self__, "custom_response_headers", custom_response_headers)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -218,6 +221,11 @@ class GetBackendServiceResult:
     @pulumi.getter(name="customResponseHeaders")
     def custom_response_headers(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "custom_response_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -430,6 +438,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             custom_metrics=self.custom_metrics,
             custom_request_headers=self.custom_request_headers,
             custom_response_headers=self.custom_response_headers,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             dynamic_forwardings=self.dynamic_forwardings,
             edge_security_policy=self.edge_security_policy,
@@ -508,6 +517,7 @@ def get_backend_service(name: Optional[_builtins.str] = None,
         custom_metrics=pulumi.get(__ret__, 'custom_metrics'),
         custom_request_headers=pulumi.get(__ret__, 'custom_request_headers'),
         custom_response_headers=pulumi.get(__ret__, 'custom_response_headers'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         dynamic_forwardings=pulumi.get(__ret__, 'dynamic_forwardings'),
         edge_security_policy=pulumi.get(__ret__, 'edge_security_policy'),
@@ -583,6 +593,7 @@ def get_backend_service_output(name: pulumi.Input[Optional[_builtins.str]] = Non
         custom_metrics=pulumi.get(__response__, 'custom_metrics'),
         custom_request_headers=pulumi.get(__response__, 'custom_request_headers'),
         custom_response_headers=pulumi.get(__response__, 'custom_response_headers'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         dynamic_forwardings=pulumi.get(__response__, 'dynamic_forwardings'),
         edge_security_policy=pulumi.get(__response__, 'edge_security_policy'),

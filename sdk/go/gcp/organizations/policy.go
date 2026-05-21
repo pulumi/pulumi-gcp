@@ -174,6 +174,15 @@ type Policy struct {
 	//
 	// ***
 	Constraint pulumi.StringOutput `pulumi:"constraint"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
@@ -184,8 +193,6 @@ type Policy struct {
 	//
 	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
 	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-	//
-	// ***
 	RestorePolicy PolicyRestorePolicyPtrOutput `pulumi:"restorePolicy"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -236,6 +243,15 @@ type policyState struct {
 	//
 	// ***
 	Constraint *string `pulumi:"constraint"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 	Etag *string `pulumi:"etag"`
 	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
@@ -246,8 +262,6 @@ type policyState struct {
 	//
 	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
 	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-	//
-	// ***
 	RestorePolicy *PolicyRestorePolicy `pulumi:"restorePolicy"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime *string `pulumi:"updateTime"`
@@ -263,6 +277,15 @@ type PolicyState struct {
 	//
 	// ***
 	Constraint pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringPtrInput
 	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 	Etag pulumi.StringPtrInput
 	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
@@ -273,8 +296,6 @@ type PolicyState struct {
 	//
 	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
 	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-	//
-	// ***
 	RestorePolicy PolicyRestorePolicyPtrInput
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime pulumi.StringPtrInput
@@ -294,6 +315,15 @@ type policyArgs struct {
 	//
 	// ***
 	Constraint string `pulumi:"constraint"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
 	ListPolicy *PolicyListPolicy `pulumi:"listPolicy"`
 	// The numeric ID of the organization to set the policy for.
@@ -302,8 +332,6 @@ type policyArgs struct {
 	//
 	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
 	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-	//
-	// ***
 	RestorePolicy *PolicyRestorePolicy `pulumi:"restorePolicy"`
 	// Version of the Policy. Default version is 0.
 	Version *int `pulumi:"version"`
@@ -318,6 +346,15 @@ type PolicyArgs struct {
 	//
 	// ***
 	Constraint pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringPtrInput
 	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
 	ListPolicy PolicyListPolicyPtrInput
 	// The numeric ID of the organization to set the policy for.
@@ -326,8 +363,6 @@ type PolicyArgs struct {
 	//
 	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
 	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-	//
-	// ***
 	RestorePolicy PolicyRestorePolicyPtrInput
 	// Version of the Policy. Default version is 0.
 	Version pulumi.IntPtrInput
@@ -433,6 +468,18 @@ func (o PolicyOutput) Constraint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Constraint }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+//
+// ***
+func (o PolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 func (o PolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -452,8 +499,6 @@ func (o PolicyOutput) OrgId() pulumi.StringOutput {
 //
 // > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
 // effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-//
-// ***
 func (o PolicyOutput) RestorePolicy() PolicyRestorePolicyPtrOutput {
 	return o.ApplyT(func(v *Policy) PolicyRestorePolicyPtrOutput { return v.RestorePolicy }).(PolicyRestorePolicyPtrOutput)
 }

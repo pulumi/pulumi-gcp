@@ -397,6 +397,13 @@ func (o GetParameterPolicyMemberArrayOutput) Index(i pulumi.IntInput) GetParamet
 type GetParametersParameter struct {
 	// The time at which the parameter was created.
 	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The format type of the parameter.
@@ -434,6 +441,13 @@ type GetParametersParameterInput interface {
 type GetParametersParameterArgs struct {
 	// The time at which the parameter was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The format type of the parameter.
@@ -511,6 +525,16 @@ func (o GetParametersParameterOutput) ToGetParametersParameterOutputWithContext(
 // The time at which the parameter was created.
 func (o GetParametersParameterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetParametersParameterOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
@@ -830,6 +854,13 @@ func (o GetRegionalParameterPolicyMemberArrayOutput) Index(i pulumi.IntInput) Ge
 type GetRegionalParametersParameter struct {
 	// The time at which the regional parameter was created.
 	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The format type of the regional parameter.
@@ -869,6 +900,13 @@ type GetRegionalParametersParameterInput interface {
 type GetRegionalParametersParameterArgs struct {
 	// The time at which the regional parameter was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The format type of the regional parameter.
@@ -948,6 +986,16 @@ func (o GetRegionalParametersParameterOutput) ToGetRegionalParametersParameterOu
 // The time at which the regional parameter was created.
 func (o GetRegionalParametersParameterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetRegionalParametersParameterOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.

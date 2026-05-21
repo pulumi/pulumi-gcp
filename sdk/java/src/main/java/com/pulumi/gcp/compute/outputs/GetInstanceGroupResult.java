@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceGroupResult {
+    private String deletionPolicy;
     /**
      * @return Textual description of the instance group.
      * 
@@ -55,6 +56,9 @@ public final class GetInstanceGroupResult {
     private String zone;
 
     private GetInstanceGroupResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * @return Textual description of the instance group.
      * 
@@ -123,6 +127,7 @@ public final class GetInstanceGroupResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String description;
         private String id;
         private List<String> instances;
@@ -136,6 +141,7 @@ public final class GetInstanceGroupResult {
         public Builder() {}
         public Builder(GetInstanceGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.instances = defaults.instances;
@@ -148,6 +154,14 @@ public final class GetInstanceGroupResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -234,6 +248,7 @@ public final class GetInstanceGroupResult {
         }
         public GetInstanceGroupResult build() {
             final var _resultValue = new GetInstanceGroupResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.instances = instances;

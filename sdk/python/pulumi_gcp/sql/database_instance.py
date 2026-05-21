@@ -24,6 +24,7 @@ class DatabaseInstanceArgs:
                  database_version: pulumi.Input[_builtins.str],
                  backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
                  clone: pulumi.Input[Optional['DatabaseInstanceCloneArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -62,6 +63,12 @@ class DatabaseInstanceArgs:
         :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
                
@@ -117,6 +124,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "backupdr_backup", backupdr_backup)
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_key_name is not None:
@@ -204,6 +213,23 @@ class DatabaseInstanceArgs:
     @clone.setter
     def clone(self, value: pulumi.Input[Optional['DatabaseInstanceCloneArgs']]):
         pulumi.set(self, "clone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -472,6 +498,7 @@ class _DatabaseInstanceState:
                  clone: pulumi.Input[Optional['DatabaseInstanceCloneArgs']] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_names: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]]] = None,
@@ -523,6 +550,12 @@ class _DatabaseInstanceState:
                `SQLSERVER_2025_EXPRESS`, `SQLSERVER_2025_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
                
@@ -592,6 +625,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "connection_name", connection_name)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if dns_name is not None:
@@ -724,6 +759,23 @@ class _DatabaseInstanceState:
     @database_version.setter
     def database_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -1108,6 +1160,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
                  clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1339,7 +1392,7 @@ class DatabaseInstance(pulumi.CustomResource):
         ```
 
         ### Cloud SQL Instance created using point_in_time_restore
-        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`.
+        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`. The `target_instance` is required field and must match the name of the resource.
 
         ```python
         import pulumi
@@ -1357,13 +1410,13 @@ class DatabaseInstance(pulumi.CustomResource):
             },
             point_in_time_restore_context={
                 "datasource": "backupdr_datasource",
-                "target_instance": "target_instance_name",
+                "target_instance": "main-instance",
                 "point_in_time": "time_stamp",
             })
         ```
 
         ### Cloud SQL Instance created using point_in_time_restore using multiregion datasource
-        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region.
+        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region. The `target_instance` is required field and must match the name of the resource.
 
         ```python
         import pulumi
@@ -1381,7 +1434,7 @@ class DatabaseInstance(pulumi.CustomResource):
             },
             point_in_time_restore_context={
                 "datasource": "backupdr_datasource",
-                "target_instance": "target_instance_name",
+                "target_instance": "main-instance",
                 "point_in_time": "time_stamp",
                 "region": "region",
             })
@@ -1464,6 +1517,12 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2025_EXPRESS`, `SQLSERVER_2025_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
                
@@ -1731,7 +1790,7 @@ class DatabaseInstance(pulumi.CustomResource):
         ```
 
         ### Cloud SQL Instance created using point_in_time_restore
-        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`.
+        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`. The `target_instance` is required field and must match the name of the resource.
 
         ```python
         import pulumi
@@ -1749,13 +1808,13 @@ class DatabaseInstance(pulumi.CustomResource):
             },
             point_in_time_restore_context={
                 "datasource": "backupdr_datasource",
-                "target_instance": "target_instance_name",
+                "target_instance": "main-instance",
                 "point_in_time": "time_stamp",
             })
         ```
 
         ### Cloud SQL Instance created using point_in_time_restore using multiregion datasource
-        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region.
+        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region. The `target_instance` is required field and must match the name of the resource.
 
         ```python
         import pulumi
@@ -1773,7 +1832,7 @@ class DatabaseInstance(pulumi.CustomResource):
             },
             point_in_time_restore_context={
                 "datasource": "backupdr_datasource",
-                "target_instance": "target_instance_name",
+                "target_instance": "main-instance",
                 "point_in_time": "time_stamp",
                 "region": "region",
             })
@@ -1856,6 +1915,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
                  clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1889,6 +1949,7 @@ class DatabaseInstance(pulumi.CustomResource):
             if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
             __props__.__dict__["database_version"] = database_version
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["encryption_key_name"] = encryption_key_name
             __props__.__dict__["final_backup_description"] = final_backup_description
@@ -1937,6 +1998,7 @@ class DatabaseInstance(pulumi.CustomResource):
             clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
             connection_name: pulumi.Input[Optional[_builtins.str]] = None,
             database_version: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_name: pulumi.Input[Optional[_builtins.str]] = None,
             dns_names: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict']]]]] = None,
@@ -1992,6 +2054,12 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2025_EXPRESS`, `SQLSERVER_2025_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
                
@@ -2060,6 +2128,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["clone"] = clone
         __props__.__dict__["connection_name"] = connection_name
         __props__.__dict__["database_version"] = database_version
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["dns_names"] = dns_names
@@ -2144,6 +2213,19 @@ class DatabaseInstance(pulumi.CustomResource):
         includes an up-to-date reference of supported versions.
         """
         return pulumi.get(self, "database_version")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

@@ -61,7 +61,8 @@ type LookupRepositoryArgs struct {
 
 // A collection of values returned by getRepository.
 type LookupRepositoryResult struct {
-	CreateIgnoreAlreadyExists bool `pulumi:"createIgnoreAlreadyExists"`
+	CreateIgnoreAlreadyExists bool   `pulumi:"createIgnoreAlreadyExists"`
+	DeletionPolicy            string `pulumi:"deletionPolicy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string                      `pulumi:"id"`
 	Name          string                      `pulumi:"name"`
@@ -109,6 +110,10 @@ func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutputWithContext(
 
 func (o LookupRepositoryResultOutput) CreateIgnoreAlreadyExists() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) bool { return v.CreateIgnoreAlreadyExists }).(pulumi.BoolOutput)
+}
+
+func (o LookupRepositoryResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

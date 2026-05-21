@@ -113,6 +113,15 @@ export class AuthConfig extends pulumi.CustomResource {
      */
     declare public readonly decryptedCredential: pulumi.Output<outputs.applicationintegration.AuthConfigDecryptedCredential | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A description of the auth config.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -195,6 +204,7 @@ export class AuthConfig extends pulumi.CustomResource {
             resourceInputs["creatorEmail"] = state?.creatorEmail;
             resourceInputs["credentialType"] = state?.credentialType;
             resourceInputs["decryptedCredential"] = state?.decryptedCredential;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["encryptedCredential"] = state?.encryptedCredential;
@@ -219,6 +229,7 @@ export class AuthConfig extends pulumi.CustomResource {
             }
             resourceInputs["clientCertificate"] = args?.clientCertificate;
             resourceInputs["decryptedCredential"] = args?.decryptedCredential;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["expiryNotificationDurations"] = args?.expiryNotificationDurations;
@@ -274,6 +285,15 @@ export interface AuthConfigState {
      * Structure is documented below.
      */
     decryptedCredential?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredential | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of the auth config.
      */
@@ -353,6 +373,15 @@ export interface AuthConfigArgs {
      * Structure is documented below.
      */
     decryptedCredential?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredential | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of the auth config.
      */

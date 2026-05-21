@@ -28,6 +28,7 @@ class DataStoreArgs:
                  advanced_site_search_config: pulumi.Input[Optional['DataStoreAdvancedSiteSearchConfigArgs']] = None,
                  content_config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  document_processing_config: pulumi.Input[Optional['DataStoreDocumentProcessingConfigArgs']] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,6 +51,12 @@ class DataStoreArgs:
         :param pulumi.Input[_builtins.bool] create_advanced_site_search: If true, an advanced data store for site search will be created. If the
                data store is not configured as site search (GENERIC vertical and
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['DataStoreDocumentProcessingConfigArgs'] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key_name: KMS key resource name which will be used to encrypt resources:
@@ -80,6 +87,8 @@ class DataStoreArgs:
             pulumi.set(__self__, "content_config", content_config)
         if create_advanced_site_search is not None:
             pulumi.set(__self__, "create_advanced_site_search", create_advanced_site_search)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if document_processing_config is not None:
             pulumi.set(__self__, "document_processing_config", document_processing_config)
         if kms_key_name is not None:
@@ -183,6 +192,23 @@ class DataStoreArgs:
         pulumi.set(self, "create_advanced_site_search", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="documentProcessingConfig")
     def document_processing_config(self) -> pulumi.Input[Optional['DataStoreDocumentProcessingConfigArgs']]:
         """
@@ -266,6 +292,7 @@ class _DataStoreState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_schema_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  document_processing_config: pulumi.Input[Optional['DataStoreDocumentProcessingConfigArgs']] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
@@ -288,6 +315,12 @@ class _DataStoreState:
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the DataStore was created.
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
         :param pulumi.Input[_builtins.str] default_schema_id: The id of the default Schema associated with this data store.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input['DataStoreDocumentProcessingConfigArgs'] document_processing_config: Configuration for Document understanding and enrichment.
@@ -330,6 +363,8 @@ class _DataStoreState:
             pulumi.set(__self__, "data_store_id", data_store_id)
         if default_schema_id is not None:
             pulumi.set(__self__, "default_schema_id", default_schema_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if document_processing_config is not None:
@@ -424,6 +459,23 @@ class _DataStoreState:
     @default_schema_id.setter
     def default_schema_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_schema_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -564,6 +616,7 @@ class DataStore(pulumi.CustomResource):
                  content_config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
@@ -693,6 +746,12 @@ class DataStore(pulumi.CustomResource):
                data store is not configured as site search (GENERIC vertical and
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
@@ -854,6 +913,7 @@ class DataStore(pulumi.CustomResource):
                  content_config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
@@ -877,6 +937,7 @@ class DataStore(pulumi.CustomResource):
             if data_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_store_id'")
             __props__.__dict__["data_store_id"] = data_store_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -910,6 +971,7 @@ class DataStore(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
             default_schema_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
             industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
@@ -936,6 +998,12 @@ class DataStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the DataStore was created.
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
         :param pulumi.Input[_builtins.str] default_schema_id: The id of the default Schema associated with this data store.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
@@ -976,6 +1044,7 @@ class DataStore(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_store_id"] = data_store_id
         __props__.__dict__["default_schema_id"] = default_schema_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["document_processing_config"] = document_processing_config
         __props__.__dict__["industry_vertical"] = industry_vertical
@@ -1038,6 +1107,19 @@ class DataStore(pulumi.CustomResource):
         The id of the default Schema associated with this data store.
         """
         return pulumi.get(self, "default_schema_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

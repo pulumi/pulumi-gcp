@@ -397,6 +397,13 @@ type Tag struct {
 	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
 	// `outer_column.inner_column`
 	Column pulumi.StringPtrOutput `pulumi:"column"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
 	// Structure is documented below.
@@ -458,6 +465,13 @@ type tagState struct {
 	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
 	// `outer_column.inner_column`
 	Column *string `pulumi:"column"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
 	// Structure is documented below.
@@ -484,6 +498,13 @@ type TagState struct {
 	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
 	// `outer_column.inner_column`
 	Column pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
 	// Structure is documented below.
@@ -514,6 +535,13 @@ type tagArgs struct {
 	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
 	// `outer_column.inner_column`
 	Column *string `pulumi:"column"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
 	// Structure is documented below.
@@ -534,6 +562,13 @@ type TagArgs struct {
 	// For attaching a tag to a nested column, use `.` to separate the column names. Example:
 	// `outer_column.inner_column`
 	Column pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// This maps the ID of a tag field to the value of and additional information about that field.
 	// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
 	// Structure is documented below.
@@ -640,6 +675,16 @@ func (o TagOutput) ToTagOutputWithContext(ctx context.Context) TagOutput {
 // `outer_column.inner_column`
 func (o TagOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Tag) pulumi.StringPtrOutput { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TagOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // This maps the ID of a tag field to the value of and additional information about that field.

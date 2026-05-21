@@ -23,6 +23,7 @@ class AiFeatureOnlineStoreArgs:
     def __init__(__self__, *,
                  bigtable: pulumi.Input[Optional['AiFeatureOnlineStoreBigtableArgs']] = None,
                  dedicated_serving_endpoint: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  embedding_management: pulumi.Input[Optional['AiFeatureOnlineStoreEmbeddingManagementArgs']] = None,
                  encryption_spec: pulumi.Input[Optional['AiFeatureOnlineStoreEncryptionSpecArgs']] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -38,6 +39,12 @@ class AiFeatureOnlineStoreArgs:
                Structure is documented below.
         :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: (Optional, Beta, Deprecated)
                The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
@@ -59,6 +66,8 @@ class AiFeatureOnlineStoreArgs:
             pulumi.set(__self__, "bigtable", bigtable)
         if dedicated_serving_endpoint is not None:
             pulumi.set(__self__, "dedicated_serving_endpoint", dedicated_serving_endpoint)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if embedding_management is not None:
             warnings.warn("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""", DeprecationWarning)
             pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
@@ -104,6 +113,23 @@ class AiFeatureOnlineStoreArgs:
     @dedicated_serving_endpoint.setter
     def dedicated_serving_endpoint(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]):
         pulumi.set(self, "dedicated_serving_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="embeddingManagement")
@@ -217,6 +243,7 @@ class _AiFeatureOnlineStoreState:
                  bigtable: pulumi.Input[Optional['AiFeatureOnlineStoreBigtableArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dedicated_serving_endpoint: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  embedding_management: pulumi.Input[Optional['AiFeatureOnlineStoreEmbeddingManagementArgs']] = None,
                  encryption_spec: pulumi.Input[Optional['AiFeatureOnlineStoreEncryptionSpecArgs']] = None,
@@ -238,6 +265,12 @@ class _AiFeatureOnlineStoreState:
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: (Optional, Beta, Deprecated)
                The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -267,6 +300,8 @@ class _AiFeatureOnlineStoreState:
             pulumi.set(__self__, "create_time", create_time)
         if dedicated_serving_endpoint is not None:
             pulumi.set(__self__, "dedicated_serving_endpoint", dedicated_serving_endpoint)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if embedding_management is not None:
@@ -334,6 +369,23 @@ class _AiFeatureOnlineStoreState:
     @dedicated_serving_endpoint.setter
     def dedicated_serving_endpoint(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]):
         pulumi.set(self, "dedicated_serving_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -510,6 +562,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
                  dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
                  encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -622,6 +675,12 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']] embedding_management: (Optional, Beta, Deprecated)
                The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
@@ -759,6 +818,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
                  dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
                  encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -778,6 +838,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
             __props__.__dict__["bigtable"] = bigtable
             __props__.__dict__["dedicated_serving_endpoint"] = dedicated_serving_endpoint
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["embedding_management"] = embedding_management
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["force_destroy"] = force_destroy
@@ -807,6 +868,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
             encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
@@ -832,6 +894,12 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']] embedding_management: (Optional, Beta, Deprecated)
                The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -862,6 +930,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         __props__.__dict__["bigtable"] = bigtable
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dedicated_serving_endpoint"] = dedicated_serving_endpoint
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["embedding_management"] = embedding_management
         __props__.__dict__["encryption_spec"] = encryption_spec
@@ -902,6 +971,19 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "dedicated_serving_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

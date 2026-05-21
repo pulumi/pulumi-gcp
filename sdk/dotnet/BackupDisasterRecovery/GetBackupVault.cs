@@ -159,6 +159,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly string BackupVaultId;
         public readonly string CreateTime;
         public readonly bool Deletable;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -203,6 +204,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             string createTime,
 
             bool deletable,
+
+            string deletionPolicy,
 
             string description,
 
@@ -255,6 +258,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             BackupVaultId = backupVaultId;
             CreateTime = createTime;
             Deletable = deletable;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EffectiveAnnotations = effectiveAnnotations;
             EffectiveLabels = effectiveLabels;

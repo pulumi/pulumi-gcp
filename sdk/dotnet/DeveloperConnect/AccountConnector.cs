@@ -300,6 +300,17 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<Outputs.AccountConnectorCustomOauthConfig?> CustomOauthConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         /// </summary>
         [Output("effectiveAnnotations")]
@@ -462,6 +473,17 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Input<Inputs.AccountConnectorCustomOauthConfigArgs>? CustomOauthConfig { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// This checksum is computed by the server based on the value of other
         /// fields, and may be sent on update and delete requests to ensure the
         /// client has an up-to-date value before proceeding.
@@ -553,6 +575,17 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// </summary>
         [Input("customOauthConfig")]
         public Input<Inputs.AccountConnectorCustomOauthConfigGetArgs>? CustomOauthConfig { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;

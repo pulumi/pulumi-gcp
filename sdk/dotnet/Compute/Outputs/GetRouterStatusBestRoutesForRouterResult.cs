@@ -19,6 +19,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        public readonly string DeletionPolicy;
+        /// <summary>
         /// An optional description of this resource. Provide this property
         /// when you create the resource.
         /// </summary>
@@ -160,6 +169,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string creationTimestamp,
 
+            string deletionPolicy,
+
             string description,
 
             string destRange,
@@ -210,6 +221,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AsPaths = asPaths;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DestRange = destRange;
             Name = name;

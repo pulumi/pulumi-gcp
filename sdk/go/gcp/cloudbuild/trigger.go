@@ -1146,6 +1146,13 @@ type Trigger struct {
 	Build TriggerBuildPtrOutput `pulumi:"build"`
 	// Time when the trigger was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Human-readable description of the trigger.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Configuration for triggers that respond to Developer Connect events.
@@ -1276,6 +1283,13 @@ type triggerState struct {
 	Build *TriggerBuild `pulumi:"build"`
 	// Time when the trigger was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-readable description of the trigger.
 	Description *string `pulumi:"description"`
 	// Configuration for triggers that respond to Developer Connect events.
@@ -1377,6 +1391,13 @@ type TriggerState struct {
 	Build TriggerBuildPtrInput
 	// Time when the trigger was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human-readable description of the trigger.
 	Description pulumi.StringPtrInput
 	// Configuration for triggers that respond to Developer Connect events.
@@ -1480,6 +1501,13 @@ type triggerArgs struct {
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build *TriggerBuild `pulumi:"build"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-readable description of the trigger.
 	Description *string `pulumi:"description"`
 	// Configuration for triggers that respond to Developer Connect events.
@@ -1578,6 +1606,13 @@ type TriggerArgs struct {
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build TriggerBuildPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human-readable description of the trigger.
 	Description pulumi.StringPtrInput
 	// Configuration for triggers that respond to Developer Connect events.
@@ -1773,6 +1808,16 @@ func (o TriggerOutput) Build() TriggerBuildPtrOutput {
 // Time when the trigger was created.
 func (o TriggerOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TriggerOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Human-readable description of the trigger.

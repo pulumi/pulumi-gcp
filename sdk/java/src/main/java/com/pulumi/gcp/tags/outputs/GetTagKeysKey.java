@@ -23,6 +23,16 @@ public final class GetTagKeysKey {
      */
     private String createTime;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return User-assigned description of the TagKey.
      * 
      */
@@ -79,6 +89,18 @@ public final class GetTagKeysKey {
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return User-assigned description of the TagKey.
@@ -149,6 +171,7 @@ public final class GetTagKeysKey {
     public static final class Builder {
         private String allowedValuesRegex;
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private String name;
         private String namespacedName;
@@ -162,6 +185,7 @@ public final class GetTagKeysKey {
     	      Objects.requireNonNull(defaults);
     	      this.allowedValuesRegex = defaults.allowedValuesRegex;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.name = defaults.name;
     	      this.namespacedName = defaults.namespacedName;
@@ -186,6 +210,14 @@ public final class GetTagKeysKey {
               throw new MissingRequiredPropertyException("GetTagKeysKey", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetTagKeysKey", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -256,6 +288,7 @@ public final class GetTagKeysKey {
             final var _resultValue = new GetTagKeysKey();
             _resultValue.allowedValuesRegex = allowedValuesRegex;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.name = name;
             _resultValue.namespacedName = namespacedName;

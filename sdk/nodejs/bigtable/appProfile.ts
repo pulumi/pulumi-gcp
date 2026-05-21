@@ -203,6 +203,15 @@ export class AppProfile extends pulumi.CustomResource {
      */
     declare public readonly dataBoostIsolationReadOnly: pulumi.Output<outputs.bigtable.AppProfileDataBoostIsolationReadOnly | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Long form description of the use case for this app profile.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -263,6 +272,7 @@ export class AppProfile extends pulumi.CustomResource {
             const state = argsOrState as AppProfileState | undefined;
             resourceInputs["appProfileId"] = state?.appProfileId;
             resourceInputs["dataBoostIsolationReadOnly"] = state?.dataBoostIsolationReadOnly;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["ignoreWarnings"] = state?.ignoreWarnings;
             resourceInputs["instance"] = state?.instance;
@@ -280,6 +290,7 @@ export class AppProfile extends pulumi.CustomResource {
             }
             resourceInputs["appProfileId"] = args?.appProfileId;
             resourceInputs["dataBoostIsolationReadOnly"] = args?.dataBoostIsolationReadOnly;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["ignoreWarnings"] = args?.ignoreWarnings;
             resourceInputs["instance"] = args?.instance;
@@ -311,6 +322,15 @@ export interface AppProfileState {
      * Structure is documented below.
      */
     dataBoostIsolationReadOnly?: pulumi.Input<inputs.bigtable.AppProfileDataBoostIsolationReadOnly | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Long form description of the use case for this app profile.
      */
@@ -371,6 +391,15 @@ export interface AppProfileArgs {
      * Structure is documented below.
      */
     dataBoostIsolationReadOnly?: pulumi.Input<inputs.bigtable.AppProfileDataBoostIsolationReadOnly | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Long form description of the use case for this app profile.
      */

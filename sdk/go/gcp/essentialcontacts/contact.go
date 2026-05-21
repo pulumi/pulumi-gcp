@@ -78,6 +78,13 @@ import (
 type Contact struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The email address to send notifications to. This does not need to be a Google account.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
@@ -132,6 +139,13 @@ func GetContact(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Contact resources.
 type contactState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The email address to send notifications to. This does not need to be a Google account.
 	Email *string `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
@@ -145,6 +159,13 @@ type contactState struct {
 }
 
 type ContactState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The email address to send notifications to. This does not need to be a Google account.
 	Email pulumi.StringPtrInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
@@ -162,6 +183,13 @@ func (ContactState) ElementType() reflect.Type {
 }
 
 type contactArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The email address to send notifications to. This does not need to be a Google account.
 	Email string `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
@@ -174,6 +202,13 @@ type contactArgs struct {
 
 // The set of arguments for constructing a Contact resource.
 type ContactArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The email address to send notifications to. This does not need to be a Google account.
 	Email pulumi.StringInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
@@ -269,6 +304,16 @@ func (o ContactOutput) ToContactOutput() ContactOutput {
 
 func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ContactOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The email address to send notifications to. This does not need to be a Google account.

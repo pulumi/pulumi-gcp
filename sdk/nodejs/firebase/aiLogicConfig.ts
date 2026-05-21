@@ -165,6 +165,15 @@ export class AiLogicConfig extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Configuration for using the Gemini Developer API via Firebase AI Logic.
      * When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
      * API key is stored in this configuration *on the server* so that you do
@@ -212,6 +221,7 @@ export class AiLogicConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiLogicConfigState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["generativeLanguageConfig"] = state?.generativeLanguageConfig;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -220,6 +230,7 @@ export class AiLogicConfig extends pulumi.CustomResource {
             resourceInputs["trafficFilter"] = state?.trafficFilter;
         } else {
             const args = argsOrState as AiLogicConfigArgs | undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["generativeLanguageConfig"] = args?.generativeLanguageConfig;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -236,6 +247,15 @@ export class AiLogicConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AiLogicConfig resources.
  */
 export interface AiLogicConfigState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Configuration for using the Gemini Developer API via Firebase AI Logic.
      * When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
@@ -276,6 +296,15 @@ export interface AiLogicConfigState {
  * The set of arguments for constructing a AiLogicConfig resource.
  */
 export interface AiLogicConfigArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Configuration for using the Gemini Developer API via Firebase AI Logic.
      * When using the Gemini Developer API via Firebase AI Logic, a separate Gemini

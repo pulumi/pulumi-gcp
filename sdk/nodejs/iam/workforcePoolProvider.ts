@@ -568,6 +568,15 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      */
     declare public readonly attributeMapping: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -681,6 +690,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             const state = argsOrState as WorkforcePoolProviderState | undefined;
             resourceInputs["attributeCondition"] = state?.attributeCondition;
             resourceInputs["attributeMapping"] = state?.attributeMapping;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["detailedAuditLogging"] = state?.detailedAuditLogging;
             resourceInputs["disabled"] = state?.disabled;
@@ -708,6 +718,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             }
             resourceInputs["attributeCondition"] = args?.attributeCondition;
             resourceInputs["attributeMapping"] = args?.attributeMapping;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["detailedAuditLogging"] = args?.detailedAuditLogging;
             resourceInputs["disabled"] = args?.disabled;
@@ -785,6 +796,15 @@ export interface WorkforcePoolProviderState {
      * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */
@@ -942,6 +962,15 @@ export interface WorkforcePoolProviderArgs {
      * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */

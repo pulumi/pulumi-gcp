@@ -27,10 +27,13 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, desired_replica_state=None, directory_services=None, effective_labels=None, effective_replications=None, etag=None, file_shares=None, id=None, initial_replications=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, performance_configs=None, project=None, protocol=None, pulumi_labels=None, tags=None, tier=None, zone=None):
+    def __init__(__self__, create_time=None, deletion_policy=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, desired_replica_state=None, directory_services=None, effective_labels=None, effective_replications=None, etag=None, file_shares=None, id=None, initial_replications=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, performance_configs=None, project=None, protocol=None, pulumi_labels=None, tags=None, tier=None, zone=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection_enabled and not isinstance(deletion_protection_enabled, bool):
             raise TypeError("Expected argument 'deletion_protection_enabled' to be a bool")
         pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
@@ -105,6 +108,11 @@ class GetInstanceResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -232,6 +240,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             yield self
         return GetInstanceResult(
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             deletion_protection_enabled=self.deletion_protection_enabled,
             deletion_protection_reason=self.deletion_protection_reason,
             description=self.description,
@@ -295,6 +304,7 @@ def get_instance(location: Optional[_builtins.str] = None,
 
     return AwaitableGetInstanceResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
         deletion_protection_reason=pulumi.get(__ret__, 'deletion_protection_reason'),
         description=pulumi.get(__ret__, 'description'),
@@ -355,6 +365,7 @@ def get_instance_output(location: pulumi.Input[Optional[Optional[_builtins.str]]
     __ret__ = pulumi.runtime.invoke_output('gcp:filestore/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection_enabled=pulumi.get(__response__, 'deletion_protection_enabled'),
         deletion_protection_reason=pulumi.get(__response__, 'deletion_protection_reason'),
         description=pulumi.get(__response__, 'description'),

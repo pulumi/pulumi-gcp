@@ -22,6 +22,7 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  cluster_config: pulumi.Input[Optional['ClusterClusterConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -33,6 +34,14 @@ class ClusterArgs:
 
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] graceful_decommission_timeout: Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
                Does not affect auto scaling decomissioning from an autoscaling policy.
                Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -41,7 +50,6 @@ class ClusterArgs:
                [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
                Only supported on Dataproc image versions 1.2 and higher.
                For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
                instances in the cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -58,6 +66,8 @@ class ClusterArgs:
         """
         if cluster_config is not None:
             pulumi.set(__self__, "cluster_config", cluster_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if graceful_decommission_timeout is not None:
             pulumi.set(__self__, "graceful_decommission_timeout", graceful_decommission_timeout)
         if labels is not None:
@@ -85,6 +95,25 @@ class ClusterArgs:
         pulumi.set(self, "cluster_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="gracefulDecommissionTimeout")
     def graceful_decommission_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -96,7 +125,6 @@ class ClusterArgs:
         [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
         Only supported on Dataproc image versions 1.2 and higher.
         For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-        - - -
         """
         return pulumi.get(self, "graceful_decommission_timeout")
 
@@ -177,6 +205,7 @@ class ClusterArgs:
 class _ClusterState:
     def __init__(__self__, *,
                  cluster_config: pulumi.Input[Optional['ClusterClusterConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -190,6 +219,14 @@ class _ClusterState:
 
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
@@ -201,7 +238,6 @@ class _ClusterState:
                [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
                Only supported on Dataproc image versions 1.2 and higher.
                For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
                instances in the cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -219,6 +255,8 @@ class _ClusterState:
         """
         if cluster_config is not None:
             pulumi.set(__self__, "cluster_config", cluster_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if graceful_decommission_timeout is not None:
@@ -250,6 +288,25 @@ class _ClusterState:
         pulumi.set(self, "cluster_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -275,7 +332,6 @@ class _ClusterState:
         [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
         Only supported on Dataproc image versions 1.2 and higher.
         For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-        - - -
         """
         return pulumi.get(self, "graceful_decommission_timeout")
 
@@ -371,6 +427,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -493,6 +550,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] graceful_decommission_timeout: Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
                Does not affect auto scaling decomissioning from an autoscaling policy.
                Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -501,7 +566,6 @@ class Cluster(pulumi.CustomResource):
                [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
                Only supported on Dataproc image versions 1.2 and higher.
                For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
                instances in the cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -649,6 +713,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -665,6 +730,7 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["cluster_config"] = cluster_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["graceful_decommission_timeout"] = graceful_decommission_timeout
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -686,6 +752,7 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -703,6 +770,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
@@ -714,7 +789,6 @@ class Cluster(pulumi.CustomResource):
                [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
                Only supported on Dataproc image versions 1.2 and higher.
                For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
                instances in the cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -735,6 +809,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = _ClusterState.__new__(_ClusterState)
 
         __props__.__dict__["cluster_config"] = cluster_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["graceful_decommission_timeout"] = graceful_decommission_timeout
         __props__.__dict__["labels"] = labels
@@ -753,6 +828,21 @@ class Cluster(pulumi.CustomResource):
         Structure defined below.
         """
         return pulumi.get(self, "cluster_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -776,7 +866,6 @@ class Cluster(pulumi.CustomResource):
         [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
         Only supported on Dataproc image versions 1.2 and higher.
         For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-        - - -
         """
         return pulumi.get(self, "graceful_decommission_timeout")
 

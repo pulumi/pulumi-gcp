@@ -23,20 +23,29 @@ class ApiArgs:
     def __init__(__self__, *,
                  config_bundle: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Api resource.
 
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
+        :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
-        :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] name: The ID of the API proxy.
         """
         pulumi.set(__self__, "config_bundle", config_bundle)
         pulumi.set(__self__, "org_id", org_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if name is not None:
@@ -47,8 +56,6 @@ class ApiArgs:
     def config_bundle(self) -> pulumi.Input[_builtins.str]:
         """
         Path to the config zip bundle.
-
-        - - -
         """
         return pulumi.get(self, "config_bundle")
 
@@ -67,6 +74,25 @@ class ApiArgs:
     @org_id.setter
     def org_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "org_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
@@ -97,6 +123,7 @@ class ApiArgs:
 class _ApiState:
     def __init__(__self__, *,
                  config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
                  latest_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  md5hash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -108,6 +135,12 @@ class _ApiState:
         Input properties used for looking up and filtering Api resources.
 
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
@@ -121,6 +154,8 @@ class _ApiState:
         """
         if config_bundle is not None:
             pulumi.set(__self__, "config_bundle", config_bundle)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if latest_revision_id is not None:
@@ -141,14 +176,31 @@ class _ApiState:
     def config_bundle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the config zip bundle.
-
-        - - -
         """
         return pulumi.get(self, "config_bundle")
 
     @config_bundle.setter
     def config_bundle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_bundle", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
@@ -243,6 +295,7 @@ class Api(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -272,6 +325,12 @@ class Api(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
@@ -322,6 +381,7 @@ class Api(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -337,6 +397,7 @@ class Api(pulumi.CustomResource):
             if config_bundle is None and not opts.urn:
                 raise TypeError("Missing required property 'config_bundle'")
             __props__.__dict__["config_bundle"] = config_bundle
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["detect_md5hash"] = detect_md5hash
             __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
@@ -357,6 +418,7 @@ class Api(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
             latest_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
             md5hash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -372,6 +434,12 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
@@ -388,6 +456,7 @@ class Api(pulumi.CustomResource):
         __props__ = _ApiState.__new__(_ApiState)
 
         __props__.__dict__["config_bundle"] = config_bundle
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["detect_md5hash"] = detect_md5hash
         __props__.__dict__["latest_revision_id"] = latest_revision_id
         __props__.__dict__["md5hash"] = md5hash
@@ -402,10 +471,23 @@ class Api(pulumi.CustomResource):
     def config_bundle(self) -> pulumi.Output[_builtins.str]:
         """
         Path to the config zip bundle.
+        """
+        return pulumi.get(self, "config_bundle")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
 
         - - -
         """
-        return pulumi.get(self, "config_bundle")
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")

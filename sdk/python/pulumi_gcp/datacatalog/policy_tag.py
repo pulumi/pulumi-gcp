@@ -21,6 +21,7 @@ class PolicyTagArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  taxonomy: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_policy_tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -30,6 +31,12 @@ class PolicyTagArgs:
                taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
                not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
         :param pulumi.Input[_builtins.str] taxonomy: Taxonomy the policy tag is associated with
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of this policy tag. It must: contain only unicode characters, tabs,
                newlines, carriage returns and page breaks; and be at most 2000 bytes long when
                encoded in UTF-8. If not set, defaults to an empty description.
@@ -40,6 +47,8 @@ class PolicyTagArgs:
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "taxonomy", taxonomy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if parent_policy_tag is not None:
@@ -70,6 +79,23 @@ class PolicyTagArgs:
     @taxonomy.setter
     def taxonomy(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "taxonomy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -105,6 +131,7 @@ class PolicyTagArgs:
 class _PolicyTagState:
     def __init__(__self__, *,
                  child_policy_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -114,6 +141,12 @@ class _PolicyTagState:
         Input properties used for looking up and filtering PolicyTag resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] child_policy_tags: Resource names of child policy tags of this policy tag.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of this policy tag. It must: contain only unicode characters, tabs,
                newlines, carriage returns and page breaks; and be at most 2000 bytes long when
                encoded in UTF-8. If not set, defaults to an empty description.
@@ -130,6 +163,8 @@ class _PolicyTagState:
         """
         if child_policy_tags is not None:
             pulumi.set(__self__, "child_policy_tags", child_policy_tags)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -152,6 +187,23 @@ class _PolicyTagState:
     @child_policy_tags.setter
     def child_policy_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "child_policy_tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -228,6 +280,7 @@ class PolicyTag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -301,6 +354,12 @@ class PolicyTag(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of this policy tag. It must: contain only unicode characters, tabs,
                newlines, carriage returns and page breaks; and be at most 2000 bytes long when
                encoded in UTF-8. If not set, defaults to an empty description.
@@ -400,6 +459,7 @@ class PolicyTag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -413,6 +473,7 @@ class PolicyTag(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PolicyTagArgs.__new__(PolicyTagArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -434,6 +495,7 @@ class PolicyTag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             child_policy_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -447,6 +509,12 @@ class PolicyTag(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] child_policy_tags: Resource names of child policy tags of this policy tag.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of this policy tag. It must: contain only unicode characters, tabs,
                newlines, carriage returns and page breaks; and be at most 2000 bytes long when
                encoded in UTF-8. If not set, defaults to an empty description.
@@ -466,6 +534,7 @@ class PolicyTag(pulumi.CustomResource):
         __props__ = _PolicyTagState.__new__(_PolicyTagState)
 
         __props__.__dict__["child_policy_tags"] = child_policy_tags
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["name"] = name
@@ -480,6 +549,19 @@ class PolicyTag(pulumi.CustomResource):
         Resource names of child policy tags of this policy tag.
         """
         return pulumi.get(self, "child_policy_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

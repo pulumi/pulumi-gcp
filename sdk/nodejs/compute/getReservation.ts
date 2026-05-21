@@ -56,6 +56,7 @@ export interface GetReservationResult {
     readonly creationTimestamp: string;
     readonly deleteAfterDurations: outputs.compute.GetReservationDeleteAfterDuration[];
     readonly deleteAtTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly enableEmergentMaintenance: boolean;
     readonly id: string;

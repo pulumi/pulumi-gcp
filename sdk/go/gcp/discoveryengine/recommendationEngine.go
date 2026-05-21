@@ -156,6 +156,13 @@ type RecommendationEngine struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayOutput `pulumi:"dataStoreIds"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Unique ID to use for Recommendation Engine.
@@ -231,6 +238,13 @@ type recommendationEngineState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Unique ID to use for Recommendation Engine.
@@ -265,6 +279,13 @@ type RecommendationEngineState struct {
 	CreateTime pulumi.StringPtrInput
 	// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringPtrInput
 	// Unique ID to use for Recommendation Engine.
@@ -301,6 +322,13 @@ type recommendationEngineArgs struct {
 	CommonConfig *RecommendationEngineCommonConfig `pulumi:"commonConfig"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName string `pulumi:"displayName"`
 	// Unique ID to use for Recommendation Engine.
@@ -328,6 +356,13 @@ type RecommendationEngineArgs struct {
 	CommonConfig RecommendationEngineCommonConfigPtrInput
 	// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringInput
 	// Unique ID to use for Recommendation Engine.
@@ -449,6 +484,16 @@ func (o RecommendationEngineOutput) CreateTime() pulumi.StringOutput {
 // The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
 func (o RecommendationEngineOutput) DataStoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RecommendationEngine) pulumi.StringArrayOutput { return v.DataStoreIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RecommendationEngineOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RecommendationEngine) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.

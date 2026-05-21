@@ -26,6 +26,7 @@ class WorkloadIdentityPoolProviderArgs:
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  aws: pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -100,6 +101,12 @@ class WorkloadIdentityPoolProviderArgs:
                ```
         :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -122,6 +129,8 @@ class WorkloadIdentityPoolProviderArgs:
             pulumi.set(__self__, "attribute_mapping", attribute_mapping)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -257,6 +266,23 @@ class WorkloadIdentityPoolProviderArgs:
         pulumi.set(self, "aws", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -353,6 +379,7 @@ class _WorkloadIdentityPoolProviderState:
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  aws: pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -425,6 +452,12 @@ class _WorkloadIdentityPoolProviderState:
                ```
         :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -460,6 +493,8 @@ class _WorkloadIdentityPoolProviderState:
             pulumi.set(__self__, "attribute_mapping", attribute_mapping)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -573,6 +608,23 @@ class _WorkloadIdentityPoolProviderState:
     @aws.setter
     def aws(self, value: pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']]):
         pulumi.set(self, "aws", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -733,6 +785,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1070,6 +1123,12 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                ```
         :param pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -1381,6 +1440,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1402,6 +1462,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             __props__.__dict__["attribute_condition"] = attribute_condition
             __props__.__dict__["attribute_mapping"] = attribute_mapping
             __props__.__dict__["aws"] = aws
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
@@ -1430,6 +1491,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
             attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1506,6 +1568,12 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                ```
         :param pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -1542,6 +1610,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         __props__.__dict__["attribute_condition"] = attribute_condition
         __props__.__dict__["attribute_mapping"] = attribute_mapping
         __props__.__dict__["aws"] = aws
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
@@ -1633,6 +1702,19 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "aws")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

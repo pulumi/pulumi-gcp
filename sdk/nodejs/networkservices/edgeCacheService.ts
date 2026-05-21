@@ -438,6 +438,15 @@ export class EdgeCacheService extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human-readable description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -529,6 +538,7 @@ export class EdgeCacheService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeCacheServiceState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["disableHttp2"] = state?.disableHttp2;
             resourceInputs["disableQuic"] = state?.disableQuic;
@@ -550,6 +560,7 @@ export class EdgeCacheService extends pulumi.CustomResource {
             if (args?.routing === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routing'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["disableHttp2"] = args?.disableHttp2;
             resourceInputs["disableQuic"] = args?.disableQuic;
@@ -578,6 +589,15 @@ export class EdgeCacheService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeCacheService resources.
  */
 export interface EdgeCacheServiceState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */
@@ -662,6 +682,15 @@ export interface EdgeCacheServiceState {
  * The set of arguments for constructing a EdgeCacheService resource.
  */
 export interface EdgeCacheServiceArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */

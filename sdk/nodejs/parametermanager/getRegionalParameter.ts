@@ -53,6 +53,7 @@ export interface GetRegionalParameterArgs {
  */
 export interface GetRegionalParameterResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly format: string;
     /**

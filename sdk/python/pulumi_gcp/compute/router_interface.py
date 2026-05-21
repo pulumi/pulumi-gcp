@@ -20,6 +20,7 @@ __all__ = ['RouterInterfaceArgs', 'RouterInterface']
 class RouterInterfaceArgs:
     def __init__(__self__, *,
                  router: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  interconnect_attachment: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -39,6 +40,12 @@ class RouterInterfaceArgs:
                In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
@@ -62,6 +69,8 @@ class RouterInterfaceArgs:
                one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         pulumi.set(__self__, "router", router)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if interconnect_attachment is not None:
             pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         if ip_range is not None:
@@ -99,6 +108,23 @@ class RouterInterfaceArgs:
     @router.setter
     def router(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "router", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="interconnectAttachment")
@@ -235,6 +261,7 @@ class RouterInterfaceArgs:
 @pulumi.input_type
 class _RouterInterfaceState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  interconnect_attachment: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -249,6 +276,12 @@ class _RouterInterfaceState:
         """
         Input properties used for looking up and filtering RouterInterface resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
@@ -277,6 +310,8 @@ class _RouterInterfaceState:
                interface will be linked to. Changing this forces a new interface to be created. Only
                one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if interconnect_attachment is not None:
             pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         if ip_range is not None:
@@ -299,6 +334,23 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if vpn_tunnel is not None:
             pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="interconnectAttachment")
@@ -455,6 +507,7 @@ class RouterInterface(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  interconnect_attachment: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -504,6 +557,12 @@ class RouterInterface(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
@@ -588,6 +647,7 @@ class RouterInterface(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  interconnect_attachment: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -608,6 +668,7 @@ class RouterInterface(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RouterInterfaceArgs.__new__(RouterInterfaceArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["interconnect_attachment"] = interconnect_attachment
             __props__.__dict__["ip_range"] = ip_range
             __props__.__dict__["ip_version"] = ip_version
@@ -631,6 +692,7 @@ class RouterInterface(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             interconnect_attachment: pulumi.Input[Optional[_builtins.str]] = None,
             ip_range: pulumi.Input[Optional[_builtins.str]] = None,
             ip_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -649,6 +711,12 @@ class RouterInterface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
@@ -681,6 +749,7 @@ class RouterInterface(pulumi.CustomResource):
 
         __props__ = _RouterInterfaceState.__new__(_RouterInterfaceState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["interconnect_attachment"] = interconnect_attachment
         __props__.__dict__["ip_range"] = ip_range
         __props__.__dict__["ip_version"] = ip_version
@@ -693,6 +762,19 @@ class RouterInterface(pulumi.CustomResource):
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["vpn_tunnel"] = vpn_tunnel
         return RouterInterface(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="interconnectAttachment")

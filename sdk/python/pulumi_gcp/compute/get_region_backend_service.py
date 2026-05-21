@@ -27,7 +27,7 @@ class GetRegionBackendServiceResult:
     """
     A collection of values returned by getRegionBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, ha_policies=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None, tls_settings=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, deletion_policy=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, ha_policies=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None, tls_settings=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -55,6 +55,9 @@ class GetRegionBackendServiceResult:
         if custom_metrics and not isinstance(custom_metrics, list):
             raise TypeError("Expected argument 'custom_metrics' to be a list")
         pulumi.set(__self__, "custom_metrics", custom_metrics)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -190,6 +193,11 @@ class GetRegionBackendServiceResult:
     @pulumi.getter(name="customMetrics")
     def custom_metrics(self) -> Sequence['outputs.GetRegionBackendServiceCustomMetricResult']:
         return pulumi.get(self, "custom_metrics")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -360,6 +368,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             consistent_hashes=self.consistent_hashes,
             creation_timestamp=self.creation_timestamp,
             custom_metrics=self.custom_metrics,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             dynamic_forwardings=self.dynamic_forwardings,
             enable_cdn=self.enable_cdn,
@@ -434,6 +443,7 @@ def get_region_backend_service(name: Optional[_builtins.str] = None,
         consistent_hashes=pulumi.get(__ret__, 'consistent_hashes'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         custom_metrics=pulumi.get(__ret__, 'custom_metrics'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         dynamic_forwardings=pulumi.get(__ret__, 'dynamic_forwardings'),
         enable_cdn=pulumi.get(__ret__, 'enable_cdn'),
@@ -505,6 +515,7 @@ def get_region_backend_service_output(name: pulumi.Input[Optional[_builtins.str]
         consistent_hashes=pulumi.get(__response__, 'consistent_hashes'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         custom_metrics=pulumi.get(__response__, 'custom_metrics'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         dynamic_forwardings=pulumi.get(__response__, 'dynamic_forwardings'),
         enable_cdn=pulumi.get(__response__, 'enable_cdn'),

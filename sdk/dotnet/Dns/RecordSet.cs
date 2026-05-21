@@ -433,6 +433,17 @@ namespace Pulumi.Gcp.Dns
     public partial class RecordSet : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the zone in which this record set will
         /// reside.
         /// </summary>
@@ -528,6 +539,17 @@ namespace Pulumi.Gcp.Dns
     public sealed class RecordSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The name of the zone in which this record set will
         /// reside.
         /// </summary>
@@ -590,6 +612,17 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class RecordSetState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// The name of the zone in which this record set will
         /// reside.

@@ -154,6 +154,13 @@ type Instance struct {
 	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
 	// Possible values are: `NONE`, `AUTOMATIC`.
 	DefaultBackupScheduleType pulumi.StringOutput `pulumi:"defaultBackupScheduleType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -258,6 +265,13 @@ type instanceState struct {
 	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
 	// Possible values are: `NONE`, `AUTOMATIC`.
 	DefaultBackupScheduleType *string `pulumi:"defaultBackupScheduleType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName *string `pulumi:"displayName"`
@@ -322,6 +336,13 @@ type InstanceState struct {
 	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
 	// Possible values are: `NONE`, `AUTOMATIC`.
 	DefaultBackupScheduleType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringPtrInput
@@ -390,6 +411,13 @@ type instanceArgs struct {
 	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
 	// Possible values are: `NONE`, `AUTOMATIC`.
 	DefaultBackupScheduleType *string `pulumi:"defaultBackupScheduleType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName string `pulumi:"displayName"`
@@ -448,6 +476,13 @@ type InstanceArgs struct {
 	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
 	// Possible values are: `NONE`, `AUTOMATIC`.
 	DefaultBackupScheduleType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringInput
@@ -598,6 +633,16 @@ func (o InstanceOutput) Config() pulumi.StringOutput {
 // Possible values are: `NONE`, `AUTOMATIC`.
 func (o InstanceOutput) DefaultBackupScheduleType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DefaultBackupScheduleType }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The descriptive name for this instance as it appears in UIs. Must be

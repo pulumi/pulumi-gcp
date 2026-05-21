@@ -253,6 +253,13 @@ type AppProfile struct {
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
 	DataBoostIsolationReadOnly AppProfileDataBoostIsolationReadOnlyPtrOutput `pulumi:"dataBoostIsolationReadOnly"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -327,6 +334,13 @@ type appProfileState struct {
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
 	DataBoostIsolationReadOnly *AppProfileDataBoostIsolationReadOnly `pulumi:"dataBoostIsolationReadOnly"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Long form description of the use case for this app profile.
 	Description *string `pulumi:"description"`
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -360,6 +374,13 @@ type AppProfileState struct {
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
 	DataBoostIsolationReadOnly AppProfileDataBoostIsolationReadOnlyPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrInput
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -397,6 +418,13 @@ type appProfileArgs struct {
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
 	DataBoostIsolationReadOnly *AppProfileDataBoostIsolationReadOnly `pulumi:"dataBoostIsolationReadOnly"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Long form description of the use case for this app profile.
 	Description *string `pulumi:"description"`
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -429,6 +457,13 @@ type AppProfileArgs struct {
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
 	DataBoostIsolationReadOnly AppProfileDataBoostIsolationReadOnlyPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrInput
 	// If true, ignore safety checks when deleting/updating the app profile.
@@ -550,6 +585,16 @@ func (o AppProfileOutput) AppProfileId() pulumi.StringOutput {
 // Structure is documented below.
 func (o AppProfileOutput) DataBoostIsolationReadOnly() AppProfileDataBoostIsolationReadOnlyPtrOutput {
 	return o.ApplyT(func(v *AppProfile) AppProfileDataBoostIsolationReadOnlyPtrOutput { return v.DataBoostIsolationReadOnly }).(AppProfileDataBoostIsolationReadOnlyPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppProfileOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Long form description of the use case for this app profile.

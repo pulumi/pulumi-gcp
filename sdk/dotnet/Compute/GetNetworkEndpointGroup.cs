@@ -185,6 +185,7 @@ namespace Pulumi.Gcp.Compute
         /// The NEG default port.
         /// </summary>
         public readonly int DefaultPort;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The NEG description.
         /// </summary>
@@ -219,6 +220,8 @@ namespace Pulumi.Gcp.Compute
         private GetNetworkEndpointGroupResult(
             int defaultPort,
 
+            string deletionPolicy,
+
             string description,
 
             int generatedId,
@@ -242,6 +245,7 @@ namespace Pulumi.Gcp.Compute
             string? zone)
         {
             DefaultPort = defaultPort;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             GeneratedId = generatedId;
             Id = id;

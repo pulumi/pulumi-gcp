@@ -68,6 +68,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.memorystore.InstanceArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -159,6 +161,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigRdbConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -755,6 +759,30 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.crossInstanceReplicationConfig;
     }
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * Optional. If set to true deletion of the instance will fail.
      * 
      */
@@ -1122,9 +1150,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      * 
      */
     @Export(name="nodeType", refs={String.class}, tree="[0]")
@@ -1134,9 +1168,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      * 
      */
     public Output<String> nodeType() {

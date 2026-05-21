@@ -142,6 +142,31 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * If `true`, Pub/Sub provides the following guarantees for the delivery
      * of a message with a given value of messageId on this Subscriptions&#39;:
      * - The message sent to a subscriber is guaranteed not to be resent before the message&#39;s acknowledgement deadline expires.
@@ -454,6 +479,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
         this.bigqueryConfig = $.bigqueryConfig;
         this.cloudStorageConfig = $.cloudStorageConfig;
         this.deadLetterPolicy = $.deadLetterPolicy;
+        this.deletionPolicy = $.deletionPolicy;
         this.enableExactlyOnceDelivery = $.enableExactlyOnceDelivery;
         this.enableMessageOrdering = $.enableMessageOrdering;
         this.expirationPolicy = $.expirationPolicy;
@@ -624,6 +650,37 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deadLetterPolicy(SubscriptionDeadLetterPolicyArgs deadLetterPolicy) {
             return deadLetterPolicy(Output.of(deadLetterPolicy));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

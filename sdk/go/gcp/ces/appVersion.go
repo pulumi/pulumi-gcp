@@ -86,6 +86,13 @@ type AppVersion struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Email of the user who created the app version.
 	Creator pulumi.StringOutput `pulumi:"creator"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the app version.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the app version.
@@ -160,6 +167,13 @@ type appVersionState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Email of the user who created the app version.
 	Creator *string `pulumi:"creator"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the app version.
 	Description *string `pulumi:"description"`
 	// The display name of the app version.
@@ -196,6 +210,13 @@ type AppVersionState struct {
 	CreateTime pulumi.StringPtrInput
 	// Email of the user who created the app version.
 	Creator pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the app version.
 	Description pulumi.StringPtrInput
 	// The display name of the app version.
@@ -231,6 +252,13 @@ type appVersionArgs struct {
 	// of the app version's resource name. If not provided, a unique ID will be
 	// automatically assigned for the app version.
 	AppVersionId string `pulumi:"appVersionId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the app version.
 	Description *string `pulumi:"description"`
 	// The display name of the app version.
@@ -250,6 +278,13 @@ type AppVersionArgs struct {
 	// of the app version's resource name. If not provided, a unique ID will be
 	// automatically assigned for the app version.
 	AppVersionId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the app version.
 	Description pulumi.StringPtrInput
 	// The display name of the app version.
@@ -369,6 +404,16 @@ func (o AppVersionOutput) CreateTime() pulumi.StringOutput {
 // Email of the user who created the app version.
 func (o AppVersionOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppVersion) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppVersionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppVersion) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the app version.

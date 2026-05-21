@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string BackupVaultId;
         /// <summary>
+        /// Compute instance related properties of the backup.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBackupBackupComputeInstanceBackupPropertyResult> ComputeInstanceBackupProperties;
+        /// <summary>
         /// The time when the backup was created.
         /// </summary>
         public readonly string CreateTime;
@@ -29,6 +33,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// The ID of the Data Source in which the Backup belongs.
         /// </summary>
         public readonly string DataSourceId;
+        /// <summary>
+        /// Disk related properties of the backup.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBackupBackupDiskBackupPropertyResult> DiskBackupProperties;
         /// <summary>
         /// The location in which the Backup belongs.
         /// </summary>
@@ -44,9 +52,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
 
             string backupVaultId,
 
+            ImmutableArray<Outputs.GetBackupBackupComputeInstanceBackupPropertyResult> computeInstanceBackupProperties,
+
             string createTime,
 
             string dataSourceId,
+
+            ImmutableArray<Outputs.GetBackupBackupDiskBackupPropertyResult> diskBackupProperties,
 
             string location,
 
@@ -54,8 +66,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         {
             BackupId = backupId;
             BackupVaultId = backupVaultId;
+            ComputeInstanceBackupProperties = computeInstanceBackupProperties;
             CreateTime = createTime;
             DataSourceId = dataSourceId;
+            DiskBackupProperties = diskBackupProperties;
             Location = location;
             Name = name;
         }

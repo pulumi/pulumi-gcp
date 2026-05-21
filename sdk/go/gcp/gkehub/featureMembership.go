@@ -569,6 +569,13 @@ type FeatureMembership struct {
 
 	// Config Management-specific spec. Structure is documented below.
 	Configmanagement FeatureMembershipConfigmanagementPtrOutput `pulumi:"configmanagement"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the feature
 	Feature pulumi.StringOutput `pulumi:"feature"`
 	// The location of the feature
@@ -626,6 +633,13 @@ func GetFeatureMembership(ctx *pulumi.Context,
 type featureMembershipState struct {
 	// Config Management-specific spec. Structure is documented below.
 	Configmanagement *FeatureMembershipConfigmanagement `pulumi:"configmanagement"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the feature
 	Feature *string `pulumi:"feature"`
 	// The location of the feature
@@ -645,6 +659,13 @@ type featureMembershipState struct {
 type FeatureMembershipState struct {
 	// Config Management-specific spec. Structure is documented below.
 	Configmanagement FeatureMembershipConfigmanagementPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the feature
 	Feature pulumi.StringPtrInput
 	// The location of the feature
@@ -668,6 +689,13 @@ func (FeatureMembershipState) ElementType() reflect.Type {
 type featureMembershipArgs struct {
 	// Config Management-specific spec. Structure is documented below.
 	Configmanagement *FeatureMembershipConfigmanagement `pulumi:"configmanagement"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the feature
 	Feature string `pulumi:"feature"`
 	// The location of the feature
@@ -688,6 +716,13 @@ type featureMembershipArgs struct {
 type FeatureMembershipArgs struct {
 	// Config Management-specific spec. Structure is documented below.
 	Configmanagement FeatureMembershipConfigmanagementPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the feature
 	Feature pulumi.StringInput
 	// The location of the feature
@@ -794,6 +829,16 @@ func (o FeatureMembershipOutput) ToFeatureMembershipOutputWithContext(ctx contex
 // Config Management-specific spec. Structure is documented below.
 func (o FeatureMembershipOutput) Configmanagement() FeatureMembershipConfigmanagementPtrOutput {
 	return o.ApplyT(func(v *FeatureMembership) FeatureMembershipConfigmanagementPtrOutput { return v.Configmanagement }).(FeatureMembershipConfigmanagementPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FeatureMembershipOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureMembership) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of the feature

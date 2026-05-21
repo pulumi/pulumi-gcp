@@ -332,6 +332,15 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly cryptoKeyName: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * List of destinations to which messages will be forwarded. Currently,
      * exactly one destination is supported per Pipeline.
      * Structure is documented below.
@@ -447,6 +456,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["cryptoKeyName"] = state?.cryptoKeyName;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["destinations"] = state?.destinations;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
@@ -477,6 +487,7 @@ export class Pipeline extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args?.annotations;
             resourceInputs["cryptoKeyName"] = args?.cryptoKeyName;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["destinations"] = args?.destinations;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["inputPayloadFormat"] = args?.inputPayloadFormat;
@@ -527,6 +538,15 @@ export interface PipelineState {
      * "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
      */
     cryptoKeyName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * List of destinations to which messages will be forwarded. Currently,
      * exactly one destination is supported per Pipeline.
@@ -645,6 +665,15 @@ export interface PipelineArgs {
      * "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
      */
     cryptoKeyName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * List of destinations to which messages will be forwarded. Currently,
      * exactly one destination is supported per Pipeline.

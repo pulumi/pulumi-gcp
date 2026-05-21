@@ -272,9 +272,9 @@ import javax.annotation.Nullable;
  *         var tenantArReader = new IAMMember("tenantArReader", IAMMemberArgs.builder()
  *             .project(project.projectId())
  *             .role("roles/artifactregistry.reader")
- *             .member(tenantMds.applyValue(_tenantMds -> StdFunctions.jsondecode(JsondecodeArgs.builder()
- *                 .input(_tenantMds.output())
- *                 .build())).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().output())))
+ *             .member(StdFunctions.jsondecode(JsondecodeArgs.builder()
+ *                 .input(tenantMds.applyValue(_tenantMds -> _tenantMds.output()))
+ *                 .build()).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().output())))
  *             .build());
  * 
  *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
@@ -325,6 +325,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs;
  * import com.pulumi.asset.FileAsset;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
@@ -475,6 +476,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
  * import com.pulumi.asset.FileAsset;
  * import static com.pulumi.codegen.internal.Serialization.*;
@@ -836,18 +840,32 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * Optional. The deletion policy for the reasoning engine.
+     * Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is permitted.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
-     * @return Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * @return Optional. The deletion policy for the reasoning engine.
+     * Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is permitted.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The description of the ReasoningEngine.

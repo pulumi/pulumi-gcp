@@ -74,7 +74,8 @@ type LookupNetworkEndpointGroupArgs struct {
 // A collection of values returned by getNetworkEndpointGroup.
 type LookupNetworkEndpointGroupResult struct {
 	// The NEG default port.
-	DefaultPort int `pulumi:"defaultPort"`
+	DefaultPort    int    `pulumi:"defaultPort"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// The NEG description.
 	Description string `pulumi:"description"`
 	GeneratedId int    `pulumi:"generatedId"`
@@ -139,6 +140,10 @@ func (o LookupNetworkEndpointGroupResultOutput) ToLookupNetworkEndpointGroupResu
 // The NEG default port.
 func (o LookupNetworkEndpointGroupResultOutput) DefaultPort() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNetworkEndpointGroupResult) int { return v.DefaultPort }).(pulumi.IntOutput)
+}
+
+func (o LookupNetworkEndpointGroupResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkEndpointGroupResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The NEG description.

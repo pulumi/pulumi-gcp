@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConnectorResult {
     private List<String> connectedProjects;
+    private String deletionPolicy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -38,6 +39,9 @@ public final class GetConnectorResult {
     private GetConnectorResult() {}
     public List<String> connectedProjects() {
         return this.connectedProjects;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -96,6 +100,7 @@ public final class GetConnectorResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> connectedProjects;
+        private String deletionPolicy;
         private String id;
         private String ipCidrRange;
         private String machineType;
@@ -114,6 +119,7 @@ public final class GetConnectorResult {
         public Builder(GetConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectedProjects = defaults.connectedProjects;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.id = defaults.id;
     	      this.ipCidrRange = defaults.ipCidrRange;
     	      this.machineType = defaults.machineType;
@@ -140,6 +146,14 @@ public final class GetConnectorResult {
         }
         public Builder connectedProjects(String... connectedProjects) {
             return connectedProjects(List.of(connectedProjects));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -255,6 +269,7 @@ public final class GetConnectorResult {
         public GetConnectorResult build() {
             final var _resultValue = new GetConnectorResult();
             _resultValue.connectedProjects = connectedProjects;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.id = id;
             _resultValue.ipCidrRange = ipCidrRange;
             _resultValue.machineType = machineType;

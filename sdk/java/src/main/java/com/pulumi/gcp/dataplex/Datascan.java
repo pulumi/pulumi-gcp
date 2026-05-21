@@ -237,6 +237,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOnDemandArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -299,6 +301,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsNotificationReportArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleNonNullExpectationArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRangeExpectationArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRegexExpectationArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleSetExpectationArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleUniquenessExpectationArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRowConditionExpectationArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleSqlAssertionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -443,6 +455,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOneTimeArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -518,7 +532,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_37559")
+ *             .name("tf-test-bucket-name-_13293")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -587,15 +601,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_91980")
+ *             .name("tf-test-bucket-name-_40289")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var tfTestConnection = new Connection("tfTestConnection", ConnectionArgs.builder()
- *             .connectionId("tf-test-connection-_37118")
+ *             .connectionId("tf-test-connection-_33395")
  *             .location("us-central1")
- *             .friendlyName("tf-test-connection-_80332")
+ *             .friendlyName("tf-test-connection-_76044")
  *             .description("a bigquery connection for tf test")
  *             .cloudResource(ConnectionCloudResourceArgs.builder()
  *                 .build())
@@ -692,7 +706,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_13293")
+ *             .name("tf-test-bucket-name-_69391")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -757,13 +771,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__40289")
+ *             .datasetId("tf_dataplex_test_dataset_id__8270")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__33395")
+ *             .tableId("tf_dataplex_test_table_id__41150")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -877,13 +891,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__76044")
+ *             .datasetId("tf_dataplex_test_dataset_id__89313")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__69391")
+ *             .tableId("tf_dataplex_test_table_id__60646")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -1001,7 +1015,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_test_ds__8270")
+ *             .datasetId("tf_test_ds__9394")
  *             .defaultTableExpirationMs(3600000)
  *             .deleteContentsOnDestroy(true)
  *             .project("my-project-name")
@@ -1009,7 +1023,7 @@ import javax.annotation.Nullable;
  * 
  *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
  *             .datasetId(tfTestDataset.datasetId())
- *             .tableId("tf_test_tbl__41150")
+ *             .tableId("tf_test_tbl__11380")
  *             .deletionProtection(false)
  *             .project("my-project-name")
  *             .schema("""
@@ -1106,7 +1120,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("tf-test-sa-_89313")
+ *             .accountId("tf-test-sa-_35305")
  *             .displayName("DataScan Service Account")
  *             .project("my-project-name")
  *             .build());
@@ -1136,7 +1150,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_test_ds__60646")
+ *             .datasetId("tf_test_ds__62793")
  *             .defaultTableExpirationMs(3600000)
  *             .deleteContentsOnDestroy(true)
  *             .project("my-project-name")
@@ -1149,7 +1163,7 @@ import javax.annotation.Nullable;
  * 
  *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
  *             .datasetId(tfTestDataset.datasetId())
- *             .tableId("tf_test_tbl__9394")
+ *             .tableId("tf_test_tbl__55438")
  *             .deletionProtection(false)
  *             .project("my-project-name")
  *             .schema("""
@@ -1256,7 +1270,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("tf-test-sa-_11380")
+ *             .accountId("tf-test-sa-_32706")
  *             .displayName("DataScan Service Account")
  *             .project("my-project-name")
  *             .build());
@@ -1280,7 +1294,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_test_dataset_id__35305")
+ *             .datasetId("tf_test_dataset_id__49082")
  *             .defaultTableExpirationMs(3600000)
  *             .deleteContentsOnDestroy(true)
  *             .project("my-project-name")
@@ -1294,7 +1308,7 @@ import javax.annotation.Nullable;
  * 
  *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
  *             .datasetId(tfTestDataset.datasetId())
- *             .tableId("tf_test_table_id__62793")
+ *             .tableId("tf_test_table_id__60365")
  *             .deletionProtection(false)
  *             .project("my-project-name")
  *             .schema("""
@@ -1310,14 +1324,14 @@ import javax.annotation.Nullable;
  * 
  *         var testGroup = new EntryGroup("testGroup", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("test-group-_55438")
+ *             .entryGroupId("test-group-_80215")
  *             .project("my-project-name")
  *             .build());
  * 
  *         var testEntry = new Entry("testEntry", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(testGroup.entryGroupId())
- *             .entryId("test-entry-_32706")
+ *             .entryId("test-entry-_59033")
  *             .entryType("projects/655216118709/locations/global/entryTypes/data-quality-rule-template")
  *             .project(project.number())
  *             .aspects(EntryAspectArgs.builder()
@@ -1502,6 +1516,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityServiceAccountArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleTemplateReferenceArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleTemplateReferenceValueArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
@@ -1522,7 +1539,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("tf-test-sa-_49082")
+ *             .accountId("tf-test-sa-_32081")
  *             .displayName("DataScan Service Account")
  *             .project(project.projectId())
  *             .build());
@@ -1553,14 +1570,14 @@ import javax.annotation.Nullable;
  * 
  *         var testGroup = new EntryGroup("testGroup", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("test-group-_60365")
+ *             .entryGroupId("test-group-_10393")
  *             .project(project.projectId())
  *             .build());
  * 
  *         var testEntry = new Entry("testEntry", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(testGroup.entryGroupId())
- *             .entryId("test-entry-_80215")
+ *             .entryId("test-entry-_33052")
  *             .entryType("projects/655216118709/locations/global/entryTypes/data-quality-rule-template")
  *             .project(project.number())
  *             .aspects(EntryAspectArgs.builder()
@@ -1578,7 +1595,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_test_dataset_id__59033")
+ *             .datasetId("tf_test_dataset_id__3684")
  *             .defaultTableExpirationMs(3600000)
  *             .location("us-central1")
  *             .project(project.projectId())
@@ -1591,7 +1608,7 @@ import javax.annotation.Nullable;
  * 
  *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
  *             .datasetId(tfTestDataset.datasetId())
- *             .tableId("tf_test_table_id__32081")
+ *             .tableId("tf_test_table_id__10719")
  *             .deletionProtection(false)
  *             .project(project.projectId())
  *             .schema("""
@@ -1778,6 +1795,30 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dataScanId() {
         return this.dataScanId;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Description of the scan.

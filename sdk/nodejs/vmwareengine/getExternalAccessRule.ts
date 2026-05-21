@@ -52,6 +52,7 @@ export interface GetExternalAccessRuleArgs {
 export interface GetExternalAccessRuleResult {
     readonly action: string;
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly destinationIpRanges: outputs.vmwareengine.GetExternalAccessRuleDestinationIpRange[];
     readonly destinationPorts: string[];

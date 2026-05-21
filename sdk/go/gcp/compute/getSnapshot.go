@@ -83,6 +83,7 @@ type LookupSnapshotArgs struct {
 type LookupSnapshotResult struct {
 	ChainName         string            `pulumi:"chainName"`
 	CreationTimestamp string            `pulumi:"creationTimestamp"`
+	DeletionPolicy    string            `pulumi:"deletionPolicy"`
 	Description       string            `pulumi:"description"`
 	DiskSizeGb        int               `pulumi:"diskSizeGb"`
 	EffectiveLabels   map[string]string `pulumi:"effectiveLabels"`
@@ -161,6 +162,10 @@ func (o LookupSnapshotResultOutput) ChainName() pulumi.StringOutput {
 
 func (o LookupSnapshotResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupSnapshotResultOutput) Description() pulumi.StringOutput {

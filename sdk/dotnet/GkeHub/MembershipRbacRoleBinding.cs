@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
     ///     {
-    ///         MembershipId = "tf-test-membership_42702",
+    ///         MembershipId = "tf-test-membership_94690",
     ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
     ///         {
     ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var membershipRbacRoleBinding = new Gcp.GkeHub.MembershipRbacRoleBinding("membership_rbac_role_binding", new()
     ///     {
-    ///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_37426",
+    ///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_29947",
     ///         MembershipId = membership.MembershipId,
     ///         User = $"service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-anthossupport.iam.gserviceaccount.com",
     ///         Role = new Gcp.GkeHub.Inputs.MembershipRbacRoleBindingRoleArgs
@@ -114,6 +114,17 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Location of the Membership
@@ -228,6 +239,17 @@ namespace Pulumi.Gcp.GkeHub
     public sealed class MembershipRbacRoleBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Location of the Membership
         /// </summary>
         [Input("location", required: true)]
@@ -287,6 +309,17 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Location of the Membership

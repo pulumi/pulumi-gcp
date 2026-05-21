@@ -53,6 +53,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.memorystore.InstanceDesiredUserCreatedEndpoints;
  * import com.pulumi.gcp.memorystore.InstanceDesiredUserCreatedEndpointsArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import java.util.ArrayList;
@@ -251,6 +253,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.memorystore.InstanceDesiredUserCreatedEndpoints;
  * import com.pulumi.gcp.memorystore.InstanceDesiredUserCreatedEndpointsArgs;
  * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -403,6 +407,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints")
 public class InstanceDesiredUserCreatedEndpoints extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * A list of desired user endpoints
      * Structure is documented below.

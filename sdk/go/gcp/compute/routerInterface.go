@@ -63,6 +63,13 @@ import (
 type RouterInterface struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name or resource link to the
 	// VLAN interconnect for this interface. Changing this forces a new interface to
 	// be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -136,6 +143,13 @@ func GetRouterInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterInterface resources.
 type routerInterfaceState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name or resource link to the
 	// VLAN interconnect for this interface. Changing this forces a new interface to
 	// be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -177,6 +191,13 @@ type routerInterfaceState struct {
 }
 
 type RouterInterfaceState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name or resource link to the
 	// VLAN interconnect for this interface. Changing this forces a new interface to
 	// be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -222,6 +243,13 @@ func (RouterInterfaceState) ElementType() reflect.Type {
 }
 
 type routerInterfaceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name or resource link to the
 	// VLAN interconnect for this interface. Changing this forces a new interface to
 	// be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -264,6 +292,13 @@ type routerInterfaceArgs struct {
 
 // The set of arguments for constructing a RouterInterface resource.
 type RouterInterfaceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name or resource link to the
 	// VLAN interconnect for this interface. Changing this forces a new interface to
 	// be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -389,6 +424,16 @@ func (o RouterInterfaceOutput) ToRouterInterfaceOutput() RouterInterfaceOutput {
 
 func (o RouterInterfaceOutput) ToRouterInterfaceOutputWithContext(ctx context.Context) RouterInterfaceOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RouterInterfaceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name or resource link to the

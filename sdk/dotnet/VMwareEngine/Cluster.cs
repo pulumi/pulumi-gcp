@@ -563,6 +563,17 @@ namespace Pulumi.Gcp.VMwareEngine
         public Output<ImmutableArray<Outputs.ClusterDatastoreMountConfig>> DatastoreMountConfigs { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// True if the cluster is a management cluster; false otherwise.
         /// There can only be one management cluster in a private cloud and it has to be the first one.
         /// </summary>
@@ -681,6 +692,17 @@ namespace Pulumi.Gcp.VMwareEngine
         }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The ID of the Cluster.
         /// </summary>
         [Input("name")]
@@ -746,6 +768,17 @@ namespace Pulumi.Gcp.VMwareEngine
             get => _datastoreMountConfigs ?? (_datastoreMountConfigs = new InputList<Inputs.ClusterDatastoreMountConfigGetArgs>());
             set => _datastoreMountConfigs = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// True if the cluster is a management cluster; false otherwise.

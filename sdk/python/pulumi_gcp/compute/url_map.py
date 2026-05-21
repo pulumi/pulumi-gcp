@@ -25,6 +25,7 @@ class URLMapArgs:
                  default_route_action: pulumi.Input[Optional['URLMapDefaultRouteActionArgs']] = None,
                  default_service: pulumi.Input[Optional[_builtins.str]] = None,
                  default_url_redirect: pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  header_action: pulumi.Input[Optional['URLMapHeaderActionArgs']] = None,
                  host_rules: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapHostRuleArgs']]]] = None,
@@ -55,6 +56,12 @@ class URLMapArgs:
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create
                the resource.
         :param pulumi.Input['URLMapHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
@@ -86,6 +93,8 @@ class URLMapArgs:
             pulumi.set(__self__, "default_service", default_service)
         if default_url_redirect is not None:
             pulumi.set(__self__, "default_url_redirect", default_url_redirect)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if header_action is not None:
@@ -164,6 +173,23 @@ class URLMapArgs:
     @default_url_redirect.setter
     def default_url_redirect(self, value: pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']]):
         pulumi.set(self, "default_url_redirect", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -273,6 +299,7 @@ class _URLMapState:
                  default_route_action: pulumi.Input[Optional['URLMapDefaultRouteActionArgs']] = None,
                  default_service: pulumi.Input[Optional[_builtins.str]] = None,
                  default_url_redirect: pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
                  header_action: pulumi.Input[Optional['URLMapHeaderActionArgs']] = None,
@@ -307,6 +334,12 @@ class _URLMapState:
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create
                the resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This
@@ -344,6 +377,8 @@ class _URLMapState:
             pulumi.set(__self__, "default_service", default_service)
         if default_url_redirect is not None:
             pulumi.set(__self__, "default_url_redirect", default_url_redirect)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fingerprint is not None:
@@ -440,6 +475,23 @@ class _URLMapState:
     @default_url_redirect.setter
     def default_url_redirect(self, value: pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']]):
         pulumi.set(self, "default_url_redirect", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -588,6 +640,7 @@ class URLMap(pulumi.CustomResource):
                  default_route_action: pulumi.Input[Optional[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
                  default_service: pulumi.Input[Optional[_builtins.str]] = None,
                  default_url_redirect: pulumi.Input[Optional[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  header_action: pulumi.Input[Optional[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']]] = None,
                  host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapHostRuleArgs', 'URLMapHostRuleArgsDict']]]]] = None,
@@ -2006,6 +2059,12 @@ class URLMap(pulumi.CustomResource):
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create
                the resource.
         :param pulumi.Input[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']] header_action: Specifies changes to request and response headers that need to take effect for
@@ -3442,6 +3501,7 @@ class URLMap(pulumi.CustomResource):
                  default_route_action: pulumi.Input[Optional[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
                  default_service: pulumi.Input[Optional[_builtins.str]] = None,
                  default_url_redirect: pulumi.Input[Optional[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  header_action: pulumi.Input[Optional[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']]] = None,
                  host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapHostRuleArgs', 'URLMapHostRuleArgsDict']]]]] = None,
@@ -3462,6 +3522,7 @@ class URLMap(pulumi.CustomResource):
             __props__.__dict__["default_route_action"] = default_route_action
             __props__.__dict__["default_service"] = default_service
             __props__.__dict__["default_url_redirect"] = default_url_redirect
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["header_action"] = header_action
             __props__.__dict__["host_rules"] = host_rules
@@ -3488,6 +3549,7 @@ class URLMap(pulumi.CustomResource):
             default_route_action: pulumi.Input[Optional[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
             default_service: pulumi.Input[Optional[_builtins.str]] = None,
             default_url_redirect: pulumi.Input[Optional[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             header_action: pulumi.Input[Optional[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']]] = None,
@@ -3526,6 +3588,12 @@ class URLMap(pulumi.CustomResource):
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create
                the resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This
@@ -3562,6 +3630,7 @@ class URLMap(pulumi.CustomResource):
         __props__.__dict__["default_route_action"] = default_route_action
         __props__.__dict__["default_service"] = default_service
         __props__.__dict__["default_url_redirect"] = default_url_redirect
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["header_action"] = header_action
@@ -3629,6 +3698,19 @@ class URLMap(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "default_url_redirect")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

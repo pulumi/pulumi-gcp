@@ -183,6 +183,13 @@ type Attestor struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNoteOutput `pulumi:"attestationAuthorityNote"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A descriptive comment. This field may be updated. The field may be
 	// displayed in chooser dialogs.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -229,6 +236,13 @@ type attestorState struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote *AttestorAttestationAuthorityNote `pulumi:"attestationAuthorityNote"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A descriptive comment. This field may be updated. The field may be
 	// displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
@@ -243,6 +257,13 @@ type AttestorState struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNotePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A descriptive comment. This field may be updated. The field may be
 	// displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
@@ -261,6 +282,13 @@ type attestorArgs struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNote `pulumi:"attestationAuthorityNote"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A descriptive comment. This field may be updated. The field may be
 	// displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
@@ -276,6 +304,13 @@ type AttestorArgs struct {
 	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
 	// Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNoteInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A descriptive comment. This field may be updated. The field may be
 	// displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
@@ -377,6 +412,16 @@ func (o AttestorOutput) ToAttestorOutputWithContext(ctx context.Context) Attesto
 // Structure is documented below.
 func (o AttestorOutput) AttestationAuthorityNote() AttestorAttestationAuthorityNoteOutput {
 	return o.ApplyT(func(v *Attestor) AttestorAttestationAuthorityNoteOutput { return v.AttestationAuthorityNote }).(AttestorAttestationAuthorityNoteOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AttestorOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A descriptive comment. This field may be updated. The field may be

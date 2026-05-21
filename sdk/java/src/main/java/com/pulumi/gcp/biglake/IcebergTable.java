@@ -39,7 +39,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.biglake.IcebergTable;
  * import com.pulumi.gcp.biglake.IcebergTableArgs;
  * import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaFieldArgs;
  * import com.pulumi.gcp.biglake.inputs.IcebergTablePartitionSpecArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergTablePartitionSpecFieldArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -128,6 +130,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.biglake.IcebergTable;
  * import com.pulumi.gcp.biglake.IcebergTableArgs;
  * import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergTableSchemaFieldArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -211,6 +214,30 @@ public class IcebergTable extends com.pulumi.resources.CustomResource {
      */
     public Output<String> catalog() {
         return this.catalog;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The location of the table.

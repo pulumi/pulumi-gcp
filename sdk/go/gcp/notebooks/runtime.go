@@ -289,6 +289,13 @@ type Runtime struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrOutput `pulumi:"accessConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The health state of this runtime. For a list of possible output
@@ -369,6 +376,13 @@ type runtimeState struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The health state of this runtime. For a list of possible output
@@ -412,6 +426,13 @@ type RuntimeState struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The health state of this runtime. For a list of possible output
@@ -459,6 +480,13 @@ type runtimeArgs struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The labels to associate with this runtime. Label **keys** must
 	// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
@@ -488,6 +516,13 @@ type RuntimeArgs struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The labels to associate with this runtime. Label **keys** must
 	// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
@@ -603,6 +638,16 @@ func (o RuntimeOutput) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOu
 // Structure is documented below.
 func (o RuntimeOutput) AccessConfig() RuntimeAccessConfigPtrOutput {
 	return o.ApplyT(func(v *Runtime) RuntimeAccessConfigPtrOutput { return v.AccessConfig }).(RuntimeAccessConfigPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RuntimeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

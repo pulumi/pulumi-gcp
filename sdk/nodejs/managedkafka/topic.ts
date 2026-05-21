@@ -96,6 +96,15 @@ export class Topic extends pulumi.CustomResource {
      */
     declare public readonly configs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -136,6 +145,7 @@ export class Topic extends pulumi.CustomResource {
             const state = argsOrState as TopicState | undefined;
             resourceInputs["cluster"] = state?.cluster;
             resourceInputs["configs"] = state?.configs;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["partitionCount"] = state?.partitionCount;
@@ -158,6 +168,7 @@ export class Topic extends pulumi.CustomResource {
             }
             resourceInputs["cluster"] = args?.cluster;
             resourceInputs["configs"] = args?.configs;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["partitionCount"] = args?.partitionCount;
             resourceInputs["project"] = args?.project;
@@ -182,6 +193,15 @@ export interface TopicState {
      * Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
      */
     configs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
@@ -221,6 +241,15 @@ export interface TopicArgs {
      * Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
      */
     configs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */

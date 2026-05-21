@@ -24,6 +24,7 @@ class ReservationArgs:
                  slot_capacity: pulumi.Input[_builtins.int],
                  autoscale: pulumi.Input[Optional['ReservationAutoscaleArgs']] = None,
                  concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,6 +42,12 @@ class ReservationArgs:
         :param pulumi.Input['ReservationAutoscaleArgs'] autoscale: The configuration parameters for the auto scaling feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[_builtins.bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
@@ -128,6 +135,8 @@ class ReservationArgs:
             pulumi.set(__self__, "autoscale", autoscale)
         if concurrency is not None:
             pulumi.set(__self__, "concurrency", concurrency)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
         if ignore_idle_slots is not None:
@@ -184,6 +193,23 @@ class ReservationArgs:
     @concurrency.setter
     def concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrency", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -371,6 +397,7 @@ class _ReservationState:
     def __init__(__self__, *,
                  autoscale: pulumi.Input[Optional['ReservationAutoscaleArgs']] = None,
                  concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -390,6 +417,12 @@ class _ReservationState:
         :param pulumi.Input['ReservationAutoscaleArgs'] autoscale: The configuration parameters for the auto scaling feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[_builtins.bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
@@ -490,6 +523,8 @@ class _ReservationState:
             pulumi.set(__self__, "autoscale", autoscale)
         if concurrency is not None:
             pulumi.set(__self__, "concurrency", concurrency)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
         if ignore_idle_slots is not None:
@@ -541,6 +576,23 @@ class _ReservationState:
     @concurrency.setter
     def concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrency", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -789,6 +841,7 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
                  concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -851,6 +904,12 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']] autoscale: The configuration parameters for the auto scaling feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[_builtins.bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
@@ -1004,6 +1063,7 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
                  concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1025,6 +1085,7 @@ class Reservation(pulumi.CustomResource):
 
             __props__.__dict__["autoscale"] = autoscale
             __props__.__dict__["concurrency"] = concurrency
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["edition"] = edition
             __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
             __props__.__dict__["location"] = location
@@ -1052,6 +1113,7 @@ class Reservation(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
             concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1075,6 +1137,12 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']] autoscale: The configuration parameters for the auto scaling feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[_builtins.bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
@@ -1177,6 +1245,7 @@ class Reservation(pulumi.CustomResource):
 
         __props__.__dict__["autoscale"] = autoscale
         __props__.__dict__["concurrency"] = concurrency
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["edition"] = edition
         __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
         __props__.__dict__["location"] = location
@@ -1208,6 +1277,19 @@ class Reservation(pulumi.CustomResource):
         Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         """
         return pulumi.get(self, "concurrency")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

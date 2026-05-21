@@ -24,6 +24,7 @@ class TagArgs:
                  fields: pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]],
                  template: pulumi.Input[_builtins.str],
                  column: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tag resource.
@@ -38,6 +39,12 @@ class TagArgs:
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
                all entries in that group.
         """
@@ -45,6 +52,8 @@ class TagArgs:
         pulumi.set(__self__, "template", template)
         if column is not None:
             pulumi.set(__self__, "column", column)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
 
@@ -92,6 +101,23 @@ class TagArgs:
         pulumi.set(self, "column", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -109,6 +135,7 @@ class TagArgs:
 class _TagState:
     def __init__(__self__, *,
                  column: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fields: pulumi.Input[Optional[Sequence[pulumi.Input['TagFieldArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -121,6 +148,12 @@ class _TagState:
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
@@ -137,6 +170,8 @@ class _TagState:
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
         if name is not None:
@@ -162,6 +197,23 @@ class _TagState:
     @column.setter
     def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -239,6 +291,7 @@ class Tag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -528,6 +581,12 @@ class Tag(pulumi.CustomResource):
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
@@ -838,6 +897,7 @@ class Tag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -851,6 +911,7 @@ class Tag(pulumi.CustomResource):
             __props__ = TagArgs.__new__(TagArgs)
 
             __props__.__dict__["column"] = column
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if fields is None and not opts.urn:
                 raise TypeError("Missing required property 'fields'")
             __props__.__dict__["fields"] = fields
@@ -871,6 +932,7 @@ class Tag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             column: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -887,6 +949,12 @@ class Tag(pulumi.CustomResource):
                individual column based on that schema.
                For attaching a tag to a nested column, use `.` to separate the column names. Example:
                `outer_column.inner_column`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
@@ -906,6 +974,7 @@ class Tag(pulumi.CustomResource):
         __props__ = _TagState.__new__(_TagState)
 
         __props__.__dict__["column"] = column
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["fields"] = fields
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
@@ -923,6 +992,19 @@ class Tag(pulumi.CustomResource):
         `outer_column.inner_column`
         """
         return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

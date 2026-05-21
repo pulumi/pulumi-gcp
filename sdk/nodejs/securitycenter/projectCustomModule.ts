@@ -136,6 +136,15 @@ export class ProjectCustomModule extends pulumi.CustomResource {
      */
     declare public readonly customConfig: pulumi.Output<outputs.securitycenter.ProjectCustomModuleCustomConfig>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The display name of the Security Health Analytics custom module. This
      * display name becomes the finding category for all findings that are
      * returned by this custom module. The display name must be between 1 and
@@ -184,6 +193,7 @@ export class ProjectCustomModule extends pulumi.CustomResource {
             const state = argsOrState as ProjectCustomModuleState | undefined;
             resourceInputs["ancestorModule"] = state?.ancestorModule;
             resourceInputs["customConfig"] = state?.customConfig;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["enablementState"] = state?.enablementState;
             resourceInputs["lastEditor"] = state?.lastEditor;
@@ -202,6 +212,7 @@ export class ProjectCustomModule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'enablementState'");
             }
             resourceInputs["customConfig"] = args?.customConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["enablementState"] = args?.enablementState;
             resourceInputs["project"] = args?.project;
@@ -230,6 +241,15 @@ export interface ProjectCustomModuleState {
      * Structure is documented below.
      */
     customConfig?: pulumi.Input<inputs.securitycenter.ProjectCustomModuleCustomConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Security Health Analytics custom module. This
      * display name becomes the finding category for all findings that are
@@ -274,6 +294,15 @@ export interface ProjectCustomModuleArgs {
      * Structure is documented below.
      */
     customConfig: pulumi.Input<inputs.securitycenter.ProjectCustomModuleCustomConfig>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Security Health Analytics custom module. This
      * display name becomes the finding category for all findings that are

@@ -65,6 +65,7 @@ type LookupBucketResult struct {
 	Cors                   []GetBucketCor                   `pulumi:"cors"`
 	CustomPlacementConfigs []GetBucketCustomPlacementConfig `pulumi:"customPlacementConfigs"`
 	DefaultEventBasedHold  bool                             `pulumi:"defaultEventBasedHold"`
+	DeletionPolicy         string                           `pulumi:"deletionPolicy"`
 	EffectiveLabels        map[string]string                `pulumi:"effectiveLabels"`
 	EnableObjectRetention  bool                             `pulumi:"enableObjectRetention"`
 	Encryptions            []GetBucketEncryption            `pulumi:"encryptions"`
@@ -146,6 +147,10 @@ func (o LookupBucketResultOutput) CustomPlacementConfigs() GetBucketCustomPlacem
 
 func (o LookupBucketResultOutput) DefaultEventBasedHold() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBucketResult) bool { return v.DefaultEventBasedHold }).(pulumi.BoolOutput)
+}
+
+func (o LookupBucketResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupBucketResultOutput) EffectiveLabels() pulumi.StringMapOutput {

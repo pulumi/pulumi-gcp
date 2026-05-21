@@ -25,6 +25,7 @@ class InternalRangeArgs:
                  peering: pulumi.Input[_builtins.str],
                  usage: pulumi.Input[_builtins.str],
                  allocation_options: pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  immutable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -46,6 +47,12 @@ class InternalRangeArgs:
                Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         :param pulumi.Input['InternalRangeAllocationOptionsArgs'] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
                Only IPv4 CIDR ranges are supported.
@@ -76,6 +83,8 @@ class InternalRangeArgs:
         pulumi.set(__self__, "usage", usage)
         if allocation_options is not None:
             pulumi.set(__self__, "allocation_options", allocation_options)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if exclude_cidr_ranges is not None:
@@ -149,6 +158,23 @@ class InternalRangeArgs:
     @allocation_options.setter
     def allocation_options(self, value: pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']]):
         pulumi.set(self, "allocation_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -300,6 +326,7 @@ class InternalRangeArgs:
 class _InternalRangeState:
     def __init__(__self__, *,
                  allocation_options: pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -322,6 +349,12 @@ class _InternalRangeState:
 
         :param pulumi.Input['InternalRangeAllocationOptionsArgs'] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
@@ -360,6 +393,8 @@ class _InternalRangeState:
         """
         if allocation_options is not None:
             pulumi.set(__self__, "allocation_options", allocation_options)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -407,6 +442,23 @@ class _InternalRangeState:
     @allocation_options.setter
     def allocation_options(self, value: pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']]):
         pulumi.set(self, "allocation_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -638,6 +690,7 @@ class InternalRange(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  immutable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -834,6 +887,12 @@ class InternalRange(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
                Only IPv4 CIDR ranges are supported.
@@ -1063,6 +1122,7 @@ class InternalRange(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  immutable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1087,6 +1147,7 @@ class InternalRange(pulumi.CustomResource):
             __props__ = InternalRangeArgs.__new__(InternalRangeArgs)
 
             __props__.__dict__["allocation_options"] = allocation_options
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["exclude_cidr_ranges"] = exclude_cidr_ranges
             __props__.__dict__["immutable"] = immutable
@@ -1123,6 +1184,7 @@ class InternalRange(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1149,6 +1211,12 @@ class InternalRange(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
@@ -1190,6 +1258,7 @@ class InternalRange(pulumi.CustomResource):
         __props__ = _InternalRangeState.__new__(_InternalRangeState)
 
         __props__.__dict__["allocation_options"] = allocation_options
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["exclude_cidr_ranges"] = exclude_cidr_ranges
@@ -1217,6 +1286,19 @@ class InternalRange(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "allocation_options")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

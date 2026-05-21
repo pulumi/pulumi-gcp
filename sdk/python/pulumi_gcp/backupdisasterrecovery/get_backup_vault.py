@@ -27,7 +27,7 @@ class GetBackupVaultResult:
     """
     A collection of values returned by getBackupVault.
     """
-    def __init__(__self__, access_restriction=None, allow_missing=None, annotations=None, backup_count=None, backup_minimum_enforced_retention_duration=None, backup_retention_inheritance=None, backup_vault_id=None, create_time=None, deletable=None, description=None, effective_annotations=None, effective_labels=None, effective_time=None, encryption_configs=None, etag=None, force_delete=None, force_update=None, id=None, ignore_backup_plan_references=None, ignore_inactive_datasources=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_account=None, state=None, total_stored_bytes=None, uid=None, update_time=None):
+    def __init__(__self__, access_restriction=None, allow_missing=None, annotations=None, backup_count=None, backup_minimum_enforced_retention_duration=None, backup_retention_inheritance=None, backup_vault_id=None, create_time=None, deletable=None, deletion_policy=None, description=None, effective_annotations=None, effective_labels=None, effective_time=None, encryption_configs=None, etag=None, force_delete=None, force_update=None, id=None, ignore_backup_plan_references=None, ignore_inactive_datasources=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_account=None, state=None, total_stored_bytes=None, uid=None, update_time=None):
         if access_restriction and not isinstance(access_restriction, str):
             raise TypeError("Expected argument 'access_restriction' to be a str")
         pulumi.set(__self__, "access_restriction", access_restriction)
@@ -55,6 +55,9 @@ class GetBackupVaultResult:
         if deletable and not isinstance(deletable, bool):
             raise TypeError("Expected argument 'deletable' to be a bool")
         pulumi.set(__self__, "deletable", deletable)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -163,6 +166,11 @@ class GetBackupVaultResult:
     @pulumi.getter
     def deletable(self) -> _builtins.bool:
         return pulumi.get(self, "deletable")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -288,6 +296,7 @@ class AwaitableGetBackupVaultResult(GetBackupVaultResult):
             backup_vault_id=self.backup_vault_id,
             create_time=self.create_time,
             deletable=self.deletable,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             effective_annotations=self.effective_annotations,
             effective_labels=self.effective_labels,
@@ -353,6 +362,7 @@ def get_backup_vault(backup_vault_id: Optional[_builtins.str] = None,
         backup_vault_id=pulumi.get(__ret__, 'backup_vault_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
         deletable=pulumi.get(__ret__, 'deletable'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -415,6 +425,7 @@ def get_backup_vault_output(backup_vault_id: pulumi.Input[Optional[_builtins.str
         backup_vault_id=pulumi.get(__response__, 'backup_vault_id'),
         create_time=pulumi.get(__response__, 'create_time'),
         deletable=pulumi.get(__response__, 'deletable'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         effective_annotations=pulumi.get(__response__, 'effective_annotations'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

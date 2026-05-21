@@ -25,6 +25,7 @@ class HookArgs:
                  location: pulumi.Input[_builtins.str],
                  repository_id: pulumi.Input[_builtins.str],
                  target_uri: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +38,12 @@ class HookArgs:
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
         :param pulumi.Input[_builtins.str] target_uri: The target URI to which the payloads will be delivered.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
                Set to true to stop sending traffic.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The events that trigger hook on.
@@ -52,6 +59,8 @@ class HookArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "repository_id", repository_id)
         pulumi.set(__self__, "target_uri", target_uri)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if events is not None:
@@ -110,6 +119,23 @@ class HookArgs:
     @target_uri.setter
     def target_uri(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "target_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -181,6 +207,7 @@ class HookArgs:
 class _HookState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hook_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -197,6 +224,12 @@ class _HookState:
         Input properties used for looking up and filtering Hook resources.
 
         :param pulumi.Input[_builtins.str] create_time: Create timestamp.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
                Set to true to stop sending traffic.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The events that trigger hook on.
@@ -218,6 +251,8 @@ class _HookState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if events is not None:
@@ -254,6 +289,23 @@ class _HookState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -412,6 +464,7 @@ class Hook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hook_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -452,6 +505,12 @@ class Hook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
                Set to true to stop sending traffic.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The events that trigger hook on.
@@ -516,6 +575,7 @@ class Hook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hook_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -534,6 +594,7 @@ class Hook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HookArgs.__new__(HookArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["events"] = events
             if hook_id is None and not opts.urn:
@@ -568,6 +629,7 @@ class Hook(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             hook_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -588,6 +650,12 @@ class Hook(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Create timestamp.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the hook disabled or not.
                Set to true to stop sending traffic.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The events that trigger hook on.
@@ -612,6 +680,7 @@ class Hook(pulumi.CustomResource):
         __props__ = _HookState.__new__(_HookState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["events"] = events
         __props__.__dict__["hook_id"] = hook_id
@@ -633,6 +702,19 @@ class Hook(pulumi.CustomResource):
         Create timestamp.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

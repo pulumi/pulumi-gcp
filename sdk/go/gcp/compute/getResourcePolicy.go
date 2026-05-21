@@ -62,6 +62,7 @@ type LookupResourcePolicyArgs struct {
 
 // A collection of values returned by getResourcePolicy.
 type LookupResourcePolicyResult struct {
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Description of this Resource Policy.
 	Description                  string                                        `pulumi:"description"`
 	DiskConsistencyGroupPolicies []GetResourcePolicyDiskConsistencyGroupPolicy `pulumi:"diskConsistencyGroupPolicies"`
@@ -114,6 +115,10 @@ func (o LookupResourcePolicyResultOutput) ToLookupResourcePolicyResultOutput() L
 
 func (o LookupResourcePolicyResultOutput) ToLookupResourcePolicyResultOutputWithContext(ctx context.Context) LookupResourcePolicyResultOutput {
 	return o
+}
+
+func (o LookupResourcePolicyResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of this Resource Policy.

@@ -35,9 +35,12 @@ class AppleAppArgs:
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[_builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
-        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-               serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] team_id: The Apple Developer Team ID associated with the App in the App Store.
@@ -109,9 +112,12 @@ class AppleAppArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-        rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-        serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -167,9 +173,12 @@ class _AppleAppState:
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[_builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[_builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-               serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/iosApps/appId
@@ -251,9 +260,12 @@ class _AppleAppState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-        rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-        serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -403,9 +415,12 @@ class AppleApp(pulumi.CustomResource):
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[_builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[_builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-               serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -564,9 +579,12 @@ class AppleApp(pulumi.CustomResource):
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[_builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[_builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-               serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/iosApps/appId
@@ -626,11 +644,14 @@ class AppleApp(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-        rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-        serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 

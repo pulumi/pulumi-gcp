@@ -229,14 +229,14 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
+     * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA, IDPF
      * 
      */
     @Import(name="nicType")
     private @Nullable Output<String> nicType;
 
     /**
-     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
+     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA, IDPF
      * 
      */
     public Optional<Output<String>> nicType() {
@@ -729,7 +729,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
+         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA, IDPF
          * 
          * @return builder
          * 
@@ -740,7 +740,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
+         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA, IDPF
          * 
          * @return builder
          * 

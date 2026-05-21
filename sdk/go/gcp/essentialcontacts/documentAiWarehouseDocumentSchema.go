@@ -91,6 +91,13 @@ import (
 type DocumentAiWarehouseDocumentSchema struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Name of the schema given by the user.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Tells whether the document is a folder or a typical document.
@@ -148,6 +155,13 @@ func GetDocumentAiWarehouseDocumentSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DocumentAiWarehouseDocumentSchema resources.
 type documentAiWarehouseDocumentSchemaState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the schema given by the user.
 	DisplayName *string `pulumi:"displayName"`
 	// Tells whether the document is a folder or a typical document.
@@ -164,6 +178,13 @@ type documentAiWarehouseDocumentSchemaState struct {
 }
 
 type DocumentAiWarehouseDocumentSchemaState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the schema given by the user.
 	DisplayName pulumi.StringPtrInput
 	// Tells whether the document is a folder or a typical document.
@@ -184,6 +205,13 @@ func (DocumentAiWarehouseDocumentSchemaState) ElementType() reflect.Type {
 }
 
 type documentAiWarehouseDocumentSchemaArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the schema given by the user.
 	DisplayName string `pulumi:"displayName"`
 	// Tells whether the document is a folder or a typical document.
@@ -199,6 +227,13 @@ type documentAiWarehouseDocumentSchemaArgs struct {
 
 // The set of arguments for constructing a DocumentAiWarehouseDocumentSchema resource.
 type DocumentAiWarehouseDocumentSchemaArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the schema given by the user.
 	DisplayName pulumi.StringInput
 	// Tells whether the document is a folder or a typical document.
@@ -297,6 +332,16 @@ func (o DocumentAiWarehouseDocumentSchemaOutput) ToDocumentAiWarehouseDocumentSc
 
 func (o DocumentAiWarehouseDocumentSchemaOutput) ToDocumentAiWarehouseDocumentSchemaOutputWithContext(ctx context.Context) DocumentAiWarehouseDocumentSchemaOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DocumentAiWarehouseDocumentSchemaOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DocumentAiWarehouseDocumentSchema) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name of the schema given by the user.

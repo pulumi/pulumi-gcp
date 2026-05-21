@@ -59,6 +59,7 @@ export interface GetOdbNetworkArgs {
  */
 export interface GetOdbNetworkResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly effectiveLabels: {[key: string]: string};
     readonly entitlementId: string;

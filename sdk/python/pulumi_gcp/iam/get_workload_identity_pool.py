@@ -27,10 +27,13 @@ class GetWorkloadIdentityPoolResult:
     """
     A collection of values returned by getWorkloadIdentityPool.
     """
-    def __init__(__self__, attestation_rules=None, description=None, disabled=None, display_name=None, id=None, inline_certificate_issuance_configs=None, inline_trust_configs=None, mode=None, name=None, project=None, state=None, workload_identity_pool_id=None):
+    def __init__(__self__, attestation_rules=None, deletion_policy=None, description=None, disabled=None, display_name=None, id=None, inline_certificate_issuance_configs=None, inline_trust_configs=None, mode=None, name=None, project=None, state=None, workload_identity_pool_id=None):
         if attestation_rules and not isinstance(attestation_rules, list):
             raise TypeError("Expected argument 'attestation_rules' to be a list")
         pulumi.set(__self__, "attestation_rules", attestation_rules)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -69,6 +72,11 @@ class GetWorkloadIdentityPoolResult:
     @pulumi.getter(name="attestationRules")
     def attestation_rules(self) -> Sequence['outputs.GetWorkloadIdentityPoolAttestationRuleResult']:
         return pulumi.get(self, "attestation_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -136,6 +144,7 @@ class AwaitableGetWorkloadIdentityPoolResult(GetWorkloadIdentityPoolResult):
             yield self
         return GetWorkloadIdentityPoolResult(
             attestation_rules=self.attestation_rules,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             disabled=self.disabled,
             display_name=self.display_name,
@@ -185,6 +194,7 @@ def get_workload_identity_pool(project: Optional[_builtins.str] = None,
 
     return AwaitableGetWorkloadIdentityPoolResult(
         attestation_rules=pulumi.get(__ret__, 'attestation_rules'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         disabled=pulumi.get(__ret__, 'disabled'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -231,6 +241,7 @@ def get_workload_identity_pool_output(project: pulumi.Input[Optional[Optional[_b
     __ret__ = pulumi.runtime.invoke_output('gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool', __args__, opts=opts, typ=GetWorkloadIdentityPoolResult)
     return __ret__.apply(lambda __response__: GetWorkloadIdentityPoolResult(
         attestation_rules=pulumi.get(__response__, 'attestation_rules'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         disabled=pulumi.get(__response__, 'disabled'),
         display_name=pulumi.get(__response__, 'display_name'),

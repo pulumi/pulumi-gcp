@@ -116,6 +116,15 @@ export class LinkedDataset extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Describes this link. The maximum length of the description is 8000 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -157,6 +166,7 @@ export class LinkedDataset extends pulumi.CustomResource {
             resourceInputs["bigqueryDatasets"] = state?.bigqueryDatasets;
             resourceInputs["bucket"] = state?.bucket;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["lifecycleState"] = state?.lifecycleState;
             resourceInputs["linkId"] = state?.linkId;
@@ -173,6 +183,7 @@ export class LinkedDataset extends pulumi.CustomResource {
             }
             resourceInputs["bigqueryDatasets"] = args?.bigqueryDatasets;
             resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["linkId"] = args?.linkId;
             resourceInputs["location"] = args?.location;
@@ -207,6 +218,15 @@ export interface LinkedDatasetState {
      * and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Describes this link. The maximum length of the description is 8000 characters.
      */
@@ -249,6 +269,15 @@ export interface LinkedDatasetArgs {
      * The bucket to which the linked dataset is attached.
      */
     bucket: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Describes this link. The maximum length of the description is 8000 characters.
      */

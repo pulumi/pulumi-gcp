@@ -737,6 +737,13 @@ type WorkforcePoolProvider struct {
 	// An object containing a list of `"key": value` pairs.
 	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapOutput `pulumi:"attributeMapping"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
@@ -894,6 +901,13 @@ type workforcePoolProviderState struct {
 	// An object containing a list of `"key": value` pairs.
 	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
@@ -1013,6 +1027,13 @@ type WorkforcePoolProviderState struct {
 	// An object containing a list of `"key": value` pairs.
 	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
@@ -1136,6 +1157,13 @@ type workforcePoolProviderArgs struct {
 	// An object containing a list of `"key": value` pairs.
 	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
@@ -1246,6 +1274,13 @@ type WorkforcePoolProviderArgs struct {
 	// An object containing a list of `"key": value` pairs.
 	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
@@ -1446,6 +1481,16 @@ func (o WorkforcePoolProviderOutput) AttributeCondition() pulumi.StringPtrOutput
 // Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 func (o WorkforcePoolProviderOutput) AttributeMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringMapOutput { return v.AttributeMapping }).(pulumi.StringMapOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkforcePoolProviderOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A user-specified description of the provider. Cannot exceed 256 characters.

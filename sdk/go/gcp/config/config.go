@@ -242,6 +242,9 @@ func GetDatastreamCustomEndpoint(ctx *pulumi.Context) string {
 func GetDefaultLabels(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:defaultLabels")
 }
+func GetDeletionPolicy(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:deletionPolicy")
+}
 func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:deploymentManagerCustomEndpoint")
 }

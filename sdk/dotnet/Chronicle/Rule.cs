@@ -170,12 +170,19 @@ namespace Pulumi.Gcp.Chronicle
         /// If DeletionPolicy = "FORCE", any retrohunts and any detections associated with the rule
         /// will also be deleted. If DeletionPolicy = "DEFAULT", the call will only succeed if the
         /// rule has no associated retrohunts, including completed retrohunts, and no
-        /// associated detections. Regardless of this field's value, the rule
-        /// deployment associated with this rule will also be deleted.
-        /// Possible values: DEFAULT, FORCE
+        /// associated detections. Regardless of being set to "FORCE" the rule
+        /// deployment associated with this rule will also be deleted if deletion is successful.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+        /// 
+        /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The display name of the severity level. Extracted from the meta section of
@@ -355,9 +362,16 @@ namespace Pulumi.Gcp.Chronicle
         /// If DeletionPolicy = "FORCE", any retrohunts and any detections associated with the rule
         /// will also be deleted. If DeletionPolicy = "DEFAULT", the call will only succeed if the
         /// rule has no associated retrohunts, including completed retrohunts, and no
-        /// associated detections. Regardless of this field's value, the rule
-        /// deployment associated with this rule will also be deleted.
-        /// Possible values: DEFAULT, FORCE
+        /// associated detections. Regardless of being set to "FORCE" the rule
+        /// deployment associated with this rule will also be deleted if deletion is successful.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+        /// 
+        /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -494,9 +508,16 @@ namespace Pulumi.Gcp.Chronicle
         /// If DeletionPolicy = "FORCE", any retrohunts and any detections associated with the rule
         /// will also be deleted. If DeletionPolicy = "DEFAULT", the call will only succeed if the
         /// rule has no associated retrohunts, including completed retrohunts, and no
-        /// associated detections. Regardless of this field's value, the rule
-        /// deployment associated with this rule will also be deleted.
-        /// Possible values: DEFAULT, FORCE
+        /// associated detections. Regardless of being set to "FORCE" the rule
+        /// deployment associated with this rule will also be deleted if deletion is successful.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+        /// 
+        /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

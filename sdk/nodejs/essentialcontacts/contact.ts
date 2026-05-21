@@ -77,6 +77,15 @@ export class Contact extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The email address to send notifications to. This does not need to be a Google account.
      */
     declare public readonly email: pulumi.Output<string>;
@@ -110,6 +119,7 @@ export class Contact extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContactState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["email"] = state?.email;
             resourceInputs["languageTag"] = state?.languageTag;
             resourceInputs["name"] = state?.name;
@@ -129,6 +139,7 @@ export class Contact extends pulumi.CustomResource {
             if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["email"] = args?.email;
             resourceInputs["languageTag"] = args?.languageTag;
             resourceInputs["notificationCategorySubscriptions"] = args?.notificationCategorySubscriptions;
@@ -144,6 +155,15 @@ export class Contact extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Contact resources.
  */
 export interface ContactState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The email address to send notifications to. This does not need to be a Google account.
      */
@@ -170,6 +190,15 @@ export interface ContactState {
  * The set of arguments for constructing a Contact resource.
  */
 export interface ContactArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The email address to send notifications to. This does not need to be a Google account.
      */

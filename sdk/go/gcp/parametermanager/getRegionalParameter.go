@@ -62,6 +62,7 @@ type LookupRegionalParameterArgs struct {
 // A collection of values returned by getRegionalParameter.
 type LookupRegionalParameterResult struct {
 	CreateTime      string            `pulumi:"createTime"`
+	DeletionPolicy  string            `pulumi:"deletionPolicy"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	Format          string            `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
@@ -117,6 +118,10 @@ func (o LookupRegionalParameterResultOutput) ToLookupRegionalParameterResultOutp
 
 func (o LookupRegionalParameterResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalParameterResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionalParameterResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionalParameterResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionalParameterResultOutput) EffectiveLabels() pulumi.StringMapOutput {

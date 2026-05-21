@@ -24,13 +24,15 @@ class ConnectionProfileArgs:
                  connection_profile_id: pulumi.Input[_builtins.str],
                  alloydb: pulumi.Input[Optional['ConnectionProfileAlloydbArgs']] = None,
                  cloudsql: pulumi.Input[Optional['ConnectionProfileCloudsqlArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  mysql: pulumi.Input[Optional['ConnectionProfileMysqlArgs']] = None,
                  oracle: pulumi.Input[Optional['ConnectionProfileOracleArgs']] = None,
                  postgresql: pulumi.Input[Optional['ConnectionProfilePostgresqlArgs']] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
 
@@ -39,6 +41,12 @@ class ConnectionProfileArgs:
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileCloudsqlArgs'] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
                
@@ -53,12 +61,16 @@ class ConnectionProfileArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] role: The connection profile role.
+               Possible values are: `SOURCE`, `DESTINATION`.
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         if alloydb is not None:
             pulumi.set(__self__, "alloydb", alloydb)
         if cloudsql is not None:
             pulumi.set(__self__, "cloudsql", cloudsql)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
@@ -73,6 +85,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "postgresql", postgresql)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
 
     @_builtins.property
     @pulumi.getter(name="connectionProfileId")
@@ -111,6 +125,23 @@ class ConnectionProfileArgs:
     @cloudsql.setter
     def cloudsql(self, value: pulumi.Input[Optional['ConnectionProfileCloudsqlArgs']]):
         pulumi.set(self, "cloudsql", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -203,6 +234,19 @@ class ConnectionProfileArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection profile role.
+        Possible values are: `SOURCE`, `DESTINATION`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "role", value)
+
 
 @pulumi.input_type
 class _ConnectionProfileState:
@@ -212,6 +256,7 @@ class _ConnectionProfileState:
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dbprovider: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  errors: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]] = None,
@@ -223,6 +268,7 @@ class _ConnectionProfileState:
                  postgresql: pulumi.Input[Optional['ConnectionProfilePostgresqlArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
@@ -234,6 +280,12 @@ class _ConnectionProfileState:
         :param pulumi.Input[_builtins.str] connection_profile_id: The ID of the connection profile.
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         :param pulumi.Input[_builtins.str] dbprovider: The database provider.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]] errors: Output only. The error details in case of state FAILED.
@@ -254,6 +306,8 @@ class _ConnectionProfileState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[_builtins.str] role: The connection profile role.
+               Possible values are: `SOURCE`, `DESTINATION`.
         :param pulumi.Input[_builtins.str] state: The current connection profile state.
         """
         if alloydb is not None:
@@ -266,6 +320,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "create_time", create_time)
         if dbprovider is not None:
             pulumi.set(__self__, "dbprovider", dbprovider)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -288,6 +344,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -352,6 +410,23 @@ class _ConnectionProfileState:
     @dbprovider.setter
     def dbprovider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dbprovider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -496,6 +571,19 @@ class _ConnectionProfileState:
 
     @_builtins.property
     @pulumi.getter
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection profile role.
+        Possible values are: `SOURCE`, `DESTINATION`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "role", value)
+
+    @_builtins.property
+    @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current connection profile state.
@@ -516,6 +604,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
                  cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -523,6 +612,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
                  postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A connection profile definition.
@@ -785,11 +875,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_39249",
+                "cluster_id": "tf-test-dbmsalloycluster_9106",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_74391",
-                        "password": "alloypass_16511",
+                        "user": "alloyuser_27169",
+                        "password": "alloypass_75223",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -938,6 +1028,12 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_profile_id: The ID of the connection profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
                
@@ -952,6 +1048,8 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] role: The connection profile role.
+               Possible values are: `SOURCE`, `DESTINATION`.
         """
         ...
     @overload
@@ -1220,11 +1318,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_39249",
+                "cluster_id": "tf-test-dbmsalloycluster_9106",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_74391",
-                        "password": "alloypass_16511",
+                        "user": "alloyuser_27169",
+                        "password": "alloypass_75223",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -1384,6 +1482,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
                  cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1391,6 +1490,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
                  postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1405,6 +1505,7 @@ class ConnectionProfile(pulumi.CustomResource):
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
             __props__.__dict__["connection_profile_id"] = connection_profile_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -1412,6 +1513,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["oracle"] = oracle
             __props__.__dict__["postgresql"] = postgresql
             __props__.__dict__["project"] = project
+            __props__.__dict__["role"] = role
             __props__.__dict__["create_time"] = None
             __props__.__dict__["dbprovider"] = None
             __props__.__dict__["effective_labels"] = None
@@ -1436,6 +1538,7 @@ class ConnectionProfile(pulumi.CustomResource):
             connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dbprovider: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProfileErrorArgs', 'ConnectionProfileErrorArgsDict']]]]] = None,
@@ -1447,6 +1550,7 @@ class ConnectionProfile(pulumi.CustomResource):
             postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
@@ -1462,6 +1566,12 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] connection_profile_id: The ID of the connection profile.
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         :param pulumi.Input[_builtins.str] dbprovider: The database provider.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProfileErrorArgs', 'ConnectionProfileErrorArgsDict']]]] errors: Output only. The error details in case of state FAILED.
@@ -1482,6 +1592,8 @@ class ConnectionProfile(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[_builtins.str] role: The connection profile role.
+               Possible values are: `SOURCE`, `DESTINATION`.
         :param pulumi.Input[_builtins.str] state: The current connection profile state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1493,6 +1605,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["connection_profile_id"] = connection_profile_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dbprovider"] = dbprovider
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["errors"] = errors
@@ -1504,6 +1617,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["postgresql"] = postgresql
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["role"] = role
         __props__.__dict__["state"] = state
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
@@ -1548,6 +1662,19 @@ class ConnectionProfile(pulumi.CustomResource):
         The database provider.
         """
         return pulumi.get(self, "dbprovider")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -1645,6 +1772,15 @@ class ConnectionProfile(pulumi.CustomResource):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> pulumi.Output[_builtins.str]:
+        """
+        The connection profile role.
+        Possible values are: `SOURCE`, `DESTINATION`.
+        """
+        return pulumi.get(self, "role")
 
     @_builtins.property
     @pulumi.getter

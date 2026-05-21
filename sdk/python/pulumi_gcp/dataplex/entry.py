@@ -23,6 +23,7 @@ class EntryArgs:
     def __init__(__self__, *,
                  entry_type: pulumi.Input[_builtins.str],
                  aspects: pulumi.Input[Optional[Sequence[pulumi.Input['EntryAspectArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_source: pulumi.Input[Optional['EntryEntrySourceArgs']] = None,
@@ -36,6 +37,12 @@ class EntryArgs:
         :param pulumi.Input[_builtins.str] entry_type: The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
         :param pulumi.Input[Sequence[pulumi.Input['EntryAspectArgs']]] aspects: The aspects that are attached to the entry.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] entry_group_id: The entry group id of the entry group the entry will be created in.
         :param pulumi.Input[_builtins.str] entry_id: The entry id of the entry.
         :param pulumi.Input['EntryEntrySourceArgs'] entry_source: A nested object resource.
@@ -50,6 +57,8 @@ class EntryArgs:
         pulumi.set(__self__, "entry_type", entry_type)
         if aspects is not None:
             pulumi.set(__self__, "aspects", aspects)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if entry_group_id is not None:
             pulumi.set(__self__, "entry_group_id", entry_group_id)
         if entry_id is not None:
@@ -89,6 +98,23 @@ class EntryArgs:
     @aspects.setter
     def aspects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryAspectArgs']]]]):
         pulumi.set(self, "aspects", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="entryGroupId")
@@ -183,6 +209,7 @@ class _EntryState:
     def __init__(__self__, *,
                  aspects: pulumi.Input[Optional[Sequence[pulumi.Input['EntryAspectArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_source: pulumi.Input[Optional['EntryEntrySourceArgs']] = None,
@@ -199,6 +226,12 @@ class _EntryState:
         :param pulumi.Input[Sequence[pulumi.Input['EntryAspectArgs']]] aspects: The aspects that are attached to the entry.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Entry was created in Dataplex.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] entry_group_id: The entry group id of the entry group the entry will be created in.
         :param pulumi.Input[_builtins.str] entry_id: The entry id of the entry.
         :param pulumi.Input['EntryEntrySourceArgs'] entry_source: A nested object resource.
@@ -217,6 +250,8 @@ class _EntryState:
             pulumi.set(__self__, "aspects", aspects)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if entry_group_id is not None:
             pulumi.set(__self__, "entry_group_id", entry_group_id)
         if entry_id is not None:
@@ -262,6 +297,23 @@ class _EntryState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="entryGroupId")
@@ -394,6 +446,7 @@ class Entry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryAspectArgs', 'EntryAspectArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_source: pulumi.Input[Optional[Union['EntryEntrySourceArgs', 'EntryEntrySourceArgsDict']]] = None,
@@ -753,6 +806,12 @@ class Entry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntryAspectArgs', 'EntryAspectArgsDict']]]] aspects: The aspects that are attached to the entry.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] entry_group_id: The entry group id of the entry group the entry will be created in.
         :param pulumi.Input[_builtins.str] entry_id: The entry id of the entry.
         :param pulumi.Input[Union['EntryEntrySourceArgs', 'EntryEntrySourceArgsDict']] entry_source: A nested object resource.
@@ -1133,6 +1192,7 @@ class Entry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryAspectArgs', 'EntryAspectArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_source: pulumi.Input[Optional[Union['EntryEntrySourceArgs', 'EntryEntrySourceArgsDict']]] = None,
@@ -1151,6 +1211,7 @@ class Entry(pulumi.CustomResource):
             __props__ = EntryArgs.__new__(EntryArgs)
 
             __props__.__dict__["aspects"] = aspects
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["entry_group_id"] = entry_group_id
             __props__.__dict__["entry_id"] = entry_id
             __props__.__dict__["entry_source"] = entry_source
@@ -1176,6 +1237,7 @@ class Entry(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryAspectArgs', 'EntryAspectArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             entry_id: pulumi.Input[Optional[_builtins.str]] = None,
             entry_source: pulumi.Input[Optional[Union['EntryEntrySourceArgs', 'EntryEntrySourceArgsDict']]] = None,
@@ -1196,6 +1258,12 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntryAspectArgs', 'EntryAspectArgsDict']]]] aspects: The aspects that are attached to the entry.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Entry was created in Dataplex.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] entry_group_id: The entry group id of the entry group the entry will be created in.
         :param pulumi.Input[_builtins.str] entry_id: The entry id of the entry.
         :param pulumi.Input[Union['EntryEntrySourceArgs', 'EntryEntrySourceArgsDict']] entry_source: A nested object resource.
@@ -1216,6 +1284,7 @@ class Entry(pulumi.CustomResource):
 
         __props__.__dict__["aspects"] = aspects
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["entry_group_id"] = entry_group_id
         __props__.__dict__["entry_id"] = entry_id
         __props__.__dict__["entry_source"] = entry_source
@@ -1244,6 +1313,19 @@ class Entry(pulumi.CustomResource):
         The time when the Entry was created in Dataplex.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="entryGroupId")

@@ -143,6 +143,7 @@ namespace Pulumi.Gcp.VMwareEngine
     {
         public readonly string Action;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetExternalAccessRuleDestinationIpRangeResult> DestinationIpRanges;
         public readonly ImmutableArray<string> DestinationPorts;
@@ -165,6 +166,8 @@ namespace Pulumi.Gcp.VMwareEngine
             string action,
 
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -194,6 +197,7 @@ namespace Pulumi.Gcp.VMwareEngine
         {
             Action = action;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DestinationIpRanges = destinationIpRanges;
             DestinationPorts = destinationPorts;

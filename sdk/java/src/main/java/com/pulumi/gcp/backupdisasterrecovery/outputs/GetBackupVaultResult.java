@@ -25,6 +25,7 @@ public final class GetBackupVaultResult {
     private String backupVaultId;
     private String createTime;
     private Boolean deletable;
+    private String deletionPolicy;
     private String description;
     private Map<String,String> effectiveAnnotations;
     private Map<String,String> effectiveLabels;
@@ -78,6 +79,9 @@ public final class GetBackupVaultResult {
     }
     public Boolean deletable() {
         return this.deletable;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -165,6 +169,7 @@ public final class GetBackupVaultResult {
         private String backupVaultId;
         private String createTime;
         private Boolean deletable;
+        private String deletionPolicy;
         private String description;
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
@@ -198,6 +203,7 @@ public final class GetBackupVaultResult {
     	      this.backupVaultId = defaults.backupVaultId;
     	      this.createTime = defaults.createTime;
     	      this.deletable = defaults.deletable;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -291,6 +297,14 @@ public final class GetBackupVaultResult {
               throw new MissingRequiredPropertyException("GetBackupVaultResult", "deletable");
             }
             this.deletable = deletable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackupVaultResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -473,6 +487,7 @@ public final class GetBackupVaultResult {
             _resultValue.backupVaultId = backupVaultId;
             _resultValue.createTime = createTime;
             _resultValue.deletable = deletable;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;

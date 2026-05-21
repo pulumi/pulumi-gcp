@@ -202,6 +202,13 @@ type AnalysisRule struct {
 	ConversationFilter pulumi.StringPtrOutput `pulumi:"conversationFilter"`
 	// Output only. The time at which this analysis rule was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Display Name of the analysis rule.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Location of the resource.
@@ -267,6 +274,13 @@ type analysisRuleState struct {
 	ConversationFilter *string `pulumi:"conversationFilter"`
 	// Output only. The time at which this analysis rule was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display Name of the analysis rule.
 	DisplayName *string `pulumi:"displayName"`
 	// Location of the resource.
@@ -300,6 +314,13 @@ type AnalysisRuleState struct {
 	ConversationFilter pulumi.StringPtrInput
 	// Output only. The time at which this analysis rule was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display Name of the analysis rule.
 	DisplayName pulumi.StringPtrInput
 	// Location of the resource.
@@ -335,6 +356,13 @@ type analysisRuleArgs struct {
 	// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
 	// for details.
 	ConversationFilter *string `pulumi:"conversationFilter"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display Name of the analysis rule.
 	DisplayName *string `pulumi:"displayName"`
 	// Location of the resource.
@@ -363,6 +391,13 @@ type AnalysisRuleArgs struct {
 	// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
 	// for details.
 	ConversationFilter pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display Name of the analysis rule.
 	DisplayName pulumi.StringPtrInput
 	// Location of the resource.
@@ -491,6 +526,16 @@ func (o AnalysisRuleOutput) ConversationFilter() pulumi.StringPtrOutput {
 // Output only. The time at which this analysis rule was created.
 func (o AnalysisRuleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnalysisRule) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AnalysisRuleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnalysisRule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Display Name of the analysis rule.

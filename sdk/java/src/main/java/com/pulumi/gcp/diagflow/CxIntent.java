@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.CxIntent;
  * import com.pulumi.gcp.diagflow.CxIntentArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhraseArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhrasePartArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxIntentParameterArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -128,6 +129,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:diagflow/cxIntent:CxIntent")
 public class CxIntent extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
      * 

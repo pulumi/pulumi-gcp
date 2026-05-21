@@ -22,6 +22,7 @@ __all__ = ['NetworkEndpointListArgs', 'NetworkEndpointList']
 class NetworkEndpointListArgs:
     def __init__(__self__, *,
                  network_endpoint_group: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
@@ -29,6 +30,12 @@ class NetworkEndpointListArgs:
         The set of arguments for constructing a NetworkEndpointList resource.
 
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
@@ -38,6 +45,8 @@ class NetworkEndpointListArgs:
         :param pulumi.Input[_builtins.str] zone: Zone where the containing network endpoint group is located.
         """
         pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if network_endpoints is not None:
             pulumi.set(__self__, "network_endpoints", network_endpoints)
         if project is not None:
@@ -56,6 +65,23 @@ class NetworkEndpointListArgs:
     @network_endpoint_group.setter
     def network_endpoint_group(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "network_endpoint_group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="networkEndpoints")
@@ -101,6 +127,7 @@ class NetworkEndpointListArgs:
 @pulumi.input_type
 class _NetworkEndpointListState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -108,6 +135,12 @@ class _NetworkEndpointListState:
         """
         Input properties used for looking up and filtering NetworkEndpointList resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
@@ -117,6 +150,8 @@ class _NetworkEndpointListState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] zone: Zone where the containing network endpoint group is located.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if network_endpoint_group is not None:
             pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
         if network_endpoints is not None:
@@ -125,6 +160,23 @@ class _NetworkEndpointListState:
             pulumi.set(__self__, "project", project)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="networkEndpointGroup")
@@ -185,6 +237,7 @@ class NetworkEndpointList(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -295,6 +348,12 @@ class NetworkEndpointList(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
@@ -428,6 +487,7 @@ class NetworkEndpointList(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
                  network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -441,6 +501,7 @@ class NetworkEndpointList(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NetworkEndpointListArgs.__new__(NetworkEndpointListArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if network_endpoint_group is None and not opts.urn:
                 raise TypeError("Missing required property 'network_endpoint_group'")
             __props__.__dict__["network_endpoint_group"] = network_endpoint_group
@@ -457,6 +518,7 @@ class NetworkEndpointList(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
             network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -468,6 +530,12 @@ class NetworkEndpointList(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
@@ -481,11 +549,25 @@ class NetworkEndpointList(pulumi.CustomResource):
 
         __props__ = _NetworkEndpointListState.__new__(_NetworkEndpointListState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["network_endpoint_group"] = network_endpoint_group
         __props__.__dict__["network_endpoints"] = network_endpoints
         __props__.__dict__["project"] = project
         __props__.__dict__["zone"] = zone
         return NetworkEndpointList(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="networkEndpointGroup")

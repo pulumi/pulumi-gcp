@@ -21,6 +21,7 @@ __all__ = ['ResourcePolicyArgs', 'ResourcePolicy']
 @pulumi.input_type
 class ResourcePolicyArgs:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_consistency_group_policy: pulumi.Input[Optional['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
                  group_placement_policy: pulumi.Input[Optional['ResourcePolicyGroupPlacementPolicyArgs']] = None,
@@ -33,6 +34,12 @@ class ResourcePolicyArgs:
         """
         The set of arguments for constructing a ResourcePolicy resource.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs'] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
@@ -55,6 +62,8 @@ class ResourcePolicyArgs:
         :param pulumi.Input['ResourcePolicyWorkloadPolicyArgs'] workload_policy: Represents the workload policy.
                Structure is documented below.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_consistency_group_policy is not None:
@@ -73,6 +82,23 @@ class ResourcePolicyArgs:
             pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
         if workload_policy is not None:
             pulumi.set(__self__, "workload_policy", workload_policy)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -198,6 +224,7 @@ class ResourcePolicyArgs:
 @pulumi.input_type
 class _ResourcePolicyState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_consistency_group_policy: pulumi.Input[Optional['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
                  group_placement_policy: pulumi.Input[Optional['ResourcePolicyGroupPlacementPolicyArgs']] = None,
@@ -211,6 +238,12 @@ class _ResourcePolicyState:
         """
         Input properties used for looking up and filtering ResourcePolicy resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs'] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
@@ -234,6 +267,8 @@ class _ResourcePolicyState:
         :param pulumi.Input['ResourcePolicyWorkloadPolicyArgs'] workload_policy: Represents the workload policy.
                Structure is documented below.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_consistency_group_policy is not None:
@@ -254,6 +289,23 @@ class _ResourcePolicyState:
             pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
         if workload_policy is not None:
             pulumi.set(__self__, "workload_policy", workload_policy)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -394,6 +446,7 @@ class ResourcePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
                  group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
@@ -660,6 +713,12 @@ class ResourcePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
@@ -957,6 +1016,7 @@ class ResourcePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
                  group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
@@ -975,6 +1035,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourcePolicyArgs.__new__(ResourcePolicyArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_consistency_group_policy"] = disk_consistency_group_policy
             __props__.__dict__["group_placement_policy"] = group_placement_policy
@@ -995,6 +1056,7 @@ class ResourcePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
             group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
@@ -1012,6 +1074,12 @@ class ResourcePolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
                Structure is documented below.
@@ -1039,6 +1107,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
         __props__ = _ResourcePolicyState.__new__(_ResourcePolicyState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_consistency_group_policy"] = disk_consistency_group_policy
         __props__.__dict__["group_placement_policy"] = group_placement_policy
@@ -1050,6 +1119,19 @@ class ResourcePolicy(pulumi.CustomResource):
         __props__.__dict__["snapshot_schedule_policy"] = snapshot_schedule_policy
         __props__.__dict__["workload_policy"] = workload_policy
         return ResourcePolicy(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

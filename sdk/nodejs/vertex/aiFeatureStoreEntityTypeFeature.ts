@@ -137,6 +137,15 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the feature.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -195,6 +204,7 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AiFeatureStoreEntityTypeFeatureState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["entitytype"] = state?.entitytype;
@@ -213,6 +223,7 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
             if (args?.valueType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'valueType'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["entitytype"] = args?.entitytype;
             resourceInputs["labels"] = args?.labels;
@@ -240,6 +251,15 @@ export interface AiFeatureStoreEntityTypeFeatureState {
      * The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the feature.
      */
@@ -290,6 +310,15 @@ export interface AiFeatureStoreEntityTypeFeatureState {
  * The set of arguments for constructing a AiFeatureStoreEntityTypeFeature resource.
  */
 export interface AiFeatureStoreEntityTypeFeatureArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the feature.
      */

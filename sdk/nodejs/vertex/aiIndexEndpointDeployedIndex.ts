@@ -232,6 +232,15 @@ export class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
      */
     declare public readonly dedicatedResources: pulumi.Output<outputs.vertex.AiIndexEndpointDeployedIndexDedicatedResources | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * If set, the authentication is enabled for the private endpoint.
      * Structure is documented below.
      */
@@ -305,6 +314,7 @@ export class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
             resourceInputs["automaticResources"] = state?.automaticResources;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dedicatedResources"] = state?.dedicatedResources;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deployedIndexAuthConfig"] = state?.deployedIndexAuthConfig;
             resourceInputs["deployedIndexId"] = state?.deployedIndexId;
             resourceInputs["deploymentGroup"] = state?.deploymentGroup;
@@ -330,6 +340,7 @@ export class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
             }
             resourceInputs["automaticResources"] = args?.automaticResources;
             resourceInputs["dedicatedResources"] = args?.dedicatedResources;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deployedIndexAuthConfig"] = args?.deployedIndexAuthConfig;
             resourceInputs["deployedIndexId"] = args?.deployedIndexId;
             resourceInputs["deploymentGroup"] = args?.deploymentGroup;
@@ -371,6 +382,15 @@ export interface AiIndexEndpointDeployedIndexState {
      * Structure is documented below.
      */
     dedicatedResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDedicatedResources | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If set, the authentication is enabled for the private endpoint.
      * Structure is documented below.
@@ -448,6 +468,15 @@ export interface AiIndexEndpointDeployedIndexArgs {
      * Structure is documented below.
      */
     dedicatedResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDedicatedResources | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If set, the authentication is enabled for the private endpoint.
      * Structure is documented below.

@@ -25,6 +25,7 @@ class PrivateCloudArgs:
                  management_cluster: pulumi.Input['PrivateCloudManagementClusterArgs'],
                  network_config: pulumi.Input['PrivateCloudNetworkConfigArgs'],
                  deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -39,6 +40,12 @@ class PrivateCloudArgs:
         :param pulumi.Input['PrivateCloudNetworkConfigArgs'] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description for this private cloud.
         :param pulumi.Input[_builtins.str] name: The ID of the PrivateCloud.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -52,6 +59,8 @@ class PrivateCloudArgs:
         pulumi.set(__self__, "network_config", network_config)
         if deletion_delay_hours is not None:
             pulumi.set(__self__, "deletion_delay_hours", deletion_delay_hours)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -112,6 +121,23 @@ class PrivateCloudArgs:
     @deletion_delay_hours.setter
     def deletion_delay_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_delay_hours", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -182,6 +208,7 @@ class _PrivateCloudState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  hcxes: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]] = None,
@@ -207,6 +234,12 @@ class _PrivateCloudState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description for this private cloud.
         :param pulumi.Input[_builtins.str] expire_time: Time when the resource will be irreversibly deleted.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -241,6 +274,8 @@ class _PrivateCloudState:
             pulumi.set(__self__, "delete_time", delete_time)
         if deletion_delay_hours is not None:
             pulumi.set(__self__, "deletion_delay_hours", deletion_delay_hours)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if expire_time is not None:
@@ -311,6 +346,23 @@ class _PrivateCloudState:
     @deletion_delay_hours.setter
     def deletion_delay_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_delay_hours", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -512,6 +564,7 @@ class PrivateCloud(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
@@ -631,6 +684,12 @@ class PrivateCloud(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description for this private cloud.
         :param pulumi.Input[_builtins.str] location: The location where the PrivateCloud should reside.
         :param pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
@@ -773,6 +832,7 @@ class PrivateCloud(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
@@ -791,6 +851,7 @@ class PrivateCloud(pulumi.CustomResource):
             __props__ = PrivateCloudArgs.__new__(PrivateCloudArgs)
 
             __props__.__dict__["deletion_delay_hours"] = deletion_delay_hours
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -827,6 +888,7 @@ class PrivateCloud(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             hcxes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]]] = None,
@@ -856,6 +918,12 @@ class PrivateCloud(pulumi.CustomResource):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description for this private cloud.
         :param pulumi.Input[_builtins.str] expire_time: Time when the resource will be irreversibly deleted.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -891,6 +959,7 @@ class PrivateCloud(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["deletion_delay_hours"] = deletion_delay_hours
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["hcxes"] = hcxes
@@ -935,6 +1004,19 @@ class PrivateCloud(pulumi.CustomResource):
         The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         """
         return pulumi.get(self, "deletion_delay_hours")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

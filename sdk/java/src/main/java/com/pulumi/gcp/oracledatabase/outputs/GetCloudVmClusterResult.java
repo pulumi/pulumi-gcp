@@ -21,6 +21,7 @@ public final class GetCloudVmClusterResult {
     private String cidr;
     private String cloudVmClusterId;
     private String createTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String displayName;
     private Map<String,String> effectiveLabels;
@@ -56,6 +57,9 @@ public final class GetCloudVmClusterResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -121,6 +125,7 @@ public final class GetCloudVmClusterResult {
         private String cidr;
         private String cloudVmClusterId;
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
@@ -144,6 +149,7 @@ public final class GetCloudVmClusterResult {
     	      this.cidr = defaults.cidr;
     	      this.cloudVmClusterId = defaults.cloudVmClusterId;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -199,6 +205,14 @@ public final class GetCloudVmClusterResult {
               throw new MissingRequiredPropertyException("GetCloudVmClusterResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClusterResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -329,6 +343,7 @@ public final class GetCloudVmClusterResult {
             _resultValue.cidr = cidr;
             _resultValue.cloudVmClusterId = cloudVmClusterId;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;

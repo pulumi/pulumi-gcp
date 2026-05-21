@@ -41,6 +41,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:apigee/sharedflowDeployment:SharedflowDeployment")
 public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * The resource ID of the environment.
      * 
      */
@@ -71,16 +99,12 @@ public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
     /**
      * Revision of the Sharedflow to be deployed.
      * 
-     * ***
-     * 
      */
     @Export(name="revision", refs={String.class}, tree="[0]")
     private Output<String> revision;
 
     /**
      * @return Revision of the Sharedflow to be deployed.
-     * 
-     * ***
      * 
      */
     public Output<String> revision() {

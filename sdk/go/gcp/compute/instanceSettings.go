@@ -71,6 +71,13 @@ import (
 type InstanceSettings struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
@@ -117,6 +124,13 @@ func GetInstanceSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceSettings resources.
 type instanceSettingsState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
 	Fingerprint *string `pulumi:"fingerprint"`
@@ -131,6 +145,13 @@ type instanceSettingsState struct {
 }
 
 type InstanceSettingsState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
 	Fingerprint pulumi.StringPtrInput
@@ -149,6 +170,13 @@ func (InstanceSettingsState) ElementType() reflect.Type {
 }
 
 type instanceSettingsArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The metadata key/value pairs assigned to all the instances in the corresponding scope.
 	// Structure is documented below.
 	Metadata *InstanceSettingsMetadata `pulumi:"metadata"`
@@ -161,6 +189,13 @@ type instanceSettingsArgs struct {
 
 // The set of arguments for constructing a InstanceSettings resource.
 type InstanceSettingsArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The metadata key/value pairs assigned to all the instances in the corresponding scope.
 	// Structure is documented below.
 	Metadata InstanceSettingsMetadataPtrInput
@@ -256,6 +291,16 @@ func (o InstanceSettingsOutput) ToInstanceSettingsOutput() InstanceSettingsOutpu
 
 func (o InstanceSettingsOutput) ToInstanceSettingsOutputWithContext(ctx context.Context) InstanceSettingsOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceSettingsOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceSettings) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The fingerprint used for optimistic locking of this resource.  Used

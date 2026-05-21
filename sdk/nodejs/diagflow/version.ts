@@ -95,6 +95,15 @@ export class Version extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The developer-provided description of this version.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -129,6 +138,7 @@ export class Version extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VersionState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
@@ -136,6 +146,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["versionNumber"] = state?.versionNumber;
         } else {
             const args = argsOrState as VersionArgs | undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["name"] = undefined /*out*/;
@@ -151,6 +162,15 @@ export class Version extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Version resources.
  */
 export interface VersionState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The developer-provided description of this version.
      */
@@ -178,6 +198,15 @@ export interface VersionState {
  * The set of arguments for constructing a Version resource.
  */
 export interface VersionArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The developer-provided description of this version.
      */

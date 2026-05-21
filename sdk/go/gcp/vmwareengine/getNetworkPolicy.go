@@ -64,6 +64,7 @@ type LookupNetworkPolicyArgs struct {
 // A collection of values returned by getNetworkPolicy.
 type LookupNetworkPolicyResult struct {
 	CreateTime       string                       `pulumi:"createTime"`
+	DeletionPolicy   string                       `pulumi:"deletionPolicy"`
 	Description      string                       `pulumi:"description"`
 	EdgeServicesCidr string                       `pulumi:"edgeServicesCidr"`
 	ExternalIps      []GetNetworkPolicyExternalIp `pulumi:"externalIps"`
@@ -118,6 +119,10 @@ func (o LookupNetworkPolicyResultOutput) ToLookupNetworkPolicyResultOutputWithCo
 
 func (o LookupNetworkPolicyResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPolicyResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkPolicyResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkPolicyResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupNetworkPolicyResultOutput) Description() pulumi.StringOutput {

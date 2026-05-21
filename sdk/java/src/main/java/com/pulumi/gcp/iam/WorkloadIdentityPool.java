@@ -114,6 +114,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
  * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs;
  * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs;
  * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolAttestationRuleArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.FileArgs;
@@ -200,6 +202,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
  * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs;
  * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.FileArgs;
  * import java.util.ArrayList;
@@ -305,6 +309,30 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<WorkloadIdentityPoolAttestationRule>>> attestationRules() {
         return Codegen.optional(this.attestationRules);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A description of the pool. Cannot exceed 256 characters.

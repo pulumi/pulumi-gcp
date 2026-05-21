@@ -41,11 +41,18 @@ type KeystoresAliasesPkcs12 struct {
 	// Chain of certificates under this alias.
 	// Structure is documented below.
 	CertsInfos KeystoresAliasesPkcs12CertsInfoArrayOutput `pulumi:"certsInfos"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Environment associated with the alias
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// PKCS12 file content
-	//
-	// ***
 	File pulumi.StringOutput `pulumi:"file"`
 	// Hash of the pkcs file
 	Filehash pulumi.StringOutput `pulumi:"filehash"`
@@ -112,11 +119,18 @@ type keystoresAliasesPkcs12State struct {
 	// Chain of certificates under this alias.
 	// Structure is documented below.
 	CertsInfos []KeystoresAliasesPkcs12CertsInfo `pulumi:"certsInfos"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Environment associated with the alias
 	Environment *string `pulumi:"environment"`
 	// PKCS12 file content
-	//
-	// ***
 	File *string `pulumi:"file"`
 	// Hash of the pkcs file
 	Filehash *string `pulumi:"filehash"`
@@ -136,11 +150,18 @@ type KeystoresAliasesPkcs12State struct {
 	// Chain of certificates under this alias.
 	// Structure is documented below.
 	CertsInfos KeystoresAliasesPkcs12CertsInfoArrayInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringPtrInput
 	// Environment associated with the alias
 	Environment pulumi.StringPtrInput
 	// PKCS12 file content
-	//
-	// ***
 	File pulumi.StringPtrInput
 	// Hash of the pkcs file
 	Filehash pulumi.StringPtrInput
@@ -161,11 +182,18 @@ func (KeystoresAliasesPkcs12State) ElementType() reflect.Type {
 type keystoresAliasesPkcs12Args struct {
 	// Alias Name
 	Alias string `pulumi:"alias"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Environment associated with the alias
 	Environment string `pulumi:"environment"`
 	// PKCS12 file content
-	//
-	// ***
 	File string `pulumi:"file"`
 	// Hash of the pkcs file
 	Filehash string `pulumi:"filehash"`
@@ -181,11 +209,18 @@ type keystoresAliasesPkcs12Args struct {
 type KeystoresAliasesPkcs12Args struct {
 	// Alias Name
 	Alias pulumi.StringInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringPtrInput
 	// Environment associated with the alias
 	Environment pulumi.StringInput
 	// PKCS12 file content
-	//
-	// ***
 	File pulumi.StringInput
 	// Hash of the pkcs file
 	Filehash pulumi.StringInput
@@ -295,14 +330,24 @@ func (o KeystoresAliasesPkcs12Output) CertsInfos() KeystoresAliasesPkcs12CertsIn
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) KeystoresAliasesPkcs12CertsInfoArrayOutput { return v.CertsInfos }).(KeystoresAliasesPkcs12CertsInfoArrayOutput)
 }
 
+// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+//
+// ***
+func (o KeystoresAliasesPkcs12Output) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeystoresAliasesPkcs12) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // Environment associated with the alias
 func (o KeystoresAliasesPkcs12Output) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }
 
 // PKCS12 file content
-//
-// ***
 func (o KeystoresAliasesPkcs12Output) File() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) pulumi.StringOutput { return v.File }).(pulumi.StringOutput)
 }

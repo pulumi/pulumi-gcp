@@ -108,6 +108,15 @@ export class AppRootAgentAssociation extends pulumi.CustomResource {
      */
     declare public readonly appId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The location of the App.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -132,6 +141,7 @@ export class AppRootAgentAssociation extends pulumi.CustomResource {
             const state = argsOrState as AppRootAgentAssociationState | undefined;
             resourceInputs["agentId"] = state?.agentId;
             resourceInputs["appId"] = state?.appId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["project"] = state?.project;
         } else {
@@ -147,6 +157,7 @@ export class AppRootAgentAssociation extends pulumi.CustomResource {
             }
             resourceInputs["agentId"] = args?.agentId;
             resourceInputs["appId"] = args?.appId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
         }
@@ -168,6 +179,15 @@ export interface AppRootAgentAssociationState {
      * The ID of the App. Used to construct the app resource name.
      */
     appId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The location of the App.
      */
@@ -192,6 +212,15 @@ export interface AppRootAgentAssociationArgs {
      * The ID of the App. Used to construct the app resource name.
      */
     appId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The location of the App.
      */

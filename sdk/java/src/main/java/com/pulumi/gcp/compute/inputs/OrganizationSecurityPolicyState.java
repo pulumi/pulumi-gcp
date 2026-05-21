@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyAdvancedOptionsConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,48 @@ import javax.annotation.Nullable;
 public final class OrganizationSecurityPolicyState extends com.pulumi.resources.ResourceArgs {
 
     public static final OrganizationSecurityPolicyState Empty = new OrganizationSecurityPolicyState();
+
+    /**
+     * Additional options for this security policy.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="advancedOptionsConfig")
+    private @Nullable Output<OrganizationSecurityPolicyAdvancedOptionsConfigArgs> advancedOptionsConfig;
+
+    /**
+     * @return Additional options for this security policy.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<OrganizationSecurityPolicyAdvancedOptionsConfigArgs>> advancedOptionsConfig() {
+        return Optional.ofNullable(this.advancedOptionsConfig);
+    }
+
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
 
     /**
      * A textual description for the organization security policy.
@@ -131,6 +174,8 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
     private OrganizationSecurityPolicyState() {}
 
     private OrganizationSecurityPolicyState(OrganizationSecurityPolicyState $) {
+        this.advancedOptionsConfig = $.advancedOptionsConfig;
+        this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.displayName = $.displayName;
         this.fingerprint = $.fingerprint;
@@ -156,6 +201,60 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
 
         public Builder(OrganizationSecurityPolicyState defaults) {
             $ = new OrganizationSecurityPolicyState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedOptionsConfig Additional options for this security policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedOptionsConfig(@Nullable Output<OrganizationSecurityPolicyAdvancedOptionsConfigArgs> advancedOptionsConfig) {
+            $.advancedOptionsConfig = advancedOptionsConfig;
+            return this;
+        }
+
+        /**
+         * @param advancedOptionsConfig Additional options for this security policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedOptionsConfig(OrganizationSecurityPolicyAdvancedOptionsConfigArgs advancedOptionsConfig) {
+            return advancedOptionsConfig(Output.of(advancedOptionsConfig));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

@@ -261,6 +261,15 @@ export class FhirStore extends pulumi.CustomResource {
      */
     declare public readonly defaultSearchHandlingStrict: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the
      * requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -388,6 +397,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["consentConfig"] = state?.consentConfig;
             resourceInputs["dataset"] = state?.dataset;
             resourceInputs["defaultSearchHandlingStrict"] = state?.defaultSearchHandlingStrict;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disableReferentialIntegrity"] = state?.disableReferentialIntegrity;
             resourceInputs["disableResourceVersioning"] = state?.disableResourceVersioning;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -412,6 +422,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["consentConfig"] = args?.consentConfig;
             resourceInputs["dataset"] = args?.dataset;
             resourceInputs["defaultSearchHandlingStrict"] = args?.defaultSearchHandlingStrict;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disableReferentialIntegrity"] = args?.disableReferentialIntegrity;
             resourceInputs["disableResourceVersioning"] = args?.disableResourceVersioning;
             resourceInputs["enableHistoryImport"] = args?.enableHistoryImport;
@@ -461,6 +472,15 @@ export interface FhirStoreState {
      * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
      */
     defaultSearchHandlingStrict?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -599,6 +619,15 @@ export interface FhirStoreArgs {
      * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
      */
     defaultSearchHandlingStrict?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the

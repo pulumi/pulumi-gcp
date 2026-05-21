@@ -27,7 +27,7 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, access_mode=None, architecture=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, erase_windows_vss_signature=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, params=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, source_storage_object=None, storage_pool=None, type=None, users=None, zone=None):
+    def __init__(__self__, access_mode=None, architecture=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, deletion_policy=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, erase_windows_vss_signature=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, params=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, source_storage_object=None, storage_pool=None, type=None, users=None, zone=None):
         if access_mode and not isinstance(access_mode, str):
             raise TypeError("Expected argument 'access_mode' to be a str")
         pulumi.set(__self__, "access_mode", access_mode)
@@ -46,6 +46,9 @@ class GetDiskResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -199,6 +202,11 @@ class GetDiskResult:
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -479,6 +487,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             create_snapshot_before_destroy=self.create_snapshot_before_destroy,
             create_snapshot_before_destroy_prefix=self.create_snapshot_before_destroy_prefix,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             disk_encryption_keys=self.disk_encryption_keys,
             disk_id=self.disk_id,
@@ -566,6 +575,7 @@ def get_disk(name: Optional[_builtins.str] = None,
         create_snapshot_before_destroy=pulumi.get(__ret__, 'create_snapshot_before_destroy'),
         create_snapshot_before_destroy_prefix=pulumi.get(__ret__, 'create_snapshot_before_destroy_prefix'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         disk_encryption_keys=pulumi.get(__ret__, 'disk_encryption_keys'),
         disk_id=pulumi.get(__ret__, 'disk_id'),
@@ -650,6 +660,7 @@ def get_disk_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         create_snapshot_before_destroy=pulumi.get(__response__, 'create_snapshot_before_destroy'),
         create_snapshot_before_destroy_prefix=pulumi.get(__response__, 'create_snapshot_before_destroy_prefix'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         disk_encryption_keys=pulumi.get(__response__, 'disk_encryption_keys'),
         disk_id=pulumi.get(__response__, 'disk_id'),

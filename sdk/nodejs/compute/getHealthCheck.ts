@@ -51,6 +51,7 @@ export interface GetHealthCheckArgs {
 export interface GetHealthCheckResult {
     readonly checkIntervalSec: number;
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly grpcHealthChecks: outputs.compute.GetHealthCheckGrpcHealthCheck[];
     readonly grpcTlsHealthChecks: outputs.compute.GetHealthCheckGrpcTlsHealthCheck[];

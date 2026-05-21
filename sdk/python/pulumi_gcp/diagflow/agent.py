@@ -25,6 +25,7 @@ class AgentArgs:
                  api_version: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  classification_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  match_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -54,6 +55,12 @@ class AgentArgs:
                value, then a fallback intent will be triggered or, if there are no fallback intents defined, no intent will be
                triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the
                default of 0.3 is used.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.bool] enable_logging: Determines whether this agent should log conversation queries.
         :param pulumi.Input[_builtins.str] match_mode: Determines how intents are detected from user queries.
@@ -81,6 +88,8 @@ class AgentArgs:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
         if classification_threshold is not None:
             pulumi.set(__self__, "classification_threshold", classification_threshold)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_logging is not None:
@@ -181,6 +190,23 @@ class AgentArgs:
         pulumi.set(self, "classification_threshold", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -272,6 +298,7 @@ class _AgentState:
                  avatar_uri_backend: pulumi.Input[Optional[_builtins.str]] = None,
                  classification_threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -302,6 +329,12 @@ class _AgentState:
                default of 0.3 is used.
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The name of this agent.
         :param pulumi.Input[_builtins.bool] enable_logging: Determines whether this agent should log conversation queries.
@@ -333,6 +366,8 @@ class _AgentState:
             pulumi.set(__self__, "classification_threshold", classification_threshold)
         if default_language_code is not None:
             pulumi.set(__self__, "default_language_code", default_language_code)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -423,6 +458,23 @@ class _AgentState:
     @default_language_code.setter
     def default_language_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_language_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -543,6 +595,7 @@ class Agent(pulumi.CustomResource):
                  avatar_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  classification_threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -637,6 +690,12 @@ class Agent(pulumi.CustomResource):
                default of 0.3 is used.
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The name of this agent.
         :param pulumi.Input[_builtins.bool] enable_logging: Determines whether this agent should log conversation queries.
@@ -749,6 +808,7 @@ class Agent(pulumi.CustomResource):
                  avatar_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  classification_threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -772,6 +832,7 @@ class Agent(pulumi.CustomResource):
             if default_language_code is None and not opts.urn:
                 raise TypeError("Missing required property 'default_language_code'")
             __props__.__dict__["default_language_code"] = default_language_code
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -800,6 +861,7 @@ class Agent(pulumi.CustomResource):
             avatar_uri_backend: pulumi.Input[Optional[_builtins.str]] = None,
             classification_threshold: pulumi.Input[Optional[_builtins.float]] = None,
             default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -834,6 +896,12 @@ class Agent(pulumi.CustomResource):
                default of 0.3 is used.
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The name of this agent.
         :param pulumi.Input[_builtins.bool] enable_logging: Determines whether this agent should log conversation queries.
@@ -864,6 +932,7 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["avatar_uri_backend"] = avatar_uri_backend
         __props__.__dict__["classification_threshold"] = classification_threshold
         __props__.__dict__["default_language_code"] = default_language_code
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enable_logging"] = enable_logging
@@ -927,6 +996,19 @@ class Agent(pulumi.CustomResource):
         for a list of the currently supported language codes. This field cannot be updated after creation.
         """
         return pulumi.get(self, "default_language_code")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

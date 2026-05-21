@@ -75,6 +75,7 @@ type LookupWorkerPoolResult struct {
 	Creator              string                             `pulumi:"creator"`
 	CustomAudiences      []string                           `pulumi:"customAudiences"`
 	DeleteTime           string                             `pulumi:"deleteTime"`
+	DeletionPolicy       string                             `pulumi:"deletionPolicy"`
 	DeletionProtection   bool                               `pulumi:"deletionProtection"`
 	Description          string                             `pulumi:"description"`
 	EffectiveAnnotations map[string]string                  `pulumi:"effectiveAnnotations"`
@@ -179,6 +180,10 @@ func (o LookupWorkerPoolResultOutput) CustomAudiences() pulumi.StringArrayOutput
 
 func (o LookupWorkerPoolResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkerPoolResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerPoolResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkerPoolResultOutput) DeletionProtection() pulumi.BoolOutput {

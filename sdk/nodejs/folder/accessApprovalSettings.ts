@@ -142,6 +142,15 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ancestorHasActiveKeyVersion: pulumi.Output<boolean>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
      */
     declare public /*out*/ readonly enrolledAncestor: pulumi.Output<boolean>;
@@ -190,6 +199,7 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
             const state = argsOrState as AccessApprovalSettingsState | undefined;
             resourceInputs["activeKeyVersion"] = state?.activeKeyVersion;
             resourceInputs["ancestorHasActiveKeyVersion"] = state?.ancestorHasActiveKeyVersion;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["enrolledAncestor"] = state?.enrolledAncestor;
             resourceInputs["enrolledServices"] = state?.enrolledServices;
             resourceInputs["folderId"] = state?.folderId;
@@ -205,6 +215,7 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
                 throw new Error("Missing required property 'folderId'");
             }
             resourceInputs["activeKeyVersion"] = args?.activeKeyVersion;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["enrolledServices"] = args?.enrolledServices;
             resourceInputs["folderId"] = args?.folderId;
             resourceInputs["notificationEmails"] = args?.notificationEmails;
@@ -232,6 +243,15 @@ export interface AccessApprovalSettingsState {
      * If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
      */
     ancestorHasActiveKeyVersion?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
      */
@@ -277,6 +297,15 @@ export interface AccessApprovalSettingsArgs {
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      */
     activeKeyVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
      * Access requests for the resource given by name against any of these services contained here will be required

@@ -24,6 +24,7 @@ class DatasetAccessInitArgs:
                  dataset_id: pulumi.Input[_builtins.str],
                  authorized_dataset: pulumi.Input[Optional['DatasetAccessAuthorizedDatasetArgs']] = None,
                  condition: pulumi.Input[Optional['DatasetAccessConditionArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
                  iam_member: pulumi.Input[Optional[_builtins.str]] = None,
@@ -44,6 +45,12 @@ class DatasetAccessInitArgs:
         :param pulumi.Input['DatasetAccessConditionArgs'] condition: Condition for the binding. If CEL expression in this field is true, this
                access binding will be considered.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[_builtins.str] group_by_email: An email address of a Google Group to grant access to.
@@ -82,6 +89,8 @@ class DatasetAccessInitArgs:
             pulumi.set(__self__, "authorized_dataset", authorized_dataset)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if group_by_email is not None:
@@ -141,6 +150,23 @@ class DatasetAccessInitArgs:
     @condition.setter
     def condition(self, value: pulumi.Input[Optional['DatasetAccessConditionArgs']]):
         pulumi.set(self, "condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -281,6 +307,7 @@ class _DatasetAccessState:
                  authorized_dataset: pulumi.Input[Optional['DatasetAccessAuthorizedDatasetArgs']] = None,
                  condition: pulumi.Input[Optional['DatasetAccessConditionArgs']] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
                  iam_member: pulumi.Input[Optional[_builtins.str]] = None,
@@ -302,6 +329,12 @@ class _DatasetAccessState:
         :param pulumi.Input[_builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[_builtins.str] group_by_email: An email address of a Google Group to grant access to.
@@ -343,6 +376,8 @@ class _DatasetAccessState:
             pulumi.set(__self__, "condition", condition)
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if group_by_email is not None:
@@ -414,6 +449,23 @@ class _DatasetAccessState:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -556,6 +608,7 @@ class DatasetAccess(pulumi.CustomResource):
                  authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
                  condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
                  iam_member: pulumi.Input[Optional[_builtins.str]] = None,
@@ -701,6 +754,12 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[_builtins.str] group_by_email: An email address of a Google Group to grant access to.
@@ -883,6 +942,7 @@ class DatasetAccess(pulumi.CustomResource):
                  authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
                  condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
                  iam_member: pulumi.Input[Optional[_builtins.str]] = None,
@@ -906,6 +966,7 @@ class DatasetAccess(pulumi.CustomResource):
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["domain"] = domain
             __props__.__dict__["group_by_email"] = group_by_email
             __props__.__dict__["iam_member"] = iam_member
@@ -930,6 +991,7 @@ class DatasetAccess(pulumi.CustomResource):
             authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
             condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
             dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
             iam_member: pulumi.Input[Optional[_builtins.str]] = None,
@@ -955,6 +1017,12 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[_builtins.str] group_by_email: An email address of a Google Group to grant access to.
@@ -996,6 +1064,7 @@ class DatasetAccess(pulumi.CustomResource):
         __props__.__dict__["authorized_dataset"] = authorized_dataset
         __props__.__dict__["condition"] = condition
         __props__.__dict__["dataset_id"] = dataset_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["domain"] = domain
         __props__.__dict__["group_by_email"] = group_by_email
         __props__.__dict__["iam_member"] = iam_member
@@ -1043,6 +1112,19 @@ class DatasetAccess(pulumi.CustomResource):
         underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "dataset_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

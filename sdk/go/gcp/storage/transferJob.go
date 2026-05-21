@@ -168,6 +168,13 @@ type TransferJob struct {
 
 	// When the Transfer Job was created.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// When the Transfer Job was deleted.
 	DeletionTime pulumi.StringOutput `pulumi:"deletionTime"`
 	// Unique description to identify the Transfer Job.
@@ -234,6 +241,13 @@ func GetTransferJob(ctx *pulumi.Context,
 type transferJobState struct {
 	// When the Transfer Job was created.
 	CreationTime *string `pulumi:"creationTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// When the Transfer Job was deleted.
 	DeletionTime *string `pulumi:"deletionTime"`
 	// Unique description to identify the Transfer Job.
@@ -268,6 +282,13 @@ type transferJobState struct {
 type TransferJobState struct {
 	// When the Transfer Job was created.
 	CreationTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// When the Transfer Job was deleted.
 	DeletionTime pulumi.StringPtrInput
 	// Unique description to identify the Transfer Job.
@@ -304,6 +325,13 @@ func (TransferJobState) ElementType() reflect.Type {
 }
 
 type transferJobArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Unique description to identify the Transfer Job.
 	Description string `pulumi:"description"`
 	// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
@@ -333,6 +361,13 @@ type transferJobArgs struct {
 
 // The set of arguments for constructing a TransferJob resource.
 type TransferJobArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Unique description to identify the Transfer Job.
 	Description pulumi.StringInput
 	// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
@@ -450,6 +485,16 @@ func (o TransferJobOutput) ToTransferJobOutputWithContext(ctx context.Context) T
 // When the Transfer Job was created.
 func (o TransferJobOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TransferJobOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // When the Transfer Job was deleted.

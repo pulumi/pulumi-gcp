@@ -259,6 +259,13 @@ type CustomTargetType struct {
 	CustomActions CustomTargetTypeCustomActionsPtrOutput `pulumi:"customActions"`
 	// Resource id of the `CustomTargetType`.
 	CustomTargetTypeId pulumi.StringOutput `pulumi:"customTargetTypeId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the `CustomTargetType`. Max length is 255 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -339,6 +346,13 @@ type customTargetTypeState struct {
 	CustomActions *CustomTargetTypeCustomActions `pulumi:"customActions"`
 	// Resource id of the `CustomTargetType`.
 	CustomTargetTypeId *string `pulumi:"customTargetTypeId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the `CustomTargetType`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -382,6 +396,13 @@ type CustomTargetTypeState struct {
 	CustomActions CustomTargetTypeCustomActionsPtrInput
 	// Resource id of the `CustomTargetType`.
 	CustomTargetTypeId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the `CustomTargetType`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -425,6 +446,13 @@ type customTargetTypeArgs struct {
 	// Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
 	// Structure is documented below.
 	CustomActions *CustomTargetTypeCustomActions `pulumi:"customActions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the `CustomTargetType`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
@@ -452,6 +480,13 @@ type CustomTargetTypeArgs struct {
 	// Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
 	// Structure is documented below.
 	CustomActions CustomTargetTypeCustomActionsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the `CustomTargetType`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
 	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
@@ -578,6 +613,16 @@ func (o CustomTargetTypeOutput) CustomActions() CustomTargetTypeCustomActionsPtr
 // Resource id of the `CustomTargetType`.
 func (o CustomTargetTypeOutput) CustomTargetTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomTargetType) pulumi.StringOutput { return v.CustomTargetTypeId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CustomTargetTypeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomTargetType) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the `CustomTargetType`. Max length is 255 characters.

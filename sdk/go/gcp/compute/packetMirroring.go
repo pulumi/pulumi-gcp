@@ -176,6 +176,13 @@ type PacketMirroring struct {
 	// set to true.
 	// Structure is documented below.
 	CollectorIlb PacketMirroringCollectorIlbOutput `pulumi:"collectorIlb"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
@@ -252,6 +259,13 @@ type packetMirroringState struct {
 	// set to true.
 	// Structure is documented below.
 	CollectorIlb *PacketMirroringCollectorIlb `pulumi:"collectorIlb"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-readable description of the rule.
 	Description *string `pulumi:"description"`
 	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
@@ -290,6 +304,13 @@ type PacketMirroringState struct {
 	// set to true.
 	// Structure is documented below.
 	CollectorIlb PacketMirroringCollectorIlbPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrInput
 	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
@@ -332,6 +353,13 @@ type packetMirroringArgs struct {
 	// set to true.
 	// Structure is documented below.
 	CollectorIlb PacketMirroringCollectorIlb `pulumi:"collectorIlb"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-readable description of the rule.
 	Description *string `pulumi:"description"`
 	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
@@ -371,6 +399,13 @@ type PacketMirroringArgs struct {
 	// set to true.
 	// Structure is documented below.
 	CollectorIlb PacketMirroringCollectorIlbInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrInput
 	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
@@ -496,6 +531,16 @@ func (o PacketMirroringOutput) ToPacketMirroringOutputWithContext(ctx context.Co
 // Structure is documented below.
 func (o PacketMirroringOutput) CollectorIlb() PacketMirroringCollectorIlbOutput {
 	return o.ApplyT(func(v *PacketMirroring) PacketMirroringCollectorIlbOutput { return v.CollectorIlb }).(PacketMirroringCollectorIlbOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PacketMirroringOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PacketMirroring) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human-readable description of the rule.

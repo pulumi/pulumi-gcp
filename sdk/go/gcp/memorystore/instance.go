@@ -639,6 +639,13 @@ type Instance struct {
 	// Cross instance replication config
 	// Structure is documented below.
 	CrossInstanceReplicationConfig InstanceCrossInstanceReplicationConfigOutput `pulumi:"crossInstanceReplicationConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnabled"`
 	// Immutable. User inputs for the auto-created endpoints connections.
@@ -714,9 +721,15 @@ type Instance struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -833,6 +846,13 @@ type instanceState struct {
 	// Cross instance replication config
 	// Structure is documented below.
 	CrossInstanceReplicationConfig *InstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Immutable. User inputs for the auto-created endpoints connections.
@@ -908,9 +928,15 @@ type instanceState struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType *string `pulumi:"nodeType"`
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -984,6 +1010,13 @@ type InstanceState struct {
 	// Cross instance replication config
 	// Structure is documented below.
 	CrossInstanceReplicationConfig InstanceCrossInstanceReplicationConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Immutable. User inputs for the auto-created endpoints connections.
@@ -1059,9 +1092,15 @@ type InstanceState struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType pulumi.StringPtrInput
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -1132,6 +1171,13 @@ type instanceArgs struct {
 	// Cross instance replication config
 	// Structure is documented below.
 	CrossInstanceReplicationConfig *InstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Immutable. User inputs for the auto-created endpoints connections.
@@ -1182,9 +1228,15 @@ type instanceArgs struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType *string `pulumi:"nodeType"`
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -1226,6 +1278,13 @@ type InstanceArgs struct {
 	// Cross instance replication config
 	// Structure is documented below.
 	CrossInstanceReplicationConfig InstanceCrossInstanceReplicationConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Immutable. User inputs for the auto-created endpoints connections.
@@ -1276,9 +1335,15 @@ type InstanceArgs struct {
 	// Optional. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
+	// CUSTOM_PICO
+	// CUSTOM_MICRO
+	// CUSTOM_MINI
 	// HIGHMEM_MEDIUM
+	// HIGHCPU_MEDIUM
 	// HIGHMEM_XLARGE
 	// STANDARD_SMALL
+	// STANDARD_LARGE
+	// HIGHMEM_2XLARGE
 	NodeType pulumi.StringPtrInput
 	// Represents persistence configuration for a instance.
 	// Structure is documented below.
@@ -1432,6 +1497,16 @@ func (o InstanceOutput) CrossInstanceReplicationConfig() InstanceCrossInstanceRe
 	}).(InstanceCrossInstanceReplicationConfigOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // Optional. If set to true deletion of the instance will fail.
 func (o InstanceOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtectionEnabled }).(pulumi.BoolPtrOutput)
@@ -1573,9 +1648,15 @@ func (o InstanceOutput) NodeConfigs() InstanceNodeConfigArrayOutput {
 // Optional. Machine type for individual nodes of the instance.
 // Possible values:
 // SHARED_CORE_NANO
+// CUSTOM_PICO
+// CUSTOM_MICRO
+// CUSTOM_MINI
 // HIGHMEM_MEDIUM
+// HIGHCPU_MEDIUM
 // HIGHMEM_XLARGE
 // STANDARD_SMALL
+// STANDARD_LARGE
+// HIGHMEM_2XLARGE
 func (o InstanceOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }

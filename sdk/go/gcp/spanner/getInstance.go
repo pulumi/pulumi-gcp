@@ -66,6 +66,7 @@ type LookupInstanceResult struct {
 	AutoscalingConfigs        []GetInstanceAutoscalingConfig `pulumi:"autoscalingConfigs"`
 	Config                    *string                        `pulumi:"config"`
 	DefaultBackupScheduleType string                         `pulumi:"defaultBackupScheduleType"`
+	DeletionPolicy            string                         `pulumi:"deletionPolicy"`
 	DisplayName               *string                        `pulumi:"displayName"`
 	Edition                   string                         `pulumi:"edition"`
 	EffectiveLabels           map[string]string              `pulumi:"effectiveLabels"`
@@ -133,6 +134,10 @@ func (o LookupInstanceResultOutput) Config() pulumi.StringPtrOutput {
 
 func (o LookupInstanceResultOutput) DefaultBackupScheduleType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DefaultBackupScheduleType }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) DisplayName() pulumi.StringPtrOutput {

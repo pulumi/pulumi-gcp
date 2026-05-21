@@ -70,6 +70,7 @@ type LookupStoragePoolArgs struct {
 type LookupStoragePoolResult struct {
 	CapacityProvisioningType    string                         `pulumi:"capacityProvisioningType"`
 	CreationTimestamp           string                         `pulumi:"creationTimestamp"`
+	DeletionPolicy              string                         `pulumi:"deletionPolicy"`
 	DeletionProtection          bool                           `pulumi:"deletionProtection"`
 	Description                 string                         `pulumi:"description"`
 	EffectiveLabels             map[string]string              `pulumi:"effectiveLabels"`
@@ -135,6 +136,10 @@ func (o LookupStoragePoolResultOutput) CapacityProvisioningType() pulumi.StringO
 
 func (o LookupStoragePoolResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupStoragePoolResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupStoragePoolResultOutput) DeletionProtection() pulumi.BoolOutput {

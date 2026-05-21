@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterStorageResourceConfigNewBucketAutoclassArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +32,32 @@ public final class ClusterStorageResourceConfigNewBucketAutoclassArgs extends co
         return this.enabled;
     }
 
+    /**
+     * Terminal storage class of the autoclass bucket
+     * Possible values:
+     * NEARLINE
+     * ARCHIVE
+     * 
+     */
+    @Import(name="terminalStorageClass")
+    private @Nullable Output<String> terminalStorageClass;
+
+    /**
+     * @return Terminal storage class of the autoclass bucket
+     * Possible values:
+     * NEARLINE
+     * ARCHIVE
+     * 
+     */
+    public Optional<Output<String>> terminalStorageClass() {
+        return Optional.ofNullable(this.terminalStorageClass);
+    }
+
     private ClusterStorageResourceConfigNewBucketAutoclassArgs() {}
 
     private ClusterStorageResourceConfigNewBucketAutoclassArgs(ClusterStorageResourceConfigNewBucketAutoclassArgs $) {
         this.enabled = $.enabled;
+        this.terminalStorageClass = $.terminalStorageClass;
     }
 
     public static Builder builder() {
@@ -72,6 +97,33 @@ public final class ClusterStorageResourceConfigNewBucketAutoclassArgs extends co
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param terminalStorageClass Terminal storage class of the autoclass bucket
+         * Possible values:
+         * NEARLINE
+         * ARCHIVE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminalStorageClass(@Nullable Output<String> terminalStorageClass) {
+            $.terminalStorageClass = terminalStorageClass;
+            return this;
+        }
+
+        /**
+         * @param terminalStorageClass Terminal storage class of the autoclass bucket
+         * Possible values:
+         * NEARLINE
+         * ARCHIVE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminalStorageClass(String terminalStorageClass) {
+            return terminalStorageClass(Output.of(terminalStorageClass));
         }
 
         public ClusterStorageResourceConfigNewBucketAutoclassArgs build() {

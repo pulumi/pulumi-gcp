@@ -293,6 +293,13 @@ type DataConnector struct {
 	DataSource pulumi.StringOutput `pulumi:"dataSource"`
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion pulumi.IntOutput `pulumi:"dataSourceVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Destination connector configurations for the data connector,
 	// used to configure where data is served.
 	// Structure is documented below.
@@ -466,6 +473,13 @@ type dataConnectorState struct {
 	DataSource *string `pulumi:"dataSource"`
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion *int `pulumi:"dataSourceVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Destination connector configurations for the data connector,
 	// used to configure where data is served.
 	// Structure is documented below.
@@ -595,6 +609,13 @@ type DataConnectorState struct {
 	DataSource pulumi.StringPtrInput
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Destination connector configurations for the data connector,
 	// used to configure where data is served.
 	// Structure is documented below.
@@ -711,6 +732,13 @@ type dataConnectorArgs struct {
 	DataSource string `pulumi:"dataSource"`
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion *int `pulumi:"dataSourceVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Destination connector configurations for the data connector,
 	// used to configure where data is served.
 	// Structure is documented below.
@@ -793,6 +821,13 @@ type DataConnectorArgs struct {
 	DataSource pulumi.StringInput
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Destination connector configurations for the data connector,
 	// used to configure where data is served.
 	// Structure is documented below.
@@ -1011,6 +1046,16 @@ func (o DataConnectorOutput) DataSource() pulumi.StringOutput {
 // The version of the data source. For example, `3` for Jira v3.
 func (o DataConnectorOutput) DataSourceVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.IntOutput { return v.DataSourceVersion }).(pulumi.IntOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DataConnectorOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Destination connector configurations for the data connector,

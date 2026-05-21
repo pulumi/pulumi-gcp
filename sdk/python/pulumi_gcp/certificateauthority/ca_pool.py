@@ -23,6 +23,7 @@ class CaPoolArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  tier: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_spec: pulumi.Input[Optional['CaPoolEncryptionSpecArgs']] = None,
                  issuance_policy: pulumi.Input[Optional['CaPoolIssuancePolicyArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -36,6 +37,12 @@ class CaPoolArgs:
                running `gcloud privateca locations list`.
         :param pulumi.Input[_builtins.str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['CaPoolEncryptionSpecArgs'] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
                to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
                customer data will remain unencrypted.
@@ -56,6 +63,8 @@ class CaPoolArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "tier", tier)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if encryption_spec is not None:
             pulumi.set(__self__, "encryption_spec", encryption_spec)
         if issuance_policy is not None:
@@ -94,6 +103,23 @@ class CaPoolArgs:
     @tier.setter
     def tier(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "tier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
@@ -182,6 +208,7 @@ class CaPoolArgs:
 @pulumi.input_type
 class _CaPoolState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  encryption_spec: pulumi.Input[Optional['CaPoolEncryptionSpecArgs']] = None,
                  issuance_policy: pulumi.Input[Optional['CaPoolIssuancePolicyArgs']] = None,
@@ -195,6 +222,12 @@ class _CaPoolState:
         """
         Input properties used for looking up and filtering CaPool resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['CaPoolEncryptionSpecArgs'] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
                to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
@@ -220,6 +253,8 @@ class _CaPoolState:
         :param pulumi.Input[_builtins.str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if encryption_spec is not None:
@@ -240,6 +275,23 @@ class _CaPoolState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -382,6 +434,7 @@ class CaPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_spec: pulumi.Input[Optional[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']]] = None,
                  issuance_policy: pulumi.Input[Optional[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -585,6 +638,12 @@ class CaPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
                to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
                customer data will remain unencrypted.
@@ -820,6 +879,7 @@ class CaPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_spec: pulumi.Input[Optional[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']]] = None,
                  issuance_policy: pulumi.Input[Optional[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -837,6 +897,7 @@ class CaPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CaPoolArgs.__new__(CaPoolArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["issuance_policy"] = issuance_policy
             __props__.__dict__["labels"] = labels
@@ -863,6 +924,7 @@ class CaPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             encryption_spec: pulumi.Input[Optional[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']]] = None,
             issuance_policy: pulumi.Input[Optional[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']]] = None,
@@ -880,6 +942,12 @@ class CaPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
                to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
@@ -909,6 +977,7 @@ class CaPool(pulumi.CustomResource):
 
         __props__ = _CaPoolState.__new__(_CaPoolState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["issuance_policy"] = issuance_policy
@@ -920,6 +989,19 @@ class CaPool(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["tier"] = tier
         return CaPool(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

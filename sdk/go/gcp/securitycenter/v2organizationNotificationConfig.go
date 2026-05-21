@@ -78,6 +78,13 @@ type V2OrganizationNotificationConfig struct {
 
 	// This must be unique within the organization.
 	ConfigId pulumi.StringOutput `pulumi:"configId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// location Id is provided by organization. If not provided, Use global as default.
@@ -143,6 +150,13 @@ func GetV2OrganizationNotificationConfig(ctx *pulumi.Context,
 type v2organizationNotificationConfigState struct {
 	// This must be unique within the organization.
 	ConfigId *string `pulumi:"configId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// location Id is provided by organization. If not provided, Use global as default.
@@ -167,6 +181,13 @@ type v2organizationNotificationConfigState struct {
 type V2OrganizationNotificationConfigState struct {
 	// This must be unique within the organization.
 	ConfigId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// location Id is provided by organization. If not provided, Use global as default.
@@ -195,6 +216,13 @@ func (V2OrganizationNotificationConfigState) ElementType() reflect.Type {
 type v2organizationNotificationConfigArgs struct {
 	// This must be unique within the organization.
 	ConfigId string `pulumi:"configId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// location Id is provided by organization. If not provided, Use global as default.
@@ -214,6 +242,13 @@ type v2organizationNotificationConfigArgs struct {
 type V2OrganizationNotificationConfigArgs struct {
 	// This must be unique within the organization.
 	ConfigId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// location Id is provided by organization. If not provided, Use global as default.
@@ -319,6 +354,16 @@ func (o V2OrganizationNotificationConfigOutput) ToV2OrganizationNotificationConf
 // This must be unique within the organization.
 func (o V2OrganizationNotificationConfigOutput) ConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2OrganizationNotificationConfig) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o V2OrganizationNotificationConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *V2OrganizationNotificationConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the notification config (max of 1024 characters).

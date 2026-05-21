@@ -554,6 +554,13 @@ type Cluster struct {
 	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
 	// Structure is documented below.
 	DatastoreMountConfigs ClusterDatastoreMountConfigArrayOutput `pulumi:"datastoreMountConfigs"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolOutput `pulumi:"management"`
@@ -623,6 +630,13 @@ type clusterState struct {
 	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
 	// Structure is documented below.
 	DatastoreMountConfigs []ClusterDatastoreMountConfig `pulumi:"datastoreMountConfigs"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management *bool `pulumi:"management"`
@@ -660,6 +674,13 @@ type ClusterState struct {
 	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
 	// Structure is documented below.
 	DatastoreMountConfigs ClusterDatastoreMountConfigArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolPtrInput
@@ -697,6 +718,13 @@ type clusterArgs struct {
 	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
 	// Structure is documented below.
 	DatastoreMountConfigs []ClusterDatastoreMountConfig `pulumi:"datastoreMountConfigs"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the Cluster.
 	Name *string `pulumi:"name"`
 	// The map of cluster node types in this cluster,
@@ -720,6 +748,13 @@ type ClusterArgs struct {
 	// for unmount remove 'datastore_mount_config' config from the update of cluster resource
 	// Structure is documented below.
 	DatastoreMountConfigs ClusterDatastoreMountConfigArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the Cluster.
 	Name pulumi.StringPtrInput
 	// The map of cluster node types in this cluster,
@@ -839,6 +874,16 @@ func (o ClusterOutput) CreateTime() pulumi.StringOutput {
 // Structure is documented below.
 func (o ClusterOutput) DatastoreMountConfigs() ClusterDatastoreMountConfigArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterDatastoreMountConfigArrayOutput { return v.DatastoreMountConfigs }).(ClusterDatastoreMountConfigArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ClusterOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // True if the cluster is a management cluster; false otherwise.

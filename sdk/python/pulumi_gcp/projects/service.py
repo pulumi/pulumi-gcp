@@ -21,6 +21,7 @@ class ServiceArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[_builtins.str],
                  check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -31,6 +32,12 @@ class ServiceArgs:
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -45,6 +52,8 @@ class ServiceArgs:
         pulumi.set(__self__, "service", service)
         if check_if_service_has_usage_on_destroy is not None:
             pulumi.set(__self__, "check_if_service_has_usage_on_destroy", check_if_service_has_usage_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_dependent_services is not None:
             pulumi.set(__self__, "disable_dependent_services", disable_dependent_services)
         if disable_on_destroy is not None:
@@ -77,6 +86,23 @@ class ServiceArgs:
     @check_if_service_has_usage_on_destroy.setter
     def check_if_service_has_usage_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_if_service_has_usage_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableDependentServices")
@@ -126,6 +152,7 @@ class ServiceArgs:
 class _ServiceState:
     def __init__(__self__, *,
                  check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -136,6 +163,12 @@ class _ServiceState:
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -150,6 +183,8 @@ class _ServiceState:
         """
         if check_if_service_has_usage_on_destroy is not None:
             pulumi.set(__self__, "check_if_service_has_usage_on_destroy", check_if_service_has_usage_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_dependent_services is not None:
             pulumi.set(__self__, "disable_dependent_services", disable_dependent_services)
         if disable_on_destroy is not None:
@@ -172,6 +207,23 @@ class _ServiceState:
     @check_if_service_has_usage_on_destroy.setter
     def check_if_service_has_usage_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_if_service_has_usage_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableDependentServices")
@@ -236,6 +288,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -293,6 +346,12 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -374,6 +433,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -388,6 +448,7 @@ class Service(pulumi.CustomResource):
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
             __props__.__dict__["check_if_service_has_usage_on_destroy"] = check_if_service_has_usage_on_destroy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disable_dependent_services"] = disable_dependent_services
             __props__.__dict__["disable_on_destroy"] = disable_on_destroy
             __props__.__dict__["project"] = project
@@ -405,6 +466,7 @@ class Service(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -419,6 +481,12 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -436,6 +504,7 @@ class Service(pulumi.CustomResource):
         __props__ = _ServiceState.__new__(_ServiceState)
 
         __props__.__dict__["check_if_service_has_usage_on_destroy"] = check_if_service_has_usage_on_destroy
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disable_dependent_services"] = disable_dependent_services
         __props__.__dict__["disable_on_destroy"] = disable_on_destroy
         __props__.__dict__["project"] = project
@@ -451,6 +520,19 @@ class Service(pulumi.CustomResource):
         will be returned if the service to be disabled has usage in last 30 days.
         """
         return pulumi.get(self, "check_if_service_has_usage_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="disableDependentServices")

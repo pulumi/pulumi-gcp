@@ -311,6 +311,15 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     declare public readonly contentMatchers: pulumi.Output<outputs.monitoring.UptimeCheckConfigContentMatcher[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -389,6 +398,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             const state = argsOrState as UptimeCheckConfigState | undefined;
             resourceInputs["checkerType"] = state?.checkerType;
             resourceInputs["contentMatchers"] = state?.contentMatchers;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["httpCheck"] = state?.httpCheck;
             resourceInputs["logCheckFailures"] = state?.logCheckFailures;
@@ -413,6 +423,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             }
             resourceInputs["checkerType"] = args?.checkerType;
             resourceInputs["contentMatchers"] = args?.contentMatchers;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["httpCheck"] = args?.httpCheck;
             resourceInputs["logCheckFailures"] = args?.logCheckFailures;
@@ -447,6 +458,15 @@ export interface UptimeCheckConfigState {
      * Structure is documented below.
      */
     contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
      */
@@ -526,6 +546,15 @@ export interface UptimeCheckConfigArgs {
      * Structure is documented below.
      */
     contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
      */

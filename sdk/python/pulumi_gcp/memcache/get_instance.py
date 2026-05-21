@@ -27,13 +27,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorized_network=None, create_time=None, deletion_protection=None, discovery_endpoint=None, display_name=None, effective_labels=None, id=None, labels=None, maintenance_policies=None, maintenance_schedules=None, memcache_full_version=None, memcache_nodes=None, memcache_parameters=None, memcache_version=None, name=None, node_configs=None, node_count=None, project=None, pulumi_labels=None, region=None, reserved_ip_range_ids=None, zones=None):
+    def __init__(__self__, authorized_network=None, create_time=None, deletion_policy=None, deletion_protection=None, discovery_endpoint=None, display_name=None, effective_labels=None, id=None, labels=None, maintenance_policies=None, maintenance_schedules=None, memcache_full_version=None, memcache_nodes=None, memcache_parameters=None, memcache_version=None, name=None, node_configs=None, node_count=None, project=None, pulumi_labels=None, region=None, reserved_ip_range_ids=None, zones=None):
         if authorized_network and not isinstance(authorized_network, str):
             raise TypeError("Expected argument 'authorized_network' to be a str")
         pulumi.set(__self__, "authorized_network", authorized_network)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -104,6 +107,11 @@ class GetInstanceResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -217,6 +225,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             authorized_network=self.authorized_network,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             discovery_endpoint=self.discovery_endpoint,
             display_name=self.display_name,
@@ -273,6 +282,7 @@ def get_instance(name: Optional[_builtins.str] = None,
     return AwaitableGetInstanceResult(
         authorized_network=pulumi.get(__ret__, 'authorized_network'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         discovery_endpoint=pulumi.get(__ret__, 'discovery_endpoint'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -326,6 +336,7 @@ def get_instance_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetInstanceResult(
         authorized_network=pulumi.get(__response__, 'authorized_network'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         discovery_endpoint=pulumi.get(__response__, 'discovery_endpoint'),
         display_name=pulumi.get(__response__, 'display_name'),

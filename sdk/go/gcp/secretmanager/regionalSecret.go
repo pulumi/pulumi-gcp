@@ -302,6 +302,13 @@ type RegionalSecret struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption RegionalSecretCustomerManagedEncryptionPtrOutput `pulumi:"customerManagedEncryption"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -432,6 +439,13 @@ type regionalSecretState struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption *RegionalSecretCustomerManagedEncryption `pulumi:"customerManagedEncryption"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -522,6 +536,13 @@ type RegionalSecretState struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption RegionalSecretCustomerManagedEncryptionPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -614,6 +635,13 @@ type regionalSecretArgs struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption *RegionalSecretCustomerManagedEncryption `pulumi:"customerManagedEncryption"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -693,6 +721,13 @@ type RegionalSecretArgs struct {
 	// The customer-managed encryption configuration of the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryption RegionalSecretCustomerManagedEncryptionPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -868,6 +903,16 @@ func (o RegionalSecretOutput) CustomerManagedEncryption() RegionalSecretCustomer
 	return o.ApplyT(func(v *RegionalSecret) RegionalSecretCustomerManagedEncryptionPtrOutput {
 		return v.CustomerManagedEncryption
 	}).(RegionalSecretCustomerManagedEncryptionPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionalSecretOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionalSecret) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the regional secret. Defaults to false.

@@ -66,6 +66,7 @@ export interface GetOdbSubnetArgs {
 export interface GetOdbSubnetResult {
     readonly cidrRange: string;
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly effectiveLabels: {[key: string]: string};
     /**

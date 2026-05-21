@@ -99,6 +99,13 @@ type AuthConfig struct {
 	// Raw auth credentials.
 	// Structure is documented below.
 	DecryptedCredential AuthConfigDecryptedCredentialPtrOutput `pulumi:"decryptedCredential"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the auth config.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the auth config.
@@ -187,6 +194,13 @@ type authConfigState struct {
 	// Raw auth credentials.
 	// Structure is documented below.
 	DecryptedCredential *AuthConfigDecryptedCredential `pulumi:"decryptedCredential"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the auth config.
 	Description *string `pulumi:"description"`
 	// The name of the auth config.
@@ -240,6 +254,13 @@ type AuthConfigState struct {
 	// Raw auth credentials.
 	// Structure is documented below.
 	DecryptedCredential AuthConfigDecryptedCredentialPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the auth config.
 	Description pulumi.StringPtrInput
 	// The name of the auth config.
@@ -288,6 +309,13 @@ type authConfigArgs struct {
 	// Raw auth credentials.
 	// Structure is documented below.
 	DecryptedCredential *AuthConfigDecryptedCredential `pulumi:"decryptedCredential"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the auth config.
 	Description *string `pulumi:"description"`
 	// The name of the auth config.
@@ -316,6 +344,13 @@ type AuthConfigArgs struct {
 	// Raw auth credentials.
 	// Structure is documented below.
 	DecryptedCredential AuthConfigDecryptedCredentialPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the auth config.
 	Description pulumi.StringPtrInput
 	// The name of the auth config.
@@ -454,6 +489,16 @@ func (o AuthConfigOutput) CredentialType() pulumi.StringOutput {
 // Structure is documented below.
 func (o AuthConfigOutput) DecryptedCredential() AuthConfigDecryptedCredentialPtrOutput {
 	return o.ApplyT(func(v *AuthConfig) AuthConfigDecryptedCredentialPtrOutput { return v.DecryptedCredential }).(AuthConfigDecryptedCredentialPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AuthConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the auth config.

@@ -178,6 +178,13 @@ type AccessApprovalSettings struct {
 	ActiveKeyVersion pulumi.StringPtrOutput `pulumi:"activeKeyVersion"`
 	// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
 	AncestorHasActiveKeyVersion pulumi.BoolOutput `pulumi:"ancestorHasActiveKeyVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
 	EnrolledAncestor pulumi.BoolOutput `pulumi:"enrolledAncestor"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -243,6 +250,13 @@ type accessApprovalSettingsState struct {
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
 	// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
 	AncestorHasActiveKeyVersion *bool `pulumi:"ancestorHasActiveKeyVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
 	EnrolledAncestor *bool `pulumi:"enrolledAncestor"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -273,6 +287,13 @@ type AccessApprovalSettingsState struct {
 	ActiveKeyVersion pulumi.StringPtrInput
 	// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
 	AncestorHasActiveKeyVersion pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
 	EnrolledAncestor pulumi.BoolPtrInput
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -305,6 +326,13 @@ type accessApprovalSettingsArgs struct {
 	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 	// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
 	// to have explicit approval. Enrollment can only be done on an all or nothing basis.
@@ -325,6 +353,13 @@ type AccessApprovalSettingsArgs struct {
 	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 	// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
 	ActiveKeyVersion pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
 	// to have explicit approval. Enrollment can only be done on an all or nothing basis.
@@ -436,6 +471,16 @@ func (o AccessApprovalSettingsOutput) ActiveKeyVersion() pulumi.StringPtrOutput 
 // If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
 func (o AccessApprovalSettingsOutput) AncestorHasActiveKeyVersion() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.BoolOutput { return v.AncestorHasActiveKeyVersion }).(pulumi.BoolOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AccessApprovalSettingsOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.

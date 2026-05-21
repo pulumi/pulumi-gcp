@@ -61,6 +61,7 @@ type LookupNetworkPeeringArgs struct {
 // A collection of values returned by getNetworkPeering.
 type LookupNetworkPeeringResult struct {
 	CreateTime                     string `pulumi:"createTime"`
+	DeletionPolicy                 string `pulumi:"deletionPolicy"`
 	Description                    string `pulumi:"description"`
 	ExportCustomRoutes             bool   `pulumi:"exportCustomRoutes"`
 	ExportCustomRoutesWithPublicIp bool   `pulumi:"exportCustomRoutesWithPublicIp"`
@@ -117,6 +118,10 @@ func (o LookupNetworkPeeringResultOutput) ToLookupNetworkPeeringResultOutputWith
 
 func (o LookupNetworkPeeringResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPeeringResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkPeeringResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkPeeringResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupNetworkPeeringResultOutput) Description() pulumi.StringOutput {

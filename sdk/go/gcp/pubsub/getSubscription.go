@@ -67,6 +67,7 @@ type LookupSubscriptionResult struct {
 	BigqueryConfigs           []GetSubscriptionBigqueryConfig     `pulumi:"bigqueryConfigs"`
 	CloudStorageConfigs       []GetSubscriptionCloudStorageConfig `pulumi:"cloudStorageConfigs"`
 	DeadLetterPolicies        []GetSubscriptionDeadLetterPolicy   `pulumi:"deadLetterPolicies"`
+	DeletionPolicy            string                              `pulumi:"deletionPolicy"`
 	EffectiveLabels           map[string]string                   `pulumi:"effectiveLabels"`
 	EnableExactlyOnceDelivery bool                                `pulumi:"enableExactlyOnceDelivery"`
 	EnableMessageOrdering     bool                                `pulumi:"enableMessageOrdering"`
@@ -140,6 +141,10 @@ func (o LookupSubscriptionResultOutput) CloudStorageConfigs() GetSubscriptionClo
 
 func (o LookupSubscriptionResultOutput) DeadLetterPolicies() GetSubscriptionDeadLetterPolicyArrayOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionDeadLetterPolicy { return v.DeadLetterPolicies }).(GetSubscriptionDeadLetterPolicyArrayOutput)
+}
+
+func (o LookupSubscriptionResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupSubscriptionResultOutput) EffectiveLabels() pulumi.StringMapOutput {

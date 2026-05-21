@@ -62,7 +62,15 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
                of its nested resources. If set to "DEFAULT", Looker instances that still have
-               nested resources will return an error. Possible values: DEFAULT, FORCE
+               nested resources will return an error.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -243,7 +251,15 @@ class InstanceArgs:
         Policy to determine if the cluster should be deleted forcefully.
         If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
         of its nested resources. If set to "DEFAULT", Looker instances that still have
-        nested resources will return an error. Possible values: DEFAULT, FORCE
+        nested resources will return an error.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -527,7 +543,15 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
                of its nested resources. If set to "DEFAULT", Looker instances that still have
-               nested resources will return an error. Possible values: DEFAULT, FORCE
+               nested resources will return an error.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -732,7 +756,15 @@ class _InstanceState:
         Policy to determine if the cluster should be deleted forcefully.
         If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
         of its nested resources. If set to "DEFAULT", Looker instances that still have
-        nested resources will return an error. Possible values: DEFAULT, FORCE
+        nested resources will return an error.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -1333,7 +1365,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
                of its nested resources. If set to "DEFAULT", Looker instances that still have
-               nested resources will return an error. Possible values: DEFAULT, FORCE
+               nested resources will return an error.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -1769,7 +1809,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
                of its nested resources. If set to "DEFAULT", Looker instances that still have
-               nested resources will return an error. Possible values: DEFAULT, FORCE
+               nested resources will return an error.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -1920,12 +1968,20 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
         Policy to determine if the cluster should be deleted forcefully.
         If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
         of its nested resources. If set to "DEFAULT", Looker instances that still have
-        nested resources will return an error. Possible values: DEFAULT, FORCE
+        nested resources will return an error.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         """
         return pulumi.get(self, "deletion_policy")
 

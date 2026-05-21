@@ -28,6 +28,7 @@ class ChatEngineArgs:
                  engine_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  common_config: pulumi.Input[Optional['ChatEngineCommonConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -42,6 +43,12 @@ class ChatEngineArgs:
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input['ChatEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
                Default value is `GENERIC`.
                Possible values are: `GENERIC`.
@@ -56,6 +63,8 @@ class ChatEngineArgs:
         pulumi.set(__self__, "location", location)
         if common_config is not None:
             pulumi.set(__self__, "common_config", common_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if industry_vertical is not None:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
         if project is not None:
@@ -148,6 +157,23 @@ class ChatEngineArgs:
         pulumi.set(self, "common_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -184,6 +210,7 @@ class _ChatEngineState:
                  common_config: pulumi.Input[Optional['ChatEngineCommonConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
@@ -203,6 +230,12 @@ class _ChatEngineState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: The ID to use for chat engine.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
@@ -229,6 +262,8 @@ class _ChatEngineState:
             pulumi.set(__self__, "create_time", create_time)
         if data_store_ids is not None:
             pulumi.set(__self__, "data_store_ids", data_store_ids)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if engine_id is not None:
@@ -318,6 +353,23 @@ class _ChatEngineState:
     @data_store_ids.setter
     def data_store_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_store_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -420,6 +472,7 @@ class ChatEngine(pulumi.CustomResource):
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  common_config: pulumi.Input[Optional[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
@@ -537,6 +590,12 @@ class ChatEngine(pulumi.CustomResource):
         :param pulumi.Input[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: The ID to use for chat engine.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
@@ -674,6 +733,7 @@ class ChatEngine(pulumi.CustomResource):
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  common_config: pulumi.Input[Optional[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
@@ -698,6 +758,7 @@ class ChatEngine(pulumi.CustomResource):
             if data_store_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'data_store_ids'")
             __props__.__dict__["data_store_ids"] = data_store_ids
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -729,6 +790,7 @@ class ChatEngine(pulumi.CustomResource):
             common_config: pulumi.Input[Optional[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             engine_id: pulumi.Input[Optional[_builtins.str]] = None,
             industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
@@ -752,6 +814,12 @@ class ChatEngine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: The ID to use for chat engine.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
@@ -776,6 +844,7 @@ class ChatEngine(pulumi.CustomResource):
         __props__.__dict__["common_config"] = common_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_store_ids"] = data_store_ids
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["engine_id"] = engine_id
         __props__.__dict__["industry_vertical"] = industry_vertical
@@ -835,6 +904,19 @@ class ChatEngine(pulumi.CustomResource):
         The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
         """
         return pulumi.get(self, "data_store_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

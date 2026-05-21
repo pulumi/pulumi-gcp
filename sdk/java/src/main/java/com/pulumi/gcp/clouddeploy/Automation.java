@@ -42,13 +42,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageArgs;
  * import com.pulumi.gcp.clouddeploy.Automation;
  * import com.pulumi.gcp.clouddeploy.AutomationArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorTargetArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRulePromoteReleaseRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleAdvanceRolloutRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleTimedPromoteReleaseRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -136,13 +141,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
  * import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageArgs;
  * import com.pulumi.gcp.clouddeploy.Automation;
  * import com.pulumi.gcp.clouddeploy.AutomationArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorTargetArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRulePromoteReleaseRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleAdvanceRolloutRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleTimedPromoteReleaseRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -292,6 +302,30 @@ public class Automation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The deliveryPipeline for the resource

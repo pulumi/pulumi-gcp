@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Iap
     ///     var destGroup = new Gcp.Iap.TunnelDestGroup("dest_group", new()
     ///     {
     ///         Region = "us-central1",
-    ///         GroupName = "testgroup_79411",
+    ///         GroupName = "testgroup_82591",
     ///         Cidrs = new[]
     ///         {
     ///             "10.1.0.0/16",
@@ -74,6 +74,17 @@ namespace Pulumi.Gcp.Iap
         /// </summary>
         [Output("cidrs")]
         public Output<ImmutableArray<string>> Cidrs { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// List of FQDNs that this group applies to.
@@ -164,6 +175,17 @@ namespace Pulumi.Gcp.Iap
             set => _cidrs = value;
         }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("fqdns")]
         private InputList<string>? _fqdns;
 
@@ -214,6 +236,17 @@ namespace Pulumi.Gcp.Iap
             get => _cidrs ?? (_cidrs = new InputList<string>());
             set => _cidrs = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("fqdns")]
         private InputList<string>? _fqdns;

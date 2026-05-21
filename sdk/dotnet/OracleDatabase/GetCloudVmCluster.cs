@@ -164,6 +164,7 @@ namespace Pulumi.Gcp.OracleDatabase
         public readonly string Cidr;
         public readonly string CloudVmClusterId;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -194,6 +195,8 @@ namespace Pulumi.Gcp.OracleDatabase
             string cloudVmClusterId,
 
             string createTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -230,6 +233,7 @@ namespace Pulumi.Gcp.OracleDatabase
             Cidr = cidr;
             CloudVmClusterId = cloudVmClusterId;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;

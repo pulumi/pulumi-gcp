@@ -26,6 +26,7 @@ class InsightsDatasetConfigArgs:
                  location: pulumi.Input[_builtins.str],
                  retention_period_days: pulumi.Input[_builtins.int],
                  activity_data_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_cloud_storage_buckets: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']] = None,
                  exclude_cloud_storage_locations: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']] = None,
@@ -47,6 +48,12 @@ class InsightsDatasetConfigArgs:
         :param pulumi.Input[_builtins.str] location: The location of the DatasetConfig.
         :param pulumi.Input[_builtins.int] retention_period_days: Number of days of history that must be retained.
         :param pulumi.Input[_builtins.int] activity_data_retention_period_days: Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
         :param pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs'] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
                Structure is documented below.
@@ -78,6 +85,8 @@ class InsightsDatasetConfigArgs:
         pulumi.set(__self__, "retention_period_days", retention_period_days)
         if activity_data_retention_period_days is not None:
             pulumi.set(__self__, "activity_data_retention_period_days", activity_data_retention_period_days)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if exclude_cloud_storage_buckets is not None:
@@ -163,6 +172,23 @@ class InsightsDatasetConfigArgs:
     @activity_data_retention_period_days.setter
     def activity_data_retention_period_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "activity_data_retention_period_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -328,6 +354,7 @@ class _InsightsDatasetConfigState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_config_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_cloud_storage_buckets: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']] = None,
                  exclude_cloud_storage_locations: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']] = None,
@@ -354,6 +381,12 @@ class _InsightsDatasetConfigState:
         :param pulumi.Input[_builtins.str] create_time: The UTC time at which the DatasetConfig was created. This is auto-populated.
         :param pulumi.Input[_builtins.str] dataset_config_id: The user-defined ID of the DatasetConfig
         :param pulumi.Input[_builtins.str] dataset_config_state: State of the DatasetConfig.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
         :param pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs'] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
                Structure is documented below.
@@ -396,6 +429,8 @@ class _InsightsDatasetConfigState:
             pulumi.set(__self__, "dataset_config_id", dataset_config_id)
         if dataset_config_state is not None:
             pulumi.set(__self__, "dataset_config_state", dataset_config_state)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if exclude_cloud_storage_buckets is not None:
@@ -482,6 +517,23 @@ class _InsightsDatasetConfigState:
     @dataset_config_state.setter
     def dataset_config_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_config_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -734,6 +786,7 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_data_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
                  dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
                  exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
@@ -849,6 +902,12 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] activity_data_retention_period_days: Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
         :param pulumi.Input[_builtins.str] dataset_config_id: The user-defined ID of the DatasetConfig
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
         :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
                Structure is documented below.
@@ -996,6 +1055,7 @@ class InsightsDatasetConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_data_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
                  dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
                  exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
@@ -1024,6 +1084,7 @@ class InsightsDatasetConfig(pulumi.CustomResource):
             if dataset_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_config_id'")
             __props__.__dict__["dataset_config_id"] = dataset_config_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["exclude_cloud_storage_buckets"] = exclude_cloud_storage_buckets
             __props__.__dict__["exclude_cloud_storage_locations"] = exclude_cloud_storage_locations
@@ -1065,6 +1126,7 @@ class InsightsDatasetConfig(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
             dataset_config_state: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
             exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
@@ -1095,6 +1157,12 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The UTC time at which the DatasetConfig was created. This is auto-populated.
         :param pulumi.Input[_builtins.str] dataset_config_id: The user-defined ID of the DatasetConfig
         :param pulumi.Input[_builtins.str] dataset_config_state: State of the DatasetConfig.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
         :param pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']] exclude_cloud_storage_buckets: Defined the options for excluding cloud storage buckets for the DatasetConfig.
                Structure is documented below.
@@ -1137,6 +1205,7 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dataset_config_id"] = dataset_config_id
         __props__.__dict__["dataset_config_state"] = dataset_config_state
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["exclude_cloud_storage_buckets"] = exclude_cloud_storage_buckets
         __props__.__dict__["exclude_cloud_storage_locations"] = exclude_cloud_storage_locations
@@ -1189,6 +1258,19 @@ class InsightsDatasetConfig(pulumi.CustomResource):
         State of the DatasetConfig.
         """
         return pulumi.get(self, "dataset_config_state")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -26,7 +26,10 @@ class GetVariableResult:
     """
     A collection of values returned by getVariable.
     """
-    def __init__(__self__, id=None, name=None, parent=None, project=None, text=None, update_time=None, value=None):
+    def __init__(__self__, deletion_policy=None, id=None, name=None, parent=None, project=None, text=None, update_time=None, value=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -48,6 +51,11 @@ class GetVariableResult:
         if value and not isinstance(value, str):
             raise TypeError("Expected argument 'value' to be a str")
         pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -94,6 +102,7 @@ class AwaitableGetVariableResult(GetVariableResult):
         if False:
             yield self
         return GetVariableResult(
+            deletion_policy=self.deletion_policy,
             id=self.id,
             name=self.name,
             parent=self.parent,
@@ -143,6 +152,7 @@ def get_variable(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:runtimeconfig/getVariable:getVariable', __args__, opts=opts, typ=GetVariableResult).value
 
     return AwaitableGetVariableResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
@@ -189,6 +199,7 @@ def get_variable_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:runtimeconfig/getVariable:getVariable', __args__, opts=opts, typ=GetVariableResult)
     return __ret__.apply(lambda __response__: GetVariableResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         parent=pulumi.get(__response__, 'parent'),

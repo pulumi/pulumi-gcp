@@ -27,13 +27,16 @@ class GetSecurityGatewayResult:
     """
     A collection of values returned by getSecurityGateway.
     """
-    def __init__(__self__, create_time=None, delegating_service_account=None, display_name=None, external_ips=None, hubs=None, id=None, location=None, loggings=None, name=None, project=None, proxy_protocol_configs=None, security_gateway_id=None, service_discoveries=None, state=None, update_time=None):
+    def __init__(__self__, create_time=None, delegating_service_account=None, deletion_policy=None, display_name=None, external_ips=None, hubs=None, id=None, location=None, loggings=None, name=None, project=None, proxy_protocol_configs=None, security_gateway_id=None, service_discoveries=None, state=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if delegating_service_account and not isinstance(delegating_service_account, str):
             raise TypeError("Expected argument 'delegating_service_account' to be a str")
         pulumi.set(__self__, "delegating_service_account", delegating_service_account)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -83,6 +86,11 @@ class GetSecurityGatewayResult:
     @pulumi.getter(name="delegatingServiceAccount")
     def delegating_service_account(self) -> _builtins.str:
         return pulumi.get(self, "delegating_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -161,6 +169,7 @@ class AwaitableGetSecurityGatewayResult(GetSecurityGatewayResult):
         return GetSecurityGatewayResult(
             create_time=self.create_time,
             delegating_service_account=self.delegating_service_account,
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             external_ips=self.external_ips,
             hubs=self.hubs,
@@ -207,6 +216,7 @@ def get_security_gateway(project: Optional[_builtins.str] = None,
     return AwaitableGetSecurityGatewayResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         delegating_service_account=pulumi.get(__ret__, 'delegating_service_account'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         external_ips=pulumi.get(__ret__, 'external_ips'),
         hubs=pulumi.get(__ret__, 'hubs'),
@@ -250,6 +260,7 @@ def get_security_gateway_output(project: pulumi.Input[Optional[Optional[_builtin
     return __ret__.apply(lambda __response__: GetSecurityGatewayResult(
         create_time=pulumi.get(__response__, 'create_time'),
         delegating_service_account=pulumi.get(__response__, 'delegating_service_account'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         external_ips=pulumi.get(__response__, 'external_ips'),
         hubs=pulumi.get(__response__, 'hubs'),

@@ -282,6 +282,13 @@ type AlertPolicy struct {
 	// be ignored.
 	// Structure is documented below.
 	CreationRecords AlertPolicyCreationRecordArrayOutput `pulumi:"creationRecords"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A short name or phrase used to identify the policy in
 	// dashboards, notifications, and incidents. To avoid confusion, don't use
 	// the same display name for multiple policies in the same project. The
@@ -380,6 +387,13 @@ type alertPolicyState struct {
 	// be ignored.
 	// Structure is documented below.
 	CreationRecords []AlertPolicyCreationRecord `pulumi:"creationRecords"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A short name or phrase used to identify the policy in
 	// dashboards, notifications, and incidents. To avoid confusion, don't use
 	// the same display name for multiple policies in the same project. The
@@ -440,6 +454,13 @@ type AlertPolicyState struct {
 	// be ignored.
 	// Structure is documented below.
 	CreationRecords AlertPolicyCreationRecordArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A short name or phrase used to identify the policy in
 	// dashboards, notifications, and incidents. To avoid confusion, don't use
 	// the same display name for multiple policies in the same project. The
@@ -499,6 +520,13 @@ type alertPolicyArgs struct {
 	// one to six conditions.
 	// Structure is documented below.
 	Conditions []AlertPolicyCondition `pulumi:"conditions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A short name or phrase used to identify the policy in
 	// dashboards, notifications, and incidents. To avoid confusion, don't use
 	// the same display name for multiple policies in the same project. The
@@ -552,6 +580,13 @@ type AlertPolicyArgs struct {
 	// one to six conditions.
 	// Structure is documented below.
 	Conditions AlertPolicyConditionArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A short name or phrase used to identify the policy in
 	// dashboards, notifications, and incidents. To avoid confusion, don't use
 	// the same display name for multiple policies in the same project. The
@@ -705,6 +740,16 @@ func (o AlertPolicyOutput) Conditions() AlertPolicyConditionArrayOutput {
 // Structure is documented below.
 func (o AlertPolicyOutput) CreationRecords() AlertPolicyCreationRecordArrayOutput {
 	return o.ApplyT(func(v *AlertPolicy) AlertPolicyCreationRecordArrayOutput { return v.CreationRecords }).(AlertPolicyCreationRecordArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AlertPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A short name or phrase used to identify the policy in

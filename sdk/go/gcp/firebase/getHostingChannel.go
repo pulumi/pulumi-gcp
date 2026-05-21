@@ -36,6 +36,7 @@ type LookupHostingChannelArgs struct {
 // A collection of values returned by getHostingChannel.
 type LookupHostingChannelResult struct {
 	ChannelId       string            `pulumi:"channelId"`
+	DeletionPolicy  string            `pulumi:"deletionPolicy"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	ExpireTime      string            `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
@@ -87,6 +88,10 @@ func (o LookupHostingChannelResultOutput) ToLookupHostingChannelResultOutputWith
 
 func (o LookupHostingChannelResultOutput) ChannelId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostingChannelResult) string { return v.ChannelId }).(pulumi.StringOutput)
+}
+
+func (o LookupHostingChannelResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostingChannelResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupHostingChannelResultOutput) EffectiveLabels() pulumi.StringMapOutput {

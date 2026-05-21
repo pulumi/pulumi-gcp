@@ -89,8 +89,9 @@ type LookupNetworkPeeringArgs struct {
 
 // A collection of values returned by getNetworkPeering.
 type LookupNetworkPeeringResult struct {
-	ExportCustomRoutes             bool `pulumi:"exportCustomRoutes"`
-	ExportSubnetRoutesWithPublicIp bool `pulumi:"exportSubnetRoutesWithPublicIp"`
+	DeletionPolicy                 string `pulumi:"deletionPolicy"`
+	ExportCustomRoutes             bool   `pulumi:"exportCustomRoutes"`
+	ExportSubnetRoutesWithPublicIp bool   `pulumi:"exportSubnetRoutesWithPublicIp"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                             string `pulumi:"id"`
 	ImportCustomRoutes             bool   `pulumi:"importCustomRoutes"`
@@ -138,6 +139,10 @@ func (o LookupNetworkPeeringResultOutput) ToLookupNetworkPeeringResultOutput() L
 
 func (o LookupNetworkPeeringResultOutput) ToLookupNetworkPeeringResultOutputWithContext(ctx context.Context) LookupNetworkPeeringResultOutput {
 	return o
+}
+
+func (o LookupNetworkPeeringResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkPeeringResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupNetworkPeeringResultOutput) ExportCustomRoutes() pulumi.BoolOutput {

@@ -117,6 +117,15 @@ export class Database extends pulumi.CustomResource {
      */
     declare public readonly defaultTimeZone: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
@@ -179,6 +188,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["databaseDialect"] = state?.databaseDialect;
             resourceInputs["ddls"] = state?.ddls;
             resourceInputs["defaultTimeZone"] = state?.defaultTimeZone;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["enableDropProtection"] = state?.enableDropProtection;
             resourceInputs["encryptionConfig"] = state?.encryptionConfig;
@@ -195,6 +205,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["databaseDialect"] = args?.databaseDialect;
             resourceInputs["ddls"] = args?.ddls;
             resourceInputs["defaultTimeZone"] = args?.defaultTimeZone;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["enableDropProtection"] = args?.enableDropProtection;
             resourceInputs["encryptionConfig"] = args?.encryptionConfig;
@@ -235,6 +246,15 @@ export interface DatabaseState {
      * from the tz database. Default value is "America/Los_angeles".
      */
     defaultTimeZone?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
@@ -309,6 +329,15 @@ export interface DatabaseArgs {
      * from the tz database. Default value is "America/Los_angeles".
      */
     defaultTimeZone?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.

@@ -625,6 +625,14 @@ Object.defineProperty(exports, "defaultLabels", {
     enumerable: true,
 });
 
+export declare const deletionPolicy: string | undefined;
+Object.defineProperty(exports, "deletionPolicy", {
+    get() {
+        return __config.get("deletionPolicy");
+    },
+    enumerable: true,
+});
+
 export declare const deploymentManagerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "deploymentManagerCustomEndpoint", {
     get() {

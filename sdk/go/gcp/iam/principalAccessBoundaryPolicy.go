@@ -136,6 +136,13 @@ type PrincipalAccessBoundaryPolicy struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. The time when the principal access boundary policy was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Principal access boundary policy details
 	// Structure is documented below.
 	Details PrincipalAccessBoundaryPolicyDetailsOutput `pulumi:"details"`
@@ -208,6 +215,13 @@ type principalAccessBoundaryPolicyState struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. The time when the principal access boundary policy was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Principal access boundary policy details
 	// Structure is documented below.
 	Details *PrincipalAccessBoundaryPolicyDetails `pulumi:"details"`
@@ -242,6 +256,13 @@ type PrincipalAccessBoundaryPolicyState struct {
 	Annotations pulumi.StringMapInput
 	// Output only. The time when the principal access boundary policy was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Principal access boundary policy details
 	// Structure is documented below.
 	Details PrincipalAccessBoundaryPolicyDetailsPtrInput
@@ -278,6 +299,13 @@ type principalAccessBoundaryPolicyArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Principal access boundary policy details
 	// Structure is documented below.
 	Details *PrincipalAccessBoundaryPolicyDetails `pulumi:"details"`
@@ -300,6 +328,13 @@ type PrincipalAccessBoundaryPolicyArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Principal access boundary policy details
 	// Structure is documented below.
 	Details PrincipalAccessBoundaryPolicyDetailsPtrInput
@@ -413,6 +448,16 @@ func (o PrincipalAccessBoundaryPolicyOutput) Annotations() pulumi.StringMapOutpu
 // Output only. The time when the principal access boundary policy was created.
 func (o PrincipalAccessBoundaryPolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrincipalAccessBoundaryPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PrincipalAccessBoundaryPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrincipalAccessBoundaryPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Principal access boundary policy details

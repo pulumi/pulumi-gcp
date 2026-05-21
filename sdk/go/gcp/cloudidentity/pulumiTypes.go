@@ -1451,6 +1451,13 @@ type GetGroupMembershipsMembership struct {
 	CreateIgnoreAlreadyExists bool `pulumi:"createIgnoreAlreadyExists"`
 	// The time when the Membership was created.
 	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
 	Group string `pulumi:"group"`
 	// EntityKey of the member.  Structure is documented below.
@@ -1483,6 +1490,13 @@ type GetGroupMembershipsMembershipArgs struct {
 	CreateIgnoreAlreadyExists pulumi.BoolInput `pulumi:"createIgnoreAlreadyExists"`
 	// The time when the Membership was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
 	Group pulumi.StringInput `pulumi:"group"`
 	// EntityKey of the member.  Structure is documented below.
@@ -1558,6 +1572,16 @@ func (o GetGroupMembershipsMembershipOutput) CreateIgnoreAlreadyExists() pulumi.
 // The time when the Membership was created.
 func (o GetGroupMembershipsMembershipOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembership) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetGroupMembershipsMembershipOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipsMembership) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -2433,6 +2457,13 @@ type GetGroupsGroup struct {
 	AdditionalGroupKeys []GetGroupsGroupAdditionalGroupKey `pulumi:"additionalGroupKeys"`
 	// The time when the Group was created.
 	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// An extended description to help users determine the purpose of a Group.
 	Description string `pulumi:"description"`
 	// The display name of the Group.
@@ -2473,6 +2504,13 @@ type GetGroupsGroupArgs struct {
 	AdditionalGroupKeys GetGroupsGroupAdditionalGroupKeyArrayInput `pulumi:"additionalGroupKeys"`
 	// The time when the Group was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// An extended description to help users determine the purpose of a Group.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The display name of the Group.
@@ -2556,6 +2594,16 @@ func (o GetGroupsGroupOutput) AdditionalGroupKeys() GetGroupsGroupAdditionalGrou
 // The time when the Group was created.
 func (o GetGroupsGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetGroupsGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An extended description to help users determine the purpose of a Group.

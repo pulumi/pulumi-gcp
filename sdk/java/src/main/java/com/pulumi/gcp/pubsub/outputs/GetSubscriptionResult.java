@@ -27,6 +27,7 @@ public final class GetSubscriptionResult {
     private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
     private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
     private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     private Boolean enableExactlyOnceDelivery;
     private Boolean enableMessageOrdering;
@@ -61,6 +62,9 @@ public final class GetSubscriptionResult {
     }
     public List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies() {
         return this.deadLetterPolicies;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -131,6 +135,7 @@ public final class GetSubscriptionResult {
         private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
         private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
         private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private Boolean enableExactlyOnceDelivery;
         private Boolean enableMessageOrdering;
@@ -155,6 +160,7 @@ public final class GetSubscriptionResult {
     	      this.bigqueryConfigs = defaults.bigqueryConfigs;
     	      this.cloudStorageConfigs = defaults.cloudStorageConfigs;
     	      this.deadLetterPolicies = defaults.deadLetterPolicies;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableExactlyOnceDelivery = defaults.enableExactlyOnceDelivery;
     	      this.enableMessageOrdering = defaults.enableMessageOrdering;
@@ -214,6 +220,14 @@ public final class GetSubscriptionResult {
         }
         public Builder deadLetterPolicies(GetSubscriptionDeadLetterPolicy... deadLetterPolicies) {
             return deadLetterPolicies(List.of(deadLetterPolicies));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
@@ -367,6 +381,7 @@ public final class GetSubscriptionResult {
             _resultValue.bigqueryConfigs = bigqueryConfigs;
             _resultValue.cloudStorageConfigs = cloudStorageConfigs;
             _resultValue.deadLetterPolicies = deadLetterPolicies;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.enableExactlyOnceDelivery = enableExactlyOnceDelivery;
             _resultValue.enableMessageOrdering = enableMessageOrdering;

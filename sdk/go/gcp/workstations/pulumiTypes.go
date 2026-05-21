@@ -3015,6 +3015,9 @@ func (o WorkstationConfigIamMemberConditionPtrOutput) Title() pulumi.StringPtrOu
 }
 
 type WorkstationConfigPersistentDirectory struct {
+	// A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+	// Structure is documented below.
+	GceHd *WorkstationConfigPersistentDirectoryGceHd `pulumi:"gceHd"`
 	// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
 	// Structure is documented below.
 	GcePd *WorkstationConfigPersistentDirectoryGcePd `pulumi:"gcePd"`
@@ -3034,6 +3037,9 @@ type WorkstationConfigPersistentDirectoryInput interface {
 }
 
 type WorkstationConfigPersistentDirectoryArgs struct {
+	// A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+	// Structure is documented below.
+	GceHd WorkstationConfigPersistentDirectoryGceHdPtrInput `pulumi:"gceHd"`
 	// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
 	// Structure is documented below.
 	GcePd WorkstationConfigPersistentDirectoryGcePdPtrInput `pulumi:"gcePd"`
@@ -3092,6 +3098,14 @@ func (o WorkstationConfigPersistentDirectoryOutput) ToWorkstationConfigPersisten
 	return o
 }
 
+// A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+// Structure is documented below.
+func (o WorkstationConfigPersistentDirectoryOutput) GceHd() WorkstationConfigPersistentDirectoryGceHdPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectory) *WorkstationConfigPersistentDirectoryGceHd {
+		return v.GceHd
+	}).(WorkstationConfigPersistentDirectoryGceHdPtrOutput)
+}
+
 // A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
 // Structure is documented below.
 func (o WorkstationConfigPersistentDirectoryOutput) GcePd() WorkstationConfigPersistentDirectoryGcePdPtrOutput {
@@ -3123,6 +3137,204 @@ func (o WorkstationConfigPersistentDirectoryArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkstationConfigPersistentDirectory {
 		return vs[0].([]WorkstationConfigPersistentDirectory)[vs[1].(int)]
 	}).(WorkstationConfigPersistentDirectoryOutput)
+}
+
+type WorkstationConfigPersistentDirectoryGceHd struct {
+	// How long to wait before converting the disk into a snapshot.
+	ArchiveTimeout *string `pulumi:"archiveTimeout"`
+	// Whether the persistent disk should be deleted when the workstation is deleted.
+	// Possible values are: `DELETE`, `RETAIN`.
+	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
+	// The GB capacity of a persistent home directory. Defaults to '200'.
+	SizeGb *int `pulumi:"sizeGb"`
+	// Name of the snapshot to use as the source for the disk.
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
+}
+
+// WorkstationConfigPersistentDirectoryGceHdInput is an input type that accepts WorkstationConfigPersistentDirectoryGceHdArgs and WorkstationConfigPersistentDirectoryGceHdOutput values.
+// You can construct a concrete instance of `WorkstationConfigPersistentDirectoryGceHdInput` via:
+//
+//	WorkstationConfigPersistentDirectoryGceHdArgs{...}
+type WorkstationConfigPersistentDirectoryGceHdInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigPersistentDirectoryGceHdOutput() WorkstationConfigPersistentDirectoryGceHdOutput
+	ToWorkstationConfigPersistentDirectoryGceHdOutputWithContext(context.Context) WorkstationConfigPersistentDirectoryGceHdOutput
+}
+
+type WorkstationConfigPersistentDirectoryGceHdArgs struct {
+	// How long to wait before converting the disk into a snapshot.
+	ArchiveTimeout pulumi.StringPtrInput `pulumi:"archiveTimeout"`
+	// Whether the persistent disk should be deleted when the workstation is deleted.
+	// Possible values are: `DELETE`, `RETAIN`.
+	ReclaimPolicy pulumi.StringPtrInput `pulumi:"reclaimPolicy"`
+	// The GB capacity of a persistent home directory. Defaults to '200'.
+	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+	// Name of the snapshot to use as the source for the disk.
+	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
+}
+
+func (WorkstationConfigPersistentDirectoryGceHdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigPersistentDirectoryGceHd)(nil)).Elem()
+}
+
+func (i WorkstationConfigPersistentDirectoryGceHdArgs) ToWorkstationConfigPersistentDirectoryGceHdOutput() WorkstationConfigPersistentDirectoryGceHdOutput {
+	return i.ToWorkstationConfigPersistentDirectoryGceHdOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigPersistentDirectoryGceHdArgs) ToWorkstationConfigPersistentDirectoryGceHdOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGceHdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryGceHdOutput)
+}
+
+func (i WorkstationConfigPersistentDirectoryGceHdArgs) ToWorkstationConfigPersistentDirectoryGceHdPtrOutput() WorkstationConfigPersistentDirectoryGceHdPtrOutput {
+	return i.ToWorkstationConfigPersistentDirectoryGceHdPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigPersistentDirectoryGceHdArgs) ToWorkstationConfigPersistentDirectoryGceHdPtrOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGceHdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryGceHdOutput).ToWorkstationConfigPersistentDirectoryGceHdPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigPersistentDirectoryGceHdPtrInput is an input type that accepts WorkstationConfigPersistentDirectoryGceHdArgs, WorkstationConfigPersistentDirectoryGceHdPtr and WorkstationConfigPersistentDirectoryGceHdPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigPersistentDirectoryGceHdPtrInput` via:
+//
+//	        WorkstationConfigPersistentDirectoryGceHdArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigPersistentDirectoryGceHdPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigPersistentDirectoryGceHdPtrOutput() WorkstationConfigPersistentDirectoryGceHdPtrOutput
+	ToWorkstationConfigPersistentDirectoryGceHdPtrOutputWithContext(context.Context) WorkstationConfigPersistentDirectoryGceHdPtrOutput
+}
+
+type workstationConfigPersistentDirectoryGceHdPtrType WorkstationConfigPersistentDirectoryGceHdArgs
+
+func WorkstationConfigPersistentDirectoryGceHdPtr(v *WorkstationConfigPersistentDirectoryGceHdArgs) WorkstationConfigPersistentDirectoryGceHdPtrInput {
+	return (*workstationConfigPersistentDirectoryGceHdPtrType)(v)
+}
+
+func (*workstationConfigPersistentDirectoryGceHdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigPersistentDirectoryGceHd)(nil)).Elem()
+}
+
+func (i *workstationConfigPersistentDirectoryGceHdPtrType) ToWorkstationConfigPersistentDirectoryGceHdPtrOutput() WorkstationConfigPersistentDirectoryGceHdPtrOutput {
+	return i.ToWorkstationConfigPersistentDirectoryGceHdPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigPersistentDirectoryGceHdPtrType) ToWorkstationConfigPersistentDirectoryGceHdPtrOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGceHdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryGceHdPtrOutput)
+}
+
+type WorkstationConfigPersistentDirectoryGceHdOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigPersistentDirectoryGceHdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigPersistentDirectoryGceHd)(nil)).Elem()
+}
+
+func (o WorkstationConfigPersistentDirectoryGceHdOutput) ToWorkstationConfigPersistentDirectoryGceHdOutput() WorkstationConfigPersistentDirectoryGceHdOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryGceHdOutput) ToWorkstationConfigPersistentDirectoryGceHdOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGceHdOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryGceHdOutput) ToWorkstationConfigPersistentDirectoryGceHdPtrOutput() WorkstationConfigPersistentDirectoryGceHdPtrOutput {
+	return o.ToWorkstationConfigPersistentDirectoryGceHdPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigPersistentDirectoryGceHdOutput) ToWorkstationConfigPersistentDirectoryGceHdPtrOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGceHdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigPersistentDirectoryGceHd) *WorkstationConfigPersistentDirectoryGceHd {
+		return &v
+	}).(WorkstationConfigPersistentDirectoryGceHdPtrOutput)
+}
+
+// How long to wait before converting the disk into a snapshot.
+func (o WorkstationConfigPersistentDirectoryGceHdOutput) ArchiveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGceHd) *string { return v.ArchiveTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Whether the persistent disk should be deleted when the workstation is deleted.
+// Possible values are: `DELETE`, `RETAIN`.
+func (o WorkstationConfigPersistentDirectoryGceHdOutput) ReclaimPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGceHd) *string { return v.ReclaimPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The GB capacity of a persistent home directory. Defaults to '200'.
+func (o WorkstationConfigPersistentDirectoryGceHdOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGceHd) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Name of the snapshot to use as the source for the disk.
+func (o WorkstationConfigPersistentDirectoryGceHdOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGceHd) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
+type WorkstationConfigPersistentDirectoryGceHdPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigPersistentDirectoryGceHdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigPersistentDirectoryGceHd)(nil)).Elem()
+}
+
+func (o WorkstationConfigPersistentDirectoryGceHdPtrOutput) ToWorkstationConfigPersistentDirectoryGceHdPtrOutput() WorkstationConfigPersistentDirectoryGceHdPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryGceHdPtrOutput) ToWorkstationConfigPersistentDirectoryGceHdPtrOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGceHdPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryGceHdPtrOutput) Elem() WorkstationConfigPersistentDirectoryGceHdOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGceHd) WorkstationConfigPersistentDirectoryGceHd {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigPersistentDirectoryGceHd
+		return ret
+	}).(WorkstationConfigPersistentDirectoryGceHdOutput)
+}
+
+// How long to wait before converting the disk into a snapshot.
+func (o WorkstationConfigPersistentDirectoryGceHdPtrOutput) ArchiveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGceHd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the persistent disk should be deleted when the workstation is deleted.
+// Possible values are: `DELETE`, `RETAIN`.
+func (o WorkstationConfigPersistentDirectoryGceHdPtrOutput) ReclaimPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGceHd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReclaimPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GB capacity of a persistent home directory. Defaults to '200'.
+func (o WorkstationConfigPersistentDirectoryGceHdPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGceHd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Name of the snapshot to use as the source for the disk.
+func (o WorkstationConfigPersistentDirectoryGceHdPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGceHd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceSnapshot
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkstationConfigPersistentDirectoryGcePd struct {
@@ -3829,6 +4041,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigIamMemberConditionPtrInput)(nil)).Elem(), WorkstationConfigIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryArrayInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGceHdInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGceHdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGceHdPtrInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGceHdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePdInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGcePdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePdPtrInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGcePdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigReadinessCheckInput)(nil)).Elem(), WorkstationConfigReadinessCheckArgs{})
@@ -3875,6 +4089,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkstationConfigIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryArrayOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGceHdOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGceHdPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGcePdOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGcePdPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigReadinessCheckOutput{})

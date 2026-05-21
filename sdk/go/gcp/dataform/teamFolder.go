@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataform.NewTeamFolder(ctx, "dataform_team_folder_basic", &dataform.TeamFolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Basic TeamFolder-_75223"),
+//				DisplayName: pulumi.String("Basic TeamFolder-_34535"),
 //			})
 //			if err != nil {
 //				return err
@@ -71,6 +71,13 @@ import (
 type TeamFolder struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Required. The TeamFolder's user-friendly name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The TeamFolder's name.
@@ -120,6 +127,13 @@ func GetTeamFolder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamFolder resources.
 type teamFolderState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Required. The TeamFolder's user-friendly name.
 	DisplayName *string `pulumi:"displayName"`
 	// The TeamFolder's name.
@@ -134,6 +148,13 @@ type teamFolderState struct {
 }
 
 type TeamFolderState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Required. The TeamFolder's user-friendly name.
 	DisplayName pulumi.StringPtrInput
 	// The TeamFolder's name.
@@ -152,6 +173,13 @@ func (TeamFolderState) ElementType() reflect.Type {
 }
 
 type teamFolderArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Required. The TeamFolder's user-friendly name.
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
@@ -163,6 +191,13 @@ type teamFolderArgs struct {
 
 // The set of arguments for constructing a TeamFolder resource.
 type TeamFolderArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Required. The TeamFolder's user-friendly name.
 	DisplayName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -257,6 +292,16 @@ func (o TeamFolderOutput) ToTeamFolderOutput() TeamFolderOutput {
 
 func (o TeamFolderOutput) ToTeamFolderOutputWithContext(ctx context.Context) TeamFolderOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TeamFolderOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamFolder) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Required. The TeamFolder's user-friendly name.

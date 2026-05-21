@@ -26,13 +26,16 @@ class GetSSLPolicyResult:
     """
     A collection of values returned by getSSLPolicy.
     """
-    def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, id=None, min_tls_version=None, name=None, profile=None, project=None, self_link=None):
+    def __init__(__self__, creation_timestamp=None, custom_features=None, deletion_policy=None, description=None, enabled_features=None, fingerprint=None, id=None, min_tls_version=None, name=None, profile=None, project=None, self_link=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if custom_features and not isinstance(custom_features, list):
             raise TypeError("Expected argument 'custom_features' to be a list")
         pulumi.set(__self__, "custom_features", custom_features)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -75,6 +78,11 @@ class GetSSLPolicyResult:
         attribute will be empty.
         """
         return pulumi.get(self, "custom_features")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -151,6 +159,7 @@ class AwaitableGetSSLPolicyResult(GetSSLPolicyResult):
         return GetSSLPolicyResult(
             creation_timestamp=self.creation_timestamp,
             custom_features=self.custom_features,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             enabled_features=self.enabled_features,
             fingerprint=self.fingerprint,
@@ -194,6 +203,7 @@ def get_ssl_policy(name: Optional[_builtins.str] = None,
     return AwaitableGetSSLPolicyResult(
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         custom_features=pulumi.get(__ret__, 'custom_features'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         enabled_features=pulumi.get(__ret__, 'enabled_features'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
@@ -234,6 +244,7 @@ def get_ssl_policy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetSSLPolicyResult(
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         custom_features=pulumi.get(__response__, 'custom_features'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         enabled_features=pulumi.get(__response__, 'enabled_features'),
         fingerprint=pulumi.get(__response__, 'fingerprint'),

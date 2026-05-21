@@ -22,6 +22,7 @@ __all__ = ['MetastoreServiceArgs', 'MetastoreService']
 class MetastoreServiceArgs:
     def __init__(__self__, *,
                  database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_config: pulumi.Input[Optional['MetastoreServiceEncryptionConfigArgs']] = None,
                  hive_metastore_config: pulumi.Input[Optional['MetastoreServiceHiveMetastoreConfigArgs']] = None,
@@ -46,6 +47,12 @@ class MetastoreServiceArgs:
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
@@ -90,6 +97,8 @@ class MetastoreServiceArgs:
         """
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_config is not None:
@@ -140,6 +149,23 @@ class MetastoreServiceArgs:
     @database_type.setter
     def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -387,6 +413,7 @@ class _MetastoreServiceState:
                  artifact_gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  encryption_config: pulumi.Input[Optional['MetastoreServiceEncryptionConfigArgs']] = None,
@@ -421,6 +448,12 @@ class _MetastoreServiceState:
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
@@ -478,6 +511,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "create_time", create_time)
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if effective_labels is not None:
@@ -568,6 +603,23 @@ class _MetastoreServiceState:
     @database_type.setter
     def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -913,6 +965,7 @@ class MetastoreService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_config: pulumi.Input[Optional[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
                  hive_metastore_config: pulumi.Input[Optional[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
@@ -1241,6 +1294,12 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
@@ -1609,6 +1668,7 @@ class MetastoreService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_config: pulumi.Input[Optional[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
                  hive_metastore_config: pulumi.Input[Optional[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
@@ -1637,6 +1697,7 @@ class MetastoreService(pulumi.CustomResource):
             __props__ = MetastoreServiceArgs.__new__(MetastoreServiceArgs)
 
             __props__.__dict__["database_type"] = database_type
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["hive_metastore_config"] = hive_metastore_config
@@ -1680,6 +1741,7 @@ class MetastoreService(pulumi.CustomResource):
             artifact_gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             encryption_config: pulumi.Input[Optional[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
@@ -1718,6 +1780,12 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
@@ -1776,6 +1844,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["artifact_gcs_uri"] = artifact_gcs_uri
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["database_type"] = database_type
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_config"] = encryption_config
@@ -1829,6 +1898,19 @@ class MetastoreService(pulumi.CustomResource):
         Possible values are: `MYSQL`, `SPANNER`.
         """
         return pulumi.get(self, "database_type")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

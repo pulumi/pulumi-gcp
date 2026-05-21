@@ -40,6 +40,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.transcoder.JobTemplate;
  * import com.pulumi.gcp.transcoder.JobTemplateArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigInputArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEditListArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigAdBreakArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamH264Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamAudioStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigMuxStreamArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -158,7 +166,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.transcoder.JobTemplate;
  * import com.pulumi.gcp.transcoder.JobTemplateArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigInputArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigOutputArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEditListArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigAdBreakArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigOverlayArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigOverlayAnimationArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigOverlayAnimationAnimationFadeArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigOverlayAnimationAnimationFadeXyArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigOverlayImageArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamH264Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamAudioStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigMuxStreamArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -303,6 +324,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.transcoder.JobTemplate;
  * import com.pulumi.gcp.transcoder.JobTemplateArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamH264Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamAudioStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEncryptionArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEncryptionSecretManagerKeySourceArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEncryptionDrmSystemsArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEncryptionDrmSystemsClearkeyArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEncryptionAes128Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEncryptionDrmSystemsWidevineArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEncryptionMpegCencArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigMuxStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigMuxStreamSegmentSettingsArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigManifestArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -483,7 +518,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.transcoder.JobTemplate;
  * import com.pulumi.gcp.transcoder.JobTemplateArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigInputArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigOutputArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEditListArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigAdBreakArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamH264Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamAudioStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigMuxStreamArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigPubsubDestinationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -637,6 +680,30 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<JobTemplateConfig> config() {
         return this.config;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

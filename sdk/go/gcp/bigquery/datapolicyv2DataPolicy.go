@@ -196,6 +196,13 @@ type Datapolicyv2DataPolicy struct {
 	// RAW_DATA_ACCESS_POLICY
 	// COLUMN_LEVEL_SECURITY_POLICY
 	DataPolicyType pulumi.StringOutput `pulumi:"dataPolicyType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The etag for this Data Policy.
 	// This field is used for UpdateDataPolicy calls. If Data Policy exists, this
 	// field is required and must match the server's etag. It will also be
@@ -281,6 +288,13 @@ type datapolicyv2DataPolicyState struct {
 	// RAW_DATA_ACCESS_POLICY
 	// COLUMN_LEVEL_SECURITY_POLICY
 	DataPolicyType *string `pulumi:"dataPolicyType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The etag for this Data Policy.
 	// This field is used for UpdateDataPolicy calls. If Data Policy exists, this
 	// field is required and must match the server's etag. It will also be
@@ -328,6 +342,13 @@ type Datapolicyv2DataPolicyState struct {
 	// RAW_DATA_ACCESS_POLICY
 	// COLUMN_LEVEL_SECURITY_POLICY
 	DataPolicyType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The etag for this Data Policy.
 	// This field is used for UpdateDataPolicy calls. If Data Policy exists, this
 	// field is required and must match the server's etag. It will also be
@@ -379,6 +400,13 @@ type datapolicyv2DataPolicyArgs struct {
 	// RAW_DATA_ACCESS_POLICY
 	// COLUMN_LEVEL_SECURITY_POLICY
 	DataPolicyType string `pulumi:"dataPolicyType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The etag for this Data Policy.
 	// This field is used for UpdateDataPolicy calls. If Data Policy exists, this
 	// field is required and must match the server's etag. It will also be
@@ -415,6 +443,13 @@ type Datapolicyv2DataPolicyArgs struct {
 	// RAW_DATA_ACCESS_POLICY
 	// COLUMN_LEVEL_SECURITY_POLICY
 	DataPolicyType pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The etag for this Data Policy.
 	// This field is used for UpdateDataPolicy calls. If Data Policy exists, this
 	// field is required and must match the server's etag. It will also be
@@ -545,6 +580,16 @@ func (o Datapolicyv2DataPolicyOutput) DataPolicyId() pulumi.StringOutput {
 // COLUMN_LEVEL_SECURITY_POLICY
 func (o Datapolicyv2DataPolicyOutput) DataPolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datapolicyv2DataPolicy) pulumi.StringOutput { return v.DataPolicyType }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o Datapolicyv2DataPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The etag for this Data Policy.

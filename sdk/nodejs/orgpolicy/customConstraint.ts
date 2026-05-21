@@ -114,6 +114,15 @@ export class CustomConstraint extends pulumi.CustomResource {
      */
     declare public readonly condition: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human-friendly description of the constraint to display as an error message when the policy is violated.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -157,6 +166,7 @@ export class CustomConstraint extends pulumi.CustomResource {
             const state = argsOrState as CustomConstraintState | undefined;
             resourceInputs["actionType"] = state?.actionType;
             resourceInputs["condition"] = state?.condition;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["methodTypes"] = state?.methodTypes;
@@ -183,6 +193,7 @@ export class CustomConstraint extends pulumi.CustomResource {
             }
             resourceInputs["actionType"] = args?.actionType;
             resourceInputs["condition"] = args?.condition;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["methodTypes"] = args?.methodTypes;
@@ -209,6 +220,15 @@ export interface CustomConstraintState {
      * A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
      */
     condition?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-friendly description of the constraint to display as an error message when the policy is violated.
      */
@@ -252,6 +272,15 @@ export interface CustomConstraintArgs {
      * A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
      */
     condition: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-friendly description of the constraint to display as an error message when the policy is violated.
      */

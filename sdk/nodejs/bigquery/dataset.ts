@@ -334,6 +334,15 @@ export class Dataset extends pulumi.CustomResource {
      */
     declare public readonly deleteContentsOnDestroy: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A user-friendly description of the dataset
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -445,6 +454,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultPartitionExpirationMs"] = state?.defaultPartitionExpirationMs;
             resourceInputs["defaultTableExpirationMs"] = state?.defaultTableExpirationMs;
             resourceInputs["deleteContentsOnDestroy"] = state?.deleteContentsOnDestroy;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["etag"] = state?.etag;
@@ -473,6 +483,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultPartitionExpirationMs"] = args?.defaultPartitionExpirationMs;
             resourceInputs["defaultTableExpirationMs"] = args?.defaultTableExpirationMs;
             resourceInputs["deleteContentsOnDestroy"] = args?.deleteContentsOnDestroy;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["externalCatalogDatasetOptions"] = args?.externalCatalogDatasetOptions;
             resourceInputs["externalDatasetReference"] = args?.externalDatasetReference;
@@ -573,6 +584,15 @@ export interface DatasetState {
      * destroying the resource will fail if tables are present.
      */
     deleteContentsOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-friendly description of the dataset
      */
@@ -735,6 +755,15 @@ export interface DatasetArgs {
      * destroying the resource will fail if tables are present.
      */
     deleteContentsOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-friendly description of the dataset
      */

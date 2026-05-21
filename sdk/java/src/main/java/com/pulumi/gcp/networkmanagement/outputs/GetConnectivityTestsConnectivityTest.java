@@ -21,6 +21,16 @@ public final class GetConnectivityTestsConnectivityTest {
      */
     private Boolean bypassFirewallChecks;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return The user-supplied description of the Connectivity Test.
      * 
      */
@@ -86,6 +96,18 @@ public final class GetConnectivityTestsConnectivityTest {
      */
     public Boolean bypassFirewallChecks() {
         return this.bypassFirewallChecks;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The user-supplied description of the Connectivity Test.
@@ -178,6 +200,7 @@ public final class GetConnectivityTestsConnectivityTest {
     @CustomType.Builder
     public static final class Builder {
         private Boolean bypassFirewallChecks;
+        private String deletionPolicy;
         private String description;
         private List<GetConnectivityTestsConnectivityTestDestination> destinations;
         private Map<String,String> effectiveLabels;
@@ -193,6 +216,7 @@ public final class GetConnectivityTestsConnectivityTest {
         public Builder(GetConnectivityTestsConnectivityTest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bypassFirewallChecks = defaults.bypassFirewallChecks;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.destinations = defaults.destinations;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -212,6 +236,14 @@ public final class GetConnectivityTestsConnectivityTest {
               throw new MissingRequiredPropertyException("GetConnectivityTestsConnectivityTest", "bypassFirewallChecks");
             }
             this.bypassFirewallChecks = bypassFirewallChecks;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetConnectivityTestsConnectivityTest", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -314,6 +346,7 @@ public final class GetConnectivityTestsConnectivityTest {
         public GetConnectivityTestsConnectivityTest build() {
             final var _resultValue = new GetConnectivityTestsConnectivityTest();
             _resultValue.bypassFirewallChecks = bypassFirewallChecks;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.destinations = destinations;
             _resultValue.effectiveLabels = effectiveLabels;

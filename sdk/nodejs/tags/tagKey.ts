@@ -80,6 +80,15 @@ export class TagKey extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * User-assigned description of the TagKey. Must not exceed 256 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -132,6 +141,7 @@ export class TagKey extends pulumi.CustomResource {
             const state = argsOrState as TagKeyState | undefined;
             resourceInputs["allowedValuesRegex"] = state?.allowedValuesRegex;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["namespacedName"] = state?.namespacedName;
@@ -149,6 +159,7 @@ export class TagKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'shortName'");
             }
             resourceInputs["allowedValuesRegex"] = args?.allowedValuesRegex;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["purpose"] = args?.purpose;
@@ -177,6 +188,15 @@ export interface TagKeyState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-assigned description of the TagKey. Must not exceed 256 characters.
      */
@@ -224,6 +244,15 @@ export interface TagKeyArgs {
      * Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
      */
     allowedValuesRegex?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-assigned description of the TagKey. Must not exceed 256 characters.
      */

@@ -27,7 +27,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, final_backup_description=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_policy=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, final_backup_description=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -43,6 +43,9 @@ class GetDatabaseInstanceResult:
         if database_version and not isinstance(database_version, str):
             raise TypeError("Expected argument 'database_version' to be a str")
         pulumi.set(__self__, "database_version", database_version)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -158,6 +161,11 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> _builtins.str:
         return pulumi.get(self, "database_version")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -324,6 +332,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             clones=self.clones,
             connection_name=self.connection_name,
             database_version=self.database_version,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             dns_name=self.dns_name,
             dns_names=self.dns_names,
@@ -387,6 +396,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         clones=pulumi.get(__ret__, 'clones'),
         connection_name=pulumi.get(__ret__, 'connection_name'),
         database_version=pulumi.get(__ret__, 'database_version'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         dns_name=pulumi.get(__ret__, 'dns_name'),
         dns_names=pulumi.get(__ret__, 'dns_names'),
@@ -447,6 +457,7 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
         clones=pulumi.get(__response__, 'clones'),
         connection_name=pulumi.get(__response__, 'connection_name'),
         database_version=pulumi.get(__response__, 'database_version'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         dns_name=pulumi.get(__response__, 'dns_name'),
         dns_names=pulumi.get(__response__, 'dns_names'),

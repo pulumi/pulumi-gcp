@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetHcVpnGatewayResult
     {
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string GatewayIpVersion;
@@ -172,6 +173,8 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetHcVpnGatewayResult(
+            string deletionPolicy,
+
             string description,
 
             ImmutableDictionary<string, string> effectiveLabels,
@@ -202,6 +205,7 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetHcVpnGatewayVpnInterfaceResult> vpnInterfaces)
         {
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EffectiveLabels = effectiveLabels;
             GatewayIpVersion = gatewayIpVersion;

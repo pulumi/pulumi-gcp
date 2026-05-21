@@ -91,6 +91,13 @@ import (
 type EntryGroup struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A short name to identify the entry group, for example, "analytics data - jan 2011".
@@ -140,6 +147,13 @@ func GetEntryGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntryGroup resources.
 type entryGroupState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
 	Description *string `pulumi:"description"`
 	// A short name to identify the entry group, for example, "analytics data - jan 2011".
@@ -157,6 +171,13 @@ type entryGroupState struct {
 }
 
 type EntryGroupState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
 	Description pulumi.StringPtrInput
 	// A short name to identify the entry group, for example, "analytics data - jan 2011".
@@ -178,6 +199,13 @@ func (EntryGroupState) ElementType() reflect.Type {
 }
 
 type entryGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
 	Description *string `pulumi:"description"`
 	// A short name to identify the entry group, for example, "analytics data - jan 2011".
@@ -194,6 +222,13 @@ type entryGroupArgs struct {
 
 // The set of arguments for constructing a EntryGroup resource.
 type EntryGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
 	Description pulumi.StringPtrInput
 	// A short name to identify the entry group, for example, "analytics data - jan 2011".
@@ -293,6 +328,16 @@ func (o EntryGroupOutput) ToEntryGroupOutput() EntryGroupOutput {
 
 func (o EntryGroupOutput) ToEntryGroupOutputWithContext(ctx context.Context) EntryGroupOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EntryGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.

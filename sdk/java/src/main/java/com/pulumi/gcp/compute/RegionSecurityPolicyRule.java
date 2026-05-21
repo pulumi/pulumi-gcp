@@ -240,6 +240,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -326,6 +329,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyRule;
  * import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleNetworkMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -440,6 +444,30 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      */
     public Output<String> action() {
         return this.action;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * An optional description of this resource. Provide this property when you create the resource.

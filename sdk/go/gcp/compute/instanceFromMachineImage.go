@@ -78,6 +78,13 @@ type InstanceFromMachineImage struct {
 	// 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
 	// 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringOutput `pulumi:"currentStatus"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// A brief description of the resource.
@@ -226,6 +233,13 @@ type instanceFromMachineImageState struct {
 	// 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
 	// 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus *string `pulumi:"currentStatus"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
@@ -337,6 +351,13 @@ type InstanceFromMachineImageState struct {
 	// 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
 	// 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of the resource.
@@ -440,6 +461,13 @@ type instanceFromMachineImageArgs struct {
 	CanIpForward *bool `pulumi:"canIpForward"`
 	// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
 	ConfidentialInstanceConfig *InstanceFromMachineImageConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
@@ -524,6 +552,13 @@ type InstanceFromMachineImageArgs struct {
 	CanIpForward pulumi.BoolPtrInput
 	// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
 	ConfidentialInstanceConfig InstanceFromMachineImageConfidentialInstanceConfigPtrInput
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of the resource.
@@ -737,6 +772,16 @@ func (o InstanceFromMachineImageOutput) CreationTimestamp() pulumi.StringOutput 
 //	For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 func (o InstanceFromMachineImageOutput) CurrentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.CurrentStatus }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceFromMachineImageOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether deletion protection is enabled on this instance.

@@ -25,6 +25,7 @@ class CloudControlArgs:
                  location: pulumi.Input[_builtins.str],
                  organization: pulumi.Input[_builtins.str],
                  categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  finding_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +43,12 @@ class CloudControlArgs:
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Currently, only "global" is supported as a location.
         :param pulumi.Input[_builtins.str] organization: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: The categories of the cloud control.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the cloud control. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the cloud control. The maximum length is 200
                characters.
@@ -65,6 +72,8 @@ class CloudControlArgs:
         pulumi.set(__self__, "organization", organization)
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -131,6 +140,23 @@ class CloudControlArgs:
     @categories.setter
     def categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "categories", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -244,6 +270,7 @@ class _CloudControlState:
                  categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  cloud_control_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  finding_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -269,6 +296,12 @@ class _CloudControlState:
         :param pulumi.Input[_builtins.str] create_time: The last updated time of the cloud control.
                The create_time is used because a new CC is created whenever we update an
                existing CC.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the cloud control. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the cloud control. The maximum length is 200
                characters.
@@ -302,6 +335,8 @@ class _CloudControlState:
             pulumi.set(__self__, "cloud_control_id", cloud_control_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -372,6 +407,23 @@ class _CloudControlState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -573,6 +625,7 @@ class CloudControl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  cloud_control_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  finding_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -766,6 +819,12 @@ class CloudControl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cloud_control_id: ID of the CloudControl.
                This is the last segment of the CloudControl resource name.
                Format: `^a-zA-Z{0,61}[a-zA-Z0-9]$`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the cloud control. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the cloud control. The maximum length is 200
                characters.
@@ -985,6 +1044,7 @@ class CloudControl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  cloud_control_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  finding_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1008,6 +1068,7 @@ class CloudControl(pulumi.CustomResource):
             if cloud_control_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_control_id'")
             __props__.__dict__["cloud_control_id"] = cloud_control_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["finding_category"] = finding_category
@@ -1041,6 +1102,7 @@ class CloudControl(pulumi.CustomResource):
             categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             cloud_control_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             finding_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1070,6 +1132,12 @@ class CloudControl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The last updated time of the cloud control.
                The create_time is used because a new CC is created whenever we update an
                existing CC.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the cloud control. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the cloud control. The maximum length is 200
                characters.
@@ -1104,6 +1172,7 @@ class CloudControl(pulumi.CustomResource):
         __props__.__dict__["categories"] = categories
         __props__.__dict__["cloud_control_id"] = cloud_control_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["finding_category"] = finding_category
@@ -1148,6 +1217,19 @@ class CloudControl(pulumi.CustomResource):
         existing CC.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -528,6 +528,13 @@ type ManagedZone struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -634,6 +641,13 @@ type managedZoneState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreationTime *string `pulumi:"creationTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -700,6 +714,13 @@ type ManagedZoneState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreationTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -767,6 +788,13 @@ type managedZoneArgs struct {
 	// Cloud logging configuration
 	// Structure is documented below.
 	CloudLoggingConfig *ManagedZoneCloudLoggingConfig `pulumi:"cloudLoggingConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -821,6 +849,13 @@ type ManagedZoneArgs struct {
 	// Cloud logging configuration
 	// Structure is documented below.
 	CloudLoggingConfig ManagedZoneCloudLoggingConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -967,6 +1002,16 @@ func (o ManagedZoneOutput) CloudLoggingConfig() ManagedZoneCloudLoggingConfigOut
 // This is in RFC3339 text format.
 func (o ManagedZoneOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ManagedZoneOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A textual description field. Defaults to 'Managed by Pulumi'.

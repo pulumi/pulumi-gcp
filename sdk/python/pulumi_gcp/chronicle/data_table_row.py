@@ -23,6 +23,7 @@ class DataTableRowArgs:
                  instance: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -33,6 +34,12 @@ class DataTableRowArgs:
         :param pulumi.Input[_builtins.str] location: The GCP location of the Chronicle instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: All column values for a single row. The values should be in the same order
                as the columns of the data tables.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] row_time_to_live: User-provided TTL of the data table row.
@@ -41,6 +48,8 @@ class DataTableRowArgs:
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "values", values)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if row_time_to_live is not None:
@@ -96,6 +105,23 @@ class DataTableRowArgs:
         pulumi.set(self, "values", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -127,6 +153,7 @@ class _DataTableRowState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_table_row: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -140,6 +167,12 @@ class _DataTableRowState:
         :param pulumi.Input[_builtins.str] create_time: DataTableRow create time
         :param pulumi.Input[_builtins.str] data_table_id: The ID of the parent DataTable.
         :param pulumi.Input[_builtins.str] data_table_row: The ID of the DataTable Row.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance: The Chronicle instance ID.
         :param pulumi.Input[_builtins.str] location: The GCP location of the Chronicle instance.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the data table row.
@@ -158,6 +191,8 @@ class _DataTableRowState:
             pulumi.set(__self__, "data_table_id", data_table_id)
         if data_table_row is not None:
             pulumi.set(__self__, "data_table_row", data_table_row)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if location is not None:
@@ -208,6 +243,23 @@ class _DataTableRowState:
     @data_table_row.setter
     def data_table_row(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_table_row", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -305,6 +357,7 @@ class DataTableRow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -381,6 +434,12 @@ class DataTableRow(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_table_id: The ID of the parent DataTable.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance: The Chronicle instance ID.
         :param pulumi.Input[_builtins.str] location: The GCP location of the Chronicle instance.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -478,6 +537,7 @@ class DataTableRow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -495,6 +555,7 @@ class DataTableRow(pulumi.CustomResource):
             if data_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_table_id'")
             __props__.__dict__["data_table_id"] = data_table_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
@@ -523,6 +584,7 @@ class DataTableRow(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_table_row: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -540,6 +602,12 @@ class DataTableRow(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: DataTableRow create time
         :param pulumi.Input[_builtins.str] data_table_id: The ID of the parent DataTable.
         :param pulumi.Input[_builtins.str] data_table_row: The ID of the DataTable Row.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance: The Chronicle instance ID.
         :param pulumi.Input[_builtins.str] location: The GCP location of the Chronicle instance.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the data table row.
@@ -559,6 +627,7 @@ class DataTableRow(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_table_id"] = data_table_id
         __props__.__dict__["data_table_row"] = data_table_row
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["instance"] = instance
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -591,6 +660,19 @@ class DataTableRow(pulumi.CustomResource):
         The ID of the DataTable Row.
         """
         return pulumi.get(self, "data_table_row")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

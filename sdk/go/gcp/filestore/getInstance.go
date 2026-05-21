@@ -69,6 +69,7 @@ type LookupInstanceArgs struct {
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
 	CreateTime                string                            `pulumi:"createTime"`
+	DeletionPolicy            string                            `pulumi:"deletionPolicy"`
 	DeletionProtectionEnabled bool                              `pulumi:"deletionProtectionEnabled"`
 	DeletionProtectionReason  string                            `pulumi:"deletionProtectionReason"`
 	Description               string                            `pulumi:"description"`
@@ -140,6 +141,10 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) DeletionProtectionEnabled() pulumi.BoolOutput {

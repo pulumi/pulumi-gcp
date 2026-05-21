@@ -113,6 +113,13 @@ import (
 type ApplicationUrlDispatchRules struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayOutput `pulumi:"dispatchRules"`
@@ -154,6 +161,13 @@ func GetApplicationUrlDispatchRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationUrlDispatchRules resources.
 type applicationUrlDispatchRulesState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules []ApplicationUrlDispatchRulesDispatchRule `pulumi:"dispatchRules"`
@@ -163,6 +177,13 @@ type applicationUrlDispatchRulesState struct {
 }
 
 type ApplicationUrlDispatchRulesState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayInput
@@ -176,6 +197,13 @@ func (ApplicationUrlDispatchRulesState) ElementType() reflect.Type {
 }
 
 type applicationUrlDispatchRulesArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules []ApplicationUrlDispatchRulesDispatchRule `pulumi:"dispatchRules"`
@@ -186,6 +214,13 @@ type applicationUrlDispatchRulesArgs struct {
 
 // The set of arguments for constructing a ApplicationUrlDispatchRules resource.
 type ApplicationUrlDispatchRulesArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Rules to match an HTTP request and dispatch that request to a service.
 	// Structure is documented below.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayInput
@@ -279,6 +314,16 @@ func (o ApplicationUrlDispatchRulesOutput) ToApplicationUrlDispatchRulesOutput()
 
 func (o ApplicationUrlDispatchRulesOutput) ToApplicationUrlDispatchRulesOutputWithContext(ctx context.Context) ApplicationUrlDispatchRulesOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ApplicationUrlDispatchRulesOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationUrlDispatchRules) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Rules to match an HTTP request and dispatch that request to a service.

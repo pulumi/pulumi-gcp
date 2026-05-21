@@ -41,6 +41,41 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * ```
+ * ### Database Migration Service Private Connection Psc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.databasemigrationservice.PrivateConnection("default", {
+ *     displayName: "dbms_pc",
+ *     location: "us-central1",
+ *     privateConnectionId: "my-connection",
+ *     labels: {
+ *         key: "value",
+ *     },
+ *     pscInterfaceConfig: {
+ *         networkAttachment: googleComputeNetworkAttachment["default"].id,
+ *     },
+ *     createWithoutValidation: false,
+ * });
+ * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("default", {
+ *     name: "my-attachment",
+ *     region: "us-central1",
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
+ *     subnetworks: [googleComputeSubnetwork["default"].id],
+ * });
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "my-subnetwork",
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -91,6 +126,15 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     declare public readonly createWithoutValidation: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Display name.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -127,6 +171,12 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * The PSC Interface configuration is used to create PSC Interface
+     * between DMS's internal VPC and the consumer's PSC.
+     * Structure is documented below.
+     */
+    declare public readonly pscInterfaceConfig: pulumi.Output<outputs.databasemigrationservice.PrivateConnectionPscInterfaceConfig | undefined>;
+    /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
@@ -140,7 +190,7 @@ export class PrivateConnection extends pulumi.CustomResource {
      * between databasemigrationservice and the consumer's VPC.
      * Structure is documented below.
      */
-    declare public readonly vpcPeeringConfig: pulumi.Output<outputs.databasemigrationservice.PrivateConnectionVpcPeeringConfig>;
+    declare public readonly vpcPeeringConfig: pulumi.Output<outputs.databasemigrationservice.PrivateConnectionVpcPeeringConfig | undefined>;
 
     /**
      * Create a PrivateConnection resource with the given unique name, arguments, and options.
@@ -156,6 +206,7 @@ export class PrivateConnection extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PrivateConnectionState | undefined;
             resourceInputs["createWithoutValidation"] = state?.createWithoutValidation;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["errors"] = state?.errors;
@@ -164,6 +215,7 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["privateConnectionId"] = state?.privateConnectionId;
             resourceInputs["project"] = state?.project;
+            resourceInputs["pscInterfaceConfig"] = state?.pscInterfaceConfig;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["state"] = state?.state;
             resourceInputs["vpcPeeringConfig"] = state?.vpcPeeringConfig;
@@ -175,15 +227,14 @@ export class PrivateConnection extends pulumi.CustomResource {
             if (args?.privateConnectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateConnectionId'");
             }
-            if (args?.vpcPeeringConfig === undefined && !opts.urn) {
-                throw new Error("Missing required property 'vpcPeeringConfig'");
-            }
             resourceInputs["createWithoutValidation"] = args?.createWithoutValidation;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["privateConnectionId"] = args?.privateConnectionId;
             resourceInputs["project"] = args?.project;
+            resourceInputs["pscInterfaceConfig"] = args?.pscInterfaceConfig;
             resourceInputs["vpcPeeringConfig"] = args?.vpcPeeringConfig;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
@@ -206,6 +257,15 @@ export interface PrivateConnectionState {
      * If set to true, will skip validations.
      */
     createWithoutValidation?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Display name.
      */
@@ -243,6 +303,12 @@ export interface PrivateConnectionState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * The PSC Interface configuration is used to create PSC Interface
+     * between DMS's internal VPC and the consumer's PSC.
+     * Structure is documented below.
+     */
+    pscInterfaceConfig?: pulumi.Input<inputs.databasemigrationservice.PrivateConnectionPscInterfaceConfig | undefined>;
+    /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
@@ -268,6 +334,15 @@ export interface PrivateConnectionArgs {
      */
     createWithoutValidation?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Display name.
      */
     displayName?: pulumi.Input<string | undefined>;
@@ -291,9 +366,15 @@ export interface PrivateConnectionArgs {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * The PSC Interface configuration is used to create PSC Interface
+     * between DMS's internal VPC and the consumer's PSC.
+     * Structure is documented below.
+     */
+    pscInterfaceConfig?: pulumi.Input<inputs.databasemigrationservice.PrivateConnectionPscInterfaceConfig | undefined>;
+    /**
      * The VPC Peering configuration is used to create VPC peering
      * between databasemigrationservice and the consumer's VPC.
      * Structure is documented below.
      */
-    vpcPeeringConfig: pulumi.Input<inputs.databasemigrationservice.PrivateConnectionVpcPeeringConfig>;
+    vpcPeeringConfig?: pulumi.Input<inputs.databasemigrationservice.PrivateConnectionVpcPeeringConfig | undefined>;
 }

@@ -23,6 +23,7 @@ class EdgeCacheOriginArgs:
     def __init__(__self__, *,
                  origin_address: pulumi.Input[_builtins.str],
                  aws_v4_authentication: pulumi.Input[Optional['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_origin: pulumi.Input[Optional[_builtins.str]] = None,
                  flex_shielding: pulumi.Input[Optional['EdgeCacheOriginFlexShieldingArgs']] = None,
@@ -45,6 +46,12 @@ class EdgeCacheOriginArgs:
                If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
         :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[_builtins.str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
@@ -99,6 +106,8 @@ class EdgeCacheOriginArgs:
         pulumi.set(__self__, "origin_address", origin_address)
         if aws_v4_authentication is not None:
             pulumi.set(__self__, "aws_v4_authentication", aws_v4_authentication)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if failover_origin is not None:
@@ -153,6 +162,23 @@ class EdgeCacheOriginArgs:
     @aws_v4_authentication.setter
     def aws_v4_authentication(self, value: pulumi.Input[Optional['EdgeCacheOriginAwsV4AuthenticationArgs']]):
         pulumi.set(self, "aws_v4_authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -352,6 +378,7 @@ class EdgeCacheOriginArgs:
 class _EdgeCacheOriginState:
     def __init__(__self__, *,
                  aws_v4_authentication: pulumi.Input[Optional['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  failover_origin: pulumi.Input[Optional[_builtins.str]] = None,
@@ -373,6 +400,12 @@ class _EdgeCacheOriginState:
 
         :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] failover_origin: The Origin resource to try when the current origin cannot be reached.
@@ -433,6 +466,8 @@ class _EdgeCacheOriginState:
         """
         if aws_v4_authentication is not None:
             pulumi.set(__self__, "aws_v4_authentication", aws_v4_authentication)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -478,6 +513,23 @@ class _EdgeCacheOriginState:
     @aws_v4_authentication.setter
     def aws_v4_authentication(self, value: pulumi.Input[Optional['EdgeCacheOriginAwsV4AuthenticationArgs']]):
         pulumi.set(self, "aws_v4_authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -720,6 +772,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_v4_authentication: pulumi.Input[Optional[Union['EdgeCacheOriginAwsV4AuthenticationArgs', 'EdgeCacheOriginAwsV4AuthenticationArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_origin: pulumi.Input[Optional[_builtins.str]] = None,
                  flex_shielding: pulumi.Input[Optional[Union['EdgeCacheOriginFlexShieldingArgs', 'EdgeCacheOriginFlexShieldingArgsDict']]] = None,
@@ -860,6 +913,12 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EdgeCacheOriginAwsV4AuthenticationArgs', 'EdgeCacheOriginAwsV4AuthenticationArgsDict']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[_builtins.str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
@@ -1058,6 +1117,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_v4_authentication: pulumi.Input[Optional[Union['EdgeCacheOriginAwsV4AuthenticationArgs', 'EdgeCacheOriginAwsV4AuthenticationArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_origin: pulumi.Input[Optional[_builtins.str]] = None,
                  flex_shielding: pulumi.Input[Optional[Union['EdgeCacheOriginFlexShieldingArgs', 'EdgeCacheOriginFlexShieldingArgsDict']]] = None,
@@ -1082,6 +1142,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             __props__ = EdgeCacheOriginArgs.__new__(EdgeCacheOriginArgs)
 
             __props__.__dict__["aws_v4_authentication"] = aws_v4_authentication
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["failover_origin"] = failover_origin
             __props__.__dict__["flex_shielding"] = flex_shielding
@@ -1113,6 +1174,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             aws_v4_authentication: pulumi.Input[Optional[Union['EdgeCacheOriginAwsV4AuthenticationArgs', 'EdgeCacheOriginAwsV4AuthenticationArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             failover_origin: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1138,6 +1200,12 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EdgeCacheOriginAwsV4AuthenticationArgs', 'EdgeCacheOriginAwsV4AuthenticationArgsDict']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] failover_origin: The Origin resource to try when the current origin cannot be reached.
@@ -1201,6 +1269,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         __props__ = _EdgeCacheOriginState.__new__(_EdgeCacheOriginState)
 
         __props__.__dict__["aws_v4_authentication"] = aws_v4_authentication
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["failover_origin"] = failover_origin
@@ -1227,6 +1296,19 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "aws_v4_authentication")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

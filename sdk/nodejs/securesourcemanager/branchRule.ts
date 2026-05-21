@@ -130,6 +130,15 @@ export class BranchRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Determines if the branch rule is disabled or not.
      */
     declare public readonly disabled: pulumi.Output<boolean | undefined>;
@@ -199,6 +208,7 @@ export class BranchRule extends pulumi.CustomResource {
             resourceInputs["allowStaleReviews"] = state?.allowStaleReviews;
             resourceInputs["branchRuleId"] = state?.branchRuleId;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["includePattern"] = state?.includePattern;
             resourceInputs["location"] = state?.location;
@@ -228,6 +238,7 @@ export class BranchRule extends pulumi.CustomResource {
             }
             resourceInputs["allowStaleReviews"] = args?.allowStaleReviews;
             resourceInputs["branchRuleId"] = args?.branchRuleId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["includePattern"] = args?.includePattern;
             resourceInputs["location"] = args?.location;
@@ -264,6 +275,15 @@ export interface BranchRuleState {
      * Time the BranchRule was created in UTC.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Determines if the branch rule is disabled or not.
      */
@@ -331,6 +351,15 @@ export interface BranchRuleArgs {
      * The ID for the BranchRule.
      */
     branchRuleId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Determines if the branch rule is disabled or not.
      */

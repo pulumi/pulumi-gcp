@@ -43,6 +43,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RolloutPlan;
  * import com.pulumi.gcp.compute.RolloutPlanArgs;
  * import com.pulumi.gcp.compute.inputs.RolloutPlanWaveArgs;
+ * import com.pulumi.gcp.compute.inputs.RolloutPlanWaveSelectorArgs;
+ * import com.pulumi.gcp.compute.inputs.RolloutPlanWaveSelectorLocationSelectorArgs;
  * import com.pulumi.gcp.compute.inputs.RolloutPlanWaveValidationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -58,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new RolloutPlan("default", RolloutPlanArgs.builder()
- *             .name("tf-test-rollout-plan-_34962")
+ *             .name("tf-test-rollout-plan-_75125")
  *             .description("A test rollout plan")
  *             .locationScope("ZONAL")
  *             .waves(RolloutPlanWaveArgs.builder()
@@ -98,6 +100,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/rolloutPlan:RolloutPlan")
 public class RolloutPlan extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * An optional description of this resource.
      * 

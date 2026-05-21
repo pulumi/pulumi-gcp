@@ -105,6 +105,13 @@ type DataTableRow struct {
 	DataTableId pulumi.StringOutput `pulumi:"dataTableId"`
 	// The ID of the DataTable Row.
 	DataTableRow pulumi.StringOutput `pulumi:"dataTableRow"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The Chronicle instance ID.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// The GCP location of the Chronicle instance.
@@ -173,6 +180,13 @@ type dataTableRowState struct {
 	DataTableId *string `pulumi:"dataTableId"`
 	// The ID of the DataTable Row.
 	DataTableRow *string `pulumi:"dataTableRow"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Chronicle instance ID.
 	Instance *string `pulumi:"instance"`
 	// The GCP location of the Chronicle instance.
@@ -200,6 +214,13 @@ type DataTableRowState struct {
 	DataTableId pulumi.StringPtrInput
 	// The ID of the DataTable Row.
 	DataTableRow pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Chronicle instance ID.
 	Instance pulumi.StringPtrInput
 	// The GCP location of the Chronicle instance.
@@ -227,6 +248,13 @@ func (DataTableRowState) ElementType() reflect.Type {
 type dataTableRowArgs struct {
 	// The ID of the parent DataTable.
 	DataTableId string `pulumi:"dataTableId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Chronicle instance ID.
 	Instance string `pulumi:"instance"`
 	// The GCP location of the Chronicle instance.
@@ -245,6 +273,13 @@ type dataTableRowArgs struct {
 type DataTableRowArgs struct {
 	// The ID of the parent DataTable.
 	DataTableId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Chronicle instance ID.
 	Instance pulumi.StringInput
 	// The GCP location of the Chronicle instance.
@@ -359,6 +394,16 @@ func (o DataTableRowOutput) DataTableId() pulumi.StringOutput {
 // The ID of the DataTable Row.
 func (o DataTableRowOutput) DataTableRow() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataTableRow) pulumi.StringOutput { return v.DataTableRow }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DataTableRowOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataTableRow) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The Chronicle instance ID.

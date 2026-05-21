@@ -58,6 +58,7 @@ export interface GetInstanceResult {
     readonly backupCollection: string;
     readonly createTime: string;
     readonly crossInstanceReplicationConfigs: outputs.memorystore.GetInstanceCrossInstanceReplicationConfig[];
+    readonly deletionPolicy: string;
     readonly deletionProtectionEnabled: boolean;
     readonly desiredAutoCreatedEndpoints: outputs.memorystore.GetInstanceDesiredAutoCreatedEndpoint[];
     readonly desiredPscAutoConnections: outputs.memorystore.GetInstanceDesiredPscAutoConnection[];

@@ -64,6 +64,7 @@ export interface GetBackupVaultResult {
     readonly backupVaultId: string;
     readonly createTime: string;
     readonly deletable: boolean;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly effectiveAnnotations: {[key: string]: string};
     readonly effectiveLabels: {[key: string]: string};

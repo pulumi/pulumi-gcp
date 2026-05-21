@@ -155,6 +155,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.beyondcorp.SecurityGatewayApplicationArgs;
  * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamArgs;
  * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalEndpointArgs;
  * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -211,6 +212,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationEndpointMatcherArgs;
  * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamArgs;
  * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalEndpointArgs;
  * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs;
  * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs;
  * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs;
@@ -332,6 +334,30 @@ public class SecurityGatewayApplication extends com.pulumi.resources.CustomResou
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Optional. An arbitrary user-provided name for the Application resource.

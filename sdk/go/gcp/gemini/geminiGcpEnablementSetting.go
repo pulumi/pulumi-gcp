@@ -68,6 +68,13 @@ type GeminiGcpEnablementSetting struct {
 
 	// Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
 	//
@@ -148,6 +155,13 @@ func GetGeminiGcpEnablementSetting(ctx *pulumi.Context,
 type geminiGcpEnablementSettingState struct {
 	// Create time stamp.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
 	//
@@ -188,6 +202,13 @@ type geminiGcpEnablementSettingState struct {
 type GeminiGcpEnablementSettingState struct {
 	// Create time stamp.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
 	//
@@ -230,6 +251,13 @@ func (GeminiGcpEnablementSettingState) ElementType() reflect.Type {
 }
 
 type geminiGcpEnablementSettingArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
 	//
@@ -259,6 +287,13 @@ type geminiGcpEnablementSettingArgs struct {
 
 // The set of arguments for constructing a GeminiGcpEnablementSetting resource.
 type GeminiGcpEnablementSettingArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
 	//
@@ -376,6 +411,16 @@ func (o GeminiGcpEnablementSettingOutput) ToGeminiGcpEnablementSettingOutputWith
 // Create time stamp.
 func (o GeminiGcpEnablementSettingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GeminiGcpEnablementSettingOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // (Optional, Deprecated)

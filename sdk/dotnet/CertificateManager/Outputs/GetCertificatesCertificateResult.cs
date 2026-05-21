@@ -14,6 +14,15 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
     public sealed class GetCertificatesCertificateResult
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        public readonly string DeletionPolicy;
+        /// <summary>
         /// A human-readable description of the resource.
         /// </summary>
         public readonly string Description;
@@ -77,6 +86,8 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
 
         [OutputConstructor]
         private GetCertificatesCertificateResult(
+            string deletionPolicy,
+
             string description,
 
             ImmutableDictionary<string, string> effectiveLabels,
@@ -97,6 +108,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
 
             string scope)
         {
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EffectiveLabels = effectiveLabels;
             Labels = labels;

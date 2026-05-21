@@ -63,6 +63,7 @@ type LookupDnsAuthorizationArgs struct {
 
 // A collection of values returned by getDnsAuthorization.
 type LookupDnsAuthorizationResult struct {
+	DeletionPolicy     string                                 `pulumi:"deletionPolicy"`
 	Description        string                                 `pulumi:"description"`
 	DnsResourceRecords []GetDnsAuthorizationDnsResourceRecord `pulumi:"dnsResourceRecords"`
 	Domain             string                                 `pulumi:"domain"`
@@ -115,6 +116,10 @@ func (o LookupDnsAuthorizationResultOutput) ToLookupDnsAuthorizationResultOutput
 
 func (o LookupDnsAuthorizationResultOutput) ToLookupDnsAuthorizationResultOutputWithContext(ctx context.Context) LookupDnsAuthorizationResultOutput {
 	return o
+}
+
+func (o LookupDnsAuthorizationResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDnsAuthorizationResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupDnsAuthorizationResultOutput) Description() pulumi.StringOutput {

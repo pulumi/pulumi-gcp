@@ -26,10 +26,13 @@ class GetHostingChannelResult:
     """
     A collection of values returned by getHostingChannel.
     """
-    def __init__(__self__, channel_id=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, pulumi_labels=None, retained_release_count=None, site_id=None, ttl=None):
+    def __init__(__self__, channel_id=None, deletion_policy=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, pulumi_labels=None, retained_release_count=None, site_id=None, ttl=None):
         if channel_id and not isinstance(channel_id, str):
             raise TypeError("Expected argument 'channel_id' to be a str")
         pulumi.set(__self__, "channel_id", channel_id)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -62,6 +65,11 @@ class GetHostingChannelResult:
     @pulumi.getter(name="channelId")
     def channel_id(self) -> _builtins.str:
         return pulumi.get(self, "channel_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -122,6 +130,7 @@ class AwaitableGetHostingChannelResult(GetHostingChannelResult):
             yield self
         return GetHostingChannelResult(
             channel_id=self.channel_id,
+            deletion_policy=self.deletion_policy,
             effective_labels=self.effective_labels,
             expire_time=self.expire_time,
             id=self.id,
@@ -154,6 +163,7 @@ def get_hosting_channel(channel_id: Optional[_builtins.str] = None,
 
     return AwaitableGetHostingChannelResult(
         channel_id=pulumi.get(__ret__, 'channel_id'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         id=pulumi.get(__ret__, 'id'),
@@ -183,6 +193,7 @@ def get_hosting_channel_output(channel_id: pulumi.Input[Optional[_builtins.str]]
     __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getHostingChannel:getHostingChannel', __args__, opts=opts, typ=GetHostingChannelResult)
     return __ret__.apply(lambda __response__: GetHostingChannelResult(
         channel_id=pulumi.get(__response__, 'channel_id'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         expire_time=pulumi.get(__response__, 'expire_time'),
         id=pulumi.get(__response__, 'id'),

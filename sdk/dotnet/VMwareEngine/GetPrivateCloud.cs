@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public readonly string CreateTime;
         public readonly string DeleteTime;
         public readonly int DeletionDelayHours;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string ExpireTime;
         public readonly ImmutableArray<Outputs.GetPrivateCloudHcxResult> Hcxes;
@@ -189,6 +190,8 @@ namespace Pulumi.Gcp.VMwareEngine
             string deleteTime,
 
             int deletionDelayHours,
+
+            string deletionPolicy,
 
             string description,
 
@@ -225,6 +228,7 @@ namespace Pulumi.Gcp.VMwareEngine
             CreateTime = createTime;
             DeleteTime = deleteTime;
             DeletionDelayHours = deletionDelayHours;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             ExpireTime = expireTime;
             Hcxes = hcxes;

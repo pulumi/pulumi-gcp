@@ -25,6 +25,7 @@ class TableArgs:
                  table_id: pulumi.Input[_builtins.str],
                  biglake_configuration: pulumi.Input[Optional['TableBiglakeConfigurationArgs']] = None,
                  clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_configuration: pulumi.Input[Optional['TableEncryptionConfigurationArgs']] = None,
@@ -59,6 +60,28 @@ class TableArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] clusterings: Specifies column names to use for data clustering.
                Up to four top-level columns are allowed, and should be specified in
                descending priority order.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced a field data type (`STRUCT` with
+               `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+               the recurring diff this causes. As a workaround, we recommend using the
+               schema as returned by the API.
+               
+               ~>**NOTE:**  If you use `external_data_configuration`
+               documented below and do **not** set
+               `external_data_configuration.connection_id`, schemas must be specified
+               with `external_data_configuration.schema`. Otherwise, schemas must be
+               specified with this top-level field.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] description: The field description.
@@ -126,6 +149,8 @@ class TableArgs:
             pulumi.set(__self__, "biglake_configuration", biglake_configuration)
         if clusterings is not None:
             pulumi.set(__self__, "clusterings", clusterings)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -224,6 +249,39 @@ class TableArgs:
     @clusterings.setter
     def clusterings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "clusterings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced a field data type (`STRUCT` with
+        `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+        the recurring diff this causes. As a workaround, we recommend using the
+        schema as returned by the API.
+
+        ~>**NOTE:**  If you use `external_data_configuration`
+        documented below and do **not** set
+        `external_data_configuration.connection_id`, schemas must be specified
+        with `external_data_configuration.schema`. Otherwise, schemas must be
+        specified with this top-level field.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -546,6 +604,7 @@ class _TableState:
                  clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.int]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -591,10 +650,12 @@ class _TableState:
         :param pulumi.Input[_builtins.int] creation_time: The time when this table was created, in milliseconds since the epoch.
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `=destroy` or `=update` that would delete the instance will fail.
-        :param pulumi.Input[_builtins.str] description: The field description.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
                
@@ -611,6 +672,10 @@ class _TableState:
                `external_data_configuration.connection_id`, schemas must be specified
                with `external_data_configuration.schema`. Otherwise, schemas must be
                specified with this top-level field.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `=destroy` or `=update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.str] description: The field description.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['TableEncryptionConfigurationArgs'] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
@@ -689,6 +754,8 @@ class _TableState:
             pulumi.set(__self__, "creation_time", creation_time)
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -812,6 +879,39 @@ class _TableState:
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced a field data type (`STRUCT` with
+        `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+        the recurring diff this causes. As a workaround, we recommend using the
+        schema as returned by the API.
+
+        ~>**NOTE:**  If you use `external_data_configuration`
+        documented below and do **not** set
+        `external_data_configuration.connection_id`, schemas must be specified
+        with `external_data_configuration.schema`. Otherwise, schemas must be
+        specified with this top-level field.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -841,22 +941,6 @@ class _TableState:
     def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-
-        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        If the API returns a different value for the same schema, e.g. it
-        switched the order of values or replaced a field data type (`STRUCT` with
-        `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-        the recurring diff this causes. As a workaround, we recommend using the
-        schema as returned by the API.
-
-        ~>**NOTE:**  If you use `external_data_configuration`
-        documented below and do **not** set
-        `external_data_configuration.connection_id`, schemas must be specified
-        with `external_data_configuration.schema`. Otherwise, schemas must be
-        specified with this top-level field.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1295,6 +1379,7 @@ class Table(pulumi.CustomResource):
                  biglake_configuration: pulumi.Input[Optional[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict']]] = None,
                  clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_configuration: pulumi.Input[Optional[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
@@ -1406,6 +1491,28 @@ class Table(pulumi.CustomResource):
                descending priority order.
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced a field data type (`STRUCT` with
+               `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+               the recurring diff this causes. As a workaround, we recommend using the
+               schema as returned by the API.
+               
+               ~>**NOTE:**  If you use `external_data_configuration`
+               documented below and do **not** set
+               `external_data_configuration.connection_id`, schemas must be specified
+               with `external_data_configuration.schema`. Otherwise, schemas must be
+               specified with this top-level field.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] description: The field description.
@@ -1571,6 +1678,7 @@ class Table(pulumi.CustomResource):
                  biglake_configuration: pulumi.Input[Optional[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict']]] = None,
                  clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_configuration: pulumi.Input[Optional[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
@@ -1609,6 +1717,7 @@ class Table(pulumi.CustomResource):
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["encryption_configuration"] = encryption_configuration
@@ -1663,6 +1772,7 @@ class Table(pulumi.CustomResource):
             clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             creation_time: pulumi.Input[Optional[_builtins.int]] = None,
             dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1712,10 +1822,12 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] creation_time: The time when this table was created, in milliseconds since the epoch.
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `=destroy` or `=update` that would delete the instance will fail.
-        :param pulumi.Input[_builtins.str] description: The field description.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
                
@@ -1732,6 +1844,10 @@ class Table(pulumi.CustomResource):
                `external_data_configuration.connection_id`, schemas must be specified
                with `external_data_configuration.schema`. Otherwise, schemas must be
                specified with this top-level field.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `=destroy` or `=update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.str] description: The field description.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
@@ -1810,6 +1926,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["clusterings"] = clusterings
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["dataset_id"] = dataset_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1883,6 +2000,35 @@ class Table(pulumi.CustomResource):
         return pulumi.get(self, "dataset_id")
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced a field data type (`STRUCT` with
+        `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+        the recurring diff this causes. As a workaround, we recommend using the
+        schema as returned by the API.
+
+        ~>**NOTE:**  If you use `external_data_configuration`
+        documented below and do **not** set
+        `external_data_configuration.connection_id`, schemas must be specified
+        with `external_data_configuration.schema`. Otherwise, schemas must be
+        specified with this top-level field.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -1904,22 +2050,6 @@ class Table(pulumi.CustomResource):
     def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-
-        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        If the API returns a different value for the same schema, e.g. it
-        switched the order of values or replaced a field data type (`STRUCT` with
-        `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-        the recurring diff this causes. As a workaround, we recommend using the
-        schema as returned by the API.
-
-        ~>**NOTE:**  If you use `external_data_configuration`
-        documented below and do **not** set
-        `external_data_configuration.connection_id`, schemas must be specified
-        with `external_data_configuration.schema`. Otherwise, schemas must be
-        specified with this top-level field.
         """
         return pulumi.get(self, "effective_labels")
 

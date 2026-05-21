@@ -219,7 +219,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
-     * Possible values: DEFAULT, FORCE
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
     @Import(name="deletionPolicy")
@@ -229,7 +236,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * @return Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
-     * Possible values: DEFAULT, FORCE
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -1045,7 +1059,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
          * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
          * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
-         * Possible values: DEFAULT, FORCE
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+         * 
+         * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
          * 
          * @return builder
          * 
@@ -1059,7 +1080,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
          * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
          * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
-         * Possible values: DEFAULT, FORCE
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+         * 
+         * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
          * 
          * @return builder
          * 

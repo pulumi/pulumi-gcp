@@ -127,6 +127,13 @@ type Framework struct {
 	// the framework.
 	// Structure is documented below.
 	CloudControlDetails FrameworkCloudControlDetailArrayOutput `pulumi:"cloudControlDetails"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the framework. The maximum length is 2000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the framework. The maximum length is 200 characters.
@@ -203,6 +210,13 @@ type frameworkState struct {
 	// the framework.
 	// Structure is documented below.
 	CloudControlDetails []FrameworkCloudControlDetail `pulumi:"cloudControlDetails"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the framework. The maximum length is 2000 characters.
 	Description *string `pulumi:"description"`
 	// Display name of the framework. The maximum length is 200 characters.
@@ -241,6 +255,13 @@ type FrameworkState struct {
 	// the framework.
 	// Structure is documented below.
 	CloudControlDetails FrameworkCloudControlDetailArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the framework. The maximum length is 2000 characters.
 	Description pulumi.StringPtrInput
 	// Display name of the framework. The maximum length is 200 characters.
@@ -281,6 +302,13 @@ type frameworkArgs struct {
 	// the framework.
 	// Structure is documented below.
 	CloudControlDetails []FrameworkCloudControlDetail `pulumi:"cloudControlDetails"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the framework. The maximum length is 2000 characters.
 	Description *string `pulumi:"description"`
 	// Display name of the framework. The maximum length is 200 characters.
@@ -301,6 +329,13 @@ type FrameworkArgs struct {
 	// the framework.
 	// Structure is documented below.
 	CloudControlDetails FrameworkCloudControlDetailArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the framework. The maximum length is 2000 characters.
 	Description pulumi.StringPtrInput
 	// Display name of the framework. The maximum length is 200 characters.
@@ -412,6 +447,16 @@ func (o FrameworkOutput) Categories() pulumi.StringArrayOutput {
 // Structure is documented below.
 func (o FrameworkOutput) CloudControlDetails() FrameworkCloudControlDetailArrayOutput {
 	return o.ApplyT(func(v *Framework) FrameworkCloudControlDetailArrayOutput { return v.CloudControlDetails }).(FrameworkCloudControlDetailArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FrameworkOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Framework) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the framework. The maximum length is 2000 characters.

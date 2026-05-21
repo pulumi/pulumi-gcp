@@ -72,6 +72,13 @@ type StorageDefaultBucket struct {
 	// The resource name of the underlying Google Cloud Storage bucket.
 	// Structure is documented below.
 	Buckets StorageDefaultBucketBucketArrayOutput `pulumi:"buckets"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The ID of the location where the default Google Cloud Storage bucket will be created.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// (Output)
@@ -119,6 +126,13 @@ type storageDefaultBucketState struct {
 	// The resource name of the underlying Google Cloud Storage bucket.
 	// Structure is documented below.
 	Buckets []StorageDefaultBucketBucket `pulumi:"buckets"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the location where the default Google Cloud Storage bucket will be created.
 	Location *string `pulumi:"location"`
 	// (Output)
@@ -134,6 +148,13 @@ type StorageDefaultBucketState struct {
 	// The resource name of the underlying Google Cloud Storage bucket.
 	// Structure is documented below.
 	Buckets StorageDefaultBucketBucketArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the location where the default Google Cloud Storage bucket will be created.
 	Location pulumi.StringPtrInput
 	// (Output)
@@ -150,6 +171,13 @@ func (StorageDefaultBucketState) ElementType() reflect.Type {
 }
 
 type storageDefaultBucketArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the location where the default Google Cloud Storage bucket will be created.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -159,6 +187,13 @@ type storageDefaultBucketArgs struct {
 
 // The set of arguments for constructing a StorageDefaultBucket resource.
 type StorageDefaultBucketArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the location where the default Google Cloud Storage bucket will be created.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -257,6 +292,16 @@ func (o StorageDefaultBucketOutput) ToStorageDefaultBucketOutputWithContext(ctx 
 // Structure is documented below.
 func (o StorageDefaultBucketOutput) Buckets() StorageDefaultBucketBucketArrayOutput {
 	return o.ApplyT(func(v *StorageDefaultBucket) StorageDefaultBucketBucketArrayOutput { return v.Buckets }).(StorageDefaultBucketBucketArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o StorageDefaultBucketOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageDefaultBucket) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The ID of the location where the default Google Cloud Storage bucket will be created.

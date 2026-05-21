@@ -467,6 +467,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> datastreamCustomEndpoint() {
         return Codegen.optional(this.datastreamCustomEndpoint);
     }
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
+    }
     @Export(name="deploymentManagerCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentManagerCustomEndpoint;
 

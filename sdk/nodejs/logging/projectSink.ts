@@ -200,6 +200,15 @@ export class ProjectSink extends pulumi.CustomResource {
      */
     declare public readonly customWriterIdentity: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -265,6 +274,7 @@ export class ProjectSink extends pulumi.CustomResource {
             const state = argsOrState as ProjectSinkState | undefined;
             resourceInputs["bigqueryOptions"] = state?.bigqueryOptions;
             resourceInputs["customWriterIdentity"] = state?.customWriterIdentity;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["destination"] = state?.destination;
             resourceInputs["disabled"] = state?.disabled;
@@ -281,6 +291,7 @@ export class ProjectSink extends pulumi.CustomResource {
             }
             resourceInputs["bigqueryOptions"] = args?.bigqueryOptions;
             resourceInputs["customWriterIdentity"] = args?.customWriterIdentity;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["destination"] = args?.destination;
             resourceInputs["disabled"] = args?.disabled;
@@ -311,6 +322,15 @@ export interface ProjectSinkState {
      * will automatically be generated.
      */
     customWriterIdentity?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
@@ -378,6 +398,15 @@ export interface ProjectSinkArgs {
      * will automatically be generated.
      */
     customWriterIdentity?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */

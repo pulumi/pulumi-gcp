@@ -72,6 +72,7 @@ type LookupTriggerResult struct {
 	BitbucketServerTriggerConfigs []GetTriggerBitbucketServerTriggerConfig `pulumi:"bitbucketServerTriggerConfigs"`
 	Builds                        []GetTriggerBuild                        `pulumi:"builds"`
 	CreateTime                    string                                   `pulumi:"createTime"`
+	DeletionPolicy                string                                   `pulumi:"deletionPolicy"`
 	Description                   string                                   `pulumi:"description"`
 	DeveloperConnectEventConfigs  []GetTriggerDeveloperConnectEventConfig  `pulumi:"developerConnectEventConfigs"`
 	Disabled                      bool                                     `pulumi:"disabled"`
@@ -154,6 +155,10 @@ func (o LookupTriggerResultOutput) Builds() GetTriggerBuildArrayOutput {
 
 func (o LookupTriggerResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupTriggerResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupTriggerResultOutput) Description() pulumi.StringOutput {

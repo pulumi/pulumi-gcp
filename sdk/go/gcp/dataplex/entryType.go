@@ -57,7 +57,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testEntryTypeFull, err := dataplex.NewAspectType(ctx, "test_entry_type_full", &dataplex.AspectTypeArgs{
-//				AspectTypeId: pulumi.String("tf-test-aspect-type_25141"),
+//				AspectTypeId: pulumi.String("tf-test-aspect-type_26317"),
 //				Location:     pulumi.String("us-central1"),
 //				Project:      pulumi.String("my-project-name"),
 //				MetadataTemplate: pulumi.String(`{
@@ -141,6 +141,13 @@ type EntryType struct {
 
 	// The time when the EntryType was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the EntryType.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
@@ -216,6 +223,13 @@ func GetEntryType(ctx *pulumi.Context,
 type entryTypeState struct {
 	// The time when the EntryType was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the EntryType.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -257,6 +271,13 @@ type entryTypeState struct {
 type EntryTypeState struct {
 	// The time when the EntryType was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the EntryType.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -300,6 +321,13 @@ func (EntryTypeState) ElementType() reflect.Type {
 }
 
 type entryTypeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the EntryType.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -329,6 +357,13 @@ type entryTypeArgs struct {
 
 // The set of arguments for constructing a EntryType resource.
 type EntryTypeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the EntryType.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -446,6 +481,16 @@ func (o EntryTypeOutput) ToEntryTypeOutputWithContext(ctx context.Context) Entry
 // The time when the EntryType was created.
 func (o EntryTypeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryType) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EntryTypeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntryType) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the EntryType.

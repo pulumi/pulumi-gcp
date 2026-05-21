@@ -131,8 +131,16 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
-	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// Policy to control how the repository and its child resources are deleted.
+	// When set to `FORCE`, any child resources of this repository will also be deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. The repository's user-friendly name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -203,7 +211,15 @@ func GetRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
-	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+	// Policy to control how the repository and its child resources are deleted.
+	// When set to `FORCE`, any child resources of this repository will also be deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The repository's user-friendly name.
 	DisplayName *string `pulumi:"displayName"`
@@ -241,7 +257,15 @@ type repositoryState struct {
 }
 
 type RepositoryState struct {
-	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+	// Policy to control how the repository and its child resources are deleted.
+	// When set to `FORCE`, any child resources of this repository will also be deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
 	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The repository's user-friendly name.
 	DisplayName pulumi.StringPtrInput
@@ -283,7 +307,15 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
-	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+	// Policy to control how the repository and its child resources are deleted.
+	// When set to `FORCE`, any child resources of this repository will also be deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The repository's user-friendly name.
 	DisplayName *string `pulumi:"displayName"`
@@ -317,7 +349,15 @@ type repositoryArgs struct {
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
-	// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+	// Policy to control how the repository and its child resources are deleted.
+	// When set to `FORCE`, any child resources of this repository will also be deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
 	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The repository's user-friendly name.
 	DisplayName pulumi.StringPtrInput
@@ -436,9 +476,17 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 	return o
 }
 
-// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
-func (o RepositoryOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// Policy to control how the repository and its child resources are deleted.
+// When set to `FORCE`, any child resources of this repository will also be deleted.
+//
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+//
+// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
+func (o RepositoryOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. The repository's user-friendly name.

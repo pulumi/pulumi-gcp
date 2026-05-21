@@ -23,7 +23,8 @@ class ConfigArgs:
     def __init__(__self__, *,
                  ingestion: pulumi.Input['ConfigIngestionArgs'],
                  location: pulumi.Input[_builtins.str],
-                 parent: pulumi.Input[_builtins.str]):
+                 parent: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Config resource.
 
@@ -32,10 +33,18 @@ class ConfigArgs:
         :param pulumi.Input[_builtins.str] location: The region of the data lineage configuration for integration.
         :param pulumi.Input[_builtins.str] parent: Parent scope for the config.
                Format: projects/{project-id|project-number} or folders/{folder-number} or organizations/{organization-number}.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         """
         pulumi.set(__self__, "ingestion", ingestion)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "parent", parent)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter
@@ -75,10 +84,28 @@ class ConfigArgs:
     def parent(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parent", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _ConfigState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  ingestion: pulumi.Input[Optional['ConfigIngestionArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -87,6 +114,12 @@ class _ConfigState:
         """
         Input properties used for looking up and filtering Config resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: Used for optimistic concurrency control when patching config.
         :param pulumi.Input['ConfigIngestionArgs'] ingestion: Defines how Lineage should be ingested for this resource.
                Structure is documented below.
@@ -99,6 +132,8 @@ class _ConfigState:
         :param pulumi.Input[_builtins.str] parent: Parent scope for the config.
                Format: projects/{project-id|project-number} or folders/{folder-number} or organizations/{organization-number}.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if ingestion is not None:
@@ -109,6 +144,23 @@ class _ConfigState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -183,6 +235,7 @@ class Config(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -206,9 +259,21 @@ class Config(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
+        project = gcp.organizations.Project("project",
+            project_id="tf-test_16511",
+            name="tf-test_8493",
+            org_id="123456789",
+            deletion_policy="DELETE")
+        wait_for_project = time.Sleep("wait_for_project", create_duration="60s",
+        opts = pulumi.ResourceOptions(depends_on=[project]))
+        datalineage_api = gcp.projects.Service("datalineage_api",
+            project=project.project_id,
+            service="datalineage.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_project]))
         default = gcp.datalineage.Config("default",
-            parent="projects/my-project-name",
+            parent=project.project_id.apply(lambda project_id: f"projects/{project_id}"),
             location="global",
             ingestion={
                 "rules": [{
@@ -219,7 +284,8 @@ class Config(pulumi.CustomResource):
                         "enabled": True,
                     },
                 }],
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[datalineage_api]))
         ```
         ### Data Lineage Config Folder
 
@@ -289,6 +355,12 @@ class Config(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']] ingestion: Defines how Lineage should be ingested for this resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The region of the data lineage configuration for integration.
@@ -320,9 +392,21 @@ class Config(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
+        project = gcp.organizations.Project("project",
+            project_id="tf-test_16511",
+            name="tf-test_8493",
+            org_id="123456789",
+            deletion_policy="DELETE")
+        wait_for_project = time.Sleep("wait_for_project", create_duration="60s",
+        opts = pulumi.ResourceOptions(depends_on=[project]))
+        datalineage_api = gcp.projects.Service("datalineage_api",
+            project=project.project_id,
+            service="datalineage.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_project]))
         default = gcp.datalineage.Config("default",
-            parent="projects/my-project-name",
+            parent=project.project_id.apply(lambda project_id: f"projects/{project_id}"),
             location="global",
             ingestion={
                 "rules": [{
@@ -333,7 +417,8 @@ class Config(pulumi.CustomResource):
                         "enabled": True,
                     },
                 }],
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[datalineage_api]))
         ```
         ### Data Lineage Config Folder
 
@@ -416,6 +501,7 @@ class Config(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -428,6 +514,7 @@ class Config(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConfigArgs.__new__(ConfigArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if ingestion is None and not opts.urn:
                 raise TypeError("Missing required property 'ingestion'")
             __props__.__dict__["ingestion"] = ingestion
@@ -449,6 +536,7 @@ class Config(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -461,6 +549,12 @@ class Config(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: Used for optimistic concurrency control when patching config.
         :param pulumi.Input[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']] ingestion: Defines how Lineage should be ingested for this resource.
                Structure is documented below.
@@ -477,12 +571,26 @@ class Config(pulumi.CustomResource):
 
         __props__ = _ConfigState.__new__(_ConfigState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["etag"] = etag
         __props__.__dict__["ingestion"] = ingestion
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         return Config(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

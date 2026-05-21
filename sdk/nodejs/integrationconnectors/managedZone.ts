@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const targetProject = new gcp.organizations.Project("target_project", {
- *     projectId: "tf-test_2234",
- *     name: "tf-test_29225",
+ *     projectId: "tf-test_24243",
+ *     name: "tf-test_7495",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -50,8 +50,8 @@ import * as utilities from "../utilities";
  *     dependsOn: [compute],
  * });
  * const zone = new gcp.dns.ManagedZone("zone", {
- *     name: "tf-test-dns_40798",
- *     dnsName: "private_82591.example.com.",
+ *     name: "tf-test-dns_21912",
+ *     dnsName: "private_46731.example.com.",
  *     visibility: "private",
  *     privateVisibilityConfig: {
  *         networks: [{
@@ -127,6 +127,15 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -186,6 +195,7 @@ export class ManagedZone extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ManagedZoneState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["dns"] = state?.dns;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -207,6 +217,7 @@ export class ManagedZone extends pulumi.CustomResource {
             if (args?.targetVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetVpc'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["dns"] = args?.dns;
             resourceInputs["labels"] = args?.labels;
@@ -234,6 +245,15 @@ export interface ManagedZoneState {
      * Time the Namespace was created in UTC.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
@@ -285,6 +305,15 @@ export interface ManagedZoneState {
  * The set of arguments for constructing a ManagedZone resource.
  */
 export interface ManagedZoneArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */

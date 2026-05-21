@@ -25,6 +25,7 @@ class SloArgs:
                  service: pulumi.Input[_builtins.str],
                  basic_sli: pulumi.Input[Optional['SloBasicSliArgs']] = None,
                  calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  request_based_sli: pulumi.Input[Optional['SloRequestBasedSliArgs']] = None,
@@ -48,6 +49,12 @@ class SloArgs:
         :param pulumi.Input[_builtins.str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
                Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -83,6 +90,8 @@ class SloArgs:
             pulumi.set(__self__, "basic_sli", basic_sli)
         if calendar_period is not None:
             pulumi.set(__self__, "calendar_period", calendar_period)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if project is not None:
@@ -154,6 +163,23 @@ class SloArgs:
     @calendar_period.setter
     def calendar_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "calendar_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -266,6 +292,7 @@ class _SloState:
     def __init__(__self__, *,
                  basic_sli: pulumi.Input[Optional['SloBasicSliArgs']] = None,
                  calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.float]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -289,6 +316,12 @@ class _SloState:
         :param pulumi.Input[_builtins.str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
                Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[_builtins.float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
@@ -327,6 +360,8 @@ class _SloState:
             pulumi.set(__self__, "basic_sli", basic_sli)
         if calendar_period is not None:
             pulumi.set(__self__, "calendar_period", calendar_period)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if goal is not None:
@@ -379,6 +414,23 @@ class _SloState:
     @calendar_period.setter
     def calendar_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "calendar_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -532,6 +584,7 @@ class Slo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']]] = None,
                  calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.float]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -754,6 +807,12 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
                Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[_builtins.float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
@@ -1009,6 +1068,7 @@ class Slo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']]] = None,
                  calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  goal: pulumi.Input[Optional[_builtins.float]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1029,6 +1089,7 @@ class Slo(pulumi.CustomResource):
 
             __props__.__dict__["basic_sli"] = basic_sli
             __props__.__dict__["calendar_period"] = calendar_period
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             if goal is None and not opts.urn:
                 raise TypeError("Missing required property 'goal'")
@@ -1055,6 +1116,7 @@ class Slo(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']]] = None,
             calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             goal: pulumi.Input[Optional[_builtins.float]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1082,6 +1144,12 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
                Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[_builtins.float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
@@ -1122,6 +1190,7 @@ class Slo(pulumi.CustomResource):
 
         __props__.__dict__["basic_sli"] = basic_sli
         __props__.__dict__["calendar_period"] = calendar_period
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["goal"] = goal
         __props__.__dict__["name"] = name
@@ -1157,6 +1226,19 @@ class Slo(pulumi.CustomResource):
         Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         """
         return pulumi.get(self, "calendar_period")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

@@ -201,6 +201,62 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.datasetId;
     }
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+     * 
+     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn&#39;t changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
+     * 
+     * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+     * 
+     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn&#39;t changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
+     * 
+     * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `=destroy` or `=update` that would delete the instance will fail.
      * 
@@ -233,44 +289,12 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
-     * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-     * 
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced a field data type (`STRUCT` with
-     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-     * the recurring diff this causes. As a workaround, we recommend using the
-     * schema as returned by the API.
-     * 
-     * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
-     * 
      */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     * 
-     * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-     * 
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced a field data type (`STRUCT` with
-     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-     * the recurring diff this causes. As a workaround, we recommend using the
-     * schema as returned by the API.
-     * 
-     * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
      * 
      */
     public Output<Map<String,String>> effectiveLabels() {

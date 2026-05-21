@@ -25,6 +25,7 @@ class DataTransferConfigArgs:
                  display_name: pulumi.Input[_builtins.str],
                  params: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
                  data_refresh_window_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  email_preferences: pulumi.Input[Optional['DataTransferConfigEmailPreferencesArgs']] = None,
@@ -50,6 +51,12 @@ class DataTransferConfigArgs:
                reingests data for [today-10, today-1], rather than ingesting data for
                just [today-1]. Only valid if the data source supports the feature.
                Set the value to 0 to use the default value.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[_builtins.bool] disabled: When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input['DataTransferConfigEmailPreferencesArgs'] email_preferences: Email notifications will be sent according to these preferences to the
@@ -90,6 +97,8 @@ class DataTransferConfigArgs:
         pulumi.set(__self__, "params", params)
         if data_refresh_window_days is not None:
             pulumi.set(__self__, "data_refresh_window_days", data_refresh_window_days)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destination_dataset_id is not None:
             pulumi.set(__self__, "destination_dataset_id", destination_dataset_id)
         if disabled is not None:
@@ -167,6 +176,23 @@ class DataTransferConfigArgs:
     @data_refresh_window_days.setter
     def data_refresh_window_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_refresh_window_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationDatasetId")
@@ -329,6 +355,7 @@ class _DataTransferConfigState:
     def __init__(__self__, *,
                  data_refresh_window_days: pulumi.Input[Optional[_builtins.int]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -352,6 +379,12 @@ class _DataTransferConfigState:
                just [today-1]. Only valid if the data source supports the feature.
                Set the value to 0 to use the default value.
         :param pulumi.Input[_builtins.str] data_source_id: The data source id. Cannot be changed once the transfer config is created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[_builtins.bool] disabled: When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[_builtins.str] display_name: The user specified display name for the transfer config.
@@ -401,6 +434,8 @@ class _DataTransferConfigState:
             pulumi.set(__self__, "data_refresh_window_days", data_refresh_window_days)
         if data_source_id is not None:
             pulumi.set(__self__, "data_source_id", data_source_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destination_dataset_id is not None:
             pulumi.set(__self__, "destination_dataset_id", destination_dataset_id)
         if disabled is not None:
@@ -457,6 +492,23 @@ class _DataTransferConfigState:
     @data_source_id.setter
     def data_source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationDatasetId")
@@ -665,6 +717,7 @@ class DataTransferConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_refresh_window_days: pulumi.Input[Optional[_builtins.int]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -813,6 +866,12 @@ class DataTransferConfig(pulumi.CustomResource):
                just [today-1]. Only valid if the data source supports the feature.
                Set the value to 0 to use the default value.
         :param pulumi.Input[_builtins.str] data_source_id: The data source id. Cannot be changed once the transfer config is created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[_builtins.bool] disabled: When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[_builtins.str] display_name: The user specified display name for the transfer config.
@@ -1002,6 +1061,7 @@ class DataTransferConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_refresh_window_days: pulumi.Input[Optional[_builtins.int]] = None,
                  data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1028,6 +1088,7 @@ class DataTransferConfig(pulumi.CustomResource):
             if data_source_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_source_id'")
             __props__.__dict__["data_source_id"] = data_source_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["destination_dataset_id"] = destination_dataset_id
             __props__.__dict__["disabled"] = disabled
             if display_name is None and not opts.urn:
@@ -1058,6 +1119,7 @@ class DataTransferConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             data_refresh_window_days: pulumi.Input[Optional[_builtins.int]] = None,
             data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             destination_dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1085,6 +1147,12 @@ class DataTransferConfig(pulumi.CustomResource):
                just [today-1]. Only valid if the data source supports the feature.
                Set the value to 0 to use the default value.
         :param pulumi.Input[_builtins.str] data_source_id: The data source id. Cannot be changed once the transfer config is created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[_builtins.bool] disabled: When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[_builtins.str] display_name: The user specified display name for the transfer config.
@@ -1136,6 +1204,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
         __props__.__dict__["data_refresh_window_days"] = data_refresh_window_days
         __props__.__dict__["data_source_id"] = data_source_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["destination_dataset_id"] = destination_dataset_id
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
@@ -1171,6 +1240,19 @@ class DataTransferConfig(pulumi.CustomResource):
         The data source id. Cannot be changed once the transfer config is created.
         """
         return pulumi.get(self, "data_source_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="destinationDatasetId")

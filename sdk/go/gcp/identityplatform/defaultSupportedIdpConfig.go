@@ -71,6 +71,13 @@ type DefaultSupportedIdpConfig struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// OAuth client secret
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// If this IDP allows the user to sign in
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// ID of the IDP. Possible values include:
@@ -135,6 +142,13 @@ type defaultSupportedIdpConfigState struct {
 	ClientId *string `pulumi:"clientId"`
 	// OAuth client secret
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If this IDP allows the user to sign in
 	Enabled *bool `pulumi:"enabled"`
 	// ID of the IDP. Possible values include:
@@ -161,6 +175,13 @@ type DefaultSupportedIdpConfigState struct {
 	ClientId pulumi.StringPtrInput
 	// OAuth client secret
 	ClientSecret pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If this IDP allows the user to sign in
 	Enabled pulumi.BoolPtrInput
 	// ID of the IDP. Possible values include:
@@ -191,6 +212,13 @@ type defaultSupportedIdpConfigArgs struct {
 	ClientId string `pulumi:"clientId"`
 	// OAuth client secret
 	ClientSecret string `pulumi:"clientSecret"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If this IDP allows the user to sign in
 	Enabled *bool `pulumi:"enabled"`
 	// ID of the IDP. Possible values include:
@@ -216,6 +244,13 @@ type DefaultSupportedIdpConfigArgs struct {
 	ClientId pulumi.StringInput
 	// OAuth client secret
 	ClientSecret pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If this IDP allows the user to sign in
 	Enabled pulumi.BoolPtrInput
 	// ID of the IDP. Possible values include:
@@ -330,6 +365,16 @@ func (o DefaultSupportedIdpConfigOutput) ClientId() pulumi.StringOutput {
 // OAuth client secret
 func (o DefaultSupportedIdpConfigOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultSupportedIdpConfig) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DefaultSupportedIdpConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultSupportedIdpConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // If this IDP allows the user to sign in

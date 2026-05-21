@@ -72,6 +72,15 @@ export class KeyRingImportJob extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly attestations: pulumi.Output<outputs.kms.KeyRingImportJobAttestation[]>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The time at which this resource is scheduled for expiration and can no longer be used.
      * This is in RFC3339 text format.
      */
@@ -124,6 +133,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as KeyRingImportJobState | undefined;
             resourceInputs["attestations"] = state?.attestations;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["importJobId"] = state?.importJobId;
             resourceInputs["importMethod"] = state?.importMethod;
@@ -146,6 +156,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
             if (args?.protectionLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protectionLevel'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["importJobId"] = args?.importJobId;
             resourceInputs["importMethod"] = args?.importMethod;
             resourceInputs["keyRing"] = args?.keyRing;
@@ -172,6 +183,15 @@ export interface KeyRingImportJobState {
      * Structure is documented below.
      */
     attestations?: pulumi.Input<pulumi.Input<inputs.kms.KeyRingImportJobAttestation>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The time at which this resource is scheduled for expiration and can no longer be used.
      * This is in RFC3339 text format.
@@ -216,6 +236,15 @@ export interface KeyRingImportJobState {
  * The set of arguments for constructing a KeyRingImportJob resource.
  */
 export interface KeyRingImportJobArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
      */

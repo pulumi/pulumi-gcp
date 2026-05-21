@@ -27,6 +27,7 @@ class FrameworkDeploymentArgs:
                  location: pulumi.Input[_builtins.str],
                  organization: pulumi.Input[_builtins.str],
                  target_resource_config: pulumi.Input['FrameworkDeploymentTargetResourceConfigArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FrameworkDeployment resource.
@@ -44,6 +45,12 @@ class FrameworkDeploymentArgs:
         :param pulumi.Input['FrameworkDeploymentTargetResourceConfigArgs'] target_resource_config: TargetResourceConfig contains either the name of the target_resource or
                contains the config to create a new target_resource.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User provided description of the Framework deployment
         """
         pulumi.set(__self__, "cloud_control_metadatas", cloud_control_metadatas)
@@ -52,6 +59,8 @@ class FrameworkDeploymentArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization", organization)
         pulumi.set(__self__, "target_resource_config", target_resource_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
 
@@ -135,6 +144,23 @@ class FrameworkDeploymentArgs:
         pulumi.set(self, "target_resource_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -154,6 +180,7 @@ class _FrameworkDeploymentState:
                  cloud_control_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataArgs']]]] = None,
                  computed_target_resource: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_state: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -192,6 +219,12 @@ class _FrameworkDeploymentState:
                TargetResourceConfig in the following format:
                organizations/{organization}, folders/{folder} or projects/{project}
         :param pulumi.Input[_builtins.str] create_time: The time at which the resource was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_state: The deployment state of the framework.
                Possible values:
                DEPLOYMENT_STATE_VALIDATING
@@ -229,6 +262,8 @@ class _FrameworkDeploymentState:
             pulumi.set(__self__, "computed_target_resource", computed_target_resource)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_state is not None:
             pulumi.set(__self__, "deployment_state", deployment_state)
         if description is not None:
@@ -319,6 +354,23 @@ class _FrameworkDeploymentState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentState")
@@ -477,6 +529,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_control_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  framework: pulumi.Input[Optional[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict']]] = None,
                  framework_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -514,6 +567,12 @@ class FrameworkDeployment(pulumi.CustomResource):
                the framework. Every Cloud Control in the framework must have a
                CloudControlMetadata.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User provided description of the Framework deployment
         :param pulumi.Input[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict']] framework: FrameworkReference contains the reference of a framework.
                Structure is documented below.
@@ -571,6 +630,7 @@ class FrameworkDeployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_control_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  framework: pulumi.Input[Optional[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict']]] = None,
                  framework_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -589,6 +649,7 @@ class FrameworkDeployment(pulumi.CustomResource):
             if cloud_control_metadatas is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_control_metadatas'")
             __props__.__dict__["cloud_control_metadatas"] = cloud_control_metadatas
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if framework is None and not opts.urn:
                 raise TypeError("Missing required property 'framework'")
@@ -627,6 +688,7 @@ class FrameworkDeployment(pulumi.CustomResource):
             cloud_control_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict']]]]] = None,
             computed_target_resource: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_state: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -669,6 +731,12 @@ class FrameworkDeployment(pulumi.CustomResource):
                TargetResourceConfig in the following format:
                organizations/{organization}, folders/{folder} or projects/{project}
         :param pulumi.Input[_builtins.str] create_time: The time at which the resource was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_state: The deployment state of the framework.
                Possible values:
                DEPLOYMENT_STATE_VALIDATING
@@ -706,6 +774,7 @@ class FrameworkDeployment(pulumi.CustomResource):
         __props__.__dict__["cloud_control_metadatas"] = cloud_control_metadatas
         __props__.__dict__["computed_target_resource"] = computed_target_resource
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deployment_state"] = deployment_state
         __props__.__dict__["description"] = description
         __props__.__dict__["etag"] = etag
@@ -770,6 +839,19 @@ class FrameworkDeployment(pulumi.CustomResource):
         The time at which the resource was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deploymentState")

@@ -257,6 +257,13 @@ type ConnectivityTest struct {
 
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks pulumi.BoolPtrOutput `pulumi:"bypassFirewallChecks"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The user-supplied description of the Connectivity Test.
 	// Maximum of 512 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -345,6 +352,13 @@ func GetConnectivityTest(ctx *pulumi.Context,
 type connectivityTestState struct {
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks *bool `pulumi:"bypassFirewallChecks"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-supplied description of the Connectivity Test.
 	// Maximum of 512 characters.
 	Description *string `pulumi:"description"`
@@ -393,6 +407,13 @@ type connectivityTestState struct {
 type ConnectivityTestState struct {
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-supplied description of the Connectivity Test.
 	// Maximum of 512 characters.
 	Description pulumi.StringPtrInput
@@ -445,6 +466,13 @@ func (ConnectivityTestState) ElementType() reflect.Type {
 type connectivityTestArgs struct {
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks *bool `pulumi:"bypassFirewallChecks"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-supplied description of the Connectivity Test.
 	// Maximum of 512 characters.
 	Description *string `pulumi:"description"`
@@ -489,6 +517,13 @@ type connectivityTestArgs struct {
 type ConnectivityTestArgs struct {
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-supplied description of the Connectivity Test.
 	// Maximum of 512 characters.
 	Description pulumi.StringPtrInput
@@ -619,6 +654,16 @@ func (o ConnectivityTestOutput) ToConnectivityTestOutputWithContext(ctx context.
 // Whether the analysis should skip firewall checking. Default value is false.
 func (o ConnectivityTestOutput) BypassFirewallChecks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.BoolPtrOutput { return v.BypassFirewallChecks }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ConnectivityTestOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The user-supplied description of the Connectivity Test.

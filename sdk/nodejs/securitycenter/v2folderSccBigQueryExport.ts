@@ -113,6 +113,15 @@ export class V2FolderSccBigQueryExport extends pulumi.CustomResource {
      */
     declare public readonly dataset: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The description of the notification config (max of 1024 characters).
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -185,6 +194,7 @@ export class V2FolderSccBigQueryExport extends pulumi.CustomResource {
             resourceInputs["bigQueryExportId"] = state?.bigQueryExportId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["filter"] = state?.filter;
             resourceInputs["folder"] = state?.folder;
@@ -203,6 +213,7 @@ export class V2FolderSccBigQueryExport extends pulumi.CustomResource {
             }
             resourceInputs["bigQueryExportId"] = args?.bigQueryExportId;
             resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["filter"] = args?.filter;
             resourceInputs["folder"] = args?.folder;
@@ -240,6 +251,15 @@ export interface V2FolderSccBigQueryExportState {
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      */
     dataset?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
@@ -314,6 +334,15 @@ export interface V2FolderSccBigQueryExportArgs {
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      */
     dataset?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the notification config (max of 1024 characters).
      */

@@ -27,10 +27,13 @@ class GetRegionalParameterResult:
     """
     A collection of values returned by getRegionalParameter.
     """
-    def __init__(__self__, create_time=None, effective_labels=None, format=None, id=None, kms_key=None, labels=None, location=None, name=None, parameter_id=None, policy_members=None, project=None, pulumi_labels=None, update_time=None):
+    def __init__(__self__, create_time=None, deletion_policy=None, effective_labels=None, format=None, id=None, kms_key=None, labels=None, location=None, name=None, parameter_id=None, policy_members=None, project=None, pulumi_labels=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -72,6 +75,11 @@ class GetRegionalParameterResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -144,6 +152,7 @@ class AwaitableGetRegionalParameterResult(GetRegionalParameterResult):
             yield self
         return GetRegionalParameterResult(
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             effective_labels=self.effective_labels,
             format=self.format,
             id=self.id,
@@ -189,6 +198,7 @@ def get_regional_parameter(location: Optional[_builtins.str] = None,
 
     return AwaitableGetRegionalParameterResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         format=pulumi.get(__ret__, 'format'),
         id=pulumi.get(__ret__, 'id'),
@@ -231,6 +241,7 @@ def get_regional_parameter_output(location: pulumi.Input[Optional[_builtins.str]
     __ret__ = pulumi.runtime.invoke_output('gcp:parametermanager/getRegionalParameter:getRegionalParameter', __args__, opts=opts, typ=GetRegionalParameterResult)
     return __ret__.apply(lambda __response__: GetRegionalParameterResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         format=pulumi.get(__response__, 'format'),
         id=pulumi.get(__response__, 'id'),

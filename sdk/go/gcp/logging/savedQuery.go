@@ -196,6 +196,13 @@ type SavedQuery struct {
 
 	// Output only. The creation timestamp of the saved query.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the saved query.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The user-visible display name of the saved query.
@@ -264,6 +271,13 @@ func GetSavedQuery(ctx *pulumi.Context,
 type savedQueryState struct {
 	// Output only. The creation timestamp of the saved query.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the saved query.
 	Description *string `pulumi:"description"`
 	// The user-visible display name of the saved query.
@@ -291,6 +305,13 @@ type savedQueryState struct {
 type SavedQueryState struct {
 	// Output only. The creation timestamp of the saved query.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the saved query.
 	Description pulumi.StringPtrInput
 	// The user-visible display name of the saved query.
@@ -320,6 +341,13 @@ func (SavedQueryState) ElementType() reflect.Type {
 }
 
 type savedQueryArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the saved query.
 	Description *string `pulumi:"description"`
 	// The user-visible display name of the saved query.
@@ -344,6 +372,13 @@ type savedQueryArgs struct {
 
 // The set of arguments for constructing a SavedQuery resource.
 type SavedQueryArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the saved query.
 	Description pulumi.StringPtrInput
 	// The user-visible display name of the saved query.
@@ -456,6 +491,16 @@ func (o SavedQueryOutput) ToSavedQueryOutputWithContext(ctx context.Context) Sav
 // Output only. The creation timestamp of the saved query.
 func (o SavedQueryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SavedQueryOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the saved query.

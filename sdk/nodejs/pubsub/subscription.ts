@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_63399",
+ *         filenameSuffix: "-_34534",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -280,7 +280,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_97523",
+ *         filenameSuffix: "-_87829",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -318,7 +318,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_31660",
+ *         filenameSuffix: "-_44023",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -362,7 +362,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_97962",
+ *         filenameSuffix: "-_50206",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -594,6 +594,15 @@ export class Subscription extends pulumi.CustomResource {
      */
     declare public readonly deadLetterPolicy: pulumi.Output<outputs.pubsub.SubscriptionDeadLetterPolicy | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -724,6 +733,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["bigqueryConfig"] = state?.bigqueryConfig;
             resourceInputs["cloudStorageConfig"] = state?.cloudStorageConfig;
             resourceInputs["deadLetterPolicy"] = state?.deadLetterPolicy;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableExactlyOnceDelivery"] = state?.enableExactlyOnceDelivery;
             resourceInputs["enableMessageOrdering"] = state?.enableMessageOrdering;
@@ -749,6 +759,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["bigqueryConfig"] = args?.bigqueryConfig;
             resourceInputs["cloudStorageConfig"] = args?.cloudStorageConfig;
             resourceInputs["deadLetterPolicy"] = args?.deadLetterPolicy;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["enableExactlyOnceDelivery"] = args?.enableExactlyOnceDelivery;
             resourceInputs["enableMessageOrdering"] = args?.enableMessageOrdering;
             resourceInputs["expirationPolicy"] = args?.expirationPolicy;
@@ -820,6 +831,15 @@ export interface SubscriptionState {
      * Structure is documented below.
      */
     deadLetterPolicy?: pulumi.Input<inputs.pubsub.SubscriptionDeadLetterPolicy | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -982,6 +1002,15 @@ export interface SubscriptionArgs {
      * Structure is documented below.
      */
     deadLetterPolicy?: pulumi.Input<inputs.pubsub.SubscriptionDeadLetterPolicy | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If `true`, Pub/Sub provides the following guarantees for the delivery
      * of a message with a given value of messageId on this Subscriptions':

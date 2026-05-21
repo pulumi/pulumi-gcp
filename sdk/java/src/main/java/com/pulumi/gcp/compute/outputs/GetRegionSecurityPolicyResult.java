@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetRegionSecurityPolicyResult {
     private List<GetRegionSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
     private List<GetRegionSecurityPolicyDdosProtectionConfig> ddosProtectionConfigs;
+    private String deletionPolicy;
     private String description;
     private String fingerprint;
     /**
@@ -42,6 +43,9 @@ public final class GetRegionSecurityPolicyResult {
     }
     public List<GetRegionSecurityPolicyDdosProtectionConfig> ddosProtectionConfigs() {
         return this.ddosProtectionConfigs;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -95,6 +99,7 @@ public final class GetRegionSecurityPolicyResult {
     public static final class Builder {
         private List<GetRegionSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
         private List<GetRegionSecurityPolicyDdosProtectionConfig> ddosProtectionConfigs;
+        private String deletionPolicy;
         private String description;
         private String fingerprint;
         private String id;
@@ -112,6 +117,7 @@ public final class GetRegionSecurityPolicyResult {
     	      Objects.requireNonNull(defaults);
     	      this.advancedOptionsConfigs = defaults.advancedOptionsConfigs;
     	      this.ddosProtectionConfigs = defaults.ddosProtectionConfigs;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
@@ -147,6 +153,14 @@ public final class GetRegionSecurityPolicyResult {
         }
         public Builder ddosProtectionConfigs(GetRegionSecurityPolicyDdosProtectionConfig... ddosProtectionConfigs) {
             return ddosProtectionConfigs(List.of(ddosProtectionConfigs));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionSecurityPolicyResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -250,6 +264,7 @@ public final class GetRegionSecurityPolicyResult {
             final var _resultValue = new GetRegionSecurityPolicyResult();
             _resultValue.advancedOptionsConfigs = advancedOptionsConfigs;
             _resultValue.ddosProtectionConfigs = ddosProtectionConfigs;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;

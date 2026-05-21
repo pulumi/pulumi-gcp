@@ -124,6 +124,15 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A free-text description of the resource. Max length 1024 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -182,6 +191,7 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
             const state = argsOrState as AuthorizationPolicyState | undefined;
             resourceInputs["action"] = state?.action;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
@@ -197,6 +207,7 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'action'");
             }
             resourceInputs["action"] = args?.action;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -228,6 +239,15 @@ export interface AuthorizationPolicyState {
      * Time the AuthorizationPolicy was created in UTC.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
@@ -282,6 +302,15 @@ export interface AuthorizationPolicyArgs {
      * Possible values are: `ALLOW`, `DENY`.
      */
     action: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */

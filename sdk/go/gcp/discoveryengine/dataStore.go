@@ -212,6 +212,13 @@ type DataStore struct {
 	DataStoreId pulumi.StringOutput `pulumi:"dataStoreId"`
 	// The id of the default Schema associated with this data store.
 	DefaultSchemaId pulumi.StringOutput `pulumi:"defaultSchemaId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -310,6 +317,13 @@ type dataStoreState struct {
 	DataStoreId *string `pulumi:"dataStoreId"`
 	// The id of the default Schema associated with this data store.
 	DefaultSchemaId *string `pulumi:"defaultSchemaId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -367,6 +381,13 @@ type DataStoreState struct {
 	DataStoreId pulumi.StringPtrInput
 	// The id of the default Schema associated with this data store.
 	DefaultSchemaId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName pulumi.StringPtrInput
@@ -424,6 +445,13 @@ type dataStoreArgs struct {
 	CreateAdvancedSiteSearch *bool `pulumi:"createAdvancedSiteSearch"`
 	// The unique id of the data store.
 	DataStoreId string `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName string `pulumi:"displayName"`
@@ -473,6 +501,13 @@ type DataStoreArgs struct {
 	CreateAdvancedSiteSearch pulumi.BoolPtrInput
 	// The unique id of the data store.
 	DataStoreId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName pulumi.StringInput
@@ -627,6 +662,16 @@ func (o DataStoreOutput) DataStoreId() pulumi.StringOutput {
 // The id of the default Schema associated with this data store.
 func (o DataStoreOutput) DefaultSchemaId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataStore) pulumi.StringOutput { return v.DefaultSchemaId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DataStoreOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataStore) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the data store. This field must be a UTF-8 encoded

@@ -65,6 +65,7 @@ export interface GetFunctionResult {
     readonly buildEnvironmentVariables: {[key: string]: string};
     readonly buildServiceAccount: string;
     readonly buildWorkerPool: string;
+    readonly deletionPolicy: string;
     /**
      * Description of the function.
      */

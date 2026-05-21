@@ -50,6 +50,35 @@ public final class KeystoresAliasesPkcs12State extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Environment associated with the alias
      * 
      */
@@ -67,16 +96,12 @@ public final class KeystoresAliasesPkcs12State extends com.pulumi.resources.Reso
     /**
      * PKCS12 file content
      * 
-     * ***
-     * 
      */
     @Import(name="file")
     private @Nullable Output<String> file;
 
     /**
      * @return PKCS12 file content
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> file() {
@@ -163,6 +188,7 @@ public final class KeystoresAliasesPkcs12State extends com.pulumi.resources.Reso
     private KeystoresAliasesPkcs12State(KeystoresAliasesPkcs12State $) {
         this.alias = $.alias;
         this.certsInfos = $.certsInfos;
+        this.deletionPolicy = $.deletionPolicy;
         this.environment = $.environment;
         this.file = $.file;
         this.filehash = $.filehash;
@@ -246,6 +272,41 @@ public final class KeystoresAliasesPkcs12State extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param deletionPolicy (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
          * @param environment Environment associated with the alias
          * 
          * @return builder
@@ -269,8 +330,6 @@ public final class KeystoresAliasesPkcs12State extends com.pulumi.resources.Reso
         /**
          * @param file PKCS12 file content
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -281,8 +340,6 @@ public final class KeystoresAliasesPkcs12State extends com.pulumi.resources.Reso
 
         /**
          * @param file PKCS12 file content
-         * 
-         * ***
          * 
          * @return builder
          * 

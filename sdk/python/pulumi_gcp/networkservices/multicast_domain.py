@@ -25,6 +25,7 @@ class MulticastDomainArgs:
                  connection_config: pulumi.Input['MulticastDomainConnectionConfigArgs'],
                  location: pulumi.Input[_builtins.str],
                  multicast_domain_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  multicast_domain_group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -43,6 +44,12 @@ class MulticastDomainArgs:
                The name is restricted to letters, numbers, and hyphen, with the first
                character a letter, and the last a letter or a number. The name must not
                exceed 48 characters.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -59,6 +66,8 @@ class MulticastDomainArgs:
         pulumi.set(__self__, "connection_config", connection_config)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "multicast_domain_id", multicast_domain_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -123,6 +132,23 @@ class MulticastDomainArgs:
     @multicast_domain_id.setter
     def multicast_domain_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "multicast_domain_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -197,6 +223,7 @@ class _MulticastDomainState:
                  admin_network: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_config: pulumi.Input[Optional['MulticastDomainConnectionConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -219,6 +246,12 @@ class _MulticastDomainState:
         :param pulumi.Input['MulticastDomainConnectionConfigArgs'] connection_config: VPC connectivity information.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast domain was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs.
@@ -264,6 +297,8 @@ class _MulticastDomainState:
             pulumi.set(__self__, "connection_config", connection_config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -329,6 +364,23 @@ class _MulticastDomainState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -520,6 +572,7 @@ class MulticastDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_network: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_config: pulumi.Input[Optional[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -588,6 +641,12 @@ class MulticastDomain(pulumi.CustomResource):
                `projects/{project}/locations/global/networks/{network}`.
         :param pulumi.Input[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']] connection_config: VPC connectivity information.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -681,6 +740,7 @@ class MulticastDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_network: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_config: pulumi.Input[Optional[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -703,6 +763,7 @@ class MulticastDomain(pulumi.CustomResource):
             if connection_config is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_config'")
             __props__.__dict__["connection_config"] = connection_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -736,6 +797,7 @@ class MulticastDomain(pulumi.CustomResource):
             admin_network: pulumi.Input[Optional[_builtins.str]] = None,
             connection_config: pulumi.Input[Optional[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -762,6 +824,12 @@ class MulticastDomain(pulumi.CustomResource):
         :param pulumi.Input[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']] connection_config: VPC connectivity information.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast domain was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs.
@@ -808,6 +876,7 @@ class MulticastDomain(pulumi.CustomResource):
         __props__.__dict__["admin_network"] = admin_network
         __props__.__dict__["connection_config"] = connection_config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
@@ -849,6 +918,19 @@ class MulticastDomain(pulumi.CustomResource):
         The timestamp when the multicast domain was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

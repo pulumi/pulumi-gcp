@@ -38,8 +38,8 @@ import (
 //				return err
 //			}
 //			project_2, err := organizations.NewProject(ctx, "project-2", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_17228"),
-//				Name:           pulumi.String("tf-test_89239"),
+//				ProjectId:      pulumi.String("tf-test_97523"),
+//				Name:           pulumi.String("tf-test_31660"),
 //				OrgId:          pulumi.String("123456789"),
 //				DeletionPolicy: pulumi.String("DELETE"),
 //			})
@@ -88,6 +88,13 @@ type TraceScope struct {
 
 	// The creation timestamp of the trace scope.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Describes this trace scope.
 	// The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -151,6 +158,13 @@ func GetTraceScope(ctx *pulumi.Context,
 type traceScopeState struct {
 	// The creation timestamp of the trace scope.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this trace scope.
 	// The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
@@ -176,6 +190,13 @@ type traceScopeState struct {
 type TraceScopeState struct {
 	// The creation timestamp of the trace scope.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this trace scope.
 	// The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
@@ -203,6 +224,13 @@ func (TraceScopeState) ElementType() reflect.Type {
 }
 
 type traceScopeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this trace scope.
 	// The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
@@ -221,6 +249,13 @@ type traceScopeArgs struct {
 
 // The set of arguments for constructing a TraceScope resource.
 type TraceScopeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this trace scope.
 	// The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
@@ -327,6 +362,16 @@ func (o TraceScopeOutput) ToTraceScopeOutputWithContext(ctx context.Context) Tra
 // The creation timestamp of the trace scope.
 func (o TraceScopeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TraceScope) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TraceScopeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TraceScope) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Describes this trace scope.

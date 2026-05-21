@@ -25,6 +25,7 @@ class OsPolicyAssignmentArgs:
                  location: pulumi.Input[_builtins.str],
                  os_policies: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]],
                  rollout: pulumi.Input['OsPolicyAssignmentRolloutArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +43,12 @@ class OsPolicyAssignmentArgs:
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
                is deleted. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[_builtins.str] name: Resource name.
         :param pulumi.Input[_builtins.str] project: The project for the resource
@@ -51,6 +58,8 @@ class OsPolicyAssignmentArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "os_policies", os_policies)
         pulumi.set(__self__, "rollout", rollout)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -115,6 +124,23 @@ class OsPolicyAssignmentArgs:
         pulumi.set(self, "rollout", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -168,6 +194,7 @@ class _OsPolicyAssignmentState:
     def __init__(__self__, *,
                  baseline: pulumi.Input[Optional[_builtins.bool]] = None,
                  deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_filter: pulumi.Input[Optional['OsPolicyAssignmentInstanceFilterArgs']] = None,
@@ -191,6 +218,12 @@ class _OsPolicyAssignmentState:
                a value of `true` for this field.
         :param pulumi.Input[_builtins.bool] deleted: Output only. Indicates that this revision deletes the OS policy
                assignment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[_builtins.str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
@@ -221,6 +254,8 @@ class _OsPolicyAssignmentState:
             pulumi.set(__self__, "baseline", baseline)
         if deleted is not None:
             pulumi.set(__self__, "deleted", deleted)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -277,6 +312,23 @@ class _OsPolicyAssignmentState:
     @deleted.setter
     def deleted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deleted", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -464,6 +516,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -595,6 +648,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']] instance_filter: Filter to select VMs. Structure is
                documented below.
@@ -751,6 +810,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -768,6 +828,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OsPolicyAssignmentArgs.__new__(OsPolicyAssignmentArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if instance_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_filter'")
@@ -804,6 +865,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             baseline: pulumi.Input[Optional[_builtins.bool]] = None,
             deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
@@ -831,6 +893,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
                a value of `true` for this field.
         :param pulumi.Input[_builtins.bool] deleted: Output only. Indicates that this revision deletes the OS policy
                assignment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[_builtins.str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
@@ -863,6 +931,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
         __props__.__dict__["baseline"] = baseline
         __props__.__dict__["deleted"] = deleted
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["etag"] = etag
         __props__.__dict__["instance_filter"] = instance_filter
@@ -898,6 +967,19 @@ class OsPolicyAssignment(pulumi.CustomResource):
         assignment.
         """
         return pulumi.get(self, "deleted")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

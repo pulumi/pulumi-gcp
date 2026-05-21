@@ -309,6 +309,13 @@ type RouterNat struct {
 	// project-level default tier is used.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	AutoNetworkTier pulumi.StringOutput `pulumi:"autoNetworkTier"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayOutput `pulumi:"drainNatIps"`
@@ -452,6 +459,13 @@ type routerNatState struct {
 	// project-level default tier is used.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	AutoNetworkTier *string `pulumi:"autoNetworkTier"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
@@ -560,6 +574,13 @@ type RouterNatState struct {
 	// project-level default tier is used.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	AutoNetworkTier pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
@@ -672,6 +693,13 @@ type routerNatArgs struct {
 	// project-level default tier is used.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	AutoNetworkTier *string `pulumi:"autoNetworkTier"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
@@ -781,6 +809,13 @@ type RouterNatArgs struct {
 	// project-level default tier is used.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	AutoNetworkTier pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
@@ -976,6 +1011,16 @@ func (o RouterNatOutput) ToRouterNatOutputWithContext(ctx context.Context) Route
 // Possible values are: `PREMIUM`, `STANDARD`.
 func (o RouterNatOutput) AutoNetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.StringOutput { return v.AutoNetworkTier }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RouterNatOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterNat) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A list of URLs of the IP resources to be drained. These IPs must be

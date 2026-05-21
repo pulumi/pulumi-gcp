@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetNetworkPeeringResult {
     private String createTime;
+    private String deletionPolicy;
     private String description;
     private Boolean exportCustomRoutes;
     private Boolean exportCustomRoutesWithPublicIp;
@@ -38,6 +39,9 @@ public final class GetNetworkPeeringResult {
     private GetNetworkPeeringResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -102,6 +106,7 @@ public final class GetNetworkPeeringResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private Boolean exportCustomRoutes;
         private Boolean exportCustomRoutesWithPublicIp;
@@ -122,6 +127,7 @@ public final class GetNetworkPeeringResult {
         public Builder(GetNetworkPeeringResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.exportCustomRoutes = defaults.exportCustomRoutes;
     	      this.exportCustomRoutesWithPublicIp = defaults.exportCustomRoutesWithPublicIp;
@@ -146,6 +152,14 @@ public final class GetNetworkPeeringResult {
               throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -277,6 +291,7 @@ public final class GetNetworkPeeringResult {
         public GetNetworkPeeringResult build() {
             final var _resultValue = new GetNetworkPeeringResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.exportCustomRoutes = exportCustomRoutes;
             _resultValue.exportCustomRoutesWithPublicIp = exportCustomRoutesWithPublicIp;

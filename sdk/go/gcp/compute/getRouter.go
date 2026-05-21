@@ -67,6 +67,7 @@ type LookupRouterArgs struct {
 type LookupRouterResult struct {
 	Bgps                        []GetRouterBgp `pulumi:"bgps"`
 	CreationTimestamp           string         `pulumi:"creationTimestamp"`
+	DeletionPolicy              string         `pulumi:"deletionPolicy"`
 	Description                 string         `pulumi:"description"`
 	EncryptedInterconnectRouter bool           `pulumi:"encryptedInterconnectRouter"`
 	// The provider-assigned unique ID for this managed resource.
@@ -129,6 +130,10 @@ func (o LookupRouterResultOutput) Bgps() GetRouterBgpArrayOutput {
 
 func (o LookupRouterResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupRouterResultOutput) Description() pulumi.StringOutput {

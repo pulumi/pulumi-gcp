@@ -62,8 +62,6 @@ import * as utilities from "../utilities";
  *     displayName: "autonomousDatabase displayname",
  *     database: "mydatabase",
  *     adminPassword: "123Abpassword",
- *     odbNetwork: "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
- *     odbSubnet: "projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
  *     network: _default.then(_default => _default.id),
  *     cidr: "10.5.0.0/24",
  *     labels: {
@@ -244,6 +242,15 @@ export class AutonomousDatabase extends pulumi.CustomResource {
      */
     declare public readonly database: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
@@ -342,6 +349,7 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             resourceInputs["cidr"] = state?.cidr;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["database"] = state?.database;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["disasterRecoverySupportedLocations"] = state?.disasterRecoverySupportedLocations;
             resourceInputs["displayName"] = state?.displayName;
@@ -370,6 +378,7 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             resourceInputs["autonomousDatabaseId"] = args?.autonomousDatabaseId;
             resourceInputs["cidr"] = args?.cidr;
             resourceInputs["database"] = args?.database;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
@@ -424,6 +433,15 @@ export interface AutonomousDatabaseState {
      * contain a maximum of 30 alphanumeric characters.
      */
     database?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
      */
@@ -531,6 +549,15 @@ export interface AutonomousDatabaseArgs {
      * contain a maximum of 30 alphanumeric characters.
      */
     database?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
      */

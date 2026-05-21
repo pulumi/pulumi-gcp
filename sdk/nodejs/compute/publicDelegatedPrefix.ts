@@ -180,6 +180,15 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      */
     declare public readonly allocatablePrefixLength: pulumi.Output<number>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -265,6 +274,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PublicDelegatedPrefixState | undefined;
             resourceInputs["allocatablePrefixLength"] = state?.allocatablePrefixLength;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["enableEnhancedIpv4Allocation"] = state?.enableEnhancedIpv4Allocation;
             resourceInputs["ipCidrRange"] = state?.ipCidrRange;
@@ -289,6 +299,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["allocatablePrefixLength"] = args?.allocatablePrefixLength;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["ipCidrRange"] = args?.ipCidrRange;
             resourceInputs["isLiveMigration"] = args?.isLiveMigration;
@@ -315,6 +326,15 @@ export interface PublicDelegatedPrefixState {
      * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
      */
     allocatablePrefixLength?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -396,6 +416,15 @@ export interface PublicDelegatedPrefixArgs {
      * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
      */
     allocatablePrefixLength?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

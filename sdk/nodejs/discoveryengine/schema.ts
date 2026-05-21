@@ -88,6 +88,15 @@ export class Schema extends pulumi.CustomResource {
      */
     declare public readonly dataStoreId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The JSON representation of the schema.
      */
     declare public readonly jsonSchema: pulumi.Output<string | undefined>;
@@ -127,6 +136,7 @@ export class Schema extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SchemaState | undefined;
             resourceInputs["dataStoreId"] = state?.dataStoreId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["jsonSchema"] = state?.jsonSchema;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -144,6 +154,7 @@ export class Schema extends pulumi.CustomResource {
                 throw new Error("Missing required property 'schemaId'");
             }
             resourceInputs["dataStoreId"] = args?.dataStoreId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["jsonSchema"] = args?.jsonSchema;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -163,6 +174,15 @@ export interface SchemaState {
      * The unique id of the data store.
      */
     dataStoreId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The JSON representation of the schema.
      */
@@ -198,6 +218,15 @@ export interface SchemaArgs {
      * The unique id of the data store.
      */
     dataStoreId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The JSON representation of the schema.
      */

@@ -182,6 +182,19 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.ClusterClusterConfig> ClusterConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The list of labels (key/value pairs) to be applied to
         /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
         /// which is the name of the cluster.
@@ -198,7 +211,6 @@ namespace Pulumi.Gcp.Dataproc
         /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
         /// Only supported on Dataproc image versions 1.2 and higher.
         /// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-        /// - - -
         /// </summary>
         [Output("gracefulDecommissionTimeout")]
         public Output<string?> GracefulDecommissionTimeout { get; private set; } = null!;
@@ -306,6 +318,19 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.ClusterClusterConfigArgs>? ClusterConfig { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
         /// Does not affect auto scaling decomissioning from an autoscaling policy.
         /// Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -314,7 +339,6 @@ namespace Pulumi.Gcp.Dataproc
         /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
         /// Only supported on Dataproc image versions 1.2 and higher.
         /// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-        /// - - -
         /// </summary>
         [Input("gracefulDecommissionTimeout")]
         public Input<string>? GracefulDecommissionTimeout { get; set; }
@@ -378,6 +402,19 @@ namespace Pulumi.Gcp.Dataproc
         [Input("clusterConfig")]
         public Input<Inputs.ClusterClusterConfigGetArgs>? ClusterConfig { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
 
@@ -405,7 +442,6 @@ namespace Pulumi.Gcp.Dataproc
         /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
         /// Only supported on Dataproc image versions 1.2 and higher.
         /// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-        /// - - -
         /// </summary>
         [Input("gracefulDecommissionTimeout")]
         public Input<string>? GracefulDecommissionTimeout { get; set; }

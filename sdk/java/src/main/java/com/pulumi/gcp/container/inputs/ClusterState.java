@@ -378,6 +378,35 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Whether Terraform will be prevented from
      * destroying the cluster.  Deleting this cluster via `terraform destroy` or
      * `pulumi up` will only succeed if this field is `false` in the Terraform
@@ -1469,16 +1498,12 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
-     * 
      */
     @Import(name="rbacBindingConfig")
     private @Nullable Output<ClusterRbacBindingConfigArgs> rbacBindingConfig;
 
     /**
      * @return RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-     * 
-     * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
      * 
      */
     public Optional<Output<ClusterRbacBindingConfigArgs>> rbacBindingConfig() {
@@ -1597,7 +1622,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      * 
@@ -1606,7 +1631,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterSecretSyncConfigArgs> secretSyncConfig;
 
     /**
-     * @return ) Configuration for the
+     * @return Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      * 
@@ -1820,6 +1845,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.datapathProvider = $.datapathProvider;
         this.defaultMaxPodsPerNode = $.defaultMaxPodsPerNode;
         this.defaultSnatStatus = $.defaultSnatStatus;
+        this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.disableL4LbFirewallReconciliation = $.disableL4LbFirewallReconciliation;
@@ -2339,6 +2365,41 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultSnatStatus(ClusterDefaultSnatStatusArgs defaultSnatStatus) {
             return defaultSnatStatus(Output.of(defaultSnatStatus));
+        }
+
+        /**
+         * @param deletionPolicy (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -3818,8 +3879,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param rbacBindingConfig RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
-         * 
          * @return builder
          * 
          */
@@ -3830,8 +3889,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param rbacBindingConfig RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-         * 
-         * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
          * 
          * @return builder
          * 
@@ -3982,7 +4039,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretSyncConfig ) Configuration for the
+         * @param secretSyncConfig Configuration for the
          * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
          * Structure is documented below.
          * 
@@ -3995,7 +4052,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretSyncConfig ) Configuration for the
+         * @param secretSyncConfig Configuration for the
          * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
          * Structure is documented below.
          * 

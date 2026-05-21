@@ -16,6 +16,7 @@ public final class GetRegionSslCertificateResult {
     private String certificate;
     private Integer certificateId;
     private String creationTimestamp;
+    private String deletionPolicy;
     private String description;
     private String expireTime;
     /**
@@ -41,6 +42,9 @@ public final class GetRegionSslCertificateResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -92,6 +96,7 @@ public final class GetRegionSslCertificateResult {
         private String certificate;
         private Integer certificateId;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private String expireTime;
         private String id;
@@ -109,6 +114,7 @@ public final class GetRegionSslCertificateResult {
     	      this.certificate = defaults.certificate;
     	      this.certificateId = defaults.certificateId;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.expireTime = defaults.expireTime;
     	      this.id = defaults.id;
@@ -144,6 +150,14 @@ public final class GetRegionSslCertificateResult {
               throw new MissingRequiredPropertyException("GetRegionSslCertificateResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionSslCertificateResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -235,6 +249,7 @@ public final class GetRegionSslCertificateResult {
             _resultValue.certificate = certificate;
             _resultValue.certificateId = certificateId;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.expireTime = expireTime;
             _resultValue.id = id;

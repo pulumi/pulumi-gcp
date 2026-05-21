@@ -24,6 +24,7 @@ class SourceRepresentationInstanceArgs:
                  ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_file_path: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -39,6 +40,12 @@ class SourceRepresentationInstanceArgs:
         :param pulumi.Input[_builtins.str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[_builtins.str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[_builtins.str] password: The password for the replication user account.
@@ -59,6 +66,8 @@ class SourceRepresentationInstanceArgs:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if dump_file_path is not None:
             pulumi.set(__self__, "dump_file_path", dump_file_path)
         if name is not None:
@@ -133,6 +142,23 @@ class SourceRepresentationInstanceArgs:
     @client_key.setter
     def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="dumpFilePath")
@@ -230,6 +256,7 @@ class _SourceRepresentationInstanceState:
                  client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_file_path: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -245,6 +272,12 @@ class _SourceRepresentationInstanceState:
         :param pulumi.Input[_builtins.str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] database_version: The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date reference of supported versions.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[_builtins.str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
         :param pulumi.Input[_builtins.str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
@@ -266,6 +299,8 @@ class _SourceRepresentationInstanceState:
             pulumi.set(__self__, "client_key", client_key)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if dump_file_path is not None:
             pulumi.set(__self__, "dump_file_path", dump_file_path)
         if host is not None:
@@ -330,6 +365,23 @@ class _SourceRepresentationInstanceState:
     @database_version.setter
     def database_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="dumpFilePath")
@@ -442,6 +494,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                  client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_file_path: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -516,6 +569,12 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] database_version: The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date reference of supported versions.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[_builtins.str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
         :param pulumi.Input[_builtins.str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
@@ -613,6 +672,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                  client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_file_path: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -636,6 +696,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
             __props__.__dict__["database_version"] = database_version
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["dump_file_path"] = dump_file_path
             if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
@@ -662,6 +723,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
             client_key: pulumi.Input[Optional[_builtins.str]] = None,
             database_version: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             dump_file_path: pulumi.Input[Optional[_builtins.str]] = None,
             host: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -681,6 +743,12 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] database_version: The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date reference of supported versions.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[_builtins.str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
         :param pulumi.Input[_builtins.str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
@@ -702,6 +770,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         __props__.__dict__["client_certificate"] = client_certificate
         __props__.__dict__["client_key"] = client_key
         __props__.__dict__["database_version"] = database_version
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["dump_file_path"] = dump_file_path
         __props__.__dict__["host"] = host
         __props__.__dict__["name"] = name
@@ -743,6 +812,19 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date reference of supported versions.
         """
         return pulumi.get(self, "database_version")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="dumpFilePath")

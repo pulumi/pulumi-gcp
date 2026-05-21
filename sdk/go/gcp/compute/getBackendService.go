@@ -82,6 +82,7 @@ type LookupBackendServiceResult struct {
 	CustomMetrics                []GetBackendServiceCustomMetric   `pulumi:"customMetrics"`
 	CustomRequestHeaders         []string                          `pulumi:"customRequestHeaders"`
 	CustomResponseHeaders        []string                          `pulumi:"customResponseHeaders"`
+	DeletionPolicy               string                            `pulumi:"deletionPolicy"`
 	// Textual description for the Backend Service.
 	Description        string                               `pulumi:"description"`
 	DynamicForwardings []GetBackendServiceDynamicForwarding `pulumi:"dynamicForwardings"`
@@ -209,6 +210,10 @@ func (o LookupBackendServiceResultOutput) CustomRequestHeaders() pulumi.StringAr
 
 func (o LookupBackendServiceResultOutput) CustomResponseHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) []string { return v.CustomResponseHeaders }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Textual description for the Backend Service.

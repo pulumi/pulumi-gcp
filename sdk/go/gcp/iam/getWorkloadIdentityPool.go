@@ -68,6 +68,7 @@ type LookupWorkloadIdentityPoolArgs struct {
 // A collection of values returned by getWorkloadIdentityPool.
 type LookupWorkloadIdentityPoolResult struct {
 	AttestationRules []GetWorkloadIdentityPoolAttestationRule `pulumi:"attestationRules"`
+	DeletionPolicy   string                                   `pulumi:"deletionPolicy"`
 	Description      string                                   `pulumi:"description"`
 	Disabled         bool                                     `pulumi:"disabled"`
 	DisplayName      string                                   `pulumi:"displayName"`
@@ -126,6 +127,10 @@ func (o LookupWorkloadIdentityPoolResultOutput) AttestationRules() GetWorkloadId
 	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) []GetWorkloadIdentityPoolAttestationRule {
 		return v.AttestationRules
 	}).(GetWorkloadIdentityPoolAttestationRuleArrayOutput)
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkloadIdentityPoolResultOutput) Description() pulumi.StringOutput {

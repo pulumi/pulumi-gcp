@@ -15,18 +15,26 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// <summary>
         /// The modality of the web widget.
         /// Possible values:
-        /// UNKNOWN_MODALITY
+        /// MODALITY_UNSPECIFIED
         /// CHAT_AND_VOICE
         /// VOICE_ONLY
         /// CHAT_ONLY
+        /// CHAT_VOICE_AND_VIDEO
         /// </summary>
         [Input("modality")]
         public Input<string>? Modality { get; set; }
 
         /// <summary>
+        /// The security settings of the web widget.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("securitySettings")]
+        public Input<Inputs.DeploymentChannelProfileWebWidgetConfigSecuritySettingsGetArgs>? SecuritySettings { get; set; }
+
+        /// <summary>
         /// The theme of the web widget.
         /// Possible values:
-        /// UNKNOWN_THEME
+        /// THEME_UNSPECIFIED
         /// LIGHT
         /// DARK
         /// </summary>

@@ -101,6 +101,15 @@ export class AiLogicPromptTemplate extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The display name of the PromptTemplate.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -163,6 +172,7 @@ export class AiLogicPromptTemplate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AiLogicPromptTemplateState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["location"] = state?.location;
             resourceInputs["locked"] = state?.locked;
@@ -184,6 +194,7 @@ export class AiLogicPromptTemplate extends pulumi.CustomResource {
             if (args?.templateString === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateString'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -209,6 +220,15 @@ export interface AiLogicPromptTemplateState {
      * Timestamp when the PromptTemplate was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the PromptTemplate.
      */
@@ -263,6 +283,15 @@ export interface AiLogicPromptTemplateState {
  * The set of arguments for constructing a AiLogicPromptTemplate resource.
  */
 export interface AiLogicPromptTemplateArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the PromptTemplate.
      */

@@ -63,6 +63,12 @@ export class RolloutSequence extends pulumi.CustomResource {
     }
 
     /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     */
+    declare public readonly autoUpgradeConfig: pulumi.Output<outputs.gkehub.RolloutSequenceAutoUpgradeConfig | undefined>;
+    /**
      * The timestamp at which the Rollout Sequence was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -70,6 +76,15 @@ export class RolloutSequence extends pulumi.CustomResource {
      * The timestamp at the Rollout Sequence was deleted.
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * Human readable display name of the Rollout Sequence.
      */
@@ -139,8 +154,10 @@ export class RolloutSequence extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RolloutSequenceState | undefined;
+            resourceInputs["autoUpgradeConfig"] = state?.autoUpgradeConfig;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["etag"] = state?.etag;
@@ -161,6 +178,8 @@ export class RolloutSequence extends pulumi.CustomResource {
             if (args?.stages === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stages'");
             }
+            resourceInputs["autoUpgradeConfig"] = args?.autoUpgradeConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["ignoredClustersSelector"] = args?.ignoredClustersSelector;
             resourceInputs["labels"] = args?.labels;
@@ -188,6 +207,12 @@ export class RolloutSequence extends pulumi.CustomResource {
  */
 export interface RolloutSequenceState {
     /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     */
+    autoUpgradeConfig?: pulumi.Input<inputs.gkehub.RolloutSequenceAutoUpgradeConfig | undefined>;
+    /**
      * The timestamp at which the Rollout Sequence was created.
      */
     createTime?: pulumi.Input<string | undefined>;
@@ -195,6 +220,15 @@ export interface RolloutSequenceState {
      * The timestamp at the Rollout Sequence was deleted.
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Human readable display name of the Rollout Sequence.
      */
@@ -256,6 +290,21 @@ export interface RolloutSequenceState {
  * The set of arguments for constructing a RolloutSequence resource.
  */
 export interface RolloutSequenceArgs {
+    /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     */
+    autoUpgradeConfig?: pulumi.Input<inputs.gkehub.RolloutSequenceAutoUpgradeConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Human readable display name of the Rollout Sequence.
      */

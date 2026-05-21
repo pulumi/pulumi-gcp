@@ -43,6 +43,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.accesscontextmanager.AccessLevel;
  * import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
  * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs;
  * import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBinding;
  * import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBindingArgs;
  * import com.pulumi.std.StdFunctions;
@@ -133,6 +136,30 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> accessLevels() {
         return Codegen.optional(this.accessLevels);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Required. Immutable. Google Group id whose members are subject to this binding&#39;s restrictions. See &#34;id&#34; in the G Suite Directory API&#39;s Groups resource. If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: &#34;01d520gv4vjcrht&#34;

@@ -150,6 +150,7 @@ namespace Pulumi.Gcp.Beyondcorp
     public sealed class GetAppGatewayResult
     {
         public readonly ImmutableArray<Outputs.GetAppGatewayAllocatedConnectionResult> AllocatedConnections;
+        public readonly string DeletionPolicy;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string HostType;
@@ -169,6 +170,8 @@ namespace Pulumi.Gcp.Beyondcorp
         [OutputConstructor]
         private GetAppGatewayResult(
             ImmutableArray<Outputs.GetAppGatewayAllocatedConnectionResult> allocatedConnections,
+
+            string deletionPolicy,
 
             string displayName,
 
@@ -195,6 +198,7 @@ namespace Pulumi.Gcp.Beyondcorp
             string uri)
         {
             AllocatedConnections = allocatedConnections;
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             HostType = hostType;

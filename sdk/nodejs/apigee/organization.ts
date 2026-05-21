@@ -243,6 +243,15 @@ export class Organization extends pulumi.CustomResource {
      */
     declare public readonly controlPlaneEncryptionKeyName: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the Apigee organization.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -320,6 +329,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["billingType"] = state?.billingType;
             resourceInputs["caCertificate"] = state?.caCertificate;
             resourceInputs["controlPlaneEncryptionKeyName"] = state?.controlPlaneEncryptionKeyName;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["disableVpcPeering"] = state?.disableVpcPeering;
             resourceInputs["displayName"] = state?.displayName;
@@ -341,6 +351,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["authorizedNetwork"] = args?.authorizedNetwork;
             resourceInputs["billingType"] = args?.billingType;
             resourceInputs["controlPlaneEncryptionKeyName"] = args?.controlPlaneEncryptionKeyName;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["disableVpcPeering"] = args?.disableVpcPeering;
             resourceInputs["displayName"] = args?.displayName;
@@ -401,6 +412,15 @@ export interface OrganizationState {
      * Only used for the data residency region "US" or "EU".
      */
     controlPlaneEncryptionKeyName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the Apigee organization.
      */
@@ -492,6 +512,15 @@ export interface OrganizationArgs {
      * Only used for the data residency region "US" or "EU".
      */
     controlPlaneEncryptionKeyName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the Apigee organization.
      */

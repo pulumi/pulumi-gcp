@@ -26,10 +26,13 @@ class GetOdbNetworkResult:
     """
     A collection of values returned by getOdbNetwork.
     """
-    def __init__(__self__, create_time=None, deletion_protection=None, effective_labels=None, entitlement_id=None, gcp_oracle_zone=None, id=None, labels=None, location=None, name=None, network=None, odb_network_id=None, project=None, pulumi_labels=None, state=None):
+    def __init__(__self__, create_time=None, deletion_policy=None, deletion_protection=None, effective_labels=None, entitlement_id=None, gcp_oracle_zone=None, id=None, labels=None, location=None, name=None, network=None, odb_network_id=None, project=None, pulumi_labels=None, state=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -74,6 +77,11 @@ class GetOdbNetworkResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -151,6 +159,7 @@ class AwaitableGetOdbNetworkResult(GetOdbNetworkResult):
             yield self
         return GetOdbNetworkResult(
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             effective_labels=self.effective_labels,
             entitlement_id=self.entitlement_id,
@@ -205,6 +214,7 @@ def get_odb_network(location: Optional[_builtins.str] = None,
 
     return AwaitableGetOdbNetworkResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         entitlement_id=pulumi.get(__ret__, 'entitlement_id'),
@@ -256,6 +266,7 @@ def get_odb_network_output(location: pulumi.Input[Optional[_builtins.str]] = Non
     __ret__ = pulumi.runtime.invoke_output('gcp:oracledatabase/getOdbNetwork:getOdbNetwork', __args__, opts=opts, typ=GetOdbNetworkResult)
     return __ret__.apply(lambda __response__: GetOdbNetworkResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         entitlement_id=pulumi.get(__response__, 'entitlement_id'),

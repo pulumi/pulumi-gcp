@@ -118,6 +118,13 @@ type Control struct {
 	Conditions ControlConditionArrayOutput `pulumi:"conditions"`
 	// The unique id of the control.
 	ControlId pulumi.StringOutput `pulumi:"controlId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the control. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -209,6 +216,13 @@ type controlState struct {
 	Conditions []ControlCondition `pulumi:"conditions"`
 	// The unique id of the control.
 	ControlId *string `pulumi:"controlId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the control. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -256,6 +270,13 @@ type ControlState struct {
 	Conditions ControlConditionArrayInput
 	// The unique id of the control.
 	ControlId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the control. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName pulumi.StringPtrInput
@@ -307,6 +328,13 @@ type controlArgs struct {
 	Conditions []ControlCondition `pulumi:"conditions"`
 	// The unique id of the control.
 	ControlId string `pulumi:"controlId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the control. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName string `pulumi:"displayName"`
@@ -350,6 +378,13 @@ type ControlArgs struct {
 	Conditions ControlConditionArrayInput
 	// The unique id of the control.
 	ControlId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the control. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName pulumi.StringInput
@@ -488,6 +523,16 @@ func (o ControlOutput) Conditions() ControlConditionArrayOutput {
 // The unique id of the control.
 func (o ControlOutput) ControlId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Control) pulumi.StringOutput { return v.ControlId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ControlOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Control) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the control. This field must be a UTF-8 encoded

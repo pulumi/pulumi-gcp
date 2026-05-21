@@ -26,6 +26,7 @@ class DataProductArgs:
                  location: pulumi.Input[_builtins.str],
                  owner_emails: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  access_groups: pulumi.Input[Optional[Sequence[pulumi.Input['DataProductAccessGroupArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -38,6 +39,12 @@ class DataProductArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owner_emails: Emails of the owners.
         :param pulumi.Input[Sequence[pulumi.Input['DataProductAccessGroupArgs']]] access_groups: Custom user defined access groups at the data product level.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the data product.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -51,6 +58,8 @@ class DataProductArgs:
         pulumi.set(__self__, "owner_emails", owner_emails)
         if access_groups is not None:
             pulumi.set(__self__, "access_groups", access_groups)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -120,6 +129,23 @@ class DataProductArgs:
         pulumi.set(self, "access_groups", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -166,6 +192,7 @@ class _DataProductState:
                  asset_count: pulumi.Input[Optional[_builtins.int]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -185,6 +212,12 @@ class _DataProductState:
         :param pulumi.Input[_builtins.int] asset_count: Number of associated data assets.
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp.
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the data product.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the data product.
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -209,6 +242,8 @@ class _DataProductState:
             pulumi.set(__self__, "create_time", create_time)
         if data_product_id is not None:
             pulumi.set(__self__, "data_product_id", data_product_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -280,6 +315,23 @@ class _DataProductState:
     @data_product_id.setter
     def data_product_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_product_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -426,6 +478,7 @@ class DataProduct(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]]] = None,
                  data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -465,7 +518,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_29439@example.com",
+                    "google_group": "tf-test-analysts-_79169@example.com",
                 },
             }])
         ```
@@ -492,7 +545,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_87786@example.com",
+                        "google_group": "tf-test-analysts-_56529@example.com",
                     },
                 },
                 {
@@ -500,7 +553,7 @@ class DataProduct(pulumi.CustomResource):
                     "group_id": "scientist",
                     "display_name": "Data Scientist",
                     "principal": {
-                        "google_group": "tf-test-scientists-_2067@example.com",
+                        "google_group": "tf-test-scientists-_75413@example.com",
                     },
                 },
             ])
@@ -528,6 +581,12 @@ class DataProduct(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]] access_groups: Custom user defined access groups at the data product level.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the data product.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the data product.
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
@@ -576,7 +635,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_29439@example.com",
+                    "google_group": "tf-test-analysts-_79169@example.com",
                 },
             }])
         ```
@@ -603,7 +662,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_87786@example.com",
+                        "google_group": "tf-test-analysts-_56529@example.com",
                     },
                 },
                 {
@@ -611,7 +670,7 @@ class DataProduct(pulumi.CustomResource):
                     "group_id": "scientist",
                     "display_name": "Data Scientist",
                     "principal": {
-                        "google_group": "tf-test-scientists-_2067@example.com",
+                        "google_group": "tf-test-scientists-_75413@example.com",
                     },
                 },
             ])
@@ -651,6 +710,7 @@ class DataProduct(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductAccessGroupArgs', 'DataProductAccessGroupArgsDict']]]]] = None,
                  data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -670,6 +730,7 @@ class DataProduct(pulumi.CustomResource):
             if data_product_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_product_id'")
             __props__.__dict__["data_product_id"] = data_product_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -705,6 +766,7 @@ class DataProduct(pulumi.CustomResource):
             asset_count: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -728,6 +790,12 @@ class DataProduct(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] asset_count: Number of associated data assets.
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp.
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the data product.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the data product.
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -752,6 +820,7 @@ class DataProduct(pulumi.CustomResource):
         __props__.__dict__["asset_count"] = asset_count
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_product_id"] = data_product_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
@@ -797,6 +866,19 @@ class DataProduct(pulumi.CustomResource):
         The ID of the data product.
         """
         return pulumi.get(self, "data_product_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

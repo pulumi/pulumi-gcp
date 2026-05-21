@@ -64,6 +64,7 @@ export interface GetRegionBackendServiceResult {
     readonly consistentHashes: outputs.compute.GetRegionBackendServiceConsistentHash[];
     readonly creationTimestamp: string;
     readonly customMetrics: outputs.compute.GetRegionBackendServiceCustomMetric[];
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly dynamicForwardings: outputs.compute.GetRegionBackendServiceDynamicForwarding[];
     readonly enableCdn: boolean;

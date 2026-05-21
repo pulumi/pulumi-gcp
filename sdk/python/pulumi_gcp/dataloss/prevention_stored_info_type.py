@@ -22,6 +22,7 @@ __all__ = ['PreventionStoredInfoTypeArgs', 'PreventionStoredInfoType']
 class PreventionStoredInfoTypeArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dictionary: pulumi.Input[Optional['PreventionStoredInfoTypeDictionaryArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +37,12 @@ class PreventionStoredInfoTypeArgs:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the info type.
         :param pulumi.Input['PreventionStoredInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -49,6 +56,8 @@ class PreventionStoredInfoTypeArgs:
                characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "parent", parent)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dictionary is not None:
@@ -77,6 +86,23 @@ class PreventionStoredInfoTypeArgs:
     @parent.setter
     def parent(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -159,6 +185,7 @@ class PreventionStoredInfoTypeArgs:
 @pulumi.input_type
 class _PreventionStoredInfoTypeState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dictionary: pulumi.Input[Optional['PreventionStoredInfoTypeDictionaryArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -170,6 +197,12 @@ class _PreventionStoredInfoTypeState:
         """
         Input properties used for looking up and filtering PreventionStoredInfoType resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the info type.
         :param pulumi.Input['PreventionStoredInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -188,6 +221,8 @@ class _PreventionStoredInfoTypeState:
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
                characters. Can be empty to allow the system to generate one.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dictionary is not None:
@@ -204,6 +239,23 @@ class _PreventionStoredInfoTypeState:
             pulumi.set(__self__, "regex", regex)
         if stored_info_type_id is not None:
             pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -317,6 +369,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -435,6 +488,12 @@ class PreventionStoredInfoType(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the info type.
         :param pulumi.Input[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -581,6 +640,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -597,6 +657,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PreventionStoredInfoTypeArgs.__new__(PreventionStoredInfoTypeArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["dictionary"] = dictionary
             __props__.__dict__["display_name"] = display_name
@@ -617,6 +678,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dictionary: pulumi.Input[Optional[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -632,6 +694,12 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the info type.
         :param pulumi.Input[Union['PreventionStoredInfoTypeDictionaryArgs', 'PreventionStoredInfoTypeDictionaryArgsDict']] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -654,6 +722,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
 
         __props__ = _PreventionStoredInfoTypeState.__new__(_PreventionStoredInfoTypeState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["dictionary"] = dictionary
         __props__.__dict__["display_name"] = display_name
@@ -663,6 +732,19 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         __props__.__dict__["regex"] = regex
         __props__.__dict__["stored_info_type_id"] = stored_info_type_id
         return PreventionStoredInfoType(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

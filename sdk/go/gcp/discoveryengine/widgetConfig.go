@@ -63,7 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = discoveryengine.NewWidgetConfig(ctx, "basic", &discoveryengine.WidgetConfigArgs{
+//			basicWidgetConfig, err := discoveryengine.NewWidgetConfig(ctx, "basic", &discoveryengine.WidgetConfigArgs{
 //				Location: basicSearchEngine.Location,
 //				EngineId: basicSearchEngine.EngineId,
 //				AccessSettings: &discoveryengine.WidgetConfigAccessSettingsArgs{
@@ -82,6 +82,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("widgetConfigId", basicWidgetConfig.ConfigId)
 //			return nil
 //		})
 //	}
@@ -111,6 +112,8 @@ type WidgetConfig struct {
 	AccessSettings WidgetConfigAccessSettingsOutput `pulumi:"accessSettings"`
 	// The collection ID.
 	CollectionId pulumi.StringPtrOutput `pulumi:"collectionId"`
+	// Output only. Unique obfuscated identifier of a WidgetConfig.
+	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// The engine ID.
 	EngineId pulumi.StringOutput `pulumi:"engineId"`
 	// Describes the homepage setting of the widget. It includes all homepage related settings
@@ -178,6 +181,8 @@ type widgetConfigState struct {
 	AccessSettings *WidgetConfigAccessSettings `pulumi:"accessSettings"`
 	// The collection ID.
 	CollectionId *string `pulumi:"collectionId"`
+	// Output only. Unique obfuscated identifier of a WidgetConfig.
+	ConfigId *string `pulumi:"configId"`
 	// The engine ID.
 	EngineId *string `pulumi:"engineId"`
 	// Describes the homepage setting of the widget. It includes all homepage related settings
@@ -210,6 +215,8 @@ type WidgetConfigState struct {
 	AccessSettings WidgetConfigAccessSettingsPtrInput
 	// The collection ID.
 	CollectionId pulumi.StringPtrInput
+	// Output only. Unique obfuscated identifier of a WidgetConfig.
+	ConfigId pulumi.StringPtrInput
 	// The engine ID.
 	EngineId pulumi.StringPtrInput
 	// Describes the homepage setting of the widget. It includes all homepage related settings
@@ -395,6 +402,11 @@ func (o WidgetConfigOutput) AccessSettings() WidgetConfigAccessSettingsOutput {
 // The collection ID.
 func (o WidgetConfigOutput) CollectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WidgetConfig) pulumi.StringPtrOutput { return v.CollectionId }).(pulumi.StringPtrOutput)
+}
+
+// Output only. Unique obfuscated identifier of a WidgetConfig.
+func (o WidgetConfigOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WidgetConfig) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
 }
 
 // The engine ID.

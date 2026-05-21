@@ -83,6 +83,13 @@ type IcebergNamespace struct {
 
 	// The name of the IcebergCatalog.
 	Catalog pulumi.StringOutput `pulumi:"catalog"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The unique identifier of the namespace.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	// The ID of the project in which the resource belongs.
@@ -130,6 +137,13 @@ func GetIcebergNamespace(ctx *pulumi.Context,
 type icebergNamespaceState struct {
 	// The name of the IcebergCatalog.
 	Catalog *string `pulumi:"catalog"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The unique identifier of the namespace.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// The ID of the project in which the resource belongs.
@@ -142,6 +156,13 @@ type icebergNamespaceState struct {
 type IcebergNamespaceState struct {
 	// The name of the IcebergCatalog.
 	Catalog pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The unique identifier of the namespace.
 	NamespaceId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -158,6 +179,13 @@ func (IcebergNamespaceState) ElementType() reflect.Type {
 type icebergNamespaceArgs struct {
 	// The name of the IcebergCatalog.
 	Catalog string `pulumi:"catalog"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The unique identifier of the namespace.
 	NamespaceId string `pulumi:"namespaceId"`
 	// The ID of the project in which the resource belongs.
@@ -171,6 +199,13 @@ type icebergNamespaceArgs struct {
 type IcebergNamespaceArgs struct {
 	// The name of the IcebergCatalog.
 	Catalog pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The unique identifier of the namespace.
 	NamespaceId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -270,6 +305,16 @@ func (o IcebergNamespaceOutput) ToIcebergNamespaceOutputWithContext(ctx context.
 // The name of the IcebergCatalog.
 func (o IcebergNamespaceOutput) Catalog() pulumi.StringOutput {
 	return o.ApplyT(func(v *IcebergNamespace) pulumi.StringOutput { return v.Catalog }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o IcebergNamespaceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *IcebergNamespace) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the namespace.

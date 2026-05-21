@@ -102,6 +102,13 @@ type Enrollment struct {
 	CelMatch pulumi.StringOutput `pulumi:"celMatch"`
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Destination is the Pipeline that the Enrollment is delivering to. It must
 	// point to the full resource name of a Pipeline. Format:
 	// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
@@ -203,6 +210,13 @@ type enrollmentState struct {
 	CelMatch *string `pulumi:"celMatch"`
 	// The creation time.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Destination is the Pipeline that the Enrollment is delivering to. It must
 	// point to the full resource name of a Pipeline. Format:
 	// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
@@ -255,6 +269,13 @@ type EnrollmentState struct {
 	CelMatch pulumi.StringPtrInput
 	// The creation time.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Destination is the Pipeline that the Enrollment is delivering to. It must
 	// point to the full resource name of a Pipeline. Format:
 	// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
@@ -309,6 +330,13 @@ type enrollmentArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// A CEL expression identifying which messages this enrollment applies to.
 	CelMatch string `pulumi:"celMatch"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Destination is the Pipeline that the Enrollment is delivering to. It must
 	// point to the full resource name of a Pipeline. Format:
 	// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
@@ -341,6 +369,13 @@ type EnrollmentArgs struct {
 	Annotations pulumi.StringMapInput
 	// A CEL expression identifying which messages this enrollment applies to.
 	CelMatch pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Destination is the Pipeline that the Enrollment is delivering to. It must
 	// point to the full resource name of a Pipeline. Format:
 	// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
@@ -467,6 +502,16 @@ func (o EnrollmentOutput) CelMatch() pulumi.StringOutput {
 // The creation time.
 func (o EnrollmentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Enrollment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EnrollmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Enrollment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Destination is the Pipeline that the Enrollment is delivering to. It must

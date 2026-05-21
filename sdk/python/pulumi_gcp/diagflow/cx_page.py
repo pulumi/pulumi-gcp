@@ -23,6 +23,7 @@ class CxPageArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  advanced_settings: pulumi.Input[Optional['CxPageAdvancedSettingsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_fulfillment: pulumi.Input[Optional['CxPageEntryFulfillmentArgs']] = None,
                  event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
                  form: pulumi.Input[Optional['CxPageFormArgs']] = None,
@@ -38,6 +39,12 @@ class CxPageArgs:
         :param pulumi.Input['CxPageAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['CxPageEntryFulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -77,6 +84,8 @@ class CxPageArgs:
         pulumi.set(__self__, "display_name", display_name)
         if advanced_settings is not None:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if entry_fulfillment is not None:
             pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
@@ -119,6 +128,23 @@ class CxPageArgs:
     @advanced_settings.setter
     def advanced_settings(self, value: pulumi.Input[Optional['CxPageAdvancedSettingsArgs']]):
         pulumi.set(self, "advanced_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="entryFulfillment")
@@ -248,6 +274,7 @@ class CxPageArgs:
 class _CxPageState:
     def __init__(__self__, *,
                  advanced_settings: pulumi.Input[Optional['CxPageAdvancedSettingsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_fulfillment: pulumi.Input[Optional['CxPageEntryFulfillmentArgs']] = None,
                  event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
@@ -264,6 +291,12 @@ class _CxPageState:
         :param pulumi.Input['CxPageAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the page, unique within the agent.
         :param pulumi.Input['CxPageEntryFulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
@@ -305,6 +338,8 @@ class _CxPageState:
         """
         if advanced_settings is not None:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if entry_fulfillment is not None:
@@ -339,6 +374,23 @@ class _CxPageState:
     @advanced_settings.setter
     def advanced_settings(self, value: pulumi.Input[Optional['CxPageAdvancedSettingsArgs']]):
         pulumi.set(self, "advanced_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -496,6 +548,7 @@ class CxPage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']]] = None,
                  event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]]] = None,
@@ -1222,6 +1275,12 @@ class CxPage(pulumi.CustomResource):
         :param pulumi.Input[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the page, unique within the agent.
         :param pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
@@ -1992,6 +2051,7 @@ class CxPage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']]] = None,
                  event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]]] = None,
@@ -2011,6 +2071,7 @@ class CxPage(pulumi.CustomResource):
             __props__ = CxPageArgs.__new__(CxPageArgs)
 
             __props__.__dict__["advanced_settings"] = advanced_settings
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -2034,6 +2095,7 @@ class CxPage(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']]] = None,
             event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]]] = None,
@@ -2054,6 +2116,12 @@ class CxPage(pulumi.CustomResource):
         :param pulumi.Input[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the page, unique within the agent.
         :param pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
@@ -2098,6 +2166,7 @@ class CxPage(pulumi.CustomResource):
         __props__ = _CxPageState.__new__(_CxPageState)
 
         __props__.__dict__["advanced_settings"] = advanced_settings
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["entry_fulfillment"] = entry_fulfillment
         __props__.__dict__["event_handlers"] = event_handlers
@@ -2119,6 +2188,19 @@ class CxPage(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "advanced_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

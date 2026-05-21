@@ -71,6 +71,7 @@ type LookupEntitlementResult struct {
 	AdditionalNotificationTargets []GetEntitlementAdditionalNotificationTarget `pulumi:"additionalNotificationTargets"`
 	ApprovalWorkflows             []GetEntitlementApprovalWorkflow             `pulumi:"approvalWorkflows"`
 	CreateTime                    string                                       `pulumi:"createTime"`
+	DeletionPolicy                string                                       `pulumi:"deletionPolicy"`
 	EligibleUsers                 []GetEntitlementEligibleUser                 `pulumi:"eligibleUsers"`
 	EntitlementId                 *string                                      `pulumi:"entitlementId"`
 	Etag                          string                                       `pulumi:"etag"`
@@ -136,6 +137,10 @@ func (o LookupEntitlementResultOutput) ApprovalWorkflows() GetEntitlementApprova
 
 func (o LookupEntitlementResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntitlementResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupEntitlementResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupEntitlementResultOutput) EligibleUsers() GetEntitlementEligibleUserArrayOutput {

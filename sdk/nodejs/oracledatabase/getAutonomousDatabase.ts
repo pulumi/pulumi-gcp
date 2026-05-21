@@ -63,6 +63,7 @@ export interface GetAutonomousDatabaseResult {
     readonly cidr: string;
     readonly createTime: string;
     readonly database: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly disasterRecoverySupportedLocations: string[];
     readonly displayName: string;

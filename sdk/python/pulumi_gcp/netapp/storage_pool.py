@@ -26,6 +26,7 @@ class StoragePoolArgs:
                  active_directory: pulumi.Input[Optional[_builtins.str]] = None,
                  allow_auto_tiering: pulumi.Input[Optional[_builtins.bool]] = None,
                  custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
                  hot_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
@@ -56,6 +57,12 @@ class StoragePoolArgs:
         :param pulumi.Input[_builtins.bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
                Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[_builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enable_hot_tier_auto_resize: Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
                The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
@@ -110,6 +117,8 @@ class StoragePoolArgs:
             pulumi.set(__self__, "allow_auto_tiering", allow_auto_tiering)
         if custom_performance_enabled is not None:
             pulumi.set(__self__, "custom_performance_enabled", custom_performance_enabled)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_hot_tier_auto_resize is not None:
@@ -234,6 +243,23 @@ class StoragePoolArgs:
     @custom_performance_enabled.setter
     def custom_performance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "custom_performance_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -476,6 +502,7 @@ class _StoragePoolState:
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  cold_tier_size_used_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -513,6 +540,12 @@ class _StoragePoolState:
         :param pulumi.Input[_builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
         :param pulumi.Input[_builtins.str] cold_tier_size_used_gib: Total cold tier data rounded down to the nearest GiB used by the storage pool.
         :param pulumi.Input[_builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_hot_tier_auto_resize: Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
@@ -580,6 +613,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "cold_tier_size_used_gib", cold_tier_size_used_gib)
         if custom_performance_enabled is not None:
             pulumi.set(__self__, "custom_performance_enabled", custom_performance_enabled)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -709,6 +744,23 @@ class _StoragePoolState:
     @custom_performance_enabled.setter
     def custom_performance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "custom_performance_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1062,6 +1114,7 @@ class StoragePool(pulumi.CustomResource):
                  allow_auto_tiering: pulumi.Input[Optional[_builtins.bool]] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
                  hot_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1179,6 +1232,12 @@ class StoragePool(pulumi.CustomResource):
                Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[_builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
         :param pulumi.Input[_builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enable_hot_tier_auto_resize: Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
                The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
@@ -1340,6 +1399,7 @@ class StoragePool(pulumi.CustomResource):
                  allow_auto_tiering: pulumi.Input[Optional[_builtins.bool]] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
                  hot_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1375,6 +1435,7 @@ class StoragePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
             __props__.__dict__["custom_performance_enabled"] = custom_performance_enabled
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_hot_tier_auto_resize"] = enable_hot_tier_auto_resize
             __props__.__dict__["hot_tier_size_gib"] = hot_tier_size_gib
@@ -1427,6 +1488,7 @@ class StoragePool(pulumi.CustomResource):
             capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
             cold_tier_size_used_gib: pulumi.Input[Optional[_builtins.str]] = None,
             custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1468,6 +1530,12 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
         :param pulumi.Input[_builtins.str] cold_tier_size_used_gib: Total cold tier data rounded down to the nearest GiB used by the storage pool.
         :param pulumi.Input[_builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_hot_tier_auto_resize: Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
@@ -1533,6 +1601,7 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["capacity_gib"] = capacity_gib
         __props__.__dict__["cold_tier_size_used_gib"] = cold_tier_size_used_gib
         __props__.__dict__["custom_performance_enabled"] = custom_performance_enabled
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_hot_tier_auto_resize"] = enable_hot_tier_auto_resize
@@ -1610,6 +1679,19 @@ class StoragePool(pulumi.CustomResource):
         Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         """
         return pulumi.get(self, "custom_performance_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

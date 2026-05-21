@@ -320,7 +320,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
      * This example `addonsConfig` disables two addons:
      * 
@@ -329,7 +329,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<ClusterAddonsConfigPodSnapshotConfigArgs> podSnapshotConfig;
 
     /**
-     * @return ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
      * This example `addonsConfig` disables two addons:
      * 
@@ -825,7 +825,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param podSnapshotConfig ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+         * @param podSnapshotConfig The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
          * 
          * This example `addonsConfig` disables two addons:
          * 
@@ -838,7 +838,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param podSnapshotConfig ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+         * @param podSnapshotConfig The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
          * 
          * This example `addonsConfig` disables two addons:
          * 

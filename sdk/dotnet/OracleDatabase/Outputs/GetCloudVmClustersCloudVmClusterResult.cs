@@ -39,6 +39,15 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        public readonly string DeletionPolicy;
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
         /// </summary>
         public readonly bool DeletionProtection;
@@ -125,6 +134,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string createTime,
 
+            string deletionPolicy,
+
             bool deletionProtection,
 
             string displayName,
@@ -158,6 +169,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             Cidr = cidr;
             CloudVmClusterId = cloudVmClusterId;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;

@@ -83,6 +83,15 @@ export class IcebergNamespace extends pulumi.CustomResource {
      */
     declare public readonly catalog: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The unique identifier of the namespace.
      */
     declare public readonly namespaceId: pulumi.Output<string>;
@@ -110,6 +119,7 @@ export class IcebergNamespace extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IcebergNamespaceState | undefined;
             resourceInputs["catalog"] = state?.catalog;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["namespaceId"] = state?.namespaceId;
             resourceInputs["project"] = state?.project;
             resourceInputs["properties"] = state?.properties;
@@ -122,6 +132,7 @@ export class IcebergNamespace extends pulumi.CustomResource {
                 throw new Error("Missing required property 'namespaceId'");
             }
             resourceInputs["catalog"] = args?.catalog;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["namespaceId"] = args?.namespaceId;
             resourceInputs["project"] = args?.project;
             resourceInputs["properties"] = args?.properties;
@@ -139,6 +150,15 @@ export interface IcebergNamespaceState {
      * The name of the IcebergCatalog.
      */
     catalog?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the namespace.
      */
@@ -162,6 +182,15 @@ export interface IcebergNamespaceArgs {
      * The name of the IcebergCatalog.
      */
     catalog: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the namespace.
      */

@@ -92,6 +92,15 @@ export class TransferAgentPool extends pulumi.CustomResource {
      */
     declare public readonly bandwidthLimit: pulumi.Output<outputs.storage.TransferAgentPoolBandwidthLimit | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Specifies the client-specified AgentPool description.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -130,6 +139,7 @@ export class TransferAgentPool extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TransferAgentPoolState | undefined;
             resourceInputs["bandwidthLimit"] = state?.bandwidthLimit;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -137,6 +147,7 @@ export class TransferAgentPool extends pulumi.CustomResource {
         } else {
             const args = argsOrState as TransferAgentPoolArgs | undefined;
             resourceInputs["bandwidthLimit"] = args?.bandwidthLimit;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -156,6 +167,15 @@ export interface TransferAgentPoolState {
      * Structure is documented below.
      */
     bandwidthLimit?: pulumi.Input<inputs.storage.TransferAgentPoolBandwidthLimit | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Specifies the client-specified AgentPool description.
      */
@@ -191,6 +211,15 @@ export interface TransferAgentPoolArgs {
      * Structure is documented below.
      */
     bandwidthLimit?: pulumi.Input<inputs.storage.TransferAgentPoolBandwidthLimit | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Specifies the client-specified AgentPool description.
      */

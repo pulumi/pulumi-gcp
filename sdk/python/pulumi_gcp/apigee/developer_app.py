@@ -27,6 +27,7 @@ class DeveloperAppArgs:
                  api_products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_family: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppAttributeArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  key_expires_in: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -45,6 +46,12 @@ class DeveloperAppArgs:
         :param pulumi.Input[_builtins.str] app_family: Developer app family.
         :param pulumi.Input[Sequence[pulumi.Input['DeveloperAppAttributeArgs']]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] key_expires_in: Expiration time, in milliseconds, for the consumer key that is generated
                for the developer app. If not set or left to the default value of -1,
                the API key never expires. The expiration time can't be updated after it is set.
@@ -63,6 +70,8 @@ class DeveloperAppArgs:
             pulumi.set(__self__, "app_family", app_family)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if key_expires_in is not None:
             pulumi.set(__self__, "key_expires_in", key_expires_in)
         if name is not None:
@@ -150,6 +159,23 @@ class DeveloperAppArgs:
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="keyExpiresIn")
     def key_expires_in(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -212,6 +238,7 @@ class _DeveloperAppState:
                  callback_url: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  credentials: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppCredentialArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_email: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  key_expires_in: pulumi.Input[Optional[_builtins.str]] = None,
@@ -235,6 +262,12 @@ class _DeveloperAppState:
         :param pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialArgs']]] credentials: Output only. Set of credentials for the developer app consisting of
                the consumer key/secret pairs associated with the API products.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] developer_email: Email address of the developer.
                This value is used to uniquely identify the developer in Apigee hybrid.
                Note that the email address has to be in lowercase only.
@@ -265,6 +298,8 @@ class _DeveloperAppState:
             pulumi.set(__self__, "created_at", created_at)
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if developer_email is not None:
             pulumi.set(__self__, "developer_email", developer_email)
         if developer_id is not None:
@@ -370,6 +405,23 @@ class _DeveloperAppState:
     @credentials.setter
     def credentials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppCredentialArgs']]]]):
         pulumi.set(self, "credentials", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="developerEmail")
@@ -485,6 +537,7 @@ class DeveloperApp(pulumi.CustomResource):
                  app_family: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]]] = None,
                  callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_email: pulumi.Input[Optional[_builtins.str]] = None,
                  key_expires_in: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -632,6 +685,12 @@ class DeveloperApp(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate
                authorization codes back to developer apps.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] developer_email: Email address of the developer.
                This value is used to uniquely identify the developer in Apigee hybrid.
                Note that the email address has to be in lowercase only.
@@ -803,6 +862,7 @@ class DeveloperApp(pulumi.CustomResource):
                  app_family: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict']]]]] = None,
                  callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_email: pulumi.Input[Optional[_builtins.str]] = None,
                  key_expires_in: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -824,6 +884,7 @@ class DeveloperApp(pulumi.CustomResource):
             if callback_url is None and not opts.urn:
                 raise TypeError("Missing required property 'callback_url'")
             __props__.__dict__["callback_url"] = callback_url
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if developer_email is None and not opts.urn:
                 raise TypeError("Missing required property 'developer_email'")
             __props__.__dict__["developer_email"] = developer_email
@@ -856,6 +917,7 @@ class DeveloperApp(pulumi.CustomResource):
             callback_url: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppCredentialArgs', 'DeveloperAppCredentialArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             developer_email: pulumi.Input[Optional[_builtins.str]] = None,
             developer_id: pulumi.Input[Optional[_builtins.str]] = None,
             key_expires_in: pulumi.Input[Optional[_builtins.str]] = None,
@@ -883,6 +945,12 @@ class DeveloperApp(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAppCredentialArgs', 'DeveloperAppCredentialArgsDict']]]] credentials: Output only. Set of credentials for the developer app consisting of
                the consumer key/secret pairs associated with the API products.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] developer_email: Email address of the developer.
                This value is used to uniquely identify the developer in Apigee hybrid.
                Note that the email address has to be in lowercase only.
@@ -910,6 +978,7 @@ class DeveloperApp(pulumi.CustomResource):
         __props__.__dict__["callback_url"] = callback_url
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["credentials"] = credentials
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["developer_email"] = developer_email
         __props__.__dict__["developer_id"] = developer_id
         __props__.__dict__["key_expires_in"] = key_expires_in
@@ -980,6 +1049,19 @@ class DeveloperApp(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "credentials")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="developerEmail")

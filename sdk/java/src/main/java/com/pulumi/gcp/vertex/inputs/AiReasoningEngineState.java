@@ -56,14 +56,28 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * Optional. The deletion policy for the reasoning engine.
+     * Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is permitted.
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * @return Optional. The deletion policy for the reasoning engine.
+     * Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is permitted.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -345,7 +359,14 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deletionPolicy Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+         * @param deletionPolicy Optional. The deletion policy for the reasoning engine.
+         * Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is permitted.
          * 
          * @return builder
          * 
@@ -356,7 +377,14 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deletionPolicy Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+         * @param deletionPolicy Optional. The deletion policy for the reasoning engine.
+         * Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is permitted.
          * 
          * @return builder
          * 

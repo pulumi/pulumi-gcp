@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly int CheckIntervalSec;
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetHealthCheckGrpcHealthCheckResult> GrpcHealthChecks;
         public readonly ImmutableArray<Outputs.GetHealthCheckGrpcTlsHealthCheckResult> GrpcTlsHealthChecks;
@@ -164,6 +165,8 @@ namespace Pulumi.Gcp.Compute
             int checkIntervalSec,
 
             string creationTimestamp,
+
+            string deletionPolicy,
 
             string description,
 
@@ -203,6 +206,7 @@ namespace Pulumi.Gcp.Compute
         {
             CheckIntervalSec = checkIntervalSec;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             GrpcHealthChecks = grpcHealthChecks;
             GrpcTlsHealthChecks = grpcTlsHealthChecks;

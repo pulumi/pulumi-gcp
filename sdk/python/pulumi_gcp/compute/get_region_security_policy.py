@@ -27,13 +27,16 @@ class GetRegionSecurityPolicyResult:
     """
     A collection of values returned by getRegionSecurityPolicy.
     """
-    def __init__(__self__, advanced_options_configs=None, ddos_protection_configs=None, description=None, fingerprint=None, id=None, name=None, policy_id=None, project=None, region=None, rules=None, self_link=None, self_link_with_policy_id=None, type=None, user_defined_fields=None):
+    def __init__(__self__, advanced_options_configs=None, ddos_protection_configs=None, deletion_policy=None, description=None, fingerprint=None, id=None, name=None, policy_id=None, project=None, region=None, rules=None, self_link=None, self_link_with_policy_id=None, type=None, user_defined_fields=None):
         if advanced_options_configs and not isinstance(advanced_options_configs, list):
             raise TypeError("Expected argument 'advanced_options_configs' to be a list")
         pulumi.set(__self__, "advanced_options_configs", advanced_options_configs)
         if ddos_protection_configs and not isinstance(ddos_protection_configs, list):
             raise TypeError("Expected argument 'ddos_protection_configs' to be a list")
         pulumi.set(__self__, "ddos_protection_configs", ddos_protection_configs)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -80,6 +83,11 @@ class GetRegionSecurityPolicyResult:
     @pulumi.getter(name="ddosProtectionConfigs")
     def ddos_protection_configs(self) -> Sequence['outputs.GetRegionSecurityPolicyDdosProtectionConfigResult']:
         return pulumi.get(self, "ddos_protection_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -153,6 +161,7 @@ class AwaitableGetRegionSecurityPolicyResult(GetRegionSecurityPolicyResult):
         return GetRegionSecurityPolicyResult(
             advanced_options_configs=self.advanced_options_configs,
             ddos_protection_configs=self.ddos_protection_configs,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             fingerprint=self.fingerprint,
             id=self.id,
@@ -199,6 +208,7 @@ def get_region_security_policy(name: Optional[_builtins.str] = None,
     return AwaitableGetRegionSecurityPolicyResult(
         advanced_options_configs=pulumi.get(__ret__, 'advanced_options_configs'),
         ddos_protection_configs=pulumi.get(__ret__, 'ddos_protection_configs'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         id=pulumi.get(__ret__, 'id'),
@@ -242,6 +252,7 @@ def get_region_security_policy_output(name: pulumi.Input[Optional[_builtins.str]
     return __ret__.apply(lambda __response__: GetRegionSecurityPolicyResult(
         advanced_options_configs=pulumi.get(__response__, 'advanced_options_configs'),
         ddos_protection_configs=pulumi.get(__response__, 'ddos_protection_configs'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         fingerprint=pulumi.get(__response__, 'fingerprint'),
         id=pulumi.get(__response__, 'id'),

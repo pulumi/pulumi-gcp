@@ -56,6 +56,7 @@ export interface GetHcVpnGatewayArgs {
  * A collection of values returned by getHcVpnGateway.
  */
 export interface GetHcVpnGatewayResult {
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly gatewayIpVersion: string;

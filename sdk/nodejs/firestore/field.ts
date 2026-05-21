@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.firestore.Field("basic", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__34599",
+ *     collection: "chatrooms__49547",
  *     field: "basic",
  *     indexConfig: {
  *         indexes: [
@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  * const matchOverride = new gcp.firestore.Field("match_override", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__79513",
+ *     collection: "chatrooms__48675",
  *     field: "field_with_same_configuration_as_ancestor",
  *     indexConfig: {
  *         indexes: [
@@ -130,7 +130,7 @@ import * as utilities from "../utilities";
  * const wildcard = new gcp.firestore.Field("wildcard", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__55500",
+ *     collection: "chatrooms__42702",
  *     field: "*",
  *     indexConfig: {
  *         indexes: [
@@ -195,6 +195,15 @@ export class Field extends pulumi.CustomResource {
      */
     declare public readonly database: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The id of the field to configure.
      */
     declare public readonly field: pulumi.Output<string>;
@@ -237,6 +246,7 @@ export class Field extends pulumi.CustomResource {
             const state = argsOrState as FieldState | undefined;
             resourceInputs["collection"] = state?.collection;
             resourceInputs["database"] = state?.database;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["field"] = state?.field;
             resourceInputs["indexConfig"] = state?.indexConfig;
             resourceInputs["name"] = state?.name;
@@ -252,6 +262,7 @@ export class Field extends pulumi.CustomResource {
             }
             resourceInputs["collection"] = args?.collection;
             resourceInputs["database"] = args?.database;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["field"] = args?.field;
             resourceInputs["indexConfig"] = args?.indexConfig;
             resourceInputs["project"] = args?.project;
@@ -275,6 +286,15 @@ export interface FieldState {
      * The Firestore database id. Defaults to `"(default)"`.
      */
     database?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The id of the field to configure.
      */
@@ -316,6 +336,15 @@ export interface FieldArgs {
      * The Firestore database id. Defaults to `"(default)"`.
      */
     database?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The id of the field to configure.
      */

@@ -419,6 +419,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
  * import com.pulumi.gcp.dns.RecordSet;
  * import com.pulumi.gcp.dns.RecordSetArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -656,6 +657,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
  * import com.pulumi.gcp.dns.RecordSet;
  * import com.pulumi.gcp.dns.RecordSetArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -892,32 +894,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The deletion policy for the instance. Setting `ABANDON` allows the resource
-     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-     * and all its contents. Setting `PREVENT` prevents the resource from accidental
-     * deletion by erroring out during plan.
-     * Default is `PREVENT`.  Possible values are:
-     * * DELETE
-     * * PREVENT
-     * * ABANDON
+     * Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the instance. Setting `ABANDON` allows the resource
-     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-     * and all its contents. Setting `PREVENT` prevents the resource from accidental
-     * deletion by erroring out during plan.
-     * Default is `PREVENT`.  Possible values are:
-     * * DELETE
-     * * PREVENT
-     * * ABANDON
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

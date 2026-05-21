@@ -26,10 +26,13 @@ class GetUserWorkloadsConfigMapResult:
     """
     A collection of values returned by getUserWorkloadsConfigMap.
     """
-    def __init__(__self__, data=None, environment=None, id=None, name=None, project=None, region=None):
+    def __init__(__self__, data=None, deletion_policy=None, environment=None, id=None, name=None, project=None, region=None):
         if data and not isinstance(data, dict):
             raise TypeError("Expected argument 'data' to be a dict")
         pulumi.set(__self__, "data", data)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if environment and not isinstance(environment, str):
             raise TypeError("Expected argument 'environment' to be a str")
         pulumi.set(__self__, "environment", environment)
@@ -54,6 +57,11 @@ class GetUserWorkloadsConfigMapResult:
         For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
         """
         return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -91,6 +99,7 @@ class AwaitableGetUserWorkloadsConfigMapResult(GetUserWorkloadsConfigMapResult):
             yield self
         return GetUserWorkloadsConfigMapResult(
             data=self.data,
+            deletion_policy=self.deletion_policy,
             environment=self.environment,
             id=self.id,
             name=self.name,
@@ -104,13 +113,13 @@ def get_user_workloads_config_map(environment: Optional[_builtins.str] = None,
                                   region: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserWorkloadsConfigMapResult:
     """
-    Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+    Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
 
-    To get more information about Composer User Workloads Config Map, see:
+    To get more information about Managed Airflow User Workloads Config Map, see:
 
     * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
 
     ## Example Usage
 
@@ -132,8 +141,8 @@ def get_user_workloads_config_map(environment: Optional[_builtins.str] = None,
             "db_host": "dbhost:5432",
             "api_host": "apihost:443",
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_config_map_output(environment=name,
-        name=google_composer_user_workloads_config_map["example"]["name"]))
+    example = gcp.composer.get_user_workloads_config_map_output(environment=example_environment.name,
+        name=google_composer_user_workloads_config_map["example"]["name"])
     pulumi.export("debug", example)
     ```
 
@@ -154,6 +163,7 @@ def get_user_workloads_config_map(environment: Optional[_builtins.str] = None,
 
     return AwaitableGetUserWorkloadsConfigMapResult(
         data=pulumi.get(__ret__, 'data'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         environment=pulumi.get(__ret__, 'environment'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -165,13 +175,13 @@ def get_user_workloads_config_map_output(environment: pulumi.Input[Optional[_bui
                                          region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserWorkloadsConfigMapResult]:
     """
-    Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+    Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
 
-    To get more information about Composer User Workloads Config Map, see:
+    To get more information about Managed Airflow User Workloads Config Map, see:
 
     * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
 
     ## Example Usage
 
@@ -193,8 +203,8 @@ def get_user_workloads_config_map_output(environment: pulumi.Input[Optional[_bui
             "db_host": "dbhost:5432",
             "api_host": "apihost:443",
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_config_map_output(environment=name,
-        name=google_composer_user_workloads_config_map["example"]["name"]))
+    example = gcp.composer.get_user_workloads_config_map_output(environment=example_environment.name,
+        name=google_composer_user_workloads_config_map["example"]["name"])
     pulumi.export("debug", example)
     ```
 
@@ -214,6 +224,7 @@ def get_user_workloads_config_map_output(environment: pulumi.Input[Optional[_bui
     __ret__ = pulumi.runtime.invoke_output('gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap', __args__, opts=opts, typ=GetUserWorkloadsConfigMapResult)
     return __ret__.apply(lambda __response__: GetUserWorkloadsConfigMapResult(
         data=pulumi.get(__response__, 'data'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         environment=pulumi.get(__response__, 'environment'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

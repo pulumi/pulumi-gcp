@@ -261,6 +261,13 @@ type EnterpriseKey struct {
 	AndroidSettings EnterpriseKeyAndroidSettingsPtrOutput `pulumi:"androidSettings"`
 	// The timestamp corresponding to the creation of this Key.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Human-readable display name of this key. Modifiable by user.
 	//
 	// ***
@@ -330,6 +337,13 @@ type enterpriseKeyState struct {
 	AndroidSettings *EnterpriseKeyAndroidSettings `pulumi:"androidSettings"`
 	// The timestamp corresponding to the creation of this Key.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-readable display name of this key. Modifiable by user.
 	//
 	// ***
@@ -362,6 +376,13 @@ type EnterpriseKeyState struct {
 	AndroidSettings EnterpriseKeyAndroidSettingsPtrInput
 	// The timestamp corresponding to the creation of this Key.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human-readable display name of this key. Modifiable by user.
 	//
 	// ***
@@ -396,6 +417,13 @@ func (EnterpriseKeyState) ElementType() reflect.Type {
 type enterpriseKeyArgs struct {
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings *EnterpriseKeyAndroidSettings `pulumi:"androidSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-readable display name of this key. Modifiable by user.
 	//
 	// ***
@@ -421,6 +449,13 @@ type enterpriseKeyArgs struct {
 type EnterpriseKeyArgs struct {
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings EnterpriseKeyAndroidSettingsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human-readable display name of this key. Modifiable by user.
 	//
 	// ***
@@ -537,6 +572,16 @@ func (o EnterpriseKeyOutput) AndroidSettings() EnterpriseKeyAndroidSettingsPtrOu
 // The timestamp corresponding to the creation of this Key.
 func (o EnterpriseKeyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EnterpriseKeyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Human-readable display name of this key. Modifiable by user.

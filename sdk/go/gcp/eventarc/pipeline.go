@@ -435,6 +435,13 @@ type Pipeline struct {
 	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// List of destinations to which messages will be forwarded. Currently,
 	// exactly one destination is supported per Pipeline.
 	// Structure is documented below.
@@ -560,6 +567,13 @@ type pipelineState struct {
 	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// List of destinations to which messages will be forwarded. Currently,
 	// exactly one destination is supported per Pipeline.
 	// Structure is documented below.
@@ -642,6 +656,13 @@ type PipelineState struct {
 	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// List of destinations to which messages will be forwarded. Currently,
 	// exactly one destination is supported per Pipeline.
 	// Structure is documented below.
@@ -723,6 +744,13 @@ type pipelineArgs struct {
 	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// List of destinations to which messages will be forwarded. Currently,
 	// exactly one destination is supported per Pipeline.
 	// Structure is documented below.
@@ -777,6 +805,13 @@ type PipelineArgs struct {
 	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// List of destinations to which messages will be forwarded. Currently,
 	// exactly one destination is supported per Pipeline.
 	// Structure is documented below.
@@ -928,6 +963,16 @@ func (o PipelineOutput) CreateTime() pulumi.StringOutput {
 // "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 func (o PipelineOutput) CryptoKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.CryptoKeyName }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PipelineOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // List of destinations to which messages will be forwarded. Currently,

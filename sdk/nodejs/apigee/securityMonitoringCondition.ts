@@ -120,6 +120,15 @@ export class SecurityMonitoringCondition extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A nested object resource.
      */
     declare public readonly includeAllResources: pulumi.Output<outputs.apigee.SecurityMonitoringConditionIncludeAllResources | undefined>;
@@ -169,6 +178,7 @@ export class SecurityMonitoringCondition extends pulumi.CustomResource {
             const state = argsOrState as SecurityMonitoringConditionState | undefined;
             resourceInputs["conditionId"] = state?.conditionId;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["includeAllResources"] = state?.includeAllResources;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
@@ -192,6 +202,7 @@ export class SecurityMonitoringCondition extends pulumi.CustomResource {
                 throw new Error("Missing required property 'scope'");
             }
             resourceInputs["conditionId"] = args?.conditionId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["includeAllResources"] = args?.includeAllResources;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["profile"] = args?.profile;
@@ -219,6 +230,15 @@ export interface SecurityMonitoringConditionState {
      * The timestamp at which this profile was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      */
@@ -263,6 +283,15 @@ export interface SecurityMonitoringConditionArgs {
      * Resource ID of the security monitoring condition.
      */
     conditionId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      */

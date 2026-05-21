@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppConnectorResult {
+    private String deletionPolicy;
     private String displayName;
     private Map<String,String> effectiveLabels;
     /**
@@ -31,6 +32,9 @@ public final class GetAppConnectorResult {
     private String state;
 
     private GetAppConnectorResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     public String displayName() {
         return this.displayName;
     }
@@ -75,6 +79,7 @@ public final class GetAppConnectorResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String id;
@@ -88,6 +93,7 @@ public final class GetAppConnectorResult {
         public Builder() {}
         public Builder(GetAppConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
@@ -100,6 +106,14 @@ public final class GetAppConnectorResult {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder displayName(String displayName) {
             if (displayName == null) {
@@ -181,6 +195,7 @@ public final class GetAppConnectorResult {
         }
         public GetAppConnectorResult build() {
             final var _resultValue = new GetAppConnectorResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;

@@ -109,6 +109,13 @@ import (
 type Version struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The developer-provided description of this version.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The unique identifier of this agent version.
@@ -152,6 +159,13 @@ func GetVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Version resources.
 type versionState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The developer-provided description of this version.
 	Description *string `pulumi:"description"`
 	// The unique identifier of this agent version.
@@ -166,6 +180,13 @@ type versionState struct {
 }
 
 type VersionState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The developer-provided description of this version.
 	Description pulumi.StringPtrInput
 	// The unique identifier of this agent version.
@@ -184,6 +205,13 @@ func (VersionState) ElementType() reflect.Type {
 }
 
 type versionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The developer-provided description of this version.
 	Description *string `pulumi:"description"`
 	// The Flow to create an Version for.
@@ -193,6 +221,13 @@ type versionArgs struct {
 
 // The set of arguments for constructing a Version resource.
 type VersionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The developer-provided description of this version.
 	Description pulumi.StringPtrInput
 	// The Flow to create an Version for.
@@ -285,6 +320,16 @@ func (o VersionOutput) ToVersionOutput() VersionOutput {
 
 func (o VersionOutput) ToVersionOutputWithContext(ctx context.Context) VersionOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o VersionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The developer-provided description of this version.

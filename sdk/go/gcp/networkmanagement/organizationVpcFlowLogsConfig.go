@@ -73,6 +73,13 @@ type OrganizationVpcFlowLogsConfig struct {
 	// CROSS_PROJECT_METADATA_DISABLED
 	// Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
 	CrossProjectMetadata pulumi.StringOutput `pulumi:"crossProjectMetadata"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -175,6 +182,13 @@ type organizationVpcFlowLogsConfigState struct {
 	// CROSS_PROJECT_METADATA_DISABLED
 	// Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
 	CrossProjectMetadata *string `pulumi:"crossProjectMetadata"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description *string `pulumi:"description"`
@@ -234,6 +248,13 @@ type OrganizationVpcFlowLogsConfigState struct {
 	// CROSS_PROJECT_METADATA_DISABLED
 	// Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
 	CrossProjectMetadata pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description pulumi.StringPtrInput
@@ -295,6 +316,13 @@ type organizationVpcFlowLogsConfigArgs struct {
 	// CROSS_PROJECT_METADATA_DISABLED
 	// Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
 	CrossProjectMetadata *string `pulumi:"crossProjectMetadata"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description *string `pulumi:"description"`
@@ -344,6 +372,13 @@ type OrganizationVpcFlowLogsConfigArgs struct {
 	// CROSS_PROJECT_METADATA_DISABLED
 	// Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
 	CrossProjectMetadata pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description pulumi.StringPtrInput
@@ -487,6 +522,16 @@ func (o OrganizationVpcFlowLogsConfigOutput) CreateTime() pulumi.StringOutput {
 // Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
 func (o OrganizationVpcFlowLogsConfigOutput) CrossProjectMetadata() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationVpcFlowLogsConfig) pulumi.StringOutput { return v.CrossProjectMetadata }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OrganizationVpcFlowLogsConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationVpcFlowLogsConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum

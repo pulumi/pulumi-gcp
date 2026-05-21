@@ -251,6 +251,13 @@ type Automation struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. Time at which the automation was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The deliveryPipeline for the resource
 	DeliveryPipeline pulumi.StringOutput `pulumi:"deliveryPipeline"`
 	// Optional. Description of the `Automation`. Max length is 255 characters.
@@ -347,6 +354,13 @@ type automationState struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. Time at which the automation was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The deliveryPipeline for the resource
 	DeliveryPipeline *string `pulumi:"deliveryPipeline"`
 	// Optional. Description of the `Automation`. Max length is 255 characters.
@@ -394,6 +408,13 @@ type AutomationState struct {
 	Annotations pulumi.StringMapInput
 	// Output only. Time at which the automation was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The deliveryPipeline for the resource
 	DeliveryPipeline pulumi.StringPtrInput
 	// Optional. Description of the `Automation`. Max length is 255 characters.
@@ -443,6 +464,13 @@ type automationArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The deliveryPipeline for the resource
 	DeliveryPipeline string `pulumi:"deliveryPipeline"`
 	// Optional. Description of the `Automation`. Max length is 255 characters.
@@ -476,6 +504,13 @@ type AutomationArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The deliveryPipeline for the resource
 	DeliveryPipeline pulumi.StringInput
 	// Optional. Description of the `Automation`. Max length is 255 characters.
@@ -600,6 +635,16 @@ func (o AutomationOutput) Annotations() pulumi.StringMapOutput {
 // Output only. Time at which the automation was created.
 func (o AutomationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AutomationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The deliveryPipeline for the resource

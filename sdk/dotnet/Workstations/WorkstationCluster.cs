@@ -20,6 +20,44 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// ## Example Usage
     /// 
+    /// ### Workstation Cluster Custom Urls
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstations-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstations-network",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Name,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "custom-urls-cluster",
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///         WorkstationAuthorizationUrl = "https://workstations.cloud.google.com/ui/auth",
+    ///         WorkstationLaunchUrl = "https://console.cloud.google.com/workstations/launch",
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    /// });
+    /// ```
     /// ### Workstation Cluster Basic
     /// 
     /// ```csharp
@@ -278,6 +316,17 @@ namespace Pulumi.Gcp.Workstations
         public Output<bool> Degraded { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Human-readable name for this resource.
         /// </summary>
         [Output("displayName")]
@@ -380,10 +429,24 @@ namespace Pulumi.Gcp.Workstations
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+        /// Redirects to this endpoint will send a base64 encoded `State` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+        /// </summary>
+        [Output("workstationAuthorizationUrl")]
+        public Output<string> WorkstationAuthorizationUrl { get; private set; } = null!;
+
+        /// <summary>
         /// ID to use for the workstation cluster.
         /// </summary>
         [Output("workstationClusterId")]
         public Output<string> WorkstationClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+        /// Requests redirected to the launch endpoint will be sent with a `Workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+        /// </summary>
+        [Output("workstationLaunchUrl")]
+        public Output<string?> WorkstationLaunchUrl { get; private set; } = null!;
 
 
         /// <summary>
@@ -449,6 +512,17 @@ namespace Pulumi.Gcp.Workstations
             get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Human-readable name for this resource.
@@ -527,10 +601,24 @@ namespace Pulumi.Gcp.Workstations
         }
 
         /// <summary>
+        /// Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+        /// Redirects to this endpoint will send a base64 encoded `State` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+        /// </summary>
+        [Input("workstationAuthorizationUrl")]
+        public Input<string>? WorkstationAuthorizationUrl { get; set; }
+
+        /// <summary>
         /// ID to use for the workstation cluster.
         /// </summary>
         [Input("workstationClusterId", required: true)]
         public Input<string> WorkstationClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+        /// Requests redirected to the launch endpoint will be sent with a `Workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+        /// </summary>
+        [Input("workstationLaunchUrl")]
+        public Input<string>? WorkstationLaunchUrl { get; set; }
 
         public WorkstationClusterArgs()
         {
@@ -586,6 +674,17 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("degraded")]
         public Input<bool>? Degraded { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Human-readable name for this resource.
@@ -728,10 +827,24 @@ namespace Pulumi.Gcp.Workstations
         public Input<string>? Uid { get; set; }
 
         /// <summary>
+        /// Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+        /// Redirects to this endpoint will send a base64 encoded `State` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+        /// </summary>
+        [Input("workstationAuthorizationUrl")]
+        public Input<string>? WorkstationAuthorizationUrl { get; set; }
+
+        /// <summary>
         /// ID to use for the workstation cluster.
         /// </summary>
         [Input("workstationClusterId")]
         public Input<string>? WorkstationClusterId { get; set; }
+
+        /// <summary>
+        /// Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+        /// Requests redirected to the launch endpoint will be sent with a `Workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+        /// </summary>
+        [Input("workstationLaunchUrl")]
+        public Input<string>? WorkstationLaunchUrl { get; set; }
 
         public WorkstationClusterState()
         {

@@ -25,6 +25,7 @@ class ConnectionArgs:
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  bitbucket_cloud_config: pulumi.Input[Optional['ConnectionBitbucketCloudConfigArgs']] = None,
                  bitbucket_data_center_config: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  github_config: pulumi.Input[Optional['ConnectionGithubConfigArgs']] = None,
                  github_enterprise_config: pulumi.Input[Optional['ConnectionGithubEnterpriseConfigArgs']] = None,
@@ -42,6 +43,12 @@ class ConnectionArgs:
                Structure is documented below.
         :param pulumi.Input['ConnectionBitbucketDataCenterConfigArgs'] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
                Structure is documented below.
@@ -60,6 +67,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "bitbucket_cloud_config", bitbucket_cloud_config)
         if bitbucket_data_center_config is not None:
             pulumi.set(__self__, "bitbucket_data_center_config", bitbucket_data_center_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if github_config is not None:
@@ -124,6 +133,23 @@ class ConnectionArgs:
     @bitbucket_data_center_config.setter
     def bitbucket_data_center_config(self, value: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']]):
         pulumi.set(self, "bitbucket_data_center_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -209,6 +235,7 @@ class _ConnectionState:
                  bitbucket_cloud_config: pulumi.Input[Optional['ConnectionBitbucketCloudConfigArgs']] = None,
                  bitbucket_data_center_config: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -232,6 +259,12 @@ class _ConnectionState:
         :param pulumi.Input['ConnectionBitbucketDataCenterConfigArgs'] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Server assigned timestamp for when the connection was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -258,6 +291,8 @@ class _ConnectionState:
             pulumi.set(__self__, "bitbucket_data_center_config", bitbucket_data_center_config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if effective_annotations is not None:
@@ -334,6 +369,23 @@ class _ConnectionState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -494,6 +546,7 @@ class Connection(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
                  bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
                  github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
@@ -639,6 +692,12 @@ class Connection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
                Structure is documented below.
@@ -803,6 +862,7 @@ class Connection(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
                  bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
                  github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
@@ -822,6 +882,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["bitbucket_cloud_config"] = bitbucket_cloud_config
             __props__.__dict__["bitbucket_data_center_config"] = bitbucket_data_center_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["github_config"] = github_config
             __props__.__dict__["github_enterprise_config"] = github_enterprise_config
@@ -851,6 +912,7 @@ class Connection(pulumi.CustomResource):
             bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
             bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -878,6 +940,12 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Server assigned timestamp for when the connection was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -904,6 +972,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["bitbucket_cloud_config"] = bitbucket_cloud_config
         __props__.__dict__["bitbucket_data_center_config"] = bitbucket_data_center_config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["etag"] = etag
@@ -953,6 +1022,19 @@ class Connection(pulumi.CustomResource):
         Output only. Server assigned timestamp for when the connection was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

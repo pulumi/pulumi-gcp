@@ -24,6 +24,7 @@ class AiEndpointArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_spec: pulumi.Input[Optional['AiEndpointEncryptionSpecArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -40,6 +41,12 @@ class AiEndpointArgs:
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Endpoint.
         :param pulumi.Input['AiEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
@@ -66,6 +73,8 @@ class AiEndpointArgs:
         pulumi.set(__self__, "location", location)
         if dedicated_endpoint_enabled is not None:
             pulumi.set(__self__, "dedicated_endpoint_enabled", dedicated_endpoint_enabled)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encryption_spec is not None:
@@ -122,6 +131,23 @@ class AiEndpointArgs:
     @dedicated_endpoint_enabled.setter
     def dedicated_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dedicated_endpoint_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -261,6 +287,7 @@ class _AiEndpointState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dedicated_endpoint_dns: pulumi.Input[Optional[_builtins.str]] = None,
                  dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployed_models: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -286,6 +313,12 @@ class _AiEndpointState:
                Output only. Timestamp when the DeployedModel was created.
         :param pulumi.Input[_builtins.str] dedicated_endpoint_dns: Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
         :param pulumi.Input[_builtins.bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the Endpoint.
@@ -324,6 +357,8 @@ class _AiEndpointState:
             pulumi.set(__self__, "dedicated_endpoint_dns", dedicated_endpoint_dns)
         if dedicated_endpoint_enabled is not None:
             pulumi.set(__self__, "dedicated_endpoint_enabled", dedicated_endpoint_enabled)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployed_models is not None:
             pulumi.set(__self__, "deployed_models", deployed_models)
         if description is not None:
@@ -397,6 +432,23 @@ class _AiEndpointState:
     @dedicated_endpoint_enabled.setter
     def dedicated_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dedicated_endpoint_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deployedModels")
@@ -635,6 +687,7 @@ class AiEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
@@ -719,10 +772,10 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_34534")
+        default = gcp.compute.Network("default", name="psc-network-_9873")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_87829",
+            name="endpoint-name_48153",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -746,7 +799,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_44023",
+            name="endpoint-name_58845",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -778,6 +831,12 @@ class AiEndpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Endpoint.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
@@ -879,10 +938,10 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_34534")
+        default = gcp.compute.Network("default", name="psc-network-_9873")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_87829",
+            name="endpoint-name_48153",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -906,7 +965,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_44023",
+            name="endpoint-name_58845",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -951,6 +1010,7 @@ class AiEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
@@ -973,6 +1033,7 @@ class AiEndpoint(pulumi.CustomResource):
             __props__ = AiEndpointArgs.__new__(AiEndpointArgs)
 
             __props__.__dict__["dedicated_endpoint_enabled"] = dedicated_endpoint_enabled
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1012,6 +1073,7 @@ class AiEndpoint(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dedicated_endpoint_dns: pulumi.Input[Optional[_builtins.str]] = None,
             dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployed_models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1041,6 +1103,12 @@ class AiEndpoint(pulumi.CustomResource):
                Output only. Timestamp when the DeployedModel was created.
         :param pulumi.Input[_builtins.str] dedicated_endpoint_dns: Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
         :param pulumi.Input[_builtins.bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the Endpoint.
@@ -1080,6 +1148,7 @@ class AiEndpoint(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dedicated_endpoint_dns"] = dedicated_endpoint_dns
         __props__.__dict__["dedicated_endpoint_enabled"] = dedicated_endpoint_enabled
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deployed_models"] = deployed_models
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -1124,6 +1193,19 @@ class AiEndpoint(pulumi.CustomResource):
         If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
         """
         return pulumi.get(self, "dedicated_endpoint_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deployedModels")

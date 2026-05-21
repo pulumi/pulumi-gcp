@@ -34,7 +34,12 @@ class ConnectionArgs:
         :param pulumi.Input[_builtins.str] service: Provider peering service that is managing peering connectivity for a
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE" or any other value, deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] update_on_creation_fail: When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
         """
         pulumi.set(__self__, "network", network)
@@ -89,7 +94,12 @@ class ConnectionArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE" or any other value, deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -122,7 +132,12 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
 
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE" or any other value, deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[_builtins.str] peering: (Computed) The name of the VPC Network Peering connection that was created by the service producer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
@@ -150,7 +165,12 @@ class _ConnectionState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE" or any other value, deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -286,7 +306,12 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE" or any other value, deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
                this service provider. Note that invoking this method with a different range when connection
@@ -415,7 +440,12 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE" or any other value, deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[_builtins.str] peering: (Computed) The name of the VPC Network Peering connection that was created by the service producer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
@@ -440,9 +470,14 @@ class Connection(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE" or any other value, deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 

@@ -112,6 +112,15 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human-readable description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -173,6 +182,7 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeCacheKeysetState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
@@ -183,6 +193,7 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
             resourceInputs["validationSharedKeys"] = state?.validationSharedKeys;
         } else {
             const args = argsOrState as EdgeCacheKeysetArgs | undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
@@ -203,6 +214,15 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeCacheKeyset resources.
  */
 export interface EdgeCacheKeysetState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */
@@ -257,6 +277,15 @@ export interface EdgeCacheKeysetState {
  * The set of arguments for constructing a EdgeCacheKeyset resource.
  */
 export interface EdgeCacheKeysetArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */

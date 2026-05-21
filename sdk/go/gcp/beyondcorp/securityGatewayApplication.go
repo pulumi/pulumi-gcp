@@ -282,6 +282,13 @@ type SecurityGatewayApplication struct {
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Output only. Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. An arbitrary user-provided name for the Application resource.
 	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -358,6 +365,13 @@ type securityGatewayApplicationState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// Output only. Timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. An arbitrary user-provided name for the Application resource.
 	// Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -399,6 +413,13 @@ type SecurityGatewayApplicationState struct {
 	ApplicationId pulumi.StringPtrInput
 	// Output only. Timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. An arbitrary user-provided name for the Application resource.
 	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
@@ -442,6 +463,13 @@ type securityGatewayApplicationArgs struct {
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	ApplicationId string `pulumi:"applicationId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. An arbitrary user-provided name for the Application resource.
 	// Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -478,6 +506,13 @@ type SecurityGatewayApplicationArgs struct {
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	ApplicationId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. An arbitrary user-provided name for the Application resource.
 	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
@@ -605,6 +640,16 @@ func (o SecurityGatewayApplicationOutput) ApplicationId() pulumi.StringOutput {
 // Output only. Timestamp when the resource was created.
 func (o SecurityGatewayApplicationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGatewayApplication) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SecurityGatewayApplicationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGatewayApplication) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. An arbitrary user-provided name for the Application resource.

@@ -25,6 +25,7 @@ class RegionSecurityPolicyRuleInitArgs:
                  priority: pulumi.Input[_builtins.int],
                  region: pulumi.Input[_builtins.str],
                  security_policy: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  match: pulumi.Input[Optional['RegionSecurityPolicyRuleMatchArgs']] = None,
                  network_match: pulumi.Input[Optional['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
@@ -46,6 +47,12 @@ class RegionSecurityPolicyRuleInitArgs:
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[_builtins.str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[_builtins.str] security_policy: The name of the security policy this rule belongs to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['RegionSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
@@ -72,6 +79,8 @@ class RegionSecurityPolicyRuleInitArgs:
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "security_policy", security_policy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if match is not None:
@@ -141,6 +150,23 @@ class RegionSecurityPolicyRuleInitArgs:
     @security_policy.setter
     def security_policy(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "security_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -245,6 +271,7 @@ class RegionSecurityPolicyRuleInitArgs:
 class _RegionSecurityPolicyRuleState:
     def __init__(__self__, *,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  match: pulumi.Input[Optional['RegionSecurityPolicyRuleMatchArgs']] = None,
                  network_match: pulumi.Input[Optional['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
@@ -264,6 +291,12 @@ class _RegionSecurityPolicyRuleState:
                * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['RegionSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
@@ -293,6 +326,8 @@ class _RegionSecurityPolicyRuleState:
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if match is not None:
@@ -330,6 +365,23 @@ class _RegionSecurityPolicyRuleState:
     @action.setter
     def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -475,6 +527,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
                  network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
@@ -734,6 +787,12 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
@@ -1023,6 +1082,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
                  network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
@@ -1045,6 +1105,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["match"] = match
             __props__.__dict__["network_match"] = network_match
@@ -1072,6 +1133,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
             network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
@@ -1095,6 +1157,12 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
@@ -1127,6 +1195,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         __props__ = _RegionSecurityPolicyRuleState.__new__(_RegionSecurityPolicyRuleState)
 
         __props__.__dict__["action"] = action
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["match"] = match
         __props__.__dict__["network_match"] = network_match
@@ -1151,6 +1220,19 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         """
         return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -50,6 +50,7 @@ export interface GetRepositoryArgs {
  */
 export interface GetRepositoryResult {
     readonly createIgnoreAlreadyExists: boolean;
+    readonly deletionPolicy: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

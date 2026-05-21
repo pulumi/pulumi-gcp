@@ -124,6 +124,31 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Whether deletion protection is enabled on this instance.
      * 
      */
@@ -593,6 +618,7 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         this.bootDisk = $.bootDisk;
         this.canIpForward = $.canIpForward;
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
+        this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.desiredStatus = $.desiredStatus;
@@ -776,6 +802,37 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
          */
         public Builder confidentialInstanceConfig(InstanceFromTemplateConfidentialInstanceConfigArgs confidentialInstanceConfig) {
             return confidentialInstanceConfig(Output.of(confidentialInstanceConfig));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

@@ -27,7 +27,10 @@ class GetDnsAuthorizationResult:
     """
     A collection of values returned by getDnsAuthorization.
     """
-    def __init__(__self__, description=None, dns_resource_records=None, domain=None, effective_labels=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, type=None):
+    def __init__(__self__, deletion_policy=None, description=None, dns_resource_records=None, domain=None, effective_labels=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, type=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -61,6 +64,11 @@ class GetDnsAuthorizationResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -127,6 +135,7 @@ class AwaitableGetDnsAuthorizationResult(GetDnsAuthorizationResult):
         if False:
             yield self
         return GetDnsAuthorizationResult(
+            deletion_policy=self.deletion_policy,
             description=self.description,
             dns_resource_records=self.dns_resource_records,
             domain=self.domain,
@@ -173,6 +182,7 @@ def get_dns_authorization(domain: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:certificatemanager/getDnsAuthorization:getDnsAuthorization', __args__, opts=opts, typ=GetDnsAuthorizationResult).value
 
     return AwaitableGetDnsAuthorizationResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         dns_resource_records=pulumi.get(__ret__, 'dns_resource_records'),
         domain=pulumi.get(__ret__, 'domain'),
@@ -216,6 +226,7 @@ def get_dns_authorization_output(domain: pulumi.Input[Optional[_builtins.str]] =
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:certificatemanager/getDnsAuthorization:getDnsAuthorization', __args__, opts=opts, typ=GetDnsAuthorizationResult)
     return __ret__.apply(lambda __response__: GetDnsAuthorizationResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         dns_resource_records=pulumi.get(__response__, 'dns_resource_records'),
         domain=pulumi.get(__response__, 'domain'),

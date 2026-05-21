@@ -12,8 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// User workloads Secret used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
-// Intended for Composer 3 Environments.
+// User workloads Secret used by Airflow tasks that run with Kubernetes Executor
+// or KubernetesPodOperator. Intended for Managed Airflow (Gen 3) Environments.
 //
 // ## Example Usage
 //
@@ -101,6 +101,13 @@ type UserWorkloadsSecret struct {
 	// The values for all keys have to be base64-encoded strings.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data pulumi.StringMapOutput `pulumi:"data"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Name of the Kubernetes Secret.
@@ -161,6 +168,13 @@ type userWorkloadsSecretState struct {
 	// The values for all keys have to be base64-encoded strings.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data map[string]string `pulumi:"data"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment *string `pulumi:"environment"`
 	// Name of the Kubernetes Secret.
@@ -182,6 +196,13 @@ type UserWorkloadsSecretState struct {
 	// The values for all keys have to be base64-encoded strings.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data pulumi.StringMapInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment pulumi.StringPtrInput
 	// Name of the Kubernetes Secret.
@@ -207,6 +228,13 @@ type userWorkloadsSecretArgs struct {
 	// The values for all keys have to be base64-encoded strings.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data map[string]string `pulumi:"data"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment string `pulumi:"environment"`
 	// Name of the Kubernetes Secret.
@@ -229,6 +257,13 @@ type UserWorkloadsSecretArgs struct {
 	// The values for all keys have to be base64-encoded strings.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data pulumi.StringMapInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment pulumi.StringInput
 	// Name of the Kubernetes Secret.
@@ -337,6 +372,16 @@ func (o UserWorkloadsSecretOutput) ToUserWorkloadsSecretOutputWithContext(ctx co
 // For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 func (o UserWorkloadsSecretOutput) Data() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UserWorkloadsSecret) pulumi.StringMapOutput { return v.Data }).(pulumi.StringMapOutput)
+}
+
+// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o UserWorkloadsSecretOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserWorkloadsSecret) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Environment where the Kubernetes Secret will be stored and used.

@@ -80,6 +80,15 @@ export class MonitoredProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
      */
     declare public readonly metricsScope: pulumi.Output<string>;
@@ -102,6 +111,7 @@ export class MonitoredProject extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MonitoredProjectState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["metricsScope"] = state?.metricsScope;
             resourceInputs["name"] = state?.name;
         } else {
@@ -109,6 +119,7 @@ export class MonitoredProject extends pulumi.CustomResource {
             if (args?.metricsScope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metricsScope'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["metricsScope"] = args?.metricsScope;
             resourceInputs["name"] = args?.name;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -127,6 +138,15 @@ export interface MonitoredProjectState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
      */
     metricsScope?: pulumi.Input<string | undefined>;
@@ -140,6 +160,15 @@ export interface MonitoredProjectState {
  * The set of arguments for constructing a MonitoredProject resource.
  */
 export interface MonitoredProjectArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
      */

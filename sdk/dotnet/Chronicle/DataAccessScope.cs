@@ -262,6 +262,17 @@ namespace Pulumi.Gcp.Chronicle
         public Output<string> DataAccessScopeId { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The denied labels for the scope.
         /// The logical operator for evaluation of the denied labels is AND.
         /// E.g.: A customer with scope with denied labels A and B won't be able
@@ -408,6 +419,17 @@ namespace Pulumi.Gcp.Chronicle
         [Input("dataAccessScopeId", required: true)]
         public Input<string> DataAccessScopeId { get; set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("deniedDataAccessLabels")]
         private InputList<Inputs.DataAccessScopeDeniedDataAccessLabelArgs>? _deniedDataAccessLabels;
 
@@ -508,6 +530,17 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Input("dataAccessScopeId")]
         public Input<string>? DataAccessScopeId { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("deniedDataAccessLabels")]
         private InputList<Inputs.DataAccessScopeDeniedDataAccessLabelGetArgs>? _deniedDataAccessLabels;

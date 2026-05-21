@@ -62,6 +62,53 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// ### Storage Batch Operations Description
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = "tf-sample-bucket",
+    ///         Location = "us-central1",
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var tf_job = new Gcp.Storage.BatchOperationsJob("tf-job", new()
+    ///     {
+    ///         JobId = "tf-job",
+    ///         Description = "A sample job description",
+    ///         BucketList = new Gcp.Storage.Inputs.BatchOperationsJobBucketListArgs
+    ///         {
+    ///             Buckets = new Gcp.Storage.Inputs.BatchOperationsJobBucketListBucketsArgs
+    ///             {
+    ///                 Bucket = bucket.Name,
+    ///                 PrefixList = new Gcp.Storage.Inputs.BatchOperationsJobBucketListBucketsPrefixListArgs
+    ///                 {
+    ///                     IncludedObjectPrefixes = new[]
+    ///                     {
+    ///                         "bkt",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         PutMetadata = new Gcp.Storage.Inputs.BatchOperationsJobPutMetadataArgs
+    ///         {
+    ///             CustomMetadata = 
+    ///             {
+    ///                 { "key", "value" },
+    ///             },
+    ///         },
+    ///         DeleteProtection = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -113,6 +160,23 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Output("deleteProtection")]
         public Output<bool?> DeleteProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the job.
@@ -233,6 +297,23 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? DeleteProtection { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The ID of the job.
         /// </summary>
         [Input("jobId")]
@@ -305,6 +386,23 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("deleteProtection")]
         public Input<bool>? DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// The ID of the job.

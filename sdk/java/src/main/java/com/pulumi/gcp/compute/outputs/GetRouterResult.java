@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetRouterResult {
     private List<GetRouterBgp> bgps;
     private String creationTimestamp;
+    private String deletionPolicy;
     private String description;
     private Boolean encryptedInterconnectRouter;
     /**
@@ -41,6 +42,9 @@ public final class GetRouterResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -91,6 +95,7 @@ public final class GetRouterResult {
     public static final class Builder {
         private List<GetRouterBgp> bgps;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private Boolean encryptedInterconnectRouter;
         private String id;
@@ -107,6 +112,7 @@ public final class GetRouterResult {
     	      Objects.requireNonNull(defaults);
     	      this.bgps = defaults.bgps;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.encryptedInterconnectRouter = defaults.encryptedInterconnectRouter;
     	      this.id = defaults.id;
@@ -137,6 +143,14 @@ public final class GetRouterResult {
               throw new MissingRequiredPropertyException("GetRouterResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -233,6 +247,7 @@ public final class GetRouterResult {
             final var _resultValue = new GetRouterResult();
             _resultValue.bgps = bgps;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.encryptedInterconnectRouter = encryptedInterconnectRouter;
             _resultValue.id = id;

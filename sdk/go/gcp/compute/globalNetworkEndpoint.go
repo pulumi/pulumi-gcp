@@ -78,6 +78,13 @@ import (
 type GlobalNetworkEndpoint struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrOutput `pulumi:"fqdn"`
@@ -128,6 +135,13 @@ func GetGlobalNetworkEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GlobalNetworkEndpoint resources.
 type globalNetworkEndpointState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn *string `pulumi:"fqdn"`
@@ -143,6 +157,13 @@ type globalNetworkEndpointState struct {
 }
 
 type GlobalNetworkEndpointState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrInput
@@ -162,6 +183,13 @@ func (GlobalNetworkEndpointState) ElementType() reflect.Type {
 }
 
 type globalNetworkEndpointArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn *string `pulumi:"fqdn"`
@@ -178,6 +206,13 @@ type globalNetworkEndpointArgs struct {
 
 // The set of arguments for constructing a GlobalNetworkEndpoint resource.
 type GlobalNetworkEndpointArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrInput
@@ -277,6 +312,16 @@ func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointOutput() GlobalNetwo
 
 func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointOutputWithContext(ctx context.Context) GlobalNetworkEndpointOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GlobalNetworkEndpointOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpoint) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Fully qualified domain name of network endpoint.

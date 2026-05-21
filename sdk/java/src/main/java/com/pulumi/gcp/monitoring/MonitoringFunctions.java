@@ -1402,6 +1402,7 @@ public final class MonitoringFunctions {
      * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1476,6 +1477,7 @@ public final class MonitoringFunctions {
      * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1550,6 +1552,7 @@ public final class MonitoringFunctions {
      * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1624,6 +1627,7 @@ public final class MonitoringFunctions {
      * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1698,6 +1702,7 @@ public final class MonitoringFunctions {
      * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1772,6 +1777,7 @@ public final class MonitoringFunctions {
      * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1846,6 +1852,7 @@ public final class MonitoringFunctions {
      * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
      * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;

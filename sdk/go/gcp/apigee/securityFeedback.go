@@ -145,6 +145,13 @@ type SecurityFeedback struct {
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// The time when this specific feedback id was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the feedback.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// One or more attribute/value pairs for constraining the feedback.
@@ -214,6 +221,13 @@ type securityFeedbackState struct {
 	Comment *string `pulumi:"comment"`
 	// The time when this specific feedback id was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the feedback.
 	DisplayName *string `pulumi:"displayName"`
 	// One or more attribute/value pairs for constraining the feedback.
@@ -242,6 +256,13 @@ type SecurityFeedbackState struct {
 	Comment pulumi.StringPtrInput
 	// The time when this specific feedback id was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the feedback.
 	DisplayName pulumi.StringPtrInput
 	// One or more attribute/value pairs for constraining the feedback.
@@ -272,6 +293,13 @@ func (SecurityFeedbackState) ElementType() reflect.Type {
 type securityFeedbackArgs struct {
 	// Optional text the user can provide for additional, unstructured context.
 	Comment *string `pulumi:"comment"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the feedback.
 	DisplayName *string `pulumi:"displayName"`
 	// One or more attribute/value pairs for constraining the feedback.
@@ -294,6 +322,13 @@ type securityFeedbackArgs struct {
 type SecurityFeedbackArgs struct {
 	// Optional text the user can provide for additional, unstructured context.
 	Comment pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the feedback.
 	DisplayName pulumi.StringPtrInput
 	// One or more attribute/value pairs for constraining the feedback.
@@ -407,6 +442,16 @@ func (o SecurityFeedbackOutput) Comment() pulumi.StringPtrOutput {
 // The time when this specific feedback id was created.
 func (o SecurityFeedbackOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityFeedback) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SecurityFeedbackOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityFeedback) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the feedback.

@@ -53,6 +53,49 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Organization Security Policy Association Excluded
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var securityPolicyTarget = new Gcp.Organizations.Folder("security_policy_target", new()
+    ///     {
+    ///         DisplayName = "tf-test-secpol-_72490",
+    ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
+    ///     {
+    ///         ShortName = "tf-test_89605",
+    ///         Parent = securityPolicyTarget.Name,
+    ///         Type = "CLOUD_ARMOR",
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policy", new()
+    ///     {
+    ///         Name = "tf-test",
+    ///         AttachmentId = "organizations/123456789",
+    ///         PolicyId = policy.Id,
+    ///         ExcludedProjects = new[]
+    ///         {
+    ///             "projects/2000000002",
+    ///             "projects/3000000003",
+    ///         },
+    ///         ExcludedFolders = new[]
+    ///         {
+    ///             "folders/4000000004",
+    ///             "folders/5000000005",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -74,6 +117,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("attachmentId")]
         public Output<string> AttachmentId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The display name of the security policy of the association.
@@ -157,6 +211,17 @@ namespace Pulumi.Gcp.Compute
         [Input("attachmentId", required: true)]
         public Input<string> AttachmentId { get; set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("excludedFolders")]
         private InputList<string>? _excludedFolders;
 
@@ -206,6 +271,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("attachmentId")]
         public Input<string>? AttachmentId { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The display name of the security policy of the association.

@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetNetworkPolicyResult {
     private String createTime;
+    private String deletionPolicy;
     private String description;
     private String edgeServicesCidr;
     private List<GetNetworkPolicyExternalIp> externalIps;
@@ -36,6 +37,9 @@ public final class GetNetworkPolicyResult {
     private GetNetworkPolicyResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -88,6 +92,7 @@ public final class GetNetworkPolicyResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private String edgeServicesCidr;
         private List<GetNetworkPolicyExternalIp> externalIps;
@@ -104,6 +109,7 @@ public final class GetNetworkPolicyResult {
         public Builder(GetNetworkPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.edgeServicesCidr = defaults.edgeServicesCidr;
     	      this.externalIps = defaults.externalIps;
@@ -124,6 +130,14 @@ public final class GetNetworkPolicyResult {
               throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -229,6 +243,7 @@ public final class GetNetworkPolicyResult {
         public GetNetworkPolicyResult build() {
             final var _resultValue = new GetNetworkPolicyResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.edgeServicesCidr = edgeServicesCidr;
             _resultValue.externalIps = externalIps;

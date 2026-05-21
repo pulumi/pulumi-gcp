@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetParameterResult {
     private String createTime;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     private String format;
     /**
@@ -35,6 +36,9 @@ public final class GetParameterResult {
     private GetParameterResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -84,6 +88,7 @@ public final class GetParameterResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private String format;
         private String id;
@@ -99,6 +104,7 @@ public final class GetParameterResult {
         public Builder(GetParameterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
@@ -118,6 +124,14 @@ public final class GetParameterResult {
               throw new MissingRequiredPropertyException("GetParameterResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetParameterResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -212,6 +226,7 @@ public final class GetParameterResult {
         public GetParameterResult build() {
             final var _resultValue = new GetParameterResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.format = format;
             _resultValue.id = id;

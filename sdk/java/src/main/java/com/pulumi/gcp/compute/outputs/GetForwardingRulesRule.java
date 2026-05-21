@@ -71,6 +71,16 @@ public final class GetForwardingRulesRule {
      */
     private String creationTimestamp;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return An optional description of this resource. Provide this property when
      * you create the resource.
      * 
@@ -474,6 +484,18 @@ public final class GetForwardingRulesRule {
      */
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return An optional description of this resource. Provide this property when
@@ -887,6 +909,7 @@ public final class GetForwardingRulesRule {
         private String backendService;
         private String baseForwardingRule;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private Map<String,String> effectiveLabels;
         private Integer forwardingRuleId;
@@ -926,6 +949,7 @@ public final class GetForwardingRulesRule {
     	      this.backendService = defaults.backendService;
     	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.forwardingRuleId = defaults.forwardingRuleId;
@@ -1004,6 +1028,14 @@ public final class GetForwardingRulesRule {
               throw new MissingRequiredPropertyException("GetForwardingRulesRule", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesRule", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -1263,6 +1295,7 @@ public final class GetForwardingRulesRule {
             _resultValue.backendService = backendService;
             _resultValue.baseForwardingRule = baseForwardingRule;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.forwardingRuleId = forwardingRuleId;

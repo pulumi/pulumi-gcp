@@ -24,6 +24,7 @@ class DatabaseArgs:
                  catalog: pulumi.Input[_builtins.str],
                  hive_options: pulumi.Input['DatabaseHiveOptionsArgs'],
                  type: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
@@ -32,11 +33,19 @@ class DatabaseArgs:
         :param pulumi.Input['DatabaseHiveOptionsArgs'] hive_options: Options of a Hive database.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The database type.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The name of the database.
         """
         pulumi.set(__self__, "catalog", catalog)
         pulumi.set(__self__, "hive_options", hive_options)
         pulumi.set(__self__, "type", type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -78,6 +87,23 @@ class DatabaseArgs:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -96,6 +122,7 @@ class _DatabaseState:
                  catalog: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  hive_options: pulumi.Input[Optional['DatabaseHiveOptionsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -113,6 +140,12 @@ class _DatabaseState:
                database is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
                nanosecond resolution and up to nine fractional digits. Examples:
                "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expire_time: Output only. The time when this database is considered expired. Only set
                after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits. Examples:
@@ -132,6 +165,8 @@ class _DatabaseState:
             pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if hive_options is not None:
@@ -184,6 +219,23 @@ class _DatabaseState:
     @delete_time.setter
     def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
@@ -260,6 +312,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -325,6 +378,12 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog: The parent catalog.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']] hive_options: Options of a Hive database.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the database.
@@ -410,6 +469,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -425,6 +485,7 @@ class Database(pulumi.CustomResource):
             if catalog is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog'")
             __props__.__dict__["catalog"] = catalog
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if hive_options is None and not opts.urn:
                 raise TypeError("Missing required property 'hive_options'")
             __props__.__dict__["hive_options"] = hive_options
@@ -449,6 +510,7 @@ class Database(pulumi.CustomResource):
             catalog: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -470,6 +532,12 @@ class Database(pulumi.CustomResource):
                database is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
                nanosecond resolution and up to nine fractional digits. Examples:
                "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expire_time: Output only. The time when this database is considered expired. Only set
                after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits. Examples:
@@ -490,6 +558,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["catalog"] = catalog
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["hive_options"] = hive_options
         __props__.__dict__["name"] = name
@@ -526,6 +595,19 @@ class Database(pulumi.CustomResource):
         "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="expireTime")

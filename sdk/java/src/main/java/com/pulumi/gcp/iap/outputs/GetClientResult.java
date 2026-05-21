@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class GetClientResult {
     private String brand;
     private String clientId;
+    private String deletionPolicy;
     private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -26,6 +27,9 @@ public final class GetClientResult {
     }
     public String clientId() {
         return this.clientId;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String displayName() {
         return this.displayName;
@@ -52,6 +56,7 @@ public final class GetClientResult {
     public static final class Builder {
         private String brand;
         private String clientId;
+        private String deletionPolicy;
         private String displayName;
         private String id;
         private String secret;
@@ -60,6 +65,7 @@ public final class GetClientResult {
     	      Objects.requireNonNull(defaults);
     	      this.brand = defaults.brand;
     	      this.clientId = defaults.clientId;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.secret = defaults.secret;
@@ -79,6 +85,14 @@ public final class GetClientResult {
               throw new MissingRequiredPropertyException("GetClientResult", "clientId");
             }
             this.clientId = clientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -109,6 +123,7 @@ public final class GetClientResult {
             final var _resultValue = new GetClientResult();
             _resultValue.brand = brand;
             _resultValue.clientId = clientId;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
             _resultValue.secret = secret;

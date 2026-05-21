@@ -249,6 +249,15 @@ export class NetworkFirewallPolicyRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description for this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -340,6 +349,7 @@ export class NetworkFirewallPolicyRule extends pulumi.CustomResource {
             const state = argsOrState as NetworkFirewallPolicyRuleState | undefined;
             resourceInputs["action"] = state?.action;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["direction"] = state?.direction;
             resourceInputs["disabled"] = state?.disabled;
@@ -373,6 +383,7 @@ export class NetworkFirewallPolicyRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'priority'");
             }
             resourceInputs["action"] = args?.action;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["direction"] = args?.direction;
             resourceInputs["disabled"] = args?.disabled;
@@ -407,6 +418,15 @@ export interface NetworkFirewallPolicyRuleState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description for this resource.
      */
@@ -493,6 +513,15 @@ export interface NetworkFirewallPolicyRuleArgs {
      * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
      */
     action: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description for this resource.
      */

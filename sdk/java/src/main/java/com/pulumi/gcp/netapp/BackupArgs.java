@@ -6,6 +6,7 @@ package com.pulumi.gcp.netapp;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.netapp.inputs.BackupOntapSourceArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,6 +17,31 @@ import javax.annotation.Nullable;
 public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BackupArgs Empty = new BackupArgs();
+
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
 
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -81,6 +107,25 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Details of the ONTAP source volume and snapshot.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ontapSource")
+    private @Nullable Output<BackupOntapSourceArgs> ontapSource;
+
+    /**
+     * @return (Optional, Beta)
+     * Details of the ONTAP source volume and snapshot.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackupOntapSourceArgs>> ontapSource() {
+        return Optional.ofNullable(this.ontapSource);
     }
 
     /**
@@ -152,10 +197,12 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     private BackupArgs() {}
 
     private BackupArgs(BackupArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
+        this.ontapSource = $.ontapSource;
         this.project = $.project;
         this.sourceSnapshot = $.sourceSnapshot;
         this.sourceVolume = $.sourceVolume;
@@ -178,6 +225,37 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BackupArgs defaults) {
             $ = new BackupArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -268,6 +346,31 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param ontapSource (Optional, Beta)
+         * Details of the ONTAP source volume and snapshot.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ontapSource(@Nullable Output<BackupOntapSourceArgs> ontapSource) {
+            $.ontapSource = ontapSource;
+            return this;
+        }
+
+        /**
+         * @param ontapSource (Optional, Beta)
+         * Details of the ONTAP source volume and snapshot.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ontapSource(BackupOntapSourceArgs ontapSource) {
+            return ontapSource(Output.of(ontapSource));
         }
 
         /**

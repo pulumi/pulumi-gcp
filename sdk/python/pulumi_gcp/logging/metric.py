@@ -24,6 +24,7 @@ class MetricArgs:
                  filter: pulumi.Input[_builtins.str],
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_options: pulumi.Input[Optional['MetricBucketOptionsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  label_extractors: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -41,6 +42,12 @@ class MetricArgs:
         :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
         :param pulumi.Input[_builtins.bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
@@ -73,6 +80,8 @@ class MetricArgs:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if bucket_options is not None:
             pulumi.set(__self__, "bucket_options", bucket_options)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -127,6 +136,23 @@ class MetricArgs:
     @bucket_options.setter
     def bucket_options(self, value: pulumi.Input[Optional['MetricBucketOptionsArgs']]):
         pulumi.set(self, "bucket_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -237,6 +263,7 @@ class _MetricState:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_options: pulumi.Input[Optional['MetricBucketOptionsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -253,6 +280,12 @@ class _MetricState:
         :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
         :param pulumi.Input[_builtins.bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
@@ -286,6 +319,8 @@ class _MetricState:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if bucket_options is not None:
             pulumi.set(__self__, "bucket_options", bucket_options)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -329,6 +364,23 @@ class _MetricState:
     @bucket_options.setter
     def bucket_options(self, value: pulumi.Input[Optional['MetricBucketOptionsArgs']]):
         pulumi.set(self, "bucket_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -455,6 +507,7 @@ class Metric(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -606,6 +659,12 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
         :param pulumi.Input[_builtins.bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
@@ -793,6 +852,7 @@ class Metric(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -812,6 +872,7 @@ class Metric(pulumi.CustomResource):
 
             __props__.__dict__["bucket_name"] = bucket_name
             __props__.__dict__["bucket_options"] = bucket_options
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             if filter is None and not opts.urn:
@@ -834,6 +895,7 @@ class Metric(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
             bucket_options: pulumi.Input[Optional[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -854,6 +916,12 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
         :param pulumi.Input[_builtins.bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
@@ -889,6 +957,7 @@ class Metric(pulumi.CustomResource):
 
         __props__.__dict__["bucket_name"] = bucket_name
         __props__.__dict__["bucket_options"] = bucket_options
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["filter"] = filter
@@ -917,6 +986,19 @@ class Metric(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "bucket_options")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

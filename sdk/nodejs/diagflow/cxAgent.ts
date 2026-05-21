@@ -219,6 +219,15 @@ export class CxAgent extends pulumi.CustomResource {
      */
     declare public readonly deleteChatEngineOnDestroy: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -337,6 +346,7 @@ export class CxAgent extends pulumi.CustomResource {
             resourceInputs["clientCertificateSettings"] = state?.clientCertificateSettings;
             resourceInputs["defaultLanguageCode"] = state?.defaultLanguageCode;
             resourceInputs["deleteChatEngineOnDestroy"] = state?.deleteChatEngineOnDestroy;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["enableMultiLanguageTraining"] = state?.enableMultiLanguageTraining;
@@ -378,6 +388,7 @@ export class CxAgent extends pulumi.CustomResource {
             resourceInputs["clientCertificateSettings"] = args?.clientCertificateSettings;
             resourceInputs["defaultLanguageCode"] = args?.defaultLanguageCode;
             resourceInputs["deleteChatEngineOnDestroy"] = args?.deleteChatEngineOnDestroy;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["enableMultiLanguageTraining"] = args?.enableMultiLanguageTraining;
@@ -451,6 +462,15 @@ export interface CxAgentState {
      * The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
      */
     deleteChatEngineOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
@@ -598,6 +618,15 @@ export interface CxAgentArgs {
      * The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
      */
     deleteChatEngineOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */

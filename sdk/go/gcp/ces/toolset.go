@@ -814,6 +814,13 @@ type Toolset struct {
 	App pulumi.StringOutput `pulumi:"app"`
 	// Timestamp when the toolset was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the toolset.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the toolset. Must be unique within the same app.
@@ -894,6 +901,13 @@ type toolsetState struct {
 	App *string `pulumi:"app"`
 	// Timestamp when the toolset was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the toolset.
 	Description *string `pulumi:"description"`
 	// The display name of the toolset. Must be unique within the same app.
@@ -936,6 +950,13 @@ type ToolsetState struct {
 	App pulumi.StringPtrInput
 	// Timestamp when the toolset was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the toolset.
 	Description pulumi.StringPtrInput
 	// The display name of the toolset. Must be unique within the same app.
@@ -980,6 +1001,13 @@ func (ToolsetState) ElementType() reflect.Type {
 type toolsetArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App string `pulumi:"app"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the toolset.
 	Description *string `pulumi:"description"`
 	// The display name of the toolset. Must be unique within the same app.
@@ -1011,6 +1039,13 @@ type toolsetArgs struct {
 type ToolsetArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the toolset.
 	Description pulumi.StringPtrInput
 	// The display name of the toolset. Must be unique within the same app.
@@ -1133,6 +1168,16 @@ func (o ToolsetOutput) App() pulumi.StringOutput {
 // Timestamp when the toolset was created.
 func (o ToolsetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Toolset) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ToolsetOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Toolset) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the toolset.

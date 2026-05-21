@@ -23,6 +23,7 @@ class NodePoolArgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[_builtins.str],
                  autoscaling: pulumi.Input[Optional['NodePoolAutoscalingArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management: pulumi.Input[Optional['NodePoolManagementArgs']] = None,
@@ -47,6 +48,14 @@ class NodePoolArgs:
                - - -
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -90,8 +99,6 @@ class NodePoolArgs:
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolQueuedProvisioningArgs'] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -104,6 +111,8 @@ class NodePoolArgs:
         pulumi.set(__self__, "cluster", cluster)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if location is not None:
@@ -163,6 +172,25 @@ class NodePoolArgs:
     @autoscaling.setter
     def autoscaling(self, value: pulumi.Input[Optional['NodePoolAutoscalingArgs']]):
         pulumi.set(self, "autoscaling", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -354,8 +382,6 @@ class NodePoolArgs:
         """
         Specifies node pool-level settings of queued provisioning.
         Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "queued_provisioning")
 
@@ -399,6 +425,7 @@ class _NodePoolState:
     def __init__(__self__, *,
                  autoscaling: pulumi.Input[Optional['NodePoolAutoscalingArgs']] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -426,6 +453,14 @@ class _NodePoolState:
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -471,8 +506,6 @@ class _NodePoolState:
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolQueuedProvisioningArgs'] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -486,6 +519,8 @@ class _NodePoolState:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if instance_group_urls is not None:
@@ -551,6 +586,25 @@ class _NodePoolState:
     @cluster.setter
     def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -775,8 +829,6 @@ class _NodePoolState:
         """
         Specifies node pool-level settings of queued provisioning.
         Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "queued_provisioning")
 
@@ -823,6 +875,7 @@ class NodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
@@ -929,6 +982,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -972,8 +1033,6 @@ class NodePool(pulumi.CustomResource):
                the provider-configured project will be used.
         :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -1088,6 +1147,7 @@ class NodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
@@ -1117,6 +1177,7 @@ class NodePool(pulumi.CustomResource):
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["location"] = location
             __props__.__dict__["management"] = management
@@ -1148,6 +1209,7 @@ class NodePool(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
             instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1179,6 +1241,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -1224,8 +1294,6 @@ class NodePool(pulumi.CustomResource):
                the provider-configured project will be used.
         :param pulumi.Input[Union['NodePoolQueuedProvisioningArgs', 'NodePoolQueuedProvisioningArgsDict']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
                Structure is documented below.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[Union['NodePoolUpgradeSettingsArgs', 'NodePoolUpgradeSettingsArgsDict']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -1241,6 +1309,7 @@ class NodePool(pulumi.CustomResource):
 
         __props__.__dict__["autoscaling"] = autoscaling
         __props__.__dict__["cluster"] = cluster
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["initial_node_count"] = initial_node_count
         __props__.__dict__["instance_group_urls"] = instance_group_urls
         __props__.__dict__["location"] = location
@@ -1280,6 +1349,21 @@ class NodePool(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "cluster")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -1440,8 +1524,6 @@ class NodePool(pulumi.CustomResource):
         """
         Specifies node pool-level settings of queued provisioning.
         Structure is documented below.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "queued_provisioning")
 

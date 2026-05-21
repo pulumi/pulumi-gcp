@@ -28,6 +28,7 @@ class KeystoresAliasesSelfSignedCertArgs:
                  sig_alg: pulumi.Input[_builtins.str],
                  subject: pulumi.Input['KeystoresAliasesSelfSignedCertSubjectArgs'],
                  cert_validity_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  key_size: pulumi.Input[Optional[_builtins.str]] = None,
                  subject_alternative_dns_names: pulumi.Input[Optional['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']] = None):
         """
@@ -43,6 +44,12 @@ class KeystoresAliasesSelfSignedCertArgs:
         :param pulumi.Input['KeystoresAliasesSelfSignedCertSubjectArgs'] subject: Subject details.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] cert_validity_in_days: Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] key_size: Key size. Default and maximum value is 2048 bits.
         :param pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs'] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
                Structure is documented below.
@@ -55,6 +62,8 @@ class KeystoresAliasesSelfSignedCertArgs:
         pulumi.set(__self__, "subject", subject)
         if cert_validity_in_days is not None:
             pulumi.set(__self__, "cert_validity_in_days", cert_validity_in_days)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if key_size is not None:
             pulumi.set(__self__, "key_size", key_size)
         if subject_alternative_dns_names is not None:
@@ -148,6 +157,23 @@ class KeystoresAliasesSelfSignedCertArgs:
         pulumi.set(self, "cert_validity_in_days", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="keySize")
     def key_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -179,6 +205,7 @@ class _KeystoresAliasesSelfSignedCertState:
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_validity_in_days: pulumi.Input[Optional[_builtins.int]] = None,
                  certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  key_size: pulumi.Input[Optional[_builtins.str]] = None,
                  keystore: pulumi.Input[Optional[_builtins.str]] = None,
@@ -196,6 +223,12 @@ class _KeystoresAliasesSelfSignedCertState:
         :param pulumi.Input[_builtins.int] cert_validity_in_days: Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
         :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoArgs']]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] environment: The Apigee environment name
         :param pulumi.Input[_builtins.str] key_size: Key size. Default and maximum value is 2048 bits.
         :param pulumi.Input[_builtins.str] keystore: The Apigee keystore name associated in an Apigee environment
@@ -213,6 +246,8 @@ class _KeystoresAliasesSelfSignedCertState:
             pulumi.set(__self__, "cert_validity_in_days", cert_validity_in_days)
         if certs_infos is not None:
             pulumi.set(__self__, "certs_infos", certs_infos)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if key_size is not None:
@@ -268,6 +303,23 @@ class _KeystoresAliasesSelfSignedCertState:
     @certs_infos.setter
     def certs_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoArgs']]]]):
         pulumi.set(self, "certs_infos", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -376,6 +428,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_validity_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  key_size: pulumi.Input[Optional[_builtins.str]] = None,
                  keystore: pulumi.Input[Optional[_builtins.str]] = None,
@@ -491,6 +544,12 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
                This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
                this parameter or the JSON body.
         :param pulumi.Input[_builtins.int] cert_validity_in_days: Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] environment: The Apigee environment name
         :param pulumi.Input[_builtins.str] key_size: Key size. Default and maximum value is 2048 bits.
         :param pulumi.Input[_builtins.str] keystore: The Apigee keystore name associated in an Apigee environment
@@ -625,6 +684,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_validity_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  key_size: pulumi.Input[Optional[_builtins.str]] = None,
                  keystore: pulumi.Input[Optional[_builtins.str]] = None,
@@ -645,6 +705,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
                 raise TypeError("Missing required property 'alias'")
             __props__.__dict__["alias"] = alias
             __props__.__dict__["cert_validity_in_days"] = cert_validity_in_days
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
             __props__.__dict__["environment"] = environment
@@ -677,6 +738,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             alias: pulumi.Input[Optional[_builtins.str]] = None,
             cert_validity_in_days: pulumi.Input[Optional[_builtins.int]] = None,
             certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeystoresAliasesSelfSignedCertCertsInfoArgs', 'KeystoresAliasesSelfSignedCertCertsInfoArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             key_size: pulumi.Input[Optional[_builtins.str]] = None,
             keystore: pulumi.Input[Optional[_builtins.str]] = None,
@@ -698,6 +760,12 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] cert_validity_in_days: Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesSelfSignedCertCertsInfoArgs', 'KeystoresAliasesSelfSignedCertCertsInfoArgsDict']]]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] environment: The Apigee environment name
         :param pulumi.Input[_builtins.str] key_size: Key size. Default and maximum value is 2048 bits.
         :param pulumi.Input[_builtins.str] keystore: The Apigee keystore name associated in an Apigee environment
@@ -716,6 +784,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         __props__.__dict__["alias"] = alias
         __props__.__dict__["cert_validity_in_days"] = cert_validity_in_days
         __props__.__dict__["certs_infos"] = certs_infos
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["environment"] = environment
         __props__.__dict__["key_size"] = key_size
         __props__.__dict__["keystore"] = keystore
@@ -752,6 +821,19 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "certs_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

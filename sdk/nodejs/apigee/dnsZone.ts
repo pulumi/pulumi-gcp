@@ -86,6 +86,15 @@ export class DnsZone extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description for the zone.
      */
     declare public readonly description: pulumi.Output<string>;
@@ -126,6 +135,7 @@ export class DnsZone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsZoneState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["dnsZoneId"] = state?.dnsZoneId;
             resourceInputs["domain"] = state?.domain;
@@ -149,6 +159,7 @@ export class DnsZone extends pulumi.CustomResource {
             if (args?.peeringConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peeringConfig'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["dnsZoneId"] = args?.dnsZoneId;
             resourceInputs["domain"] = args?.domain;
@@ -165,6 +176,15 @@ export class DnsZone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DnsZone resources.
  */
 export interface DnsZoneState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description for the zone.
      */
@@ -198,6 +218,15 @@ export interface DnsZoneState {
  * The set of arguments for constructing a DnsZone resource.
  */
 export interface DnsZoneArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description for the zone.
      */

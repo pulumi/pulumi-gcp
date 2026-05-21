@@ -187,6 +187,15 @@ export class DatasetAccess extends pulumi.CustomResource {
      */
     declare public readonly datasetId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A domain to grant access to. Any users signed in with the
      * domain specified will be granted the specified access
      */
@@ -263,6 +272,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             resourceInputs["authorizedDataset"] = state?.authorizedDataset;
             resourceInputs["condition"] = state?.condition;
             resourceInputs["datasetId"] = state?.datasetId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["groupByEmail"] = state?.groupByEmail;
             resourceInputs["iamMember"] = state?.iamMember;
@@ -280,6 +290,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             resourceInputs["authorizedDataset"] = args?.authorizedDataset;
             resourceInputs["condition"] = args?.condition;
             resourceInputs["datasetId"] = args?.datasetId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["domain"] = args?.domain;
             resourceInputs["groupByEmail"] = args?.groupByEmail;
             resourceInputs["iamMember"] = args?.iamMember;
@@ -321,6 +332,15 @@ export interface DatasetAccessState {
      * underscores (_). The maximum length is 1,024 characters.
      */
     datasetId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A domain to grant access to. Any users signed in with the
      * domain specified will be granted the specified access
@@ -403,6 +423,15 @@ export interface DatasetAccessArgs {
      * underscores (_). The maximum length is 1,024 characters.
      */
     datasetId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A domain to grant access to. Any users signed in with the
      * domain specified will be granted the specified access

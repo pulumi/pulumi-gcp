@@ -12,26 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EvaluationGoldenTurnStepExpectationAgentTransfer {
     /**
-     * @return The display name of the target agent.
+     * @return (Output)
+     * Display name of the agent.
      * 
      */
     private @Nullable String displayName;
     /**
-     * @return The resource name of the target agent.
+     * @return The agent to which the conversation is being transferred.
      * 
      */
     private @Nullable String targetAgent;
 
     private EvaluationGoldenTurnStepExpectationAgentTransfer() {}
     /**
-     * @return The display name of the target agent.
+     * @return (Output)
+     * Display name of the agent.
      * 
      */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
     /**
-     * @return The resource name of the target agent.
+     * @return The agent to which the conversation is being transferred.
      * 
      */
     public Optional<String> targetAgent() {

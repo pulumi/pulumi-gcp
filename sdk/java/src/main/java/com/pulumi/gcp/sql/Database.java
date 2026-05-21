@@ -11,7 +11,6 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.sql.DatabaseArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseState;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -182,24 +181,28 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.collation;
     }
     /**
-     * The deletion policy for the database. Setting ABANDON allows the resource
-     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the database. Setting ABANDON allows the resource
-     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The name of the Cloud SQL instance. This does not include the project

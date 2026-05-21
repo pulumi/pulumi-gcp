@@ -103,6 +103,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
  * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigGuestAcceleratorArgs;
  * import com.pulumi.gcp.container.NodePool;
  * import com.pulumi.gcp.container.NodePoolArgs;
  * import com.pulumi.gcp.container.inputs.NodePoolNodeConfigArgs;
@@ -206,6 +207,34 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> cluster() {
         return this.cluster;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The initial number of nodes for the pool. In
@@ -483,8 +512,6 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
-     * 
      */
     @Export(name="queuedProvisioning", refs={NodePoolQueuedProvisioning.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolQueuedProvisioning> queuedProvisioning;
@@ -492,8 +519,6 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * @return Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Output<Optional<NodePoolQueuedProvisioning>> queuedProvisioning() {

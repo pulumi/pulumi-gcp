@@ -56,6 +56,17 @@ export class SharedflowDeployment extends pulumi.CustomResource {
     }
 
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The resource ID of the environment.
      */
     declare public readonly environment: pulumi.Output<string>;
@@ -65,9 +76,6 @@ export class SharedflowDeployment extends pulumi.CustomResource {
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * Revision of the Sharedflow to be deployed.
-     *
-     *
-     * - - -
      */
     declare public readonly revision: pulumi.Output<string>;
     /**
@@ -92,6 +100,7 @@ export class SharedflowDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedflowDeploymentState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["revision"] = state?.revision;
@@ -111,6 +120,7 @@ export class SharedflowDeployment extends pulumi.CustomResource {
             if (args?.sharedflowId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sharedflowId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["revision"] = args?.revision;
@@ -127,6 +137,17 @@ export class SharedflowDeployment extends pulumi.CustomResource {
  */
 export interface SharedflowDeploymentState {
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * The resource ID of the environment.
      */
     environment?: pulumi.Input<string | undefined>;
@@ -136,9 +157,6 @@ export interface SharedflowDeploymentState {
     orgId?: pulumi.Input<string | undefined>;
     /**
      * Revision of the Sharedflow to be deployed.
-     *
-     *
-     * - - -
      */
     revision?: pulumi.Input<string | undefined>;
     /**
@@ -156,6 +174,17 @@ export interface SharedflowDeploymentState {
  */
 export interface SharedflowDeploymentArgs {
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * The resource ID of the environment.
      */
     environment: pulumi.Input<string>;
@@ -165,9 +194,6 @@ export interface SharedflowDeploymentArgs {
     orgId: pulumi.Input<string>;
     /**
      * Revision of the Sharedflow to be deployed.
-     *
-     *
-     * - - -
      */
     revision: pulumi.Input<string>;
     /**

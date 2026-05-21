@@ -66,6 +66,7 @@ type LookupBackupPlanAssociationResult struct {
 	BackupPlanAssociationId string `pulumi:"backupPlanAssociationId"`
 	CreateTime              string `pulumi:"createTime"`
 	DataSource              string `pulumi:"dataSource"`
+	DeletionPolicy          string `pulumi:"deletionPolicy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id               string                                    `pulumi:"id"`
 	Location         string                                    `pulumi:"location"`
@@ -130,6 +131,10 @@ func (o LookupBackupPlanAssociationResultOutput) CreateTime() pulumi.StringOutpu
 
 func (o LookupBackupPlanAssociationResultOutput) DataSource() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanAssociationResult) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+func (o LookupBackupPlanAssociationResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupPlanAssociationResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

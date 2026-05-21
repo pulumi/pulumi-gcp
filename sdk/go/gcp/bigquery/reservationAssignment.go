@@ -80,6 +80,13 @@ type ReservationAssignment struct {
 
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee pulumi.StringOutput `pulumi:"assignee"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType pulumi.StringOutput `pulumi:"jobType"`
 	// The location for the resource
@@ -137,6 +144,13 @@ func GetReservationAssignment(ctx *pulumi.Context,
 type reservationAssignmentState struct {
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee *string `pulumi:"assignee"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType *string `pulumi:"jobType"`
 	// The location for the resource
@@ -156,6 +170,13 @@ type reservationAssignmentState struct {
 type ReservationAssignmentState struct {
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType pulumi.StringPtrInput
 	// The location for the resource
@@ -179,6 +200,13 @@ func (ReservationAssignmentState) ElementType() reflect.Type {
 type reservationAssignmentArgs struct {
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee string `pulumi:"assignee"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType string `pulumi:"jobType"`
 	// The location for the resource
@@ -194,6 +222,13 @@ type reservationAssignmentArgs struct {
 type ReservationAssignmentArgs struct {
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType pulumi.StringInput
 	// The location for the resource
@@ -295,6 +330,16 @@ func (o ReservationAssignmentOutput) ToReservationAssignmentOutputWithContext(ct
 // The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 func (o ReservationAssignmentOutput) Assignee() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.Assignee }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ReservationAssignmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS

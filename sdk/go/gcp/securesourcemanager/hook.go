@@ -42,6 +42,13 @@ type Hook struct {
 
 	// Create timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Determines if the hook disabled or not.
 	// Set to true to stop sending traffic.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
@@ -125,6 +132,13 @@ func GetHook(ctx *pulumi.Context,
 type hookState struct {
 	// Create timestamp.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Determines if the hook disabled or not.
 	// Set to true to stop sending traffic.
 	Disabled *bool `pulumi:"disabled"`
@@ -160,6 +174,13 @@ type hookState struct {
 type HookState struct {
 	// Create timestamp.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Determines if the hook disabled or not.
 	// Set to true to stop sending traffic.
 	Disabled pulumi.BoolPtrInput
@@ -197,6 +218,13 @@ func (HookState) ElementType() reflect.Type {
 }
 
 type hookArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Determines if the hook disabled or not.
 	// Set to true to stop sending traffic.
 	Disabled *bool `pulumi:"disabled"`
@@ -224,6 +252,13 @@ type hookArgs struct {
 
 // The set of arguments for constructing a Hook resource.
 type HookArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Determines if the hook disabled or not.
 	// Set to true to stop sending traffic.
 	Disabled pulumi.BoolPtrInput
@@ -339,6 +374,16 @@ func (o HookOutput) ToHookOutputWithContext(ctx context.Context) HookOutput {
 // Create timestamp.
 func (o HookOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hook) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o HookOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hook) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Determines if the hook disabled or not.

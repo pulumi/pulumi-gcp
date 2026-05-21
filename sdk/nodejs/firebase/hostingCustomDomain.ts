@@ -176,6 +176,15 @@ export class HostingCustomDomain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A string that represents the current state of the `CustomDomain` and
      * allows you to confirm its initial state in requests that would modify it.
      */
@@ -312,6 +321,7 @@ export class HostingCustomDomain extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customDomain"] = state?.customDomain;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["hostState"] = state?.hostState;
@@ -335,6 +345,7 @@ export class HostingCustomDomain extends pulumi.CustomResource {
             }
             resourceInputs["certPreference"] = args?.certPreference;
             resourceInputs["customDomain"] = args?.customDomain;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["project"] = args?.project;
             resourceInputs["redirectTarget"] = args?.redirectTarget;
             resourceInputs["siteId"] = args?.siteId;
@@ -390,6 +401,15 @@ export interface HostingCustomDomainState {
      * days, after which time Hosting removes them completely.
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A string that represents the current state of the `CustomDomain` and
      * allows you to confirm its initial state in requests that would modify it.
@@ -525,6 +545,15 @@ export interface HostingCustomDomainArgs {
      * The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
      */
     customDomain: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -27,7 +27,7 @@ class GetBackendBucketResult:
     """
     A collection of values returned by getBackendBucket.
     """
-    def __init__(__self__, bucket_name=None, cdn_policies=None, compression_mode=None, creation_timestamp=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, id=None, load_balancing_scheme=None, name=None, params=None, project=None, self_link=None):
+    def __init__(__self__, bucket_name=None, cdn_policies=None, compression_mode=None, creation_timestamp=None, custom_response_headers=None, deletion_policy=None, description=None, edge_security_policy=None, enable_cdn=None, id=None, load_balancing_scheme=None, name=None, params=None, project=None, self_link=None):
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -43,6 +43,9 @@ class GetBackendBucketResult:
         if custom_response_headers and not isinstance(custom_response_headers, list):
             raise TypeError("Expected argument 'custom_response_headers' to be a list")
         pulumi.set(__self__, "custom_response_headers", custom_response_headers)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -95,6 +98,11 @@ class GetBackendBucketResult:
     @pulumi.getter(name="customResponseHeaders")
     def custom_response_headers(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "custom_response_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -156,6 +164,7 @@ class AwaitableGetBackendBucketResult(GetBackendBucketResult):
             compression_mode=self.compression_mode,
             creation_timestamp=self.creation_timestamp,
             custom_response_headers=self.custom_response_headers,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             edge_security_policy=self.edge_security_policy,
             enable_cdn=self.enable_cdn,
@@ -201,6 +210,7 @@ def get_backend_bucket(name: Optional[_builtins.str] = None,
         compression_mode=pulumi.get(__ret__, 'compression_mode'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         custom_response_headers=pulumi.get(__ret__, 'custom_response_headers'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         edge_security_policy=pulumi.get(__ret__, 'edge_security_policy'),
         enable_cdn=pulumi.get(__ret__, 'enable_cdn'),
@@ -243,6 +253,7 @@ def get_backend_bucket_output(name: pulumi.Input[Optional[_builtins.str]] = None
         compression_mode=pulumi.get(__response__, 'compression_mode'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         custom_response_headers=pulumi.get(__response__, 'custom_response_headers'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         edge_security_policy=pulumi.get(__response__, 'edge_security_policy'),
         enable_cdn=pulumi.get(__response__, 'enable_cdn'),

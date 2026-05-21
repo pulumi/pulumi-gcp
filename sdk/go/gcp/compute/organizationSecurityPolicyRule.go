@@ -37,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_72490"),
+//				ShortName: pulumi.String("tf-test_56730"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
@@ -80,7 +80,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_89605"),
+//				ShortName: pulumi.String("tf-test_95154"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
@@ -121,7 +121,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_56730"),
+//				ShortName: pulumi.String("tf-test_64336"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
@@ -190,7 +190,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_95154"),
+//				ShortName: pulumi.String("tf-test_34962"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
@@ -243,7 +243,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_64336"),
+//				ShortName: pulumi.String("tf-test_74000"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
@@ -352,6 +352,13 @@ type OrganizationSecurityPolicyRule struct {
 	// "gotoNext": forward the request to the next hierarchical policy for evaluation.
 	// "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
 	Action pulumi.StringOutput `pulumi:"action"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// (Optional, Beta)
@@ -447,6 +454,13 @@ type organizationSecurityPolicyRuleState struct {
 	// "gotoNext": forward the request to the next hierarchical policy for evaluation.
 	// "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
 	Action *string `pulumi:"action"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the rule.
 	Description *string `pulumi:"description"`
 	// (Optional, Beta)
@@ -501,6 +515,13 @@ type OrganizationSecurityPolicyRuleState struct {
 	// "gotoNext": forward the request to the next hierarchical policy for evaluation.
 	// "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
 	Action pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the rule.
 	Description pulumi.StringPtrInput
 	// (Optional, Beta)
@@ -559,6 +580,13 @@ type organizationSecurityPolicyRuleArgs struct {
 	// "gotoNext": forward the request to the next hierarchical policy for evaluation.
 	// "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
 	Action string `pulumi:"action"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the rule.
 	Description *string `pulumi:"description"`
 	// (Optional, Beta)
@@ -614,6 +642,13 @@ type OrganizationSecurityPolicyRuleArgs struct {
 	// "gotoNext": forward the request to the next hierarchical policy for evaluation.
 	// "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
 	Action pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the rule.
 	Description pulumi.StringPtrInput
 	// (Optional, Beta)
@@ -755,6 +790,16 @@ func (o OrganizationSecurityPolicyRuleOutput) ToOrganizationSecurityPolicyRuleOu
 // "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
 func (o OrganizationSecurityPolicyRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OrganizationSecurityPolicyRuleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the rule.

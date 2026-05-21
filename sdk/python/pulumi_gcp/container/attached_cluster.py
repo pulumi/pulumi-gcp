@@ -70,7 +70,14 @@ class AttachedClusterArgs:
                Structure is documented below.
         :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+        :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine what flags to send on delete.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               
+               Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
         :param pulumi.Input[_builtins.str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AttachedClusterLoggingConfigArgs'] logging_config: Logging configuration.
@@ -241,7 +248,14 @@ class AttachedClusterArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+        Policy to determine what flags to send on delete.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+
+        Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -393,7 +407,14 @@ class _AttachedClusterState:
                For EKS clusters, this is an AWS region. For AKS clusters,
                this is an Azure region.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this cluster was created.
-        :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+        :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine what flags to send on delete.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               
+               Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
         :param pulumi.Input[_builtins.str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[_builtins.str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
@@ -572,7 +593,14 @@ class _AttachedClusterState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+        Policy to determine what flags to send on delete.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+
+        Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -1022,7 +1050,14 @@ class AttachedCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['AttachedClusterBinaryAuthorizationArgs', 'AttachedClusterBinaryAuthorizationArgsDict']] binary_authorization: Binary Authorization configuration.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+        :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine what flags to send on delete.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               
+               Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
         :param pulumi.Input[_builtins.str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[_builtins.str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
@@ -1336,7 +1371,14 @@ class AttachedCluster(pulumi.CustomResource):
                For EKS clusters, this is an AWS region. For AKS clusters,
                this is an Azure region.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this cluster was created.
-        :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+        :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine what flags to send on delete.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               
+               Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
         :param pulumi.Input[_builtins.str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[_builtins.str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
@@ -1469,9 +1511,16 @@ class AttachedCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+        Policy to determine what flags to send on delete.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+
+        Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
         """
         return pulumi.get(self, "deletion_policy")
 

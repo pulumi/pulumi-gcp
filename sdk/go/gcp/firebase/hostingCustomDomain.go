@@ -209,6 +209,13 @@ type HostingCustomDomain struct {
 	// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
 	// days, after which time Hosting removes them completely.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A string that represents the current state of the `CustomDomain` and
 	// allows you to confirm its initial state in requests that would modify it.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -358,6 +365,13 @@ type hostingCustomDomainState struct {
 	// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
 	// days, after which time Hosting removes them completely.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A string that represents the current state of the `CustomDomain` and
 	// allows you to confirm its initial state in requests that would modify it.
 	Etag *string `pulumi:"etag"`
@@ -472,6 +486,13 @@ type HostingCustomDomainState struct {
 	// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
 	// days, after which time Hosting removes them completely.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A string that represents the current state of the `CustomDomain` and
 	// allows you to confirm its initial state in requests that would modify it.
 	Etag pulumi.StringPtrInput
@@ -578,6 +599,13 @@ type hostingCustomDomainArgs struct {
 	CertPreference *string `pulumi:"certPreference"`
 	// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
 	CustomDomain string `pulumi:"customDomain"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -603,6 +631,13 @@ type HostingCustomDomainArgs struct {
 	CertPreference pulumi.StringPtrInput
 	// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
 	CustomDomain pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -738,6 +773,16 @@ func (o HostingCustomDomainOutput) CustomDomain() pulumi.StringOutput {
 // days, after which time Hosting removes them completely.
 func (o HostingCustomDomainOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingCustomDomain) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o HostingCustomDomainOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostingCustomDomain) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A string that represents the current state of the `CustomDomain` and

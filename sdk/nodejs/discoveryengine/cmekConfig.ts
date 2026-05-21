@@ -86,6 +86,15 @@ export class CmekConfig extends pulumi.CustomResource {
      */
     declare public readonly cmekConfigId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The default CmekConfig for the Customer.
      */
     declare public /*out*/ readonly isDefault: pulumi.Output<boolean>;
@@ -153,6 +162,7 @@ export class CmekConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CmekConfigState | undefined;
             resourceInputs["cmekConfigId"] = state?.cmekConfigId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["isDefault"] = state?.isDefault;
             resourceInputs["kmsKey"] = state?.kmsKey;
             resourceInputs["kmsKeyVersion"] = state?.kmsKeyVersion;
@@ -176,6 +186,7 @@ export class CmekConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["cmekConfigId"] = args?.cmekConfigId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["kmsKey"] = args?.kmsKey;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -201,6 +212,15 @@ export interface CmekConfigState {
      * The unique id of the cmek config.
      */
     cmekConfigId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The default CmekConfig for the Customer.
      */
@@ -264,6 +284,15 @@ export interface CmekConfigArgs {
      * The unique id of the cmek config.
      */
     cmekConfigId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * KMS key resource name which will be used to encrypt resources
      * `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.

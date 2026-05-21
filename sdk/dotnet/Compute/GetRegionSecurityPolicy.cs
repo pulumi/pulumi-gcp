@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly ImmutableArray<Outputs.GetRegionSecurityPolicyAdvancedOptionsConfigResult> AdvancedOptionsConfigs;
         public readonly ImmutableArray<Outputs.GetRegionSecurityPolicyDdosProtectionConfigResult> DdosProtectionConfigs;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string Fingerprint;
         /// <summary>
@@ -167,6 +168,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetRegionSecurityPolicyAdvancedOptionsConfigResult> advancedOptionsConfigs,
 
             ImmutableArray<Outputs.GetRegionSecurityPolicyDdosProtectionConfigResult> ddosProtectionConfigs,
+
+            string deletionPolicy,
 
             string description,
 
@@ -194,6 +197,7 @@ namespace Pulumi.Gcp.Compute
         {
             AdvancedOptionsConfigs = advancedOptionsConfigs;
             DdosProtectionConfigs = ddosProtectionConfigs;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Fingerprint = fingerprint;
             Id = id;

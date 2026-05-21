@@ -80,6 +80,13 @@ type Service struct {
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrOutput `pulumi:"checkIfServiceHasUsageOnDestroy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
 	// destroyed. If `false` or unset, an error will be generated if any enabled
@@ -134,6 +141,13 @@ type serviceState struct {
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
 	CheckIfServiceHasUsageOnDestroy *bool `pulumi:"checkIfServiceHasUsageOnDestroy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
 	// destroyed. If `false` or unset, an error will be generated if any enabled
@@ -156,6 +170,13 @@ type ServiceState struct {
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
 	// destroyed. If `false` or unset, an error will be generated if any enabled
@@ -182,6 +203,13 @@ type serviceArgs struct {
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
 	CheckIfServiceHasUsageOnDestroy *bool `pulumi:"checkIfServiceHasUsageOnDestroy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
 	// destroyed. If `false` or unset, an error will be generated if any enabled
@@ -205,6 +233,13 @@ type ServiceArgs struct {
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
 	// destroyed. If `false` or unset, an error will be generated if any enabled
@@ -314,6 +349,16 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 // will be returned if the service to be disabled has usage in last 30 days.
 func (o ServiceOutput) CheckIfServiceHasUsageOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.CheckIfServiceHasUsageOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ServiceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // If `true`, services that are enabled

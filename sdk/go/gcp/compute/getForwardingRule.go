@@ -70,6 +70,7 @@ type LookupForwardingRuleResult struct {
 	BackendService       string            `pulumi:"backendService"`
 	BaseForwardingRule   string            `pulumi:"baseForwardingRule"`
 	CreationTimestamp    string            `pulumi:"creationTimestamp"`
+	DeletionPolicy       string            `pulumi:"deletionPolicy"`
 	Description          string            `pulumi:"description"`
 	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	ForwardingRuleId     int               `pulumi:"forwardingRuleId"`
@@ -168,6 +169,10 @@ func (o LookupForwardingRuleResultOutput) BaseForwardingRule() pulumi.StringOutp
 
 func (o LookupForwardingRuleResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupForwardingRuleResultOutput) Description() pulumi.StringOutput {

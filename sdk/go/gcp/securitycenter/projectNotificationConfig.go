@@ -83,6 +83,13 @@ type ProjectNotificationConfig struct {
 
 	// This must be unique within the organization.
 	ConfigId pulumi.StringOutput `pulumi:"configId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The resource name of this notification config, in the format
@@ -143,6 +150,13 @@ func GetProjectNotificationConfig(ctx *pulumi.Context,
 type projectNotificationConfigState struct {
 	// This must be unique within the organization.
 	ConfigId *string `pulumi:"configId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// The resource name of this notification config, in the format
@@ -165,6 +179,13 @@ type projectNotificationConfigState struct {
 type ProjectNotificationConfigState struct {
 	// This must be unique within the organization.
 	ConfigId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// The resource name of this notification config, in the format
@@ -191,6 +212,13 @@ func (ProjectNotificationConfigState) ElementType() reflect.Type {
 type projectNotificationConfigArgs struct {
 	// This must be unique within the organization.
 	ConfigId string `pulumi:"configId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// The ID of the project in which the resource belongs.
@@ -208,6 +236,13 @@ type projectNotificationConfigArgs struct {
 type ProjectNotificationConfigArgs struct {
 	// This must be unique within the organization.
 	ConfigId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -311,6 +346,16 @@ func (o ProjectNotificationConfigOutput) ToProjectNotificationConfigOutputWithCo
 // This must be unique within the organization.
 func (o ProjectNotificationConfigOutput) ConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectNotificationConfig) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ProjectNotificationConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectNotificationConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the notification config (max of 1024 characters).

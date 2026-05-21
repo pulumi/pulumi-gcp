@@ -134,6 +134,15 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * User-provided description of the endpoint group.
      * Used as additional context for the endpoint group.
      */
@@ -233,6 +242,7 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
             resourceInputs["associations"] = state?.associations;
             resourceInputs["connectedDeploymentGroups"] = state?.connectedDeploymentGroups;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
@@ -255,6 +265,7 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
             if (args?.mirroringEndpointGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mirroringEndpointGroupId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -300,6 +311,15 @@ export interface MirroringEndpointGroupState {
      * See https://google.aip.dev/148#timestamps.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the endpoint group.
      * Used as additional context for the endpoint group.
@@ -389,6 +409,15 @@ export interface MirroringEndpointGroupState {
  * The set of arguments for constructing a MirroringEndpointGroup resource.
  */
 export interface MirroringEndpointGroupArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the endpoint group.
      * Used as additional context for the endpoint group.

@@ -66,6 +66,7 @@ export interface GetRouterNatArgs {
  */
 export interface GetRouterNatResult {
     readonly autoNetworkTier: string;
+    readonly deletionPolicy: string;
     readonly drainNatIps: string[];
     readonly enableDynamicPortAllocation: boolean;
     readonly enableEndpointIndependentMapping: boolean;

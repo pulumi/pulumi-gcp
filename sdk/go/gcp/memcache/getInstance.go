@@ -63,6 +63,7 @@ type LookupInstanceArgs struct {
 type LookupInstanceResult struct {
 	AuthorizedNetwork  string            `pulumi:"authorizedNetwork"`
 	CreateTime         string            `pulumi:"createTime"`
+	DeletionPolicy     string            `pulumi:"deletionPolicy"`
 	DeletionProtection bool              `pulumi:"deletionProtection"`
 	DiscoveryEndpoint  string            `pulumi:"discoveryEndpoint"`
 	DisplayName        string            `pulumi:"displayName"`
@@ -133,6 +134,10 @@ func (o LookupInstanceResultOutput) AuthorizedNetwork() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) DeletionProtection() pulumi.BoolOutput {

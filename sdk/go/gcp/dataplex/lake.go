@@ -70,6 +70,13 @@ type Lake struct {
 	AssetStatuses LakeAssetStatusArrayOutput `pulumi:"assetStatuses"`
 	// Output only. The time when the lake was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. Description of the lake.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Optional. User friendly display name.
@@ -147,6 +154,13 @@ type lakeState struct {
 	AssetStatuses []LakeAssetStatus `pulumi:"assetStatuses"`
 	// Output only. The time when the lake was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Description of the lake.
 	Description *string `pulumi:"description"`
 	// Optional. User friendly display name.
@@ -187,6 +201,13 @@ type LakeState struct {
 	AssetStatuses LakeAssetStatusArrayInput
 	// Output only. The time when the lake was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Description of the lake.
 	Description pulumi.StringPtrInput
 	// Optional. User friendly display name.
@@ -227,6 +248,13 @@ func (LakeState) ElementType() reflect.Type {
 }
 
 type lakeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Description of the lake.
 	Description *string `pulumi:"description"`
 	// Optional. User friendly display name.
@@ -250,6 +278,13 @@ type lakeArgs struct {
 
 // The set of arguments for constructing a Lake resource.
 type LakeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Description of the lake.
 	Description pulumi.StringPtrInput
 	// Optional. User friendly display name.
@@ -366,6 +401,16 @@ func (o LakeOutput) AssetStatuses() LakeAssetStatusArrayOutput {
 // Output only. The time when the lake was created.
 func (o LakeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o LakeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. Description of the lake.

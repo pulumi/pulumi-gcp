@@ -210,6 +210,13 @@ import (
 type ConsumerQuotaOverride struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions pulumi.StringMapOutput `pulumi:"dimensions"`
 	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
@@ -274,6 +281,13 @@ func GetConsumerQuotaOverride(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConsumerQuotaOverride resources.
 type consumerQuotaOverrideState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions map[string]string `pulumi:"dimensions"`
 	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
@@ -297,6 +311,13 @@ type consumerQuotaOverrideState struct {
 }
 
 type ConsumerQuotaOverrideState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions pulumi.StringMapInput
 	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
@@ -324,6 +345,13 @@ func (ConsumerQuotaOverrideState) ElementType() reflect.Type {
 }
 
 type consumerQuotaOverrideArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions map[string]string `pulumi:"dimensions"`
 	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
@@ -346,6 +374,13 @@ type consumerQuotaOverrideArgs struct {
 
 // The set of arguments for constructing a ConsumerQuotaOverride resource.
 type ConsumerQuotaOverrideArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions pulumi.StringMapInput
 	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
@@ -451,6 +486,16 @@ func (o ConsumerQuotaOverrideOutput) ToConsumerQuotaOverrideOutput() ConsumerQuo
 
 func (o ConsumerQuotaOverrideOutput) ToConsumerQuotaOverrideOutputWithContext(ctx context.Context) ConsumerQuotaOverrideOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ConsumerQuotaOverrideOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerQuotaOverride) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.

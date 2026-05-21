@@ -143,6 +143,13 @@ type MetastoreFederation struct {
 	BackendMetastores MetastoreFederationBackendMetastoreArrayOutput `pulumi:"backendMetastores"`
 	// Output only. The time when the metastore federation was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -234,6 +241,13 @@ type metastoreFederationState struct {
 	BackendMetastores []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
 	// Output only. The time when the metastore federation was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -282,6 +296,13 @@ type MetastoreFederationState struct {
 	BackendMetastores MetastoreFederationBackendMetastoreArrayInput
 	// Output only. The time when the metastore federation was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -332,6 +353,13 @@ type metastoreFederationArgs struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -362,6 +390,13 @@ type MetastoreFederationArgs struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the federation. Defaults to false.
 	// When the field is set to true in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the federation will fail.
@@ -485,6 +520,16 @@ func (o MetastoreFederationOutput) BackendMetastores() MetastoreFederationBacken
 // Output only. The time when the metastore federation was created.
 func (o MetastoreFederationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MetastoreFederationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the federation. Defaults to false.

@@ -136,6 +136,13 @@ type HostingSite struct {
 	AppId pulumi.StringPtrOutput `pulumi:"appId"`
 	// The default URL for the site in the form of https://{name}.web.app
 	DefaultUrl pulumi.StringOutput `pulumi:"defaultUrl"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Output only. The fully-qualified resource name of the Hosting site, in
 	// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
 	// Firebase project's
@@ -190,6 +197,13 @@ type hostingSiteState struct {
 	AppId *string `pulumi:"appId"`
 	// The default URL for the site in the form of https://{name}.web.app
 	DefaultUrl *string `pulumi:"defaultUrl"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Output only. The fully-qualified resource name of the Hosting site, in
 	// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
 	// Firebase project's
@@ -215,6 +229,13 @@ type HostingSiteState struct {
 	AppId pulumi.StringPtrInput
 	// The default URL for the site in the form of https://{name}.web.app
 	DefaultUrl pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Output only. The fully-qualified resource name of the Hosting site, in
 	// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
 	// Firebase project's
@@ -242,6 +263,13 @@ type hostingSiteArgs struct {
 	// Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
 	// associated with the Hosting site.
 	AppId *string `pulumi:"appId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -256,6 +284,13 @@ type HostingSiteArgs struct {
 	// Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
 	// associated with the Hosting site.
 	AppId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -361,6 +396,16 @@ func (o HostingSiteOutput) AppId() pulumi.StringPtrOutput {
 // The default URL for the site in the form of https://{name}.web.app
 func (o HostingSiteOutput) DefaultUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingSite) pulumi.StringOutput { return v.DefaultUrl }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o HostingSiteOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostingSite) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Output only. The fully-qualified resource name of the Hosting site, in

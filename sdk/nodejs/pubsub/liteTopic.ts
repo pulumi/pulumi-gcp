@@ -97,6 +97,15 @@ export class LiteTopic extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Name of the topic.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -142,6 +151,7 @@ export class LiteTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LiteTopicState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["partitionConfig"] = state?.partitionConfig;
             resourceInputs["project"] = state?.project;
@@ -151,6 +161,7 @@ export class LiteTopic extends pulumi.CustomResource {
             resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as LiteTopicArgs | undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["partitionConfig"] = args?.partitionConfig;
             resourceInputs["project"] = args?.project;
@@ -168,6 +179,15 @@ export class LiteTopic extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LiteTopic resources.
  */
 export interface LiteTopicState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name of the topic.
      */
@@ -206,6 +226,15 @@ export interface LiteTopicState {
  * The set of arguments for constructing a LiteTopic resource.
  */
 export interface LiteTopicArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name of the topic.
      */

@@ -324,6 +324,13 @@ type GdcSparkApplication struct {
 	ApplicationEnvironment pulumi.StringPtrOutput `pulumi:"applicationEnvironment"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
 	DependencyImages pulumi.StringArrayOutput `pulumi:"dependencyImages"`
 	// User-provided human-readable name to be used in user interfaces.
@@ -444,6 +451,13 @@ type gdcSparkApplicationState struct {
 	ApplicationEnvironment *string `pulumi:"applicationEnvironment"`
 	// The timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
 	DependencyImages []string `pulumi:"dependencyImages"`
 	// User-provided human-readable name to be used in user interfaces.
@@ -521,6 +535,13 @@ type GdcSparkApplicationState struct {
 	ApplicationEnvironment pulumi.StringPtrInput
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
 	DependencyImages pulumi.StringArrayInput
 	// User-provided human-readable name to be used in user interfaces.
@@ -600,6 +621,13 @@ type gdcSparkApplicationArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// An ApplicationEnvironment from which to inherit configuration properties.
 	ApplicationEnvironment *string `pulumi:"applicationEnvironment"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
 	DependencyImages []string `pulumi:"dependencyImages"`
 	// User-provided human-readable name to be used in user interfaces.
@@ -645,6 +673,13 @@ type GdcSparkApplicationArgs struct {
 	Annotations pulumi.StringMapInput
 	// An ApplicationEnvironment from which to inherit configuration properties.
 	ApplicationEnvironment pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
 	DependencyImages pulumi.StringArrayInput
 	// User-provided human-readable name to be used in user interfaces.
@@ -784,6 +819,16 @@ func (o GdcSparkApplicationOutput) ApplicationEnvironment() pulumi.StringPtrOutp
 // The timestamp when the resource was created.
 func (o GdcSparkApplicationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GdcSparkApplication) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GdcSparkApplicationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *GdcSparkApplication) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.

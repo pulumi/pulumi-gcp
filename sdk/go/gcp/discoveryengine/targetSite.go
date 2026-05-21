@@ -130,6 +130,13 @@ type TargetSite struct {
 
 	// The unique id of the data store.
 	DataStoreId pulumi.StringOutput `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
 	// is generated to try to be an exact match of the providedUriPattern or
@@ -213,6 +220,13 @@ func GetTargetSite(ctx *pulumi.Context,
 type targetSiteState struct {
 	// The unique id of the data store.
 	DataStoreId *string `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
 	// is generated to try to be an exact match of the providedUriPattern or
@@ -258,6 +272,13 @@ type targetSiteState struct {
 type TargetSiteState struct {
 	// The unique id of the data store.
 	DataStoreId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
 	// is generated to try to be an exact match of the providedUriPattern or
@@ -307,6 +328,13 @@ func (TargetSiteState) ElementType() reflect.Type {
 type targetSiteArgs struct {
 	// The unique id of the data store.
 	DataStoreId string `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
 	// is generated to try to be an exact match of the providedUriPattern or
@@ -332,6 +360,13 @@ type targetSiteArgs struct {
 type TargetSiteArgs struct {
 	// The unique id of the data store.
 	DataStoreId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
 	// is generated to try to be an exact match of the providedUriPattern or
@@ -443,6 +478,16 @@ func (o TargetSiteOutput) ToTargetSiteOutputWithContext(ctx context.Context) Tar
 // The unique id of the data store.
 func (o TargetSiteOutput) DataStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetSite) pulumi.StringOutput { return v.DataStoreId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TargetSiteOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetSite) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // If set to false, a uriPattern is generated to include all pages whose

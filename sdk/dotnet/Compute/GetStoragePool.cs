@@ -176,6 +176,7 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly string CapacityProvisioningType;
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -201,6 +202,8 @@ namespace Pulumi.Gcp.Compute
             string capacityProvisioningType,
 
             string creationTimestamp,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -242,6 +245,7 @@ namespace Pulumi.Gcp.Compute
         {
             CapacityProvisioningType = capacityProvisioningType;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             Description = description;
             EffectiveLabels = effectiveLabels;

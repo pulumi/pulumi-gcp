@@ -201,6 +201,15 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -358,6 +367,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             const state = argsOrState as VPNTunnelState | undefined;
             resourceInputs["cipherSuite"] = state?.cipherSuite;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["detailedStatus"] = state?.detailedStatus;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -388,6 +398,7 @@ export class VPNTunnel extends pulumi.CustomResource {
         } else {
             const args = argsOrState as VPNTunnelArgs | undefined;
             resourceInputs["cipherSuite"] = args?.cipherSuite;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["ikeVersion"] = args?.ikeVersion;
             resourceInputs["labels"] = args?.labels;
@@ -437,6 +448,15 @@ export interface VPNTunnelState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -590,6 +610,15 @@ export interface VPNTunnelArgs {
      * Structure is documented below.
      */
     cipherSuite?: pulumi.Input<inputs.compute.VPNTunnelCipherSuite | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

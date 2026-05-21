@@ -30,6 +30,7 @@ class VMwareClusterArgs:
                  authorization: pulumi.Input[Optional['VMwareClusterAuthorizationArgs']] = None,
                  auto_repair_config: pulumi.Input[Optional['VMwareClusterAutoRepairConfigArgs']] = None,
                  dataplane_v2: pulumi.Input[Optional['VMwareClusterDataplaneV2Args']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_bundled_ingress: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_advanced_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -74,6 +75,12 @@ class VMwareClusterArgs:
                Structure is documented below.
         :param pulumi.Input['VMwareClusterDataplaneV2Args'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware User Cluster.
         :param pulumi.Input[_builtins.bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[_builtins.bool] enable_advanced_cluster: Enable advanced cluster. Default to false.
@@ -110,6 +117,8 @@ class VMwareClusterArgs:
             pulumi.set(__self__, "auto_repair_config", auto_repair_config)
         if dataplane_v2 is not None:
             pulumi.set(__self__, "dataplane_v2", dataplane_v2)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_bundled_ingress is not None:
@@ -263,6 +272,23 @@ class VMwareClusterArgs:
     @dataplane_v2.setter
     def dataplane_v2(self, value: pulumi.Input[Optional['VMwareClusterDataplaneV2Args']]):
         pulumi.set(self, "dataplane_v2", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -441,6 +467,7 @@ class _VMwareClusterState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dataplane_v2: pulumi.Input[Optional['VMwareClusterDataplaneV2Args']] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_bundled_ingress: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -498,6 +525,12 @@ class _VMwareClusterState:
         :param pulumi.Input['VMwareClusterDataplaneV2Args'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: The time at which VMware User Cluster was deleted.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware User Cluster.
         :param pulumi.Input[_builtins.bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -569,6 +602,8 @@ class _VMwareClusterState:
             pulumi.set(__self__, "dataplane_v2", dataplane_v2)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_bundled_ingress is not None:
@@ -748,6 +783,23 @@ class _VMwareClusterState:
     @delete_time.setter
     def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1101,6 +1153,7 @@ class VMwareCluster(pulumi.CustomResource):
                  auto_repair_config: pulumi.Input[Optional[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict']]] = None,
                  control_plane_node: pulumi.Input[Optional[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict']]] = None,
                  dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_bundled_ingress: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_advanced_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1396,6 +1449,12 @@ class VMwareCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware User Cluster.
         :param pulumi.Input[_builtins.bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[_builtins.bool] enable_advanced_cluster: Enable advanced cluster. Default to false.
@@ -1699,6 +1758,7 @@ class VMwareCluster(pulumi.CustomResource):
                  auto_repair_config: pulumi.Input[Optional[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict']]] = None,
                  control_plane_node: pulumi.Input[Optional[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict']]] = None,
                  dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_bundled_ingress: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_advanced_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1734,6 +1794,7 @@ class VMwareCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'control_plane_node'")
             __props__.__dict__["control_plane_node"] = control_plane_node
             __props__.__dict__["dataplane_v2"] = dataplane_v2
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_bundled_ingress"] = disable_bundled_ingress
             __props__.__dict__["enable_advanced_cluster"] = enable_advanced_cluster
@@ -1785,6 +1846,7 @@ class VMwareCluster(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disable_bundled_ingress: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1846,6 +1908,12 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: The time at which VMware User Cluster was deleted.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware User Cluster.
         :param pulumi.Input[_builtins.bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -1912,6 +1980,7 @@ class VMwareCluster(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dataplane_v2"] = dataplane_v2
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_bundled_ingress"] = disable_bundled_ingress
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -2030,6 +2099,19 @@ class VMwareCluster(pulumi.CustomResource):
         The time at which VMware User Cluster was deleted.
         """
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

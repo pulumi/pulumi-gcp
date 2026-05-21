@@ -25,6 +25,7 @@ class OrganizationSecurityPolicyRuleArgs:
                  match: pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'],
                  policy_id: pulumi.Input[_builtins.str],
                  priority: pulumi.Input[_builtins.int],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -48,6 +49,12 @@ class OrganizationSecurityPolicyRuleArgs:
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the rule.
         :param pulumi.Input[_builtins.str] direction: (Optional, Beta)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -80,6 +87,8 @@ class OrganizationSecurityPolicyRuleArgs:
         pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "policy_id", policy_id)
         pulumi.set(__self__, "priority", priority)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if direction is not None:
@@ -153,6 +162,23 @@ class OrganizationSecurityPolicyRuleArgs:
     @priority.setter
     def priority(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -285,6 +311,7 @@ class OrganizationSecurityPolicyRuleArgs:
 class _OrganizationSecurityPolicyRuleState:
     def __init__(__self__, *,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -305,6 +332,12 @@ class _OrganizationSecurityPolicyRuleState:
                "deny": deny access to target.
                "goto_next": forward the request to the next hierarchical policy for evaluation.
                "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the rule.
         :param pulumi.Input[_builtins.str] direction: (Optional, Beta)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -341,6 +374,8 @@ class _OrganizationSecurityPolicyRuleState:
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if direction is not None:
@@ -381,6 +416,23 @@ class _OrganizationSecurityPolicyRuleState:
     @action.setter
     def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -555,6 +607,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -586,7 +639,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_72490",
+            short_name="tf-test_56730",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -607,7 +660,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_89605",
+            short_name="tf-test_95154",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -628,7 +681,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_56730",
+            short_name="tf-test_64336",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -671,7 +724,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_95154",
+            short_name="tf-test_34962",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -704,7 +757,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_64336",
+            short_name="tf-test_74000",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -777,6 +830,12 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                "deny": deny access to target.
                "goto_next": forward the request to the next hierarchical policy for evaluation.
                "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the rule.
         :param pulumi.Input[_builtins.str] direction: (Optional, Beta)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -835,7 +894,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_72490",
+            short_name="tf-test_56730",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -856,7 +915,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_89605",
+            short_name="tf-test_95154",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -877,7 +936,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_56730",
+            short_name="tf-test_64336",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -920,7 +979,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_95154",
+            short_name="tf-test_34962",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -953,7 +1012,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_64336",
+            short_name="tf-test_74000",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -1035,6 +1094,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1059,6 +1119,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["direction"] = direction
             __props__.__dict__["enable_logging"] = enable_logging
@@ -1088,6 +1149,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             direction: pulumi.Input[Optional[_builtins.str]] = None,
             enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1112,6 +1174,12 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                "deny": deny access to target.
                "goto_next": forward the request to the next hierarchical policy for evaluation.
                "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the rule.
         :param pulumi.Input[_builtins.str] direction: (Optional, Beta)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -1151,6 +1219,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         __props__ = _OrganizationSecurityPolicyRuleState.__new__(_OrganizationSecurityPolicyRuleState)
 
         __props__.__dict__["action"] = action
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["direction"] = direction
         __props__.__dict__["enable_logging"] = enable_logging
@@ -1176,6 +1245,19 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
         """
         return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
  * import com.pulumi.gcp.serviceaccount.Account;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
@@ -140,6 +141,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -189,6 +191,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerResourcesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -251,6 +255,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -312,8 +317,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
  * import com.pulumi.gcp.cloudrun.IamPolicy;
  * import com.pulumi.gcp.cloudrun.IamPolicyArgs;
  * import java.util.ArrayList;
@@ -372,6 +379,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerLivenessProbeArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -434,6 +446,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerReadinessProbeArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerReadinessProbeGrpcArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -494,6 +509,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerPortArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerVolumeMountArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeHttpGetArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeEmptyDirArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -577,6 +600,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -650,6 +674,30 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autogenerateRevisionName() {
         return Codegen.optional(this.autogenerateRevisionName);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The location of the cloud run instance. eg us-central1

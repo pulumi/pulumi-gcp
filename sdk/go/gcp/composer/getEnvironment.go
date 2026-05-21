@@ -11,13 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides access to Cloud Composer environment configuration in a region for a given project.
+// Provides access to Managed Airflow environment configuration in a region for a
+// given project.
 //
-// To get more information about Composer Environment, see:
+// To get more information about Managed Airflow Environment, see:
 //
 // * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+//   - [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
 //
 // ## Example Usage
 //
@@ -76,6 +77,7 @@ type LookupEnvironmentArgs struct {
 type LookupEnvironmentResult struct {
 	// Configuration parameters for the environment.
 	Configs         []GetEnvironmentConfig `pulumi:"configs"`
+	DeletionPolicy  string                 `pulumi:"deletionPolicy"`
 	EffectiveLabels map[string]string      `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                        `pulumi:"id"`
@@ -129,6 +131,10 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 // Configuration parameters for the environment.
 func (o LookupEnvironmentResultOutput) Configs() GetEnvironmentConfigArrayOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) []GetEnvironmentConfig { return v.Configs }).(GetEnvironmentConfigArrayOutput)
+}
+
+func (o LookupEnvironmentResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupEnvironmentResultOutput) EffectiveLabels() pulumi.StringMapOutput {

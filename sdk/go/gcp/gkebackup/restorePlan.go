@@ -794,8 +794,15 @@ type RestorePlan struct {
 	// A reference to the BackupPlan from which Backups may be used
 	// as the source for Restores created via this RestorePlan.
 	BackupPlan pulumi.StringOutput `pulumi:"backupPlan"`
-	// The source cluster from which Restores will be created via this RestorePlan.
+	// The name of the target cluster to which you want to Restore via this RestorePlan.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -878,8 +885,15 @@ type restorePlanState struct {
 	// A reference to the BackupPlan from which Backups may be used
 	// as the source for Restores created via this RestorePlan.
 	BackupPlan *string `pulumi:"backupPlan"`
-	// The source cluster from which Restores will be created via this RestorePlan.
+	// The name of the target cluster to which you want to Restore via this RestorePlan.
 	Cluster *string `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -916,8 +930,15 @@ type RestorePlanState struct {
 	// A reference to the BackupPlan from which Backups may be used
 	// as the source for Restores created via this RestorePlan.
 	BackupPlan pulumi.StringPtrInput
-	// The source cluster from which Restores will be created via this RestorePlan.
+	// The name of the target cluster to which you want to Restore via this RestorePlan.
 	Cluster pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -958,8 +979,15 @@ type restorePlanArgs struct {
 	// A reference to the BackupPlan from which Backups may be used
 	// as the source for Restores created via this RestorePlan.
 	BackupPlan string `pulumi:"backupPlan"`
-	// The source cluster from which Restores will be created via this RestorePlan.
+	// The name of the target cluster to which you want to Restore via this RestorePlan.
 	Cluster string `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
 	// Description: A set of custom labels supplied by the user.
@@ -986,8 +1014,15 @@ type RestorePlanArgs struct {
 	// A reference to the BackupPlan from which Backups may be used
 	// as the source for Restores created via this RestorePlan.
 	BackupPlan pulumi.StringInput
-	// The source cluster from which Restores will be created via this RestorePlan.
+	// The name of the target cluster to which you want to Restore via this RestorePlan.
 	Cluster pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput
 	// Description: A set of custom labels supplied by the user.
@@ -1102,9 +1137,19 @@ func (o RestorePlanOutput) BackupPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.BackupPlan }).(pulumi.StringOutput)
 }
 
-// The source cluster from which Restores will be created via this RestorePlan.
+// The name of the target cluster to which you want to Restore via this RestorePlan.
 func (o RestorePlanOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RestorePlanOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User specified descriptive string for this RestorePlan.

@@ -64,6 +64,13 @@ type FrameworkDeployment struct {
 	ComputedTargetResource pulumi.StringOutput `pulumi:"computedTargetResource"`
 	// The time at which the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The deployment state of the framework.
 	// Possible values:
 	// DEPLOYMENT_STATE_VALIDATING
@@ -181,6 +188,13 @@ type frameworkDeploymentState struct {
 	ComputedTargetResource *string `pulumi:"computedTargetResource"`
 	// The time at which the resource was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The deployment state of the framework.
 	// Possible values:
 	// DEPLOYMENT_STATE_VALIDATING
@@ -251,6 +265,13 @@ type FrameworkDeploymentState struct {
 	ComputedTargetResource pulumi.StringPtrInput
 	// The time at which the resource was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The deployment state of the framework.
 	// Possible values:
 	// DEPLOYMENT_STATE_VALIDATING
@@ -302,6 +323,13 @@ type frameworkDeploymentArgs struct {
 	// CloudControlMetadata.
 	// Structure is documented below.
 	CloudControlMetadatas []FrameworkDeploymentCloudControlMetadata `pulumi:"cloudControlMetadatas"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User provided description of the Framework deployment
 	Description *string `pulumi:"description"`
 	// FrameworkReference contains the reference of a framework.
@@ -327,6 +355,13 @@ type FrameworkDeploymentArgs struct {
 	// CloudControlMetadata.
 	// Structure is documented below.
 	CloudControlMetadatas FrameworkDeploymentCloudControlMetadataArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User provided description of the Framework deployment
 	Description pulumi.StringPtrInput
 	// FrameworkReference contains the reference of a framework.
@@ -474,6 +509,16 @@ func (o FrameworkDeploymentOutput) ComputedTargetResource() pulumi.StringOutput 
 // The time at which the resource was created.
 func (o FrameworkDeploymentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FrameworkDeployment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FrameworkDeploymentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FrameworkDeployment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The deployment state of the framework.

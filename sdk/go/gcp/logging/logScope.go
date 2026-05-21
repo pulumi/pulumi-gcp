@@ -72,6 +72,13 @@ type LogScope struct {
 
 	// Output only. The creation timestamp of the log scopes.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Describes this log scopes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The location of the resource. The only supported location is global so far.
@@ -121,6 +128,13 @@ func GetLogScope(ctx *pulumi.Context,
 type logScopeState struct {
 	// Output only. The creation timestamp of the log scopes.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this log scopes.
 	Description *string `pulumi:"description"`
 	// The location of the resource. The only supported location is global so far.
@@ -138,6 +152,13 @@ type logScopeState struct {
 type LogScopeState struct {
 	// Output only. The creation timestamp of the log scopes.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this log scopes.
 	Description pulumi.StringPtrInput
 	// The location of the resource. The only supported location is global so far.
@@ -157,6 +178,13 @@ func (LogScopeState) ElementType() reflect.Type {
 }
 
 type logScopeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this log scopes.
 	Description *string `pulumi:"description"`
 	// The location of the resource. The only supported location is global so far.
@@ -171,6 +199,13 @@ type logScopeArgs struct {
 
 // The set of arguments for constructing a LogScope resource.
 type LogScopeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this log scopes.
 	Description pulumi.StringPtrInput
 	// The location of the resource. The only supported location is global so far.
@@ -273,6 +308,16 @@ func (o LogScopeOutput) ToLogScopeOutputWithContext(ctx context.Context) LogScop
 // Output only. The creation timestamp of the log scopes.
 func (o LogScopeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogScope) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o LogScopeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogScope) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Describes this log scopes.

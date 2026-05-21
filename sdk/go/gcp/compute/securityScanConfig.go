@@ -92,6 +92,13 @@ type SecurityScanConfig struct {
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
 	BlacklistPatterns pulumi.StringArrayOutput `pulumi:"blacklistPatterns"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The user provider display name of the ScanConfig.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Cloud Security Command Center.
@@ -164,6 +171,13 @@ type securityScanConfigState struct {
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user provider display name of the ScanConfig.
 	DisplayName *string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Cloud Security Command Center.
@@ -201,6 +215,13 @@ type SecurityScanConfigState struct {
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
 	BlacklistPatterns pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user provider display name of the ScanConfig.
 	DisplayName pulumi.StringPtrInput
 	// Controls export of scan configurations and results to Cloud Security Command Center.
@@ -242,6 +263,13 @@ type securityScanConfigArgs struct {
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user provider display name of the ScanConfig.
 	DisplayName string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Cloud Security Command Center.
@@ -277,6 +305,13 @@ type SecurityScanConfigArgs struct {
 	// The blacklist URL patterns as described in
 	// https://cloud.google.com/security-scanner/docs/excluded-urls
 	BlacklistPatterns pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user provider display name of the ScanConfig.
 	DisplayName pulumi.StringInput
 	// Controls export of scan configurations and results to Cloud Security Command Center.
@@ -401,6 +436,16 @@ func (o SecurityScanConfigOutput) Authentication() SecurityScanConfigAuthenticat
 // https://cloud.google.com/security-scanner/docs/excluded-urls
 func (o SecurityScanConfigOutput) BlacklistPatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringArrayOutput { return v.BlacklistPatterns }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SecurityScanConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The user provider display name of the ScanConfig.

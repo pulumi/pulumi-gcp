@@ -272,6 +272,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.InstanceTemplate;
  * import com.pulumi.gcp.compute.InstanceTemplateArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceTemplateConfidentialInstanceConfigArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;

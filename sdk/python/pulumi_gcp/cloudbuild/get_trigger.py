@@ -27,7 +27,7 @@ class GetTriggerResult:
     """
     A collection of values returned by getTrigger.
     """
-    def __init__(__self__, approval_configs=None, bitbucket_server_trigger_configs=None, builds=None, create_time=None, description=None, developer_connect_event_configs=None, disabled=None, filename=None, filter=None, git_file_sources=None, githubs=None, id=None, ignored_files=None, include_build_logs=None, included_files=None, location=None, name=None, project=None, pubsub_configs=None, repository_event_configs=None, service_account=None, source_to_builds=None, substitutions=None, tags=None, trigger_id=None, trigger_templates=None, webhook_configs=None):
+    def __init__(__self__, approval_configs=None, bitbucket_server_trigger_configs=None, builds=None, create_time=None, deletion_policy=None, description=None, developer_connect_event_configs=None, disabled=None, filename=None, filter=None, git_file_sources=None, githubs=None, id=None, ignored_files=None, include_build_logs=None, included_files=None, location=None, name=None, project=None, pubsub_configs=None, repository_event_configs=None, service_account=None, source_to_builds=None, substitutions=None, tags=None, trigger_id=None, trigger_templates=None, webhook_configs=None):
         if approval_configs and not isinstance(approval_configs, list):
             raise TypeError("Expected argument 'approval_configs' to be a list")
         pulumi.set(__self__, "approval_configs", approval_configs)
@@ -40,6 +40,9 @@ class GetTriggerResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -129,6 +132,11 @@ class GetTriggerResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -259,6 +267,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             bitbucket_server_trigger_configs=self.bitbucket_server_trigger_configs,
             builds=self.builds,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             developer_connect_event_configs=self.developer_connect_event_configs,
             disabled=self.disabled,
@@ -325,6 +334,7 @@ def get_trigger(location: Optional[_builtins.str] = None,
         bitbucket_server_trigger_configs=pulumi.get(__ret__, 'bitbucket_server_trigger_configs'),
         builds=pulumi.get(__ret__, 'builds'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         developer_connect_event_configs=pulumi.get(__ret__, 'developer_connect_event_configs'),
         disabled=pulumi.get(__ret__, 'disabled'),
@@ -388,6 +398,7 @@ def get_trigger_output(location: pulumi.Input[Optional[_builtins.str]] = None,
         bitbucket_server_trigger_configs=pulumi.get(__response__, 'bitbucket_server_trigger_configs'),
         builds=pulumi.get(__response__, 'builds'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         developer_connect_event_configs=pulumi.get(__response__, 'developer_connect_event_configs'),
         disabled=pulumi.get(__response__, 'disabled'),

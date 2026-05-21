@@ -4,6 +4,7 @@
 package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.ces.outputs.DeploymentChannelProfileWebWidgetConfigSecuritySettings;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,17 +15,24 @@ public final class DeploymentChannelProfileWebWidgetConfig {
     /**
      * @return The modality of the web widget.
      * Possible values:
-     * UNKNOWN_MODALITY
+     * MODALITY_UNSPECIFIED
      * CHAT_AND_VOICE
      * VOICE_ONLY
      * CHAT_ONLY
+     * CHAT_VOICE_AND_VIDEO
      * 
      */
     private @Nullable String modality;
     /**
+     * @return The security settings of the web widget.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DeploymentChannelProfileWebWidgetConfigSecuritySettings securitySettings;
+    /**
      * @return The theme of the web widget.
      * Possible values:
-     * UNKNOWN_THEME
+     * THEME_UNSPECIFIED
      * LIGHT
      * DARK
      * 
@@ -40,19 +48,28 @@ public final class DeploymentChannelProfileWebWidgetConfig {
     /**
      * @return The modality of the web widget.
      * Possible values:
-     * UNKNOWN_MODALITY
+     * MODALITY_UNSPECIFIED
      * CHAT_AND_VOICE
      * VOICE_ONLY
      * CHAT_ONLY
+     * CHAT_VOICE_AND_VIDEO
      * 
      */
     public Optional<String> modality() {
         return Optional.ofNullable(this.modality);
     }
     /**
+     * @return The security settings of the web widget.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DeploymentChannelProfileWebWidgetConfigSecuritySettings> securitySettings() {
+        return Optional.ofNullable(this.securitySettings);
+    }
+    /**
      * @return The theme of the web widget.
      * Possible values:
-     * UNKNOWN_THEME
+     * THEME_UNSPECIFIED
      * LIGHT
      * DARK
      * 
@@ -78,12 +95,14 @@ public final class DeploymentChannelProfileWebWidgetConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String modality;
+        private @Nullable DeploymentChannelProfileWebWidgetConfigSecuritySettings securitySettings;
         private @Nullable String theme;
         private @Nullable String webWidgetTitle;
         public Builder() {}
         public Builder(DeploymentChannelProfileWebWidgetConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.modality = defaults.modality;
+    	      this.securitySettings = defaults.securitySettings;
     	      this.theme = defaults.theme;
     	      this.webWidgetTitle = defaults.webWidgetTitle;
         }
@@ -92,6 +111,12 @@ public final class DeploymentChannelProfileWebWidgetConfig {
         public Builder modality(@Nullable String modality) {
 
             this.modality = modality;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securitySettings(@Nullable DeploymentChannelProfileWebWidgetConfigSecuritySettings securitySettings) {
+
+            this.securitySettings = securitySettings;
             return this;
         }
         @CustomType.Setter
@@ -109,6 +134,7 @@ public final class DeploymentChannelProfileWebWidgetConfig {
         public DeploymentChannelProfileWebWidgetConfig build() {
             final var _resultValue = new DeploymentChannelProfileWebWidgetConfig();
             _resultValue.modality = modality;
+            _resultValue.securitySettings = securitySettings;
             _resultValue.theme = theme;
             _resultValue.webWidgetTitle = webWidgetTitle;
             return _resultValue;

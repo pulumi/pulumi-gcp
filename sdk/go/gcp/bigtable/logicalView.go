@@ -96,6 +96,13 @@ import (
 type LogicalView struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Set to true to make the logical view protected against deletion.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The name of the instance to create the logical view within.
@@ -147,6 +154,13 @@ func GetLogicalView(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogicalView resources.
 type logicalViewState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Set to true to make the logical view protected against deletion.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The name of the instance to create the logical view within.
@@ -163,6 +177,13 @@ type logicalViewState struct {
 }
 
 type LogicalViewState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Set to true to make the logical view protected against deletion.
 	DeletionProtection pulumi.BoolPtrInput
 	// The name of the instance to create the logical view within.
@@ -183,6 +204,13 @@ func (LogicalViewState) ElementType() reflect.Type {
 }
 
 type logicalViewArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Set to true to make the logical view protected against deletion.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The name of the instance to create the logical view within.
@@ -198,6 +226,13 @@ type logicalViewArgs struct {
 
 // The set of arguments for constructing a LogicalView resource.
 type LogicalViewArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Set to true to make the logical view protected against deletion.
 	DeletionProtection pulumi.BoolPtrInput
 	// The name of the instance to create the logical view within.
@@ -296,6 +331,16 @@ func (o LogicalViewOutput) ToLogicalViewOutput() LogicalViewOutput {
 
 func (o LogicalViewOutput) ToLogicalViewOutputWithContext(ctx context.Context) LogicalViewOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o LogicalViewOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogicalView) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Set to true to make the logical view protected against deletion.

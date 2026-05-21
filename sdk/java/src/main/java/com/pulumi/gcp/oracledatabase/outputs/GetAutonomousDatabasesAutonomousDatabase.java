@@ -46,6 +46,16 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
      */
     private String database;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
      * 
      */
@@ -183,6 +193,18 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
      */
     public String database() {
         return this.database;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
@@ -328,6 +350,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
         private String cidr;
         private String createTime;
         private String database;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private List<String> disasterRecoverySupportedLocations;
         private String displayName;
@@ -352,6 +375,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     	      this.cidr = defaults.cidr;
     	      this.createTime = defaults.createTime;
     	      this.database = defaults.database;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.disasterRecoverySupportedLocations = defaults.disasterRecoverySupportedLocations;
     	      this.displayName = defaults.displayName;
@@ -408,6 +432,14 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
               throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "database");
             }
             this.database = database;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -557,6 +589,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
             _resultValue.cidr = cidr;
             _resultValue.createTime = createTime;
             _resultValue.database = database;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.disasterRecoverySupportedLocations = disasterRecoverySupportedLocations;
             _resultValue.displayName = displayName;

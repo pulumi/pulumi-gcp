@@ -446,6 +446,15 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly baseForwardingRule: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
@@ -702,6 +711,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             const state = argsOrState as GlobalForwardingRuleState | undefined;
             resourceInputs["allowPscGlobalAccess"] = state?.allowPscGlobalAccess;
             resourceInputs["baseForwardingRule"] = state?.baseForwardingRule;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["externalManagedBackendBucketMigrationState"] = state?.externalManagedBackendBucketMigrationState;
@@ -734,6 +744,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'target'");
             }
             resourceInputs["allowPscGlobalAccess"] = args?.allowPscGlobalAccess;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["externalManagedBackendBucketMigrationState"] = args?.externalManagedBackendBucketMigrationState;
             resourceInputs["externalManagedBackendBucketMigrationTestingPercentage"] = args?.externalManagedBackendBucketMigrationTestingPercentage;
@@ -782,6 +793,15 @@ export interface GlobalForwardingRuleState {
      * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
      */
     baseForwardingRule?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
@@ -1034,6 +1054,15 @@ export interface GlobalForwardingRuleArgs {
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
     allowPscGlobalAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.

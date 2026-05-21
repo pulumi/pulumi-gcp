@@ -25,6 +25,7 @@ class BackendBucketArgs:
                  cdn_policy: pulumi.Input[Optional['BackendBucketCdnPolicyArgs']] = None,
                  compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -41,6 +42,12 @@ class BackendBucketArgs:
         :param pulumi.Input[_builtins.str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
         :param pulumi.Input[_builtins.str] edge_security_policy: The security policy associated with this backend bucket.
@@ -69,6 +76,8 @@ class BackendBucketArgs:
             pulumi.set(__self__, "compression_mode", compression_mode)
         if custom_response_headers is not None:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if edge_security_policy is not None:
@@ -133,6 +142,23 @@ class BackendBucketArgs:
     @custom_response_headers.setter
     def custom_response_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_response_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -240,6 +266,7 @@ class _BackendBucketState:
                  compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -258,6 +285,12 @@ class _BackendBucketState:
                Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
         :param pulumi.Input[_builtins.str] edge_security_policy: The security policy associated with this backend bucket.
@@ -290,6 +323,8 @@ class _BackendBucketState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if custom_response_headers is not None:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if edge_security_policy is not None:
@@ -368,6 +403,23 @@ class _BackendBucketState:
     @custom_response_headers.setter
     def custom_response_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_response_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -489,6 +541,7 @@ class BackendBucket(pulumi.CustomResource):
                  cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
                  compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -615,6 +668,12 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
         :param pulumi.Input[_builtins.str] edge_security_policy: The security policy associated with this backend bucket.
@@ -771,6 +830,7 @@ class BackendBucket(pulumi.CustomResource):
                  cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
                  compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -793,6 +853,7 @@ class BackendBucket(pulumi.CustomResource):
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["compression_mode"] = compression_mode
             __props__.__dict__["custom_response_headers"] = custom_response_headers
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["enable_cdn"] = enable_cdn
@@ -817,6 +878,7 @@ class BackendBucket(pulumi.CustomResource):
             compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
             enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -839,6 +901,12 @@ class BackendBucket(pulumi.CustomResource):
                Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
         :param pulumi.Input[_builtins.str] edge_security_policy: The security policy associated with this backend bucket.
@@ -870,6 +938,7 @@ class BackendBucket(pulumi.CustomResource):
         __props__.__dict__["compression_mode"] = compression_mode
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["custom_response_headers"] = custom_response_headers
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["edge_security_policy"] = edge_security_policy
         __props__.__dict__["enable_cdn"] = enable_cdn
@@ -921,6 +990,19 @@ class BackendBucket(pulumi.CustomResource):
         Headers that the HTTP/S load balancer should add to proxied responses.
         """
         return pulumi.get(self, "custom_response_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

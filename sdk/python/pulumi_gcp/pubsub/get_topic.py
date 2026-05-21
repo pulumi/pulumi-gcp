@@ -27,7 +27,10 @@ class GetTopicResult:
     """
     A collection of values returned by getTopic.
     """
-    def __init__(__self__, effective_labels=None, id=None, ingestion_data_source_settings=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, message_transforms=None, name=None, project=None, pulumi_labels=None, schema_settings=None, tags=None):
+    def __init__(__self__, deletion_policy=None, effective_labels=None, id=None, ingestion_data_source_settings=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, message_transforms=None, name=None, project=None, pulumi_labels=None, schema_settings=None, tags=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -67,6 +70,11 @@ class GetTopicResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -143,6 +151,7 @@ class AwaitableGetTopicResult(GetTopicResult):
         if False:
             yield self
         return GetTopicResult(
+            deletion_policy=self.deletion_policy,
             effective_labels=self.effective_labels,
             id=self.id,
             ingestion_data_source_settings=self.ingestion_data_source_settings,
@@ -189,6 +198,7 @@ def get_topic(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:pubsub/getTopic:getTopic', __args__, opts=opts, typ=GetTopicResult).value
 
     return AwaitableGetTopicResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
         ingestion_data_source_settings=pulumi.get(__ret__, 'ingestion_data_source_settings'),
@@ -232,6 +242,7 @@ def get_topic_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:pubsub/getTopic:getTopic', __args__, opts=opts, typ=GetTopicResult)
     return __ret__.apply(lambda __response__: GetTopicResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         id=pulumi.get(__response__, 'id'),
         ingestion_data_source_settings=pulumi.get(__response__, 'ingestion_data_source_settings'),

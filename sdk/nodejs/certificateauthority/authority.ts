@@ -384,6 +384,15 @@ export class Authority extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether Terraform will be prevented from destroying the CertificateAuthority.
      * When the field is set to true or unset in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -524,6 +533,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["certificateAuthorityId"] = state?.certificateAuthorityId;
             resourceInputs["config"] = state?.config;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -564,6 +574,7 @@ export class Authority extends pulumi.CustomResource {
             }
             resourceInputs["certificateAuthorityId"] = args?.certificateAuthorityId;
             resourceInputs["config"] = args?.config;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["gcsBucket"] = args?.gcsBucket;
@@ -619,6 +630,15 @@ export interface AuthorityState {
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the CertificateAuthority.
      * When the field is set to true or unset in Terraform state, a `pulumi up`
@@ -757,6 +777,15 @@ export interface AuthorityArgs {
      * Structure is documented below.
      */
     config: pulumi.Input<inputs.certificateauthority.AuthorityConfig>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the CertificateAuthority.
      * When the field is set to true or unset in Terraform state, a `pulumi up`

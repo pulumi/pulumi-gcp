@@ -22,6 +22,7 @@ __all__ = ['BatchArgs', 'Batch']
 class BatchArgs:
     def __init__(__self__, *,
                  batch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_config: pulumi.Input[Optional['BatchEnvironmentConfigArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -36,6 +37,12 @@ class BatchArgs:
 
         :param pulumi.Input[_builtins.str] batch_id: The ID to use for the batch, which will become the final component of the batch's resource name.
                This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['BatchEnvironmentConfigArgs'] environment_config: Environment configuration for the batch execution.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this batch.
@@ -58,6 +65,8 @@ class BatchArgs:
         """
         if batch_id is not None:
             pulumi.set(__self__, "batch_id", batch_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if environment_config is not None:
             pulumi.set(__self__, "environment_config", environment_config)
         if labels is not None:
@@ -89,6 +98,23 @@ class BatchArgs:
     @batch_id.setter
     def batch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "batch_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentConfig")
@@ -215,6 +241,7 @@ class _BatchState:
                  batch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  environment_config: pulumi.Input[Optional['BatchEnvironmentConfigArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -241,6 +268,12 @@ class _BatchState:
                This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
         :param pulumi.Input[_builtins.str] create_time: The time when the batch was created.
         :param pulumi.Input[_builtins.str] creator: The email address of the user who created the batch.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['BatchEnvironmentConfigArgs'] environment_config: Environment configuration for the batch execution.
                Structure is documented below.
@@ -282,6 +315,8 @@ class _BatchState:
             pulumi.set(__self__, "create_time", create_time)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if environment_config is not None:
@@ -357,6 +392,23 @@ class _BatchState:
     @creator.setter
     def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -609,6 +661,7 @@ class Batch(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -638,7 +691,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
-            batch_id="tf-test-batch_64612",
+            batch_id="tf-test-batch_60461",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -761,7 +814,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparsql = gcp.dataproc.Batch("example_batch_sparsql",
-            batch_id="tf-test-batch_34242",
+            batch_id="tf-test-batch_45397",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -789,7 +842,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_pyspark = gcp.dataproc.Batch("example_batch_pyspark",
-            batch_id="tf-test-batch_9723",
+            batch_id="tf-test-batch_16451",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -822,7 +875,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparkr = gcp.dataproc.Batch("example_batch_sparkr",
-            batch_id="tf-test-batch_22061",
+            batch_id="tf-test-batch_3686",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -852,7 +905,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
-            batch_id="tf-test-batch_60461",
+            batch_id="tf-test-batch_54136",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -906,6 +959,12 @@ class Batch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] batch_id: The ID to use for the batch, which will become the final component of the batch's resource name.
                This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']] environment_config: Environment configuration for the batch execution.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this batch.
@@ -951,7 +1010,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
-            batch_id="tf-test-batch_64612",
+            batch_id="tf-test-batch_60461",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1074,7 +1133,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparsql = gcp.dataproc.Batch("example_batch_sparsql",
-            batch_id="tf-test-batch_34242",
+            batch_id="tf-test-batch_45397",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -1102,7 +1161,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_pyspark = gcp.dataproc.Batch("example_batch_pyspark",
-            batch_id="tf-test-batch_9723",
+            batch_id="tf-test-batch_16451",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -1135,7 +1194,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparkr = gcp.dataproc.Batch("example_batch_sparkr",
-            batch_id="tf-test-batch_22061",
+            batch_id="tf-test-batch_3686",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1165,7 +1224,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
-            batch_id="tf-test-batch_60461",
+            batch_id="tf-test-batch_54136",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1231,6 +1290,7 @@ class Batch(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1250,6 +1310,7 @@ class Batch(pulumi.CustomResource):
             __props__ = BatchArgs.__new__(BatchArgs)
 
             __props__.__dict__["batch_id"] = batch_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["environment_config"] = environment_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -1286,6 +1347,7 @@ class Batch(pulumi.CustomResource):
             batch_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             environment_config: pulumi.Input[Optional[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1316,6 +1378,12 @@ class Batch(pulumi.CustomResource):
                This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
         :param pulumi.Input[_builtins.str] create_time: The time when the batch was created.
         :param pulumi.Input[_builtins.str] creator: The email address of the user who created the batch.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['BatchEnvironmentConfigArgs', 'BatchEnvironmentConfigArgsDict']] environment_config: Environment configuration for the batch execution.
                Structure is documented below.
@@ -1358,6 +1426,7 @@ class Batch(pulumi.CustomResource):
         __props__.__dict__["batch_id"] = batch_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["environment_config"] = environment_config
         __props__.__dict__["labels"] = labels
@@ -1403,6 +1472,19 @@ class Batch(pulumi.CustomResource):
         The email address of the user who created the batch.
         """
         return pulumi.get(self, "creator")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

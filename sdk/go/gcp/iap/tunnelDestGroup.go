@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewTunnelDestGroup(ctx, "dest_group", &iap.TunnelDestGroupArgs{
 //				Region:    pulumi.String("us-central1"),
-//				GroupName: pulumi.String("testgroup_79411"),
+//				GroupName: pulumi.String("testgroup_82591"),
 //				Cidrs: pulumi.StringArray{
 //					pulumi.String("10.1.0.0/16"),
 //					pulumi.String("192.168.10.0/24"),
@@ -79,6 +79,13 @@ type TunnelDestGroup struct {
 
 	// List of CIDRs that this group applies to.
 	Cidrs pulumi.StringArrayOutput `pulumi:"cidrs"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// List of FQDNs that this group applies to.
 	Fqdns pulumi.StringArrayOutput `pulumi:"fqdns"`
 	// Unique tunnel destination group name.
@@ -127,6 +134,13 @@ func GetTunnelDestGroup(ctx *pulumi.Context,
 type tunnelDestGroupState struct {
 	// List of CIDRs that this group applies to.
 	Cidrs []string `pulumi:"cidrs"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// List of FQDNs that this group applies to.
 	Fqdns []string `pulumi:"fqdns"`
 	// Unique tunnel destination group name.
@@ -143,6 +157,13 @@ type tunnelDestGroupState struct {
 type TunnelDestGroupState struct {
 	// List of CIDRs that this group applies to.
 	Cidrs pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// List of FQDNs that this group applies to.
 	Fqdns pulumi.StringArrayInput
 	// Unique tunnel destination group name.
@@ -163,6 +184,13 @@ func (TunnelDestGroupState) ElementType() reflect.Type {
 type tunnelDestGroupArgs struct {
 	// List of CIDRs that this group applies to.
 	Cidrs []string `pulumi:"cidrs"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// List of FQDNs that this group applies to.
 	Fqdns []string `pulumi:"fqdns"`
 	// Unique tunnel destination group name.
@@ -178,6 +206,13 @@ type tunnelDestGroupArgs struct {
 type TunnelDestGroupArgs struct {
 	// List of CIDRs that this group applies to.
 	Cidrs pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// List of FQDNs that this group applies to.
 	Fqdns pulumi.StringArrayInput
 	// Unique tunnel destination group name.
@@ -279,6 +314,16 @@ func (o TunnelDestGroupOutput) ToTunnelDestGroupOutputWithContext(ctx context.Co
 // List of CIDRs that this group applies to.
 func (o TunnelDestGroupOutput) Cidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TunnelDestGroup) pulumi.StringArrayOutput { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TunnelDestGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelDestGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // List of FQDNs that this group applies to.

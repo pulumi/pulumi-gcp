@@ -52,6 +52,17 @@ namespace Pulumi.Gcp.Kms
         public Output<ImmutableArray<Outputs.KeyRingImportJobAttestation>> Attestations { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The time at which this resource is scheduled for expiration and can no longer be used.
         /// This is in RFC3339 text format.
         /// </summary>
@@ -152,6 +163,17 @@ namespace Pulumi.Gcp.Kms
     public sealed class KeyRingImportJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
         /// </summary>
         [Input("importJobId", required: true)]
@@ -201,6 +223,17 @@ namespace Pulumi.Gcp.Kms
             get => _attestations ?? (_attestations = new InputList<Inputs.KeyRingImportJobAttestationGetArgs>());
             set => _attestations = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The time at which this resource is scheduled for expiration and can no longer be used.

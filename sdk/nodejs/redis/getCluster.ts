@@ -59,6 +59,7 @@ export interface GetClusterResult {
     readonly backupCollection: string;
     readonly createTime: string;
     readonly crossClusterReplicationConfigs: outputs.redis.GetClusterCrossClusterReplicationConfig[];
+    readonly deletionPolicy: string;
     readonly deletionProtectionEnabled: boolean;
     readonly discoveryEndpoints: outputs.redis.GetClusterDiscoveryEndpoint[];
     readonly effectiveLabels: {[key: string]: string};

@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_24243",
+ *     name: "tf-test-subnet_26240",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
@@ -121,6 +121,15 @@ export class GatewayAdvertisedRoute extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of the gateway advertised route.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -200,6 +209,7 @@ export class GatewayAdvertisedRoute extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GatewayAdvertisedRouteState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["ipRange"] = state?.ipRange;
@@ -222,6 +232,7 @@ export class GatewayAdvertisedRoute extends pulumi.CustomResource {
             if (args?.spoke === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spoke'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["ipRange"] = args?.ipRange;
             resourceInputs["labels"] = args?.labels;
@@ -253,6 +264,15 @@ export interface GatewayAdvertisedRouteState {
      * The time the gateway advertised route was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of the gateway advertised route.
      */
@@ -324,6 +344,15 @@ export interface GatewayAdvertisedRouteState {
  * The set of arguments for constructing a GatewayAdvertisedRoute resource.
  */
 export interface GatewayAdvertisedRouteArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of the gateway advertised route.
      */

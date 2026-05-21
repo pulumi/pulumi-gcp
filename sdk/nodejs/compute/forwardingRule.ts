@@ -854,6 +854,15 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
@@ -1150,6 +1159,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["backendService"] = state?.backendService;
             resourceInputs["baseForwardingRule"] = state?.baseForwardingRule;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["forwardingRuleId"] = state?.forwardingRuleId;
@@ -1186,6 +1196,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["allowGlobalAccess"] = args?.allowGlobalAccess;
             resourceInputs["allowPscGlobalAccess"] = args?.allowPscGlobalAccess;
             resourceInputs["backendService"] = args?.backendService;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["ipAddress"] = args?.ipAddress;
             resourceInputs["ipCollection"] = args?.ipCollection;
@@ -1275,6 +1286,15 @@ export interface ForwardingRuleState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
@@ -1595,6 +1615,15 @@ export interface ForwardingRuleArgs {
      * must be omitted for all other load balancer types.
      */
     backendService?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.

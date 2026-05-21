@@ -9,12 +9,9 @@ import * as utilities from "../utilities";
 /**
  * A configuration for a native dashboard within a Google SecOps (Chronicle) instance.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about NativeDashboard, see:
  *
- * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.nativeDashboards)
+ * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.nativeDashboards)
  * * How-to Guides
  *     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
  *
@@ -119,6 +116,15 @@ export class NativeDashboard extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly dashboardId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A description of the dashboard.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -200,6 +206,7 @@ export class NativeDashboard extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["createUserId"] = state?.createUserId;
             resourceInputs["dashboardId"] = state?.dashboardId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["etag"] = state?.etag;
@@ -227,6 +234,7 @@ export class NativeDashboard extends pulumi.CustomResource {
             }
             resourceInputs["access"] = args?.access;
             resourceInputs["charts"] = args?.charts;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["filters"] = args?.filters;
@@ -278,6 +286,15 @@ export interface NativeDashboardState {
      * The unique ID of the Dashboard.
      */
     dashboardId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of the dashboard.
      */
@@ -359,6 +376,15 @@ export interface NativeDashboardArgs {
      * Structure is documented below.
      */
     charts?: pulumi.Input<pulumi.Input<inputs.chronicle.NativeDashboardChart>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of the dashboard.
      */

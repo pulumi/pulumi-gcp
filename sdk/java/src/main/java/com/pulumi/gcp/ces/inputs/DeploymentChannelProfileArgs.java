@@ -27,6 +27,8 @@ public final class DeploymentChannelProfileArgs extends com.pulumi.resources.Res
      * TWILIO
      * GOOGLE_TELEPHONY_PLATFORM
      * CONTACT_CENTER_AS_A_SERVICE
+     * FIVE9
+     * CONTACT_CENTER_INTEGRATION
      * 
      */
     @Import(name="channelType")
@@ -41,6 +43,8 @@ public final class DeploymentChannelProfileArgs extends com.pulumi.resources.Res
      * TWILIO
      * GOOGLE_TELEPHONY_PLATFORM
      * CONTACT_CENTER_AS_A_SERVICE
+     * FIVE9
+     * CONTACT_CENTER_INTEGRATION
      * 
      */
     public Optional<Output<String>> channelType() {
@@ -170,6 +174,8 @@ public final class DeploymentChannelProfileArgs extends com.pulumi.resources.Res
          * TWILIO
          * GOOGLE_TELEPHONY_PLATFORM
          * CONTACT_CENTER_AS_A_SERVICE
+         * FIVE9
+         * CONTACT_CENTER_INTEGRATION
          * 
          * @return builder
          * 
@@ -188,6 +194,8 @@ public final class DeploymentChannelProfileArgs extends com.pulumi.resources.Res
          * TWILIO
          * GOOGLE_TELEPHONY_PLATFORM
          * CONTACT_CENTER_AS_A_SERVICE
+         * FIVE9
+         * CONTACT_CENTER_INTEGRATION
          * 
          * @return builder
          * 

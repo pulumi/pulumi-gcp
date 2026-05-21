@@ -24,6 +24,9 @@ namespace Pulumi.Gcp.ServiceNetworking
 
     public sealed class GetPeeredDnsDomainArgs : global::Pulumi.InvokeArgs
     {
+        [Input("deletionPolicy")]
+        public string? DeletionPolicy { get; set; }
+
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -44,6 +47,9 @@ namespace Pulumi.Gcp.ServiceNetworking
 
     public sealed class GetPeeredDnsDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -66,6 +72,7 @@ namespace Pulumi.Gcp.ServiceNetworking
     [OutputType]
     public sealed class GetPeeredDnsDomainResult
     {
+        public readonly string DeletionPolicy;
         public readonly string DnsSuffix;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -79,6 +86,8 @@ namespace Pulumi.Gcp.ServiceNetworking
 
         [OutputConstructor]
         private GetPeeredDnsDomainResult(
+            string deletionPolicy,
+
             string dnsSuffix,
 
             string id,
@@ -93,6 +102,7 @@ namespace Pulumi.Gcp.ServiceNetworking
 
             string service)
         {
+            DeletionPolicy = deletionPolicy;
             DnsSuffix = dnsSuffix;
             Id = id;
             Name = name;

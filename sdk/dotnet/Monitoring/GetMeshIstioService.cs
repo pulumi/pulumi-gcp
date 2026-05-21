@@ -226,6 +226,7 @@ namespace Pulumi.Gcp.Monitoring
     [OutputType]
     public sealed class GetMeshIstioServiceResult
     {
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Name used for UI elements listing this (Monitoring) Service.
         /// </summary>
@@ -252,6 +253,8 @@ namespace Pulumi.Gcp.Monitoring
 
         [OutputConstructor]
         private GetMeshIstioServiceResult(
+            string deletionPolicy,
+
             string displayName,
 
             string id,
@@ -272,6 +275,7 @@ namespace Pulumi.Gcp.Monitoring
 
             ImmutableDictionary<string, string> userLabels)
         {
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             Id = id;
             MeshUid = meshUid;

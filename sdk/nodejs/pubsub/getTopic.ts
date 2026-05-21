@@ -51,6 +51,7 @@ export interface GetTopicArgs {
  * A collection of values returned by getTopic.
  */
 export interface GetTopicResult {
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.

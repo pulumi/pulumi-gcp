@@ -23,6 +23,7 @@ class ServiceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  autogenerate_revision_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional['ServiceMetadataArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +38,12 @@ class ServiceArgs:
                is also set.
                (For legacy support, if `template.metadata.name` is unset in state while
                this field is set to false, the revision name will still autogenerate.)
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['ServiceMetadataArgs'] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
                Structure is documented below.
@@ -63,6 +70,8 @@ class ServiceArgs:
         pulumi.set(__self__, "location", location)
         if autogenerate_revision_name is not None:
             pulumi.set(__self__, "autogenerate_revision_name", autogenerate_revision_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
@@ -101,6 +110,23 @@ class ServiceArgs:
     @autogenerate_revision_name.setter
     def autogenerate_revision_name(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autogenerate_revision_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -184,6 +210,7 @@ class ServiceArgs:
 class _ServiceState:
     def __init__(__self__, *,
                  autogenerate_revision_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional['ServiceMetadataArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -199,6 +226,12 @@ class _ServiceState:
                is also set.
                (For legacy support, if `template.metadata.name` is unset in state while
                this field is set to false, the revision name will still autogenerate.)
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input['ServiceMetadataArgs'] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
@@ -227,6 +260,8 @@ class _ServiceState:
         """
         if autogenerate_revision_name is not None:
             pulumi.set(__self__, "autogenerate_revision_name", autogenerate_revision_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if metadata is not None:
@@ -257,6 +292,23 @@ class _ServiceState:
     @autogenerate_revision_name.setter
     def autogenerate_revision_name(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autogenerate_revision_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -368,6 +420,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autogenerate_revision_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -729,6 +782,12 @@ class Service(pulumi.CustomResource):
                is also set.
                (For legacy support, if `template.metadata.name` is unset in state while
                this field is set to false, the revision name will still autogenerate.)
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
@@ -1122,6 +1181,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autogenerate_revision_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1138,6 +1198,7 @@ class Service(pulumi.CustomResource):
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
             __props__.__dict__["autogenerate_revision_name"] = autogenerate_revision_name
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -1158,6 +1219,7 @@ class Service(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             autogenerate_revision_name: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1177,6 +1239,12 @@ class Service(pulumi.CustomResource):
                is also set.
                (For legacy support, if `template.metadata.name` is unset in state while
                this field is set to false, the revision name will still autogenerate.)
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict']] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.
@@ -1208,6 +1276,7 @@ class Service(pulumi.CustomResource):
         __props__ = _ServiceState.__new__(_ServiceState)
 
         __props__.__dict__["autogenerate_revision_name"] = autogenerate_revision_name
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["location"] = location
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
@@ -1228,6 +1297,19 @@ class Service(pulumi.CustomResource):
         this field is set to false, the revision name will still autogenerate.)
         """
         return pulumi.get(self, "autogenerate_revision_name")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

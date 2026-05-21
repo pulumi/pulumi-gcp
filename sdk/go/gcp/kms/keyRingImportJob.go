@@ -48,6 +48,13 @@ type KeyRingImportJob struct {
 	// Only present if the chosen ImportMethod is one with a protection level of HSM.
 	// Structure is documented below.
 	Attestations KeyRingImportJobAttestationArrayOutput `pulumi:"attestations"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The time at which this resource is scheduled for expiration and can no longer be used.
 	// This is in RFC3339 text format.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
@@ -119,6 +126,13 @@ type keyRingImportJobState struct {
 	// Only present if the chosen ImportMethod is one with a protection level of HSM.
 	// Structure is documented below.
 	Attestations []KeyRingImportJobAttestation `pulumi:"attestations"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The time at which this resource is scheduled for expiration and can no longer be used.
 	// This is in RFC3339 text format.
 	ExpireTime *string `pulumi:"expireTime"`
@@ -149,6 +163,13 @@ type KeyRingImportJobState struct {
 	// Only present if the chosen ImportMethod is one with a protection level of HSM.
 	// Structure is documented below.
 	Attestations KeyRingImportJobAttestationArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The time at which this resource is scheduled for expiration and can no longer be used.
 	// This is in RFC3339 text format.
 	ExpireTime pulumi.StringPtrInput
@@ -178,6 +199,13 @@ func (KeyRingImportJobState) ElementType() reflect.Type {
 }
 
 type keyRingImportJobArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId string `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
@@ -194,6 +222,13 @@ type keyRingImportJobArgs struct {
 
 // The set of arguments for constructing a KeyRingImportJob resource.
 type KeyRingImportJobArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId pulumi.StringInput
 	// The wrapping method to be used for incoming key material.
@@ -301,6 +336,16 @@ func (o KeyRingImportJobOutput) ToKeyRingImportJobOutputWithContext(ctx context.
 // Structure is documented below.
 func (o KeyRingImportJobOutput) Attestations() KeyRingImportJobAttestationArrayOutput {
 	return o.ApplyT(func(v *KeyRingImportJob) KeyRingImportJobAttestationArrayOutput { return v.Attestations }).(KeyRingImportJobAttestationArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o KeyRingImportJobOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRingImportJob) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The time at which this resource is scheduled for expiration and can no longer be used.

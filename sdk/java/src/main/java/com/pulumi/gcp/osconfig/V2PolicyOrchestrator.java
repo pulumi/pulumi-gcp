@@ -40,7 +40,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.osconfig.V2PolicyOrchestratorArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs;
+ * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs;
  * import com.pulumi.gcp.osconfig.inputs.V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs;
  * import java.util.ArrayList;
@@ -152,6 +157,30 @@ public class V2PolicyOrchestrator extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Optional. Freeform text describing the purpose of the resource.

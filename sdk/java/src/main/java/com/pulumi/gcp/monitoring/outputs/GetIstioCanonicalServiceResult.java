@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class GetIstioCanonicalServiceResult {
     private String canonicalService;
     private String canonicalServiceNamespace;
+    private String deletionPolicy;
     /**
      * @return Name used for UI elements listing this (Monitoring) Service.
      * 
@@ -49,6 +50,9 @@ public final class GetIstioCanonicalServiceResult {
     }
     public String canonicalServiceNamespace() {
         return this.canonicalServiceNamespace;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Name used for UI elements listing this (Monitoring) Service.
@@ -103,6 +107,7 @@ public final class GetIstioCanonicalServiceResult {
     public static final class Builder {
         private String canonicalService;
         private String canonicalServiceNamespace;
+        private String deletionPolicy;
         private String displayName;
         private String id;
         private String meshUid;
@@ -116,6 +121,7 @@ public final class GetIstioCanonicalServiceResult {
     	      Objects.requireNonNull(defaults);
     	      this.canonicalService = defaults.canonicalService;
     	      this.canonicalServiceNamespace = defaults.canonicalServiceNamespace;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.meshUid = defaults.meshUid;
@@ -140,6 +146,14 @@ public final class GetIstioCanonicalServiceResult {
               throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "canonicalServiceNamespace");
             }
             this.canonicalServiceNamespace = canonicalServiceNamespace;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -211,6 +225,7 @@ public final class GetIstioCanonicalServiceResult {
             final var _resultValue = new GetIstioCanonicalServiceResult();
             _resultValue.canonicalService = canonicalService;
             _resultValue.canonicalServiceNamespace = canonicalServiceNamespace;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
             _resultValue.meshUid = meshUid;

@@ -22,6 +22,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
     private String attributeCondition;
     private Map<String,String> attributeMapping;
     private List<GetWorkloadIdentityPoolProviderAw> aws;
+    private String deletionPolicy;
     private String description;
     private Boolean disabled;
     private String displayName;
@@ -48,6 +49,9 @@ public final class GetWorkloadIdentityPoolProviderResult {
     }
     public List<GetWorkloadIdentityPoolProviderAw> aws() {
         return this.aws;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -102,6 +106,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
         private String attributeCondition;
         private Map<String,String> attributeMapping;
         private List<GetWorkloadIdentityPoolProviderAw> aws;
+        private String deletionPolicy;
         private String description;
         private Boolean disabled;
         private String displayName;
@@ -120,6 +125,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
     	      this.attributeCondition = defaults.attributeCondition;
     	      this.attributeMapping = defaults.attributeMapping;
     	      this.aws = defaults.aws;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.disabled = defaults.disabled;
     	      this.displayName = defaults.displayName;
@@ -160,6 +166,14 @@ public final class GetWorkloadIdentityPoolProviderResult {
         }
         public Builder aws(GetWorkloadIdentityPoolProviderAw... aws) {
             return aws(List.of(aws));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -269,6 +283,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
             _resultValue.attributeCondition = attributeCondition;
             _resultValue.attributeMapping = attributeMapping;
             _resultValue.aws = aws;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.disabled = disabled;
             _resultValue.displayName = displayName;

@@ -152,6 +152,15 @@ export class Policy extends pulumi.CustomResource {
      */
     declare public readonly defaultAdmissionRule: pulumi.Output<outputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A descriptive comment.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -184,6 +193,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["admissionWhitelistPatterns"] = state?.admissionWhitelistPatterns;
             resourceInputs["clusterAdmissionRules"] = state?.clusterAdmissionRules;
             resourceInputs["defaultAdmissionRule"] = state?.defaultAdmissionRule;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["globalPolicyEvaluationMode"] = state?.globalPolicyEvaluationMode;
             resourceInputs["project"] = state?.project;
@@ -195,6 +205,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["admissionWhitelistPatterns"] = args?.admissionWhitelistPatterns;
             resourceInputs["clusterAdmissionRules"] = args?.clusterAdmissionRules;
             resourceInputs["defaultAdmissionRule"] = args?.defaultAdmissionRule;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["globalPolicyEvaluationMode"] = args?.globalPolicyEvaluationMode;
             resourceInputs["project"] = args?.project;
@@ -234,6 +245,15 @@ export interface PolicyState {
      * Structure is documented below.
      */
     defaultAdmissionRule?: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A descriptive comment.
      */
@@ -282,6 +302,15 @@ export interface PolicyArgs {
      * Structure is documented below.
      */
     defaultAdmissionRule: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A descriptive comment.
      */

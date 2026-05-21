@@ -415,8 +415,16 @@ type Instance struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
 	// of its nested resources. If set to "DEFAULT", Looker instances that still have
-	// nested resources will return an error. Possible values: DEFAULT, FORCE
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// nested resources will return an error.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
+	//
+	// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -553,7 +561,15 @@ type instanceState struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
 	// of its nested resources. If set to "DEFAULT", Looker instances that still have
-	// nested resources will return an error. Possible values: DEFAULT, FORCE
+	// nested resources will return an error.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
+	//
+	// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
@@ -659,7 +675,15 @@ type InstanceState struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
 	// of its nested resources. If set to "DEFAULT", Looker instances that still have
-	// nested resources will return an error. Possible values: DEFAULT, FORCE
+	// nested resources will return an error.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
+	//
+	// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
 	DeletionPolicy pulumi.StringPtrInput
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
@@ -766,7 +790,15 @@ type instanceArgs struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
 	// of its nested resources. If set to "DEFAULT", Looker instances that still have
-	// nested resources will return an error. Possible values: DEFAULT, FORCE
+	// nested resources will return an error.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
+	//
+	// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
@@ -857,7 +889,15 @@ type InstanceArgs struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
 	// of its nested resources. If set to "DEFAULT", Looker instances that still have
-	// nested resources will return an error. Possible values: DEFAULT, FORCE
+	// nested resources will return an error.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "DEFAULT".
+	//
+	// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
 	DeletionPolicy pulumi.StringPtrInput
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
@@ -1054,9 +1094,17 @@ func (o InstanceOutput) CustomDomain() InstanceCustomDomainPtrOutput {
 // Policy to determine if the cluster should be deleted forcefully.
 // If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
 // of its nested resources. If set to "DEFAULT", Looker instances that still have
-// nested resources will return an error. Possible values: DEFAULT, FORCE
-func (o InstanceOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// nested resources will return an error.
+//
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", the command will behave as if set to "DEFAULT".
+//
+// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
+func (o InstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Maintenance denial period for this instance.

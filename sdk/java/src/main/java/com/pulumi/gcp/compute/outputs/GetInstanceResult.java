@@ -62,6 +62,7 @@ public final class GetInstanceResult {
      * 
      */
     private String currentStatus;
+    private String deletionPolicy;
     /**
      * @return Whether deletion protection is enabled on this instance.
      * 
@@ -242,6 +243,9 @@ public final class GetInstanceResult {
      */
     public String currentStatus() {
         return this.currentStatus;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Whether deletion protection is enabled on this instance.
@@ -462,6 +466,7 @@ public final class GetInstanceResult {
         private String cpuPlatform;
         private String creationTimestamp;
         private String currentStatus;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String description;
         private String desiredStatus;
@@ -510,6 +515,7 @@ public final class GetInstanceResult {
     	      this.cpuPlatform = defaults.cpuPlatform;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.currentStatus = defaults.currentStatus;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.desiredStatus = defaults.desiredStatus;
@@ -630,6 +636,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "currentStatus");
             }
             this.currentStatus = currentStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -959,6 +973,7 @@ public final class GetInstanceResult {
             _resultValue.cpuPlatform = cpuPlatform;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.currentStatus = currentStatus;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
             _resultValue.desiredStatus = desiredStatus;

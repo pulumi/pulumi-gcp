@@ -70,6 +70,7 @@ type LookupOdbNetworkArgs struct {
 // A collection of values returned by getOdbNetwork.
 type LookupOdbNetworkResult struct {
 	CreateTime         string            `pulumi:"createTime"`
+	DeletionPolicy     string            `pulumi:"deletionPolicy"`
 	DeletionProtection bool              `pulumi:"deletionProtection"`
 	EffectiveLabels    map[string]string `pulumi:"effectiveLabels"`
 	EntitlementId      string            `pulumi:"entitlementId"`
@@ -127,6 +128,10 @@ func (o LookupOdbNetworkResultOutput) ToLookupOdbNetworkResultOutputWithContext(
 
 func (o LookupOdbNetworkResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOdbNetworkResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupOdbNetworkResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOdbNetworkResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupOdbNetworkResultOutput) DeletionProtection() pulumi.BoolOutput {

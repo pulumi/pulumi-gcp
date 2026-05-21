@@ -44,7 +44,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.transcoder.JobTemplate;
  * import com.pulumi.gcp.transcoder.JobTemplateArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigInputArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigOutputArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEditListArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamH264Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamAudioStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigMuxStreamArgs;
  * import com.pulumi.gcp.transcoder.Job;
  * import com.pulumi.gcp.transcoder.JobArgs;
  * import com.pulumi.asset.FileAsset;
@@ -197,6 +204,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.transcoder.Job;
  * import com.pulumi.gcp.transcoder.JobArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobConfigArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigInputArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEditListArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigAdBreakArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamH264Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamAudioStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobConfigPubsubDestinationArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobConfigOutputArgs;
  * import com.pulumi.asset.FileAsset;
@@ -362,6 +377,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.transcoder.Job;
  * import com.pulumi.gcp.transcoder.JobArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobConfigArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigInputArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamH264Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamAudioStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionSecretManagerKeySourceArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionDrmSystemsArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionDrmSystemsClearkeyArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionAes128Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionDrmSystemsWidevineArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionMpegCencArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamSegmentSettingsArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigManifestArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobConfigOutputArgs;
  * import com.pulumi.asset.FileAsset;
  * import java.util.ArrayList;
@@ -586,6 +616,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.transcoder.Job;
  * import com.pulumi.gcp.transcoder.JobArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobConfigArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigInputArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEditListArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigAdBreakArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayAnimationArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayAnimationAnimationFadeArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayAnimationAnimationFadeXyArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayImageArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamH264Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamAudioStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobConfigOutputArgs;
  * import com.pulumi.asset.FileAsset;
  * import java.util.ArrayList;
@@ -757,6 +800,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.transcoder.Job;
  * import com.pulumi.gcp.transcoder.JobArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobConfigArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigInputArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigEditListArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigAdBreakArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamH264Args;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamAudioStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamArgs;
+ * import com.pulumi.gcp.transcoder.inputs.JobConfigManifestArgs;
  * import com.pulumi.gcp.transcoder.inputs.JobConfigOutputArgs;
  * import com.pulumi.asset.FileAsset;
  * import java.util.ArrayList;
@@ -985,6 +1037,30 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

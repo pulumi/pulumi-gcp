@@ -69,6 +69,7 @@ type LookupInsightsDatasetConfigResult struct {
 	CreateTime                      string                                                `pulumi:"createTime"`
 	DatasetConfigId                 string                                                `pulumi:"datasetConfigId"`
 	DatasetConfigState              string                                                `pulumi:"datasetConfigState"`
+	DeletionPolicy                  string                                                `pulumi:"deletionPolicy"`
 	Description                     string                                                `pulumi:"description"`
 	ExcludeCloudStorageBuckets      []GetInsightsDatasetConfigExcludeCloudStorageBucket   `pulumi:"excludeCloudStorageBuckets"`
 	ExcludeCloudStorageLocations    []GetInsightsDatasetConfigExcludeCloudStorageLocation `pulumi:"excludeCloudStorageLocations"`
@@ -144,6 +145,10 @@ func (o LookupInsightsDatasetConfigResultOutput) DatasetConfigId() pulumi.String
 
 func (o LookupInsightsDatasetConfigResultOutput) DatasetConfigState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInsightsDatasetConfigResult) string { return v.DatasetConfigState }).(pulumi.StringOutput)
+}
+
+func (o LookupInsightsDatasetConfigResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsDatasetConfigResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInsightsDatasetConfigResultOutput) Description() pulumi.StringOutput {

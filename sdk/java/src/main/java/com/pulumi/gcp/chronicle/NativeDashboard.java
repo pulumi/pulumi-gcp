@@ -21,12 +21,9 @@ import javax.annotation.Nullable;
 /**
  * A configuration for a native dashboard within a Google SecOps (Chronicle) instance.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about NativeDashboard, see:
  * 
- * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.nativeDashboards)
+ * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.nativeDashboards)
  * * How-to Guides
  *     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
  * 
@@ -44,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.chronicle.NativeDashboard;
  * import com.pulumi.gcp.chronicle.NativeDashboardArgs;
  * import com.pulumi.gcp.chronicle.inputs.NativeDashboardFilterArgs;
+ * import com.pulumi.gcp.chronicle.inputs.NativeDashboardFilterFilterOperatorAndFieldValueArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -180,6 +178,30 @@ public class NativeDashboard extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dashboardId() {
         return this.dashboardId;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A description of the dashboard.

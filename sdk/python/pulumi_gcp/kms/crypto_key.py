@@ -23,6 +23,7 @@ class CryptoKeyArgs:
     def __init__(__self__, *,
                  key_ring: pulumi.Input[_builtins.str],
                  crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  import_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  key_access_justifications_policy: pulumi.Input[Optional['CryptoKeyKeyAccessJustificationsPolicyArgs']] = None,
@@ -39,6 +40,12 @@ class CryptoKeyArgs:
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[_builtins.str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[_builtins.bool] import_only: Whether this key may contain imported versions only.
@@ -75,6 +82,8 @@ class CryptoKeyArgs:
         pulumi.set(__self__, "key_ring", key_ring)
         if crypto_key_backend is not None:
             pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destroy_scheduled_duration is not None:
             pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if import_only is not None:
@@ -119,6 +128,23 @@ class CryptoKeyArgs:
     @crypto_key_backend.setter
     def crypto_key_backend(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key_backend", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="destroyScheduledDuration")
@@ -256,6 +282,7 @@ class CryptoKeyArgs:
 class _CryptoKeyState:
     def __init__(__self__, *,
                  crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  import_only: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -274,6 +301,12 @@ class _CryptoKeyState:
 
         :param pulumi.Input[_builtins.str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -317,6 +350,8 @@ class _CryptoKeyState:
         """
         if crypto_key_backend is not None:
             pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destroy_scheduled_duration is not None:
             pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if effective_labels is not None:
@@ -356,6 +391,23 @@ class _CryptoKeyState:
     @crypto_key_backend.setter
     def crypto_key_backend(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key_backend", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="destroyScheduledDuration")
@@ -548,6 +600,7 @@ class CryptoKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  import_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
@@ -628,6 +681,12 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[_builtins.bool] import_only: Whether this key may contain imported versions only.
@@ -750,6 +809,7 @@ class CryptoKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  import_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
@@ -770,6 +830,7 @@ class CryptoKey(pulumi.CustomResource):
             __props__ = CryptoKeyArgs.__new__(CryptoKeyArgs)
 
             __props__.__dict__["crypto_key_backend"] = crypto_key_backend
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
             __props__.__dict__["import_only"] = import_only
             __props__.__dict__["key_access_justifications_policy"] = key_access_justifications_policy
@@ -798,6 +859,7 @@ class CryptoKey(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             import_only: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -820,6 +882,12 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -866,6 +934,7 @@ class CryptoKey(pulumi.CustomResource):
         __props__ = _CryptoKeyState.__new__(_CryptoKeyState)
 
         __props__.__dict__["crypto_key_backend"] = crypto_key_backend
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["import_only"] = import_only
@@ -889,6 +958,19 @@ class CryptoKey(pulumi.CustomResource):
         The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         """
         return pulumi.get(self, "crypto_key_backend")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="destroyScheduledDuration")

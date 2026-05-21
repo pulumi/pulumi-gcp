@@ -151,6 +151,13 @@ type InsightsDatasetConfig struct {
 	DatasetConfigId pulumi.StringOutput `pulumi:"datasetConfigId"`
 	// State of the DatasetConfig.
 	DatasetConfigState pulumi.StringOutput `pulumi:"datasetConfigState"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Defined the options for excluding cloud storage buckets for the DatasetConfig.
@@ -255,6 +262,13 @@ type insightsDatasetConfigState struct {
 	DatasetConfigId *string `pulumi:"datasetConfigId"`
 	// State of the DatasetConfig.
 	DatasetConfigState *string `pulumi:"datasetConfigState"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
 	Description *string `pulumi:"description"`
 	// Defined the options for excluding cloud storage buckets for the DatasetConfig.
@@ -318,6 +332,13 @@ type InsightsDatasetConfigState struct {
 	DatasetConfigId pulumi.StringPtrInput
 	// State of the DatasetConfig.
 	DatasetConfigState pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
 	Description pulumi.StringPtrInput
 	// Defined the options for excluding cloud storage buckets for the DatasetConfig.
@@ -381,6 +402,13 @@ type insightsDatasetConfigArgs struct {
 	ActivityDataRetentionPeriodDays *int `pulumi:"activityDataRetentionPeriodDays"`
 	// The user-defined ID of the DatasetConfig
 	DatasetConfigId string `pulumi:"datasetConfigId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
 	Description *string `pulumi:"description"`
 	// Defined the options for excluding cloud storage buckets for the DatasetConfig.
@@ -432,6 +460,13 @@ type InsightsDatasetConfigArgs struct {
 	ActivityDataRetentionPeriodDays pulumi.IntPtrInput
 	// The user-defined ID of the DatasetConfig
 	DatasetConfigId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
 	Description pulumi.StringPtrInput
 	// Defined the options for excluding cloud storage buckets for the DatasetConfig.
@@ -582,6 +617,16 @@ func (o InsightsDatasetConfigOutput) DatasetConfigId() pulumi.StringOutput {
 // State of the DatasetConfig.
 func (o InsightsDatasetConfigOutput) DatasetConfigState() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsDatasetConfig) pulumi.StringOutput { return v.DatasetConfigState }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InsightsDatasetConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional user-provided description for the dataset configuration with a maximum length of 256 characters.

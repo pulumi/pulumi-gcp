@@ -173,6 +173,31 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Whether deletion protection is enabled on this instance.
      * 
      */
@@ -767,6 +792,7 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         this.cpuPlatform = $.cpuPlatform;
         this.creationTimestamp = $.creationTimestamp;
         this.currentStatus = $.currentStatus;
+        this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.desiredStatus = $.desiredStatus;
@@ -1035,6 +1061,37 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          */
         public Builder currentStatus(String currentStatus) {
             return currentStatus(Output.of(currentStatus));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

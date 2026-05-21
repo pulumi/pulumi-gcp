@@ -74,6 +74,15 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The ID of the project that will serve as a Shared VPC host project
      */
     declare public readonly project: pulumi.Output<string>;
@@ -91,12 +100,14 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedVPCHostProjectState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as SharedVPCHostProjectArgs | undefined;
             if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -109,6 +120,15 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
  */
 export interface SharedVPCHostProjectState {
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * The ID of the project that will serve as a Shared VPC host project
      */
     project?: pulumi.Input<string | undefined>;
@@ -118,6 +138,15 @@ export interface SharedVPCHostProjectState {
  * The set of arguments for constructing a SharedVPCHostProject resource.
  */
 export interface SharedVPCHostProjectArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that will serve as a Shared VPC host project
      */

@@ -82,47 +82,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Backend Service Cache
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
-    ///     {
-    ///         Name = "rbs-health-check",
-    ///         Region = "us-central1",
-    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
-    ///         {
-    ///             Port = 80,
-    ///         },
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
-    ///     {
-    ///         Name = "region-service",
-    ///         Region = "us-central1",
-    ///         HealthChecks = defaultRegionHealthCheck.Id,
-    ///         EnableCdn = true,
-    ///         CdnPolicy = new Gcp.Compute.Inputs.RegionBackendServiceCdnPolicyArgs
-    ///         {
-    ///             CacheMode = "CACHE_ALL_STATIC",
-    ///             DefaultTtl = 3600,
-    ///             ClientTtl = 7200,
-    ///             MaxTtl = 10800,
-    ///             NegativeCaching = true,
-    ///             SignedUrlCacheMaxAgeSec = 7200,
-    ///         },
-    ///         LoadBalancingScheme = "EXTERNAL",
-    ///         Protocol = "HTTP",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Region Backend Service Ilb Round Robin
     /// 
     /// ```csharp
@@ -450,7 +409,7 @@ namespace Pulumi.Gcp.Compute
     ///             TrackingMode = "PER_SESSION",
     ///             ConnectionPersistenceOnUnhealthyBackends = "NEVER_PERSIST",
     ///             IdleTimeoutSec = 60,
-    ///             EnableStrongAffinity = true,
+    ///             EnableStrongAffinity = false,
     ///         },
     ///     });
     /// 
@@ -895,7 +854,6 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> ConnectionDrainingTimeoutSec { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Connection Tracking configuration for this BackendService.
         /// This is available only for Layer 4 Internal Load Balancing and
         /// Network Load Balancing.
@@ -928,6 +886,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("customMetrics")]
         public Output<ImmutableArray<Outputs.RegionBackendServiceCustomMetric>> CustomMetrics { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource.
@@ -1309,7 +1278,6 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Connection Tracking configuration for this BackendService.
         /// This is available only for Layer 4 Internal Load Balancing and
         /// Network Load Balancing.
@@ -1342,6 +1310,17 @@ namespace Pulumi.Gcp.Compute
             get => _customMetrics ?? (_customMetrics = new InputList<Inputs.RegionBackendServiceCustomMetricArgs>());
             set => _customMetrics = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// An optional description of this resource.
@@ -1666,7 +1645,6 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Connection Tracking configuration for this BackendService.
         /// This is available only for Layer 4 Internal Load Balancing and
         /// Network Load Balancing.
@@ -1705,6 +1683,17 @@ namespace Pulumi.Gcp.Compute
             get => _customMetrics ?? (_customMetrics = new InputList<Inputs.RegionBackendServiceCustomMetricGetArgs>());
             set => _customMetrics = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// An optional description of this resource.

@@ -131,6 +131,7 @@ namespace Pulumi.Gcp.SecretManager
     {
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -157,6 +158,8 @@ namespace Pulumi.Gcp.SecretManager
             ImmutableDictionary<string, string> annotations,
 
             string createTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -194,6 +197,7 @@ namespace Pulumi.Gcp.SecretManager
         {
             Annotations = annotations;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             EffectiveAnnotations = effectiveAnnotations;
             EffectiveLabels = effectiveLabels;

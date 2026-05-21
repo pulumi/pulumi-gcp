@@ -23,6 +23,7 @@ class EntryArgs:
     def __init__(__self__, *,
                  entry_group: pulumi.Input[_builtins.str],
                  entry_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_fileset_spec: pulumi.Input[Optional['EntryGcsFilesetSpecArgs']] = None,
@@ -36,6 +37,12 @@ class EntryArgs:
 
         :param pulumi.Input[_builtins.str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[_builtins.str] entry_id: The id of the entry to create.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[_builtins.str] display_name: Display information such as title and description. A short name to identify the entry,
                for example, "Analytics Data - Jan 2011".
@@ -65,6 +72,8 @@ class EntryArgs:
         """
         pulumi.set(__self__, "entry_group", entry_group)
         pulumi.set(__self__, "entry_id", entry_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -105,6 +114,23 @@ class EntryArgs:
     @entry_id.setter
     def entry_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "entry_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -226,6 +252,7 @@ class _EntryState:
     def __init__(__self__, *,
                  bigquery_date_sharded_specs: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]] = None,
                  bigquery_table_specs: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -246,6 +273,12 @@ class _EntryState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]] bigquery_table_specs: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[_builtins.str] display_name: Display information such as title and description. A short name to identify the entry,
                for example, "Analytics Data - Jan 2011".
@@ -283,6 +316,8 @@ class _EntryState:
             pulumi.set(__self__, "bigquery_date_sharded_specs", bigquery_date_sharded_specs)
         if bigquery_table_specs is not None:
             pulumi.set(__self__, "bigquery_table_specs", bigquery_table_specs)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -334,6 +369,23 @@ class _EntryState:
     @bigquery_table_specs.setter
     def bigquery_table_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]]):
         pulumi.set(self, "bigquery_table_specs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -506,6 +558,7 @@ class Entry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -632,6 +685,12 @@ class Entry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[_builtins.str] display_name: Display information such as title and description. A short name to identify the entry,
                for example, "Analytics Data - Jan 2011".
@@ -795,6 +854,7 @@ class Entry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -814,6 +874,7 @@ class Entry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EntryArgs.__new__(EntryArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if entry_group is None and not opts.urn:
@@ -844,6 +905,7 @@ class Entry(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bigquery_date_sharded_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryBigqueryDateShardedSpecArgs', 'EntryBigqueryDateShardedSpecArgsDict']]]]] = None,
             bigquery_table_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryBigqueryTableSpecArgs', 'EntryBigqueryTableSpecArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             entry_group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -868,6 +930,12 @@ class Entry(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntryBigqueryTableSpecArgs', 'EntryBigqueryTableSpecArgsDict']]]] bigquery_table_specs: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[_builtins.str] display_name: Display information such as title and description. A short name to identify the entry,
                for example, "Analytics Data - Jan 2011".
@@ -907,6 +975,7 @@ class Entry(pulumi.CustomResource):
 
         __props__.__dict__["bigquery_date_sharded_specs"] = bigquery_date_sharded_specs
         __props__.__dict__["bigquery_table_specs"] = bigquery_table_specs
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["entry_group"] = entry_group
@@ -939,6 +1008,19 @@ class Entry(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "bigquery_table_specs")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

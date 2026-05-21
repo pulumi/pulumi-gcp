@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetKMSCryptoKeyResult
     {
         public readonly string CryptoKeyBackend;
+        public readonly string DeletionPolicy;
         public readonly string DestroyScheduledDuration;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
@@ -201,6 +202,8 @@ namespace Pulumi.Gcp.Kms
         private GetKMSCryptoKeyResult(
             string cryptoKeyBackend,
 
+            string deletionPolicy,
+
             string destroyScheduledDuration,
 
             ImmutableDictionary<string, string> effectiveLabels,
@@ -230,6 +233,7 @@ namespace Pulumi.Gcp.Kms
             ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> versionTemplates)
         {
             CryptoKeyBackend = cryptoKeyBackend;
+            DeletionPolicy = deletionPolicy;
             DestroyScheduledDuration = destroyScheduledDuration;
             EffectiveLabels = effectiveLabels;
             Id = id;

@@ -91,6 +91,13 @@ import (
 type CxGenerator struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The human-readable name of the generator, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The language to create generators for the following fields:
@@ -153,6 +160,13 @@ func GetCxGenerator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CxGenerator resources.
 type cxGeneratorState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the generator, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// The language to create generators for the following fields:
@@ -180,6 +194,13 @@ type cxGeneratorState struct {
 }
 
 type CxGeneratorState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the generator, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// The language to create generators for the following fields:
@@ -211,6 +232,13 @@ func (CxGeneratorState) ElementType() reflect.Type {
 }
 
 type cxGeneratorArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the generator, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// The language to create generators for the following fields:
@@ -236,6 +264,13 @@ type cxGeneratorArgs struct {
 
 // The set of arguments for constructing a CxGenerator resource.
 type CxGeneratorArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the generator, unique within the agent.
 	DisplayName pulumi.StringInput
 	// The language to create generators for the following fields:
@@ -344,6 +379,16 @@ func (o CxGeneratorOutput) ToCxGeneratorOutput() CxGeneratorOutput {
 
 func (o CxGeneratorOutput) ToCxGeneratorOutputWithContext(ctx context.Context) CxGeneratorOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CxGeneratorOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CxGenerator) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the generator, unique within the agent.

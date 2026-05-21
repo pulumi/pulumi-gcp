@@ -46,6 +46,50 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Ces Deployment Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_app = new gcp.ces.App("my-app", {
+ *     location: "us",
+ *     displayName: "my-app",
+ *     appId: "app-id",
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const my_deployment = new gcp.ces.Deployment("my-deployment", {
+ *     location: "us",
+ *     displayName: "my-deployment",
+ *     app: my_app.name,
+ *     appVersion: "projects/example-project/locations/us/apps/example-app/versions/example-version",
+ *     channelProfile: {
+ *         channelType: "API",
+ *         disableBargeInControl: true,
+ *         disableDtmf: true,
+ *         personaProperty: {
+ *             persona: "CHATTY",
+ *         },
+ *         profileId: "temp_profile_id",
+ *         webWidgetConfig: {
+ *             modality: "CHAT_AND_VOICE",
+ *             theme: "DARK",
+ *             webWidgetTitle: "temp_webwidget_title",
+ *             securitySettings: {
+ *                 enablePublicAccess: true,
+ *                 enableOriginCheck: true,
+ *                 allowedOrigins: [
+ *                     "https://example.com",
+ *                     "https://test.com",
+ *                 ],
+ *                 enableRecaptcha: true,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -112,6 +156,15 @@ export class Deployment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Display name of the deployment.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -158,6 +211,7 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["appVersion"] = state?.appVersion;
             resourceInputs["channelProfile"] = state?.channelProfile;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["location"] = state?.location;
@@ -184,6 +238,7 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["app"] = args?.app;
             resourceInputs["appVersion"] = args?.appVersion;
             resourceInputs["channelProfile"] = args?.channelProfile;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -221,6 +276,15 @@ export interface DeploymentState {
      * Timestamp when this deployment was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Display name of the deployment.
      */
@@ -272,6 +336,15 @@ export interface DeploymentArgs {
      * Structure is documented below.
      */
     channelProfile: pulumi.Input<inputs.ces.DeploymentChannelProfile>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Display name of the deployment.
      */

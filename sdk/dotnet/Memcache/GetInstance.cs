@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.Memcache
     {
         public readonly string AuthorizedNetwork;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string DiscoveryEndpoint;
         public readonly string DisplayName;
@@ -169,6 +170,8 @@ namespace Pulumi.Gcp.Memcache
             string authorizedNetwork,
 
             string createTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -212,6 +215,7 @@ namespace Pulumi.Gcp.Memcache
         {
             AuthorizedNetwork = authorizedNetwork;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DiscoveryEndpoint = discoveryEndpoint;
             DisplayName = displayName;

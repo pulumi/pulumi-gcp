@@ -26,10 +26,13 @@ class GetExternalAddressResult:
     """
     A collection of values returned by getExternalAddress.
     """
-    def __init__(__self__, create_time=None, description=None, external_ip=None, id=None, internal_ip=None, name=None, parent=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, deletion_policy=None, description=None, external_ip=None, id=None, internal_ip=None, name=None, parent=None, state=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -62,6 +65,11 @@ class GetExternalAddressResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -119,6 +127,7 @@ class AwaitableGetExternalAddressResult(GetExternalAddressResult):
             yield self
         return GetExternalAddressResult(
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             external_ip=self.external_ip,
             id=self.id,
@@ -161,6 +170,7 @@ def get_external_address(name: Optional[_builtins.str] = None,
 
     return AwaitableGetExternalAddressResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         external_ip=pulumi.get(__ret__, 'external_ip'),
         id=pulumi.get(__ret__, 'id'),
@@ -200,6 +210,7 @@ def get_external_address_output(name: pulumi.Input[Optional[_builtins.str]] = No
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getExternalAddress:getExternalAddress', __args__, opts=opts, typ=GetExternalAddressResult)
     return __ret__.apply(lambda __response__: GetExternalAddressResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         external_ip=pulumi.get(__response__, 'external_ip'),
         id=pulumi.get(__response__, 'id'),

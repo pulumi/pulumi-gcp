@@ -27,6 +27,7 @@ class ServiceAttachmentArgs:
                  target_service: pulumi.Input[_builtins.str],
                  consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
                  consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -52,6 +53,12 @@ class ServiceAttachmentArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
                attachment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: If specified, the domain name will be used during the integration between
                the PSC connected endpoints and the Cloud DNS. For example, this is a
@@ -93,6 +100,8 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
         if consumer_reject_lists is not None:
             pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain_names is not None:
@@ -191,6 +200,23 @@ class ServiceAttachmentArgs:
     @consumer_reject_lists.setter
     def consumer_reject_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "consumer_reject_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -342,6 +368,7 @@ class _ServiceAttachmentState:
                  connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
                  consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -371,6 +398,12 @@ class _ServiceAttachmentState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
                attachment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: If specified, the domain name will be used during the integration between
                the PSC connected endpoints and the Cloud DNS. For example, this is a
@@ -422,6 +455,8 @@ class _ServiceAttachmentState:
             pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
         if consumer_reject_lists is not None:
             pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain_names is not None:
@@ -508,6 +543,23 @@ class _ServiceAttachmentState:
     @consumer_reject_lists.setter
     def consumer_reject_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "consumer_reject_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -737,6 +789,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
                  consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1167,6 +1220,12 @@ class ServiceAttachment(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
                attachment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: If specified, the domain name will be used during the integration between
                the PSC connected endpoints and the Cloud DNS. For example, this is a
@@ -1636,6 +1695,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
                  consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1663,6 +1723,7 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["connection_preference"] = connection_preference
             __props__.__dict__["consumer_accept_lists"] = consumer_accept_lists
             __props__.__dict__["consumer_reject_lists"] = consumer_reject_lists
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["domain_names"] = domain_names
             if enable_proxy_protocol is None and not opts.urn:
@@ -1700,6 +1761,7 @@ class ServiceAttachment(pulumi.CustomResource):
             connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
             consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
             consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1733,6 +1795,12 @@ class ServiceAttachment(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] consumer_reject_lists: An array of projects that are not allowed to connect to this service
                attachment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: If specified, the domain name will be used during the integration between
                the PSC connected endpoints and the Cloud DNS. For example, this is a
@@ -1784,6 +1852,7 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["connection_preference"] = connection_preference
         __props__.__dict__["consumer_accept_lists"] = consumer_accept_lists
         __props__.__dict__["consumer_reject_lists"] = consumer_reject_lists
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["domain_names"] = domain_names
         __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
@@ -1839,6 +1908,19 @@ class ServiceAttachment(pulumi.CustomResource):
         attachment.
         """
         return pulumi.get(self, "consumer_reject_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

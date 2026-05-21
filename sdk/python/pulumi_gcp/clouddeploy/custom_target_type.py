@@ -24,6 +24,7 @@ class CustomTargetTypeArgs:
                  location: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  custom_actions: pulumi.Input[Optional['CustomTargetTypeCustomActionsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -38,6 +39,12 @@ class CustomTargetTypeArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['CustomTargetTypeCustomActionsArgs'] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the `CustomTargetType`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -53,6 +60,8 @@ class CustomTargetTypeArgs:
             pulumi.set(__self__, "annotations", annotations)
         if custom_actions is not None:
             pulumi.set(__self__, "custom_actions", custom_actions)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -102,6 +111,23 @@ class CustomTargetTypeArgs:
     @custom_actions.setter
     def custom_actions(self, value: pulumi.Input[Optional['CustomTargetTypeCustomActionsArgs']]):
         pulumi.set(self, "custom_actions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -175,6 +201,7 @@ class _CustomTargetTypeState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_actions: pulumi.Input[Optional['CustomTargetTypeCustomActionsArgs']] = None,
                  custom_target_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -197,6 +224,12 @@ class _CustomTargetTypeState:
         :param pulumi.Input['CustomTargetTypeCustomActionsArgs'] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] custom_target_type_id: Resource id of the `CustomTargetType`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the `CustomTargetType`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -223,6 +256,8 @@ class _CustomTargetTypeState:
             pulumi.set(__self__, "custom_actions", custom_actions)
         if custom_target_type_id is not None:
             pulumi.set(__self__, "custom_target_type_id", custom_target_type_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_annotations is not None:
@@ -298,6 +333,23 @@ class _CustomTargetTypeState:
     @custom_target_type_id.setter
     def custom_target_type_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_target_type_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -457,6 +509,7 @@ class CustomTargetType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  custom_actions: pulumi.Input[Optional[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -615,6 +668,12 @@ class CustomTargetType(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the `CustomTargetType`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -793,6 +852,7 @@ class CustomTargetType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  custom_actions: pulumi.Input[Optional[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -810,6 +870,7 @@ class CustomTargetType(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["custom_actions"] = custom_actions
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -842,6 +903,7 @@ class CustomTargetType(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_actions: pulumi.Input[Optional[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']]] = None,
             custom_target_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -868,6 +930,12 @@ class CustomTargetType(pulumi.CustomResource):
         :param pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] custom_target_type_id: Resource id of the `CustomTargetType`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the `CustomTargetType`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -894,6 +962,7 @@ class CustomTargetType(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_actions"] = custom_actions
         __props__.__dict__["custom_target_type_id"] = custom_target_type_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
@@ -942,6 +1011,19 @@ class CustomTargetType(pulumi.CustomResource):
         Resource id of the `CustomTargetType`.
         """
         return pulumi.get(self, "custom_target_type_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

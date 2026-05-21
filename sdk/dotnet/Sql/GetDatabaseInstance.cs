@@ -134,6 +134,7 @@ namespace Pulumi.Gcp.Sql
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> Clones;
         public readonly string ConnectionName;
         public readonly string DatabaseVersion;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string DnsName;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> DnsNames;
@@ -179,6 +180,8 @@ namespace Pulumi.Gcp.Sql
             string connectionName,
 
             string databaseVersion,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -245,6 +248,7 @@ namespace Pulumi.Gcp.Sql
             Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DnsName = dnsName;
             DnsNames = dnsNames;

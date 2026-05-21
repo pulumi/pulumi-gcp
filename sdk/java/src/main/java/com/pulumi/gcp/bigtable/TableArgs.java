@@ -22,16 +22,12 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
      * 
-     * ***
-     * 
      */
     @Import(name="automatedBackupPolicy")
     private @Nullable Output<TableAutomatedBackupPolicyArgs> automatedBackupPolicy;
 
     /**
      * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
-     * 
-     * ***
      * 
      */
     public Optional<Output<TableAutomatedBackupPolicyArgs>> automatedBackupPolicy() {
@@ -66,6 +62,35 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<TableColumnFamilyArgs>>> columnFamilies() {
         return Optional.ofNullable(this.columnFamilies);
+    }
+
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -180,6 +205,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         this.automatedBackupPolicy = $.automatedBackupPolicy;
         this.changeStreamRetention = $.changeStreamRetention;
         this.columnFamilies = $.columnFamilies;
+        this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.instanceName = $.instanceName;
         this.name = $.name;
@@ -209,8 +235,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -221,8 +245,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -281,6 +303,41 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder columnFamilies(TableColumnFamilyArgs... columnFamilies) {
             return columnFamilies(List.of(columnFamilies));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

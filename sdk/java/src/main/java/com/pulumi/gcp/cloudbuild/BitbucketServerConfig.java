@@ -200,11 +200,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .username("test")
  *             .apiKey("<api-key>")
- *             .peeredNetwork(vpcNetwork.id().applyValue(_id -> StdFunctions.replace(ReplaceArgs.builder()
- *                 .text(_id)
+ *             .peeredNetwork(StdFunctions.replace(ReplaceArgs.builder()
+ *                 .text(vpcNetwork.id())
  *                 .search(project.name())
  *                 .replace(project.number())
- *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .sslCa("""
  * -----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----
@@ -284,6 +284,30 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<BitbucketServerConfigConnectedRepository>>> connectedRepositories() {
         return Codegen.optional(this.connectedRepositories);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.

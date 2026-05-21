@@ -148,6 +148,15 @@ export class ManagementFolderSecurityHealthAnalyticsCustomModule extends pulumi.
      */
     declare public readonly customConfig: pulumi.Output<outputs.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The display name of the Security Health Analytics custom module. This
      * display name becomes the finding category for all findings that are
      * returned by this custom module. The display name must be between 1 and
@@ -199,6 +208,7 @@ export class ManagementFolderSecurityHealthAnalyticsCustomModule extends pulumi.
             const state = argsOrState as ManagementFolderSecurityHealthAnalyticsCustomModuleState | undefined;
             resourceInputs["ancestorModule"] = state?.ancestorModule;
             resourceInputs["customConfig"] = state?.customConfig;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["enablementState"] = state?.enablementState;
             resourceInputs["folder"] = state?.folder;
@@ -212,6 +222,7 @@ export class ManagementFolderSecurityHealthAnalyticsCustomModule extends pulumi.
                 throw new Error("Missing required property 'folder'");
             }
             resourceInputs["customConfig"] = args?.customConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["enablementState"] = args?.enablementState;
             resourceInputs["folder"] = args?.folder;
@@ -241,6 +252,15 @@ export interface ManagementFolderSecurityHealthAnalyticsCustomModuleState {
      * Structure is documented below.
      */
     customConfig?: pulumi.Input<inputs.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Security Health Analytics custom module. This
      * display name becomes the finding category for all findings that are
@@ -288,6 +308,15 @@ export interface ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
      * Structure is documented below.
      */
     customConfig?: pulumi.Input<inputs.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Security Health Analytics custom module. This
      * display name becomes the finding category for all findings that are

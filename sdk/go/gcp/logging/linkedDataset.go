@@ -124,6 +124,13 @@ type LinkedDataset struct {
 	// with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
 	// and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Describes this link. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Output only. The linked dataset lifecycle state.
@@ -186,6 +193,13 @@ type linkedDatasetState struct {
 	// with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
 	// and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this link. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// Output only. The linked dataset lifecycle state.
@@ -213,6 +227,13 @@ type LinkedDatasetState struct {
 	// with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
 	// and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this link. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// Output only. The linked dataset lifecycle state.
@@ -240,6 +261,13 @@ type linkedDatasetArgs struct {
 	BigqueryDatasets []LinkedDatasetBigqueryDataset `pulumi:"bigqueryDatasets"`
 	// The bucket to which the linked dataset is attached.
 	Bucket string `pulumi:"bucket"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this link. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// The id of the linked dataset.
@@ -259,6 +287,13 @@ type LinkedDatasetArgs struct {
 	BigqueryDatasets LinkedDatasetBigqueryDatasetArrayInput
 	// The bucket to which the linked dataset is attached.
 	Bucket pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this link. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// The id of the linked dataset.
@@ -374,6 +409,16 @@ func (o LinkedDatasetOutput) Bucket() pulumi.StringOutput {
 // and "2014-10-02T15:01:23.045123456Z".
 func (o LinkedDatasetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *LinkedDataset) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o LinkedDatasetOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *LinkedDataset) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Describes this link. The maximum length of the description is 8000 characters.

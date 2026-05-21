@@ -27,6 +27,7 @@ class InstanceArgs:
                  location: pulumi.Input[_builtins.str],
                  network: pulumi.Input[_builtins.str],
                  access_rules_options: pulumi.Input[Optional['InstanceAccessRulesOptionsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_tier_options: pulumi.Input[Optional['InstanceDynamicTierOptionsArgs']] = None,
                  gke_support_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -59,6 +60,12 @@ class InstanceArgs:
         :param pulumi.Input['InstanceAccessRulesOptionsArgs'] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
                define the root user squash configuration.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
         :param pulumi.Input['InstanceDynamicTierOptionsArgs'] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
                Structure is documented below.
@@ -94,6 +101,8 @@ class InstanceArgs:
         pulumi.set(__self__, "network", network)
         if access_rules_options is not None:
             pulumi.set(__self__, "access_rules_options", access_rules_options)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dynamic_tier_options is not None:
@@ -198,6 +207,23 @@ class InstanceArgs:
     @access_rules_options.setter
     def access_rules_options(self, value: pulumi.Input[Optional['InstanceAccessRulesOptionsArgs']]):
         pulumi.set(self, "access_rules_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -332,6 +358,7 @@ class _InstanceState:
                  access_rules_options: pulumi.Input[Optional['InstanceAccessRulesOptionsArgs']] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_tier_options: pulumi.Input[Optional['InstanceDynamicTierOptionsArgs']] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -366,6 +393,12 @@ class _InstanceState:
                capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
                for specific minimums, maximums, and step sizes for each performance tier.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the instance was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
         :param pulumi.Input['InstanceDynamicTierOptionsArgs'] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
                Structure is documented below.
@@ -434,6 +467,8 @@ class _InstanceState:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dynamic_tier_options is not None:
@@ -520,6 +555,23 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -833,6 +885,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']]] = None,
                  filesystem: pulumi.Input[Optional[_builtins.str]] = None,
@@ -913,6 +966,12 @@ class Instance(pulumi.CustomResource):
                See [Performance tiers and maximum storage
                capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
                for specific minimums, maximums, and step sizes for each performance tier.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
         :param pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
                Structure is documented below.
@@ -1032,6 +1091,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']]] = None,
                  filesystem: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1058,6 +1118,7 @@ class Instance(pulumi.CustomResource):
             if capacity_gib is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["dynamic_tier_options"] = dynamic_tier_options
             if filesystem is None and not opts.urn:
@@ -1104,6 +1165,7 @@ class Instance(pulumi.CustomResource):
             access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
             capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1142,6 +1204,12 @@ class Instance(pulumi.CustomResource):
                capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
                for specific minimums, maximums, and step sizes for each performance tier.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the instance was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
         :param pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
                Structure is documented below.
@@ -1211,6 +1279,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["access_rules_options"] = access_rules_options
         __props__.__dict__["capacity_gib"] = capacity_gib
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["dynamic_tier_options"] = dynamic_tier_options
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1264,6 +1333,19 @@ class Instance(pulumi.CustomResource):
         Timestamp when the instance was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

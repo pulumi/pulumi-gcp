@@ -70,6 +70,7 @@ type LookupNetworkAttachmentResult struct {
 	ConnectionEndpoints  []GetNetworkAttachmentConnectionEndpoint `pulumi:"connectionEndpoints"`
 	ConnectionPreference string                                   `pulumi:"connectionPreference"`
 	CreationTimestamp    string                                   `pulumi:"creationTimestamp"`
+	DeletionPolicy       string                                   `pulumi:"deletionPolicy"`
 	Description          string                                   `pulumi:"description"`
 	Fingerprint          string                                   `pulumi:"fingerprint"`
 	Id                   string                                   `pulumi:"id"`
@@ -138,6 +139,10 @@ func (o LookupNetworkAttachmentResultOutput) ConnectionPreference() pulumi.Strin
 
 func (o LookupNetworkAttachmentResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkAttachmentResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkAttachmentResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkAttachmentResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupNetworkAttachmentResultOutput) Description() pulumi.StringOutput {

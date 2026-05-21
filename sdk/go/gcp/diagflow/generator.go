@@ -78,6 +78,13 @@ import (
 type Generator struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. Human readable description of the generator.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -138,6 +145,13 @@ func GetGenerator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Generator resources.
 type generatorState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Human readable description of the generator.
 	Description *string `pulumi:"description"`
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -163,6 +177,13 @@ type generatorState struct {
 }
 
 type GeneratorState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Human readable description of the generator.
 	Description pulumi.StringPtrInput
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -192,6 +213,13 @@ func (GeneratorState) ElementType() reflect.Type {
 }
 
 type generatorArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Human readable description of the generator.
 	Description *string `pulumi:"description"`
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -216,6 +244,13 @@ type generatorArgs struct {
 
 // The set of arguments for constructing a Generator resource.
 type GeneratorArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Human readable description of the generator.
 	Description pulumi.StringPtrInput
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -323,6 +358,16 @@ func (o GeneratorOutput) ToGeneratorOutput() GeneratorOutput {
 
 func (o GeneratorOutput) ToGeneratorOutputWithContext(ctx context.Context) GeneratorOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GeneratorOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Generator) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. Human readable description of the generator.

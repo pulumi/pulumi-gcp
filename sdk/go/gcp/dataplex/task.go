@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			example, err := dataplex.NewLake(ctx, "example", &dataplex.LakeArgs{
-//				Name:     pulumi.String("tf-test-lake_9329"),
+//				Name:     pulumi.String("tf-test-lake_12125"),
 //				Location: pulumi.String("us-central1"),
 //				Project:  pulumi.String("my-project-name"),
 //			})
@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewTask(ctx, "example", &dataplex.TaskArgs{
-//				TaskId:      pulumi.String("tf-test-task_37135"),
+//				TaskId:      pulumi.String("tf-test-task_82749"),
 //				Location:    pulumi.String("us-central1"),
 //				Lake:        example.Name,
 //				Description: pulumi.String("Test Task Basic"),
@@ -102,7 +102,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// VPC network
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-workstation-cluster_42503"),
+//				Name:                  pulumi.String("tf-test-workstation-cluster_15022"),
 //				AutoCreateSubnetworks: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -113,7 +113,7 @@ import (
 //				return err
 //			}
 //			exampleSpark, err := dataplex.NewLake(ctx, "example_spark", &dataplex.LakeArgs{
-//				Name:     pulumi.String("tf-test-lake_9991"),
+//				Name:     pulumi.String("tf-test-lake_89648"),
 //				Location: pulumi.String("us-central1"),
 //				Project:  pulumi.String("my-project-name"),
 //			})
@@ -121,7 +121,7 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewTask(ctx, "example_spark", &dataplex.TaskArgs{
-//				TaskId:   pulumi.String("tf-test-task_12125"),
+//				TaskId:   pulumi.String("tf-test-task_64612"),
 //				Location: pulumi.String("us-central1"),
 //				Lake:     exampleSpark.Name,
 //				TriggerSpec: &dataplex.TaskTriggerSpecArgs{
@@ -197,7 +197,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// VPC network
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-workstation-cluster_82749"),
+//				Name:                  pulumi.String("tf-test-workstation-cluster_34242"),
 //				AutoCreateSubnetworks: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -208,7 +208,7 @@ import (
 //				return err
 //			}
 //			exampleNotebook, err := dataplex.NewLake(ctx, "example_notebook", &dataplex.LakeArgs{
-//				Name:     pulumi.String("tf-test-lake_15022"),
+//				Name:     pulumi.String("tf-test-lake_9723"),
 //				Location: pulumi.String("us-central1"),
 //				Project:  pulumi.String("my-project-name"),
 //			})
@@ -216,7 +216,7 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewTask(ctx, "example_notebook", &dataplex.TaskArgs{
-//				TaskId:   pulumi.String("tf-test-task_89648"),
+//				TaskId:   pulumi.String("tf-test-task_22061"),
 //				Location: pulumi.String("us-central1"),
 //				Lake:     exampleNotebook.Name,
 //				TriggerSpec: &dataplex.TaskTriggerSpecArgs{
@@ -295,6 +295,13 @@ type Task struct {
 
 	// The time when the task was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User-provided description of the task.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
@@ -390,6 +397,13 @@ func GetTask(ctx *pulumi.Context,
 type taskState struct {
 	// The time when the task was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description of the task.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -445,6 +459,13 @@ type taskState struct {
 type TaskState struct {
 	// The time when the task was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description of the task.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -502,6 +523,13 @@ func (TaskState) ElementType() reflect.Type {
 }
 
 type taskArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description of the task.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -536,6 +564,13 @@ type taskArgs struct {
 
 // The set of arguments for constructing a Task resource.
 type TaskArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description of the task.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -658,6 +693,16 @@ func (o TaskOutput) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
 // The time when the task was created.
 func (o TaskOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TaskOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User-provided description of the task.

@@ -250,6 +250,15 @@ export class SecurityProfile extends pulumi.CustomResource {
      */
     declare public readonly customMirroringProfile: pulumi.Output<outputs.networksecurity.SecurityProfileCustomMirroringProfile | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of the security profile. The Max length is 512 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -281,7 +290,7 @@ export class SecurityProfile extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the parent this security profile belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     declare public readonly parent: pulumi.Output<string | undefined>;
     /**
@@ -329,6 +338,7 @@ export class SecurityProfile extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customInterceptProfile"] = state?.customInterceptProfile;
             resourceInputs["customMirroringProfile"] = state?.customMirroringProfile;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["etag"] = state?.etag;
@@ -349,6 +359,7 @@ export class SecurityProfile extends pulumi.CustomResource {
             }
             resourceInputs["customInterceptProfile"] = args?.customInterceptProfile;
             resourceInputs["customMirroringProfile"] = args?.customMirroringProfile;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -392,6 +403,15 @@ export interface SecurityProfileState {
      */
     customMirroringProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileCustomMirroringProfile | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * An optional description of the security profile. The Max length is 512 characters.
      */
     description?: pulumi.Input<string | undefined>;
@@ -423,7 +443,7 @@ export interface SecurityProfileState {
     name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this security profile belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     parent?: pulumi.Input<string | undefined>;
     /**
@@ -473,6 +493,15 @@ export interface SecurityProfileArgs {
      */
     customMirroringProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileCustomMirroringProfile | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * An optional description of the security profile. The Max length is 512 characters.
      */
     description?: pulumi.Input<string | undefined>;
@@ -494,7 +523,7 @@ export interface SecurityProfileArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this security profile belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     parent?: pulumi.Input<string | undefined>;
     /**

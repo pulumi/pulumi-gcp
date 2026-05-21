@@ -103,6 +103,15 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly currentStatus: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'terraform apply' would delete the instance,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether deletion protection is enabled on this instance.
      */
     declare public readonly deletionProtection: pulumi.Output<boolean>;
@@ -287,6 +296,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["cpuPlatform"] = state?.cpuPlatform;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["currentStatus"] = state?.currentStatus;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["description"] = state?.description;
             resourceInputs["desiredStatus"] = state?.desiredStatus;
@@ -333,6 +343,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["allowStoppingForUpdate"] = args?.allowStoppingForUpdate;
             resourceInputs["canIpForward"] = args?.canIpForward;
             resourceInputs["confidentialInstanceConfig"] = args?.confidentialInstanceConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
             resourceInputs["desiredStatus"] = args?.desiredStatus;
@@ -425,6 +436,15 @@ export interface InstanceFromMachineImageState {
      * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     currentStatus?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'terraform apply' would delete the instance,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether deletion protection is enabled on this instance.
      */
@@ -609,6 +629,15 @@ export interface InstanceFromMachineImageArgs {
      * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      */
     confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageConfidentialInstanceConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'terraform apply' would delete the instance,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether deletion protection is enabled on this instance.
      */

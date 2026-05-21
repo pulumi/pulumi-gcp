@@ -220,6 +220,7 @@ namespace Pulumi.Gcp.Compute
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// A brief description of this resource.
         /// </summary>
@@ -358,6 +359,8 @@ namespace Pulumi.Gcp.Compute
 
             string creationTimestamp,
 
+            string deletionPolicy,
+
             string description,
 
             ImmutableArray<Outputs.GetRegionInstanceTemplateDiskResult> disks,
@@ -430,6 +433,7 @@ namespace Pulumi.Gcp.Compute
             CanIpForward = canIpForward;
             ConfidentialInstanceConfigs = confidentialInstanceConfigs;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Disks = disks;
             EffectiveLabels = effectiveLabels;

@@ -55,6 +55,7 @@ export interface GetSubscriptionResult {
     readonly bigqueryConfigs: outputs.pubsub.GetSubscriptionBigqueryConfig[];
     readonly cloudStorageConfigs: outputs.pubsub.GetSubscriptionCloudStorageConfig[];
     readonly deadLetterPolicies: outputs.pubsub.GetSubscriptionDeadLetterPolicy[];
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly enableExactlyOnceDelivery: boolean;
     readonly enableMessageOrdering: boolean;

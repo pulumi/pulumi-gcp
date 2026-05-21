@@ -36,6 +36,13 @@ import (
 type EnvReferences struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. A human-readable description of this reference.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Apigee environment group associated with the Apigee environment,
@@ -88,6 +95,13 @@ func GetEnvReferences(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EnvReferences resources.
 type envReferencesState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. A human-readable description of this reference.
 	Description *string `pulumi:"description"`
 	// The Apigee environment group associated with the Apigee environment,
@@ -102,6 +116,13 @@ type envReferencesState struct {
 }
 
 type EnvReferencesState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. A human-readable description of this reference.
 	Description pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
@@ -120,6 +141,13 @@ func (EnvReferencesState) ElementType() reflect.Type {
 }
 
 type envReferencesArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. A human-readable description of this reference.
 	Description *string `pulumi:"description"`
 	// The Apigee environment group associated with the Apigee environment,
@@ -135,6 +163,13 @@ type envReferencesArgs struct {
 
 // The set of arguments for constructing a EnvReferences resource.
 type EnvReferencesArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. A human-readable description of this reference.
 	Description pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
@@ -233,6 +268,16 @@ func (o EnvReferencesOutput) ToEnvReferencesOutput() EnvReferencesOutput {
 
 func (o EnvReferencesOutput) ToEnvReferencesOutputWithContext(ctx context.Context) EnvReferencesOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EnvReferencesOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvReferences) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. A human-readable description of this reference.

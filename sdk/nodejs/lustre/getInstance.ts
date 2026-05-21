@@ -45,6 +45,7 @@ export interface GetInstanceResult {
     readonly accessRulesOptions: outputs.lustre.GetInstanceAccessRulesOption[];
     readonly capacityGib: string;
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly dynamicTierOptions: outputs.lustre.GetInstanceDynamicTierOption[];
     readonly effectiveLabels: {[key: string]: string};

@@ -25,6 +25,7 @@ class AuthConfigArgs:
                  location: pulumi.Input[_builtins.str],
                  client_certificate: pulumi.Input[Optional['AuthConfigClientCertificateArgs']] = None,
                  decrypted_credential: pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expiry_notification_durations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  override_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -39,6 +40,12 @@ class AuthConfigArgs:
                Structure is documented below.
         :param pulumi.Input['AuthConfigDecryptedCredentialArgs'] decrypted_credential: Raw auth credentials.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the auth config.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] expiry_notification_durations: User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -55,6 +62,8 @@ class AuthConfigArgs:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if decrypted_credential is not None:
             pulumi.set(__self__, "decrypted_credential", decrypted_credential)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if expiry_notification_durations is not None:
@@ -115,6 +124,23 @@ class AuthConfigArgs:
     @decrypted_credential.setter
     def decrypted_credential(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']]):
         pulumi.set(self, "decrypted_credential", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -190,6 +216,7 @@ class _AuthConfigState:
                  creator_email: pulumi.Input[Optional[_builtins.str]] = None,
                  credential_type: pulumi.Input[Optional[_builtins.str]] = None,
                  decrypted_credential: pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypted_credential: pulumi.Input[Optional[_builtins.str]] = None,
@@ -216,6 +243,12 @@ class _AuthConfigState:
         :param pulumi.Input[_builtins.str] credential_type: Credential type of the encrypted credential.
         :param pulumi.Input['AuthConfigDecryptedCredentialArgs'] decrypted_credential: Raw auth credentials.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the auth config.
         :param pulumi.Input[_builtins.str] display_name: The name of the auth config.
         :param pulumi.Input[_builtins.str] encrypted_credential: Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
@@ -250,6 +283,8 @@ class _AuthConfigState:
             pulumi.set(__self__, "credential_type", credential_type)
         if decrypted_credential is not None:
             pulumi.set(__self__, "decrypted_credential", decrypted_credential)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -353,6 +388,23 @@ class _AuthConfigState:
     @decrypted_credential.setter
     def decrypted_credential(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']]):
         pulumi.set(self, "decrypted_credential", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -538,6 +590,7 @@ class AuthConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
                  decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  expiry_notification_durations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -602,6 +655,12 @@ class AuthConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']] decrypted_credential: Raw auth credentials.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the auth config.
         :param pulumi.Input[_builtins.str] display_name: The name of the auth config.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] expiry_notification_durations: User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
@@ -687,6 +746,7 @@ class AuthConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
                  decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  expiry_notification_durations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -705,6 +765,7 @@ class AuthConfig(pulumi.CustomResource):
 
             __props__.__dict__["client_certificate"] = client_certificate
             __props__.__dict__["decrypted_credential"] = decrypted_credential
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -743,6 +804,7 @@ class AuthConfig(pulumi.CustomResource):
             creator_email: pulumi.Input[Optional[_builtins.str]] = None,
             credential_type: pulumi.Input[Optional[_builtins.str]] = None,
             decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             encrypted_credential: pulumi.Input[Optional[_builtins.str]] = None,
@@ -773,6 +835,12 @@ class AuthConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] credential_type: Credential type of the encrypted credential.
         :param pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']] decrypted_credential: Raw auth credentials.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the auth config.
         :param pulumi.Input[_builtins.str] display_name: The name of the auth config.
         :param pulumi.Input[_builtins.str] encrypted_credential: Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
@@ -805,6 +873,7 @@ class AuthConfig(pulumi.CustomResource):
         __props__.__dict__["creator_email"] = creator_email
         __props__.__dict__["credential_type"] = credential_type
         __props__.__dict__["decrypted_credential"] = decrypted_credential
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["encrypted_credential"] = encrypted_credential
@@ -871,6 +940,19 @@ class AuthConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "decrypted_credential")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

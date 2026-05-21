@@ -28,6 +28,7 @@ class WorkerPoolArgs:
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]] = None,
@@ -57,6 +58,12 @@ class WorkerPoolArgs:
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
                
                > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
                When a`terraform destroy` or `pulumi up` would delete the service,
                the command will fail if this field is not set to false in Terraform state.
@@ -97,6 +104,8 @@ class WorkerPoolArgs:
             pulumi.log.warn("""custom_audiences is deprecated: `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""")
         if custom_audiences is not None:
             pulumi.set(__self__, "custom_audiences", custom_audiences)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -209,6 +218,23 @@ class WorkerPoolArgs:
     @custom_audiences.setter
     def custom_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_audiences", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -335,6 +361,7 @@ class _WorkerPoolState:
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -383,6 +410,12 @@ class _WorkerPoolState:
                
                > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
                When a`terraform destroy` or `pulumi up` would delete the service,
                the command will fail if this field is not set to false in Terraform state.
@@ -453,6 +486,8 @@ class _WorkerPoolState:
             pulumi.set(__self__, "custom_audiences", custom_audiences)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -623,6 +658,23 @@ class _WorkerPoolState:
     @delete_time.setter
     def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -959,6 +1011,7 @@ class WorkerPool(pulumi.CustomResource):
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
@@ -1449,6 +1502,12 @@ class WorkerPool(pulumi.CustomResource):
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
                
                > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
                When a`terraform destroy` or `pulumi up` would delete the service,
                the command will fail if this field is not set to false in Terraform state.
@@ -1965,6 +2024,7 @@ class WorkerPool(pulumi.CustomResource):
                  client: pulumi.Input[Optional[_builtins.str]] = None,
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
@@ -1989,6 +2049,7 @@ class WorkerPool(pulumi.CustomResource):
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
             __props__.__dict__["custom_audiences"] = custom_audiences
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_splits"] = instance_splits
@@ -2043,6 +2104,7 @@ class WorkerPool(pulumi.CustomResource):
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2095,6 +2157,12 @@ class WorkerPool(pulumi.CustomResource):
                
                > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
                When a`terraform destroy` or `pulumi up` would delete the service,
                the command will fail if this field is not set to false in Terraform state.
@@ -2157,6 +2225,7 @@ class WorkerPool(pulumi.CustomResource):
         __props__.__dict__["creator"] = creator
         __props__.__dict__["custom_audiences"] = custom_audiences
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -2267,6 +2336,19 @@ class WorkerPool(pulumi.CustomResource):
         The deletion time.
         """
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

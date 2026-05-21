@@ -61,6 +61,7 @@ export interface GetRouterArgs {
 export interface GetRouterResult {
     readonly bgps: outputs.compute.GetRouterBgp[];
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly encryptedInterconnectRouter: boolean;
     /**

@@ -82,6 +82,15 @@ export class V2ProjectMuteConfig extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A description of the mute config.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -144,6 +153,7 @@ export class V2ProjectMuteConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as V2ProjectMuteConfigState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["filter"] = state?.filter;
             resourceInputs["location"] = state?.location;
@@ -164,6 +174,7 @@ export class V2ProjectMuteConfig extends pulumi.CustomResource {
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["filter"] = args?.filter;
             resourceInputs["location"] = args?.location;
@@ -189,6 +200,15 @@ export interface V2ProjectMuteConfigState {
      * the server and will be ignored if provided on config creation.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of the mute config.
      */
@@ -243,6 +263,15 @@ export interface V2ProjectMuteConfigState {
  * The set of arguments for constructing a V2ProjectMuteConfig resource.
  */
 export interface V2ProjectMuteConfigArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of the mute config.
      */

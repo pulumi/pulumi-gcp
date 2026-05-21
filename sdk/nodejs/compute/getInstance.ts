@@ -92,6 +92,7 @@ export interface GetInstanceResult {
      * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     readonly currentStatus: string;
+    readonly deletionPolicy: string;
     /**
      * Whether deletion protection is enabled on this instance.
      */

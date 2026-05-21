@@ -96,6 +96,13 @@ type MulticastDomain struct {
 	ConnectionConfig MulticastDomainConnectionConfigOutput `pulumi:"connectionConfig"`
 	// The timestamp when the multicast domain was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional text description of the multicast domain.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -205,6 +212,13 @@ type multicastDomainState struct {
 	ConnectionConfig *MulticastDomainConnectionConfig `pulumi:"connectionConfig"`
 	// The timestamp when the multicast domain was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional text description of the multicast domain.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -268,6 +282,13 @@ type MulticastDomainState struct {
 	ConnectionConfig MulticastDomainConnectionConfigPtrInput
 	// The timestamp when the multicast domain was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional text description of the multicast domain.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -333,6 +354,13 @@ type multicastDomainArgs struct {
 	// VPC connectivity information.
 	// Structure is documented below.
 	ConnectionConfig MulticastDomainConnectionConfig `pulumi:"connectionConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional text description of the multicast domain.
 	Description *string `pulumi:"description"`
 	// Labels as key-value pairs.
@@ -367,6 +395,13 @@ type MulticastDomainArgs struct {
 	// VPC connectivity information.
 	// Structure is documented below.
 	ConnectionConfig MulticastDomainConnectionConfigInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional text description of the multicast domain.
 	Description pulumi.StringPtrInput
 	// Labels as key-value pairs.
@@ -495,6 +530,16 @@ func (o MulticastDomainOutput) ConnectionConfig() MulticastDomainConnectionConfi
 // The timestamp when the multicast domain was created.
 func (o MulticastDomainOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MulticastDomain) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MulticastDomainOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MulticastDomain) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional text description of the multicast domain.

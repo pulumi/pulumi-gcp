@@ -86,6 +86,13 @@ type Schema struct {
 
 	// The unique id of the data store.
 	DataStoreId pulumi.StringOutput `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The JSON representation of the schema.
 	JsonSchema pulumi.StringPtrOutput `pulumi:"jsonSchema"`
 	// The geographic location where the data store should reside. The value can
@@ -144,6 +151,13 @@ func GetSchema(ctx *pulumi.Context,
 type schemaState struct {
 	// The unique id of the data store.
 	DataStoreId *string `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The JSON representation of the schema.
 	JsonSchema *string `pulumi:"jsonSchema"`
 	// The geographic location where the data store should reside. The value can
@@ -164,6 +178,13 @@ type schemaState struct {
 type SchemaState struct {
 	// The unique id of the data store.
 	DataStoreId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The JSON representation of the schema.
 	JsonSchema pulumi.StringPtrInput
 	// The geographic location where the data store should reside. The value can
@@ -188,6 +209,13 @@ func (SchemaState) ElementType() reflect.Type {
 type schemaArgs struct {
 	// The unique id of the data store.
 	DataStoreId string `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The JSON representation of the schema.
 	JsonSchema *string `pulumi:"jsonSchema"`
 	// The geographic location where the data store should reside. The value can
@@ -204,6 +232,13 @@ type schemaArgs struct {
 type SchemaArgs struct {
 	// The unique id of the data store.
 	DataStoreId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The JSON representation of the schema.
 	JsonSchema pulumi.StringPtrInput
 	// The geographic location where the data store should reside. The value can
@@ -306,6 +341,16 @@ func (o SchemaOutput) ToSchemaOutputWithContext(ctx context.Context) SchemaOutpu
 // The unique id of the data store.
 func (o SchemaOutput) DataStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.DataStoreId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SchemaOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The JSON representation of the schema.

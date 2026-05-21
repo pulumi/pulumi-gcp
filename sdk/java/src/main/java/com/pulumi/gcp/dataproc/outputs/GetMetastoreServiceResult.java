@@ -27,6 +27,7 @@ public final class GetMetastoreServiceResult {
     private String artifactGcsUri;
     private String createTime;
     private String databaseType;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private Map<String,String> effectiveLabels;
     private List<GetMetastoreServiceEncryptionConfig> encryptionConfigs;
@@ -68,6 +69,9 @@ public final class GetMetastoreServiceResult {
     }
     public String databaseType() {
         return this.databaseType;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -167,6 +171,7 @@ public final class GetMetastoreServiceResult {
         private String artifactGcsUri;
         private String createTime;
         private String databaseType;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private Map<String,String> effectiveLabels;
         private List<GetMetastoreServiceEncryptionConfig> encryptionConfigs;
@@ -200,6 +205,7 @@ public final class GetMetastoreServiceResult {
     	      this.artifactGcsUri = defaults.artifactGcsUri;
     	      this.createTime = defaults.createTime;
     	      this.databaseType = defaults.databaseType;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.encryptionConfigs = defaults.encryptionConfigs;
@@ -251,6 +257,14 @@ public final class GetMetastoreServiceResult {
               throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "databaseType");
             }
             this.databaseType = databaseType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -496,6 +510,7 @@ public final class GetMetastoreServiceResult {
             _resultValue.artifactGcsUri = artifactGcsUri;
             _resultValue.createTime = createTime;
             _resultValue.databaseType = databaseType;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.encryptionConfigs = encryptionConfigs;

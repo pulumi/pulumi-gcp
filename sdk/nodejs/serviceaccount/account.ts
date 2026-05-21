@@ -71,6 +71,15 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly createIgnoreAlreadyExists: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
      */
@@ -124,6 +133,7 @@ export class Account extends pulumi.CustomResource {
             const state = argsOrState as AccountState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["createIgnoreAlreadyExists"] = state?.createIgnoreAlreadyExists;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["displayName"] = state?.displayName;
@@ -136,6 +146,7 @@ export class Account extends pulumi.CustomResource {
             const args = argsOrState as AccountArgs | undefined;
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["createIgnoreAlreadyExists"] = args?.createIgnoreAlreadyExists;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["displayName"] = args?.displayName;
@@ -167,6 +178,15 @@ export interface AccountState {
      * If set to true, skip service account creation if a service account with the same email already exists.
      */
     createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
@@ -222,6 +242,15 @@ export interface AccountArgs {
      * If set to true, skip service account creation if a service account with the same email already exists.
      */
     createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.

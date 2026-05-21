@@ -75,6 +75,7 @@ export interface GetSnapshotArgs {
 export interface GetSnapshotResult {
     readonly chainName: string;
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly diskSizeGb: number;
     readonly effectiveLabels: {[key: string]: string};

@@ -22,6 +22,7 @@ __all__ = ['MachineImageArgs', 'MachineImage']
 class MachineImageArgs:
     def __init__(__self__, *,
                  source_instance: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_image_encryption_key: pulumi.Input[Optional['MachineImageMachineImageEncryptionKeyArgs']] = None,
@@ -32,6 +33,12 @@ class MachineImageArgs:
         The set of arguments for constructing a MachineImage resource.
 
         :param pulumi.Input[_builtins.str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -47,6 +54,8 @@ class MachineImageArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "source_instance", source_instance)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if guest_flush is not None:
@@ -71,6 +80,23 @@ class MachineImageArgs:
     @source_instance.setter
     def source_instance(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "source_instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -155,6 +181,7 @@ class MachineImageArgs:
 @pulumi.input_type
 class _MachineImageState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_image_encryption_key: pulumi.Input[Optional['MachineImageMachineImageEncryptionKeyArgs']] = None,
@@ -167,6 +194,12 @@ class _MachineImageState:
         """
         Input properties used for looking up and filtering MachineImage resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -184,6 +217,8 @@ class _MachineImageState:
         :param pulumi.Input[_builtins.str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if guest_flush is not None:
@@ -202,6 +237,23 @@ class _MachineImageState:
             pulumi.set(__self__, "source_instance", source_instance)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -325,6 +377,7 @@ class MachineImage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']]] = None,
@@ -457,6 +510,12 @@ class MachineImage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -615,6 +674,7 @@ class MachineImage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']]] = None,
@@ -631,6 +691,7 @@ class MachineImage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MachineImageArgs.__new__(MachineImageArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
@@ -652,6 +713,7 @@ class MachineImage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
             machine_image_encryption_key: pulumi.Input[Optional[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']]] = None,
@@ -668,6 +730,12 @@ class MachineImage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -689,6 +757,7 @@ class MachineImage(pulumi.CustomResource):
 
         __props__ = _MachineImageState.__new__(_MachineImageState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["guest_flush"] = guest_flush
         __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
@@ -699,6 +768,19 @@ class MachineImage(pulumi.CustomResource):
         __props__.__dict__["source_instance"] = source_instance
         __props__.__dict__["storage_locations"] = storage_locations
         return MachineImage(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

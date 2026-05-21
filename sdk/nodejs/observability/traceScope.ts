@@ -17,8 +17,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const project_2 = new gcp.organizations.Project("project-2", {
- *     projectId: "tf-test_17228",
- *     name: "tf-test_89239",
+ *     projectId: "tf-test_97523",
+ *     name: "tf-test_31660",
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });
@@ -84,6 +84,15 @@ export class TraceScope extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Describes this trace scope.
      * The maximum length of the description is 8000 characters.
      */
@@ -132,6 +141,7 @@ export class TraceScope extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TraceScopeState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -150,6 +160,7 @@ export class TraceScope extends pulumi.CustomResource {
             if (args?.traceScopeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'traceScopeId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -172,6 +183,15 @@ export interface TraceScopeState {
      * The creation timestamp of the trace scope.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Describes this trace scope.
      * The maximum length of the description is 8000 characters.
@@ -212,6 +232,15 @@ export interface TraceScopeState {
  * The set of arguments for constructing a TraceScope resource.
  */
 export interface TraceScopeArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Describes this trace scope.
      * The maximum length of the description is 8000 characters.

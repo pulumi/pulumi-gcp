@@ -54,7 +54,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_29439@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_79169@example.com"),
 //						},
 //					},
 //				},
@@ -100,7 +100,7 @@ import (
 //						DisplayName: pulumi.String("Data Analyst - Updated"),
 //						Description: pulumi.String("In-place update verified"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_87786@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_56529@example.com"),
 //						},
 //					},
 //					&dataplex.DataProductAccessGroupArgs{
@@ -108,7 +108,7 @@ import (
 //						GroupId:     pulumi.String("scientist"),
 //						DisplayName: pulumi.String("Data Scientist"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-scientists-_2067@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-scientists-_75413@example.com"),
 //						},
 //					},
 //				},
@@ -149,6 +149,13 @@ type DataProduct struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The ID of the data product.
 	DataProductId pulumi.StringOutput `pulumi:"dataProductId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the data product.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User-friendly display name.
@@ -233,6 +240,13 @@ type dataProductState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The ID of the data product.
 	DataProductId *string `pulumi:"dataProductId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the data product.
 	Description *string `pulumi:"description"`
 	// User-friendly display name.
@@ -271,6 +285,13 @@ type DataProductState struct {
 	CreateTime pulumi.StringPtrInput
 	// The ID of the data product.
 	DataProductId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the data product.
 	Description pulumi.StringPtrInput
 	// User-friendly display name.
@@ -309,6 +330,13 @@ type dataProductArgs struct {
 	AccessGroups []DataProductAccessGroup `pulumi:"accessGroups"`
 	// The ID of the data product.
 	DataProductId string `pulumi:"dataProductId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the data product.
 	Description *string `pulumi:"description"`
 	// User-friendly display name.
@@ -333,6 +361,13 @@ type DataProductArgs struct {
 	AccessGroups DataProductAccessGroupArrayInput
 	// The ID of the data product.
 	DataProductId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the data product.
 	Description pulumi.StringPtrInput
 	// User-friendly display name.
@@ -456,6 +491,16 @@ func (o DataProductOutput) CreateTime() pulumi.StringOutput {
 // The ID of the data product.
 func (o DataProductOutput) DataProductId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataProduct) pulumi.StringOutput { return v.DataProductId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DataProductOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataProduct) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the data product.

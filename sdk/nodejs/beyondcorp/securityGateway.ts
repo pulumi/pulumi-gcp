@@ -136,6 +136,15 @@ export class SecurityGateway extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly delegatingServiceAccount: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.
      */
@@ -222,6 +231,7 @@ export class SecurityGateway extends pulumi.CustomResource {
             const state = argsOrState as SecurityGatewayState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["delegatingServiceAccount"] = state?.delegatingServiceAccount;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["externalIps"] = state?.externalIps;
             resourceInputs["hubs"] = state?.hubs;
@@ -239,6 +249,7 @@ export class SecurityGateway extends pulumi.CustomResource {
             if (args?.securityGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGatewayId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["hubs"] = args?.hubs;
             resourceInputs["location"] = args?.location;
@@ -271,6 +282,15 @@ export interface SecurityGatewayState {
      * Service account used for operations that involve resources in consumer projects.
      */
     delegatingServiceAccount?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.
@@ -348,6 +368,15 @@ export interface SecurityGatewayState {
  * The set of arguments for constructing a SecurityGateway resource.
  */
 export interface SecurityGatewayArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.

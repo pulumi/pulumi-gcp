@@ -169,6 +169,8 @@ datastreamCustomEndpoint: Optional[str]
 
 defaultLabels: Optional[str]
 
+deletionPolicy: Optional[str]
+
 deploymentManagerCustomEndpoint: Optional[str]
 
 developerConnectCustomEndpoint: Optional[str]

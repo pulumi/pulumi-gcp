@@ -35,6 +35,11 @@ export type ControlPlaneAccess = import("./controlPlaneAccess").ControlPlaneAcce
 export const ControlPlaneAccess: typeof import("./controlPlaneAccess").ControlPlaneAccess = null as any;
 utilities.lazyLoad(exports, ["ControlPlaneAccess"], () => require("./controlPlaneAccess"));
 
+export { DataCollectorArgs, DataCollectorState } from "./dataCollector";
+export type DataCollector = import("./dataCollector").DataCollector;
+export const DataCollector: typeof import("./dataCollector").DataCollector = null as any;
+utilities.lazyLoad(exports, ["DataCollector"], () => require("./dataCollector"));
+
 export { DeveloperArgs, DeveloperState } from "./developer";
 export type Developer = import("./developer").Developer;
 export const Developer: typeof import("./developer").Developer = null as any;
@@ -222,6 +227,8 @@ const _module = {
                 return new AppGroup(name, <any>undefined, { urn })
             case "gcp:apigee/controlPlaneAccess:ControlPlaneAccess":
                 return new ControlPlaneAccess(name, <any>undefined, { urn })
+            case "gcp:apigee/dataCollector:DataCollector":
+                return new DataCollector(name, <any>undefined, { urn })
             case "gcp:apigee/developer:Developer":
                 return new Developer(name, <any>undefined, { urn })
             case "gcp:apigee/developerApp:DeveloperApp":
@@ -299,6 +306,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/apiDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/apiProduct", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/appGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/controlPlaneAccess", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/dataCollector", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/developer", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/developerApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/dnsZone", _module)

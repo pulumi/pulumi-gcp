@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 export function getPeeredDnsDomain(args: GetPeeredDnsDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeredDnsDomainResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", {
+        "deletionPolicy": args.deletionPolicy,
         "name": args.name,
         "network": args.network,
         "project": args.project,
@@ -18,6 +19,7 @@ export function getPeeredDnsDomain(args: GetPeeredDnsDomainArgs, opts?: pulumi.I
  * A collection of arguments for invoking getPeeredDnsDomain.
  */
 export interface GetPeeredDnsDomainArgs {
+    deletionPolicy?: string;
     name: string;
     network: string;
     project: string;
@@ -28,6 +30,7 @@ export interface GetPeeredDnsDomainArgs {
  * A collection of values returned by getPeeredDnsDomain.
  */
 export interface GetPeeredDnsDomainResult {
+    readonly deletionPolicy: string;
     readonly dnsSuffix: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -42,6 +45,7 @@ export interface GetPeeredDnsDomainResult {
 export function getPeeredDnsDomainOutput(args: GetPeeredDnsDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeeredDnsDomainResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", {
+        "deletionPolicy": args.deletionPolicy,
         "name": args.name,
         "network": args.network,
         "project": args.project,
@@ -53,6 +57,7 @@ export function getPeeredDnsDomainOutput(args: GetPeeredDnsDomainOutputArgs, opt
  * A collection of arguments for invoking getPeeredDnsDomain.
  */
 export interface GetPeeredDnsDomainOutputArgs {
+    deletionPolicy?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
     network: pulumi.Input<string>;
     project: pulumi.Input<string>;

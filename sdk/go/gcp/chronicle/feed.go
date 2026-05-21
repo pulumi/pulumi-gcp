@@ -227,6 +227,13 @@ import (
 type Feed struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Additional details of the feed, these details are dynamic and will be
 	// different for each of the feeds.
 	// Structure is documented below.
@@ -312,6 +319,13 @@ func GetFeed(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Feed resources.
 type feedState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Additional details of the feed, these details are dynamic and will be
 	// different for each of the feeds.
 	// Structure is documented below.
@@ -358,6 +372,13 @@ type feedState struct {
 }
 
 type FeedState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Additional details of the feed, these details are dynamic and will be
 	// different for each of the feeds.
 	// Structure is documented below.
@@ -408,6 +429,13 @@ func (FeedState) ElementType() reflect.Type {
 }
 
 type feedArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Additional details of the feed, these details are dynamic and will be
 	// different for each of the feeds.
 	// Structure is documented below.
@@ -435,6 +463,13 @@ type feedArgs struct {
 
 // The set of arguments for constructing a Feed resource.
 type FeedArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Additional details of the feed, these details are dynamic and will be
 	// different for each of the feeds.
 	// Structure is documented below.
@@ -545,6 +580,16 @@ func (o FeedOutput) ToFeedOutput() FeedOutput {
 
 func (o FeedOutput) ToFeedOutputWithContext(ctx context.Context) FeedOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FeedOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Feed) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Additional details of the feed, these details are dynamic and will be

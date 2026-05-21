@@ -82,6 +82,7 @@ type LookupConnectorArgs struct {
 // A collection of values returned by getConnector.
 type LookupConnectorResult struct {
 	ConnectedProjects []string `pulumi:"connectedProjects"`
+	DeletionPolicy    string   `pulumi:"deletionPolicy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string               `pulumi:"id"`
 	IpCidrRange   string               `pulumi:"ipCidrRange"`
@@ -143,6 +144,10 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ct
 
 func (o LookupConnectorResultOutput) ConnectedProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectorResult) []string { return v.ConnectedProjects }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupConnectorResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

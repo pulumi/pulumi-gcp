@@ -55,6 +55,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.ClusterUserCreatedConnections;
  * import com.pulumi.gcp.redis.ClusterUserCreatedConnectionsArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterUserCreatedConnectionsClusterEndpointArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterUserCreatedConnectionsClusterEndpointConnectionArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -251,6 +253,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.ClusterUserCreatedConnections;
  * import com.pulumi.gcp.redis.ClusterUserCreatedConnectionsArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterUserCreatedConnectionsClusterEndpointArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterUserCreatedConnectionsClusterEndpointConnectionArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -415,6 +419,30 @@ public class ClusterUserCreatedConnections extends com.pulumi.resources.CustomRe
      */
     public Output<Optional<List<ClusterUserCreatedConnectionsClusterEndpoint>>> clusterEndpoints() {
         return Codegen.optional(this.clusterEndpoints);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The name of the Redis cluster these endpoints should be added to.

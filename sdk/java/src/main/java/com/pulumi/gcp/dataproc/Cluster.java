@@ -86,6 +86,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigSoftwareConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigInitializationActionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -169,6 +170,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigAcceleratorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -227,6 +229,34 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterConfig;
     }
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
      * which is the name of the cluster.
@@ -253,7 +283,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * Only supported on Dataproc image versions 1.2 and higher.
      * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-     * ***
      * 
      */
     @Export(name="gracefulDecommissionTimeout", refs={String.class}, tree="[0]")
@@ -268,7 +297,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * Only supported on Dataproc image versions 1.2 and higher.
      * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-     * ***
      * 
      */
     public Output<Optional<String>> gracefulDecommissionTimeout() {

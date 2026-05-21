@@ -121,6 +121,15 @@ export class Control extends pulumi.CustomResource {
      */
     declare public readonly controlId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The display name of the control. This field must be a UTF-8 encoded
      * string with a length limit of 128 characters.
      */
@@ -194,6 +203,7 @@ export class Control extends pulumi.CustomResource {
             resourceInputs["collectionId"] = state?.collectionId;
             resourceInputs["conditions"] = state?.conditions;
             resourceInputs["controlId"] = state?.controlId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["engineId"] = state?.engineId;
             resourceInputs["filterAction"] = state?.filterAction;
@@ -226,6 +236,7 @@ export class Control extends pulumi.CustomResource {
             resourceInputs["collectionId"] = args?.collectionId;
             resourceInputs["conditions"] = args?.conditions;
             resourceInputs["controlId"] = args?.controlId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["engineId"] = args?.engineId;
             resourceInputs["filterAction"] = args?.filterAction;
@@ -265,6 +276,15 @@ export interface ControlState {
      * The unique id of the control.
      */
     controlId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the control. This field must be a UTF-8 encoded
      * string with a length limit of 128 characters.
@@ -345,6 +365,15 @@ export interface ControlArgs {
      * The unique id of the control.
      */
     controlId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the control. This field must be a UTF-8 encoded
      * string with a length limit of 128 characters.

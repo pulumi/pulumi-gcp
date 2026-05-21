@@ -61,6 +61,7 @@ export interface GetStoragePoolArgs {
 export interface GetStoragePoolResult {
     readonly capacityProvisioningType: string;
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};

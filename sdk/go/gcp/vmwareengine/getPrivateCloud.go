@@ -70,6 +70,7 @@ type LookupPrivateCloudResult struct {
 	CreateTime         string               `pulumi:"createTime"`
 	DeleteTime         string               `pulumi:"deleteTime"`
 	DeletionDelayHours int                  `pulumi:"deletionDelayHours"`
+	DeletionPolicy     string               `pulumi:"deletionPolicy"`
 	Description        string               `pulumi:"description"`
 	ExpireTime         string               `pulumi:"expireTime"`
 	Hcxes              []GetPrivateCloudHcx `pulumi:"hcxes"`
@@ -140,6 +141,10 @@ func (o LookupPrivateCloudResultOutput) DeleteTime() pulumi.StringOutput {
 
 func (o LookupPrivateCloudResultOutput) DeletionDelayHours() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) int { return v.DeletionDelayHours }).(pulumi.IntOutput)
+}
+
+func (o LookupPrivateCloudResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupPrivateCloudResultOutput) Description() pulumi.StringOutput {

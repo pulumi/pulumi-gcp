@@ -184,22 +184,36 @@ public class DataConnectService extends com.pulumi.resources.CustomResource {
      * Service to be deleted even if a Schema or Connector is present. By default,
      * the Service deletion will only succeed when no Schema or Connectors are
      * present.
-     * Possible values: DEFAULT, FORCE
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
      * @return The deletion policy for the database. Setting the field to FORCE allows the
      * Service to be deleted even if a Schema or Connector is present. By default,
      * the Service deletion will only succeed when no Schema or Connectors are
      * present.
-     * Possible values: DEFAULT, FORCE
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Optional. Mutable human-readable name. 63 character limit.

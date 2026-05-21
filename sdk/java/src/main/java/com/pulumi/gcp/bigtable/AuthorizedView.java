@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigtable.AuthorizedView;
  * import com.pulumi.gcp.bigtable.AuthorizedViewArgs;
  * import com.pulumi.gcp.bigtable.inputs.AuthorizedViewSubsetViewArgs;
+ * import com.pulumi.gcp.bigtable.inputs.AuthorizedViewSubsetViewFamilySubsetArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.ArrayList;
@@ -136,6 +137,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigtable/authorizedView:AuthorizedView")
 public class AuthorizedView extends com.pulumi.resources.CustomResource {
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
      * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
      * 
@@ -198,16 +227,12 @@ public class AuthorizedView extends com.pulumi.resources.CustomResource {
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Export(name="subsetView", refs={AuthorizedViewSubsetView.class}, tree="[0]")
     private Output</* @Nullable */ AuthorizedViewSubsetView> subsetView;
 
     /**
      * @return An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Output<Optional<AuthorizedViewSubsetView>> subsetView() {

@@ -29,6 +29,7 @@ class AwsClusterArgs:
                  networking: pulumi.Input['AwsClusterNetworkingArgs'],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: pulumi.Input[Optional['AwsClusterBinaryAuthorizationArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_config: pulumi.Input[Optional['AwsClusterLoggingConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -47,6 +48,12 @@ class AwsClusterArgs:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[_builtins.str] name: The name of this resource.
@@ -62,6 +69,8 @@ class AwsClusterArgs:
             pulumi.set(__self__, "annotations", annotations)
         if binary_authorization is not None:
             pulumi.set(__self__, "binary_authorization", binary_authorization)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if logging_config is not None:
@@ -171,6 +180,23 @@ class AwsClusterArgs:
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -228,6 +254,7 @@ class _AwsClusterState:
                  binary_authorization: pulumi.Input[Optional['AwsClusterBinaryAuthorizationArgs']] = None,
                  control_plane: pulumi.Input[Optional['AwsClusterControlPlaneArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -255,6 +282,12 @@ class _AwsClusterState:
         :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this cluster was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: Output only. The endpoint of the cluster's API server.
@@ -283,6 +316,8 @@ class _AwsClusterState:
             pulumi.set(__self__, "control_plane", control_plane)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_annotations is not None:
@@ -388,6 +423,23 @@ class _AwsClusterState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -581,6 +633,7 @@ class AwsCluster(pulumi.CustomResource):
                  aws_region: pulumi.Input[Optional[_builtins.str]] = None,
                  binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
                  control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -847,6 +900,12 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         :param pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']] fleet: Fleet configuration.
         :param pulumi.Input[_builtins.str] location: The location for the resource
@@ -1129,6 +1188,7 @@ class AwsCluster(pulumi.CustomResource):
                  aws_region: pulumi.Input[Optional[_builtins.str]] = None,
                  binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
                  control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1156,6 +1216,7 @@ class AwsCluster(pulumi.CustomResource):
             if control_plane is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane'")
             __props__.__dict__["control_plane"] = control_plane
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if fleet is None and not opts.urn:
                 raise TypeError("Missing required property 'fleet'")
@@ -1194,6 +1255,7 @@ class AwsCluster(pulumi.CustomResource):
             binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
             control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1225,6 +1287,12 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this cluster was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: Output only. The endpoint of the cluster's API server.
@@ -1251,6 +1319,7 @@ class AwsCluster(pulumi.CustomResource):
         __props__.__dict__["binary_authorization"] = binary_authorization
         __props__.__dict__["control_plane"] = control_plane
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["endpoint"] = endpoint
@@ -1318,6 +1387,19 @@ class AwsCluster(pulumi.CustomResource):
         Output only. The time at which this cluster was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -28,6 +28,7 @@ class ClusterArgs:
                  control_plane: pulumi.Input[Optional['ClusterControlPlaneArgs']] = None,
                  control_plane_encryption: pulumi.Input[Optional['ClusterControlPlaneEncryptionArgs']] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  external_load_balancer_ipv4_address_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: pulumi.Input[Optional['ClusterMaintenancePolicyArgs']] = None,
@@ -60,6 +61,12 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not
                specified explicitly for a node pool in this cluster. If unspecified, the
                Kubernetes default value will be used.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the edgecloud cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -85,6 +92,8 @@ class ClusterArgs:
             pulumi.set(__self__, "control_plane_encryption", control_plane_encryption)
         if default_max_pods_per_node is not None:
             pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if external_load_balancer_ipv4_address_pools is not None:
             pulumi.set(__self__, "external_load_balancer_ipv4_address_pools", external_load_balancer_ipv4_address_pools)
         if labels is not None:
@@ -201,6 +210,23 @@ class ClusterArgs:
         pulumi.set(self, "default_max_pods_per_node", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="externalLoadBalancerIpv4AddressPools")
     def external_load_balancer_ipv4_address_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -313,6 +339,7 @@ class _ClusterState:
                  control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  external_load_balancer_ipv4_address_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -350,6 +377,12 @@ class _ClusterState:
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not
                specified explicitly for a node pool in this cluster. If unspecified, the
                Kubernetes default value will be used.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: The IP address of the Kubernetes API server.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
@@ -403,6 +436,8 @@ class _ClusterState:
             pulumi.set(__self__, "create_time", create_time)
         if default_max_pods_per_node is not None:
             pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if endpoint is not None:
@@ -533,6 +568,23 @@ class _ClusterState:
     @default_max_pods_per_node.setter
     def default_max_pods_per_node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_max_pods_per_node", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -792,6 +844,7 @@ class Cluster(pulumi.CustomResource):
                  control_plane: pulumi.Input[Optional[Union['ClusterControlPlaneArgs', 'ClusterControlPlaneArgsDict']]] = None,
                  control_plane_encryption: pulumi.Input[Optional[Union['ClusterControlPlaneEncryptionArgs', 'ClusterControlPlaneEncryptionArgsDict']]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  external_load_balancer_ipv4_address_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -877,6 +930,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not
                specified explicitly for a node pool in this cluster. If unspecified, the
                Kubernetes default value will be used.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet related configuration.
                Fleets are a Google Cloud concept for logically organizing clusters,
@@ -989,6 +1048,7 @@ class Cluster(pulumi.CustomResource):
                  control_plane: pulumi.Input[Optional[Union['ClusterControlPlaneArgs', 'ClusterControlPlaneArgsDict']]] = None,
                  control_plane_encryption: pulumi.Input[Optional[Union['ClusterControlPlaneEncryptionArgs', 'ClusterControlPlaneEncryptionArgsDict']]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  external_load_balancer_ipv4_address_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1015,6 +1075,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["control_plane"] = control_plane
             __props__.__dict__["control_plane_encryption"] = control_plane_encryption
             __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["external_load_balancer_ipv4_address_pools"] = external_load_balancer_ipv4_address_pools
             if fleet is None and not opts.urn:
                 raise TypeError("Missing required property 'fleet'")
@@ -1062,6 +1123,7 @@ class Cluster(pulumi.CustomResource):
             control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             external_load_balancer_ipv4_address_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1103,6 +1165,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] default_max_pods_per_node: The default maximum number of pods per node used if a maximum value is not
                specified explicitly for a node pool in this cluster. If unspecified, the
                Kubernetes default value will be used.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: The IP address of the Kubernetes API server.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_load_balancer_ipv4_address_pools: Address pools for cluster data plane external load balancing.
@@ -1153,6 +1221,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["control_plane_version"] = control_plane_version
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["external_load_balancer_ipv4_address_pools"] = external_load_balancer_ipv4_address_pools
@@ -1237,6 +1306,19 @@ class Cluster(pulumi.CustomResource):
         Kubernetes default value will be used.
         """
         return pulumi.get(self, "default_max_pods_per_node")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

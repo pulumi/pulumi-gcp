@@ -20,6 +20,7 @@ public final class GetInstanceResult {
     private List<GetInstanceAutoscalingConfig> autoscalingConfigs;
     private @Nullable String config;
     private String defaultBackupScheduleType;
+    private String deletionPolicy;
     private @Nullable String displayName;
     private String edition;
     private Map<String,String> effectiveLabels;
@@ -47,6 +48,9 @@ public final class GetInstanceResult {
     }
     public String defaultBackupScheduleType() {
         return this.defaultBackupScheduleType;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
@@ -104,6 +108,7 @@ public final class GetInstanceResult {
         private List<GetInstanceAutoscalingConfig> autoscalingConfigs;
         private @Nullable String config;
         private String defaultBackupScheduleType;
+        private String deletionPolicy;
         private @Nullable String displayName;
         private String edition;
         private Map<String,String> effectiveLabels;
@@ -123,6 +128,7 @@ public final class GetInstanceResult {
     	      this.autoscalingConfigs = defaults.autoscalingConfigs;
     	      this.config = defaults.config;
     	      this.defaultBackupScheduleType = defaults.defaultBackupScheduleType;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.edition = defaults.edition;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -161,6 +167,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "defaultBackupScheduleType");
             }
             this.defaultBackupScheduleType = defaultBackupScheduleType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -268,6 +282,7 @@ public final class GetInstanceResult {
             _resultValue.autoscalingConfigs = autoscalingConfigs;
             _resultValue.config = config;
             _resultValue.defaultBackupScheduleType = defaultBackupScheduleType;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.edition = edition;
             _resultValue.effectiveLabels = effectiveLabels;

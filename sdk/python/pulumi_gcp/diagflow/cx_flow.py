@@ -23,6 +23,7 @@ class CxFlowArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  advanced_settings: pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
                  is_default_start_flow: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -39,6 +40,12 @@ class CxFlowArgs:
         :param pulumi.Input['CxFlowAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]] event_handlers: A flow's event handlers serve two purposes:
                They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -77,6 +84,8 @@ class CxFlowArgs:
         pulumi.set(__self__, "display_name", display_name)
         if advanced_settings is not None:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if event_handlers is not None:
@@ -121,6 +130,23 @@ class CxFlowArgs:
     @advanced_settings.setter
     def advanced_settings(self, value: pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']]):
         pulumi.set(self, "advanced_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -260,6 +286,7 @@ class CxFlowArgs:
 class _CxFlowState:
     def __init__(__self__, *,
                  advanced_settings: pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
@@ -277,6 +304,12 @@ class _CxFlowState:
         :param pulumi.Input['CxFlowAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the flow.
         :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]] event_handlers: A flow's event handlers serve two purposes:
@@ -317,6 +350,8 @@ class _CxFlowState:
         """
         if advanced_settings is not None:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -353,6 +388,23 @@ class _CxFlowState:
     @advanced_settings.setter
     def advanced_settings(self, value: pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']]):
         pulumi.set(self, "advanced_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -520,6 +572,7 @@ class CxFlow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: pulumi.Input[Optional[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
@@ -1054,6 +1107,12 @@ class CxFlow(pulumi.CustomResource):
         :param pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the flow.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]] event_handlers: A flow's event handlers serve two purposes:
@@ -1630,6 +1689,7 @@ class CxFlow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: pulumi.Input[Optional[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
@@ -1650,6 +1710,7 @@ class CxFlow(pulumi.CustomResource):
             __props__ = CxFlowArgs.__new__(CxFlowArgs)
 
             __props__.__dict__["advanced_settings"] = advanced_settings
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1674,6 +1735,7 @@ class CxFlow(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             advanced_settings: pulumi.Input[Optional[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
@@ -1695,6 +1757,12 @@ class CxFlow(pulumi.CustomResource):
         :param pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the flow.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]] event_handlers: A flow's event handlers serve two purposes:
@@ -1738,6 +1806,7 @@ class CxFlow(pulumi.CustomResource):
         __props__ = _CxFlowState.__new__(_CxFlowState)
 
         __props__.__dict__["advanced_settings"] = advanced_settings
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["event_handlers"] = event_handlers
@@ -1760,6 +1829,19 @@ class CxFlow(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "advanced_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

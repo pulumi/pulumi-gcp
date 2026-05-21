@@ -47,6 +47,7 @@ export interface GetParameterArgs {
  */
 export interface GetParameterResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly format: string;
     /**

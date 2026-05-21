@@ -153,6 +153,15 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
      */
     declare public readonly disabled: pulumi.Output<boolean | undefined>;
@@ -202,6 +211,7 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RegionalParameterVersionState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["kmsKeyVersion"] = state?.kmsKeyVersion;
             resourceInputs["location"] = state?.location;
@@ -221,6 +231,7 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
             if (args?.parameterVersionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterVersionId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["parameter"] = args?.parameter;
             resourceInputs["parameterData"] = args?.parameterData ? pulumi.secret(args.parameterData) : undefined;
@@ -246,6 +257,15 @@ export interface RegionalParameterVersionState {
      * The time at which the Regional Parameter Version was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
      */
@@ -287,6 +307,15 @@ export interface RegionalParameterVersionState {
  * The set of arguments for constructing a RegionalParameterVersion resource.
  */
 export interface RegionalParameterVersionArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
      */

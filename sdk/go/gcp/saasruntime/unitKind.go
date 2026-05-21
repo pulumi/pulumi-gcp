@@ -117,6 +117,13 @@ type UnitKind struct {
 	// If not specified, a new unit must explicitly reference which release to use
 	// for its creation.
 	DefaultRelease pulumi.StringPtrOutput `pulumi:"defaultRelease"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -231,6 +238,13 @@ type unitKindState struct {
 	// If not specified, a new unit must explicitly reference which release to use
 	// for its creation.
 	DefaultRelease *string `pulumi:"defaultRelease"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -302,6 +316,13 @@ type UnitKindState struct {
 	// If not specified, a new unit must explicitly reference which release to use
 	// for its creation.
 	DefaultRelease pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -375,6 +396,13 @@ type unitKindArgs struct {
 	// If not specified, a new unit must explicitly reference which release to use
 	// for its creation.
 	DefaultRelease *string `pulumi:"defaultRelease"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -420,6 +448,13 @@ type UnitKindArgs struct {
 	// If not specified, a new unit must explicitly reference which release to use
 	// for its creation.
 	DefaultRelease pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
@@ -559,6 +594,16 @@ func (o UnitKindOutput) CreateTime() pulumi.StringOutput {
 // for its creation.
 func (o UnitKindOutput) DefaultRelease() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UnitKind) pulumi.StringPtrOutput { return v.DefaultRelease }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o UnitKindOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *UnitKind) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // List of other unit kinds that this release will depend on. Dependencies

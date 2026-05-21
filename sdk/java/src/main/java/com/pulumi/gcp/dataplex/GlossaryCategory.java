@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var categoryTestId = new Glossary("categoryTestId", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_30827")
+ *             .glossaryId("tf-test-glossary_4866")
  *             .location("us-central1")
  *             .build());
  * 
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(categoryTestId.glossaryId())
  *             .location("us-central1")
- *             .categoryId("tf-test-category-basic_6529")
+ *             .categoryId("tf-test-category-basic_12618")
  *             .build());
  * 
  *     }
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var categoryTestIdFull = new Glossary("categoryTestIdFull", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_16178")
+ *             .glossaryId("tf-test-glossary_32270")
  *             .location("us-central1")
  *             .build());
  * 
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(categoryTestIdFull.glossaryId())
  *             .location("us-central1")
- *             .categoryId("tf-test-category-full_26317")
+ *             .categoryId("tf-test-category-full_44703")
  *             .labels(Map.of("tag", "test-tf"))
  *             .displayName("terraform category")
  *             .description("category created by Terraform")
@@ -163,6 +163,30 @@ public class GlossaryCategory extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The user-mutable description of the GlossaryCategory.

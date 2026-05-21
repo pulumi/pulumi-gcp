@@ -228,6 +228,13 @@ type AppGroup struct {
 	ChannelUri pulumi.StringPtrOutput `pulumi:"channelUri"`
 	// Created time as milliseconds since epoch.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// App group name displayed in the UI
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Modified time as milliseconds since epoch.
@@ -288,6 +295,13 @@ type appGroupState struct {
 	ChannelUri *string `pulumi:"channelUri"`
 	// Created time as milliseconds since epoch.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// App group name displayed in the UI
 	DisplayName *string `pulumi:"displayName"`
 	// Modified time as milliseconds since epoch.
@@ -316,6 +330,13 @@ type AppGroupState struct {
 	ChannelUri pulumi.StringPtrInput
 	// Created time as milliseconds since epoch.
 	CreatedAt pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// App group name displayed in the UI
 	DisplayName pulumi.StringPtrInput
 	// Modified time as milliseconds since epoch.
@@ -344,6 +365,13 @@ type appGroupArgs struct {
 	ChannelId *string `pulumi:"channelId"`
 	// A reference to the associated storefront/marketplace.
 	ChannelUri *string `pulumi:"channelUri"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// App group name displayed in the UI
 	DisplayName *string `pulumi:"displayName"`
 	// Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
@@ -365,6 +393,13 @@ type AppGroupArgs struct {
 	ChannelId pulumi.StringPtrInput
 	// A reference to the associated storefront/marketplace.
 	ChannelUri pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// App group name displayed in the UI
 	DisplayName pulumi.StringPtrInput
 	// Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
@@ -488,6 +523,16 @@ func (o AppGroupOutput) ChannelUri() pulumi.StringPtrOutput {
 // Created time as milliseconds since epoch.
 func (o AppGroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // App group name displayed in the UI

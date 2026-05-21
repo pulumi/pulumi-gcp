@@ -143,6 +143,13 @@ type StoragePool struct {
 	CapacityProvisioningType pulumi.StringOutput `pulumi:"capacityProvisioningType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the StoragePool.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the StoragePool will fail.
@@ -255,6 +262,13 @@ type storagePoolState struct {
 	CapacityProvisioningType *string `pulumi:"capacityProvisioningType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the StoragePool.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the StoragePool will fail.
@@ -324,6 +338,13 @@ type StoragePoolState struct {
 	CapacityProvisioningType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the StoragePool.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the StoragePool will fail.
@@ -395,6 +416,13 @@ type storagePoolArgs struct {
 	// Provisioning type of the byte capacity of the pool.
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	CapacityProvisioningType *string `pulumi:"capacityProvisioningType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the StoragePool.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the StoragePool will fail.
@@ -447,6 +475,13 @@ type StoragePoolArgs struct {
 	// Provisioning type of the byte capacity of the pool.
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	CapacityProvisioningType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the StoragePool.
 	// When the field is set to true or unset in Terraform state, a `pulumi up`
 	// or `terraform destroy` that would delete the StoragePool will fail.
@@ -590,6 +625,16 @@ func (o StoragePoolOutput) CapacityProvisioningType() pulumi.StringOutput {
 // Creation timestamp in RFC3339 text format.
 func (o StoragePoolOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o StoragePoolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the StoragePool.

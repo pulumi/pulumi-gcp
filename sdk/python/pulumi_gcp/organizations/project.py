@@ -832,7 +832,7 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
         The deletion policy for the Project. Setting PREVENT will protect the project
         against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource

@@ -27,13 +27,16 @@ class GetSecretResult:
     """
     A collection of values returned by getSecret.
     """
-    def __init__(__self__, annotations=None, create_time=None, deletion_protection=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, replications=None, rotations=None, secret_id=None, tags=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
+    def __init__(__self__, annotations=None, create_time=None, deletion_policy=None, deletion_protection=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, replications=None, rotations=None, secret_id=None, tags=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -95,6 +98,11 @@ class GetSecretResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -193,6 +201,7 @@ class AwaitableGetSecretResult(GetSecretResult):
         return GetSecretResult(
             annotations=self.annotations,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             effective_annotations=self.effective_annotations,
             effective_labels=self.effective_labels,
@@ -240,6 +249,7 @@ def get_secret(project: Optional[_builtins.str] = None,
     return AwaitableGetSecretResult(
         annotations=pulumi.get(__ret__, 'annotations'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -284,6 +294,7 @@ def get_secret_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] =
     return __ret__.apply(lambda __response__: GetSecretResult(
         annotations=pulumi.get(__response__, 'annotations'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         effective_annotations=pulumi.get(__response__, 'effective_annotations'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

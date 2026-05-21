@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
     public sealed class ConnectionProfileMysql
     {
         /// <summary>
-        /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        /// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
         /// </summary>
         public readonly string? CloudSqlId;
         /// <summary>

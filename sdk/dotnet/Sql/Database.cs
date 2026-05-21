@@ -121,13 +121,15 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Collation { get; private set; } = null!;
 
         /// <summary>
-        /// The deletion policy for the database. Setting ABANDON allows the resource
-        /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-        /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-        /// values are: "ABANDON", "DELETE". Defaults to "DELETE".
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project
@@ -223,10 +225,12 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Collation { get; set; }
 
         /// <summary>
-        /// The deletion policy for the database. Setting ABANDON allows the resource
-        /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-        /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-        /// values are: "ABANDON", "DELETE". Defaults to "DELETE".
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -281,10 +285,12 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Collation { get; set; }
 
         /// <summary>
-        /// The deletion policy for the database. Setting ABANDON allows the resource
-        /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-        /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-        /// values are: "ABANDON", "DELETE". Defaults to "DELETE".
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

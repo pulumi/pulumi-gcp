@@ -33,6 +33,16 @@ public final class GetRegionalSecretsSecret {
      */
     private List<GetRegionalSecretsSecretCustomerManagedEncryption> customerManagedEncryptions;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
      * When the field is set to true in Terraform state, a &#39;terraform apply&#39;
      * or &#39;terraform destroy&#39; that would delete the federation will fail.
@@ -143,6 +153,18 @@ public final class GetRegionalSecretsSecret {
      */
     public List<GetRegionalSecretsSecretCustomerManagedEncryption> customerManagedEncryptions() {
         return this.customerManagedEncryptions;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
@@ -277,6 +299,7 @@ public final class GetRegionalSecretsSecret {
         private Map<String,String> annotations;
         private String createTime;
         private List<GetRegionalSecretsSecretCustomerManagedEncryption> customerManagedEncryptions;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
@@ -299,6 +322,7 @@ public final class GetRegionalSecretsSecret {
     	      this.annotations = defaults.annotations;
     	      this.createTime = defaults.createTime;
     	      this.customerManagedEncryptions = defaults.customerManagedEncryptions;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -343,6 +367,14 @@ public final class GetRegionalSecretsSecret {
         }
         public Builder customerManagedEncryptions(GetRegionalSecretsSecretCustomerManagedEncryption... customerManagedEncryptions) {
             return customerManagedEncryptions(List.of(customerManagedEncryptions));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionalSecretsSecret", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
@@ -483,6 +515,7 @@ public final class GetRegionalSecretsSecret {
             _resultValue.annotations = annotations;
             _resultValue.createTime = createTime;
             _resultValue.customerManagedEncryptions = customerManagedEncryptions;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;

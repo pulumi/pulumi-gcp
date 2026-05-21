@@ -252,6 +252,13 @@ type RegionDisk struct {
 	CreateSnapshotBeforeDestroyPrefix pulumi.StringPtrOutput `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -277,6 +284,16 @@ type RegionDisk struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayOutput `pulumi:"guestOsFeatures"`
+	// The image from which to initialize this disk. This can be
+	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+	// images names must include the family name. If they don't, use the
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+	// These images can be referred by family name here.
+	Image pulumi.StringPtrOutput `pulumi:"image"`
 	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
@@ -359,6 +376,16 @@ type RegionDisk struct {
 	// be used to determine whether the image was taken from the current
 	// or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringOutput `pulumi:"sourceDiskId"`
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey RegionDiskSourceImageEncryptionKeyPtrOutput `pulumi:"sourceImageEncryptionKey"`
+	// The ID value of the image used to create this disk. This value
+	// identifies the exact image that was used to create this persistent
+	// disk. For example, if you created the persistent disk from an image
+	// that was later deleted and recreated under the same name, the source
+	// image ID would identify the exact version of the image that was used.
+	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
@@ -435,6 +462,13 @@ type regionDiskState struct {
 	CreateSnapshotBeforeDestroyPrefix *string `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
@@ -460,6 +494,16 @@ type regionDiskState struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
+	// The image from which to initialize this disk. This can be
+	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+	// images names must include the family name. If they don't, use the
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+	// These images can be referred by family name here.
+	Image *string `pulumi:"image"`
 	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
@@ -542,6 +586,16 @@ type regionDiskState struct {
 	// be used to determine whether the image was taken from the current
 	// or a previous instance of a given disk name.
 	SourceDiskId *string `pulumi:"sourceDiskId"`
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey *RegionDiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKey"`
+	// The ID value of the image used to create this disk. This value
+	// identifies the exact image that was used to create this persistent
+	// disk. For example, if you created the persistent disk from an image
+	// that was later deleted and recreated under the same name, the source
+	// image ID would identify the exact version of the image that was used.
+	SourceImageId *string `pulumi:"sourceImageId"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
@@ -581,6 +635,13 @@ type RegionDiskState struct {
 	CreateSnapshotBeforeDestroyPrefix pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
@@ -606,6 +667,16 @@ type RegionDiskState struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
+	// The image from which to initialize this disk. This can be
+	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+	// images names must include the family name. If they don't, use the
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+	// These images can be referred by family name here.
+	Image pulumi.StringPtrInput
 	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
@@ -688,6 +759,16 @@ type RegionDiskState struct {
 	// be used to determine whether the image was taken from the current
 	// or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringPtrInput
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey RegionDiskSourceImageEncryptionKeyPtrInput
+	// The ID value of the image used to create this disk. This value
+	// identifies the exact image that was used to create this persistent
+	// disk. For example, if you created the persistent disk from an image
+	// that was later deleted and recreated under the same name, the source
+	// image ID would identify the exact version of the image that was used.
+	SourceImageId pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
@@ -729,6 +810,13 @@ type regionDiskArgs struct {
 	CreateSnapshotBeforeDestroy *bool `pulumi:"createSnapshotBeforeDestroy"`
 	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
 	CreateSnapshotBeforeDestroyPrefix *string `pulumi:"createSnapshotBeforeDestroyPrefix"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
@@ -750,6 +838,16 @@ type regionDiskArgs struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
+	// The image from which to initialize this disk. This can be
+	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+	// images names must include the family name. If they don't, use the
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+	// These images can be referred by family name here.
+	Image *string `pulumi:"image"`
 	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
@@ -816,6 +914,10 @@ type regionDiskArgs struct {
 	// * zones/{zone}/disks/{disk}
 	// * regions/{region}/disks/{disk}
 	SourceDisk *string `pulumi:"sourceDisk"`
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey *RegionDiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKey"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
@@ -844,6 +946,13 @@ type RegionDiskArgs struct {
 	CreateSnapshotBeforeDestroy pulumi.BoolPtrInput
 	// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
 	CreateSnapshotBeforeDestroyPrefix pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
@@ -865,6 +974,16 @@ type RegionDiskArgs struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
+	// The image from which to initialize this disk. This can be
+	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+	// images names must include the family name. If they don't, use the
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+	// These images can be referred by family name here.
+	Image pulumi.StringPtrInput
 	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
@@ -931,6 +1050,10 @@ type RegionDiskArgs struct {
 	// * zones/{zone}/disks/{disk}
 	// * regions/{region}/disks/{disk}
 	SourceDisk pulumi.StringPtrInput
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey RegionDiskSourceImageEncryptionKeyPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
@@ -1061,6 +1184,16 @@ func (o RegionDiskOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionDiskOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // An optional description of this resource. Provide this property when
 // you create the resource.
 func (o RegionDiskOutput) Description() pulumi.StringPtrOutput {
@@ -1102,6 +1235,19 @@ func (o RegionDiskOutput) EraseWindowsVssSignature() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o RegionDiskOutput) GuestOsFeatures() RegionDiskGuestOsFeatureArrayOutput {
 	return o.ApplyT(func(v *RegionDisk) RegionDiskGuestOsFeatureArrayOutput { return v.GuestOsFeatures }).(RegionDiskGuestOsFeatureArrayOutput)
+}
+
+// The image from which to initialize this disk. This can be
+// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+// images names must include the family name. If they don't, use the
+// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+// These images can be referred by family name here.
+func (o RegionDiskOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
 }
 
 // (Optional, Beta, Deprecated)
@@ -1242,6 +1388,22 @@ func (o RegionDiskOutput) SourceDisk() pulumi.StringPtrOutput {
 // or a previous instance of a given disk name.
 func (o RegionDiskOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// The customer-supplied encryption key of the source image. Required if
+// the source image is protected by a customer-supplied encryption key.
+// Structure is documented below.
+func (o RegionDiskOutput) SourceImageEncryptionKey() RegionDiskSourceImageEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *RegionDisk) RegionDiskSourceImageEncryptionKeyPtrOutput { return v.SourceImageEncryptionKey }).(RegionDiskSourceImageEncryptionKeyPtrOutput)
+}
+
+// The ID value of the image used to create this disk. This value
+// identifies the exact image that was used to create this persistent
+// disk. For example, if you created the persistent disk from an image
+// that was later deleted and recreated under the same name, the source
+// image ID would identify the exact version of the image that was used.
+func (o RegionDiskOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.SourceImageId }).(pulumi.StringOutput)
 }
 
 // The customer-supplied encryption key of the source snapshot. Required

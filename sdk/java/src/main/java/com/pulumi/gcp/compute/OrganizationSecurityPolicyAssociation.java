@@ -76,6 +76,62 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Organization Security Policy Association Excluded
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociation;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociationArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var securityPolicyTarget = new Folder("securityPolicyTarget", FolderArgs.builder()
+ *             .displayName("tf-test-secpol-_72490")
+ *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
+ *             .shortName("tf-test_89605")
+ *             .parent(securityPolicyTarget.name())
+ *             .type("CLOUD_ARMOR")
+ *             .build());
+ * 
+ *         var policyOrganizationSecurityPolicyAssociation = new OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", OrganizationSecurityPolicyAssociationArgs.builder()
+ *             .name("tf-test")
+ *             .attachmentId("organizations/123456789")
+ *             .policyId(policy.id())
+ *             .excludedProjects(            
+ *                 "projects/2000000002",
+ *                 "projects/3000000003")
+ *             .excludedFolders(            
+ *                 "folders/4000000004",
+ *                 "folders/5000000005")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -105,6 +161,30 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      */
     public Output<String> attachmentId() {
         return this.attachmentId;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The display name of the security policy of the association.

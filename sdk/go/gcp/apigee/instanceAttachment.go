@@ -38,6 +38,13 @@ import (
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The resource ID of the environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// The Apigee instance associated with the Apigee environment,
@@ -83,6 +90,13 @@ func GetInstanceAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceAttachment resources.
 type instanceAttachmentState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The resource ID of the environment.
 	Environment *string `pulumi:"environment"`
 	// The Apigee instance associated with the Apigee environment,
@@ -93,6 +107,13 @@ type instanceAttachmentState struct {
 }
 
 type InstanceAttachmentState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Environment pulumi.StringPtrInput
 	// The Apigee instance associated with the Apigee environment,
@@ -107,6 +128,13 @@ func (InstanceAttachmentState) ElementType() reflect.Type {
 }
 
 type instanceAttachmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The resource ID of the environment.
 	Environment string `pulumi:"environment"`
 	// The Apigee instance associated with the Apigee environment,
@@ -116,6 +144,13 @@ type instanceAttachmentArgs struct {
 
 // The set of arguments for constructing a InstanceAttachment resource.
 type InstanceAttachmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Environment pulumi.StringInput
 	// The Apigee instance associated with the Apigee environment,
@@ -208,6 +243,16 @@ func (o InstanceAttachmentOutput) ToInstanceAttachmentOutput() InstanceAttachmen
 
 func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx context.Context) InstanceAttachmentOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceAttachmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The resource ID of the environment.

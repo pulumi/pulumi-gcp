@@ -106,6 +106,13 @@ import (
 type ResourcePolicyAttachment struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the instance in which the resource policies are attached to.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// The resource policy to be attached to the instance for scheduling start/stop
@@ -151,6 +158,13 @@ func GetResourcePolicyAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourcePolicyAttachment resources.
 type resourcePolicyAttachmentState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the instance in which the resource policies are attached to.
 	Instance *string `pulumi:"instance"`
 	// The resource policy to be attached to the instance for scheduling start/stop
@@ -164,6 +178,13 @@ type resourcePolicyAttachmentState struct {
 }
 
 type ResourcePolicyAttachmentState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the instance in which the resource policies are attached to.
 	Instance pulumi.StringPtrInput
 	// The resource policy to be attached to the instance for scheduling start/stop
@@ -181,6 +202,13 @@ func (ResourcePolicyAttachmentState) ElementType() reflect.Type {
 }
 
 type resourcePolicyAttachmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the instance in which the resource policies are attached to.
 	Instance string `pulumi:"instance"`
 	// The resource policy to be attached to the instance for scheduling start/stop
@@ -195,6 +223,13 @@ type resourcePolicyAttachmentArgs struct {
 
 // The set of arguments for constructing a ResourcePolicyAttachment resource.
 type ResourcePolicyAttachmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the instance in which the resource policies are attached to.
 	Instance pulumi.StringInput
 	// The resource policy to be attached to the instance for scheduling start/stop
@@ -292,6 +327,16 @@ func (o ResourcePolicyAttachmentOutput) ToResourcePolicyAttachmentOutput() Resou
 
 func (o ResourcePolicyAttachmentOutput) ToResourcePolicyAttachmentOutputWithContext(ctx context.Context) ResourcePolicyAttachmentOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ResourcePolicyAttachmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourcePolicyAttachment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of the instance in which the resource policies are attached to.

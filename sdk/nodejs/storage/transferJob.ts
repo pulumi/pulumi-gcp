@@ -159,6 +159,15 @@ export class TransferJob extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * When the Transfer Job was deleted.
      */
     declare public /*out*/ readonly deletionTime: pulumi.Output<string>;
@@ -228,6 +237,7 @@ export class TransferJob extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TransferJobState | undefined;
             resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionTime"] = state?.deletionTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["eventStream"] = state?.eventStream;
@@ -246,6 +256,7 @@ export class TransferJob extends pulumi.CustomResource {
             if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["eventStream"] = args?.eventStream;
             resourceInputs["loggingConfig"] = args?.loggingConfig;
@@ -274,6 +285,15 @@ export interface TransferJobState {
      * When the Transfer Job was created.
      */
     creationTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * When the Transfer Job was deleted.
      */
@@ -335,6 +355,15 @@ export interface TransferJobState {
  * The set of arguments for constructing a TransferJob resource.
  */
 export interface TransferJobArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Unique description to identify the Transfer Job.
      */

@@ -123,7 +123,7 @@ def get_ai_reasoning_engine_query(class_method: Optional[_builtins.str] = None,
     import pulumi_std as std
 
     default_ai_reasoning_engine = gcp.vertex.AiReasoningEngine("default",
-        display_name="vertex-mds-_48153",
+        display_name="vertex-mds-_29506",
         description="Retrieves tenant project number",
         region="us-central1",
         spec={
@@ -185,7 +185,7 @@ def get_ai_reasoning_engine_query_output(class_method: pulumi.Input[Optional[Opt
     import pulumi_std as std
 
     default_ai_reasoning_engine = gcp.vertex.AiReasoningEngine("default",
-        display_name="vertex-mds-_48153",
+        display_name="vertex-mds-_29506",
         description="Retrieves tenant project number",
         region="us-central1",
         spec={

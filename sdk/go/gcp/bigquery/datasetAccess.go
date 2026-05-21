@@ -278,6 +278,13 @@ type DatasetAccess struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
@@ -367,6 +374,13 @@ type datasetAccessState struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId *string `pulumi:"datasetId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
 	Domain *string `pulumi:"domain"`
@@ -424,6 +438,13 @@ type DatasetAccessState struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
 	Domain pulumi.StringPtrInput
@@ -483,6 +504,13 @@ type datasetAccessArgs struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId string `pulumi:"datasetId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
 	Domain *string `pulumi:"domain"`
@@ -539,6 +567,13 @@ type DatasetAccessArgs struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
 	Domain pulumi.StringPtrInput
@@ -692,6 +727,16 @@ func (o DatasetAccessOutput) Condition() DatasetAccessConditionPtrOutput {
 // underscores (_). The maximum length is 1,024 characters.
 func (o DatasetAccessOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetAccess) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DatasetAccessOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatasetAccess) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A domain to grant access to. Any users signed in with the

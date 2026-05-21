@@ -109,6 +109,16 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _scalingSchedules = value;
         }
 
+        /// <summary>
+        /// The number of seconds that the autoscaler waits for load stabilization
+        /// before making scale-in decisions.
+        /// This might appear as a delay in scaling in but it is an important mechanism
+        /// for your application to not have fluctuating size due to short term load
+        /// fluctuations.
+        /// </summary>
+        [Input("stabilizationPeriod")]
+        public Input<int>? StabilizationPeriod { get; set; }
+
         public AutoscalerAutoscalingPolicyGetArgs()
         {
         }

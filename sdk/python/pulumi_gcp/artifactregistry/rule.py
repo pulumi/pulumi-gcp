@@ -25,6 +25,7 @@ class RuleArgs:
                  rule_id: pulumi.Input[_builtins.str],
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional['RuleConditionArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  operation: pulumi.Input[Optional[_builtins.str]] = None,
                  package_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,6 +41,12 @@ class RuleArgs:
         :param pulumi.Input['RuleConditionArgs'] condition: Optional. A CEL expression for conditions that must be met in order for the
                rule to apply. If not provided, the rule matches all objects.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The name of the repository's location. In addition to specific regions,
                special values for multi-region locations are `asia`, `europe`, and `us`.
                See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
@@ -59,6 +66,8 @@ class RuleArgs:
             pulumi.set(__self__, "action", action)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if operation is not None:
@@ -119,6 +128,23 @@ class RuleArgs:
     @condition.setter
     def condition(self, value: pulumi.Input[Optional['RuleConditionArgs']]):
         pulumi.set(self, "condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -182,6 +208,7 @@ class _RuleState:
     def __init__(__self__, *,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional['RuleConditionArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  operation: pulumi.Input[Optional[_builtins.str]] = None,
@@ -197,6 +224,12 @@ class _RuleState:
         :param pulumi.Input['RuleConditionArgs'] condition: Optional. A CEL expression for conditions that must be met in order for the
                rule to apply. If not provided, the rule matches all objects.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The name of the repository's location. In addition to specific regions,
                special values for multi-region locations are `asia`, `europe`, and `us`.
                See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
@@ -219,6 +252,8 @@ class _RuleState:
             pulumi.set(__self__, "action", action)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -260,6 +295,23 @@ class _RuleState:
     @condition.setter
     def condition(self, value: pulumi.Input[Optional['RuleConditionArgs']]):
         pulumi.set(self, "condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -364,6 +416,7 @@ class Rule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  operation: pulumi.Input[Optional[_builtins.str]] = None,
                  package_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -459,6 +512,12 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[Union['RuleConditionArgs', 'RuleConditionArgsDict']] condition: Optional. A CEL expression for conditions that must be met in order for the
                rule to apply. If not provided, the rule matches all objects.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The name of the repository's location. In addition to specific regions,
                special values for multi-region locations are `asia`, `europe`, and `us`.
                See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
@@ -579,6 +638,7 @@ class Rule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  operation: pulumi.Input[Optional[_builtins.str]] = None,
                  package_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -596,6 +656,7 @@ class Rule(pulumi.CustomResource):
 
             __props__.__dict__["action"] = action
             __props__.__dict__["condition"] = condition
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["location"] = location
             __props__.__dict__["operation"] = operation
             __props__.__dict__["package_id"] = package_id
@@ -619,6 +680,7 @@ class Rule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action: pulumi.Input[Optional[_builtins.str]] = None,
             condition: pulumi.Input[Optional[Union['RuleConditionArgs', 'RuleConditionArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             operation: pulumi.Input[Optional[_builtins.str]] = None,
@@ -638,6 +700,12 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[Union['RuleConditionArgs', 'RuleConditionArgsDict']] condition: Optional. A CEL expression for conditions that must be met in order for the
                rule to apply. If not provided, the rule matches all objects.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The name of the repository's location. In addition to specific regions,
                special values for multi-region locations are `asia`, `europe`, and `us`.
                See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
@@ -662,6 +730,7 @@ class Rule(pulumi.CustomResource):
 
         __props__.__dict__["action"] = action
         __props__.__dict__["condition"] = condition
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["operation"] = operation
@@ -689,6 +758,19 @@ class Rule(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

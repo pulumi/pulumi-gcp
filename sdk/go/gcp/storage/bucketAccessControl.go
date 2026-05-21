@@ -88,6 +88,13 @@ type BucketAccessControl struct {
 
 	// The name of the bucket.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The domain associated with the entity.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The email address associated with the entity.
@@ -151,6 +158,13 @@ func GetBucketAccessControl(ctx *pulumi.Context,
 type bucketAccessControlState struct {
 	// The name of the bucket.
 	Bucket *string `pulumi:"bucket"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The domain associated with the entity.
 	Domain *string `pulumi:"domain"`
 	// The email address associated with the entity.
@@ -179,6 +193,13 @@ type bucketAccessControlState struct {
 type BucketAccessControlState struct {
 	// The name of the bucket.
 	Bucket pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The domain associated with the entity.
 	Domain pulumi.StringPtrInput
 	// The email address associated with the entity.
@@ -211,6 +232,13 @@ func (BucketAccessControlState) ElementType() reflect.Type {
 type bucketAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The entity holding the permission, in one of the following forms:
 	// user-userId
 	// user-email
@@ -236,6 +264,13 @@ type bucketAccessControlArgs struct {
 type BucketAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The entity holding the permission, in one of the following forms:
 	// user-userId
 	// user-email
@@ -347,6 +382,16 @@ func (o BucketAccessControlOutput) ToBucketAccessControlOutputWithContext(ctx co
 // The name of the bucket.
 func (o BucketAccessControlOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BucketAccessControlOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The domain associated with the entity.

@@ -325,6 +325,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<Outputs.SecurityProfileCustomMirroringProfile?> CustomMirroringProfile { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description of the security profile. The Max length is 512 characters.
         /// </summary>
         [Output("description")]
@@ -368,7 +379,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the parent this security profile belongs to.
-        /// Format: organizations/{organization_id}.
+        /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
         /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
@@ -481,6 +492,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<Inputs.SecurityProfileCustomMirroringProfileArgs>? CustomMirroringProfile { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// An optional description of the security profile. The Max length is 512 characters.
         /// </summary>
         [Input("description")]
@@ -516,7 +538,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the parent this security profile belongs to.
-        /// Format: organizations/{organization_id}.
+        /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -571,6 +593,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("customMirroringProfile")]
         public Input<Inputs.SecurityProfileCustomMirroringProfileGetArgs>? CustomMirroringProfile { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// An optional description of the security profile. The Max length is 512 characters.
@@ -632,7 +665,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the parent this security profile belongs to.
-        /// Format: organizations/{organization_id}.
+        /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

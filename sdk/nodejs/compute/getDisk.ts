@@ -70,6 +70,7 @@ export interface GetDiskResult {
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     /**
      * The optional description of this resource.
      */

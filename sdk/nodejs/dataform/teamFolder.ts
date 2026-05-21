@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const dataformTeamFolderBasic = new gcp.dataform.TeamFolder("dataform_team_folder_basic", {
  *     region: "us-central1",
- *     displayName: "Basic TeamFolder-_75223",
+ *     displayName: "Basic TeamFolder-_34535",
  * });
  * ```
  *
@@ -76,6 +76,15 @@ export class TeamFolder extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Required. The TeamFolder's user-friendly name.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -110,6 +119,7 @@ export class TeamFolder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamFolderState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -123,6 +133,7 @@ export class TeamFolder extends pulumi.CustomResource {
             if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
@@ -138,6 +149,15 @@ export class TeamFolder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamFolder resources.
  */
 export interface TeamFolderState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Required. The TeamFolder's user-friendly name.
      */
@@ -165,6 +185,15 @@ export interface TeamFolderState {
  * The set of arguments for constructing a TeamFolder resource.
  */
 export interface TeamFolderArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Required. The TeamFolder's user-friendly name.
      */

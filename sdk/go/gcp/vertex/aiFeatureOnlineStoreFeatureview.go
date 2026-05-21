@@ -286,8 +286,8 @@ import (
 //				return err
 //			}
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_50206"),
-//				Name:           pulumi.String("tf-test_9873"),
+//				ProjectId:      pulumi.String("tf-test_9305"),
+//				Name:           pulumi.String("tf-test_48542"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -629,6 +629,13 @@ type AiFeatureOnlineStoreFeatureview struct {
 	BigQuerySource AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput `pulumi:"bigQuerySource"`
 	// The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The name of the FeatureOnlineStore to use for the featureview.
@@ -705,6 +712,13 @@ type aiFeatureOnlineStoreFeatureviewState struct {
 	BigQuerySource *AiFeatureOnlineStoreFeatureviewBigQuerySource `pulumi:"bigQuerySource"`
 	// The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of the FeatureOnlineStore to use for the featureview.
@@ -744,6 +758,13 @@ type AiFeatureOnlineStoreFeatureviewState struct {
 	BigQuerySource AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput
 	// The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The name of the FeatureOnlineStore to use for the featureview.
@@ -785,6 +806,13 @@ type aiFeatureOnlineStoreFeatureviewArgs struct {
 	// Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
 	// Structure is documented below.
 	BigQuerySource *AiFeatureOnlineStoreFeatureviewBigQuerySource `pulumi:"bigQuerySource"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the FeatureOnlineStore to use for the featureview.
 	FeatureOnlineStore string `pulumi:"featureOnlineStore"`
 	// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
@@ -816,6 +844,13 @@ type AiFeatureOnlineStoreFeatureviewArgs struct {
 	// Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
 	// Structure is documented below.
 	BigQuerySource AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the FeatureOnlineStore to use for the featureview.
 	FeatureOnlineStore pulumi.StringInput
 	// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
@@ -940,6 +975,16 @@ func (o AiFeatureOnlineStoreFeatureviewOutput) BigQuerySource() AiFeatureOnlineS
 // The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiFeatureOnlineStoreFeatureviewOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AiFeatureOnlineStoreFeatureviewOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

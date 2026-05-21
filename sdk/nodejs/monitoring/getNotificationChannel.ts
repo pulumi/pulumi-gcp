@@ -97,6 +97,7 @@ export interface GetNotificationChannelArgs {
  * A collection of values returned by getNotificationChannel.
  */
 export interface GetNotificationChannelResult {
+    readonly deletionPolicy: string;
     /**
      * An optional human-readable description of this notification channel.
      */

@@ -31,6 +31,7 @@ class BareMetalClusterArgs:
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: pulumi.Input[Optional['BareMetalClusterBinaryAuthorizationArgs']] = None,
                  cluster_operations: pulumi.Input[Optional['BareMetalClusterClusterOperationsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_config: pulumi.Input[Optional['BareMetalClusterMaintenanceConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -71,6 +72,12 @@ class BareMetalClusterArgs:
                Structure is documented below.
         :param pulumi.Input['BareMetalClusterClusterOperationsArgs'] cluster_operations: Specifies the User Cluster's observability infrastructure.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input['BareMetalClusterMaintenanceConfigArgs'] maintenance_config: Specifies the workload node configurations.
                Structure is documented below.
@@ -103,6 +110,8 @@ class BareMetalClusterArgs:
             pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_operations is not None:
             pulumi.set(__self__, "cluster_operations", cluster_operations)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if maintenance_config is not None:
@@ -262,6 +271,23 @@ class BareMetalClusterArgs:
         pulumi.set(self, "cluster_operations", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -401,6 +427,7 @@ class _BareMetalClusterState:
                  control_plane: pulumi.Input[Optional['BareMetalClusterControlPlaneArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -451,6 +478,12 @@ class _BareMetalClusterState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] delete_time: The time the cluster was deleted, in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: The IP address name of Bare Metal User Cluster's API server.
@@ -527,6 +560,8 @@ class _BareMetalClusterState:
             pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_annotations is not None:
@@ -687,6 +722,23 @@ class _BareMetalClusterState:
     @delete_time.setter
     def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1035,6 +1087,7 @@ class BareMetalCluster(pulumi.CustomResource):
                  binary_authorization: pulumi.Input[Optional[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
                  cluster_operations: pulumi.Input[Optional[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
                  control_plane: pulumi.Input[Optional[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer: pulumi.Input[Optional[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1381,6 +1434,12 @@ class BareMetalCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']] control_plane: Specifies the control plane configuration.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration.
                Structure is documented below.
@@ -1743,6 +1802,7 @@ class BareMetalCluster(pulumi.CustomResource):
                  binary_authorization: pulumi.Input[Optional[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
                  cluster_operations: pulumi.Input[Optional[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
                  control_plane: pulumi.Input[Optional[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer: pulumi.Input[Optional[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1778,6 +1838,7 @@ class BareMetalCluster(pulumi.CustomResource):
             if control_plane is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane'")
             __props__.__dict__["control_plane"] = control_plane
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if load_balancer is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer'")
@@ -1831,6 +1892,7 @@ class BareMetalCluster(pulumi.CustomResource):
             control_plane: pulumi.Input[Optional[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1885,6 +1947,12 @@ class BareMetalCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] delete_time: The time the cluster was deleted, in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: The IP address name of Bare Metal User Cluster's API server.
@@ -1957,6 +2025,7 @@ class BareMetalCluster(pulumi.CustomResource):
         __props__.__dict__["control_plane"] = control_plane
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["endpoint"] = endpoint
@@ -2061,6 +2130,19 @@ class BareMetalCluster(pulumi.CustomResource):
         The time the cluster was deleted, in RFC3339 text format.
         """
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

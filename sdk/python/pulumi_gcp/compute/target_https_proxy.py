@@ -22,6 +22,7 @@ class TargetHttpsProxyArgs:
                  url_map: pulumi.Input[_builtins.str],
                  certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -46,6 +47,12 @@ class TargetHttpsProxyArgs:
                associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
                For INTERNAL_MANAGED, use certificate_manager_certificates instead.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
                while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -103,6 +110,8 @@ class TargetHttpsProxyArgs:
             pulumi.set(__self__, "certificate_manager_certificates", certificate_manager_certificates)
         if certificate_map is not None:
             pulumi.set(__self__, "certificate_map", certificate_map)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if http_keep_alive_timeout_sec is not None:
@@ -167,6 +176,23 @@ class TargetHttpsProxyArgs:
     @certificate_map.setter
     def certificate_map(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_map", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -336,6 +362,7 @@ class _TargetHttpsProxyState:
                  certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
                  http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -363,6 +390,12 @@ class _TargetHttpsProxyState:
                For INTERNAL_MANAGED, use certificate_manager_certificates instead.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
                This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
@@ -430,6 +463,8 @@ class _TargetHttpsProxyState:
             pulumi.set(__self__, "certificate_map", certificate_map)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fingerprint is not None:
@@ -501,6 +536,23 @@ class _TargetHttpsProxyState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -725,6 +777,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1020,6 +1073,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
                associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
                For INTERNAL_MANAGED, use certificate_manager_certificates instead.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
                while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -1369,6 +1428,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1391,6 +1451,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
             __props__.__dict__["certificate_manager_certificates"] = certificate_manager_certificates
             __props__.__dict__["certificate_map"] = certificate_map
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec
             __props__.__dict__["name"] = name
@@ -1421,6 +1482,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1452,6 +1514,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
                For INTERNAL_MANAGED, use certificate_manager_certificates instead.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
                This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
@@ -1520,6 +1588,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["certificate_manager_certificates"] = certificate_manager_certificates
         __props__.__dict__["certificate_map"] = certificate_map
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec
@@ -1566,6 +1635,19 @@ class TargetHttpsProxy(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyState;
+import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyAdvancedOptionsConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -59,6 +60,51 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Organization Security Policy With Advanced Options
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyAdvancedOptionsConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
+ *             .shortName("security-policy")
+ *             .parent("organizations/123456789")
+ *             .type("CLOUD_ARMOR")
+ *             .advancedOptionsConfig(OrganizationSecurityPolicyAdvancedOptionsConfigArgs.builder()
+ *                 .jsonParsing("STANDARD_WITH_GRAPHQL")
+ *                 .logLevel("VERBOSE")
+ *                 .jsonCustomConfig(OrganizationSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs.builder()
+ *                     .contentTypes("application/vnd.api+json")
+ *                     .build())
+ *                 .userIpRequestHeaders("X-Forwarded-For")
+ *                 .requestBodyInspectionSize("64KB")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -77,6 +123,46 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy")
 public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Additional options for this security policy.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="advancedOptionsConfig", refs={OrganizationSecurityPolicyAdvancedOptionsConfig.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfig;
+
+    /**
+     * @return Additional options for this security policy.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<OrganizationSecurityPolicyAdvancedOptionsConfig>> advancedOptionsConfig() {
+        return Codegen.optional(this.advancedOptionsConfig);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * A textual description for the organization security policy.
      * 

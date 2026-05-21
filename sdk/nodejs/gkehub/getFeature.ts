@@ -55,6 +55,7 @@ export interface GetFeatureArgs {
 export interface GetFeatureResult {
     readonly createTime: string;
     readonly deleteTime: string;
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly fleetDefaultMemberConfigs: outputs.gkehub.GetFeatureFleetDefaultMemberConfig[];
     /**

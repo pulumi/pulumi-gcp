@@ -74,6 +74,13 @@ import (
 type DomainTrust struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	Domain pulumi.StringOutput `pulumi:"domain"`
@@ -152,6 +159,13 @@ func GetDomainTrust(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainTrust resources.
 type domainTrustState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	Domain *string `pulumi:"domain"`
@@ -176,6 +190,13 @@ type domainTrustState struct {
 }
 
 type DomainTrustState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	Domain pulumi.StringPtrInput
@@ -204,6 +225,13 @@ func (DomainTrustState) ElementType() reflect.Type {
 }
 
 type domainTrustArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	Domain string `pulumi:"domain"`
@@ -229,6 +257,13 @@ type domainTrustArgs struct {
 
 // The set of arguments for constructing a DomainTrust resource.
 type DomainTrustArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	Domain pulumi.StringInput
@@ -337,6 +372,16 @@ func (o DomainTrustOutput) ToDomainTrustOutput() DomainTrustOutput {
 
 func (o DomainTrustOutput) ToDomainTrustOutputWithContext(ctx context.Context) DomainTrustOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DomainTrustOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainTrust) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions

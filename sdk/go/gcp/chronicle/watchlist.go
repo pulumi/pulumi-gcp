@@ -114,6 +114,13 @@ type Watchlist struct {
 
 	// Output only. Time the watchlist was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. Description of the watchlist.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Required. Display name of the watchlist.
@@ -197,6 +204,13 @@ func GetWatchlist(ctx *pulumi.Context,
 type watchlistState struct {
 	// Output only. Time the watchlist was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Description of the watchlist.
 	Description *string `pulumi:"description"`
 	// Required. Display name of the watchlist.
@@ -239,6 +253,13 @@ type watchlistState struct {
 type WatchlistState struct {
 	// Output only. Time the watchlist was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Description of the watchlist.
 	Description pulumi.StringPtrInput
 	// Required. Display name of the watchlist.
@@ -283,6 +304,13 @@ func (WatchlistState) ElementType() reflect.Type {
 }
 
 type watchlistArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Description of the watchlist.
 	Description *string `pulumi:"description"`
 	// Required. Display name of the watchlist.
@@ -315,6 +343,13 @@ type watchlistArgs struct {
 
 // The set of arguments for constructing a Watchlist resource.
 type WatchlistArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Description of the watchlist.
 	Description pulumi.StringPtrInput
 	// Required. Display name of the watchlist.
@@ -435,6 +470,16 @@ func (o WatchlistOutput) ToWatchlistOutputWithContext(ctx context.Context) Watch
 // Output only. Time the watchlist was created.
 func (o WatchlistOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WatchlistOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. Description of the watchlist.

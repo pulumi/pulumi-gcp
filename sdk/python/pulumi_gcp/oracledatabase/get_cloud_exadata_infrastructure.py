@@ -27,13 +27,16 @@ class GetCloudExadataInfrastructureResult:
     """
     A collection of values returned by getCloudExadataInfrastructure.
     """
-    def __init__(__self__, cloud_exadata_infrastructure_id=None, create_time=None, deletion_protection=None, display_name=None, effective_labels=None, entitlement_id=None, gcp_oracle_zone=None, id=None, labels=None, location=None, name=None, project=None, properties=None, pulumi_labels=None):
+    def __init__(__self__, cloud_exadata_infrastructure_id=None, create_time=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_labels=None, entitlement_id=None, gcp_oracle_zone=None, id=None, labels=None, location=None, name=None, project=None, properties=None, pulumi_labels=None):
         if cloud_exadata_infrastructure_id and not isinstance(cloud_exadata_infrastructure_id, str):
             raise TypeError("Expected argument 'cloud_exadata_infrastructure_id' to be a str")
         pulumi.set(__self__, "cloud_exadata_infrastructure_id", cloud_exadata_infrastructure_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -80,6 +83,11 @@ class GetCloudExadataInfrastructureResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -153,6 +161,7 @@ class AwaitableGetCloudExadataInfrastructureResult(GetCloudExadataInfrastructure
         return GetCloudExadataInfrastructureResult(
             cloud_exadata_infrastructure_id=self.cloud_exadata_infrastructure_id,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
@@ -205,6 +214,7 @@ def get_cloud_exadata_infrastructure(cloud_exadata_infrastructure_id: Optional[_
     return AwaitableGetCloudExadataInfrastructureResult(
         cloud_exadata_infrastructure_id=pulumi.get(__ret__, 'cloud_exadata_infrastructure_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -254,6 +264,7 @@ def get_cloud_exadata_infrastructure_output(cloud_exadata_infrastructure_id: pul
     return __ret__.apply(lambda __response__: GetCloudExadataInfrastructureResult(
         cloud_exadata_infrastructure_id=pulumi.get(__response__, 'cloud_exadata_infrastructure_id'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

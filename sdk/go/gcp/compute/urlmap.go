@@ -2275,6 +2275,13 @@ type URLMap struct {
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect URLMapDefaultUrlRedirectPtrOutput `pulumi:"defaultUrlRedirect"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create
 	// the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -2369,6 +2376,13 @@ type urlmapState struct {
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect *URLMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create
 	// the resource.
 	Description *string `pulumi:"description"`
@@ -2434,6 +2448,13 @@ type URLMapState struct {
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect URLMapDefaultUrlRedirectPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create
 	// the resource.
 	Description pulumi.StringPtrInput
@@ -2501,6 +2522,13 @@ type urlmapArgs struct {
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect *URLMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create
 	// the resource.
 	Description *string `pulumi:"description"`
@@ -2558,6 +2586,13 @@ type URLMapArgs struct {
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect URLMapDefaultUrlRedirectPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create
 	// the resource.
 	Description pulumi.StringPtrInput
@@ -2717,6 +2752,16 @@ func (o URLMapOutput) DefaultService() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o URLMapOutput) DefaultUrlRedirect() URLMapDefaultUrlRedirectPtrOutput {
 	return o.ApplyT(func(v *URLMap) URLMapDefaultUrlRedirectPtrOutput { return v.DefaultUrlRedirect }).(URLMapDefaultUrlRedirectPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o URLMapOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *URLMap) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource. Provide this property when you create

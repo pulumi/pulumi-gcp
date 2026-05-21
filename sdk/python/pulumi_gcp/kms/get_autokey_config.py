@@ -26,7 +26,10 @@ class GetAutokeyConfigResult:
     """
     A collection of values returned by getAutokeyConfig.
     """
-    def __init__(__self__, etag=None, folder=None, id=None, key_project=None, key_project_resolution_mode=None):
+    def __init__(__self__, deletion_policy=None, etag=None, folder=None, id=None, key_project=None, key_project_resolution_mode=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -42,6 +45,11 @@ class GetAutokeyConfigResult:
         if key_project_resolution_mode and not isinstance(key_project_resolution_mode, str):
             raise TypeError("Expected argument 'key_project_resolution_mode' to be a str")
         pulumi.set(__self__, "key_project_resolution_mode", key_project_resolution_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -81,6 +89,7 @@ class AwaitableGetAutokeyConfigResult(GetAutokeyConfigResult):
         if False:
             yield self
         return GetAutokeyConfigResult(
+            deletion_policy=self.deletion_policy,
             etag=self.etag,
             folder=self.folder,
             id=self.id,
@@ -117,6 +126,7 @@ def get_autokey_config(folder: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getAutokeyConfig:getAutokeyConfig', __args__, opts=opts, typ=GetAutokeyConfigResult).value
 
     return AwaitableGetAutokeyConfigResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         etag=pulumi.get(__ret__, 'etag'),
         folder=pulumi.get(__ret__, 'folder'),
         id=pulumi.get(__ret__, 'id'),
@@ -150,6 +160,7 @@ def get_autokey_config_output(folder: pulumi.Input[Optional[_builtins.str]] = No
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getAutokeyConfig:getAutokeyConfig', __args__, opts=opts, typ=GetAutokeyConfigResult)
     return __ret__.apply(lambda __response__: GetAutokeyConfigResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         etag=pulumi.get(__response__, 'etag'),
         folder=pulumi.get(__response__, 'folder'),
         id=pulumi.get(__response__, 'id'),

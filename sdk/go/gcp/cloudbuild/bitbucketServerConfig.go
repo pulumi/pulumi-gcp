@@ -116,83 +116,79 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// servicenetworking2, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
-// Service: pulumi.String("servicenetworking.googleapis.com"),
-// })
-// if err != nil {
-// return err
-// }
-// vpcNetwork, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
-// Name: pulumi.String("vpc-network"),
-// }, pulumi.DependsOn([]pulumi.Resource{
-// servicenetworking2,
-// }))
-// if err != nil {
-// return err
-// }
-// privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
-// Name: pulumi.String("private-ip-alloc"),
-// Purpose: pulumi.String("VPC_PEERING"),
-// AddressType: pulumi.String("INTERNAL"),
-// PrefixLength: pulumi.Int(16),
-// Network: vpcNetwork.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// _default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-// Network: vpcNetwork.ID(),
-// Service: pulumi.String("servicenetworking.googleapis.com"),
-// ReservedPeeringRanges: pulumi.StringArray{
-// privateIpAlloc.Name,
-// },
-// }, pulumi.DependsOn([]pulumi.Resource{
-// servicenetworking2,
-// }))
-// if err != nil {
-// return err
-// }
-// invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
-// Text: id,
-// Search: project.Name,
-// Replace: project.Number,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// _, err = cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-peered-network", &cloudbuild.BitbucketServerConfigArgs{
-// ConfigId: pulumi.String("bbs-config"),
-// Location: pulumi.String("us-central1"),
-// HostUri: pulumi.String("https://bbs.com"),
-// Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
-// AdminAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
-// ReadAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
-// WebhookSecretVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
-// },
-// Username: pulumi.String("test"),
-// ApiKey: pulumi.String("<api-key>"),
-// PeeredNetwork: pulumi.String(vpcNetwork.ID().ApplyT(func(id string) (std.ReplaceResult, error) {
-// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput)),
-// SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
-// }, pulumi.DependsOn([]pulumi.Resource{
-// _default,
-// }))
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			servicenetworking2, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcNetwork, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+//				Name: pulumi.String("vpc-network"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				servicenetworking2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("private-ip-alloc"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      vpcNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+//				Network: vpcNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				servicenetworking2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-peered-network", &cloudbuild.BitbucketServerConfigArgs{
+//				ConfigId: pulumi.String("bbs-config"),
+//				Location: pulumi.String("us-central1"),
+//				HostUri:  pulumi.String("https://bbs.com"),
+//				Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
+//					AdminAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+//					ReadAccessTokenVersionName:  pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+//					WebhookSecretVersionName:    pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+//				},
+//				Username: pulumi.String("test"),
+//				ApiKey:   pulumi.String("<api-key>"),
+//				PeeredNetwork: pulumi.String(std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+//					Text:    vpcNetwork.ID(),
+//					Search:  pulumi.String(project.Name),
+//					Replace: pulumi.String(project.Number),
+//				}, nil).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
+//					val := invoke.Result
+//					return &val, nil
+//				}).(pulumi.StringPtrOutput)),
+//				SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -221,6 +217,13 @@ type BitbucketServerConfig struct {
 	// Connected Bitbucket Server repositories for this config.
 	// Structure is documented below.
 	ConnectedRepositories BitbucketServerConfigConnectedRepositoryArrayOutput `pulumi:"connectedRepositories"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
 	HostUri pulumi.StringOutput `pulumi:"hostUri"`
@@ -303,6 +306,13 @@ type bitbucketServerConfigState struct {
 	// Connected Bitbucket Server repositories for this config.
 	// Structure is documented below.
 	ConnectedRepositories []BitbucketServerConfigConnectedRepository `pulumi:"connectedRepositories"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
 	HostUri *string `pulumi:"hostUri"`
@@ -338,6 +348,13 @@ type BitbucketServerConfigState struct {
 	// Connected Bitbucket Server repositories for this config.
 	// Structure is documented below.
 	ConnectedRepositories BitbucketServerConfigConnectedRepositoryArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
 	HostUri pulumi.StringPtrInput
@@ -377,6 +394,13 @@ type bitbucketServerConfigArgs struct {
 	// Connected Bitbucket Server repositories for this config.
 	// Structure is documented below.
 	ConnectedRepositories []BitbucketServerConfigConnectedRepository `pulumi:"connectedRepositories"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
 	HostUri string `pulumi:"hostUri"`
@@ -409,6 +433,13 @@ type BitbucketServerConfigArgs struct {
 	// Connected Bitbucket Server repositories for this config.
 	// Structure is documented below.
 	ConnectedRepositories BitbucketServerConfigConnectedRepositoryArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
 	HostUri pulumi.StringInput
@@ -535,6 +566,16 @@ func (o BitbucketServerConfigOutput) ConnectedRepositories() BitbucketServerConf
 	return o.ApplyT(func(v *BitbucketServerConfig) BitbucketServerConfigConnectedRepositoryArrayOutput {
 		return v.ConnectedRepositories
 	}).(BitbucketServerConfigConnectedRepositoryArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BitbucketServerConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.

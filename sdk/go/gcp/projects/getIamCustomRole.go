@@ -65,8 +65,9 @@ type GetIamCustomRoleArgs struct {
 
 // A collection of values returned by getIamCustomRole.
 type GetIamCustomRoleResult struct {
-	Deleted     bool   `pulumi:"deleted"`
-	Description string `pulumi:"description"`
+	Deleted        bool   `pulumi:"deleted"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	Description    string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string   `pulumi:"id"`
 	Name        string   `pulumi:"name"`
@@ -115,6 +116,10 @@ func (o GetIamCustomRoleResultOutput) ToGetIamCustomRoleResultOutputWithContext(
 
 func (o GetIamCustomRoleResultOutput) Deleted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetIamCustomRoleResult) bool { return v.Deleted }).(pulumi.BoolOutput)
+}
+
+func (o GetIamCustomRoleResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamCustomRoleResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetIamCustomRoleResultOutput) Description() pulumi.StringOutput {

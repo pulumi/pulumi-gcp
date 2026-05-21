@@ -69,6 +69,7 @@ type GetSinkArgs struct {
 type GetSinkResult struct {
 	// Options that affect sinks exporting data to BigQuery. Structure is documented below.
 	BigqueryOptions []GetSinkBigqueryOption `pulumi:"bigqueryOptions"`
+	DeletionPolicy  string                  `pulumi:"deletionPolicy"`
 	// A description of this exclusion.
 	Description string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to).
@@ -129,6 +130,10 @@ func (o GetSinkResultOutput) ToGetSinkResultOutputWithContext(ctx context.Contex
 // Options that affect sinks exporting data to BigQuery. Structure is documented below.
 func (o GetSinkResultOutput) BigqueryOptions() GetSinkBigqueryOptionArrayOutput {
 	return o.ApplyT(func(v GetSinkResult) []GetSinkBigqueryOption { return v.BigqueryOptions }).(GetSinkBigqueryOptionArrayOutput)
+}
+
+func (o GetSinkResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSinkResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of this exclusion.

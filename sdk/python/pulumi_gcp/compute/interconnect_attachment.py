@@ -28,6 +28,7 @@ class InterconnectAttachmentArgs:
                  candidate_customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  candidate_customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
                  candidate_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption: pulumi.Input[Optional[_builtins.str]] = None,
@@ -71,6 +72,12 @@ class InterconnectAttachmentArgs:
                an unused /29 from the supplied candidate prefix(es). The request will
                fail if all possible /29s are in use on Google's edge. If not supplied,
                Google will randomly select an unused /29 from all of link-local space.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] edge_availability_domain: Desired availability domain for the attachment. Only available for type
                PARTNER, at creation time. For improved reliability, customers should
@@ -164,6 +171,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "candidate_customer_router_ipv6_address", candidate_customer_router_ipv6_address)
         if candidate_subnets is not None:
             pulumi.set(__self__, "candidate_subnets", candidate_subnets)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if edge_availability_domain is not None:
@@ -298,6 +307,23 @@ class InterconnectAttachmentArgs:
     @candidate_subnets.setter
     def candidate_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "candidate_subnets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -581,6 +607,7 @@ class _InterconnectAttachmentState:
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -643,6 +670,12 @@ class _InterconnectAttachmentState:
                router subinterface for this interconnect attachment.
         :param pulumi.Input[_builtins.str] customer_router_ipv6_address: IPv6 address + prefix length to be configured on the customer
                router subinterface for this interconnect attachment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] edge_availability_domain: Desired availability domain for the attachment. Only available for type
                PARTNER, at creation time. For improved reliability, customers should
@@ -769,6 +802,8 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "customer_router_ip_address", customer_router_ip_address)
         if customer_router_ipv6_address is not None:
             pulumi.set(__self__, "customer_router_ipv6_address", customer_router_ipv6_address)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if edge_availability_domain is not None:
@@ -997,6 +1032,23 @@ class _InterconnectAttachmentState:
     @customer_router_ipv6_address.setter
     def customer_router_ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_router_ipv6_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1397,6 +1449,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  candidate_customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  candidate_customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
                  candidate_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1558,6 +1611,12 @@ class InterconnectAttachment(pulumi.CustomResource):
                an unused /29 from the supplied candidate prefix(es). The request will
                fail if all possible /29s are in use on Google's edge. If not supplied,
                Google will randomly select an unused /29 from all of link-local space.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] edge_availability_domain: Desired availability domain for the attachment. Only available for type
                PARTNER, at creation time. For improved reliability, customers should
@@ -1783,6 +1842,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  candidate_customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  candidate_customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
                  candidate_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1816,6 +1876,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["candidate_customer_router_ip_address"] = candidate_customer_router_ip_address
             __props__.__dict__["candidate_customer_router_ipv6_address"] = candidate_customer_router_ipv6_address
             __props__.__dict__["candidate_subnets"] = candidate_subnets
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["edge_availability_domain"] = edge_availability_domain
             __props__.__dict__["encryption"] = encryption
@@ -1873,6 +1934,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1939,6 +2001,12 @@ class InterconnectAttachment(pulumi.CustomResource):
                router subinterface for this interconnect attachment.
         :param pulumi.Input[_builtins.str] customer_router_ipv6_address: IPv6 address + prefix length to be configured on the customer
                router subinterface for this interconnect attachment.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] edge_availability_domain: Desired availability domain for the attachment. Only available for type
                PARTNER, at creation time. For improved reliability, customers should
@@ -2056,6 +2124,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["customer_router_ip_address"] = customer_router_ip_address
         __props__.__dict__["customer_router_ipv6_address"] = customer_router_ipv6_address
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["edge_availability_domain"] = edge_availability_domain
         __props__.__dict__["effective_labels"] = effective_labels
@@ -2207,6 +2276,19 @@ class InterconnectAttachment(pulumi.CustomResource):
         router subinterface for this interconnect attachment.
         """
         return pulumi.get(self, "customer_router_ipv6_address")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

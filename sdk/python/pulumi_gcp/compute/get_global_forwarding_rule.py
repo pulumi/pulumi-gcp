@@ -27,13 +27,16 @@ class GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
-    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, effective_labels=None, external_managed_backend_bucket_migration_state=None, external_managed_backend_bucket_migration_testing_percentage=None, forwarding_rule_id=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, service_directory_registrations=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, deletion_policy=None, description=None, effective_labels=None, external_managed_backend_bucket_migration_state=None, external_managed_backend_bucket_migration_testing_percentage=None, forwarding_rule_id=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, service_directory_registrations=None, source_ip_ranges=None, subnetwork=None, target=None):
         if allow_psc_global_access and not isinstance(allow_psc_global_access, bool):
             raise TypeError("Expected argument 'allow_psc_global_access' to be a bool")
         pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
         if base_forwarding_rule and not isinstance(base_forwarding_rule, str):
             raise TypeError("Expected argument 'base_forwarding_rule' to be a str")
         pulumi.set(__self__, "base_forwarding_rule", base_forwarding_rule)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -125,6 +128,11 @@ class GetGlobalForwardingRuleResult:
     @pulumi.getter(name="baseForwardingRule")
     def base_forwarding_rule(self) -> _builtins.str:
         return pulumi.get(self, "base_forwarding_rule")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -273,6 +281,7 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
         return GetGlobalForwardingRuleResult(
             allow_psc_global_access=self.allow_psc_global_access,
             base_forwarding_rule=self.base_forwarding_rule,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             effective_labels=self.effective_labels,
             external_managed_backend_bucket_migration_state=self.external_managed_backend_bucket_migration_state,
@@ -333,6 +342,7 @@ def get_global_forwarding_rule(name: Optional[_builtins.str] = None,
     return AwaitableGetGlobalForwardingRuleResult(
         allow_psc_global_access=pulumi.get(__ret__, 'allow_psc_global_access'),
         base_forwarding_rule=pulumi.get(__ret__, 'base_forwarding_rule'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         external_managed_backend_bucket_migration_state=pulumi.get(__ret__, 'external_managed_backend_bucket_migration_state'),
@@ -390,6 +400,7 @@ def get_global_forwarding_rule_output(name: pulumi.Input[Optional[_builtins.str]
     return __ret__.apply(lambda __response__: GetGlobalForwardingRuleResult(
         allow_psc_global_access=pulumi.get(__response__, 'allow_psc_global_access'),
         base_forwarding_rule=pulumi.get(__response__, 'base_forwarding_rule'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         external_managed_backend_bucket_migration_state=pulumi.get(__response__, 'external_managed_backend_bucket_migration_state'),

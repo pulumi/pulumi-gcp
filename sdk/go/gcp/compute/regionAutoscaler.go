@@ -102,9 +102,10 @@ import (
 //				Region: pulumi.String("us-central1"),
 //				Target: foobarRegionInstanceGroupManager.ID(),
 //				AutoscalingPolicy: &compute.RegionAutoscalerAutoscalingPolicyArgs{
-//					MaxReplicas:    pulumi.Int(5),
-//					MinReplicas:    pulumi.Int(1),
-//					CooldownPeriod: pulumi.Int(60),
+//					MaxReplicas:         pulumi.Int(5),
+//					MinReplicas:         pulumi.Int(1),
+//					CooldownPeriod:      pulumi.Int(60),
+//					StabilizationPeriod: pulumi.Int(300),
 //					CpuUtilization: &compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs{
 //						Target: pulumi.Float64(0.5),
 //					},
@@ -155,6 +156,13 @@ type RegionAutoscaler struct {
 	AutoscalingPolicy RegionAutoscalerAutoscalingPolicyOutput `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -219,6 +227,13 @@ type regionAutoscalerState struct {
 	AutoscalingPolicy *RegionAutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -248,6 +263,13 @@ type RegionAutoscalerState struct {
 	AutoscalingPolicy RegionAutoscalerAutoscalingPolicyPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -279,6 +301,13 @@ type regionAutoscalerArgs struct {
 	// on cpuUtilization to 0.6 or 60%.
 	// Structure is documented below.
 	AutoscalingPolicy RegionAutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -305,6 +334,13 @@ type RegionAutoscalerArgs struct {
 	// on cpuUtilization to 0.6 or 60%.
 	// Structure is documented below.
 	AutoscalingPolicy RegionAutoscalerAutoscalingPolicyInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long and match
@@ -422,6 +458,16 @@ func (o RegionAutoscalerOutput) AutoscalingPolicy() RegionAutoscalerAutoscalingP
 // Creation timestamp in RFC3339 text format.
 func (o RegionAutoscalerOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionAutoscalerOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

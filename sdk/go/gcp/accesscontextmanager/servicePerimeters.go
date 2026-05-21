@@ -133,6 +133,13 @@ import (
 type ServicePerimeters struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -174,6 +181,13 @@ func GetServicePerimeters(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePerimeters resources.
 type servicePerimetersState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent *string `pulumi:"parent"`
@@ -183,6 +197,13 @@ type servicePerimetersState struct {
 }
 
 type ServicePerimetersState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringPtrInput
@@ -196,6 +217,13 @@ func (ServicePerimetersState) ElementType() reflect.Type {
 }
 
 type servicePerimetersArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent string `pulumi:"parent"`
@@ -206,6 +234,13 @@ type servicePerimetersArgs struct {
 
 // The set of arguments for constructing a ServicePerimeters resource.
 type ServicePerimetersArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringInput
@@ -299,6 +334,16 @@ func (o ServicePerimetersOutput) ToServicePerimetersOutput() ServicePerimetersOu
 
 func (o ServicePerimetersOutput) ToServicePerimetersOutputWithContext(ctx context.Context) ServicePerimetersOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ServicePerimetersOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeters) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The AccessPolicy this ServicePerimeter lives in.

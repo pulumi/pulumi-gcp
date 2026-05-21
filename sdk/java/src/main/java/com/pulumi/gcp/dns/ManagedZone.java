@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -143,7 +144,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigTargetNameServerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -211,7 +214,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigTargetNameServerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -275,6 +280,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigGkeClusterArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -368,6 +374,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePeeringConfigArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePeeringConfigTargetNetworkArgs;
  * import java.util.ArrayList;
@@ -609,6 +616,30 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creationTime() {
         return this.creationTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.

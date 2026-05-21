@@ -26,6 +26,7 @@ class PluginArgs:
                  plugin_id: pulumi.Input[_builtins.str],
                  actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input['PluginActionsConfigArgs']]]] = None,
                  config_template: pulumi.Input[Optional['PluginConfigTemplateArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional['PluginDocumentationArgs']] = None,
                  hosting_service: pulumi.Input[Optional['PluginHostingServiceArgs']] = None,
@@ -52,6 +53,12 @@ class PluginArgs:
                Structure is documented below.
         :param pulumi.Input['PluginConfigTemplateArgs'] config_template: ConfigTemplate represents the configuration template for a plugin.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The plugin description. Max length is 2000 characters (Unicode code
                points).
         :param pulumi.Input['PluginDocumentationArgs'] documentation: Documentation details.
@@ -73,6 +80,8 @@ class PluginArgs:
             pulumi.set(__self__, "actions_configs", actions_configs)
         if config_template is not None:
             pulumi.set(__self__, "config_template", config_template)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if documentation is not None:
@@ -158,6 +167,23 @@ class PluginArgs:
         pulumi.set(self, "config_template", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -232,6 +258,7 @@ class _PluginState:
                  actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input['PluginActionsConfigArgs']]]] = None,
                  config_template: pulumi.Input[Optional['PluginConfigTemplateArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional['PluginDocumentationArgs']] = None,
@@ -252,6 +279,12 @@ class _PluginState:
         :param pulumi.Input['PluginConfigTemplateArgs'] config_template: ConfigTemplate represents the configuration template for a plugin.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp indicating when the plugin was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The plugin description. Max length is 2000 characters (Unicode code
                points).
         :param pulumi.Input[_builtins.str] display_name: The display name of the plugin. Max length is 50 characters (Unicode code
@@ -302,6 +335,8 @@ class _PluginState:
             pulumi.set(__self__, "config_template", config_template)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -364,6 +399,23 @@ class _PluginState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -549,6 +601,7 @@ class Plugin(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict']]]]] = None,
                  config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict']]] = None,
@@ -665,6 +718,12 @@ class Plugin(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']] config_template: ConfigTemplate represents the configuration template for a plugin.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The plugin description. Max length is 2000 characters (Unicode code
                points).
         :param pulumi.Input[_builtins.str] display_name: The display name of the plugin. Max length is 50 characters (Unicode code
@@ -817,6 +876,7 @@ class Plugin(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict']]]]] = None,
                  config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict']]] = None,
@@ -836,6 +896,7 @@ class Plugin(pulumi.CustomResource):
 
             __props__.__dict__["actions_configs"] = actions_configs
             __props__.__dict__["config_template"] = config_template
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -868,6 +929,7 @@ class Plugin(pulumi.CustomResource):
             actions_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PluginActionsConfigArgs', 'PluginActionsConfigArgsDict']]]]] = None,
             config_template: pulumi.Input[Optional[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             documentation: pulumi.Input[Optional[Union['PluginDocumentationArgs', 'PluginDocumentationArgsDict']]] = None,
@@ -892,6 +954,12 @@ class Plugin(pulumi.CustomResource):
         :param pulumi.Input[Union['PluginConfigTemplateArgs', 'PluginConfigTemplateArgsDict']] config_template: ConfigTemplate represents the configuration template for a plugin.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp indicating when the plugin was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The plugin description. Max length is 2000 characters (Unicode code
                points).
         :param pulumi.Input[_builtins.str] display_name: The display name of the plugin. Max length is 50 characters (Unicode code
@@ -943,6 +1011,7 @@ class Plugin(pulumi.CustomResource):
         __props__.__dict__["actions_configs"] = actions_configs
         __props__.__dict__["config_template"] = config_template
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["documentation"] = documentation
@@ -982,6 +1051,19 @@ class Plugin(pulumi.CustomResource):
         Timestamp indicating when the plugin was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

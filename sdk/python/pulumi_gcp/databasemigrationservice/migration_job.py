@@ -25,6 +25,7 @@ class MigrationJobArgs:
                  migration_job_id: pulumi.Input[_builtins.str],
                  source: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_flags: pulumi.Input[Optional['MigrationJobDumpFlagsArgs']] = None,
                  dump_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -33,6 +34,7 @@ class MigrationJobArgs:
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  objects_config: pulumi.Input[Optional['MigrationJobObjectsConfigArgs']] = None,
                  performance_config: pulumi.Input[Optional['MigrationJobPerformanceConfigArgs']] = None,
+                 postgres_homogeneous_config: pulumi.Input[Optional['MigrationJobPostgresHomogeneousConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reverse_ssh_connectivity: pulumi.Input[Optional['MigrationJobReverseSshConnectivityArgs']] = None,
                  static_ip_connectivity: pulumi.Input[Optional['MigrationJobStaticIpConnectivityArgs']] = None,
@@ -45,6 +47,12 @@ class MigrationJobArgs:
         :param pulumi.Input[_builtins.str] source: The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
         :param pulumi.Input[_builtins.str] type: The type of the migration job.
                Possible values are: `ONE_TIME`, `CONTINUOUS`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
         :param pulumi.Input['MigrationJobDumpFlagsArgs'] dump_flags: The initial dump flags.
                Structure is documented below.
@@ -64,6 +72,8 @@ class MigrationJobArgs:
                Structure is documented below.
         :param pulumi.Input['MigrationJobPerformanceConfigArgs'] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
+        :param pulumi.Input['MigrationJobPostgresHomogeneousConfigArgs'] postgres_homogeneous_config: PostgreSQL to PostgreSQL configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['MigrationJobReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details of the VPC network that the source database is located in.
@@ -79,6 +89,8 @@ class MigrationJobArgs:
         pulumi.set(__self__, "migration_job_id", migration_job_id)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "type", type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if dump_flags is not None:
@@ -95,6 +107,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "objects_config", objects_config)
         if performance_config is not None:
             pulumi.set(__self__, "performance_config", performance_config)
+        if postgres_homogeneous_config is not None:
+            pulumi.set(__self__, "postgres_homogeneous_config", postgres_homogeneous_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reverse_ssh_connectivity is not None:
@@ -152,6 +166,23 @@ class MigrationJobArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -261,6 +292,19 @@ class MigrationJobArgs:
         pulumi.set(self, "performance_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="postgresHomogeneousConfig")
+    def postgres_homogeneous_config(self) -> pulumi.Input[Optional['MigrationJobPostgresHomogeneousConfigArgs']]:
+        """
+        PostgreSQL to PostgreSQL configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgres_homogeneous_config")
+
+    @postgres_homogeneous_config.setter
+    def postgres_homogeneous_config(self, value: pulumi.Input[Optional['MigrationJobPostgresHomogeneousConfigArgs']]):
+        pulumi.set(self, "postgres_homogeneous_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -319,6 +363,7 @@ class MigrationJobArgs:
 class _MigrationJobState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_flags: pulumi.Input[Optional['MigrationJobDumpFlagsArgs']] = None,
@@ -333,6 +378,7 @@ class _MigrationJobState:
                  objects_config: pulumi.Input[Optional['MigrationJobObjectsConfigArgs']] = None,
                  performance_config: pulumi.Input[Optional['MigrationJobPerformanceConfigArgs']] = None,
                  phase: pulumi.Input[Optional[_builtins.str]] = None,
+                 postgres_homogeneous_config: pulumi.Input[Optional['MigrationJobPostgresHomogeneousConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  reverse_ssh_connectivity: pulumi.Input[Optional['MigrationJobReverseSshConnectivityArgs']] = None,
@@ -345,6 +391,12 @@ class _MigrationJobState:
         Input properties used for looking up and filtering MigrationJob resources.
 
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
         :param pulumi.Input['MigrationJobDumpFlagsArgs'] dump_flags: The initial dump flags.
@@ -371,6 +423,8 @@ class _MigrationJobState:
         :param pulumi.Input['MigrationJobPerformanceConfigArgs'] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] phase: The current migration job phase.
+        :param pulumi.Input['MigrationJobPostgresHomogeneousConfigArgs'] postgres_homogeneous_config: PostgreSQL to PostgreSQL configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -390,6 +444,8 @@ class _MigrationJobState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
         if display_name is not None:
@@ -418,6 +474,8 @@ class _MigrationJobState:
             pulumi.set(__self__, "performance_config", performance_config)
         if phase is not None:
             pulumi.set(__self__, "phase", phase)
+        if postgres_homogeneous_config is not None:
+            pulumi.set(__self__, "postgres_homogeneous_config", postgres_homogeneous_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -446,6 +504,23 @@ class _MigrationJobState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -628,6 +703,19 @@ class _MigrationJobState:
         pulumi.set(self, "phase", value)
 
     @_builtins.property
+    @pulumi.getter(name="postgresHomogeneousConfig")
+    def postgres_homogeneous_config(self) -> pulumi.Input[Optional['MigrationJobPostgresHomogeneousConfigArgs']]:
+        """
+        PostgreSQL to PostgreSQL configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgres_homogeneous_config")
+
+    @postgres_homogeneous_config.setter
+    def postgres_homogeneous_config(self, value: pulumi.Input[Optional['MigrationJobPostgresHomogeneousConfigArgs']]):
+        pulumi.set(self, "postgres_homogeneous_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -738,6 +826,7 @@ class MigrationJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_flags: pulumi.Input[Optional[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']]] = None,
@@ -748,6 +837,7 @@ class MigrationJob(pulumi.CustomResource):
                  migration_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  objects_config: pulumi.Input[Optional[Union['MigrationJobObjectsConfigArgs', 'MigrationJobObjectsConfigArgsDict']]] = None,
                  performance_config: pulumi.Input[Optional[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']]] = None,
+                 postgres_homogeneous_config: pulumi.Input[Optional[Union['MigrationJobPostgresHomogeneousConfigArgs', 'MigrationJobPostgresHomogeneousConfigArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reverse_ssh_connectivity: pulumi.Input[Optional[Union['MigrationJobReverseSshConnectivityArgs', 'MigrationJobReverseSshConnectivityArgsDict']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1147,6 +1237,12 @@ class MigrationJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
         :param pulumi.Input[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']] dump_flags: The initial dump flags.
@@ -1167,6 +1263,8 @@ class MigrationJob(pulumi.CustomResource):
                all objects available on the source.
                Structure is documented below.
         :param pulumi.Input[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']] performance_config: Data dump parallelism settings used by the migration.
+               Structure is documented below.
+        :param pulumi.Input[Union['MigrationJobPostgresHomogeneousConfigArgs', 'MigrationJobPostgresHomogeneousConfigArgsDict']] postgres_homogeneous_config: PostgreSQL to PostgreSQL configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1593,6 +1691,7 @@ class MigrationJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dump_flags: pulumi.Input[Optional[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']]] = None,
@@ -1603,6 +1702,7 @@ class MigrationJob(pulumi.CustomResource):
                  migration_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  objects_config: pulumi.Input[Optional[Union['MigrationJobObjectsConfigArgs', 'MigrationJobObjectsConfigArgsDict']]] = None,
                  performance_config: pulumi.Input[Optional[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']]] = None,
+                 postgres_homogeneous_config: pulumi.Input[Optional[Union['MigrationJobPostgresHomogeneousConfigArgs', 'MigrationJobPostgresHomogeneousConfigArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reverse_ssh_connectivity: pulumi.Input[Optional[Union['MigrationJobReverseSshConnectivityArgs', 'MigrationJobReverseSshConnectivityArgsDict']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1618,6 +1718,7 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MigrationJobArgs.__new__(MigrationJobArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
@@ -1632,6 +1733,7 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["migration_job_id"] = migration_job_id
             __props__.__dict__["objects_config"] = objects_config
             __props__.__dict__["performance_config"] = performance_config
+            __props__.__dict__["postgres_homogeneous_config"] = postgres_homogeneous_config
             __props__.__dict__["project"] = project
             __props__.__dict__["reverse_ssh_connectivity"] = reverse_ssh_connectivity
             if source is None and not opts.urn:
@@ -1662,6 +1764,7 @@ class MigrationJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             destination: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             dump_flags: pulumi.Input[Optional[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']]] = None,
@@ -1676,6 +1779,7 @@ class MigrationJob(pulumi.CustomResource):
             objects_config: pulumi.Input[Optional[Union['MigrationJobObjectsConfigArgs', 'MigrationJobObjectsConfigArgsDict']]] = None,
             performance_config: pulumi.Input[Optional[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']]] = None,
             phase: pulumi.Input[Optional[_builtins.str]] = None,
+            postgres_homogeneous_config: pulumi.Input[Optional[Union['MigrationJobPostgresHomogeneousConfigArgs', 'MigrationJobPostgresHomogeneousConfigArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reverse_ssh_connectivity: pulumi.Input[Optional[Union['MigrationJobReverseSshConnectivityArgs', 'MigrationJobReverseSshConnectivityArgsDict']]] = None,
@@ -1692,6 +1796,12 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
         :param pulumi.Input[Union['MigrationJobDumpFlagsArgs', 'MigrationJobDumpFlagsArgsDict']] dump_flags: The initial dump flags.
@@ -1718,6 +1828,8 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] phase: The current migration job phase.
+        :param pulumi.Input[Union['MigrationJobPostgresHomogeneousConfigArgs', 'MigrationJobPostgresHomogeneousConfigArgsDict']] postgres_homogeneous_config: PostgreSQL to PostgreSQL configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1740,6 +1852,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__ = _MigrationJobState.__new__(_MigrationJobState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["destination"] = destination
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["dump_flags"] = dump_flags
@@ -1754,6 +1867,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["objects_config"] = objects_config
         __props__.__dict__["performance_config"] = performance_config
         __props__.__dict__["phase"] = phase
+        __props__.__dict__["postgres_homogeneous_config"] = postgres_homogeneous_config
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reverse_ssh_connectivity"] = reverse_ssh_connectivity
@@ -1771,6 +1885,19 @@ class MigrationJob(pulumi.CustomResource):
         Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -1895,6 +2022,15 @@ class MigrationJob(pulumi.CustomResource):
         The current migration job phase.
         """
         return pulumi.get(self, "phase")
+
+    @_builtins.property
+    @pulumi.getter(name="postgresHomogeneousConfig")
+    def postgres_homogeneous_config(self) -> pulumi.Output[Optional['outputs.MigrationJobPostgresHomogeneousConfig']]:
+        """
+        PostgreSQL to PostgreSQL configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgres_homogeneous_config")
 
     @_builtins.property
     @pulumi.getter

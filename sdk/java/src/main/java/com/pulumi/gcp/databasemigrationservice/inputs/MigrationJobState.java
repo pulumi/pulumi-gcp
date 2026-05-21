@@ -9,6 +9,7 @@ import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobDumpFlagsArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobErrorArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobPerformanceConfigArgs;
+import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobPostgresHomogeneousConfigArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobReverseSshConnectivityArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobStaticIpConnectivityArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobVpcPeeringConnectivityArgs;
@@ -37,6 +38,31 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -274,6 +300,23 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * PostgreSQL to PostgreSQL configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="postgresHomogeneousConfig")
+    private @Nullable Output<MigrationJobPostgresHomogeneousConfigArgs> postgresHomogeneousConfig;
+
+    /**
+     * @return PostgreSQL to PostgreSQL configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MigrationJobPostgresHomogeneousConfigArgs>> postgresHomogeneousConfig() {
+        return Optional.ofNullable(this.postgresHomogeneousConfig);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -413,6 +456,7 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
 
     private MigrationJobState(MigrationJobState $) {
         this.createTime = $.createTime;
+        this.deletionPolicy = $.deletionPolicy;
         this.destination = $.destination;
         this.displayName = $.displayName;
         this.dumpFlags = $.dumpFlags;
@@ -427,6 +471,7 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
         this.objectsConfig = $.objectsConfig;
         this.performanceConfig = $.performanceConfig;
         this.phase = $.phase;
+        this.postgresHomogeneousConfig = $.postgresHomogeneousConfig;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.reverseSshConnectivity = $.reverseSshConnectivity;
@@ -474,6 +519,37 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -803,6 +879,29 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder phase(String phase) {
             return phase(Output.of(phase));
+        }
+
+        /**
+         * @param postgresHomogeneousConfig PostgreSQL to PostgreSQL configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postgresHomogeneousConfig(@Nullable Output<MigrationJobPostgresHomogeneousConfigArgs> postgresHomogeneousConfig) {
+            $.postgresHomogeneousConfig = postgresHomogeneousConfig;
+            return this;
+        }
+
+        /**
+         * @param postgresHomogeneousConfig PostgreSQL to PostgreSQL configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postgresHomogeneousConfig(MigrationJobPostgresHomogeneousConfigArgs postgresHomogeneousConfig) {
+            return postgresHomogeneousConfig(Output.of(postgresHomogeneousConfig));
         }
 
         /**

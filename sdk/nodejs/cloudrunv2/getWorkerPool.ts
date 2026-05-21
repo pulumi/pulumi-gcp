@@ -66,6 +66,7 @@ export interface GetWorkerPoolResult {
     readonly creator: string;
     readonly customAudiences: string[];
     readonly deleteTime: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly description: string;
     readonly effectiveAnnotations: {[key: string]: string};

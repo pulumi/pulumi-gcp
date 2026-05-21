@@ -890,6 +890,7 @@ class GetCertificateMapGclbTargetIpConfigResult(dict):
 @pulumi.output_type
 class GetCertificatesCertificateResult(dict):
     def __init__(__self__, *,
+                 deletion_policy: _builtins.str,
                  description: _builtins.str,
                  effective_labels: Mapping[str, _builtins.str],
                  labels: Mapping[str, _builtins.str],
@@ -901,6 +902,12 @@ class GetCertificatesCertificateResult(dict):
                  san_dnsnames: Sequence[_builtins.str],
                  scope: _builtins.str):
         """
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.str description: A human-readable description of the resource.
         :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param Mapping[str, _builtins.str] labels: Set of label tags associated with the Certificate resource.
@@ -933,6 +940,7 @@ class GetCertificatesCertificateResult(dict):
                CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
                See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
         """
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "labels", labels)
@@ -943,6 +951,19 @@ class GetCertificatesCertificateResult(dict):
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         pulumi.set(__self__, "san_dnsnames", san_dnsnames)
         pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

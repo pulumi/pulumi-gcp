@@ -113,6 +113,15 @@ export class NetworkPeering extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * User-provided description for this network peering.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -197,6 +206,7 @@ export class NetworkPeering extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NetworkPeeringState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["exportCustomRoutes"] = state?.exportCustomRoutes;
             resourceInputs["exportCustomRoutesWithPublicIp"] = state?.exportCustomRoutesWithPublicIp;
@@ -223,6 +233,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             if (args?.vmwareEngineNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmwareEngineNetwork'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["exportCustomRoutes"] = args?.exportCustomRoutes;
             resourceInputs["exportCustomRoutesWithPublicIp"] = args?.exportCustomRoutesWithPublicIp;
@@ -255,6 +266,15 @@ export interface NetworkPeeringState {
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for this network peering.
      */
@@ -331,6 +351,15 @@ export interface NetworkPeeringState {
  * The set of arguments for constructing a NetworkPeering resource.
  */
 export interface NetworkPeeringArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for this network peering.
      */

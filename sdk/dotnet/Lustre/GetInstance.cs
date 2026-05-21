@@ -96,6 +96,7 @@ namespace Pulumi.Gcp.Lustre
         public readonly ImmutableArray<Outputs.GetInstanceAccessRulesOptionResult> AccessRulesOptions;
         public readonly string CapacityGib;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetInstanceDynamicTierOptionResult> DynamicTierOptions;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -131,6 +132,8 @@ namespace Pulumi.Gcp.Lustre
             string capacityGib,
 
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -183,6 +186,7 @@ namespace Pulumi.Gcp.Lustre
             AccessRulesOptions = accessRulesOptions;
             CapacityGib = capacityGib;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DynamicTierOptions = dynamicTierOptions;
             EffectiveLabels = effectiveLabels;

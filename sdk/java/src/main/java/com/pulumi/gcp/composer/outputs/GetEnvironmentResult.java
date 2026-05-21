@@ -21,6 +21,7 @@ public final class GetEnvironmentResult {
      * 
      */
     private List<GetEnvironmentConfig> configs;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -41,6 +42,9 @@ public final class GetEnvironmentResult {
      */
     public List<GetEnvironmentConfig> configs() {
         return this.configs;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -81,6 +85,7 @@ public final class GetEnvironmentResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetEnvironmentConfig> configs;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private String id;
         private Map<String,String> labels;
@@ -93,6 +98,7 @@ public final class GetEnvironmentResult {
         public Builder(GetEnvironmentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -113,6 +119,14 @@ public final class GetEnvironmentResult {
         }
         public Builder configs(GetEnvironmentConfig... configs) {
             return configs(List.of(configs));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
@@ -180,6 +194,7 @@ public final class GetEnvironmentResult {
         public GetEnvironmentResult build() {
             final var _resultValue = new GetEnvironmentResult();
             _resultValue.configs = configs;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;
             _resultValue.labels = labels;

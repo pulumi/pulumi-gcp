@@ -236,6 +236,15 @@ export class Runtime extends pulumi.CustomResource {
      */
     declare public readonly accessConfig: pulumi.Output<outputs.notebooks.RuntimeAccessConfig | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -309,6 +318,7 @@ export class Runtime extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RuntimeState | undefined;
             resourceInputs["accessConfig"] = state?.accessConfig;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["healthState"] = state?.healthState;
             resourceInputs["labels"] = state?.labels;
@@ -326,6 +336,7 @@ export class Runtime extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["accessConfig"] = args?.accessConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
@@ -354,6 +365,15 @@ export interface RuntimeState {
      * Structure is documented below.
      */
     accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -424,6 +444,15 @@ export interface RuntimeArgs {
      * Structure is documented below.
      */
     accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be

@@ -4172,7 +4172,7 @@ class ClusterAddonsConfig(dict):
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
                It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-        :param 'ClusterAddonsConfigPodSnapshotConfigArgs' pod_snapshot_config: ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+        :param 'ClusterAddonsConfigPodSnapshotConfigArgs' pod_snapshot_config: The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
                
                This example `addons_config` disables two addons:
         :param Sequence['ClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: . The status of the [Ray Operator
@@ -4385,7 +4385,7 @@ class ClusterAddonsConfig(dict):
     @pulumi.getter(name="podSnapshotConfig")
     def pod_snapshot_config(self) -> Optional['outputs.ClusterAddonsConfigPodSnapshotConfig']:
         """
-        ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+        The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
 
         This example `addons_config` disables two addons:
         """
@@ -17611,7 +17611,7 @@ class ClusterSecretManagerConfig(dict):
                  rotation_config: Optional['outputs.ClusterSecretManagerConfigRotationConfig'] = None):
         """
         :param _builtins.bool enabled: Enable the Secret Manager add-on for this cluster.
-        :param 'ClusterSecretManagerConfigRotationConfigArgs' rotation_config: config for secret manager auto rotation. Structure is docuemented below
+        :param 'ClusterSecretManagerConfigRotationConfigArgs' rotation_config: config for secret manager auto rotation. Structure is documented below
         """
         pulumi.set(__self__, "enabled", enabled)
         if rotation_config is not None:
@@ -17629,7 +17629,7 @@ class ClusterSecretManagerConfig(dict):
     @pulumi.getter(name="rotationConfig")
     def rotation_config(self) -> Optional['outputs.ClusterSecretManagerConfigRotationConfig']:
         """
-        config for secret manager auto rotation. Structure is docuemented below
+        config for secret manager auto rotation. Structure is documented below
         """
         return pulumi.get(self, "rotation_config")
 
@@ -17657,8 +17657,8 @@ class ClusterSecretManagerConfigRotationConfig(dict):
                  enabled: _builtins.bool,
                  rotation_interval: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool enabled: ) - Enable the roation in Sync as K8s secret feature for this cluster.
-        :param _builtins.str rotation_interval: ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        :param _builtins.bool enabled: Enable the roation in Sync as K8s secret feature for this cluster.
+        :param _builtins.str rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         pulumi.set(__self__, "enabled", enabled)
         if rotation_interval is not None:
@@ -17668,7 +17668,7 @@ class ClusterSecretManagerConfigRotationConfig(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        ) - Enable the roation in Sync as K8s secret feature for this cluster.
+        Enable the roation in Sync as K8s secret feature for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -17676,7 +17676,7 @@ class ClusterSecretManagerConfigRotationConfig(dict):
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[_builtins.str]:
         """
-        ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -17704,8 +17704,8 @@ class ClusterSecretSyncConfig(dict):
                  enabled: _builtins.bool,
                  rotation_config: Optional['outputs.ClusterSecretSyncConfigRotationConfig'] = None):
         """
-        :param _builtins.bool enabled: ) - Enable the Sync as K8s secret feature for this cluster.
-        :param 'ClusterSecretSyncConfigRotationConfigArgs' rotation_config: ) - config for secret sync auto rotation. Structure is docuemented below
+        :param _builtins.bool enabled: Enable the Sync as K8s secret feature for this cluster.
+        :param 'ClusterSecretSyncConfigRotationConfigArgs' rotation_config: config for secret sync auto rotation. Structure is docuemented below
         """
         pulumi.set(__self__, "enabled", enabled)
         if rotation_config is not None:
@@ -17715,7 +17715,7 @@ class ClusterSecretSyncConfig(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        ) - Enable the Sync as K8s secret feature for this cluster.
+        Enable the Sync as K8s secret feature for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -17723,7 +17723,7 @@ class ClusterSecretSyncConfig(dict):
     @pulumi.getter(name="rotationConfig")
     def rotation_config(self) -> Optional['outputs.ClusterSecretSyncConfigRotationConfig']:
         """
-        ) - config for secret sync auto rotation. Structure is docuemented below
+        config for secret sync auto rotation. Structure is docuemented below
         """
         return pulumi.get(self, "rotation_config")
 
@@ -17751,8 +17751,8 @@ class ClusterSecretSyncConfigRotationConfig(dict):
                  enabled: _builtins.bool,
                  rotation_interval: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool enabled: ) - Enable the roation in Sync as K8s secret feature for this cluster.
-        :param _builtins.str rotation_interval: ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        :param _builtins.bool enabled: Enable the roation in Sync as K8s secret feature for this cluster.
+        :param _builtins.str rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         pulumi.set(__self__, "enabled", enabled)
         if rotation_interval is not None:
@@ -17762,7 +17762,7 @@ class ClusterSecretSyncConfigRotationConfig(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        ) - Enable the roation in Sync as K8s secret feature for this cluster.
+        Enable the roation in Sync as K8s secret feature for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -17770,7 +17770,7 @@ class ClusterSecretSyncConfigRotationConfig(dict):
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[_builtins.str]:
         """
-        ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         return pulumi.get(self, "rotation_interval")
 

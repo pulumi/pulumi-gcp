@@ -26,7 +26,10 @@ class GetConfigResult:
     """
     A collection of values returned by getConfig.
     """
-    def __init__(__self__, description=None, id=None, name=None, project=None):
+    def __init__(__self__, deletion_policy=None, description=None, id=None, name=None, project=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -39,6 +42,11 @@ class GetConfigResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -70,6 +78,7 @@ class AwaitableGetConfigResult(GetConfigResult):
         if False:
             yield self
         return GetConfigResult(
+            deletion_policy=self.deletion_policy,
             description=self.description,
             id=self.id,
             name=self.name,
@@ -112,6 +121,7 @@ def get_config(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:runtimeconfig/getConfig:getConfig', __args__, opts=opts, typ=GetConfigResult).value
 
     return AwaitableGetConfigResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -151,6 +161,7 @@ def get_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:runtimeconfig/getConfig:getConfig', __args__, opts=opts, typ=GetConfigResult)
     return __ret__.apply(lambda __response__: GetConfigResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

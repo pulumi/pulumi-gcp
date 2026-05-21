@@ -44,6 +44,13 @@ type QaQuestion struct {
 	AnswerInstructions pulumi.StringPtrOutput `pulumi:"answerInstructions"`
 	// The time at which this question was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// A wrapper representing metrics calculated against a test-set on a LLM that
@@ -143,6 +150,13 @@ type qaQuestionState struct {
 	AnswerInstructions *string `pulumi:"answerInstructions"`
 	// The time at which this question was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
 	// A wrapper representing metrics calculated against a test-set on a LLM that
@@ -204,6 +218,13 @@ type QaQuestionState struct {
 	AnswerInstructions pulumi.StringPtrInput
 	// The time at which this question was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
 	// A wrapper representing metrics calculated against a test-set on a LLM that
@@ -267,6 +288,13 @@ type qaQuestionArgs struct {
 	AnswerChoices []QaQuestionAnswerChoice `pulumi:"answerChoices"`
 	// Instructions describing how to determine the answer.
 	AnswerInstructions *string `pulumi:"answerInstructions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
 	// A wrapper representing metrics calculated against a test-set on a LLM that
@@ -321,6 +349,13 @@ type QaQuestionArgs struct {
 	AnswerChoices QaQuestionAnswerChoiceArrayInput
 	// Instructions describing how to determine the answer.
 	AnswerInstructions pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
 	// A wrapper representing metrics calculated against a test-set on a LLM that
@@ -472,6 +507,16 @@ func (o QaQuestionOutput) AnswerInstructions() pulumi.StringPtrOutput {
 // The time at which this question was created.
 func (o QaQuestionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *QaQuestion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o QaQuestionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *QaQuestion) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.

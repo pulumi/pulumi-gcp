@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 public final class GetSnapshotResult {
     private String chainName;
     private String creationTimestamp;
+    private String deletionPolicy;
     private String description;
     private Integer diskSizeGb;
     private Map<String,String> effectiveLabels;
@@ -54,6 +55,9 @@ public final class GetSnapshotResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -140,6 +144,7 @@ public final class GetSnapshotResult {
     public static final class Builder {
         private String chainName;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private Integer diskSizeGb;
         private Map<String,String> effectiveLabels;
@@ -168,6 +173,7 @@ public final class GetSnapshotResult {
     	      Objects.requireNonNull(defaults);
     	      this.chainName = defaults.chainName;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -207,6 +213,14 @@ public final class GetSnapshotResult {
               throw new MissingRequiredPropertyException("GetSnapshotResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -401,6 +415,7 @@ public final class GetSnapshotResult {
             final var _resultValue = new GetSnapshotResult();
             _resultValue.chainName = chainName;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.effectiveLabels = effectiveLabels;

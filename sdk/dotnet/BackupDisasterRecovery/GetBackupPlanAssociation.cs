@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly string BackupPlanAssociationId;
         public readonly string CreateTime;
         public readonly string DataSource;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -168,6 +169,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string dataSource,
 
+            string deletionPolicy,
+
             string id,
 
             string location,
@@ -188,6 +191,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             BackupPlanAssociationId = backupPlanAssociationId;
             CreateTime = createTime;
             DataSource = dataSource;
+            DeletionPolicy = deletionPolicy;
             Id = id;
             Location = location;
             Name = name;

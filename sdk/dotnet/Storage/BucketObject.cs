@@ -169,10 +169,15 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.BucketObjectCustomerEncryption?> CustomerEncryption { get; private set; } = null!;
 
         /// <summary>
-        /// When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
@@ -414,7 +419,12 @@ namespace Pulumi.Gcp.Storage
         }
 
         /// <summary>
-        /// When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -591,7 +601,12 @@ namespace Pulumi.Gcp.Storage
         }
 
         /// <summary>
-        /// When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

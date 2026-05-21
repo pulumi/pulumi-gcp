@@ -69,6 +69,7 @@ type LookupRepositoryResult struct {
 	CleanupPolicies     []GetRepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
 	CleanupPolicyDryRun bool                         `pulumi:"cleanupPolicyDryRun"`
 	CreateTime          string                       `pulumi:"createTime"`
+	DeletionPolicy      string                       `pulumi:"deletionPolicy"`
 	Description         string                       `pulumi:"description"`
 	DockerConfigs       []GetRepositoryDockerConfig  `pulumi:"dockerConfigs"`
 	EffectiveLabels     map[string]string            `pulumi:"effectiveLabels"`
@@ -142,6 +143,10 @@ func (o LookupRepositoryResultOutput) CleanupPolicyDryRun() pulumi.BoolOutput {
 
 func (o LookupRepositoryResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupRepositoryResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupRepositoryResultOutput) Description() pulumi.StringOutput {

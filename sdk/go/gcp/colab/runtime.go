@@ -214,6 +214,13 @@ type Runtime struct {
 
 	// Triggers an upgrade anytime the runtime is started if it is upgradable.
 	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the Runtime.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
@@ -283,6 +290,13 @@ func GetRuntime(ctx *pulumi.Context,
 type runtimeState struct {
 	// Triggers an upgrade anytime the runtime is started if it is upgradable.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the Runtime.
 	Description *string `pulumi:"description"`
 	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
@@ -314,6 +328,13 @@ type runtimeState struct {
 type RuntimeState struct {
 	// Triggers an upgrade anytime the runtime is started if it is upgradable.
 	AutoUpgrade pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the Runtime.
 	Description pulumi.StringPtrInput
 	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
@@ -349,6 +370,13 @@ func (RuntimeState) ElementType() reflect.Type {
 type runtimeArgs struct {
 	// Triggers an upgrade anytime the runtime is started if it is upgradable.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the Runtime.
 	Description *string `pulumi:"description"`
 	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
@@ -373,6 +401,13 @@ type runtimeArgs struct {
 type RuntimeArgs struct {
 	// Triggers an upgrade anytime the runtime is started if it is upgradable.
 	AutoUpgrade pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the Runtime.
 	Description pulumi.StringPtrInput
 	// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
@@ -483,6 +518,16 @@ func (o RuntimeOutput) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOu
 // Triggers an upgrade anytime the runtime is started if it is upgradable.
 func (o RuntimeOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.BoolPtrOutput { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RuntimeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the Runtime.

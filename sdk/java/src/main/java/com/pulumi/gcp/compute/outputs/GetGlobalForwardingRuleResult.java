@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
 public final class GetGlobalForwardingRuleResult {
     private Boolean allowPscGlobalAccess;
     private String baseForwardingRule;
+    private String deletionPolicy;
     private String description;
     private Map<String,String> effectiveLabels;
     private String externalManagedBackendBucketMigrationState;
@@ -59,6 +60,9 @@ public final class GetGlobalForwardingRuleResult {
     }
     public String baseForwardingRule() {
         return this.baseForwardingRule;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -157,6 +161,7 @@ public final class GetGlobalForwardingRuleResult {
     public static final class Builder {
         private Boolean allowPscGlobalAccess;
         private String baseForwardingRule;
+        private String deletionPolicy;
         private String description;
         private Map<String,String> effectiveLabels;
         private String externalManagedBackendBucketMigrationState;
@@ -189,6 +194,7 @@ public final class GetGlobalForwardingRuleResult {
     	      Objects.requireNonNull(defaults);
     	      this.allowPscGlobalAccess = defaults.allowPscGlobalAccess;
     	      this.baseForwardingRule = defaults.baseForwardingRule;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.externalManagedBackendBucketMigrationState = defaults.externalManagedBackendBucketMigrationState;
@@ -232,6 +238,14 @@ public final class GetGlobalForwardingRuleResult {
               throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "baseForwardingRule");
             }
             this.baseForwardingRule = baseForwardingRule;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -461,6 +475,7 @@ public final class GetGlobalForwardingRuleResult {
             final var _resultValue = new GetGlobalForwardingRuleResult();
             _resultValue.allowPscGlobalAccess = allowPscGlobalAccess;
             _resultValue.baseForwardingRule = baseForwardingRule;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.externalManagedBackendBucketMigrationState = externalManagedBackendBucketMigrationState;

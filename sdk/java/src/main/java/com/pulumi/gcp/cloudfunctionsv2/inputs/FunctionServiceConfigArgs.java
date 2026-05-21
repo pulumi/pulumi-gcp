@@ -23,14 +23,14 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     public static final FunctionServiceConfigArgs Empty = new FunctionServiceConfigArgs();
 
     /**
-     * Whether 100% of traffic is routed to the latest revision. Defaults to true.
+     * Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
      * 
      */
     @Import(name="allTrafficOnLatestRevision")
     private @Nullable Output<Boolean> allTrafficOnLatestRevision;
 
     /**
-     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
+     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
      * 
      */
     public Optional<Output<Boolean>> allTrafficOnLatestRevision() {
@@ -398,7 +398,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allTrafficOnLatestRevision Whether 100% of traffic is routed to the latest revision. Defaults to true.
+         * @param allTrafficOnLatestRevision Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allTrafficOnLatestRevision Whether 100% of traffic is routed to the latest revision. Defaults to true.
+         * @param allTrafficOnLatestRevision Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
          * 
          * @return builder
          * 

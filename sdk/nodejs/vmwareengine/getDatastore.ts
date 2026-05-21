@@ -54,6 +54,7 @@ export interface GetDatastoreArgs {
 export interface GetDatastoreResult {
     readonly clusters: string[];
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.

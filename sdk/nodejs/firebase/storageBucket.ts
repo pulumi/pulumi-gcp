@@ -85,6 +85,15 @@ export class StorageBucket extends pulumi.CustomResource {
      */
     declare public readonly bucketId: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
@@ -108,11 +117,13 @@ export class StorageBucket extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as StorageBucketState | undefined;
             resourceInputs["bucketId"] = state?.bucketId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as StorageBucketArgs | undefined;
             resourceInputs["bucketId"] = args?.bucketId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["project"] = args?.project;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -129,6 +140,15 @@ export interface StorageBucketState {
      * Required. Immutable. The ID of the underlying Google Cloud Storage bucket
      */
     bucketId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
      */
@@ -148,6 +168,15 @@ export interface StorageBucketArgs {
      * Required. Immutable. The ID of the underlying Google Cloud Storage bucket
      */
     bucketId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

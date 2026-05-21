@@ -24,6 +24,7 @@ class SecurityProfileArgs:
                  type: pulumi.Input[_builtins.str],
                  custom_intercept_profile: pulumi.Input[Optional['SecurityProfileCustomInterceptProfileArgs']] = None,
                  custom_mirroring_profile: pulumi.Input[Optional['SecurityProfileCustomMirroringProfileArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +43,12 @@ class SecurityProfileArgs:
         :param pulumi.Input['SecurityProfileCustomMirroringProfileArgs'] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
                mirror traffic to third-party collectors.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the security profile. The Max length is 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the resource.
                
@@ -51,7 +58,7 @@ class SecurityProfileArgs:
                The default value is `global`.
         :param pulumi.Input[_builtins.str] name: The name of the security profile resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input['SecurityProfileThreatPreventionProfileArgs'] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input['SecurityProfileUrlFilteringProfileArgs'] url_filtering_profile: The url filtering configuration for the security profile.
@@ -62,6 +69,8 @@ class SecurityProfileArgs:
             pulumi.set(__self__, "custom_intercept_profile", custom_intercept_profile)
         if custom_mirroring_profile is not None:
             pulumi.set(__self__, "custom_mirroring_profile", custom_mirroring_profile)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -117,6 +126,23 @@ class SecurityProfileArgs:
     @custom_mirroring_profile.setter
     def custom_mirroring_profile(self, value: pulumi.Input[Optional['SecurityProfileCustomMirroringProfileArgs']]):
         pulumi.set(self, "custom_mirroring_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -175,7 +201,7 @@ class SecurityProfileArgs:
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parent this security profile belongs to.
-        Format: organizations/{organization_id}.
+        Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         return pulumi.get(self, "parent")
 
@@ -216,6 +242,7 @@ class _SecurityProfileState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_intercept_profile: pulumi.Input[Optional['SecurityProfileCustomInterceptProfileArgs']] = None,
                  custom_mirroring_profile: pulumi.Input[Optional['SecurityProfileCustomMirroringProfileArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -239,6 +266,12 @@ class _SecurityProfileState:
         :param pulumi.Input['SecurityProfileCustomMirroringProfileArgs'] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
                mirror traffic to third-party collectors.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the security profile. The Max length is 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields,
@@ -252,7 +285,7 @@ class _SecurityProfileState:
                The default value is `global`.
         :param pulumi.Input[_builtins.str] name: The name of the security profile resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
@@ -270,6 +303,8 @@ class _SecurityProfileState:
             pulumi.set(__self__, "custom_intercept_profile", custom_intercept_profile)
         if custom_mirroring_profile is not None:
             pulumi.set(__self__, "custom_mirroring_profile", custom_mirroring_profile)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -336,6 +371,23 @@ class _SecurityProfileState:
     @custom_mirroring_profile.setter
     def custom_mirroring_profile(self, value: pulumi.Input[Optional['SecurityProfileCustomMirroringProfileArgs']]):
         pulumi.set(self, "custom_mirroring_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -420,7 +472,7 @@ class _SecurityProfileState:
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parent this security profile belongs to.
-        Format: organizations/{organization_id}.
+        Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         return pulumi.get(self, "parent")
 
@@ -513,6 +565,7 @@ class SecurityProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']]] = None,
                  custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -715,6 +768,12 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
                mirror traffic to third-party collectors.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the security profile. The Max length is 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the resource.
                
@@ -724,7 +783,7 @@ class SecurityProfile(pulumi.CustomResource):
                The default value is `global`.
         :param pulumi.Input[_builtins.str] name: The name of the security profile resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type of security profile.
@@ -940,6 +999,7 @@ class SecurityProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']]] = None,
                  custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -959,6 +1019,7 @@ class SecurityProfile(pulumi.CustomResource):
 
             __props__.__dict__["custom_intercept_profile"] = custom_intercept_profile
             __props__.__dict__["custom_mirroring_profile"] = custom_mirroring_profile
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -990,6 +1051,7 @@ class SecurityProfile(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_intercept_profile: pulumi.Input[Optional[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']]] = None,
             custom_mirroring_profile: pulumi.Input[Optional[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1017,6 +1079,12 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
                mirror traffic to third-party collectors.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the security profile. The Max length is 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields,
@@ -1030,7 +1098,7 @@ class SecurityProfile(pulumi.CustomResource):
                The default value is `global`.
         :param pulumi.Input[_builtins.str] name: The name of the security profile resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this security profile belongs to.
-               Format: organizations/{organization_id}.
+               Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
@@ -1049,6 +1117,7 @@ class SecurityProfile(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_intercept_profile"] = custom_intercept_profile
         __props__.__dict__["custom_mirroring_profile"] = custom_mirroring_profile
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
@@ -1091,6 +1160,19 @@ class SecurityProfile(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "custom_mirroring_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -1151,7 +1233,7 @@ class SecurityProfile(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The name of the parent this security profile belongs to.
-        Format: organizations/{organization_id}.
+        Format: `organizations/{organization_id}` or `projects/{project_id}`.
         """
         return pulumi.get(self, "parent")
 

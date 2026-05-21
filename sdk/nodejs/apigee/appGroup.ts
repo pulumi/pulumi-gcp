@@ -180,6 +180,15 @@ export class AppGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * App group name displayed in the UI
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -224,6 +233,7 @@ export class AppGroup extends pulumi.CustomResource {
             resourceInputs["channelId"] = state?.channelId;
             resourceInputs["channelUri"] = state?.channelUri;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["lastModifiedAt"] = state?.lastModifiedAt;
             resourceInputs["name"] = state?.name;
@@ -238,6 +248,7 @@ export class AppGroup extends pulumi.CustomResource {
             resourceInputs["attributes"] = args?.attributes;
             resourceInputs["channelId"] = args?.channelId;
             resourceInputs["channelUri"] = args?.channelUri;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
@@ -277,6 +288,15 @@ export interface AppGroupState {
      * Created time as milliseconds since epoch.
      */
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * App group name displayed in the UI
      */
@@ -322,6 +342,15 @@ export interface AppGroupArgs {
      * A reference to the associated storefront/marketplace.
      */
     channelUri?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * App group name displayed in the UI
      */

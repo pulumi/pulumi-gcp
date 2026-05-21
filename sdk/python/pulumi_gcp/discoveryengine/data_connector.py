@@ -31,6 +31,7 @@ class DataConnectorArgs:
                  bap_config: pulumi.Input[Optional['DataConnectorBapConfigArgs']] = None,
                  connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]] = None,
                  entities: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorEntityArgs']]]] = None,
                  incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -78,6 +79,12 @@ class DataConnectorArgs:
                'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
                'EUA', 'FEDERATED_AND_EUA'.
         :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]] destination_configs: Destination connector configurations for the data connector,
                used to configure where data is served.
                Structure is documented below.
@@ -118,6 +125,8 @@ class DataConnectorArgs:
             pulumi.set(__self__, "connector_modes", connector_modes)
         if data_source_version is not None:
             pulumi.set(__self__, "data_source_version", data_source_version)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destination_configs is not None:
             pulumi.set(__self__, "destination_configs", destination_configs)
         if entities is not None:
@@ -284,6 +293,23 @@ class DataConnectorArgs:
         pulumi.set(self, "data_source_version", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="destinationConfigs")
     def destination_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]:
         """
@@ -433,6 +459,7 @@ class _DataConnectorState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]] = None,
                  entities: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorEntityArgs']]]] = None,
                  errors: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorErrorArgs']]]] = None,
@@ -497,6 +524,12 @@ class _DataConnectorState:
                for the full list of connectors.
                Supported first-party connectors include:
         :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]] destination_configs: Destination connector configurations for the data connector,
                used to configure where data is served.
                Structure is documented below.
@@ -575,6 +608,8 @@ class _DataConnectorState:
             pulumi.set(__self__, "data_source", data_source)
         if data_source_version is not None:
             pulumi.set(__self__, "data_source_version", data_source_version)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destination_configs is not None:
             pulumi.set(__self__, "destination_configs", destination_configs)
         if entities is not None:
@@ -789,6 +824,23 @@ class _DataConnectorState:
     @data_source_version.setter
     def data_source_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_source_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationConfigs")
@@ -1089,6 +1141,7 @@ class DataConnector(pulumi.CustomResource):
                  connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_source: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
                  entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
                  incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1292,6 +1345,12 @@ class DataConnector(pulumi.CustomResource):
                for the full list of connectors.
                Supported first-party connectors include:
         :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]] destination_configs: Destination connector configurations for the data connector,
                used to configure where data is served.
                Structure is documented below.
@@ -1514,6 +1573,7 @@ class DataConnector(pulumi.CustomResource):
                  connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_source: pulumi.Input[Optional[_builtins.str]] = None,
                  data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
                  entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
                  incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1549,6 +1609,7 @@ class DataConnector(pulumi.CustomResource):
                 raise TypeError("Missing required property 'data_source'")
             __props__.__dict__["data_source"] = data_source
             __props__.__dict__["data_source_version"] = data_source_version
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["destination_configs"] = destination_configs
             __props__.__dict__["entities"] = entities
             __props__.__dict__["incremental_refresh_interval"] = incremental_refresh_interval
@@ -1600,6 +1661,7 @@ class DataConnector(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_source: pulumi.Input[Optional[_builtins.str]] = None,
             data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
             entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
             errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict']]]]] = None,
@@ -1668,6 +1730,12 @@ class DataConnector(pulumi.CustomResource):
                for the full list of connectors.
                Supported first-party connectors include:
         :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]] destination_configs: Destination connector configurations for the data connector,
                used to configure where data is served.
                Structure is documented below.
@@ -1738,6 +1806,7 @@ class DataConnector(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_source"] = data_source
         __props__.__dict__["data_source_version"] = data_source_version
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["destination_configs"] = destination_configs
         __props__.__dict__["entities"] = entities
         __props__.__dict__["errors"] = errors
@@ -1884,6 +1953,19 @@ class DataConnector(pulumi.CustomResource):
         The version of the data source. For example, `3` for Jira v3.
         """
         return pulumi.get(self, "data_source_version")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="destinationConfigs")

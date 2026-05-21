@@ -94,6 +94,15 @@ export class Ruleset extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'terraform apply' would delete the instance,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Output only. The metadata for this ruleset.
      */
     declare public /*out*/ readonly metadatas: pulumi.Output<outputs.firebaserules.RulesetMetadata[]>;
@@ -124,6 +133,7 @@ export class Ruleset extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RulesetState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["metadatas"] = state?.metadatas;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -133,6 +143,7 @@ export class Ruleset extends pulumi.CustomResource {
             if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["project"] = args?.project;
             resourceInputs["source"] = args?.source;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -152,6 +163,15 @@ export interface RulesetState {
      * Output only. Time the `Ruleset` was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'terraform apply' would delete the instance,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Output only. The metadata for this ruleset.
      */
@@ -174,6 +194,15 @@ export interface RulesetState {
  * The set of arguments for constructing a Ruleset resource.
  */
 export interface RulesetArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'terraform apply' would delete the instance,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */

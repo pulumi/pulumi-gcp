@@ -28,6 +28,7 @@ public final class GetDatasetResult {
     private Integer defaultPartitionExpirationMs;
     private Integer defaultTableExpirationMs;
     private Boolean deleteContentsOnDestroy;
+    private String deletionPolicy;
     private String description;
     private Map<String,String> effectiveLabels;
     private String etag;
@@ -74,6 +75,9 @@ public final class GetDatasetResult {
     }
     public Boolean deleteContentsOnDestroy() {
         return this.deleteContentsOnDestroy;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -148,6 +152,7 @@ public final class GetDatasetResult {
         private Integer defaultPartitionExpirationMs;
         private Integer defaultTableExpirationMs;
         private Boolean deleteContentsOnDestroy;
+        private String deletionPolicy;
         private String description;
         private Map<String,String> effectiveLabels;
         private String etag;
@@ -176,6 +181,7 @@ public final class GetDatasetResult {
     	      this.defaultPartitionExpirationMs = defaults.defaultPartitionExpirationMs;
     	      this.defaultTableExpirationMs = defaults.defaultTableExpirationMs;
     	      this.deleteContentsOnDestroy = defaults.deleteContentsOnDestroy;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.etag = defaults.etag;
@@ -263,6 +269,14 @@ public final class GetDatasetResult {
               throw new MissingRequiredPropertyException("GetDatasetResult", "deleteContentsOnDestroy");
             }
             this.deleteContentsOnDestroy = deleteContentsOnDestroy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -415,6 +429,7 @@ public final class GetDatasetResult {
             _resultValue.defaultPartitionExpirationMs = defaultPartitionExpirationMs;
             _resultValue.defaultTableExpirationMs = defaultTableExpirationMs;
             _resultValue.deleteContentsOnDestroy = deleteContentsOnDestroy;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.etag = etag;

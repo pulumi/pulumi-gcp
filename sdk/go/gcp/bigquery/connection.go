@@ -591,6 +591,13 @@ type Connection struct {
 	Configuration ConnectionConfigurationPtrOutput `pulumi:"configuration"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A descriptive description for the connection
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A descriptive name for the connection
@@ -671,6 +678,13 @@ type connectionState struct {
 	Configuration *ConnectionConfiguration `pulumi:"configuration"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId *string `pulumi:"connectionId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A descriptive description for the connection
 	Description *string `pulumi:"description"`
 	// A descriptive name for the connection
@@ -722,6 +736,13 @@ type ConnectionState struct {
 	Configuration ConnectionConfigurationPtrInput
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A descriptive description for the connection
 	Description pulumi.StringPtrInput
 	// A descriptive name for the connection
@@ -777,6 +798,13 @@ type connectionArgs struct {
 	Configuration *ConnectionConfiguration `pulumi:"configuration"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId *string `pulumi:"connectionId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A descriptive description for the connection
 	Description *string `pulumi:"description"`
 	// A descriptive name for the connection
@@ -824,6 +852,13 @@ type ConnectionArgs struct {
 	Configuration ConnectionConfigurationPtrInput
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A descriptive description for the connection
 	Description pulumi.StringPtrInput
 	// A descriptive name for the connection
@@ -975,6 +1010,16 @@ func (o ConnectionOutput) Configuration() ConnectionConfigurationPtrOutput {
 // Optional connection id that should be assigned to the created connection.
 func (o ConnectionOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ConnectionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A descriptive description for the connection

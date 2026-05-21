@@ -214,9 +214,16 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+     * Policy to determine what flags to send on delete.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     *
+     * Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
      */
-    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * A human readable description of this attached cluster. Cannot be longer
      * than 255 UTF-8 encoded bytes.
@@ -450,7 +457,14 @@ export interface AttachedClusterState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+     * Policy to determine what flags to send on delete.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     *
+     * Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -589,7 +603,14 @@ export interface AttachedClusterArgs {
      */
     binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization | undefined>;
     /**
-     * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+     * Policy to determine what flags to send on delete.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     *
+     * Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

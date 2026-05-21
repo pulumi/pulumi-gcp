@@ -78,6 +78,15 @@ export class InstanceSettings extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
@@ -110,6 +119,7 @@ export class InstanceSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceSettingsState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["project"] = state?.project;
@@ -119,6 +129,7 @@ export class InstanceSettings extends pulumi.CustomResource {
             if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["project"] = args?.project;
             resourceInputs["zone"] = args?.zone;
@@ -133,6 +144,15 @@ export class InstanceSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceSettings resources.
  */
 export interface InstanceSettingsState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
@@ -158,6 +178,15 @@ export interface InstanceSettingsState {
  * The set of arguments for constructing a InstanceSettings resource.
  */
 export interface InstanceSettingsArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The metadata key/value pairs assigned to all the instances in the corresponding scope.
      * Structure is documented below.

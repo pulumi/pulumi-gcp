@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateArgs;
  * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAuthConfigTemplateArgs;
  * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAuthConfigTemplateServiceAccountArgs;
+ * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAdditionalConfigTemplateArgs;
+ * import com.pulumi.gcp.apihub.inputs.PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -193,6 +195,30 @@ public class Plugin extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The plugin description. Max length is 2000 characters (Unicode code

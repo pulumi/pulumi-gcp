@@ -619,6 +619,13 @@ type BackupPlan struct {
 	// (except deletes), including the deactivated field itself. It also prevents any new Backups
 	// from being created via this BackupPlan (including scheduled Backups).
 	Deactivated pulumi.BoolOutput `pulumi:"deactivated"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this BackupPlan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -716,6 +723,13 @@ type backupPlanState struct {
 	// (except deletes), including the deactivated field itself. It also prevents any new Backups
 	// from being created via this BackupPlan (including scheduled Backups).
 	Deactivated *bool `pulumi:"deactivated"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this BackupPlan.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -773,6 +787,13 @@ type BackupPlanState struct {
 	// (except deletes), including the deactivated field itself. It also prevents any new Backups
 	// from being created via this BackupPlan (including scheduled Backups).
 	Deactivated pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User specified descriptive string for this BackupPlan.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -834,6 +855,13 @@ type backupPlanArgs struct {
 	// (except deletes), including the deactivated field itself. It also prevents any new Backups
 	// from being created via this BackupPlan (including scheduled Backups).
 	Deactivated *bool `pulumi:"deactivated"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this BackupPlan.
 	Description *string `pulumi:"description"`
 	// Description: A set of custom labels supplied by the user.
@@ -870,6 +898,13 @@ type BackupPlanArgs struct {
 	// (except deletes), including the deactivated field itself. It also prevents any new Backups
 	// from being created via this BackupPlan (including scheduled Backups).
 	Deactivated pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User specified descriptive string for this BackupPlan.
 	Description pulumi.StringPtrInput
 	// Description: A set of custom labels supplied by the user.
@@ -1001,6 +1036,16 @@ func (o BackupPlanOutput) Cluster() pulumi.StringOutput {
 // from being created via this BackupPlan (including scheduled Backups).
 func (o BackupPlanOutput) Deactivated() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.BoolOutput { return v.Deactivated }).(pulumi.BoolOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackupPlanOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User specified descriptive string for this BackupPlan.

@@ -187,6 +187,15 @@ export class V2Vm extends pulumi.CustomResource {
      */
     declare public readonly dataDisks: pulumi.Output<outputs.tpu.V2VmDataDisk[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Text description of the TPU.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -307,6 +316,7 @@ export class V2Vm extends pulumi.CustomResource {
             resourceInputs["apiVersion"] = state?.apiVersion;
             resourceInputs["cidrBlock"] = state?.cidrBlock;
             resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["health"] = state?.health;
@@ -338,6 +348,7 @@ export class V2Vm extends pulumi.CustomResource {
             resourceInputs["acceleratorType"] = args?.acceleratorType;
             resourceInputs["cidrBlock"] = args?.cidrBlock;
             resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["metadata"] = args?.metadata;
@@ -402,6 +413,15 @@ export interface V2VmState {
      * Structure is documented below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.tpu.V2VmDataDisk>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Text description of the TPU.
      */
@@ -535,6 +555,15 @@ export interface V2VmArgs {
      * Structure is documented below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.tpu.V2VmDataDisk>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Text description of the TPU.
      */

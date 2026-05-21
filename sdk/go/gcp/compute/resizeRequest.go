@@ -142,6 +142,13 @@ type ResizeRequest struct {
 
 	// The creation timestamp for this resize request in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resize-request.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The reference of the instance group manager this ResizeRequest is a part of.
@@ -203,6 +210,13 @@ func GetResizeRequest(ctx *pulumi.Context,
 type resizeRequestState struct {
 	// The creation timestamp for this resize request in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resize-request.
 	Description *string `pulumi:"description"`
 	// The reference of the instance group manager this ResizeRequest is a part of.
@@ -229,6 +243,13 @@ type resizeRequestState struct {
 type ResizeRequestState struct {
 	// The creation timestamp for this resize request in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resize-request.
 	Description pulumi.StringPtrInput
 	// The reference of the instance group manager this ResizeRequest is a part of.
@@ -257,6 +278,13 @@ func (ResizeRequestState) ElementType() reflect.Type {
 }
 
 type resizeRequestArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resize-request.
 	Description *string `pulumi:"description"`
 	// The reference of the instance group manager this ResizeRequest is a part of.
@@ -277,6 +305,13 @@ type resizeRequestArgs struct {
 
 // The set of arguments for constructing a ResizeRequest resource.
 type ResizeRequestArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resize-request.
 	Description pulumi.StringPtrInput
 	// The reference of the instance group manager this ResizeRequest is a part of.
@@ -385,6 +420,16 @@ func (o ResizeRequestOutput) ToResizeRequestOutputWithContext(ctx context.Contex
 // The creation timestamp for this resize request in RFC3339 text format.
 func (o ResizeRequestOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResizeRequest) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ResizeRequestOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResizeRequest) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resize-request.

@@ -89,6 +89,13 @@ type TransferAgentPool struct {
 	// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
 	// Structure is documented below.
 	BandwidthLimit TransferAgentPoolBandwidthLimitPtrOutput `pulumi:"bandwidthLimit"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Specifies the client-specified AgentPool description.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The ID of the agent pool to create.
@@ -140,6 +147,13 @@ type transferAgentPoolState struct {
 	// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
 	// Structure is documented below.
 	BandwidthLimit *TransferAgentPoolBandwidthLimit `pulumi:"bandwidthLimit"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Specifies the client-specified AgentPool description.
 	DisplayName *string `pulumi:"displayName"`
 	// The ID of the agent pool to create.
@@ -162,6 +176,13 @@ type TransferAgentPoolState struct {
 	// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
 	// Structure is documented below.
 	BandwidthLimit TransferAgentPoolBandwidthLimitPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Specifies the client-specified AgentPool description.
 	DisplayName pulumi.StringPtrInput
 	// The ID of the agent pool to create.
@@ -188,6 +209,13 @@ type transferAgentPoolArgs struct {
 	// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
 	// Structure is documented below.
 	BandwidthLimit *TransferAgentPoolBandwidthLimit `pulumi:"bandwidthLimit"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Specifies the client-specified AgentPool description.
 	DisplayName *string `pulumi:"displayName"`
 	// The ID of the agent pool to create.
@@ -209,6 +237,13 @@ type TransferAgentPoolArgs struct {
 	// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
 	// Structure is documented below.
 	BandwidthLimit TransferAgentPoolBandwidthLimitPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Specifies the client-specified AgentPool description.
 	DisplayName pulumi.StringPtrInput
 	// The ID of the agent pool to create.
@@ -316,6 +351,16 @@ func (o TransferAgentPoolOutput) ToTransferAgentPoolOutputWithContext(ctx contex
 // Structure is documented below.
 func (o TransferAgentPoolOutput) BandwidthLimit() TransferAgentPoolBandwidthLimitPtrOutput {
 	return o.ApplyT(func(v *TransferAgentPool) TransferAgentPoolBandwidthLimitPtrOutput { return v.BandwidthLimit }).(TransferAgentPoolBandwidthLimitPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TransferAgentPoolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferAgentPool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Specifies the client-specified AgentPool description.

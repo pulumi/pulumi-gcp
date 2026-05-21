@@ -80,6 +80,15 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
@@ -115,6 +124,7 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalNetworkEndpointState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["fqdn"] = state?.fqdn;
             resourceInputs["globalNetworkEndpointGroup"] = state?.globalNetworkEndpointGroup;
             resourceInputs["ipAddress"] = state?.ipAddress;
@@ -128,6 +138,7 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
             if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["fqdn"] = args?.fqdn;
             resourceInputs["globalNetworkEndpointGroup"] = args?.globalNetworkEndpointGroup;
             resourceInputs["ipAddress"] = args?.ipAddress;
@@ -143,6 +154,15 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GlobalNetworkEndpoint resources.
  */
 export interface GlobalNetworkEndpointState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
@@ -171,6 +191,15 @@ export interface GlobalNetworkEndpointState {
  * The set of arguments for constructing a GlobalNetworkEndpoint resource.
  */
 export interface GlobalNetworkEndpointArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.

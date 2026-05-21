@@ -21,6 +21,8 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// TWILIO
         /// GOOGLE_TELEPHONY_PLATFORM
         /// CONTACT_CENTER_AS_A_SERVICE
+        /// FIVE9
+        /// CONTACT_CENTER_INTEGRATION
         /// </summary>
         [Input("channelType")]
         public Input<string>? ChannelType { get; set; }

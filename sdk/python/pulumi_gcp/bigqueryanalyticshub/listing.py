@@ -30,6 +30,7 @@ class ListingArgs:
                  categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_provider: pulumi.Input[Optional['ListingDataProviderArgs']] = None,
                  delete_commercial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional[_builtins.str]] = None,
@@ -55,6 +56,12 @@ class ListingArgs:
         :param pulumi.Input['ListingDataProviderArgs'] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_commercial: If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[_builtins.str] discovery_type: Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
                Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
@@ -86,6 +93,8 @@ class ListingArgs:
             pulumi.set(__self__, "data_provider", data_provider)
         if delete_commercial is not None:
             pulumi.set(__self__, "delete_commercial", delete_commercial)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if discovery_type is not None:
@@ -218,6 +227,23 @@ class ListingArgs:
     @delete_commercial.setter
     def delete_commercial(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_commercial", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -367,6 +393,7 @@ class _ListingState:
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_provider: pulumi.Input[Optional['ListingDataProviderArgs']] = None,
                  delete_commercial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -396,6 +423,12 @@ class _ListingState:
         :param pulumi.Input['ListingDataProviderArgs'] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_commercial: If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[_builtins.str] discovery_type: Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
                Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
@@ -432,6 +465,8 @@ class _ListingState:
             pulumi.set(__self__, "data_provider", data_provider)
         if delete_commercial is not None:
             pulumi.set(__self__, "delete_commercial", delete_commercial)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if discovery_type is not None:
@@ -551,6 +586,23 @@ class _ListingState:
     @delete_commercial.setter
     def delete_commercial(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_commercial", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -762,6 +814,7 @@ class Listing(pulumi.CustomResource):
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_provider: pulumi.Input[Optional[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']]] = None,
                  delete_commercial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1116,6 +1169,12 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_commercial: If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[_builtins.str] discovery_type: Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
                Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
@@ -1492,6 +1551,7 @@ class Listing(pulumi.CustomResource):
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_provider: pulumi.Input[Optional[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']]] = None,
                  delete_commercial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1523,6 +1583,7 @@ class Listing(pulumi.CustomResource):
             __props__.__dict__["data_exchange_id"] = data_exchange_id
             __props__.__dict__["data_provider"] = data_provider
             __props__.__dict__["delete_commercial"] = delete_commercial
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["discovery_type"] = discovery_type
             if display_name is None and not opts.urn:
@@ -1563,6 +1624,7 @@ class Listing(pulumi.CustomResource):
             data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_provider: pulumi.Input[Optional[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']]] = None,
             delete_commercial: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1596,6 +1658,12 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_commercial: If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[_builtins.str] discovery_type: Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
                Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
@@ -1629,6 +1697,7 @@ class Listing(pulumi.CustomResource):
         __props__.__dict__["data_exchange_id"] = data_exchange_id
         __props__.__dict__["data_provider"] = data_provider
         __props__.__dict__["delete_commercial"] = delete_commercial
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["discovery_type"] = discovery_type
         __props__.__dict__["display_name"] = display_name
@@ -1705,6 +1774,19 @@ class Listing(pulumi.CustomResource):
         If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
         """
         return pulumi.get(self, "delete_commercial")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

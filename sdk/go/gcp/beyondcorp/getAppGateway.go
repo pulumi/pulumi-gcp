@@ -65,6 +65,7 @@ type LookupAppGatewayArgs struct {
 // A collection of values returned by getAppGateway.
 type LookupAppGatewayResult struct {
 	AllocatedConnections []GetAppGatewayAllocatedConnection `pulumi:"allocatedConnections"`
+	DeletionPolicy       string                             `pulumi:"deletionPolicy"`
 	DisplayName          string                             `pulumi:"displayName"`
 	EffectiveLabels      map[string]string                  `pulumi:"effectiveLabels"`
 	HostType             string                             `pulumi:"hostType"`
@@ -124,6 +125,10 @@ func (o LookupAppGatewayResultOutput) ToLookupAppGatewayResultOutputWithContext(
 
 func (o LookupAppGatewayResultOutput) AllocatedConnections() GetAppGatewayAllocatedConnectionArrayOutput {
 	return o.ApplyT(func(v LookupAppGatewayResult) []GetAppGatewayAllocatedConnection { return v.AllocatedConnections }).(GetAppGatewayAllocatedConnectionArrayOutput)
+}
+
+func (o LookupAppGatewayResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppGatewayResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupAppGatewayResultOutput) DisplayName() pulumi.StringOutput {

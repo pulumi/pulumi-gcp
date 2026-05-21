@@ -27,7 +27,10 @@ class GetInstanceGroupResult:
     """
     A collection of values returned by getInstanceGroup.
     """
-    def __init__(__self__, description=None, id=None, instances=None, name=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None):
+    def __init__(__self__, deletion_policy=None, description=None, id=None, instances=None, name=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -58,6 +61,11 @@ class GetInstanceGroupResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -137,6 +145,7 @@ class AwaitableGetInstanceGroupResult(GetInstanceGroupResult):
         if False:
             yield self
         return GetInstanceGroupResult(
+            deletion_policy=self.deletion_policy,
             description=self.description,
             id=self.id,
             instances=self.instances,
@@ -184,6 +193,7 @@ def get_instance_group(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__, opts=opts, typ=GetInstanceGroupResult).value
 
     return AwaitableGetInstanceGroupResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         instances=pulumi.get(__ret__, 'instances'),
@@ -228,6 +238,7 @@ def get_instance_group_output(name: pulumi.Input[Optional[Optional[_builtins.str
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getInstanceGroup:getInstanceGroup', __args__, opts=opts, typ=GetInstanceGroupResult)
     return __ret__.apply(lambda __response__: GetInstanceGroupResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         instances=pulumi.get(__response__, 'instances'),

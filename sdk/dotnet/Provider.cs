@@ -240,6 +240,9 @@ namespace Pulumi.Gcp
         [Output("datastreamCustomEndpoint")]
         public Output<string?> DatastreamCustomEndpoint { get; private set; } = null!;
 
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
         [Output("deploymentManagerCustomEndpoint")]
         public Output<string?> DeploymentManagerCustomEndpoint { get; private set; } = null!;
 
@@ -900,6 +903,9 @@ namespace Pulumi.Gcp
             get => _defaultLabels ?? (_defaultLabels = new InputMap<string>());
             set => _defaultLabels = value;
         }
+
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("deploymentManagerCustomEndpoint")]
         public Input<string>? DeploymentManagerCustomEndpoint { get; set; }

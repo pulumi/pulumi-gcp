@@ -109,6 +109,13 @@ import (
 type InstanceGroupMembership struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An instance being added to the InstanceGroup
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// Represents an Instance Group resource name that the instance belongs to.
@@ -156,6 +163,13 @@ func GetInstanceGroupMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceGroupMembership resources.
 type instanceGroupMembershipState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An instance being added to the InstanceGroup
 	Instance *string `pulumi:"instance"`
 	// Represents an Instance Group resource name that the instance belongs to.
@@ -168,6 +182,13 @@ type instanceGroupMembershipState struct {
 }
 
 type InstanceGroupMembershipState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An instance being added to the InstanceGroup
 	Instance pulumi.StringPtrInput
 	// Represents an Instance Group resource name that the instance belongs to.
@@ -184,6 +205,13 @@ func (InstanceGroupMembershipState) ElementType() reflect.Type {
 }
 
 type instanceGroupMembershipArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An instance being added to the InstanceGroup
 	Instance string `pulumi:"instance"`
 	// Represents an Instance Group resource name that the instance belongs to.
@@ -197,6 +225,13 @@ type instanceGroupMembershipArgs struct {
 
 // The set of arguments for constructing a InstanceGroupMembership resource.
 type InstanceGroupMembershipArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An instance being added to the InstanceGroup
 	Instance pulumi.StringInput
 	// Represents an Instance Group resource name that the instance belongs to.
@@ -293,6 +328,16 @@ func (o InstanceGroupMembershipOutput) ToInstanceGroupMembershipOutput() Instanc
 
 func (o InstanceGroupMembershipOutput) ToInstanceGroupMembershipOutputWithContext(ctx context.Context) InstanceGroupMembershipOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceGroupMembershipOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroupMembership) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An instance being added to the InstanceGroup

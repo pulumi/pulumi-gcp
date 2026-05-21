@@ -134,6 +134,15 @@ export class AppHostingDomain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Id of the domain to create.
      * Must be a valid domain name, such as "foo.com"
      */
@@ -194,6 +203,7 @@ export class AppHostingDomain extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customDomainStatuses"] = state?.customDomainStatuses;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["domainId"] = state?.domainId;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["location"] = state?.location;
@@ -215,6 +225,7 @@ export class AppHostingDomain extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["backend"] = args?.backend;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["domainId"] = args?.domainId;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -254,6 +265,15 @@ export interface AppHostingDomainState {
      * Time at which the domain was deleted.
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Id of the domain to create.
      * Must be a valid domain name, such as "foo.com"
@@ -307,6 +327,15 @@ export interface AppHostingDomainArgs {
      * The ID of the Backend that this Domain is associated with
      */
     backend: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Id of the domain to create.
      * Must be a valid domain name, such as "foo.com"

@@ -18,6 +18,15 @@ namespace Pulumi.Gcp.ParameterManager.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        public readonly string DeletionPolicy;
+        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -67,6 +76,8 @@ namespace Pulumi.Gcp.ParameterManager.Outputs
         private GetRegionalParametersParameterResult(
             string createTime,
 
+            string deletionPolicy,
+
             ImmutableDictionary<string, string> effectiveLabels,
 
             string format,
@@ -90,6 +101,7 @@ namespace Pulumi.Gcp.ParameterManager.Outputs
             string updateTime)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             EffectiveLabels = effectiveLabels;
             Format = format;
             KmsKey = kmsKey;

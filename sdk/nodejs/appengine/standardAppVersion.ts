@@ -167,6 +167,15 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     declare public readonly deleteServiceOnDestroy: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.
      */
@@ -270,6 +279,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             resourceInputs["automaticScaling"] = state?.automaticScaling;
             resourceInputs["basicScaling"] = state?.basicScaling;
             resourceInputs["deleteServiceOnDestroy"] = state?.deleteServiceOnDestroy;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deployment"] = state?.deployment;
             resourceInputs["entrypoint"] = state?.entrypoint;
             resourceInputs["envVariables"] = state?.envVariables;
@@ -306,6 +316,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             resourceInputs["automaticScaling"] = args?.automaticScaling;
             resourceInputs["basicScaling"] = args?.basicScaling;
             resourceInputs["deleteServiceOnDestroy"] = args?.deleteServiceOnDestroy;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deployment"] = args?.deployment;
             resourceInputs["entrypoint"] = args?.entrypoint;
             resourceInputs["envVariables"] = args?.envVariables;
@@ -352,6 +363,15 @@ export interface StandardAppVersionState {
      * If set to `true`, the service will be deleted if it is the last version.
      */
     deleteServiceOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.
@@ -462,6 +482,15 @@ export interface StandardAppVersionArgs {
      * If set to `true`, the service will be deleted if it is the last version.
      */
     deleteServiceOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.

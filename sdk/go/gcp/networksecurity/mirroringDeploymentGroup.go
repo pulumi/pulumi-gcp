@@ -88,6 +88,13 @@ type MirroringDeploymentGroup struct {
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -187,6 +194,13 @@ type mirroringDeploymentGroupState struct {
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description *string `pulumi:"description"`
@@ -243,6 +257,13 @@ type MirroringDeploymentGroupState struct {
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description pulumi.StringPtrInput
@@ -297,6 +318,13 @@ func (MirroringDeploymentGroupState) ElementType() reflect.Type {
 }
 
 type mirroringDeploymentGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description *string `pulumi:"description"`
@@ -320,6 +348,13 @@ type mirroringDeploymentGroupArgs struct {
 
 // The set of arguments for constructing a MirroringDeploymentGroup resource.
 type MirroringDeploymentGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description of the deployment group.
 	// Used as additional context for the deployment group.
 	Description pulumi.StringPtrInput
@@ -440,6 +475,16 @@ func (o MirroringDeploymentGroupOutput) ConnectedEndpointGroups() MirroringDeplo
 // See https://google.aip.dev/148#timestamps.
 func (o MirroringDeploymentGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeploymentGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MirroringDeploymentGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MirroringDeploymentGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User-provided description of the deployment group.

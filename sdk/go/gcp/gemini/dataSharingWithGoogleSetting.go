@@ -70,6 +70,13 @@ type DataSharingWithGoogleSetting struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Id of the Data Sharing With Google Setting.
 	DataSharingWithGoogleSettingId pulumi.StringOutput `pulumi:"dataSharingWithGoogleSettingId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether data sharing should be enabled in GA products.
@@ -137,6 +144,13 @@ type dataSharingWithGoogleSettingState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Id of the Data Sharing With Google Setting.
 	DataSharingWithGoogleSettingId *string `pulumi:"dataSharingWithGoogleSettingId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether data sharing should be enabled in GA products.
@@ -167,6 +181,13 @@ type DataSharingWithGoogleSettingState struct {
 	CreateTime pulumi.StringPtrInput
 	// Id of the Data Sharing With Google Setting.
 	DataSharingWithGoogleSettingId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Whether data sharing should be enabled in GA products.
@@ -199,6 +220,13 @@ func (DataSharingWithGoogleSettingState) ElementType() reflect.Type {
 type dataSharingWithGoogleSettingArgs struct {
 	// Id of the Data Sharing With Google Setting.
 	DataSharingWithGoogleSettingId string `pulumi:"dataSharingWithGoogleSettingId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether data sharing should be enabled in GA products.
 	EnableDataSharing *bool `pulumi:"enableDataSharing"`
 	// Whether data sharing should be enabled in Preview products.
@@ -218,6 +246,13 @@ type dataSharingWithGoogleSettingArgs struct {
 type DataSharingWithGoogleSettingArgs struct {
 	// Id of the Data Sharing With Google Setting.
 	DataSharingWithGoogleSettingId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether data sharing should be enabled in GA products.
 	EnableDataSharing pulumi.BoolPtrInput
 	// Whether data sharing should be enabled in Preview products.
@@ -328,6 +363,16 @@ func (o DataSharingWithGoogleSettingOutput) CreateTime() pulumi.StringOutput {
 // Id of the Data Sharing With Google Setting.
 func (o DataSharingWithGoogleSettingOutput) DataSharingWithGoogleSettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataSharingWithGoogleSetting) pulumi.StringOutput { return v.DataSharingWithGoogleSettingId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DataSharingWithGoogleSettingOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataSharingWithGoogleSetting) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

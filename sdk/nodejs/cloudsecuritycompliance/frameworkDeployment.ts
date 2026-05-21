@@ -94,6 +94,15 @@ export class FrameworkDeployment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The deployment state of the framework.
      * Possible values:
      * DEPLOYMENT_STATE_VALIDATING
@@ -172,6 +181,7 @@ export class FrameworkDeployment extends pulumi.CustomResource {
             resourceInputs["cloudControlMetadatas"] = state?.cloudControlMetadatas;
             resourceInputs["computedTargetResource"] = state?.computedTargetResource;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deploymentState"] = state?.deploymentState;
             resourceInputs["description"] = state?.description;
             resourceInputs["etag"] = state?.etag;
@@ -204,6 +214,7 @@ export class FrameworkDeployment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'targetResourceConfig'");
             }
             resourceInputs["cloudControlMetadatas"] = args?.cloudControlMetadatas;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["framework"] = args?.framework;
             resourceInputs["frameworkDeploymentId"] = args?.frameworkDeploymentId;
@@ -264,6 +275,15 @@ export interface FrameworkDeploymentState {
      * The time at which the resource was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The deployment state of the framework.
      * Possible values:
@@ -338,6 +358,15 @@ export interface FrameworkDeploymentArgs {
      * Structure is documented below.
      */
     cloudControlMetadatas: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadata>[]>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User provided description of the Framework deployment
      */

@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetUserWorkloadsSecretResult {
     private Map<String,String> data;
+    private String deletionPolicy;
     private String environment;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,6 +28,9 @@ public final class GetUserWorkloadsSecretResult {
     private GetUserWorkloadsSecretResult() {}
     public Map<String,String> data() {
         return this.data;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String environment() {
         return this.environment;
@@ -58,6 +62,7 @@ public final class GetUserWorkloadsSecretResult {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,String> data;
+        private String deletionPolicy;
         private String environment;
         private String id;
         private String name;
@@ -67,6 +72,7 @@ public final class GetUserWorkloadsSecretResult {
         public Builder(GetUserWorkloadsSecretResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.data = defaults.data;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.environment = defaults.environment;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -80,6 +86,14 @@ public final class GetUserWorkloadsSecretResult {
               throw new MissingRequiredPropertyException("GetUserWorkloadsSecretResult", "data");
             }
             this.data = data;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetUserWorkloadsSecretResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -121,6 +135,7 @@ public final class GetUserWorkloadsSecretResult {
         public GetUserWorkloadsSecretResult build() {
             final var _resultValue = new GetUserWorkloadsSecretResult();
             _resultValue.data = data;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.environment = environment;
             _resultValue.id = id;
             _resultValue.name = name;

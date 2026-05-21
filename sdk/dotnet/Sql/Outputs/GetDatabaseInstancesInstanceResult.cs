@@ -34,6 +34,15 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string DatabaseVersion;
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        public readonly string DeletionPolicy;
+        /// <summary>
         /// Used to block Terraform from deleting a SQL Instance. Defaults to true.
         /// </summary>
         public readonly bool DeletionProtection;
@@ -151,6 +160,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string databaseVersion,
 
+            string deletionPolicy,
+
             bool deletionProtection,
 
             string dnsName,
@@ -214,6 +225,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DnsName = dnsName;
             DnsNames = dnsNames;

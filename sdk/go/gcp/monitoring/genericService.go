@@ -87,6 +87,13 @@ type GenericService struct {
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService GenericServiceBasicServicePtrOutput `pulumi:"basicService"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The full resource name for this service. The syntax is:
@@ -148,6 +155,13 @@ type genericServiceState struct {
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService *GenericServiceBasicService `pulumi:"basicService"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this Service.
 	DisplayName *string `pulumi:"displayName"`
 	// The full resource name for this service. The syntax is:
@@ -177,6 +191,13 @@ type GenericServiceState struct {
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService GenericServiceBasicServicePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrInput
 	// The full resource name for this service. The syntax is:
@@ -210,6 +231,13 @@ type genericServiceArgs struct {
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService *GenericServiceBasicService `pulumi:"basicService"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this Service.
 	DisplayName *string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
@@ -234,6 +262,13 @@ type GenericServiceArgs struct {
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService GenericServiceBasicServicePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -344,6 +379,16 @@ func (o GenericServiceOutput) ToGenericServiceOutputWithContext(ctx context.Cont
 // Structure is documented below.
 func (o GenericServiceOutput) BasicService() GenericServiceBasicServicePtrOutput {
 	return o.ApplyT(func(v *GenericService) GenericServiceBasicServicePtrOutput { return v.BasicService }).(GenericServiceBasicServicePtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GenericServiceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *GenericService) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name used for UI elements listing this Service.

@@ -151,6 +151,15 @@ export class Connector extends pulumi.CustomResource {
      */
     declare public readonly connectorId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -189,6 +198,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["configs"] = state?.configs;
             resourceInputs["connectCluster"] = state?.connectCluster;
             resourceInputs["connectorId"] = state?.connectorId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -208,6 +218,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["configs"] = args?.configs;
             resourceInputs["connectCluster"] = args?.connectCluster;
             resourceInputs["connectorId"] = args?.connectorId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["taskRestartPolicy"] = args?.taskRestartPolicy;
@@ -235,6 +246,15 @@ export interface ConnectorState {
      * The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
      */
     connectorId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
@@ -275,6 +295,15 @@ export interface ConnectorArgs {
      * The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
      */
     connectorId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */

@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetDatastoreResult {
     private List<String> clusters;
     private String createTime;
+    private String deletionPolicy;
     private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -36,6 +37,9 @@ public final class GetDatastoreResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -80,6 +84,7 @@ public final class GetDatastoreResult {
     public static final class Builder {
         private List<String> clusters;
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private String id;
         private String location;
@@ -94,6 +99,7 @@ public final class GetDatastoreResult {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
@@ -122,6 +128,14 @@ public final class GetDatastoreResult {
               throw new MissingRequiredPropertyException("GetDatastoreResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDatastoreResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -201,6 +215,7 @@ public final class GetDatastoreResult {
             final var _resultValue = new GetDatastoreResult();
             _resultValue.clusters = clusters;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.location = location;

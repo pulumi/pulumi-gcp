@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -94,6 +95,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerResourcesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -152,6 +155,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeCloudSqlInstanceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvValueSourceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTrafficArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
@@ -273,6 +283,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -341,7 +352,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessNetworkInterfaceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -394,6 +407,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerResourcesArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateNodeSelectorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -451,6 +466,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeTcpSocketArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeHttpGetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -505,6 +525,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerReadinessProbeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerReadinessProbeGrpcArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -561,6 +584,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeSecretArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeSecretItemArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamMember;
@@ -648,6 +676,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerPortsArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeHttpGetArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeEmptyDirArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -721,6 +757,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeGcsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -782,7 +822,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessNetworkInterfaceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeNfsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -861,6 +906,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateServiceMeshArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
@@ -919,6 +965,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -962,6 +1009,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -1010,6 +1058,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerSourceCodeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerSourceCodeCloudStorageSourceArgs;
  * import com.pulumi.asset.FileAsset;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -1076,6 +1127,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeEmptyDirArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -1308,6 +1363,30 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Whether Terraform will be prevented from destroying the service. Defaults to true.

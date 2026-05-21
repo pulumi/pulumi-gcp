@@ -88,6 +88,15 @@ export class OauthIdpConfig extends pulumi.CustomResource {
      */
     declare public readonly clientSecret: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Human friendly display name.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -131,6 +140,7 @@ export class OauthIdpConfig extends pulumi.CustomResource {
             const state = argsOrState as OauthIdpConfigState | undefined;
             resourceInputs["clientId"] = state?.clientId;
             resourceInputs["clientSecret"] = state?.clientSecret;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["issuer"] = state?.issuer;
@@ -147,6 +157,7 @@ export class OauthIdpConfig extends pulumi.CustomResource {
             }
             resourceInputs["clientId"] = args?.clientId;
             resourceInputs["clientSecret"] = args?.clientSecret;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["issuer"] = args?.issuer;
@@ -171,6 +182,15 @@ export interface OauthIdpConfigState {
      * The client secret of the OAuth client, to enable OIDC code flow.
      */
     clientSecret?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Human friendly display name.
      */
@@ -213,6 +233,15 @@ export interface OauthIdpConfigArgs {
      * The client secret of the OAuth client, to enable OIDC code flow.
      */
     clientSecret?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Human friendly display name.
      */

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.ces.EvaluationArgs;
 import com.pulumi.gcp.ces.inputs.EvaluationState;
 import com.pulumi.gcp.ces.outputs.EvaluationGolden;
+import com.pulumi.gcp.ces.outputs.EvaluationScenario;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -99,6 +100,30 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.Evaluation;
  * import com.pulumi.gcp.ces.EvaluationArgs;
  * import com.pulumi.gcp.ces.inputs.EvaluationGoldenArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationToolCallArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepAgentTransferArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentTransferArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationMockToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputToolResponsesArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputEventArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputBlobArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputImageArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -440,6 +465,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.Evaluation;
  * import com.pulumi.gcp.ces.EvaluationArgs;
  * import com.pulumi.gcp.ces.inputs.EvaluationGoldenArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationMockToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputToolResponsesArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -559,6 +599,379 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Ces Evaluation Scenario Full
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Tool;
+ * import com.pulumi.gcp.ces.ToolArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolPythonFunctionArgs;
+ * import com.pulumi.gcp.ces.Evaluation;
+ * import com.pulumi.gcp.ces.EvaluationArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioUserFactArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationToolExpectationArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var app = new App("app", AppArgs.builder()
+ *             .appId("app-id-scenario")
+ *             .location("us")
+ *             .displayName("my-app-scenario")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var tool = new Tool("tool", ToolArgs.builder()
+ *             .location("us")
+ *             .app(app.appId())
+ *             .toolId("tool-id-scenario")
+ *             .executionType("SYNCHRONOUS")
+ *             .pythonFunction(ToolPythonFunctionArgs.builder()
+ *                 .name("example_function")
+ *                 .pythonCode("def example_function() -> int: return 0")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesEvaluationScenarioFull = new Evaluation("cesEvaluationScenarioFull", EvaluationArgs.builder()
+ *             .evaluationId("eval-scenario-full")
+ *             .displayName("my-evaluation-scenario-full")
+ *             .location("us")
+ *             .app(app.appId())
+ *             .description("Full evaluation for testing scenario")
+ *             .tags(            
+ *                 "test",
+ *                 "full",
+ *                 "scenario")
+ *             .scenario(EvaluationScenarioArgs.builder()
+ *                 .task("Test task")
+ *                 .maxTurns(5)
+ *                 .rubrics(Output.tuple(app.project(), app.appId()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var appId = values.t2;
+ *                     return String.format("projects/%s/locations/us/apps/%s/rubrics/dummy-rubric", project,appId);
+ *                 }))
+ *                 .userGoalBehavior("USER_GOAL_SATISFIED")
+ *                 .taskCompletionBehavior("TASK_SATISFIED")
+ *                 .variableOverrides(Map.of("key", "value"))
+ *                 .evaluationExpectations(Output.tuple(app.project(), app.appId()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var appId = values.t2;
+ *                     return String.format("projects/%s/locations/us/apps/%s/evaluationExpectations/dummy-exp", project,appId);
+ *                 }))
+ *                 .userFacts(EvaluationScenarioUserFactArgs.builder()
+ *                     .name("user_name")
+ *                     .value("John Doe")
+ *                     .build())
+ *                 .scenarioExpectations(                
+ *                     EvaluationScenarioScenarioExpectationArgs.builder()
+ *                         .toolExpectation(EvaluationScenarioScenarioExpectationToolExpectationArgs.builder()
+ *                             .expectedToolCall(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs.builder()
+ *                                 .id("tool-call-id")
+ *                                 .tool(Output.tuple(app.project(), app.appId(), tool.toolId()).applyValue(values -> {
+ *                                     var project = values.t1;
+ *                                     var appId = values.t2;
+ *                                     var toolId = values.t3;
+ *                                     return String.format("projects/%s/locations/us/apps/%s/tools/%s", project,appId,toolId);
+ *                                 }))
+ *                                 .args(Map.of("param", "value"))
+ *                                 .build())
+ *                             .mockToolResponse(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs.builder()
+ *                                 .id("tool-call-id")
+ *                                 .response(Map.of("result", "mocked"))
+ *                                 .tool(Output.tuple(app.project(), app.appId(), tool.toolId()).applyValue(values -> {
+ *                                     var project = values.t1;
+ *                                     var appId = values.t2;
+ *                                     var toolId = values.t3;
+ *                                     return String.format("projects/%s/locations/us/apps/%s/tools/%s", project,appId,toolId);
+ *                                 }))
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     EvaluationScenarioScenarioExpectationArgs.builder()
+ *                         .agentResponse(EvaluationScenarioScenarioExpectationAgentResponseArgs.builder()
+ *                             .role("agent")
+ *                             .chunks(                            
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .text("Hello")
+ *                                     .build(),
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .updatedVariables(Map.of("key", "value"))
+ *                                     .build(),
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .blob(EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs.builder()
+ *                                         .mimeType("text/plain")
+ *                                         .data("c29tZSBibG9iIGRhdGE=")
+ *                                         .build())
+ *                                     .build(),
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .image(EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs.builder()
+ *                                         .mimeType("image/png")
+ *                                         .data("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
+ *                                         .build())
+ *                                     .build(),
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .toolCall(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs.builder()
+ *                                         .id("tool-call-id-3")
+ *                                         .tool(Output.tuple(app.project(), app.appId(), tool.toolId()).applyValue(values -> {
+ *                                             var project = values.t1;
+ *                                             var appId = values.t2;
+ *                                             var toolId = values.t3;
+ *                                             return String.format("projects/%s/locations/us/apps/%s/tools/%s", project,appId,toolId);
+ *                                         }))
+ *                                         .args(Map.of("param", "value"))
+ *                                         .build())
+ *                                     .build(),
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .toolResponse(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs.builder()
+ *                                         .id("tool-call-id-3")
+ *                                         .response(Map.of("result", "success"))
+ *                                         .tool(Output.tuple(app.project(), app.appId(), tool.toolId()).applyValue(values -> {
+ *                                             var project = values.t1;
+ *                                             var appId = values.t2;
+ *                                             var toolId = values.t3;
+ *                                             return String.format("projects/%s/locations/us/apps/%s/tools/%s", project,appId,toolId);
+ *                                         }))
+ *                                         .build())
+ *                                     .build(),
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .agentTransfer(EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs.builder()
+ *                                         .targetAgent(Output.tuple(app.project(), app.appId()).applyValue(values -> {
+ *                                             var project = values.t1;
+ *                                             var appId = values.t2;
+ *                                             return String.format("projects/%s/locations/us/apps/%s/agents/dummy-agent", project,appId);
+ *                                         }))
+ *                                         .build())
+ *                                     .build())
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Ces Evaluation Scenario Toolset
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Toolset;
+ * import com.pulumi.gcp.ces.ToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
+ * import com.pulumi.gcp.ces.Evaluation;
+ * import com.pulumi.gcp.ces.EvaluationArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioUserFactArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationToolExpectationArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs;
+ * import com.pulumi.gcp.ces.inputs.EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var app = new App("app", AppArgs.builder()
+ *             .appId("app-id-scenario-ts")
+ *             .location("us")
+ *             .displayName("my-app-scenario-ts")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var toolset = new Toolset("toolset", ToolsetArgs.builder()
+ *             .toolsetId("ts-scen")
+ *             .location("us")
+ *             .app(app.appId())
+ *             .displayName("Basic toolset display name")
+ *             .description("Test description")
+ *             .executionType("SYNCHRONOUS")
+ *             .openApiToolset(ToolsetOpenApiToolsetArgs.builder()
+ *                 .openApiSchema("""
+ * openapi: 3.0.0
+ * info:
+ *   title: My Sample API
+ *   version: 1.0.0
+ *   description: A simple API example
+ * servers:
+ *   - url: https://api.example.com/v1
+ * paths: {}
+ *                 """)
+ *                 .ignoreUnknownFields(false)
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesEvaluationScenarioToolset = new Evaluation("cesEvaluationScenarioToolset", EvaluationArgs.builder()
+ *             .evaluationId("eval-scen-ts")
+ *             .displayName("my-evaluation-scenario-toolset")
+ *             .location("us")
+ *             .app(app.appId())
+ *             .description("Full evaluation for testing scenario with toolset")
+ *             .tags(            
+ *                 "test",
+ *                 "full",
+ *                 "scenario",
+ *                 "toolset")
+ *             .scenario(EvaluationScenarioArgs.builder()
+ *                 .task("Test task")
+ *                 .maxTurns(5)
+ *                 .rubrics(Output.tuple(app.project(), app.appId()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var appId = values.t2;
+ *                     return String.format("projects/%s/locations/us/apps/%s/rubrics/dummy-rubric", project,appId);
+ *                 }))
+ *                 .userGoalBehavior("USER_GOAL_SATISFIED")
+ *                 .taskCompletionBehavior("TASK_SATISFIED")
+ *                 .variableOverrides(Map.of("key", "value"))
+ *                 .evaluationExpectations(Output.tuple(app.project(), app.appId()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var appId = values.t2;
+ *                     return String.format("projects/%s/locations/us/apps/%s/evaluationExpectations/dummy-exp", project,appId);
+ *                 }))
+ *                 .userFacts(EvaluationScenarioUserFactArgs.builder()
+ *                     .name("user_name")
+ *                     .value("John Doe")
+ *                     .build())
+ *                 .scenarioExpectations(                
+ *                     EvaluationScenarioScenarioExpectationArgs.builder()
+ *                         .toolExpectation(EvaluationScenarioScenarioExpectationToolExpectationArgs.builder()
+ *                             .expectedToolCall(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs.builder()
+ *                                 .id("tool-call-id")
+ *                                 .toolsetTool(EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs.builder()
+ *                                     .toolset(Output.tuple(app.project(), app.appId(), toolset.toolsetId()).applyValue(values -> {
+ *                                         var project = values.t1;
+ *                                         var appId = values.t2;
+ *                                         var toolsetId = values.t3;
+ *                                         return String.format("projects/%s/locations/us/apps/%s/toolsets/%s", project,appId,toolsetId);
+ *                                     }))
+ *                                     .toolId("dummy-tool")
+ *                                     .build())
+ *                                 .args(Map.of("param", "value"))
+ *                                 .build())
+ *                             .mockToolResponse(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs.builder()
+ *                                 .id("tool-call-id")
+ *                                 .response(Map.of("result", "mocked"))
+ *                                 .toolsetTool(EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs.builder()
+ *                                     .toolset(Output.tuple(app.project(), app.appId(), toolset.toolsetId()).applyValue(values -> {
+ *                                         var project = values.t1;
+ *                                         var appId = values.t2;
+ *                                         var toolsetId = values.t3;
+ *                                         return String.format("projects/%s/locations/us/apps/%s/toolsets/%s", project,appId,toolsetId);
+ *                                     }))
+ *                                     .toolId("dummy-tool")
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     EvaluationScenarioScenarioExpectationArgs.builder()
+ *                         .agentResponse(EvaluationScenarioScenarioExpectationAgentResponseArgs.builder()
+ *                             .role("agent")
+ *                             .chunks(                            
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .text("Hello")
+ *                                     .build(),
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .toolCall(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs.builder()
+ *                                         .id("tool-call-id-3")
+ *                                         .toolsetTool(EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs.builder()
+ *                                             .toolset(Output.tuple(app.project(), app.appId(), toolset.toolsetId()).applyValue(values -> {
+ *                                                 var project = values.t1;
+ *                                                 var appId = values.t2;
+ *                                                 var toolsetId = values.t3;
+ *                                                 return String.format("projects/%s/locations/us/apps/%s/toolsets/%s", project,appId,toolsetId);
+ *                                             }))
+ *                                             .toolId("dummy-tool")
+ *                                             .build())
+ *                                         .args(Map.of("param", "value"))
+ *                                         .build())
+ *                                     .build(),
+ *                                 EvaluationScenarioScenarioExpectationAgentResponseChunkArgs.builder()
+ *                                     .toolResponse(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs.builder()
+ *                                         .id("tool-call-id-3")
+ *                                         .response(Map.of("result", "success"))
+ *                                         .toolsetTool(EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs.builder()
+ *                                             .toolset(Output.tuple(app.project(), app.appId(), toolset.toolsetId()).applyValue(values -> {
+ *                                                 var project = values.t1;
+ *                                                 var appId = values.t2;
+ *                                                 var toolsetId = values.t3;
+ *                                                 return String.format("projects/%s/locations/us/apps/%s/toolsets/%s", project,appId,toolsetId);
+ *                                             }))
+ *                                             .toolId("dummy-tool")
+ *                                             .build())
+ *                                         .build())
+ *                                     .build())
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -620,6 +1033,30 @@ public class Evaluation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdBy() {
         return this.createdBy;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * User-defined description of the evaluation.
@@ -798,6 +1235,22 @@ public class Evaluation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Scenario input.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="scenario", refs={EvaluationScenario.class}, tree="[0]")
+    private Output</* @Nullable */ EvaluationScenario> scenario;
+
+    /**
+     * @return Scenario input.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<EvaluationScenario>> scenario() {
+        return Codegen.optional(this.scenario);
     }
     /**
      * User defined tags to categorize the evaluation.

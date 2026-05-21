@@ -27,7 +27,7 @@ class GetWorkloadIdentityPoolProviderResult:
     """
     A collection of values returned by getWorkloadIdentityPoolProvider.
     """
-    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, description=None, disabled=None, display_name=None, id=None, name=None, oidcs=None, project=None, samls=None, state=None, workload_identity_pool_id=None, workload_identity_pool_provider_id=None, x509s=None):
+    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, deletion_policy=None, description=None, disabled=None, display_name=None, id=None, name=None, oidcs=None, project=None, samls=None, state=None, workload_identity_pool_id=None, workload_identity_pool_provider_id=None, x509s=None):
         if attribute_condition and not isinstance(attribute_condition, str):
             raise TypeError("Expected argument 'attribute_condition' to be a str")
         pulumi.set(__self__, "attribute_condition", attribute_condition)
@@ -37,6 +37,9 @@ class GetWorkloadIdentityPoolProviderResult:
         if aws and not isinstance(aws, list):
             raise TypeError("Expected argument 'aws' to be a list")
         pulumi.set(__self__, "aws", aws)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -88,6 +91,11 @@ class GetWorkloadIdentityPoolProviderResult:
     @pulumi.getter
     def aws(self) -> Sequence['outputs.GetWorkloadIdentityPoolProviderAwResult']:
         return pulumi.get(self, "aws")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -162,6 +170,7 @@ class AwaitableGetWorkloadIdentityPoolProviderResult(GetWorkloadIdentityPoolProv
             attribute_condition=self.attribute_condition,
             attribute_mapping=self.attribute_mapping,
             aws=self.aws,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             disabled=self.disabled,
             display_name=self.display_name,
@@ -217,6 +226,7 @@ def get_workload_identity_pool_provider(project: Optional[_builtins.str] = None,
         attribute_condition=pulumi.get(__ret__, 'attribute_condition'),
         attribute_mapping=pulumi.get(__ret__, 'attribute_mapping'),
         aws=pulumi.get(__ret__, 'aws'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         disabled=pulumi.get(__ret__, 'disabled'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -269,6 +279,7 @@ def get_workload_identity_pool_provider_output(project: pulumi.Input[Optional[Op
         attribute_condition=pulumi.get(__response__, 'attribute_condition'),
         attribute_mapping=pulumi.get(__response__, 'attribute_mapping'),
         aws=pulumi.get(__response__, 'aws'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         disabled=pulumi.get(__response__, 'disabled'),
         display_name=pulumi.get(__response__, 'display_name'),

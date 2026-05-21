@@ -132,10 +132,13 @@ type AppleApp struct {
 	AppStoreId pulumi.StringPtrOutput `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId pulumi.StringOutput `pulumi:"bundleId"`
-	// (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-	// serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fully qualified resource name of the App, for example:
@@ -195,9 +198,12 @@ type appleAppState struct {
 	AppStoreId *string `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId *string `pulumi:"bundleId"`
-	// (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-	// serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName *string `pulumi:"displayName"`
@@ -223,9 +229,12 @@ type AppleAppState struct {
 	AppStoreId pulumi.StringPtrInput
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId pulumi.StringPtrInput
-	// (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-	// serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringPtrInput
@@ -252,9 +261,12 @@ type appleAppArgs struct {
 	AppStoreId *string `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId string `pulumi:"bundleId"`
-	// (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-	// serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName string `pulumi:"displayName"`
@@ -275,9 +287,12 @@ type AppleAppArgs struct {
 	AppStoreId pulumi.StringPtrInput
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId pulumi.StringInput
-	// (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-	// rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-	// serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringInput
@@ -398,11 +413,14 @@ func (o AppleAppOutput) BundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppleApp) pulumi.StringOutput { return v.BundleId }).(pulumi.StringOutput)
 }
 
-// (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-// rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-// serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
-func (o AppleAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppleApp) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppleAppOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppleApp) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The user-assigned display name of the App.

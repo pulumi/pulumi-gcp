@@ -188,6 +188,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
@@ -491,6 +492,30 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<UptimeCheckConfigContentMatcher>>> contentMatchers() {
         return Codegen.optional(this.contentMatchers);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.

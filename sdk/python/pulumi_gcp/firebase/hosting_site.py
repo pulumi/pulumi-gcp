@@ -20,6 +20,7 @@ __all__ = ['HostingSiteArgs', 'HostingSite']
 class HostingSiteArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -27,6 +28,12 @@ class HostingSiteArgs:
 
         :param pulumi.Input[_builtins.str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] site_id: Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
@@ -35,6 +42,8 @@ class HostingSiteArgs:
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if site_id is not None:
@@ -52,6 +61,23 @@ class HostingSiteArgs:
     @app_id.setter
     def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -86,6 +112,7 @@ class _HostingSiteState:
     def __init__(__self__, *,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -96,6 +123,12 @@ class _HostingSiteState:
         :param pulumi.Input[_builtins.str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
         :param pulumi.Input[_builtins.str] default_url: The default URL for the site in the form of https://{name}.web.app
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: Output only. The fully-qualified resource name of the Hosting site, in
                the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
                Firebase project's
@@ -114,6 +147,8 @@ class _HostingSiteState:
             pulumi.set(__self__, "app_id", app_id)
         if default_url is not None:
             pulumi.set(__self__, "default_url", default_url)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -147,6 +182,23 @@ class _HostingSiteState:
     @default_url.setter
     def default_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -213,6 +265,7 @@ class HostingSite(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -288,6 +341,12 @@ class HostingSite(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] site_id: Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
@@ -384,6 +443,7 @@ class HostingSite(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -396,6 +456,7 @@ class HostingSite(pulumi.CustomResource):
             __props__ = HostingSiteArgs.__new__(HostingSiteArgs)
 
             __props__.__dict__["app_id"] = app_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["default_url"] = None
@@ -413,6 +474,7 @@ class HostingSite(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
             default_url: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -427,6 +489,12 @@ class HostingSite(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
         :param pulumi.Input[_builtins.str] default_url: The default URL for the site in the form of https://{name}.web.app
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: Output only. The fully-qualified resource name of the Hosting site, in
                the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
                Firebase project's
@@ -447,6 +515,7 @@ class HostingSite(pulumi.CustomResource):
 
         __props__.__dict__["app_id"] = app_id
         __props__.__dict__["default_url"] = default_url
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["site_id"] = site_id
@@ -469,6 +538,19 @@ class HostingSite(pulumi.CustomResource):
         The default URL for the site in the form of https://{name}.web.app
         """
         return pulumi.get(self, "default_url")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

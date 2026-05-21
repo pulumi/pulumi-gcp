@@ -78,6 +78,13 @@ type OrganizationBucketConfig struct {
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings OrganizationBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A list of indexed fields and related configuration data. Structure is documented below.
@@ -137,6 +144,13 @@ type organizationBucketConfigState struct {
 	BucketId *string `pulumi:"bucketId"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *OrganizationBucketConfigCmekSettings `pulumi:"cmekSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// A list of indexed fields and related configuration data. Structure is documented below.
@@ -158,6 +172,13 @@ type OrganizationBucketConfigState struct {
 	BucketId pulumi.StringPtrInput
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings OrganizationBucketConfigCmekSettingsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// A list of indexed fields and related configuration data. Structure is documented below.
@@ -183,6 +204,13 @@ type organizationBucketConfigArgs struct {
 	BucketId string `pulumi:"bucketId"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *OrganizationBucketConfigCmekSettings `pulumi:"cmekSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// A list of indexed fields and related configuration data. Structure is documented below.
@@ -201,6 +229,13 @@ type OrganizationBucketConfigArgs struct {
 	BucketId pulumi.StringInput
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings OrganizationBucketConfigCmekSettingsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// A list of indexed fields and related configuration data. Structure is documented below.
@@ -308,6 +343,16 @@ func (o OrganizationBucketConfigOutput) BucketId() pulumi.StringOutput {
 // The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 func (o OrganizationBucketConfigOutput) CmekSettings() OrganizationBucketConfigCmekSettingsPtrOutput {
 	return o.ApplyT(func(v *OrganizationBucketConfig) OrganizationBucketConfigCmekSettingsPtrOutput { return v.CmekSettings }).(OrganizationBucketConfigCmekSettingsPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OrganizationBucketConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationBucketConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Describes this bucket.

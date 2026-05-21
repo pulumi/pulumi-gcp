@@ -121,6 +121,13 @@ import (
 type RegionDiskResourcePolicyAttachment struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the regional disk in which the resource policies are attached to.
 	Disk pulumi.StringOutput `pulumi:"disk"`
 	// The resource policy to be attached to the disk for scheduling snapshot
@@ -166,6 +173,13 @@ func GetRegionDiskResourcePolicyAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionDiskResourcePolicyAttachment resources.
 type regionDiskResourcePolicyAttachmentState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the regional disk in which the resource policies are attached to.
 	Disk *string `pulumi:"disk"`
 	// The resource policy to be attached to the disk for scheduling snapshot
@@ -179,6 +193,13 @@ type regionDiskResourcePolicyAttachmentState struct {
 }
 
 type RegionDiskResourcePolicyAttachmentState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the regional disk in which the resource policies are attached to.
 	Disk pulumi.StringPtrInput
 	// The resource policy to be attached to the disk for scheduling snapshot
@@ -196,6 +217,13 @@ func (RegionDiskResourcePolicyAttachmentState) ElementType() reflect.Type {
 }
 
 type regionDiskResourcePolicyAttachmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the regional disk in which the resource policies are attached to.
 	Disk string `pulumi:"disk"`
 	// The resource policy to be attached to the disk for scheduling snapshot
@@ -210,6 +238,13 @@ type regionDiskResourcePolicyAttachmentArgs struct {
 
 // The set of arguments for constructing a RegionDiskResourcePolicyAttachment resource.
 type RegionDiskResourcePolicyAttachmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the regional disk in which the resource policies are attached to.
 	Disk pulumi.StringInput
 	// The resource policy to be attached to the disk for scheduling snapshot
@@ -307,6 +342,16 @@ func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAtta
 
 func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAttachmentOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionDiskResourcePolicyAttachmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionDiskResourcePolicyAttachment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of the regional disk in which the resource policies are attached to.

@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetHostingChannelResult
     {
         public readonly string ChannelId;
+        public readonly string DeletionPolicy;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string ExpireTime;
         /// <summary>
@@ -105,6 +106,8 @@ namespace Pulumi.Gcp.Firebase
         private GetHostingChannelResult(
             string channelId,
 
+            string deletionPolicy,
+
             ImmutableDictionary<string, string> effectiveLabels,
 
             string expireTime,
@@ -124,6 +127,7 @@ namespace Pulumi.Gcp.Firebase
             string ttl)
         {
             ChannelId = channelId;
+            DeletionPolicy = deletionPolicy;
             EffectiveLabels = effectiveLabels;
             ExpireTime = expireTime;
             Id = id;

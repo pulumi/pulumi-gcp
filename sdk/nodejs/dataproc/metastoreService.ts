@@ -371,6 +371,15 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     declare public readonly databaseType: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Indicates if the dataproc metastore should be protected against accidental deletions.
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
@@ -515,6 +524,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["artifactGcsUri"] = state?.artifactGcsUri;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["databaseType"] = state?.databaseType;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["encryptionConfig"] = state?.encryptionConfig;
@@ -544,6 +554,7 @@ export class MetastoreService extends pulumi.CustomResource {
         } else {
             const args = argsOrState as MetastoreServiceArgs | undefined;
             resourceInputs["databaseType"] = args?.databaseType;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["encryptionConfig"] = args?.encryptionConfig;
             resourceInputs["hiveMetastoreConfig"] = args?.hiveMetastoreConfig;
@@ -598,6 +609,15 @@ export interface MetastoreServiceState {
      * Possible values are: `MYSQL`, `SPANNER`.
      */
     databaseType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the dataproc metastore should be protected against accidental deletions.
      */
@@ -738,6 +758,15 @@ export interface MetastoreServiceArgs {
      * Possible values are: `MYSQL`, `SPANNER`.
      */
     databaseType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the dataproc metastore should be protected against accidental deletions.
      */

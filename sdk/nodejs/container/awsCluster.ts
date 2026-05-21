@@ -318,6 +318,15 @@ export class AwsCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -397,6 +406,7 @@ export class AwsCluster extends pulumi.CustomResource {
             resourceInputs["binaryAuthorization"] = state?.binaryAuthorization;
             resourceInputs["controlPlane"] = state?.controlPlane;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["endpoint"] = state?.endpoint;
@@ -437,6 +447,7 @@ export class AwsCluster extends pulumi.CustomResource {
             resourceInputs["awsRegion"] = args?.awsRegion;
             resourceInputs["binaryAuthorization"] = args?.binaryAuthorization;
             resourceInputs["controlPlane"] = args?.controlPlane;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["fleet"] = args?.fleet;
             resourceInputs["location"] = args?.location;
@@ -490,6 +501,15 @@ export interface AwsClusterState {
      * Output only. The time at which this cluster was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
@@ -579,6 +599,15 @@ export interface AwsClusterArgs {
      * Configuration related to the cluster control plane.
      */
     controlPlane: pulumi.Input<inputs.container.AwsClusterControlPlane>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */

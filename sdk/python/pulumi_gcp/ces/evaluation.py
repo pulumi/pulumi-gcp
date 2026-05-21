@@ -25,9 +25,11 @@ class EvaluationArgs:
                  display_name: pulumi.Input[_builtins.str],
                  evaluation_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  golden: pulumi.Input[Optional['EvaluationGoldenArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenario: pulumi.Input[Optional['EvaluationScenarioArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Evaluation resource.
@@ -38,23 +40,35 @@ class EvaluationArgs:
                the evaluation's resource name. If not provided, a unique ID will be
                automatically assigned for the evaluation.
         :param pulumi.Input[_builtins.str] location: (Required)
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-defined description of the evaluation.
         :param pulumi.Input['EvaluationGoldenArgs'] golden: Golden input.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['EvaluationScenarioArgs'] scenario: Scenario input.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: User defined tags to categorize the evaluation.
         """
         pulumi.set(__self__, "app", app)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "evaluation_id", evaluation_id)
         pulumi.set(__self__, "location", location)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if golden is not None:
             pulumi.set(__self__, "golden", golden)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if scenario is not None:
+            pulumi.set(__self__, "scenario", scenario)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -109,6 +123,23 @@ class EvaluationArgs:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -148,6 +179,19 @@ class EvaluationArgs:
 
     @_builtins.property
     @pulumi.getter
+    def scenario(self) -> pulumi.Input[Optional['EvaluationScenarioArgs']]:
+        """
+        Scenario input.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scenario")
+
+    @scenario.setter
+    def scenario(self, value: pulumi.Input[Optional['EvaluationScenarioArgs']]):
+        pulumi.set(self, "scenario", value)
+
+    @_builtins.property
+    @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User defined tags to categorize the evaluation.
@@ -165,6 +209,7 @@ class _EvaluationState:
                  app: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -177,6 +222,7 @@ class _EvaluationState:
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenario: pulumi.Input[Optional['EvaluationScenarioArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -185,6 +231,12 @@ class _EvaluationState:
         :param pulumi.Input[_builtins.str] app: (Required)
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the evaluation was created.
         :param pulumi.Input[_builtins.str] created_by: The user who created the evaluation.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-defined description of the evaluation.
         :param pulumi.Input[_builtins.str] display_name: User-defined display name of the evaluation.
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write operation.
@@ -202,6 +254,8 @@ class _EvaluationState:
                Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['EvaluationScenarioArgs'] scenario: Scenario input.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: User defined tags to categorize the evaluation.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the evaluation was last updated.
         """
@@ -211,6 +265,8 @@ class _EvaluationState:
             pulumi.set(__self__, "create_time", create_time)
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -235,6 +291,8 @@ class _EvaluationState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if scenario is not None:
+            pulumi.set(__self__, "scenario", scenario)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if update_time is not None:
@@ -275,6 +333,23 @@ class _EvaluationState:
     @created_by.setter
     def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -427,6 +502,19 @@ class _EvaluationState:
 
     @_builtins.property
     @pulumi.getter
+    def scenario(self) -> pulumi.Input[Optional['EvaluationScenarioArgs']]:
+        """
+        Scenario input.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scenario")
+
+    @scenario.setter
+    def scenario(self, value: pulumi.Input[Optional['EvaluationScenarioArgs']]):
+        pulumi.set(self, "scenario", value)
+
+    @_builtins.property
+    @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User defined tags to categorize the evaluation.
@@ -457,12 +545,14 @@ class Evaluation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -942,6 +1032,311 @@ class Evaluation(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Ces Evaluation Scenario Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        app = gcp.ces.App("app",
+            app_id="app-id-scenario",
+            location="us",
+            display_name="my-app-scenario",
+            language_settings={
+                "default_language_code": "en-US",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        tool = gcp.ces.Tool("tool",
+            location="us",
+            app=app.app_id,
+            tool_id="tool-id-scenario",
+            execution_type="SYNCHRONOUS",
+            python_function={
+                "name": "example_function",
+                "python_code": "def example_function() -> int: return 0",
+            })
+        ces_evaluation_scenario_full = gcp.ces.Evaluation("ces_evaluation_scenario_full",
+            evaluation_id="eval-scenario-full",
+            display_name="my-evaluation-scenario-full",
+            location="us",
+            app=app.app_id,
+            description="Full evaluation for testing scenario",
+            tags=[
+                "test",
+                "full",
+                "scenario",
+            ],
+            scenario={
+                "task": "Test task",
+                "max_turns": 5,
+                "rubrics": [pulumi.Output.all(
+                    project=app.project,
+                    app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/rubrics/dummy-rubric")
+        ],
+                "user_goal_behavior": "USER_GOAL_SATISFIED",
+                "task_completion_behavior": "TASK_SATISFIED",
+                "variable_overrides": {
+                    "key": "value",
+                },
+                "evaluation_expectations": [pulumi.Output.all(
+                    project=app.project,
+                    app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/evaluationExpectations/dummy-exp")
+        ],
+                "user_facts": [{
+                    "name": "user_name",
+                    "value": "John Doe",
+                }],
+                "scenario_expectations": [
+                    {
+                        "tool_expectation": {
+                            "expected_tool_call": {
+                                "id": "tool-call-id",
+                                "tool": pulumi.Output.all(
+                                    project=app.project,
+                                    app_id=app.app_id,
+                                    tool_id=tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                                "args": {
+                                    "param": "value",
+                                },
+                            },
+                            "mock_tool_response": {
+                                "id": "tool-call-id",
+                                "response": {
+                                    "result": "mocked",
+                                },
+                                "tool": pulumi.Output.all(
+                                    project=app.project,
+                                    app_id=app.app_id,
+                                    tool_id=tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                            },
+                        },
+                    },
+                    {
+                        "agent_response": {
+                            "role": "agent",
+                            "chunks": [
+                                {
+                                    "text": "Hello",
+                                },
+                                {
+                                    "updated_variables": {
+                                        "key": "value",
+                                    },
+                                },
+                                {
+                                    "blob": {
+                                        "mime_type": "text/plain",
+                                        "data": "c29tZSBibG9iIGRhdGE=",
+                                    },
+                                },
+                                {
+                                    "image": {
+                                        "mime_type": "image/png",
+                                        "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+                                    },
+                                },
+                                {
+                                    "tool_call": {
+                                        "id": "tool-call-id-3",
+                                        "tool": pulumi.Output.all(
+                                            project=app.project,
+                                            app_id=app.app_id,
+                                            tool_id=tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                                        "args": {
+                                            "param": "value",
+                                        },
+                                    },
+                                },
+                                {
+                                    "tool_response": {
+                                        "id": "tool-call-id-3",
+                                        "response": {
+                                            "result": "success",
+                                        },
+                                        "tool": pulumi.Output.all(
+                                            project=app.project,
+                                            app_id=app.app_id,
+                                            tool_id=tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                                    },
+                                },
+                                {
+                                    "agent_transfer": {
+                                        "target_agent": pulumi.Output.all(
+                                            project=app.project,
+                                            app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/dummy-agent")
+        ,
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            })
+        ```
+        ### Ces Evaluation Scenario Toolset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        app = gcp.ces.App("app",
+            app_id="app-id-scenario-ts",
+            location="us",
+            display_name="my-app-scenario-ts",
+            language_settings={
+                "default_language_code": "en-US",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        toolset = gcp.ces.Toolset("toolset",
+            toolset_id="ts-scen",
+            location="us",
+            app=app.app_id,
+            display_name="Basic toolset display name",
+            description="Test description",
+            execution_type="SYNCHRONOUS",
+            open_api_toolset={
+                "open_api_schema": \"\"\"openapi: 3.0.0
+        info:
+          title: My Sample API
+          version: 1.0.0
+          description: A simple API example
+        servers:
+          - url: https://api.example.com/v1
+        paths: {}
+        \"\"\",
+                "ignore_unknown_fields": False,
+            })
+        ces_evaluation_scenario_toolset = gcp.ces.Evaluation("ces_evaluation_scenario_toolset",
+            evaluation_id="eval-scen-ts",
+            display_name="my-evaluation-scenario-toolset",
+            location="us",
+            app=app.app_id,
+            description="Full evaluation for testing scenario with toolset",
+            tags=[
+                "test",
+                "full",
+                "scenario",
+                "toolset",
+            ],
+            scenario={
+                "task": "Test task",
+                "max_turns": 5,
+                "rubrics": [pulumi.Output.all(
+                    project=app.project,
+                    app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/rubrics/dummy-rubric")
+        ],
+                "user_goal_behavior": "USER_GOAL_SATISFIED",
+                "task_completion_behavior": "TASK_SATISFIED",
+                "variable_overrides": {
+                    "key": "value",
+                },
+                "evaluation_expectations": [pulumi.Output.all(
+                    project=app.project,
+                    app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/evaluationExpectations/dummy-exp")
+        ],
+                "user_facts": [{
+                    "name": "user_name",
+                    "value": "John Doe",
+                }],
+                "scenario_expectations": [
+                    {
+                        "tool_expectation": {
+                            "expected_tool_call": {
+                                "id": "tool-call-id",
+                                "toolset_tool": {
+                                    "toolset": pulumi.Output.all(
+                                        project=app.project,
+                                        app_id=app.app_id,
+                                        toolset_id=toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                    "tool_id": "dummy-tool",
+                                },
+                                "args": {
+                                    "param": "value",
+                                },
+                            },
+                            "mock_tool_response": {
+                                "id": "tool-call-id",
+                                "response": {
+                                    "result": "mocked",
+                                },
+                                "toolset_tool": {
+                                    "toolset": pulumi.Output.all(
+                                        project=app.project,
+                                        app_id=app.app_id,
+                                        toolset_id=toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                    "tool_id": "dummy-tool",
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "agent_response": {
+                            "role": "agent",
+                            "chunks": [
+                                {
+                                    "text": "Hello",
+                                },
+                                {
+                                    "tool_call": {
+                                        "id": "tool-call-id-3",
+                                        "toolset_tool": {
+                                            "toolset": pulumi.Output.all(
+                                                project=app.project,
+                                                app_id=app.app_id,
+                                                toolset_id=toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                            "tool_id": "dummy-tool",
+                                        },
+                                        "args": {
+                                            "param": "value",
+                                        },
+                                    },
+                                },
+                                {
+                                    "tool_response": {
+                                        "id": "tool-call-id-3",
+                                        "response": {
+                                            "result": "success",
+                                        },
+                                        "toolset_tool": {
+                                            "toolset": pulumi.Output.all(
+                                                project=app.project,
+                                                app_id=app.app_id,
+                                                toolset_id=toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                            "tool_id": "dummy-tool",
+                                        },
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            })
+        ```
 
         ## Import
 
@@ -963,6 +1358,12 @@ class Evaluation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app: (Required)
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-defined description of the evaluation.
         :param pulumi.Input[_builtins.str] display_name: User-defined display name of the evaluation.
         :param pulumi.Input[_builtins.str] evaluation_id: The ID to use for the evaluation, which will become the final component of
@@ -973,6 +1374,8 @@ class Evaluation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: (Required)
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']] scenario: Scenario input.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: User defined tags to categorize the evaluation.
         """
         ...
@@ -1458,6 +1861,311 @@ class Evaluation(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Ces Evaluation Scenario Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        app = gcp.ces.App("app",
+            app_id="app-id-scenario",
+            location="us",
+            display_name="my-app-scenario",
+            language_settings={
+                "default_language_code": "en-US",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        tool = gcp.ces.Tool("tool",
+            location="us",
+            app=app.app_id,
+            tool_id="tool-id-scenario",
+            execution_type="SYNCHRONOUS",
+            python_function={
+                "name": "example_function",
+                "python_code": "def example_function() -> int: return 0",
+            })
+        ces_evaluation_scenario_full = gcp.ces.Evaluation("ces_evaluation_scenario_full",
+            evaluation_id="eval-scenario-full",
+            display_name="my-evaluation-scenario-full",
+            location="us",
+            app=app.app_id,
+            description="Full evaluation for testing scenario",
+            tags=[
+                "test",
+                "full",
+                "scenario",
+            ],
+            scenario={
+                "task": "Test task",
+                "max_turns": 5,
+                "rubrics": [pulumi.Output.all(
+                    project=app.project,
+                    app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/rubrics/dummy-rubric")
+        ],
+                "user_goal_behavior": "USER_GOAL_SATISFIED",
+                "task_completion_behavior": "TASK_SATISFIED",
+                "variable_overrides": {
+                    "key": "value",
+                },
+                "evaluation_expectations": [pulumi.Output.all(
+                    project=app.project,
+                    app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/evaluationExpectations/dummy-exp")
+        ],
+                "user_facts": [{
+                    "name": "user_name",
+                    "value": "John Doe",
+                }],
+                "scenario_expectations": [
+                    {
+                        "tool_expectation": {
+                            "expected_tool_call": {
+                                "id": "tool-call-id",
+                                "tool": pulumi.Output.all(
+                                    project=app.project,
+                                    app_id=app.app_id,
+                                    tool_id=tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                                "args": {
+                                    "param": "value",
+                                },
+                            },
+                            "mock_tool_response": {
+                                "id": "tool-call-id",
+                                "response": {
+                                    "result": "mocked",
+                                },
+                                "tool": pulumi.Output.all(
+                                    project=app.project,
+                                    app_id=app.app_id,
+                                    tool_id=tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                            },
+                        },
+                    },
+                    {
+                        "agent_response": {
+                            "role": "agent",
+                            "chunks": [
+                                {
+                                    "text": "Hello",
+                                },
+                                {
+                                    "updated_variables": {
+                                        "key": "value",
+                                    },
+                                },
+                                {
+                                    "blob": {
+                                        "mime_type": "text/plain",
+                                        "data": "c29tZSBibG9iIGRhdGE=",
+                                    },
+                                },
+                                {
+                                    "image": {
+                                        "mime_type": "image/png",
+                                        "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+                                    },
+                                },
+                                {
+                                    "tool_call": {
+                                        "id": "tool-call-id-3",
+                                        "tool": pulumi.Output.all(
+                                            project=app.project,
+                                            app_id=app.app_id,
+                                            tool_id=tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                                        "args": {
+                                            "param": "value",
+                                        },
+                                    },
+                                },
+                                {
+                                    "tool_response": {
+                                        "id": "tool-call-id-3",
+                                        "response": {
+                                            "result": "success",
+                                        },
+                                        "tool": pulumi.Output.all(
+                                            project=app.project,
+                                            app_id=app.app_id,
+                                            tool_id=tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                                    },
+                                },
+                                {
+                                    "agent_transfer": {
+                                        "target_agent": pulumi.Output.all(
+                                            project=app.project,
+                                            app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/dummy-agent")
+        ,
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            })
+        ```
+        ### Ces Evaluation Scenario Toolset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        app = gcp.ces.App("app",
+            app_id="app-id-scenario-ts",
+            location="us",
+            display_name="my-app-scenario-ts",
+            language_settings={
+                "default_language_code": "en-US",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        toolset = gcp.ces.Toolset("toolset",
+            toolset_id="ts-scen",
+            location="us",
+            app=app.app_id,
+            display_name="Basic toolset display name",
+            description="Test description",
+            execution_type="SYNCHRONOUS",
+            open_api_toolset={
+                "open_api_schema": \"\"\"openapi: 3.0.0
+        info:
+          title: My Sample API
+          version: 1.0.0
+          description: A simple API example
+        servers:
+          - url: https://api.example.com/v1
+        paths: {}
+        \"\"\",
+                "ignore_unknown_fields": False,
+            })
+        ces_evaluation_scenario_toolset = gcp.ces.Evaluation("ces_evaluation_scenario_toolset",
+            evaluation_id="eval-scen-ts",
+            display_name="my-evaluation-scenario-toolset",
+            location="us",
+            app=app.app_id,
+            description="Full evaluation for testing scenario with toolset",
+            tags=[
+                "test",
+                "full",
+                "scenario",
+                "toolset",
+            ],
+            scenario={
+                "task": "Test task",
+                "max_turns": 5,
+                "rubrics": [pulumi.Output.all(
+                    project=app.project,
+                    app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/rubrics/dummy-rubric")
+        ],
+                "user_goal_behavior": "USER_GOAL_SATISFIED",
+                "task_completion_behavior": "TASK_SATISFIED",
+                "variable_overrides": {
+                    "key": "value",
+                },
+                "evaluation_expectations": [pulumi.Output.all(
+                    project=app.project,
+                    app_id=app.app_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/evaluationExpectations/dummy-exp")
+        ],
+                "user_facts": [{
+                    "name": "user_name",
+                    "value": "John Doe",
+                }],
+                "scenario_expectations": [
+                    {
+                        "tool_expectation": {
+                            "expected_tool_call": {
+                                "id": "tool-call-id",
+                                "toolset_tool": {
+                                    "toolset": pulumi.Output.all(
+                                        project=app.project,
+                                        app_id=app.app_id,
+                                        toolset_id=toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                    "tool_id": "dummy-tool",
+                                },
+                                "args": {
+                                    "param": "value",
+                                },
+                            },
+                            "mock_tool_response": {
+                                "id": "tool-call-id",
+                                "response": {
+                                    "result": "mocked",
+                                },
+                                "toolset_tool": {
+                                    "toolset": pulumi.Output.all(
+                                        project=app.project,
+                                        app_id=app.app_id,
+                                        toolset_id=toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                    "tool_id": "dummy-tool",
+                                },
+                            },
+                        },
+                    },
+                    {
+                        "agent_response": {
+                            "role": "agent",
+                            "chunks": [
+                                {
+                                    "text": "Hello",
+                                },
+                                {
+                                    "tool_call": {
+                                        "id": "tool-call-id-3",
+                                        "toolset_tool": {
+                                            "toolset": pulumi.Output.all(
+                                                project=app.project,
+                                                app_id=app.app_id,
+                                                toolset_id=toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                            "tool_id": "dummy-tool",
+                                        },
+                                        "args": {
+                                            "param": "value",
+                                        },
+                                    },
+                                },
+                                {
+                                    "tool_response": {
+                                        "id": "tool-call-id-3",
+                                        "response": {
+                                            "result": "success",
+                                        },
+                                        "toolset_tool": {
+                                            "toolset": pulumi.Output.all(
+                                                project=app.project,
+                                                app_id=app.app_id,
+                                                toolset_id=toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                            "tool_id": "dummy-tool",
+                                        },
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            })
+        ```
 
         ## Import
 
@@ -1492,12 +2200,14 @@ class Evaluation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1511,6 +2221,7 @@ class Evaluation(pulumi.CustomResource):
             if app is None and not opts.urn:
                 raise TypeError("Missing required property 'app'")
             __props__.__dict__["app"] = app
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1523,6 +2234,7 @@ class Evaluation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["scenario"] = scenario
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_by"] = None
@@ -1546,6 +2258,7 @@ class Evaluation(pulumi.CustomResource):
             app: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1558,6 +2271,7 @@ class Evaluation(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            scenario: pulumi.Input[Optional[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Evaluation':
         """
@@ -1570,6 +2284,12 @@ class Evaluation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app: (Required)
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the evaluation was created.
         :param pulumi.Input[_builtins.str] created_by: The user who created the evaluation.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-defined description of the evaluation.
         :param pulumi.Input[_builtins.str] display_name: User-defined display name of the evaluation.
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write operation.
@@ -1587,6 +2307,8 @@ class Evaluation(pulumi.CustomResource):
                Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['EvaluationScenarioArgs', 'EvaluationScenarioArgsDict']] scenario: Scenario input.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: User defined tags to categorize the evaluation.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the evaluation was last updated.
         """
@@ -1597,6 +2319,7 @@ class Evaluation(pulumi.CustomResource):
         __props__.__dict__["app"] = app
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["etag"] = etag
@@ -1609,6 +2332,7 @@ class Evaluation(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["scenario"] = scenario
         __props__.__dict__["tags"] = tags
         __props__.__dict__["update_time"] = update_time
         return Evaluation(resource_name, opts=opts, __props__=__props__)
@@ -1636,6 +2360,19 @@ class Evaluation(pulumi.CustomResource):
         The user who created the evaluation.
         """
         return pulumi.get(self, "created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -1737,6 +2474,15 @@ class Evaluation(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def scenario(self) -> pulumi.Output[Optional['outputs.EvaluationScenario']]:
+        """
+        Scenario input.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scenario")
 
     @_builtins.property
     @pulumi.getter

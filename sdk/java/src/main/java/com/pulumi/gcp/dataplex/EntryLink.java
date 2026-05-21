@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var entry_group_basic = new EntryGroup("entry-group-basic", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("tf-test-entry-group_10393")
+ *             .entryGroupId("tf-test-entry-group_1443")
  *             .project("1111111111111")
  *             .build());
  * 
  *         var entry_type_basic = new EntryType("entry-type-basic", EntryTypeArgs.builder()
- *             .entryTypeId("tf-test-entry-type_3684")
+ *             .entryTypeId("tf-test-entry-type_8647")
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .build());
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var source = new Entry("source", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryId("tf-test-source-entry_33052")
+ *             .entryId("tf-test-source-entry_26032")
  *             .entryType(entry_type_basic.name())
  *             .project("1111111111111")
  *             .build());
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *         var target = new Entry("target", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryId("tf-test-target-entry_10719")
+ *             .entryId("tf-test-target-entry_50610")
  *             .entryType(entry_type_basic.name())
  *             .project("1111111111111")
  *             .build());
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .project("1111111111111")
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryLinkId("tf-test-entry-link_1443")
+ *             .entryLinkId("tf-test-entry-link_77124")
  *             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/related")
  *             .entryReferences(            
  *                 EntryLinkEntryReferenceArgs.builder()
@@ -146,12 +146,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var entry_group_full = new EntryGroup("entry-group-full", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("tf-test-entry-group_26032")
+ *             .entryGroupId("tf-test-entry-group_15335")
  *             .project("1111111111111")
  *             .build());
  * 
  *         var entry_type_full = new EntryType("entry-type-full", EntryTypeArgs.builder()
- *             .entryTypeId("tf-test-entry-type_50610")
+ *             .entryTypeId("tf-test-entry-type_85160")
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .build());
@@ -159,13 +159,13 @@ import javax.annotation.Nullable;
  *         var source = new Entry("source", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_full.entryGroupId())
- *             .entryId("tf-test-source-entry_8647")
+ *             .entryId("tf-test-source-entry_20665")
  *             .entryType(entry_type_full.name())
  *             .project("1111111111111")
  *             .build());
  * 
  *         var termTestIdFull = new Glossary("termTestIdFull", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_77124")
+ *             .glossaryId("tf-test-glossary_92130")
  *             .location("us-central1")
  *             .build());
  * 
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             }}{@code ))
  *             .glossaryId(termTestIdFull.glossaryId())
  *             .location("us-central1")
- *             .termId("tf-test-term-full_15335")
+ *             .termId("tf-test-term-full_16199")
  *             .labels(Map.of("tag", "test-tf"))
  *             .displayName("terraform term")
  *             .description("term created by Terraform")
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  *             .project("1111111111111")
  *             .location("us-central1")
  *             .entryGroupId(entry_group_full.entryGroupId())
- *             .entryLinkId("tf-test-entry-link_20665")
+ *             .entryLinkId("tf-test-entry-link_21563")
  *             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/definition")
  *             .entryReferences(            
  *                 EntryLinkEntryReferenceArgs.builder()
@@ -268,6 +268,30 @@ public class EntryLink extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The id of the entry group this entry link is in.

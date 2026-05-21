@@ -221,6 +221,15 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationRecords: pulumi.Output<outputs.monitoring.AlertPolicyCreationRecord[]>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A short name or phrase used to identify the policy in
      * dashboards, notifications, and incidents. To avoid confusion, don't use
      * the same display name for multiple policies in the same project. The
@@ -293,6 +302,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             resourceInputs["combiner"] = state?.combiner;
             resourceInputs["conditions"] = state?.conditions;
             resourceInputs["creationRecords"] = state?.creationRecords;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["documentation"] = state?.documentation;
             resourceInputs["enabled"] = state?.enabled;
@@ -315,6 +325,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             resourceInputs["alertStrategy"] = args?.alertStrategy;
             resourceInputs["combiner"] = args?.combiner;
             resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["documentation"] = args?.documentation;
             resourceInputs["enabled"] = args?.enabled;
@@ -360,6 +371,15 @@ export interface AlertPolicyState {
      * Structure is documented below.
      */
     creationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A short name or phrase used to identify the policy in
      * dashboards, notifications, and incidents. To avoid confusion, don't use
@@ -440,6 +460,15 @@ export interface AlertPolicyArgs {
      * Structure is documented below.
      */
     conditions: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A short name or phrase used to identify the policy in
      * dashboards, notifications, and incidents. To avoid confusion, don't use

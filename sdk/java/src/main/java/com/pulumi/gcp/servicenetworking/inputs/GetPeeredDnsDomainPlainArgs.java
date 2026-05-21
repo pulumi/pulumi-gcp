@@ -7,11 +7,20 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetPeeredDnsDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPeeredDnsDomainPlainArgs Empty = new GetPeeredDnsDomainPlainArgs();
+
+    @Import(name="deletionPolicy")
+    private @Nullable String deletionPolicy;
+
+    public Optional<String> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
 
     @Import(name="name", required=true)
     private String name;
@@ -44,6 +53,7 @@ public final class GetPeeredDnsDomainPlainArgs extends com.pulumi.resources.Invo
     private GetPeeredDnsDomainPlainArgs() {}
 
     private GetPeeredDnsDomainPlainArgs(GetPeeredDnsDomainPlainArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
@@ -66,6 +76,11 @@ public final class GetPeeredDnsDomainPlainArgs extends com.pulumi.resources.Invo
 
         public Builder(GetPeeredDnsDomainPlainArgs defaults) {
             $ = new GetPeeredDnsDomainPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder deletionPolicy(@Nullable String deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
         }
 
         public Builder name(String name) {

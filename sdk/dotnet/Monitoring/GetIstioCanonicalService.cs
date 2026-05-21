@@ -228,6 +228,7 @@ namespace Pulumi.Gcp.Monitoring
     {
         public readonly string CanonicalService;
         public readonly string CanonicalServiceNamespace;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Name used for UI elements listing this (Monitoring) Service.
         /// </summary>
@@ -256,6 +257,8 @@ namespace Pulumi.Gcp.Monitoring
 
             string canonicalServiceNamespace,
 
+            string deletionPolicy,
+
             string displayName,
 
             string id,
@@ -274,6 +277,7 @@ namespace Pulumi.Gcp.Monitoring
         {
             CanonicalService = canonicalService;
             CanonicalServiceNamespace = canonicalServiceNamespace;
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             Id = id;
             MeshUid = meshUid;

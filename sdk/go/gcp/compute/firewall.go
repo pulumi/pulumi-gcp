@@ -151,6 +151,13 @@ type Firewall struct {
 	Allows FirewallAllowArrayOutput `pulumi:"allows"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The list of DENY rules specified by this firewall. Each rule specifies
 	// a protocol and port-range tuple that describes a denied connection.
 	// Structure is documented below.
@@ -294,6 +301,13 @@ type firewallState struct {
 	Allows []FirewallAllow `pulumi:"allows"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The list of DENY rules specified by this firewall. Each rule specifies
 	// a protocol and port-range tuple that describes a denied connection.
 	// Structure is documented below.
@@ -405,6 +419,13 @@ type FirewallState struct {
 	Allows FirewallAllowArrayInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The list of DENY rules specified by this firewall. Each rule specifies
 	// a protocol and port-range tuple that describes a denied connection.
 	// Structure is documented below.
@@ -518,6 +539,13 @@ type firewallArgs struct {
 	// connection.
 	// Structure is documented below.
 	Allows []FirewallAllow `pulumi:"allows"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The list of DENY rules specified by this firewall. Each rule specifies
 	// a protocol and port-range tuple that describes a denied connection.
 	// Structure is documented below.
@@ -626,6 +654,13 @@ type FirewallArgs struct {
 	// connection.
 	// Structure is documented below.
 	Allows FirewallAllowArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The list of DENY rules specified by this firewall. Each rule specifies
 	// a protocol and port-range tuple that describes a denied connection.
 	// Structure is documented below.
@@ -825,6 +860,16 @@ func (o FirewallOutput) Allows() FirewallAllowArrayOutput {
 // Creation timestamp in RFC3339 text format.
 func (o FirewallOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FirewallOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The list of DENY rules specified by this firewall. Each rule specifies

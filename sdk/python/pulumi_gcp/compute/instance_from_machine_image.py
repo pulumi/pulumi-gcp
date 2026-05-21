@@ -26,6 +26,7 @@ class InstanceFromMachineImageArgs:
                  allow_stopping_for_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
                  confidential_instance_config: pulumi.Input[Optional['InstanceFromMachineImageConfidentialInstanceConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -65,6 +66,12 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
         :param pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs'] confidential_instance_config: The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
@@ -114,6 +121,8 @@ class InstanceFromMachineImageArgs:
             pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if confidential_instance_config is not None:
             pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -233,6 +242,23 @@ class InstanceFromMachineImageArgs:
     @confidential_instance_config.setter
     def confidential_instance_config(self, value: pulumi.Input[Optional['InstanceFromMachineImageConfidentialInstanceConfigArgs']]):
         pulumi.set(self, "confidential_instance_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -594,6 +620,7 @@ class _InstanceFromMachineImageState:
                  cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  current_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -645,6 +672,12 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[_builtins.str] current_status: Current status of the instance.
                					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
                					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
@@ -715,6 +748,8 @@ class _InstanceFromMachineImageState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if current_status is not None:
             pulumi.set(__self__, "current_status", current_status)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -899,6 +934,23 @@ class _InstanceFromMachineImageState:
     @current_status.setter
     def current_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -1369,6 +1421,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  allow_stopping_for_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
                  confidential_instance_config: pulumi.Input[Optional[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1435,6 +1488,12 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
         :param pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']] confidential_instance_config: The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
@@ -1534,6 +1593,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  allow_stopping_for_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
                  confidential_instance_config: pulumi.Input[Optional[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1576,6 +1636,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
             __props__.__dict__["can_ip_forward"] = can_ip_forward
             __props__.__dict__["confidential_instance_config"] = confidential_instance_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["desired_status"] = desired_status
@@ -1641,6 +1702,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             current_status: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             desired_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1696,6 +1758,12 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] current_status: Current status of the instance.
                					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
                					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
@@ -1761,6 +1829,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         __props__.__dict__["cpu_platform"] = cpu_platform
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["current_status"] = current_status
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["desired_status"] = desired_status
@@ -1873,6 +1942,19 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         """
         return pulumi.get(self, "current_status")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

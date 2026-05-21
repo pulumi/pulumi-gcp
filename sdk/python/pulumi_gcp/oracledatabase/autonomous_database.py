@@ -26,6 +26,7 @@ class AutonomousDatabaseArgs:
                  admin_password: pulumi.Input[Optional[_builtins.str]] = None,
                  cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -48,6 +49,12 @@ class AutonomousDatabaseArgs:
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
@@ -79,6 +86,8 @@ class AutonomousDatabaseArgs:
             pulumi.set(__self__, "cidr", cidr)
         if database is not None:
             pulumi.set(__self__, "database", database)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
@@ -162,6 +171,23 @@ class AutonomousDatabaseArgs:
     @database.setter
     def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -293,6 +319,7 @@ class _AutonomousDatabaseState:
                  cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  disaster_recovery_supported_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -322,6 +349,12 @@ class _AutonomousDatabaseState:
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
@@ -365,6 +398,8 @@ class _AutonomousDatabaseState:
             pulumi.set(__self__, "create_time", create_time)
         if database is not None:
             pulumi.set(__self__, "database", database)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if disaster_recovery_supported_locations is not None:
@@ -462,6 +497,23 @@ class _AutonomousDatabaseState:
     @database.setter
     def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -682,6 +734,7 @@ class AutonomousDatabase(pulumi.CustomResource):
                  autonomous_database_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -744,8 +797,6 @@ class AutonomousDatabase(pulumi.CustomResource):
             display_name="autonomousDatabase displayname",
             database="mydatabase",
             admin_password="123Abpassword",
-            odb_network="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
-            odb_subnet="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
             network=default.id,
             cidr="10.5.0.0/24",
             labels={
@@ -879,6 +930,12 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
@@ -960,8 +1017,6 @@ class AutonomousDatabase(pulumi.CustomResource):
             display_name="autonomousDatabase displayname",
             database="mydatabase",
             admin_password="123Abpassword",
-            odb_network="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
-            odb_subnet="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
             network=default.id,
             cidr="10.5.0.0/24",
             labels={
@@ -1103,6 +1158,7 @@ class AutonomousDatabase(pulumi.CustomResource):
                  autonomous_database_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1128,6 +1184,7 @@ class AutonomousDatabase(pulumi.CustomResource):
             __props__.__dict__["autonomous_database_id"] = autonomous_database_id
             __props__.__dict__["cidr"] = cidr
             __props__.__dict__["database"] = database
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
@@ -1164,6 +1221,7 @@ class AutonomousDatabase(pulumi.CustomResource):
             cidr: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             database: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             disaster_recovery_supported_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1197,6 +1255,12 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
@@ -1239,6 +1303,7 @@ class AutonomousDatabase(pulumi.CustomResource):
         __props__.__dict__["cidr"] = cidr
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["database"] = database
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["disaster_recovery_supported_locations"] = disaster_recovery_supported_locations
         __props__.__dict__["display_name"] = display_name
@@ -1301,6 +1366,19 @@ class AutonomousDatabase(pulumi.CustomResource):
         contain a maximum of 30 alphanumeric characters.
         """
         return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

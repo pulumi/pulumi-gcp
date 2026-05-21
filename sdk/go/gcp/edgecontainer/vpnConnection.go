@@ -129,6 +129,13 @@ type VpnConnection struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The time when the VPN connection was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A nested object resource.
 	// Structure is documented below.
 	Details VpnConnectionDetailArrayOutput `pulumi:"details"`
@@ -209,6 +216,13 @@ type vpnConnectionState struct {
 	Cluster *string `pulumi:"cluster"`
 	// The time when the VPN connection was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A nested object resource.
 	// Structure is documented below.
 	Details []VpnConnectionDetail `pulumi:"details"`
@@ -249,6 +263,13 @@ type VpnConnectionState struct {
 	Cluster pulumi.StringPtrInput
 	// The time when the VPN connection was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A nested object resource.
 	// Structure is documented below.
 	Details VpnConnectionDetailArrayInput
@@ -291,6 +312,13 @@ func (VpnConnectionState) ElementType() reflect.Type {
 type vpnConnectionArgs struct {
 	// The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
 	Cluster string `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
 	EnableHighAvailability *bool `pulumi:"enableHighAvailability"`
 	// Labels associated with this resource.
@@ -320,6 +348,13 @@ type vpnConnectionArgs struct {
 type VpnConnectionArgs struct {
 	// The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
 	Cluster pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
 	EnableHighAvailability pulumi.BoolPtrInput
 	// Labels associated with this resource.
@@ -440,6 +475,16 @@ func (o VpnConnectionOutput) Cluster() pulumi.StringOutput {
 // The time when the VPN connection was created.
 func (o VpnConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o VpnConnectionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A nested object resource.

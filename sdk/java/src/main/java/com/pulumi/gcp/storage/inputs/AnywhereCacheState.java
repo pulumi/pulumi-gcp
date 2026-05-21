@@ -81,6 +81,46 @@ public final class AnywhereCacheState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
+     * Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    @Import(name="ingestOnWrite")
+    private @Nullable Output<Boolean> ingestOnWrite;
+
+    /**
+     * @return Whether or not the cache ingests data as the data is written to the bucket.
+     * 
+     */
+    public Optional<Output<Boolean>> ingestOnWrite() {
+        return Optional.ofNullable(this.ingestOnWrite);
+    }
+
+    /**
      * True if the cache instance has an active Update long-running operation.
      * 
      */
@@ -162,6 +202,8 @@ public final class AnywhereCacheState extends com.pulumi.resources.ResourceArgs 
         this.anywhereCacheId = $.anywhereCacheId;
         this.bucket = $.bucket;
         this.createTime = $.createTime;
+        this.deletionPolicy = $.deletionPolicy;
+        this.ingestOnWrite = $.ingestOnWrite;
         this.pendingUpdate = $.pendingUpdate;
         this.state = $.state;
         this.ttl = $.ttl;
@@ -273,6 +315,58 @@ public final class AnywhereCacheState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
+         * @param ingestOnWrite Whether or not the cache ingests data as the data is written to the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestOnWrite(@Nullable Output<Boolean> ingestOnWrite) {
+            $.ingestOnWrite = ingestOnWrite;
+            return this;
+        }
+
+        /**
+         * @param ingestOnWrite Whether or not the cache ingests data as the data is written to the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestOnWrite(Boolean ingestOnWrite) {
+            return ingestOnWrite(Output.of(ingestOnWrite));
         }
 
         /**

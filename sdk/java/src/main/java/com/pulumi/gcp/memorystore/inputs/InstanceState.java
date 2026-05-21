@@ -137,6 +137,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Optional. If set to true deletion of the instance will fail.
      * 
      */
@@ -534,9 +559,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      * 
      */
     @Import(name="nodeType")
@@ -546,9 +577,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Optional. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
+     * CUSTOM_PICO
+     * CUSTOM_MICRO
+     * CUSTOM_MINI
      * HIGHMEM_MEDIUM
+     * HIGHCPU_MEDIUM
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
+     * STANDARD_LARGE
+     * HIGHMEM_2XLARGE
      * 
      */
     public Optional<Output<String>> nodeType() {
@@ -837,6 +874,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.backupCollection = $.backupCollection;
         this.createTime = $.createTime;
         this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
+        this.deletionPolicy = $.deletionPolicy;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.desiredAutoCreatedEndpoints = $.desiredAutoCreatedEndpoints;
         this.desiredPscAutoConnections = $.desiredPscAutoConnections;
@@ -1039,6 +1077,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder crossInstanceReplicationConfig(InstanceCrossInstanceReplicationConfigArgs crossInstanceReplicationConfig) {
             return crossInstanceReplicationConfig(Output.of(crossInstanceReplicationConfig));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -1655,9 +1724,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param nodeType Optional. Machine type for individual nodes of the instance.
          * Possible values:
          * SHARED_CORE_NANO
+         * CUSTOM_PICO
+         * CUSTOM_MICRO
+         * CUSTOM_MINI
          * HIGHMEM_MEDIUM
+         * HIGHCPU_MEDIUM
          * HIGHMEM_XLARGE
          * STANDARD_SMALL
+         * STANDARD_LARGE
+         * HIGHMEM_2XLARGE
          * 
          * @return builder
          * 
@@ -1671,9 +1746,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param nodeType Optional. Machine type for individual nodes of the instance.
          * Possible values:
          * SHARED_CORE_NANO
+         * CUSTOM_PICO
+         * CUSTOM_MICRO
+         * CUSTOM_MINI
          * HIGHMEM_MEDIUM
+         * HIGHCPU_MEDIUM
          * HIGHMEM_XLARGE
          * STANDARD_SMALL
+         * STANDARD_LARGE
+         * HIGHMEM_2XLARGE
          * 
          * @return builder
          * 

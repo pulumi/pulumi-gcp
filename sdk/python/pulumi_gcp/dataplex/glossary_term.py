@@ -21,6 +21,7 @@ class GlossaryTermArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  glossary_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -32,6 +33,12 @@ class GlossaryTermArgs:
 
         :param pulumi.Input[_builtins.str] location: The location where the glossary term should reside.
         :param pulumi.Input[_builtins.str] parent: The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the GlossaryTerm.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
         :param pulumi.Input[_builtins.str] glossary_id: The glossary id for creation.
@@ -45,6 +52,8 @@ class GlossaryTermArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "parent", parent)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -81,6 +90,23 @@ class GlossaryTermArgs:
     @parent.setter
     def parent(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -163,6 +189,7 @@ class GlossaryTermArgs:
 class _GlossaryTermState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -180,6 +207,12 @@ class _GlossaryTermState:
         Input properties used for looking up and filtering GlossaryTerm resources.
 
         :param pulumi.Input[_builtins.str] create_time: The time at which the GlossaryTerm was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the GlossaryTerm.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -201,6 +234,8 @@ class _GlossaryTermState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -239,6 +274,23 @@ class _GlossaryTermState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -408,6 +460,7 @@ class GlossaryTerm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  glossary_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -429,7 +482,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id = gcp.dataplex.Glossary("term_test_id",
-            glossary_id="tf-test-glossary_4866",
+            glossary_id="tf-test-glossary_9329",
             location="us-central1")
         term_test_id_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id",
             parent=pulumi.Output.all(
@@ -439,7 +492,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-basic_12618")
+            term_id="tf-test-term-basic_37135")
         ```
         ### Dataplex Glossary Term Full
 
@@ -448,7 +501,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_32270",
+            glossary_id="tf-test-glossary_42503",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -458,7 +511,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_44703",
+            term_id="tf-test-term-full_9991",
             labels={
                 "tag": "test-tf",
             },
@@ -485,6 +538,12 @@ class GlossaryTerm(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the GlossaryTerm.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
         :param pulumi.Input[_builtins.str] glossary_id: The glossary id for creation.
@@ -516,7 +575,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id = gcp.dataplex.Glossary("term_test_id",
-            glossary_id="tf-test-glossary_4866",
+            glossary_id="tf-test-glossary_9329",
             location="us-central1")
         term_test_id_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id",
             parent=pulumi.Output.all(
@@ -526,7 +585,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-basic_12618")
+            term_id="tf-test-term-basic_37135")
         ```
         ### Dataplex Glossary Term Full
 
@@ -535,7 +594,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_32270",
+            glossary_id="tf-test-glossary_42503",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -545,7 +604,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_44703",
+            term_id="tf-test-term-full_9991",
             labels={
                 "tag": "test-tf",
             },
@@ -585,6 +644,7 @@ class GlossaryTerm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  glossary_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -602,6 +662,7 @@ class GlossaryTerm(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GlossaryTermArgs.__new__(GlossaryTermArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["glossary_id"] = glossary_id
@@ -633,6 +694,7 @@ class GlossaryTerm(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -654,6 +716,12 @@ class GlossaryTerm(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time at which the GlossaryTerm was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the GlossaryTerm.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -678,6 +746,7 @@ class GlossaryTerm(pulumi.CustomResource):
         __props__ = _GlossaryTermState.__new__(_GlossaryTermState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
@@ -700,6 +769,19 @@ class GlossaryTerm(pulumi.CustomResource):
         The time at which the GlossaryTerm was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -316,6 +316,15 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource. This field can be set only at resource
      * creation time.
@@ -443,7 +452,7 @@ export class Subnetwork extends pulumi.CustomResource {
     declare public readonly reservedInternalRange: pulumi.Output<string | undefined>;
     /**
      * 'Configures subnet mask resolution for this subnetwork.'
-     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
      */
     declare public readonly resolveSubnetMask: pulumi.Output<string | undefined>;
     /**
@@ -509,6 +518,7 @@ export class Subnetwork extends pulumi.CustomResource {
             const state = argsOrState as SubnetworkState | undefined;
             resourceInputs["allowSubnetCidrRoutesOverlap"] = state?.allowSubnetCidrRoutesOverlap;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["externalIpv6Prefix"] = state?.externalIpv6Prefix;
             resourceInputs["fingerprint"] = state?.fingerprint;
@@ -543,6 +553,7 @@ export class Subnetwork extends pulumi.CustomResource {
                 throw new Error("Missing required property 'network'");
             }
             resourceInputs["allowSubnetCidrRoutesOverlap"] = args?.allowSubnetCidrRoutesOverlap;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["externalIpv6Prefix"] = args?.externalIpv6Prefix;
             resourceInputs["internalIpv6Prefix"] = args?.internalIpv6Prefix;
@@ -593,6 +604,15 @@ export interface SubnetworkState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource. This field can be set only at resource
@@ -721,7 +741,7 @@ export interface SubnetworkState {
     reservedInternalRange?: pulumi.Input<string | undefined>;
     /**
      * 'Configures subnet mask resolution for this subnetwork.'
-     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
      */
     resolveSubnetMask?: pulumi.Input<string | undefined>;
     /**
@@ -784,6 +804,15 @@ export interface SubnetworkArgs {
      * via BGP even if their destinations match existing subnet ranges.
      */
     allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource. This field can be set only at resource
@@ -889,7 +918,7 @@ export interface SubnetworkArgs {
     reservedInternalRange?: pulumi.Input<string | undefined>;
     /**
      * 'Configures subnet mask resolution for this subnetwork.'
-     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+     * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
      */
     resolveSubnetMask?: pulumi.Input<string | undefined>;
     /**

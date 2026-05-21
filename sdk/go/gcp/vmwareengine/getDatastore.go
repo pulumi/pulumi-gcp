@@ -63,9 +63,10 @@ type LookupDatastoreArgs struct {
 
 // A collection of values returned by getDatastore.
 type LookupDatastoreResult struct {
-	Clusters    []string `pulumi:"clusters"`
-	CreateTime  string   `pulumi:"createTime"`
-	Description string   `pulumi:"description"`
+	Clusters       []string `pulumi:"clusters"`
+	CreateTime     string   `pulumi:"createTime"`
+	DeletionPolicy string   `pulumi:"deletionPolicy"`
+	Description    string   `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string                     `pulumi:"id"`
 	Location      string                     `pulumi:"location"`
@@ -120,6 +121,10 @@ func (o LookupDatastoreResultOutput) Clusters() pulumi.StringArrayOutput {
 
 func (o LookupDatastoreResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatastoreResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupDatastoreResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupDatastoreResultOutput) Description() pulumi.StringOutput {

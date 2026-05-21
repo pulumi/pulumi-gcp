@@ -60,6 +60,7 @@ export interface GetProjectServiceArgs {
  */
 export interface GetProjectServiceResult {
     readonly checkIfServiceHasUsageOnDestroy: boolean;
+    readonly deletionPolicy: string;
     readonly disableDependentServices: boolean;
     readonly disableOnDestroy: boolean;
     /**

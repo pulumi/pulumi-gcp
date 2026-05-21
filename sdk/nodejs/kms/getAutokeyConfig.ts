@@ -45,6 +45,7 @@ export interface GetAutokeyConfigArgs {
  * A collection of values returned by getAutokeyConfig.
  */
 export interface GetAutokeyConfigResult {
+    readonly deletionPolicy: string;
     readonly etag: string;
     readonly folder: string;
     /**

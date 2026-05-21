@@ -64,6 +64,7 @@ type LookupAppConnectorArgs struct {
 
 // A collection of values returned by getAppConnector.
 type LookupAppConnectorResult struct {
+	DeletionPolicy  string            `pulumi:"deletionPolicy"`
 	DisplayName     string            `pulumi:"displayName"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
@@ -117,6 +118,10 @@ func (o LookupAppConnectorResultOutput) ToLookupAppConnectorResultOutput() Looku
 
 func (o LookupAppConnectorResultOutput) ToLookupAppConnectorResultOutputWithContext(ctx context.Context) LookupAppConnectorResultOutput {
 	return o
+}
+
+func (o LookupAppConnectorResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppConnectorResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupAppConnectorResultOutput) DisplayName() pulumi.StringOutput {

@@ -67,6 +67,13 @@ import (
 type PeeredDnsDomain struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
 	DnsSuffix pulumi.StringOutput `pulumi:"dnsSuffix"`
 	// Internal name used for the peered DNS domain.
@@ -117,6 +124,13 @@ func GetPeeredDnsDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PeeredDnsDomain resources.
 type peeredDnsDomainState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
 	DnsSuffix *string `pulumi:"dnsSuffix"`
 	// Internal name used for the peered DNS domain.
@@ -132,6 +146,13 @@ type peeredDnsDomainState struct {
 }
 
 type PeeredDnsDomainState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
 	DnsSuffix pulumi.StringPtrInput
 	// Internal name used for the peered DNS domain.
@@ -151,6 +172,13 @@ func (PeeredDnsDomainState) ElementType() reflect.Type {
 }
 
 type peeredDnsDomainArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
 	DnsSuffix string `pulumi:"dnsSuffix"`
 	// Internal name used for the peered DNS domain.
@@ -165,6 +193,13 @@ type peeredDnsDomainArgs struct {
 
 // The set of arguments for constructing a PeeredDnsDomain resource.
 type PeeredDnsDomainArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
 	DnsSuffix pulumi.StringInput
 	// Internal name used for the peered DNS domain.
@@ -262,6 +297,16 @@ func (o PeeredDnsDomainOutput) ToPeeredDnsDomainOutput() PeeredDnsDomainOutput {
 
 func (o PeeredDnsDomainOutput) ToPeeredDnsDomainOutputWithContext(ctx context.Context) PeeredDnsDomainOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PeeredDnsDomainOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeeredDnsDomain) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).

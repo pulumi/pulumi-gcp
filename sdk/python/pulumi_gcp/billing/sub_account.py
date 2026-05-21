@@ -30,7 +30,13 @@ class SubAccountArgs:
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
                will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-               Default is "".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "".
+               
+               Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "master_billing_account", master_billing_account)
@@ -68,7 +74,13 @@ class SubAccountArgs:
         """
         If set to "RENAME_ON_DESTROY" the billing account display_name
         will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-        Default is "".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "".
+
+        Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -92,7 +104,13 @@ class _SubAccountState:
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
                will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-               Default is "".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "".
+               
+               Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] display_name: The display name of the billing account.
         :param pulumi.Input[_builtins.str] master_billing_account: The name of the master billing account that the subaccount
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -130,7 +148,13 @@ class _SubAccountState:
         """
         If set to "RENAME_ON_DESTROY" the billing account display_name
         will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-        Default is "".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "".
+
+        Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -229,7 +253,13 @@ class SubAccount(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
                will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-               Default is "".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "".
+               
+               Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] display_name: The display name of the billing account.
         :param pulumi.Input[_builtins.str] master_billing_account: The name of the master billing account that the subaccount
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -330,7 +360,13 @@ class SubAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
         :param pulumi.Input[_builtins.str] deletion_policy: If set to "RENAME_ON_DESTROY" the billing account display_name
                will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-               Default is "".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "".
+               
+               Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] display_name: The display name of the billing account.
         :param pulumi.Input[_builtins.str] master_billing_account: The name of the master billing account that the subaccount
                will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -359,11 +395,17 @@ class SubAccount(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
         If set to "RENAME_ON_DESTROY" the billing account display_name
         will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-        Default is "".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "".
+
+        Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         """
         return pulumi.get(self, "deletion_policy")
 

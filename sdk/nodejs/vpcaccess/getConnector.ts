@@ -70,6 +70,7 @@ export interface GetConnectorArgs {
  */
 export interface GetConnectorResult {
     readonly connectedProjects: string[];
+    readonly deletionPolicy: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

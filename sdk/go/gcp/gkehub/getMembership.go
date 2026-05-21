@@ -65,6 +65,7 @@ type LookupMembershipArgs struct {
 // A collection of values returned by getMembership.
 type LookupMembershipResult struct {
 	Authorities     []GetMembershipAuthority `pulumi:"authorities"`
+	DeletionPolicy  string                   `pulumi:"deletionPolicy"`
 	EffectiveLabels map[string]string        `pulumi:"effectiveLabels"`
 	Endpoints       []GetMembershipEndpoint  `pulumi:"endpoints"`
 	// The provider-assigned unique ID for this managed resource.
@@ -119,6 +120,10 @@ func (o LookupMembershipResultOutput) ToLookupMembershipResultOutputWithContext(
 
 func (o LookupMembershipResultOutput) Authorities() GetMembershipAuthorityArrayOutput {
 	return o.ApplyT(func(v LookupMembershipResult) []GetMembershipAuthority { return v.Authorities }).(GetMembershipAuthorityArrayOutput)
+}
+
+func (o LookupMembershipResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMembershipResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupMembershipResultOutput) EffectiveLabels() pulumi.StringMapOutput {

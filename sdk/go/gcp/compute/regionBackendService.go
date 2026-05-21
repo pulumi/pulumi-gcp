@@ -98,54 +98,6 @@ import (
 //	}
 //
 // ```
-// ### Region Backend Service Cache
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
-//				Name:   pulumi.String("rbs-health-check"),
-//				Region: pulumi.String("us-central1"),
-//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
-//					Port: pulumi.Int(80),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
-//				Name:         pulumi.String("region-service"),
-//				Region:       pulumi.String("us-central1"),
-//				HealthChecks: defaultRegionHealthCheck.ID(),
-//				EnableCdn:    pulumi.Bool(true),
-//				CdnPolicy: &compute.RegionBackendServiceCdnPolicyArgs{
-//					CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
-//					DefaultTtl:              pulumi.Int(3600),
-//					ClientTtl:               pulumi.Int(7200),
-//					MaxTtl:                  pulumi.Int(10800),
-//					NegativeCaching:         pulumi.Bool(true),
-//					SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
-//				},
-//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
-//				Protocol:            pulumi.String("HTTP"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Region Backend Service Ilb Round Robin
 //
 // ```go
@@ -512,7 +464,7 @@ import (
 //					TrackingMode:                             pulumi.String("PER_SESSION"),
 //					ConnectionPersistenceOnUnhealthyBackends: pulumi.String("NEVER_PERSIST"),
 //					IdleTimeoutSec:                           pulumi.Int(60),
-//					EnableStrongAffinity:                     pulumi.Bool(true),
+//					EnableStrongAffinity:                     pulumi.Bool(false),
 //				},
 //			})
 //			if err != nil {
@@ -993,7 +945,6 @@ type RegionBackendService struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrOutput `pulumi:"connectionDrainingTimeoutSec"`
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1012,6 +963,13 @@ type RegionBackendService struct {
 	// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
 	// Structure is documented below.
 	CustomMetrics RegionBackendServiceCustomMetricArrayOutput `pulumi:"customMetrics"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// (Optional, Beta)
@@ -1235,7 +1193,6 @@ type regionBackendServiceState struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1254,6 +1211,13 @@ type regionBackendServiceState struct {
 	// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
 	// Structure is documented below.
 	CustomMetrics []RegionBackendServiceCustomMetric `pulumi:"customMetrics"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// (Optional, Beta)
@@ -1448,7 +1412,6 @@ type RegionBackendServiceState struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1467,6 +1430,13 @@ type RegionBackendServiceState struct {
 	// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
 	// Structure is documented below.
 	CustomMetrics RegionBackendServiceCustomMetricArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// (Optional, Beta)
@@ -1665,7 +1635,6 @@ type regionBackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1682,6 +1651,13 @@ type regionBackendServiceArgs struct {
 	// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
 	// Structure is documented below.
 	CustomMetrics []RegionBackendServiceCustomMetric `pulumi:"customMetrics"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// (Optional, Beta)
@@ -1870,7 +1846,6 @@ type RegionBackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
-	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1887,6 +1862,13 @@ type RegionBackendServiceArgs struct {
 	// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
 	// Structure is documented below.
 	CustomMetrics RegionBackendServiceCustomMetricArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// (Optional, Beta)
@@ -2175,7 +2157,6 @@ func (o RegionBackendServiceOutput) ConnectionDrainingTimeoutSec() pulumi.IntPtr
 	return o.ApplyT(func(v *RegionBackendService) pulumi.IntPtrOutput { return v.ConnectionDrainingTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
-// (Optional, Beta)
 // Connection Tracking configuration for this BackendService.
 // This is available only for Layer 4 Internal Load Balancing and
 // Network Load Balancing.
@@ -2206,6 +2187,16 @@ func (o RegionBackendServiceOutput) CreationTimestamp() pulumi.StringOutput {
 // Structure is documented below.
 func (o RegionBackendServiceOutput) CustomMetrics() RegionBackendServiceCustomMetricArrayOutput {
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceCustomMetricArrayOutput { return v.CustomMetrics }).(RegionBackendServiceCustomMetricArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionBackendServiceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

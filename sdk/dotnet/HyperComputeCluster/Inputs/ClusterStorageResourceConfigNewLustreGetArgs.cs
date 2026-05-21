@@ -41,6 +41,17 @@ namespace Pulumi.Gcp.HyperComputeCluster.Inputs
         [Input("lustre", required: true)]
         public Input<string> Lustre { get; set; } = null!;
 
+        /// <summary>
+        /// Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+        /// 500, 1000. See [Performance tiers and maximum storage
+        /// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        /// for more information.
+        /// 
+        /// &lt;a name="NestedStorageResourcesFilestore"&gt;&lt;/a&gt;The `Filestore` block contains:
+        /// </summary>
+        [Input("perUnitStorageThroughput")]
+        public Input<string>? PerUnitStorageThroughput { get; set; }
+
         public ClusterStorageResourceConfigNewLustreGetArgs()
         {
         }

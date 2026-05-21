@@ -69,13 +69,22 @@ export class DiskAsyncReplication extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * The `secondaryDisk` block includes:
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The primary disk (source of replication).
      */
     declare public readonly primaryDisk: pulumi.Output<string>;
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-     *
-     * The `secondaryDisk` block includes:
      */
     declare public readonly secondaryDisk: pulumi.Output<outputs.compute.DiskAsyncReplicationSecondaryDisk>;
 
@@ -92,6 +101,7 @@ export class DiskAsyncReplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskAsyncReplicationState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["primaryDisk"] = state?.primaryDisk;
             resourceInputs["secondaryDisk"] = state?.secondaryDisk;
         } else {
@@ -102,6 +112,7 @@ export class DiskAsyncReplication extends pulumi.CustomResource {
             if (args?.secondaryDisk === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secondaryDisk'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["primaryDisk"] = args?.primaryDisk;
             resourceInputs["secondaryDisk"] = args?.secondaryDisk;
         }
@@ -115,13 +126,22 @@ export class DiskAsyncReplication extends pulumi.CustomResource {
  */
 export interface DiskAsyncReplicationState {
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * The `secondaryDisk` block includes:
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * The primary disk (source of replication).
      */
     primaryDisk?: pulumi.Input<string | undefined>;
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-     *
-     * The `secondaryDisk` block includes:
      */
     secondaryDisk?: pulumi.Input<inputs.compute.DiskAsyncReplicationSecondaryDisk | undefined>;
 }
@@ -131,13 +151,22 @@ export interface DiskAsyncReplicationState {
  */
 export interface DiskAsyncReplicationArgs {
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * The `secondaryDisk` block includes:
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * The primary disk (source of replication).
      */
     primaryDisk: pulumi.Input<string>;
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-     *
-     * The `secondaryDisk` block includes:
      */
     secondaryDisk: pulumi.Input<inputs.compute.DiskAsyncReplicationSecondaryDisk>;
 }

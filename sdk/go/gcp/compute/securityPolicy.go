@@ -308,6 +308,13 @@ type SecurityPolicy struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigOutput `pulumi:"advancedOptionsConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this security policy. Max size is 2048.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -388,6 +395,13 @@ type securityPolicyState struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this security policy. Max size is 2048.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -434,6 +448,13 @@ type SecurityPolicyState struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this security policy. Max size is 2048.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -484,6 +505,13 @@ type securityPolicyArgs struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this security policy. Max size is 2048.
 	Description *string `pulumi:"description"`
 	// Labels to apply to this address. A list of key->value pairs.
@@ -521,6 +549,13 @@ type SecurityPolicyArgs struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this security policy. Max size is 2048.
 	Description pulumi.StringPtrInput
 	// Labels to apply to this address. A list of key->value pairs.
@@ -649,6 +684,16 @@ func (o SecurityPolicyOutput) AdaptiveProtectionConfig() SecurityPolicyAdaptiveP
 // Structure is documented below.
 func (o SecurityPolicyOutput) AdvancedOptionsConfig() SecurityPolicyAdvancedOptionsConfigOutput {
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyAdvancedOptionsConfigOutput { return v.AdvancedOptionsConfig }).(SecurityPolicyAdvancedOptionsConfigOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SecurityPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this security policy. Max size is 2048.

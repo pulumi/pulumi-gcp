@@ -167,6 +167,15 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
      */
     declare public readonly clientDestinationPort: pulumi.Output<number | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
@@ -217,6 +226,7 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RegionNetworkEndpointState | undefined;
             resourceInputs["clientDestinationPort"] = state?.clientDestinationPort;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["fqdn"] = state?.fqdn;
             resourceInputs["instance"] = state?.instance;
             resourceInputs["ipAddress"] = state?.ipAddress;
@@ -234,6 +244,7 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
                 throw new Error("Missing required property 'regionNetworkEndpointGroup'");
             }
             resourceInputs["clientDestinationPort"] = args?.clientDestinationPort;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["fqdn"] = args?.fqdn;
             resourceInputs["instance"] = args?.instance;
             resourceInputs["ipAddress"] = args?.ipAddress;
@@ -256,6 +267,15 @@ export interface RegionNetworkEndpointState {
      * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
      */
     clientDestinationPort?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
@@ -302,6 +322,15 @@ export interface RegionNetworkEndpointArgs {
      * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
      */
     clientDestinationPort?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.

@@ -21,6 +21,7 @@ class NatAddressArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatAddress resource.
@@ -28,11 +29,19 @@ class NatAddressArgs:
         :param pulumi.Input[_builtins.str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
         :param pulumi.Input[_builtins.bool] activate: Flag that specifies whether the reserved NAT address should be activate.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: Resource ID of the NAT address.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if activate is not None:
             pulumi.set(__self__, "activate", activate)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -62,6 +71,23 @@ class NatAddressArgs:
         pulumi.set(self, "activate", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -78,6 +104,7 @@ class NatAddressArgs:
 class _NatAddressState:
     def __init__(__self__, *,
                  activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -86,6 +113,12 @@ class _NatAddressState:
         Input properties used for looking up and filtering NatAddress resources.
 
         :param pulumi.Input[_builtins.bool] activate: Flag that specifies whether the reserved NAT address should be activate.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
         :param pulumi.Input[_builtins.str] ip_address: The allocated NAT IP address.
@@ -94,6 +127,8 @@ class _NatAddressState:
         """
         if activate is not None:
             pulumi.set(__self__, "activate", activate)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if ip_address is not None:
@@ -114,6 +149,23 @@ class _NatAddressState:
     @activate.setter
     def activate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "activate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -172,6 +224,7 @@ class NatAddress(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -312,6 +365,12 @@ class NatAddress(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] activate: Flag that specifies whether the reserved NAT address should be activate.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
         :param pulumi.Input[_builtins.str] name: Resource ID of the NAT address.
@@ -472,6 +531,7 @@ class NatAddress(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -484,6 +544,7 @@ class NatAddress(pulumi.CustomResource):
             __props__ = NatAddressArgs.__new__(NatAddressArgs)
 
             __props__.__dict__["activate"] = activate
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -501,6 +562,7 @@ class NatAddress(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             activate: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -513,6 +575,12 @@ class NatAddress(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] activate: Flag that specifies whether the reserved NAT address should be activate.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
         :param pulumi.Input[_builtins.str] ip_address: The allocated NAT IP address.
@@ -524,6 +592,7 @@ class NatAddress(pulumi.CustomResource):
         __props__ = _NatAddressState.__new__(_NatAddressState)
 
         __props__.__dict__["activate"] = activate
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["name"] = name
@@ -537,6 +606,19 @@ class NatAddress(pulumi.CustomResource):
         Flag that specifies whether the reserved NAT address should be activate.
         """
         return pulumi.get(self, "activate")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")

@@ -74,6 +74,7 @@ type LookupJobResult struct {
 	CreateTime           string                      `pulumi:"createTime"`
 	Creator              string                      `pulumi:"creator"`
 	DeleteTime           string                      `pulumi:"deleteTime"`
+	DeletionPolicy       string                      `pulumi:"deletionPolicy"`
 	DeletionProtection   bool                        `pulumi:"deletionProtection"`
 	EffectiveAnnotations map[string]string           `pulumi:"effectiveAnnotations"`
 	EffectiveLabels      map[string]string           `pulumi:"effectiveLabels"`
@@ -172,6 +173,10 @@ func (o LookupJobResultOutput) Creator() pulumi.StringOutput {
 
 func (o LookupJobResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+func (o LookupJobResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupJobResultOutput) DeletionProtection() pulumi.BoolOutput {

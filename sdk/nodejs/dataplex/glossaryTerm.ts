@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const termTestId = new gcp.dataplex.Glossary("term_test_id", {
- *     glossaryId: "tf-test-glossary_4866",
+ *     glossaryId: "tf-test-glossary_9329",
  *     location: "us-central1",
  * });
  * const termTestIdGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id", {
  *     parent: pulumi.interpolate`projects/${termTestId.project}/locations/us-central1/glossaries/${termTestId.glossaryId}`,
  *     glossaryId: termTestId.glossaryId,
  *     location: "us-central1",
- *     termId: "tf-test-term-basic_12618",
+ *     termId: "tf-test-term-basic_37135",
  * });
  * ```
  * ### Dataplex Glossary Term Full
@@ -33,14 +33,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const termTestIdFull = new gcp.dataplex.Glossary("term_test_id_full", {
- *     glossaryId: "tf-test-glossary_32270",
+ *     glossaryId: "tf-test-glossary_42503",
  *     location: "us-central1",
  * });
  * const termTestIdFullGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id_full", {
  *     parent: pulumi.interpolate`projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}`,
  *     glossaryId: termTestIdFull.glossaryId,
  *     location: "us-central1",
- *     termId: "tf-test-term-full_44703",
+ *     termId: "tf-test-term-full_9991",
  *     labels: {
  *         tag: "test-tf",
  *     },
@@ -97,6 +97,15 @@ export class GlossaryTerm extends pulumi.CustomResource {
      * The time at which the GlossaryTerm was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * The user-mutable description of the GlossaryTerm.
      */
@@ -169,6 +178,7 @@ export class GlossaryTerm extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GlossaryTermState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -190,6 +200,7 @@ export class GlossaryTerm extends pulumi.CustomResource {
             if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["glossaryId"] = args?.glossaryId;
@@ -220,6 +231,15 @@ export interface GlossaryTermState {
      * The time at which the GlossaryTerm was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-mutable description of the GlossaryTerm.
      */
@@ -283,6 +303,15 @@ export interface GlossaryTermState {
  * The set of arguments for constructing a GlossaryTerm resource.
  */
 export interface GlossaryTermArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-mutable description of the GlossaryTerm.
      */

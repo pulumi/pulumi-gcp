@@ -2824,6 +2824,13 @@ type GetRegionalSecretsSecret struct {
 	// Customer Managed Encryption for the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryptions []GetRegionalSecretsSecretCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
 	// When the field is set to true in Terraform state, a 'terraform apply'
 	// or 'terraform destroy' that would delete the federation will fail.
@@ -2885,6 +2892,13 @@ type GetRegionalSecretsSecretArgs struct {
 	// Customer Managed Encryption for the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryptions GetRegionalSecretsSecretCustomerManagedEncryptionArrayInput `pulumi:"customerManagedEncryptions"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
 	// When the field is set to true in Terraform state, a 'terraform apply'
 	// or 'terraform destroy' that would delete the federation will fail.
@@ -2994,6 +3008,16 @@ func (o GetRegionalSecretsSecretOutput) CustomerManagedEncryptions() GetRegional
 	return o.ApplyT(func(v GetRegionalSecretsSecret) []GetRegionalSecretsSecretCustomerManagedEncryption {
 		return v.CustomerManagedEncryptions
 	}).(GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetRegionalSecretsSecretOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
@@ -4232,6 +4256,13 @@ type GetSecretsSecret struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// The time at which the Secret was created.
 	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the secret. Defaults to false.
 	// When the field is set to true in Terraform state, a 'terraform apply'
 	// or 'terraform destroy' that would delete the secret will fail.
@@ -4292,6 +4323,13 @@ type GetSecretsSecretArgs struct {
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the secret. Defaults to false.
 	// When the field is set to true in Terraform state, a 'terraform apply'
 	// or 'terraform destroy' that would delete the secret will fail.
@@ -4395,6 +4433,16 @@ func (o GetSecretsSecretOutput) Annotations() pulumi.StringMapOutput {
 // The time at which the Secret was created.
 func (o GetSecretsSecretOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetSecretsSecretOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the secret. Defaults to false.

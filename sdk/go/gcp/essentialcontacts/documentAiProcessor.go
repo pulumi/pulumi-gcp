@@ -68,6 +68,13 @@ import (
 type DocumentAiProcessor struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name. Must be unique.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
@@ -122,6 +129,13 @@ func GetDocumentAiProcessor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DocumentAiProcessor resources.
 type documentAiProcessorState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name. Must be unique.
 	DisplayName *string `pulumi:"displayName"`
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
@@ -138,6 +152,13 @@ type documentAiProcessorState struct {
 }
 
 type DocumentAiProcessorState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name. Must be unique.
 	DisplayName pulumi.StringPtrInput
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
@@ -158,6 +179,13 @@ func (DocumentAiProcessorState) ElementType() reflect.Type {
 }
 
 type documentAiProcessorArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name. Must be unique.
 	DisplayName string `pulumi:"displayName"`
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
@@ -173,6 +201,13 @@ type documentAiProcessorArgs struct {
 
 // The set of arguments for constructing a DocumentAiProcessor resource.
 type DocumentAiProcessorArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name. Must be unique.
 	DisplayName pulumi.StringInput
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
@@ -271,6 +306,16 @@ func (o DocumentAiProcessorOutput) ToDocumentAiProcessorOutput() DocumentAiProce
 
 func (o DocumentAiProcessorOutput) ToDocumentAiProcessorOutputWithContext(ctx context.Context) DocumentAiProcessorOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DocumentAiProcessorOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DocumentAiProcessor) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name. Must be unique.

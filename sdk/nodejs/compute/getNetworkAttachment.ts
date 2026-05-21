@@ -61,6 +61,7 @@ export interface GetNetworkAttachmentResult {
     readonly connectionEndpoints: outputs.compute.GetNetworkAttachmentConnectionEndpoint[];
     readonly connectionPreference: string;
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly fingerprint: string;
     readonly id: string;

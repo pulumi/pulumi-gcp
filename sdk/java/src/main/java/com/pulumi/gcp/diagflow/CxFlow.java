@@ -49,6 +49,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -154,8 +156,26 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsSpeechSettingsArgs;
@@ -163,10 +183,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsLoggingSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -672,6 +702,30 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<CxFlowAdvancedSettings>> advancedSettings() {
         return Codegen.optional(this.advancedSettings);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.

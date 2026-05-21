@@ -24,6 +24,7 @@ class ConversationProfileArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  automated_agent_config: pulumi.Input[Optional['ConversationProfileAutomatedAgentConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  human_agent_assistant_config: pulumi.Input[Optional['ConversationProfileHumanAgentAssistantConfigArgs']] = None,
                  human_agent_handoff_config: pulumi.Input[Optional['ConversationProfileHumanAgentHandoffConfigArgs']] = None,
                  language_code: pulumi.Input[Optional[_builtins.str]] = None,
@@ -44,6 +45,12 @@ class ConversationProfileArgs:
         :param pulumi.Input[_builtins.str] location: desc
         :param pulumi.Input['ConversationProfileAutomatedAgentConfigArgs'] automated_agent_config: Configuration for an automated agent to use with this profile
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigArgs'] human_agent_assistant_config: Configuration for connecting to a live agent
                Structure is documented below.
         :param pulumi.Input['ConversationProfileHumanAgentHandoffConfigArgs'] human_agent_handoff_config: Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
@@ -74,6 +81,8 @@ class ConversationProfileArgs:
         pulumi.set(__self__, "location", location)
         if automated_agent_config is not None:
             pulumi.set(__self__, "automated_agent_config", automated_agent_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if human_agent_assistant_config is not None:
             pulumi.set(__self__, "human_agent_assistant_config", human_agent_assistant_config)
         if human_agent_handoff_config is not None:
@@ -137,6 +146,23 @@ class ConversationProfileArgs:
     @automated_agent_config.setter
     def automated_agent_config(self, value: pulumi.Input[Optional['ConversationProfileAutomatedAgentConfigArgs']]):
         pulumi.set(self, "automated_agent_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="humanAgentAssistantConfig")
@@ -311,6 +337,7 @@ class ConversationProfileArgs:
 class _ConversationProfileState:
     def __init__(__self__, *,
                  automated_agent_config: pulumi.Input[Optional['ConversationProfileAutomatedAgentConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  human_agent_assistant_config: pulumi.Input[Optional['ConversationProfileHumanAgentAssistantConfigArgs']] = None,
                  human_agent_handoff_config: pulumi.Input[Optional['ConversationProfileHumanAgentHandoffConfigArgs']] = None,
@@ -332,6 +359,12 @@ class _ConversationProfileState:
 
         :param pulumi.Input['ConversationProfileAutomatedAgentConfigArgs'] automated_agent_config: Configuration for an automated agent to use with this profile
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigArgs'] human_agent_assistant_config: Configuration for connecting to a live agent
                Structure is documented below.
@@ -363,6 +396,8 @@ class _ConversationProfileState:
         """
         if automated_agent_config is not None:
             pulumi.set(__self__, "automated_agent_config", automated_agent_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if human_agent_assistant_config is not None:
@@ -408,6 +443,23 @@ class _ConversationProfileState:
     @automated_agent_config.setter
     def automated_agent_config(self, value: pulumi.Input[Optional['ConversationProfileAutomatedAgentConfigArgs']]):
         pulumi.set(self, "automated_agent_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -621,6 +673,7 @@ class ConversationProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']]] = None,
                  human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']]] = None,
@@ -726,6 +779,12 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']] automated_agent_config: Configuration for an automated agent to use with this profile
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']] human_agent_assistant_config: Configuration for connecting to a live agent
                Structure is documented below.
@@ -861,6 +920,7 @@ class ConversationProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']]] = None,
                  human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']]] = None,
@@ -886,6 +946,7 @@ class ConversationProfile(pulumi.CustomResource):
             __props__ = ConversationProfileArgs.__new__(ConversationProfileArgs)
 
             __props__.__dict__["automated_agent_config"] = automated_agent_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -917,6 +978,7 @@ class ConversationProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']]] = None,
             human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']]] = None,
@@ -942,6 +1004,12 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']] automated_agent_config: Configuration for an automated agent to use with this profile
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict']] human_agent_assistant_config: Configuration for connecting to a live agent
                Structure is documented below.
@@ -976,6 +1044,7 @@ class ConversationProfile(pulumi.CustomResource):
         __props__ = _ConversationProfileState.__new__(_ConversationProfileState)
 
         __props__.__dict__["automated_agent_config"] = automated_agent_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["human_agent_assistant_config"] = human_agent_assistant_config
         __props__.__dict__["human_agent_handoff_config"] = human_agent_handoff_config
@@ -1002,6 +1071,19 @@ class ConversationProfile(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "automated_agent_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

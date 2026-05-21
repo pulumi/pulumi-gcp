@@ -701,10 +701,17 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        /// Optional. The deletion policy for the reasoning engine.
+        /// Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is permitted.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The description of the ReasoningEngine.
@@ -844,7 +851,14 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiReasoningEngineContextSpecArgs>? ContextSpec { get; set; }
 
         /// <summary>
-        /// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        /// Optional. The deletion policy for the reasoning engine.
+        /// Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is permitted.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -930,7 +944,14 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        /// Optional. The deletion policy for the reasoning engine.
+        /// Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is permitted.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

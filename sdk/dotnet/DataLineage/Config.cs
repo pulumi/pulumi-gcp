@@ -30,12 +30,44 @@ namespace Pulumi.Gcp.DataLineage
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "tf-test_16511",
+    ///         Name = "tf-test_8493",
+    ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var waitForProject = new Time.Sleep("wait_for_project", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var datalineageApi = new Gcp.Projects.Service("datalineage_api", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "datalineage.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForProject,
+    ///         },
+    ///     });
+    /// 
     ///     var @default = new Gcp.DataLineage.Config("default", new()
     ///     {
-    ///         Parent = "projects/my-project-name",
+    ///         Parent = project.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
     ///         Location = "global",
     ///         Ingestion = new Gcp.DataLineage.Inputs.ConfigIngestionArgs
     ///         {
@@ -53,6 +85,12 @@ namespace Pulumi.Gcp.DataLineage
     ///                     },
     ///                 },
     ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             datalineageApi,
     ///         },
     ///     });
     /// 
@@ -177,6 +215,17 @@ namespace Pulumi.Gcp.DataLineage
     public partial class Config : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Used for optimistic concurrency control when patching config.
         /// </summary>
         [Output("etag")]
@@ -259,6 +308,17 @@ namespace Pulumi.Gcp.DataLineage
     public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Defines how Lineage should be ingested for this resource.
         /// Structure is documented below.
         /// </summary>
@@ -286,6 +346,17 @@ namespace Pulumi.Gcp.DataLineage
 
     public sealed class ConfigState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// Used for optimistic concurrency control when patching config.
         /// </summary>

@@ -270,14 +270,17 @@ type User struct {
 	// **Note**: This property is write-only and will not be read from the API.
 	// **Caution**: Existing database roles will be overwriten with new values from this field.
 	DatabaseRoles pulumi.StringArrayOutput `pulumi:"databaseRoles"`
-	// The deletion policy for the user.
-	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
-	// Possible values are: `ABANDON`.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
@@ -372,11 +375,14 @@ type userState struct {
 	// **Note**: This property is write-only and will not be read from the API.
 	// **Caution**: Existing database roles will be overwriten with new values from this field.
 	DatabaseRoles []string `pulumi:"databaseRoles"`
-	// The deletion policy for the user.
-	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
-	// Possible values are: `ABANDON`.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
@@ -431,11 +437,14 @@ type UserState struct {
 	// **Note**: This property is write-only and will not be read from the API.
 	// **Caution**: Existing database roles will be overwriten with new values from this field.
 	DatabaseRoles pulumi.StringArrayInput
-	// The deletion policy for the user.
-	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
-	// Possible values are: `ABANDON`.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
 	DeletionPolicy pulumi.StringPtrInput
@@ -494,11 +503,14 @@ type userArgs struct {
 	// **Note**: This property is write-only and will not be read from the API.
 	// **Caution**: Existing database roles will be overwriten with new values from this field.
 	DatabaseRoles []string `pulumi:"databaseRoles"`
-	// The deletion policy for the user.
-	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
-	// Possible values are: `ABANDON`.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
@@ -551,11 +563,14 @@ type UserArgs struct {
 	// **Note**: This property is write-only and will not be read from the API.
 	// **Caution**: Existing database roles will be overwriten with new values from this field.
 	DatabaseRoles pulumi.StringArrayInput
-	// The deletion policy for the user.
-	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
-	// Possible values are: `ABANDON`.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
 	DeletionPolicy pulumi.StringPtrInput
@@ -696,15 +711,18 @@ func (o UserOutput) DatabaseRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.DatabaseRoles }).(pulumi.StringArrayOutput)
 }
 
-// The deletion policy for the user.
-// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API. This is useful
 // for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 //
-// Possible values are: `ABANDON`.
+// When set to "DELETE", deleting the resource is allowed.
 //
 // ***
-func (o UserOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+func (o UserOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The host the user can connect from. This is only supported

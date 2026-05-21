@@ -74,6 +74,7 @@ type GetKMSCryptoKeyArgs struct {
 // A collection of values returned by getKMSCryptoKey.
 type GetKMSCryptoKeyResult struct {
 	CryptoKeyBackend         string            `pulumi:"cryptoKeyBackend"`
+	DeletionPolicy           string            `pulumi:"deletionPolicy"`
 	DestroyScheduledDuration string            `pulumi:"destroyScheduledDuration"`
 	EffectiveLabels          map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
@@ -134,6 +135,10 @@ func (o GetKMSCryptoKeyResultOutput) ToGetKMSCryptoKeyResultOutputWithContext(ct
 
 func (o GetKMSCryptoKeyResultOutput) CryptoKeyBackend() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.CryptoKeyBackend }).(pulumi.StringOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetKMSCryptoKeyResultOutput) DestroyScheduledDuration() pulumi.StringOutput {

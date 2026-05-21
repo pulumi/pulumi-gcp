@@ -58,6 +58,7 @@ export interface GetDatabaseResult {
     readonly databaseDialect: string;
     readonly ddls: string[];
     readonly defaultTimeZone: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly enableDropProtection: boolean;
     readonly encryptionConfigs: outputs.spanner.GetDatabaseEncryptionConfig[];

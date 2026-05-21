@@ -349,6 +349,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerEventFilterArgs;
  * import com.pulumi.asset.FileAsset;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
@@ -491,6 +492,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerEventFilterArgs;
  * import com.pulumi.asset.FileAsset;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
@@ -746,6 +748,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
@@ -754,6 +757,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigSecretEnvironmentVariableArgs;
  * import com.pulumi.asset.FileAsset;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
@@ -850,6 +854,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
@@ -858,6 +863,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigSecretVolumeArgs;
  * import com.pulumi.asset.FileAsset;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
@@ -1377,6 +1383,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigDirectVpcNetworkInterfaceArgs;
  * import com.pulumi.asset.FileAsset;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -1475,6 +1482,30 @@ public class Function extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<FunctionBuildConfig>> buildConfig() {
         return Codegen.optional(this.buildConfig);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * User-provided description of a function.

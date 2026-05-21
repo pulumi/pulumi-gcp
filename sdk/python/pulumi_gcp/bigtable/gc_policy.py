@@ -37,10 +37,15 @@ class GCPolicyArgs:
         :param pulumi.Input[_builtins.str] column_family: The name of the column family.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[_builtins.str] table: The name of the table.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the GC policy.
-               Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the GC policy. Setting ABANDON allows the resource
+               to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+               in a replicated instance.
                
-               Possible values are: `ABANDON`.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "DELETE" or "", deleting the resource is allowed.
+               
+               Possible values: PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[_builtins.bool] ignore_warnings: Boolean for whether to allow ignoring warnings when updating the gc policy.
                Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -110,10 +115,15 @@ class GCPolicyArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the GC policy.
-        Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        The deletion policy for the GC policy. Setting ABANDON allows the resource
+        to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+        in a replicated instance.
 
-        Possible values are: `ABANDON`.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "DELETE" or "", deleting the resource is allowed.
+
+        Possible values: PREVENT, ABANDON, DELETE.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -215,10 +225,15 @@ class _GCPolicyState:
         Input properties used for looking up and filtering GCPolicy resources.
 
         :param pulumi.Input[_builtins.str] column_family: The name of the column family.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the GC policy.
-               Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the GC policy. Setting ABANDON allows the resource
+               to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+               in a replicated instance.
                
-               Possible values are: `ABANDON`.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "DELETE" or "", deleting the resource is allowed.
+               
+               Possible values: PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[_builtins.bool] ignore_warnings: Boolean for whether to allow ignoring warnings when updating the gc policy.
                Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -269,10 +284,15 @@ class _GCPolicyState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the GC policy.
-        Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        The deletion policy for the GC policy. Setting ABANDON allows the resource
+        to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+        in a replicated instance.
 
-        Possible values are: `ABANDON`.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "DELETE" or "", deleting the resource is allowed.
+
+        Possible values: PREVENT, ABANDON, DELETE.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -526,10 +546,15 @@ class GCPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] column_family: The name of the column family.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the GC policy.
-               Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the GC policy. Setting ABANDON allows the resource
+               to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+               in a replicated instance.
                
-               Possible values are: `ABANDON`.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "DELETE" or "", deleting the resource is allowed.
+               
+               Possible values: PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[_builtins.bool] ignore_warnings: Boolean for whether to allow ignoring warnings when updating the gc policy.
                Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -752,10 +777,15 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] column_family: The name of the column family.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the GC policy.
-               Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the GC policy. Setting ABANDON allows the resource
+               to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+               in a replicated instance.
                
-               Possible values are: `ABANDON`.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "DELETE" or "", deleting the resource is allowed.
+               
+               Possible values: PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[_builtins.bool] ignore_warnings: Boolean for whether to allow ignoring warnings when updating the gc policy.
                Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -795,12 +825,17 @@ class GCPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        The deletion policy for the GC policy.
-        Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        The deletion policy for the GC policy. Setting ABANDON allows the resource
+        to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+        in a replicated instance.
 
-        Possible values are: `ABANDON`.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "DELETE" or "", deleting the resource is allowed.
+
+        Possible values: PREVENT, ABANDON, DELETE.
         """
         return pulumi.get(self, "deletion_policy")
 

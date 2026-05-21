@@ -63,6 +63,7 @@ type LookupGlobalForwardingRuleArgs struct {
 type LookupGlobalForwardingRuleResult struct {
 	AllowPscGlobalAccess                                   bool              `pulumi:"allowPscGlobalAccess"`
 	BaseForwardingRule                                     string            `pulumi:"baseForwardingRule"`
+	DeletionPolicy                                         string            `pulumi:"deletionPolicy"`
 	Description                                            string            `pulumi:"description"`
 	EffectiveLabels                                        map[string]string `pulumi:"effectiveLabels"`
 	ExternalManagedBackendBucketMigrationState             string            `pulumi:"externalManagedBackendBucketMigrationState"`
@@ -138,6 +139,10 @@ func (o LookupGlobalForwardingRuleResultOutput) AllowPscGlobalAccess() pulumi.Bo
 
 func (o LookupGlobalForwardingRuleResultOutput) BaseForwardingRule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.BaseForwardingRule }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupGlobalForwardingRuleResultOutput) Description() pulumi.StringOutput {

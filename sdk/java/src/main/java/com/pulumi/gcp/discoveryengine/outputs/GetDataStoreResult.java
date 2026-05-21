@@ -22,6 +22,7 @@ public final class GetDataStoreResult {
     private String createTime;
     private @Nullable String dataStoreId;
     private String defaultSchemaId;
+    private String deletionPolicy;
     private @Nullable String displayName;
     private List<GetDataStoreDocumentProcessingConfig> documentProcessingConfigs;
     /**
@@ -55,6 +56,9 @@ public final class GetDataStoreResult {
     }
     public String defaultSchemaId() {
         return this.defaultSchemaId;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
@@ -106,6 +110,7 @@ public final class GetDataStoreResult {
         private String createTime;
         private @Nullable String dataStoreId;
         private String defaultSchemaId;
+        private String deletionPolicy;
         private @Nullable String displayName;
         private List<GetDataStoreDocumentProcessingConfig> documentProcessingConfigs;
         private String id;
@@ -125,6 +130,7 @@ public final class GetDataStoreResult {
     	      this.createTime = defaults.createTime;
     	      this.dataStoreId = defaults.dataStoreId;
     	      this.defaultSchemaId = defaults.defaultSchemaId;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.documentProcessingConfigs = defaults.documentProcessingConfigs;
     	      this.id = defaults.id;
@@ -184,6 +190,14 @@ public final class GetDataStoreResult {
               throw new MissingRequiredPropertyException("GetDataStoreResult", "defaultSchemaId");
             }
             this.defaultSchemaId = defaultSchemaId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDataStoreResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -274,6 +288,7 @@ public final class GetDataStoreResult {
             _resultValue.createTime = createTime;
             _resultValue.dataStoreId = dataStoreId;
             _resultValue.defaultSchemaId = defaultSchemaId;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.documentProcessingConfigs = documentProcessingConfigs;
             _resultValue.id = id;

@@ -17,11 +17,22 @@ namespace Pulumi.Gcp.HyperComputeCluster.Outputs
         /// Enables Auto-class feature.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Terminal storage class of the autoclass bucket
+        /// Possible values:
+        /// NEARLINE
+        /// ARCHIVE
+        /// </summary>
+        public readonly string? TerminalStorageClass;
 
         [OutputConstructor]
-        private ClusterStorageResourceConfigNewBucketAutoclass(bool enabled)
+        private ClusterStorageResourceConfigNewBucketAutoclass(
+            bool enabled,
+
+            string? terminalStorageClass)
         {
             Enabled = enabled;
+            TerminalStorageClass = terminalStorageClass;
         }
     }
 }

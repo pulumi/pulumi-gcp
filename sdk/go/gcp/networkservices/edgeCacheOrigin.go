@@ -199,6 +199,13 @@ type EdgeCacheOrigin struct {
 	// Enable AWS Signature Version 4 origin authentication.
 	// Structure is documented below.
 	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrOutput `pulumi:"awsV4Authentication"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -315,6 +322,13 @@ type edgeCacheOriginState struct {
 	// Enable AWS Signature Version 4 origin authentication.
 	// Structure is documented below.
 	AwsV4Authentication *EdgeCacheOriginAwsV4Authentication `pulumi:"awsV4Authentication"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -394,6 +408,13 @@ type EdgeCacheOriginState struct {
 	// Enable AWS Signature Version 4 origin authentication.
 	// Structure is documented below.
 	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -477,6 +498,13 @@ type edgeCacheOriginArgs struct {
 	// Enable AWS Signature Version 4 origin authentication.
 	// Structure is documented below.
 	AwsV4Authentication *EdgeCacheOriginAwsV4Authentication `pulumi:"awsV4Authentication"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// The Origin resource to try when the current origin cannot be reached.
@@ -552,6 +580,13 @@ type EdgeCacheOriginArgs struct {
 	// Enable AWS Signature Version 4 origin authentication.
 	// Structure is documented below.
 	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// The Origin resource to try when the current origin cannot be reached.
@@ -713,6 +748,16 @@ func (o EdgeCacheOriginOutput) ToEdgeCacheOriginOutputWithContext(ctx context.Co
 // Structure is documented below.
 func (o EdgeCacheOriginOutput) AwsV4Authentication() EdgeCacheOriginAwsV4AuthenticationPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) EdgeCacheOriginAwsV4AuthenticationPtrOutput { return v.AwsV4Authentication }).(EdgeCacheOriginAwsV4AuthenticationPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EdgeCacheOriginOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human-readable description of the resource.

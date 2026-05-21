@@ -27,7 +27,7 @@ class GetBackupPlanResult:
     """
     A collection of values returned by getBackupPlan.
     """
-    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, create_time=None, description=None, disk_backup_plan_properties=None, id=None, location=None, log_retention_days=None, max_custom_on_demand_retention_days=None, name=None, project=None, resource_type=None, supported_resource_types=None, update_time=None):
+    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, compute_instance_backup_plan_properties=None, create_time=None, deletion_policy=None, description=None, disk_backup_plan_properties=None, id=None, location=None, log_retention_days=None, max_custom_on_demand_retention_days=None, name=None, project=None, resource_type=None, supported_resource_types=None, update_time=None):
         if backup_plan_id and not isinstance(backup_plan_id, str):
             raise TypeError("Expected argument 'backup_plan_id' to be a str")
         pulumi.set(__self__, "backup_plan_id", backup_plan_id)
@@ -40,9 +40,15 @@ class GetBackupPlanResult:
         if backup_vault_service_account and not isinstance(backup_vault_service_account, str):
             raise TypeError("Expected argument 'backup_vault_service_account' to be a str")
         pulumi.set(__self__, "backup_vault_service_account", backup_vault_service_account)
+        if compute_instance_backup_plan_properties and not isinstance(compute_instance_backup_plan_properties, list):
+            raise TypeError("Expected argument 'compute_instance_backup_plan_properties' to be a list")
+        pulumi.set(__self__, "compute_instance_backup_plan_properties", compute_instance_backup_plan_properties)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -98,9 +104,19 @@ class GetBackupPlanResult:
         return pulumi.get(self, "backup_vault_service_account")
 
     @_builtins.property
+    @pulumi.getter(name="computeInstanceBackupPlanProperties")
+    def compute_instance_backup_plan_properties(self) -> Sequence['outputs.GetBackupPlanComputeInstanceBackupPlanPropertyResult']:
+        return pulumi.get(self, "compute_instance_backup_plan_properties")
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -171,7 +187,9 @@ class AwaitableGetBackupPlanResult(GetBackupPlanResult):
             backup_rules=self.backup_rules,
             backup_vault=self.backup_vault,
             backup_vault_service_account=self.backup_vault_service_account,
+            compute_instance_backup_plan_properties=self.compute_instance_backup_plan_properties,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             disk_backup_plan_properties=self.disk_backup_plan_properties,
             id=self.id,
@@ -204,7 +222,9 @@ def get_backup_plan(backup_plan_id: Optional[_builtins.str] = None,
         backup_rules=pulumi.get(__ret__, 'backup_rules'),
         backup_vault=pulumi.get(__ret__, 'backup_vault'),
         backup_vault_service_account=pulumi.get(__ret__, 'backup_vault_service_account'),
+        compute_instance_backup_plan_properties=pulumi.get(__ret__, 'compute_instance_backup_plan_properties'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         disk_backup_plan_properties=pulumi.get(__ret__, 'disk_backup_plan_properties'),
         id=pulumi.get(__ret__, 'id'),
@@ -234,7 +254,9 @@ def get_backup_plan_output(backup_plan_id: pulumi.Input[Optional[_builtins.str]]
         backup_rules=pulumi.get(__response__, 'backup_rules'),
         backup_vault=pulumi.get(__response__, 'backup_vault'),
         backup_vault_service_account=pulumi.get(__response__, 'backup_vault_service_account'),
+        compute_instance_backup_plan_properties=pulumi.get(__response__, 'compute_instance_backup_plan_properties'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         disk_backup_plan_properties=pulumi.get(__response__, 'disk_backup_plan_properties'),
         id=pulumi.get(__response__, 'id'),

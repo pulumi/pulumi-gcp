@@ -37,6 +37,7 @@ public final class GetClusterResult {
     private String backupCollection;
     private String createTime;
     private List<GetClusterCrossClusterReplicationConfig> crossClusterReplicationConfigs;
+    private String deletionPolicy;
     private Boolean deletionProtectionEnabled;
     private List<GetClusterDiscoveryEndpoint> discoveryEndpoints;
     private Map<String,String> effectiveLabels;
@@ -94,6 +95,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterCrossClusterReplicationConfig> crossClusterReplicationConfigs() {
         return this.crossClusterReplicationConfigs;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtectionEnabled() {
         return this.deletionProtectionEnabled;
@@ -217,6 +221,7 @@ public final class GetClusterResult {
         private String backupCollection;
         private String createTime;
         private List<GetClusterCrossClusterReplicationConfig> crossClusterReplicationConfigs;
+        private String deletionPolicy;
         private Boolean deletionProtectionEnabled;
         private List<GetClusterDiscoveryEndpoint> discoveryEndpoints;
         private Map<String,String> effectiveLabels;
@@ -260,6 +265,7 @@ public final class GetClusterResult {
     	      this.backupCollection = defaults.backupCollection;
     	      this.createTime = defaults.createTime;
     	      this.crossClusterReplicationConfigs = defaults.crossClusterReplicationConfigs;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.discoveryEndpoints = defaults.discoveryEndpoints;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -352,6 +358,14 @@ public final class GetClusterResult {
         }
         public Builder crossClusterReplicationConfigs(GetClusterCrossClusterReplicationConfig... crossClusterReplicationConfigs) {
             return crossClusterReplicationConfigs(List.of(crossClusterReplicationConfigs));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
@@ -665,6 +679,7 @@ public final class GetClusterResult {
             _resultValue.backupCollection = backupCollection;
             _resultValue.createTime = createTime;
             _resultValue.crossClusterReplicationConfigs = crossClusterReplicationConfigs;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.discoveryEndpoints = discoveryEndpoints;
             _resultValue.effectiveLabels = effectiveLabels;

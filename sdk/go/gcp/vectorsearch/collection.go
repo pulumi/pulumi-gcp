@@ -198,6 +198,13 @@ type Collection struct {
 	// Field names must contain only alphanumeric characters,
 	// underscores, and hyphens.
 	DataSchema pulumi.StringPtrOutput `pulumi:"dataSchema"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User-specified description of the collection
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User-specified display name of the collection
@@ -285,6 +292,13 @@ type collectionState struct {
 	// Field names must contain only alphanumeric characters,
 	// underscores, and hyphens.
 	DataSchema *string `pulumi:"dataSchema"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-specified description of the collection
 	Description *string `pulumi:"description"`
 	// User-specified display name of the collection
@@ -332,6 +346,13 @@ type CollectionState struct {
 	// Field names must contain only alphanumeric characters,
 	// underscores, and hyphens.
 	DataSchema pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-specified description of the collection
 	Description pulumi.StringPtrInput
 	// User-specified display name of the collection
@@ -381,6 +402,13 @@ type collectionArgs struct {
 	// Field names must contain only alphanumeric characters,
 	// underscores, and hyphens.
 	DataSchema *string `pulumi:"dataSchema"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-specified description of the collection
 	Description *string `pulumi:"description"`
 	// User-specified display name of the collection
@@ -418,6 +446,13 @@ type CollectionArgs struct {
 	// Field names must contain only alphanumeric characters,
 	// underscores, and hyphens.
 	DataSchema pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-specified description of the collection
 	Description pulumi.StringPtrInput
 	// User-specified display name of the collection
@@ -549,6 +584,16 @@ func (o CollectionOutput) CreateTime() pulumi.StringOutput {
 // underscores, and hyphens.
 func (o CollectionOutput) DataSchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Collection) pulumi.StringPtrOutput { return v.DataSchema }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CollectionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Collection) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User-specified description of the collection

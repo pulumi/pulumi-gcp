@@ -27,7 +27,10 @@ class GetManagementServerResult:
     """
     A collection of values returned by getManagementServer.
     """
-    def __init__(__self__, id=None, location=None, management_uris=None, name=None, networks=None, oauth2_client_id=None, project=None, type=None):
+    def __init__(__self__, deletion_policy=None, id=None, location=None, management_uris=None, name=None, networks=None, oauth2_client_id=None, project=None, type=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,6 +55,11 @@ class GetManagementServerResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -103,6 +111,7 @@ class AwaitableGetManagementServerResult(GetManagementServerResult):
         if False:
             yield self
         return GetManagementServerResult(
+            deletion_policy=self.deletion_policy,
             id=self.id,
             location=self.location,
             management_uris=self.management_uris,
@@ -136,6 +145,7 @@ def get_management_server(location: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:backupdisasterrecovery/getManagementServer:getManagementServer', __args__, opts=opts, typ=GetManagementServerResult).value
 
     return AwaitableGetManagementServerResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         management_uris=pulumi.get(__ret__, 'management_uris'),
@@ -166,6 +176,7 @@ def get_management_server_output(location: pulumi.Input[Optional[_builtins.str]]
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:backupdisasterrecovery/getManagementServer:getManagementServer', __args__, opts=opts, typ=GetManagementServerResult)
     return __ret__.apply(lambda __response__: GetManagementServerResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
         management_uris=pulumi.get(__response__, 'management_uris'),

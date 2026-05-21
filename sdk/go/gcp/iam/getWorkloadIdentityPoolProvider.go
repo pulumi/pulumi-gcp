@@ -72,6 +72,7 @@ type LookupWorkloadIdentityPoolProviderResult struct {
 	AttributeCondition string                              `pulumi:"attributeCondition"`
 	AttributeMapping   map[string]string                   `pulumi:"attributeMapping"`
 	Aws                []GetWorkloadIdentityPoolProviderAw `pulumi:"aws"`
+	DeletionPolicy     string                              `pulumi:"deletionPolicy"`
 	Description        string                              `pulumi:"description"`
 	Disabled           bool                                `pulumi:"disabled"`
 	DisplayName        string                              `pulumi:"displayName"`
@@ -140,6 +141,10 @@ func (o LookupWorkloadIdentityPoolProviderResultOutput) AttributeMapping() pulum
 
 func (o LookupWorkloadIdentityPoolProviderResultOutput) Aws() GetWorkloadIdentityPoolProviderAwArrayOutput {
 	return o.ApplyT(func(v LookupWorkloadIdentityPoolProviderResult) []GetWorkloadIdentityPoolProviderAw { return v.Aws }).(GetWorkloadIdentityPoolProviderAwArrayOutput)
+}
+
+func (o LookupWorkloadIdentityPoolProviderResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolProviderResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkloadIdentityPoolProviderResultOutput) Description() pulumi.StringOutput {

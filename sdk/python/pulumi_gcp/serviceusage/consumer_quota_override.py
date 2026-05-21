@@ -23,6 +23,7 @@ class ConsumerQuotaOverrideArgs:
                  metric: pulumi.Input[_builtins.str],
                  override_value: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -35,6 +36,12 @@ class ConsumerQuotaOverrideArgs:
         :param pulumi.Input[_builtins.str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[_builtins.str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
         :param pulumi.Input[_builtins.str] service: The service that the metrics belong to, e.g. `compute.googleapis.com`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         :param pulumi.Input[_builtins.bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
@@ -45,6 +52,8 @@ class ConsumerQuotaOverrideArgs:
         pulumi.set(__self__, "metric", metric)
         pulumi.set(__self__, "override_value", override_value)
         pulumi.set(__self__, "service", service)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
         if force is not None:
@@ -103,6 +112,23 @@ class ConsumerQuotaOverrideArgs:
         pulumi.set(self, "service", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def dimensions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -144,6 +170,7 @@ class ConsumerQuotaOverrideArgs:
 @pulumi.input_type
 class _ConsumerQuotaOverrideState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  limit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -155,6 +182,12 @@ class _ConsumerQuotaOverrideState:
         """
         Input properties used for looking up and filtering ConsumerQuotaOverride resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         :param pulumi.Input[_builtins.bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
@@ -168,6 +201,8 @@ class _ConsumerQuotaOverrideState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] service: The service that the metrics belong to, e.g. `compute.googleapis.com`.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
         if force is not None:
@@ -184,6 +219,23 @@ class _ConsumerQuotaOverrideState:
             pulumi.set(__self__, "project", project)
         if service is not None:
             pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -292,6 +344,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  limit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -401,6 +454,12 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         :param pulumi.Input[_builtins.bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
@@ -533,6 +592,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  limit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -549,6 +609,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConsumerQuotaOverrideArgs.__new__(ConsumerQuotaOverrideArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["dimensions"] = dimensions
             __props__.__dict__["force"] = force
             if limit is None and not opts.urn:
@@ -575,6 +636,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
             limit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -590,6 +652,12 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         :param pulumi.Input[_builtins.bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
@@ -607,6 +675,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
 
         __props__ = _ConsumerQuotaOverrideState.__new__(_ConsumerQuotaOverrideState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["dimensions"] = dimensions
         __props__.__dict__["force"] = force
         __props__.__dict__["limit"] = limit
@@ -616,6 +685,19 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["service"] = service
         return ConsumerQuotaOverride(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

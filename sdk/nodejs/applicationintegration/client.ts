@@ -118,6 +118,15 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly createSampleIntegrations: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Location in which client needs to be provisioned.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -151,6 +160,7 @@ export class Client extends pulumi.CustomResource {
             const state = argsOrState as ClientState | undefined;
             resourceInputs["cloudKmsConfig"] = state?.cloudKmsConfig;
             resourceInputs["createSampleIntegrations"] = state?.createSampleIntegrations;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["project"] = state?.project;
             resourceInputs["runAsServiceAccount"] = state?.runAsServiceAccount;
@@ -161,6 +171,7 @@ export class Client extends pulumi.CustomResource {
             }
             resourceInputs["cloudKmsConfig"] = args?.cloudKmsConfig;
             resourceInputs["createSampleIntegrations"] = args?.createSampleIntegrations;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["runAsServiceAccount"] = args?.runAsServiceAccount;
@@ -183,6 +194,15 @@ export interface ClientState {
      * Indicates if sample integrations should be created along with provisioning.
      */
     createSampleIntegrations?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Location in which client needs to be provisioned.
      */
@@ -216,6 +236,15 @@ export interface ClientArgs {
      * Indicates if sample integrations should be created along with provisioning.
      */
     createSampleIntegrations?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Location in which client needs to be provisioned.
      */

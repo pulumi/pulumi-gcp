@@ -96,6 +96,15 @@ export class GenericService extends pulumi.CustomResource {
      */
     declare public readonly basicService: pulumi.Output<outputs.monitoring.GenericServiceBasicService | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Name used for UI elements listing this Service.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -143,6 +152,7 @@ export class GenericService extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GenericServiceState | undefined;
             resourceInputs["basicService"] = state?.basicService;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -155,6 +165,7 @@ export class GenericService extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceId'");
             }
             resourceInputs["basicService"] = args?.basicService;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceId"] = args?.serviceId;
@@ -178,6 +189,15 @@ export interface GenericServiceState {
      * Structure is documented below.
      */
     basicService?: pulumi.Input<inputs.monitoring.GenericServiceBasicService | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name used for UI elements listing this Service.
      */
@@ -224,6 +244,15 @@ export interface GenericServiceArgs {
      * Structure is documented below.
      */
     basicService?: pulumi.Input<inputs.monitoring.GenericServiceBasicService | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name used for UI elements listing this Service.
      */

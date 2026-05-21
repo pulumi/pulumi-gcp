@@ -176,6 +176,15 @@ export class RuntimeTemplate extends pulumi.CustomResource {
      */
     declare public readonly dataPersistentDiskSpec: pulumi.Output<outputs.colab.RuntimeTemplateDataPersistentDiskSpec>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The description of the Runtime Template.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -265,6 +274,7 @@ export class RuntimeTemplate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RuntimeTemplateState | undefined;
             resourceInputs["dataPersistentDiskSpec"] = state?.dataPersistentDiskSpec;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -290,6 +300,7 @@ export class RuntimeTemplate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["dataPersistentDiskSpec"] = args?.dataPersistentDiskSpec;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["encryptionSpec"] = args?.encryptionSpec;
@@ -323,6 +334,15 @@ export interface RuntimeTemplateState {
      * Structure is documented below.
      */
     dataPersistentDiskSpec?: pulumi.Input<inputs.colab.RuntimeTemplateDataPersistentDiskSpec | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the Runtime Template.
      */
@@ -409,6 +429,15 @@ export interface RuntimeTemplateArgs {
      * Structure is documented below.
      */
     dataPersistentDiskSpec?: pulumi.Input<inputs.colab.RuntimeTemplateDataPersistentDiskSpec | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the Runtime Template.
      */

@@ -145,7 +145,7 @@ namespace Pulumi.Gcp.Organizations
         /// the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

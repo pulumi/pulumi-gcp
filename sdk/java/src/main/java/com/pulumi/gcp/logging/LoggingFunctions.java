@@ -11,8 +11,10 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.logging.inputs.GetFolderSettingsArgs;
 import com.pulumi.gcp.logging.inputs.GetFolderSettingsPlainArgs;
+import com.pulumi.gcp.logging.inputs.GetLogViewArgs;
 import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyArgs;
 import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyPlainArgs;
+import com.pulumi.gcp.logging.inputs.GetLogViewPlainArgs;
 import com.pulumi.gcp.logging.inputs.GetOrganizationSettingsArgs;
 import com.pulumi.gcp.logging.inputs.GetOrganizationSettingsPlainArgs;
 import com.pulumi.gcp.logging.inputs.GetProjectCmekSettingsArgs;
@@ -23,6 +25,7 @@ import com.pulumi.gcp.logging.inputs.GetSinkArgs;
 import com.pulumi.gcp.logging.inputs.GetSinkPlainArgs;
 import com.pulumi.gcp.logging.outputs.GetFolderSettingsResult;
 import com.pulumi.gcp.logging.outputs.GetLogViewIamPolicyResult;
+import com.pulumi.gcp.logging.outputs.GetLogViewResult;
 import com.pulumi.gcp.logging.outputs.GetOrganizationSettingsResult;
 import com.pulumi.gcp.logging.outputs.GetProjectCmekSettingsResult;
 import com.pulumi.gcp.logging.outputs.GetProjectSettingsResult;
@@ -264,6 +267,231 @@ public final class LoggingFunctions {
      */
     public static CompletableFuture<GetFolderSettingsResult> getFolderSettingsPlain(GetFolderSettingsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:logging/getFolderSettings:getFolderSettings", TypeShape.of(GetFolderSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Logging Log View. For more information, see the
+     * [official documentation](https://cloud.google.com/logging/docs/apis)
+     * and [API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = LoggingFunctions.getLogView(GetLogViewArgs.builder()
+     *             .parent("projects/my-project")
+     *             .location("global")
+     *             .bucket("_Default")
+     *             .name("my-view")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLogViewResult> getLogView(GetLogViewArgs args) {
+        return getLogView(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Logging Log View. For more information, see the
+     * [official documentation](https://cloud.google.com/logging/docs/apis)
+     * and [API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = LoggingFunctions.getLogView(GetLogViewArgs.builder()
+     *             .parent("projects/my-project")
+     *             .location("global")
+     *             .bucket("_Default")
+     *             .name("my-view")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLogViewResult> getLogViewPlain(GetLogViewPlainArgs args) {
+        return getLogViewPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Logging Log View. For more information, see the
+     * [official documentation](https://cloud.google.com/logging/docs/apis)
+     * and [API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = LoggingFunctions.getLogView(GetLogViewArgs.builder()
+     *             .parent("projects/my-project")
+     *             .location("global")
+     *             .bucket("_Default")
+     *             .name("my-view")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLogViewResult> getLogView(GetLogViewArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getLogView:getLogView", TypeShape.of(GetLogViewResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Logging Log View. For more information, see the
+     * [official documentation](https://cloud.google.com/logging/docs/apis)
+     * and [API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = LoggingFunctions.getLogView(GetLogViewArgs.builder()
+     *             .parent("projects/my-project")
+     *             .location("global")
+     *             .bucket("_Default")
+     *             .name("my-view")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLogViewResult> getLogView(GetLogViewArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getLogView:getLogView", TypeShape.of(GetLogViewResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Logging Log View. For more information, see the
+     * [official documentation](https://cloud.google.com/logging/docs/apis)
+     * and [API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = LoggingFunctions.getLogView(GetLogViewArgs.builder()
+     *             .parent("projects/my-project")
+     *             .location("global")
+     *             .bucket("_Default")
+     *             .name("my-view")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLogViewResult> getLogViewPlain(GetLogViewPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:logging/getLogView:getLogView", TypeShape.of(GetLogViewResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for logview

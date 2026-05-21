@@ -22,6 +22,7 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  placement: pulumi.Input['JobPlacementArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  hadoop_config: pulumi.Input[Optional['JobHadoopConfigArgs']] = None,
                  hive_config: pulumi.Input[Optional['JobHiveConfigArgs']] = None,
@@ -40,6 +41,12 @@ class JobArgs:
         The set of arguments for constructing a Job resource.
 
         :param pulumi.Input['JobPlacementArgs'] placement: The config of job placement.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
@@ -62,6 +69,8 @@ class JobArgs:
         :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
         pulumi.set(__self__, "placement", placement)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
         if hadoop_config is not None:
@@ -102,6 +111,23 @@ class JobArgs:
     @placement.setter
     def placement(self, value: pulumi.Input['JobPlacementArgs']):
         pulumi.set(self, "placement", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
@@ -281,6 +307,7 @@ class JobArgs:
 @pulumi.input_type
 class _JobState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  driver_controls_files_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  driver_output_resource_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -304,6 +331,12 @@ class _JobState:
         """
         Input properties used for looking up and filtering Job resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
         :param pulumi.Input[_builtins.str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -335,6 +368,8 @@ class _JobState:
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of the job.
         :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if driver_controls_files_uri is not None:
             pulumi.set(__self__, "driver_controls_files_uri", driver_controls_files_uri)
         if driver_output_resource_uri is not None:
@@ -375,6 +410,23 @@ class _JobState:
             pulumi.set(__self__, "statuses", statuses)
         if wait_for_completion is not None:
             pulumi.set(__self__, "wait_for_completion", wait_for_completion)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="driverControlsFilesUri")
@@ -633,6 +685,7 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  hadoop_config: pulumi.Input[Optional[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict']]] = None,
                  hive_config: pulumi.Input[Optional[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict']]] = None,
@@ -708,6 +761,12 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
@@ -808,6 +867,7 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  hadoop_config: pulumi.Input[Optional[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict']]] = None,
                  hive_config: pulumi.Input[Optional[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict']]] = None,
@@ -832,6 +892,7 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["hadoop_config"] = hadoop_config
             __props__.__dict__["hive_config"] = hive_config
@@ -866,6 +927,7 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             driver_controls_files_uri: pulumi.Input[Optional[_builtins.str]] = None,
             driver_output_resource_uri: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -893,6 +955,12 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
         :param pulumi.Input[_builtins.str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -928,6 +996,7 @@ class Job(pulumi.CustomResource):
 
         __props__ = _JobState.__new__(_JobState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["driver_controls_files_uri"] = driver_controls_files_uri
         __props__.__dict__["driver_output_resource_uri"] = driver_output_resource_uri
         __props__.__dict__["effective_labels"] = effective_labels
@@ -949,6 +1018,19 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["wait_for_completion"] = wait_for_completion
         return Job(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="driverControlsFilesUri")

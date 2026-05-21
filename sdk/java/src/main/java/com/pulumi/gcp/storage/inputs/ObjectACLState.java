@@ -32,6 +32,31 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * The name of the object to apply the acl to.
      * 
      * ***
@@ -69,6 +94,10 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Must be set if `predefinedAcl` is not.
      * 
+     * &gt; The object&#39;s creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+     * adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+     * `Create` time, where the object role/entity pair is omitted if not explicitly set.
+     * 
      */
     @Import(name="roleEntities")
     private @Nullable Output<List<String>> roleEntities;
@@ -76,6 +105,10 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Must be set if `predefinedAcl` is not.
+     * 
+     * &gt; The object&#39;s creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+     * adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+     * `Create` time, where the object role/entity pair is omitted if not explicitly set.
      * 
      */
     public Optional<Output<List<String>>> roleEntities() {
@@ -86,6 +119,7 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
 
     private ObjectACLState(ObjectACLState $) {
         this.bucket = $.bucket;
+        this.deletionPolicy = $.deletionPolicy;
         this.object = $.object;
         this.predefinedAcl = $.predefinedAcl;
         this.roleEntities = $.roleEntities;
@@ -128,6 +162,37 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -180,6 +245,10 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
          * @param roleEntities List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
          * Must be set if `predefinedAcl` is not.
          * 
+         * &gt; The object&#39;s creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+         * adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+         * `Create` time, where the object role/entity pair is omitted if not explicitly set.
+         * 
          * @return builder
          * 
          */
@@ -192,6 +261,10 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
          * @param roleEntities List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
          * Must be set if `predefinedAcl` is not.
          * 
+         * &gt; The object&#39;s creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+         * adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+         * `Create` time, where the object role/entity pair is omitted if not explicitly set.
+         * 
          * @return builder
          * 
          */
@@ -202,6 +275,10 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param roleEntities List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
          * Must be set if `predefinedAcl` is not.
+         * 
+         * &gt; The object&#39;s creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+         * adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+         * `Create` time, where the object role/entity pair is omitted if not explicitly set.
          * 
          * @return builder
          * 
